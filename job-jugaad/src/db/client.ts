@@ -1,7 +1,7 @@
 import { DatabaseSync } from 'node:sqlite'
 import fs from 'node:fs'
 import { resolveFromRoot } from '../lib/paths.js'
-import { isFullTimeRole } from '../jobs/full-time.js'
+import { isFullTimeRole, isTargetApplyRole } from '../jobs/full-time.js'
 
 export type CompanyRow = {
   id: string
@@ -236,7 +236,7 @@ export function listJobs(opts: {
 
   const filterFt = (rows: JobRow[]) =>
     fullTimeOnly
-      ? rows.filter((r) => isFullTimeRole(r.title, r.jd_text || ''))
+      ? rows.filter((r) => isTargetApplyRole(r.title, r.jd_text || ''))
       : rows
 
   if (opts.diversifyCompanies) {

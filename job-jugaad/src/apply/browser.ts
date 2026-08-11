@@ -52,7 +52,11 @@ async function pageLooksBlocked(page: Page): Promise<boolean> {
   return CAPTCHA_HINTS.some((h) => html.includes(h))
 }
 
-async function waitForHumanClear(page: Page, item: QueueItem): Promise<void> {
+async function waitForHumanClear(
+  page: Page,
+  item: QueueItem,
+  opts: { requireContinue?: boolean } = {},
+): Promise<void> {
   const continueFile = '/tmp/job-jugaad-apply-continue'
   fs.rmSync(continueFile, { force: true })
   const timeoutMs = Number(process.env.JOB_JUGAAD_HUMAN_WAIT_MS || 600_000)
@@ -69,14 +73,17 @@ async function waitForHumanClear(page: Page, item: QueueItem): Promise<void> {
         process.stdin.resume()
         process.stdin.once('data', () => resolve())
       }),
-      pollUntilClear(page, continueFile, timeoutMs),
+      pollUntilClear(page, continueFile, timeoutMs, {
+        requireContinue: opts.requireContinue,
+      }),
     ])
     await page.waitForTimeout(500)
     return
   }
 
-  // Cloud / no TTY: still wait — user can click in DISPLAY desktop
-  await pollUntilClear(page, continueFile, timeoutMs)
+  await pollUntilClear(page, continueFile, timeoutMs, {
+    requireContinue: opts.requireContinue,
+  })
   await page.waitForTimeout(500)
 }
 
@@ -84,6 +91,7 @@ async function pollUntilClear(
   page: Page,
   continueFile: string,
   timeoutMs: number,
+  opts: { requireContinue?: boolean } = {},
 ): Promise<void> {
   const start = Date.now()
   while (Date.now() - start < timeoutMs) {
@@ -91,7 +99,7 @@ async function pollUntilClear(
       fs.unlinkSync(continueFile)
       return
     }
-    if (!(await pageLooksBlocked(page))) return
+    if (!opts.requireContinue && !(await pageLooksBlocked(page))) return
     await page.waitForTimeout(2500)
   }
 }
@@ -491,11 +499,10 @@ export async function applyQueueItem(item: QueueItem): Promise<ApplyResult> {
       console.log(
         'Could not find Submit — leaving browser open for you to finish…',
       )
-      await waitForHumanClear(page, item)
-      // If user finished manually, count as submitted when URL/thanks hints appear
+      await waitForHumanClear(page, item, { requireContinue: true })
       const html = (await page.content().catch(() => '')).toLowerCase()
       const thanks =
-        /thank you|application (has been )?submitted|we received your application/i.test(
+        /thank you for (your )?application|application (has been )?submitted|we('ve| have) received your application|application received/i.test(
           html,
         )
       if (!thanks) {

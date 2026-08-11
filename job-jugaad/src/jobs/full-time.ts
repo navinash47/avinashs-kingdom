@@ -18,3 +18,14 @@ export function isFullTimeRole(title: string, jdText = ''): boolean {
   if (NON_FT_JD.test(head) && !/\bfull[-\s]?time\b/i.test(head)) return false
   return true
 }
+
+
+/** Prefer IC SWE/MLE/AI roles — skip pure people-manager / mobile-only titles for auto-apply. */
+const SKIP_AUTO =
+  /\b(engineering manager|manager,? personalization|director|vice president|\bvp\b|head of|staff software engineer,? ios|ios engineer|android engineer|mobile engineer)\b/i
+
+export function isTargetApplyRole(title: string, jdText = ''): boolean {
+  if (!isFullTimeRole(title, jdText)) return false
+  if (SKIP_AUTO.test(title)) return false
+  return true
+}
