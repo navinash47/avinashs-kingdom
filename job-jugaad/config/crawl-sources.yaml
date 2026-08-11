@@ -13,10 +13,11 @@ queries:
   - ML infrastructure engineer
 
 linkedin_search_urls:
-  - https://www.linkedin.com/jobs/search/?keywords=software%20engineer&location=United%20States&f_TPR=r86400
-  - https://www.linkedin.com/jobs/search/?keywords=backend%20engineer&location=United%20States&f_TPR=r86400
-  - https://www.linkedin.com/jobs/search/?keywords=machine%20learning%20engineer&location=United%20States&f_TPR=r86400
-  - https://www.linkedin.com/jobs/search/?keywords=LLM%20OR%20GenAI%20engineer&location=United%20States&f_TPR=r86400
+  # f_JT=F = Full-time, location=United States, past 24h
+  - https://www.linkedin.com/jobs/search/?keywords=software%20engineer&location=United%20States&f_TPR=r86400&f_JT=F
+  - https://www.linkedin.com/jobs/search/?keywords=backend%20engineer&location=United%20States&f_TPR=r86400&f_JT=F
+  - https://www.linkedin.com/jobs/search/?keywords=machine%20learning%20engineer&location=United%20States&f_TPR=r86400&f_JT=F
+  - https://www.linkedin.com/jobs/search/?keywords=LLM%20OR%20GenAI%20OR%20%22applied%20AI%22%20engineer&location=United%20States&f_TPR=r86400&f_JT=F
 
 web_job_boards:
   - name: Greenhouse directory sample

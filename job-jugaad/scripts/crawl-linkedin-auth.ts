@@ -17,7 +17,9 @@ const CONTINUE_FILE = '/tmp/job-jugaad-linkedin-continue'
 const STATUS_FILE = '/tmp/job-jugaad-linkedin-status.json'
 
 const JOB_URL_RE =
-  /https?:\/\/(?:www\.)?(?:linkedin\.com\/jobs\/view\/\d+[^\s"'<>]*|boards\.greenhouse\.io\/[^/\s"'<>]+\/jobs\/\d+[^\s"'<>]*|job-boards\.greenhouse\.io\/[^/\s"'<>]+\/jobs\/\d+[^\s"'<>]*|jobs\.lever\.co\/[^/\s"'<>]+\/[a-f0-9-]+[^\s"'<>]*|jobs\.ashbyhq\.com\/[^/\s"'<>]+\/[a-f0-9-]+[^\s"'<>]*)/gi
+  /(?:https?:\/\/(?:www\.)?linkedin\.com)?\/jobs\/view\/(\d+)/gi
+const EXT_ATS_RE =
+  /https?:\/\/(?:(?:job-)?boards\.greenhouse\.io\/[^/\s"'<>]+\/jobs\/\d+[^\s"'<>]*|jobs\.lever\.co\/[^/\s"'<>]+\/[a-f0-9-]+[^\s"'<>]*|jobs\.ashbyhq\.com\/[^/\s"'<>]+\/[a-f0-9-]+[^\s"'<>]*)/gi
 
 function writeStatus(s: Record<string, unknown>) {
   fs.writeFileSync(STATUS_FILE, JSON.stringify({ ...s, at: new Date().toISOString() }, null, 2))
@@ -262,93 +264,123 @@ function companyFromLinkedInHtml(cardHtml: string): string {
 async function harvestSearch(page: Page, url: string): Promise<DiscoveredJob[]> {
   const out: DiscoveredJob[] = []
   console.log('Open', url)
+  writeStatus({ state: 'harvest', url })
   await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60_000 })
-  await page.waitForTimeout(3500)
-  for (let i = 0; i < 8; i++) {
-    await page.mouse.wheel(0, 1800)
-    await page.waitForTimeout(700)
-  }
-  const html = await page.content()
-  const urls = [
-    ...new Set(
-      (html.match(JOB_URL_RE) || []).map((u) => u.replace(/[),.;]+$/, '')),
-    ),
-  ]
-  console.log(`  raw links=${urls.length}`)
+  await page.waitForTimeout(2500)
 
-  // Try structured cards
-  const cards = page.locator(
-    'li.jobs-search-results__list-item, div.job-card-container, li.scaffold-layout__list-item',
-  )
-  const n = Math.min(await cards.count(), 40)
-  for (let i = 0; i < n; i++) {
-    const card = cards.nth(i)
-    const title =
-      (
-        await card
-          .locator('a.job-card-list__title, a.job-card-container__link, h3')
-          .first()
-          .innerText()
-          .catch(() => '')
-      ).trim() || 'LinkedIn role'
-    const href = await card
-      .locator('a[href*="/jobs/view/"]').first()
-      .getAttribute('href')
-      .catch(() => null)
-    const company = (
-      await card
-        .locator(
-          '.job-card-container__primary-description, .artdeco-entity-lockup__subtitle, h4',
-        )
-        .first()
-        .innerText()
-        .catch(() => 'LinkedIn')
-    )
-      .replace(/\s+/g, ' ')
-      .trim()
-    if (!href) continue
-    const full = href.startsWith('http') ? href : `https://www.linkedin.com${href}`
-    const id = full.match(/\/jobs\/view\/(\d+)/)?.[1]
+  // Dismiss common overlays quickly
+  for (const sel of [
+    'button:has-text("Dismiss")',
+    'button:has-text("Not now")',
+    'button[aria-label="Dismiss"]',
+  ]) {
+    await page.locator(sel).first().click({ timeout: 800 }).catch(() => undefined)
+  }
+
+  for (let i = 0; i < 10; i++) {
+    await page.mouse.wheel(0, 2200)
+    await page.waitForTimeout(450)
+  }
+
+  const html = await page.content()
+  const ids = [...new Set([...html.matchAll(JOB_URL_RE)].map((m) => m[1]))]
+  console.log(`  job ids from html=${ids.length}`)
+
+  // Fast path: build listings from IDs (avoid per-card locator hangs)
+  for (const id of ids.slice(0, 50)) {
     out.push({
-      companyId: company
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/^-|-$/g, '')
-        .slice(0, 40) || 'linkedin',
-      companyName: company || 'LinkedIn',
-      title: title.slice(0, 140),
-      url: id ? `https://www.linkedin.com/jobs/view/${id}` : full.split('?')[0],
-      jdText: `${title} at ${company} (LinkedIn)`,
+      companyId: 'linkedin',
+      companyName: 'LinkedIn',
+      title: 'LinkedIn role',
+      url: `https://www.linkedin.com/jobs/view/${id}`,
+      jdText: 'LinkedIn listing (US full-time search)',
+      location: 'United States',
       ats: 'linkedin',
     })
   }
 
-  if (!out.length) {
-    for (const u of urls) {
-      out.push({
-        companyId: 'linkedin',
-        companyName: 'LinkedIn',
-        title: 'LinkedIn listing',
-        url: u.split('?')[0],
-        jdText: 'LinkedIn listing',
-        ats: /greenhouse|lever|ashby/i.test(u) ? 'ats_via_linkedin' : 'linkedin',
-      })
+  // Also capture any external ATS links visible on the page
+  for (const u of html.match(EXT_ATS_RE) || []) {
+    out.push({
+      companyId: 'linkedin',
+      companyName: 'LinkedIn',
+      title: 'ATS via LinkedIn',
+      url: u.split('?')[0],
+      jdText: 'External apply link from LinkedIn search',
+      location: 'United States',
+      ats: /greenhouse/i.test(u)
+        ? 'greenhouse'
+        : /lever/i.test(u)
+          ? 'lever'
+          : 'ashby',
+    })
+  }
+
+  // Best-effort titles from cards (short timeouts)
+  const cards = page.locator(
+    'li.jobs-search-results__list-item, div.job-card-container, li.scaffold-layout__list-item, div.job-card-list__entity-lockup',
+  )
+  const n = Math.min(await cards.count().catch(() => 0), 30)
+  for (let i = 0; i < n; i++) {
+    const card = cards.nth(i)
+    const href = await card
+      .locator('a[href*="/jobs/view/"]')
+      .first()
+      .getAttribute('href', { timeout: 800 })
+      .catch(() => null)
+    if (!href) continue
+    const id = href.match(/\/jobs\/view\/(\d+)/)?.[1]
+    if (!id) continue
+    const title = (
+      await card
+        .locator('a.job-card-list__title, a.job-card-container__link, strong, h3')
+        .first()
+        .innerText({ timeout: 800 })
+        .catch(() => '')
+    )
+      .replace(/\s+/g, ' ')
+      .trim()
+    const company = (
+      await card
+        .locator(
+          '.job-card-container__primary-description, .artdeco-entity-lockup__subtitle, .job-card-list__company-name, h4',
+        )
+        .first()
+        .innerText({ timeout: 800 })
+        .catch(() => '')
+    )
+      .replace(/\s+/g, ' ')
+      .trim()
+    const existing = out.find((j) => j.url.includes(`/jobs/view/${id}`))
+    if (existing) {
+      if (title) existing.title = title.slice(0, 140)
+      if (company) {
+        existing.companyName = company.slice(0, 80)
+        existing.companyId =
+          company
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-|-$/g, '')
+            .slice(0, 40) || 'linkedin'
+        existing.jdText = `${title || existing.title} at ${company} (LinkedIn)`
+      }
     }
   }
-  void companyFromLinkedInHtml
+
+  console.log(`  harvested=${out.length}`)
   return out
 }
 
 async function enrichJobPage(page: Page, job: DiscoveredJob): Promise<DiscoveredJob> {
   try {
-    await page.goto(job.url, { waitUntil: 'domcontentloaded', timeout: 45_000 })
-    await page.waitForTimeout(2000)
+    await page.goto(job.url, { waitUntil: 'domcontentloaded', timeout: 25_000 })
+    await page.waitForTimeout(1200)
     const title =
       (
         await page
           .locator('h1, .job-details-jobs-unified-top-card__job-title')
           .first()
-          .innerText()
+          .innerText({ timeout: 3000 })
           .catch(() => job.title)
       ).trim() || job.title
     const company =
@@ -358,33 +390,54 @@ async function enrichJobPage(page: Page, job: DiscoveredJob): Promise<Discovered
             '.job-details-jobs-unified-top-card__company-name a, .job-details-jobs-unified-top-card__company-name',
           )
           .first()
-          .innerText()
+          .innerText({ timeout: 3000 })
           .catch(() => job.companyName)
       ).trim() || job.companyName
+    const loc =
+      (
+        await page
+          .locator(
+            '.job-details-jobs-unified-top-card__tertiary-description-container, .jobs-unified-top-card__bullet, .tvm__text',
+          )
+          .first()
+          .innerText({ timeout: 2000 })
+          .catch(() => job.location || 'United States')
+      ).trim() || job.location || 'United States'
     const desc =
       (
         await page
           .locator('#job-details, .jobs-description__content, .jobs-box__html-content')
           .first()
-          .innerText()
+          .innerText({ timeout: 3000 })
           .catch(() => '')
       ).slice(0, 8000) || job.jdText
 
-    // Prefer external ATS apply URL when present
-    const applyHref = await page
+    // Prefer external ATS apply URL when present (not Easy Apply)
+    let applyHref = await page
       .locator(
-        'a[href*="greenhouse"], a[href*="lever.co"], a[href*="ashbyhq"], a[href*="jobs.ashby"], a.jobs-apply-button',
+        'a[href*="greenhouse"], a[href*="lever.co"], a[href*="ashbyhq"], a[href*="jobs.ashby"], a[href*="linkedin.com/safety/go"]',
       )
       .first()
-      .getAttribute('href')
+      .getAttribute('href', { timeout: 2000 })
       .catch(() => null)
+
+    if (applyHref?.includes('linkedin.com/safety/go')) {
+      try {
+        const u = new URL(
+          applyHref.startsWith('http')
+            ? applyHref
+            : `https://www.linkedin.com${applyHref}`,
+        )
+        applyHref = decodeURIComponent(u.searchParams.get('url') || '')
+      } catch {
+        /* keep */
+      }
+    }
 
     let url = job.url
     let ats = job.ats
     if (applyHref && /greenhouse|lever|ashby/i.test(applyHref)) {
-      url = applyHref.startsWith('http')
-        ? applyHref
-        : `https://www.linkedin.com${applyHref}`
+      url = applyHref.startsWith('http') ? applyHref : applyHref
       ats = applyHref.includes('greenhouse')
         ? 'greenhouse'
         : applyHref.includes('lever')
@@ -403,6 +456,7 @@ async function enrichJobPage(page: Page, job: DiscoveredJob): Promise<Discovered
           .replace(/^-|-$/g, '')
           .slice(0, 40) || job.companyId,
       jdText: desc,
+      location: loc.slice(0, 120),
       url,
       ats,
     }
@@ -448,10 +502,12 @@ async function main() {
     // Dedupe by url
     const byUrl = new Map(found.map((j) => [j.url, j]))
     found = [...byUrl.values()]
-    console.log(`Unique listings: ${found.length} — enriching top 25…`)
+    console.log(`Unique listings: ${found.length} — enriching top 15…`)
+    writeStatus({ state: 'enriching', listings: found.length })
 
     const enriched: DiscoveredJob[] = []
-    for (const job of found.slice(0, 25)) {
+    for (const [i, job] of found.slice(0, 15).entries()) {
+      console.log(`  enrich ${i + 1}/${Math.min(15, found.length)} ${job.url}`)
       enriched.push(await enrichJobPage(page, job))
     }
 
