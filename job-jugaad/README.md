@@ -1,23 +1,27 @@
 # Job Jugaad
 
-AI apply agent: read JD → pick best existing resume (never edit) → discover roles → headed Playwright apply → Gmail IMAP OTP (prompted each run) → Excel skill gaps on fail/low fit.
+AI apply agent: crawl many boards → SQLite track → pick **Avinash Resume (main)** unless specialized clearly wins → headed apply → Excel gaps / Q&A memory.
 
 ## Quick start
 
 ```bash
-cd ~/Projects/job-jugaad   # or this folder
 npm install
 npm run index:resumes
-npm run score:jd -- --file path/to/jd.txt
-npm run discover
-npm run apply              # prompts for Gmail address + App Password
-npm run dev                # Job Jugaad UI
+npm run enrich:profile
+npm run crawl:jobs              # ATS + web/Firecrawl → data/job-jugaad.sqlite
+npm run crawl:linkedin          # optional headed LinkedIn listing harvest
+npm run db:status
+npm run auto:apply -- --limit 5 # apply best queued roles
+npm run verify:mail
 ```
 
-## Secrets
+## Cursor automations
 
-Do **not** put Gmail or API keys in `.env`. Job Jugaad asks interactively each run (Kingdom `kingdom-secrets` rule).
+See [`automations.yaml`](automations.yaml). Suggested loop: crawl → db:status → auto:apply → verify:mail.
 
-## OmniRoute
+## Rules
 
-Keep OmniRoute on `:20128` for chat + Firecrawl web fetch.
+- Main resume: `general` / `Avinash_Nandyala_Resume` (never edit files)
+- Secrets prompted each run (no `.env`)
+- LinkedIn: listings only — **no Easy Apply**
+- Work auth defaults: F-1 OPT, sponsorship yes, legally authorized yes

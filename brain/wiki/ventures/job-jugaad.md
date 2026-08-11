@@ -15,7 +15,7 @@ tags: [jobs, apply, p1]
 
 ## Job
 
-AI-first apply desk: read JD → **pick best existing resume** (never edit files) → discover company ATS roles → headed Playwright apply → Gmail OTP via live prompt → Excel skill gaps on fail/low fit.
+AI apply desk: crawl ATS/web/(headed LinkedIn listings) → SQLite → **Avinash Resume main** → headed apply → Gmail OTP prompts → Excel gaps + Q&A KG.
 
 ## Rules
 
