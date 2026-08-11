@@ -281,26 +281,29 @@ export function recordApplication(input: {
     )
 }
 
-/** True if this job id or normalized URL was already submitted / in-flight / waiting. */
-export function alreadyApplied(jobIdOrUrl: string): boolean {
+/** True if this job id or normalized URL was already submitted / in-flight.
+ *  When allowWaitingResume=true, waiting-on-you rows can be resumed. */
+export function alreadyApplied(
+  jobIdOrUrl: string,
+  opts: { allowWaitingResume?: boolean } = {},
+): boolean {
   const conn = getDb()
   const url = normalizeJobUrl(jobIdOrUrl)
   const byId = conn
     .prepare(`SELECT status FROM jobs WHERE id=? OR url=? LIMIT 1`)
     .get(jobIdOrUrl, url) as { status: string } | undefined
-  if (
-    byId &&
-    (byId.status === 'submitted' ||
-      byId.status === 'filling' ||
-      byId.status === 'waiting-on-you')
-  ) {
-    return true
+  if (byId) {
+    if (byId.status === 'submitted' || byId.status === 'filling') return true
+    if (byId.status === 'waiting-on-you' && !opts.allowWaitingResume) return true
   }
+  const statuses = opts.allowWaitingResume
+    ? `('submitted','filling')`
+    : `('submitted','waiting-on-you','filling')`
   const app = conn
     .prepare(
       `SELECT a.status FROM applications a
        JOIN jobs j ON j.id=a.job_id
-       WHERE (j.id=? OR j.url=?) AND a.status IN ('submitted','waiting-on-you','filling')
+       WHERE (j.id=? OR j.url=?) AND a.status IN ${statuses}
        LIMIT 1`,
     )
     .get(jobIdOrUrl, url) as { status: string } | undefined

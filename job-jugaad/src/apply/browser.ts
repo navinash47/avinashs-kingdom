@@ -11,11 +11,14 @@ import {
 } from '../profile/enrich.js'
 import { answerFromProfile, learnQa } from '../profile/qa-memory.js'
 import { isOmniReachable, omniChat } from '../omni/client.js'
+import { humanClick, humanPause, humanType } from './human.js'
+import { notifyWaitingOnYou } from '../notify/email.js'
 
 export type ApplyResult = {
   status: QueueItem['status']
   error?: string
   learnedQuestions?: string[]
+  emailed?: boolean
 }
 
 const CAPTCHA_HINTS = [
@@ -28,19 +31,39 @@ const CAPTCHA_HINTS = [
   'Attention Required',
 ]
 
+const CONTINUE_FILE = '/tmp/job-jugaad-apply-continue'
+
 async function launchContext(): Promise<BrowserContext> {
   const userData = resolveFromRoot('data/browser-profile')
   fs.mkdirSync(userData, { recursive: true })
-  // Prefer headed; fall back to headless only if DISPLAY missing (cloud CI)
   const headed =
     process.env.JOB_JUGAAD_FORCE_HEADED === '1' ||
     Boolean(process.env.DISPLAY) ||
     process.platform === 'darwin'
-  return chromium.launchPersistentContext(userData, {
-    headless: !headed,
-    viewport: { width: 1280, height: 900 },
-    acceptDownloads: true,
-  })
+  // Prefer real Google Chrome when present (better fingerprint than bundled Chromium)
+  const preferChrome =
+    process.env.JOB_JUGAAD_USE_CHROMIUM !== '1' &&
+    (process.platform === 'darwin' ||
+      process.platform === 'linux' ||
+      process.platform === 'win32')
+  try {
+    return await chromium.launchPersistentContext(userData, {
+      headless: !headed,
+      channel: preferChrome ? 'chrome' : undefined,
+      viewport: { width: 1280, height: 900 },
+      acceptDownloads: true,
+      locale: 'en-US',
+      timezoneId: 'America/New_York',
+    })
+  } catch {
+    return chromium.launchPersistentContext(userData, {
+      headless: !headed,
+      viewport: { width: 1280, height: 900 },
+      acceptDownloads: true,
+      locale: 'en-US',
+      timezoneId: 'America/New_York',
+    })
+  }
 }
 
 async function pageLooksBlocked(page: Page): Promise<boolean> {
@@ -52,18 +75,38 @@ async function pageLooksBlocked(page: Page): Promise<boolean> {
   return CAPTCHA_HINTS.some((h) => html.includes(h))
 }
 
+async function notifyAndWait(
+  page: Page,
+  item: QueueItem,
+  reason: string,
+  opts: { requireContinue?: boolean } = {},
+): Promise<{ emailed: boolean }> {
+  const shot = resolveFromRoot('data/waiting-on-you.png')
+  await page.screenshot({ path: shot, fullPage: true }).catch(() => undefined)
+  const emailed = await notifyWaitingOnYou({
+    company: item.companyName,
+    title: item.title,
+    url: item.url || page.url(),
+    jobId: item.id,
+    reason,
+    screenshotPath: shot,
+  })
+  await waitForHumanClear(page, item, opts)
+  return { emailed }
+}
+
 async function waitForHumanClear(
   page: Page,
   item: QueueItem,
   opts: { requireContinue?: boolean } = {},
 ): Promise<void> {
-  const continueFile = '/tmp/job-jugaad-apply-continue'
-  fs.rmSync(continueFile, { force: true })
+  fs.rmSync(CONTINUE_FILE, { force: true })
   const timeoutMs = Number(process.env.JOB_JUGAAD_HUMAN_WAIT_MS || 600_000)
   console.log(
     `\n⏸  CAPTCHA / bot wall / manual step on ${item.companyName} — ${item.title}\n` +
       `   Solve it in the headed Chrome window (Cursor cloud desktop).\n` +
-      `   Optional: touch ${continueFile} or press Enter (TTY) when done.\n` +
+      `   Optional: touch ${CONTINUE_FILE} or press Enter (TTY) when done.\n` +
+      `   Or later: npm run resume:waiting\n` +
       `   Waiting up to ${Math.round(timeoutMs / 1000)}s…\n`,
   )
 
@@ -73,7 +116,7 @@ async function waitForHumanClear(
         process.stdin.resume()
         process.stdin.once('data', () => resolve())
       }),
-      pollUntilClear(page, continueFile, timeoutMs, {
+      pollUntilClear(page, CONTINUE_FILE, timeoutMs, {
         requireContinue: opts.requireContinue,
       }),
     ])
@@ -81,7 +124,7 @@ async function waitForHumanClear(
     return
   }
 
-  await pollUntilClear(page, continueFile, timeoutMs, {
+  await pollUntilClear(page, CONTINUE_FILE, timeoutMs, {
     requireContinue: opts.requireContinue,
   })
   await page.waitForTimeout(500)
@@ -125,6 +168,7 @@ async function findRootWithSelector(
 }
 
 async function fillByPatterns(
+  page: Page,
   root: Page | Frame,
   pairs: Array<[RegExp, string]>,
 ): Promise<void> {
@@ -137,15 +181,22 @@ async function fillByPatterns(
     try {
       const meta = `${await el.getAttribute('name', { timeout: 800 })} ${await el.getAttribute('id', { timeout: 800 })} ${await el.getAttribute('placeholder', { timeout: 800 })} ${await el.getAttribute('aria-label', { timeout: 800 })} ${await el.getAttribute('autocomplete', { timeout: 800 })}`
       const tag = await el.evaluate((n) => n.tagName.toLowerCase())
+      const type = ((await el.getAttribute('type')) || '').toLowerCase()
+      if (type === 'file' || type === 'hidden') continue
       for (const [re, value] of pairs) {
         if (!value || !re.test(meta)) continue
         if (tag === 'select') {
           await el.selectOption({ label: value }).catch(async () => {
             await el.selectOption({ value }).catch(() => undefined)
           })
+        } else if (value.length <= 80) {
+          await humanType(page, el, value).catch(async () => {
+            await el.fill(value, { timeout: 1500 }).catch(() => undefined)
+          })
         } else {
           await el.fill(value, { timeout: 1500 }).catch(() => undefined)
         }
+        await humanPause(80, 220)
       }
     } catch {
       /* stale/hidden node — skip */
@@ -154,6 +205,7 @@ async function fillByPatterns(
 }
 
 async function clickYesNo(
+  page: Page,
   root: Page | Frame,
   questionRe: RegExp,
   wantYes: boolean,
@@ -170,7 +222,9 @@ async function clickYesNo(
       ? container.getByText(/^(yes|y)$/i).first()
       : container.getByText(/^(no|n)$/i).first()
     if ((await choice.count()) > 0) {
-      await choice.click().catch(() => undefined)
+      await humanClick(page, choice).catch(() =>
+        choice.click().catch(() => undefined),
+      )
       return true
     }
   }
@@ -186,7 +240,7 @@ async function fillCommonFields(
     page,
     'input:visible, textarea:visible, select:visible',
   )
-  await fillByPatterns(root, [
+  await fillByPatterns(page, root, [
     [/first.?name/i, profile.name.first],
     [/last.?name/i, profile.name.last],
     [/^name$|full.?name/i, profile.name.full],
@@ -200,11 +254,13 @@ async function fillCommonFields(
   ])
 
   await clickYesNo(
+    page,
     root,
     /legally authorized to work|authorized to work in the (united states|us)/i,
     true,
   )
   await clickYesNo(
+    page,
     root,
     /require.*sponsorship|need.*sponsor|future.*work authorization|will you now or in the future/i,
     true,
@@ -265,8 +321,10 @@ async function trySubmit(page: Page): Promise<boolean> {
     )
     .first()
   if ((await btn.count()) === 0) return false
-  await btn.click({ timeout: 5000 }).catch(() => undefined)
-  await page.waitForTimeout(1500)
+  await humanClick(page, btn).catch(() =>
+    btn.click({ timeout: 5000 }).catch(() => undefined),
+  )
+  await humanPause(800, 1600)
   return true
 }
 
@@ -427,13 +485,16 @@ export async function applyQueueItem(item: QueueItem): Promise<ApplyResult> {
   const context = await launchContext()
   const page = context.pages()[0] || (await context.newPage())
   const learnedQuestions: string[] = []
+  let emailed = false
 
   try {
     await page.goto(item.url, { waitUntil: 'domcontentloaded', timeout: 60_000 })
+    await humanPause(400, 900)
     if (await pageLooksBlocked(page)) {
-      await waitForHumanClear(page, item)
+      const n = await notifyAndWait(page, item, 'CAPTCHA / bot wall')
+      emailed = n.emailed
       if (await pageLooksBlocked(page)) {
-        return { status: 'waiting-on-you', error: 'CAPTCHA / bot wall' }
+        return { status: 'waiting-on-you', error: 'CAPTCHA / bot wall', emailed }
       }
     }
 
@@ -445,11 +506,9 @@ export async function applyQueueItem(item: QueueItem): Promise<ApplyResult> {
         )
         .first()
       if ((await applyLink.count()) > 0) {
-        await Promise.all([
-          page.waitForLoadState('domcontentloaded').catch(() => undefined),
-          applyLink.click().catch(() => undefined),
-        ])
-        await page.waitForTimeout(1500)
+        await humanClick(page, applyLink)
+        await page.waitForLoadState('domcontentloaded').catch(() => undefined)
+        await humanPause(600, 1400)
       }
       if (/boards\.greenhouse\.io|job-boards\.greenhouse\.io/i.test(page.url())) {
         const base = page.url().split('?')[0].replace(/\/$/, '')
@@ -457,7 +516,7 @@ export async function applyQueueItem(item: QueueItem): Promise<ApplyResult> {
           await page
             .goto(`${base}/application`, { waitUntil: 'domcontentloaded' })
             .catch(() => undefined)
-          await page.waitForTimeout(1200)
+          await humanPause(700, 1300)
         }
       }
     }
@@ -470,9 +529,14 @@ export async function applyQueueItem(item: QueueItem): Promise<ApplyResult> {
       .catch(() => undefined)
 
     if (await pageLooksBlocked(page)) {
-      await waitForHumanClear(page, item)
+      const n = await notifyAndWait(page, item, 'CAPTCHA / bot wall after Apply')
+      emailed = emailed || n.emailed
       if (await pageLooksBlocked(page)) {
-        return { status: 'waiting-on-you', error: 'CAPTCHA / bot wall after Apply' }
+        return {
+          status: 'waiting-on-you',
+          error: 'CAPTCHA / bot wall after Apply',
+          emailed,
+        }
       }
     }
 
@@ -484,6 +548,7 @@ export async function applyQueueItem(item: QueueItem): Promise<ApplyResult> {
       await fillCommonFields(page, profile, credsEmail)
     }
     await uploadResume(page, await resolveUploadPath(item.chosenResumePath))
+    await humanPause(300, 700)
     const learned = await fillCustomQuestions(page, profile, item)
     learnedQuestions.push(...learned)
     profile = loadProfile()
@@ -491,7 +556,8 @@ export async function applyQueueItem(item: QueueItem): Promise<ApplyResult> {
     await handleOtpIfNeeded(page, item)
 
     if (await pageLooksBlocked(page)) {
-      await waitForHumanClear(page, item)
+      const n = await notifyAndWait(page, item, 'CAPTCHA before submit')
+      emailed = emailed || n.emailed
     }
 
     const submitted = await trySubmit(page)
@@ -499,7 +565,13 @@ export async function applyQueueItem(item: QueueItem): Promise<ApplyResult> {
       console.log(
         'Could not find Submit — leaving browser open for you to finish…',
       )
-      await waitForHumanClear(page, item, { requireContinue: true })
+      const n = await notifyAndWait(
+        page,
+        item,
+        'Submit not found / needs manual finish',
+        { requireContinue: true },
+      )
+      emailed = emailed || n.emailed
       const html = (await page.content().catch(() => '')).toLowerCase()
       const thanks =
         /thank you for (your )?application|application (has been )?submitted|we('ve| have) received your application|application received/i.test(
@@ -510,16 +582,18 @@ export async function applyQueueItem(item: QueueItem): Promise<ApplyResult> {
           status: 'waiting-on-you',
           error: 'Submit not found / needs manual finish',
           learnedQuestions,
+          emailed,
         }
       }
     }
 
-    return { status: 'submitted', learnedQuestions }
+    return { status: 'submitted', learnedQuestions, emailed }
   } catch (err) {
     return {
       status: 'failed',
       error: err instanceof Error ? err.message : String(err),
       learnedQuestions,
+      emailed,
     }
   } finally {
     await context.close().catch(() => undefined)

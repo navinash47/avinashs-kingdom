@@ -153,6 +153,7 @@ export function App() {
   }, [data.companies, deferredQ])
 
   const totalJobs = Object.values(data.stats).reduce((a, b) => a + b, 0)
+  const waitingCount = data.stats['waiting-on-you'] || 0
 
   return (
     <div className="shell wide">
@@ -171,6 +172,28 @@ export function App() {
             Gaps Excel
           </a>
         </div>
+        {waitingCount > 0 && (
+          <div className="wait-banner" role="status">
+            <strong>{waitingCount} waiting on you</strong>
+            <span>
+              CAPTCHA / bot wall — check email, take control of headed Chrome in
+              Cursor cloud, then run{' '}
+              <code>npm run resume:waiting</code> or{' '}
+              <code>touch /tmp/job-jugaad-apply-continue</code>. Automations run
+              every 15 minutes (not every minute).
+            </span>
+            <button
+              type="button"
+              className="btn ghost"
+              onClick={() => {
+                setStatus('waiting-on-you')
+                setTab('jobs')
+              }}
+            >
+              Show waiting jobs
+            </button>
+          </div>
+        )}
         <div className="stat-strip" aria-label="Pipeline stats">
           <span>
             <strong>{totalJobs}</strong> jobs
@@ -182,7 +205,7 @@ export function App() {
             <strong>{data.stats.submitted || 0}</strong> submitted
           </span>
           <span>
-            <strong>{data.stats['waiting-on-you'] || 0}</strong> waiting
+            <strong>{waitingCount}</strong> waiting
           </span>
           <span>
             <strong>{data.gaps.length}</strong> gaps

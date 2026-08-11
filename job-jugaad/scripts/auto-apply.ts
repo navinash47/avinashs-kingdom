@@ -127,6 +127,9 @@ async function main() {
       error: result.error,
     })
     console.log(`  → ${result.status}${result.error ? ` — ${result.error}` : ''}`)
+    if (result.emailed) {
+      console.log('  📧 CAPTCHA email sent — take control in Cursor cloud, then resume:waiting')
+    }
   }
 
   clearSessionSecrets()

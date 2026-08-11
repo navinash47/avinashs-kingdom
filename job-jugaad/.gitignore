@@ -20,6 +20,7 @@ data/browser-profile-linkedin-dbg/
 data/linkedin-login-state.png
 data/linkedin-waiting-on-you.png
 data/linkedin-debug.png
+data/waiting-on-you.png
 *.log
 .DS_Store
 apps/dashboard/dist/
