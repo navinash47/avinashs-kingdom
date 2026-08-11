@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, useTransition } from 'react'
+import { useDeferredValue, useEffect, useMemo, useState } from 'react'
 import './app.css'
 
 type Track = {
@@ -6,29 +6,59 @@ type Track = {
   label: string
   keywords: string[]
   filePath: string
-  summary: string
 }
 
-type QueueItem = {
+type Job = {
   id: string
-  companyName: string
+  company_id: string
   title: string
   url: string
-  chosenResumeId: string | null
-  fitScore: number
+  location: string | null
   status: string
-  gaps: Array<{ gap: string; learnNext: string }>
-  error?: string
+  fit_score: number
+  resume_track: string | null
+  ats: string | null
+  error: string | null
+  updated_at?: string
+}
+
+type CompanyStat = {
+  id: string
+  name: string
+  ats: string | null
+  queued: number
+  submitted: number
+  waiting: number
+  failed: number
+  discovered: number
+  total: number
+}
+
+type Gap = {
+  id: number
+  company: string
+  role: string
+  gap: string
+  why: string | null
+  learn_next: string | null
+  chosen_resume: string | null
+  created_at: string
 }
 
 type Payload = {
   tracks: Track[]
-  queue: QueueItem[]
+  stats: Record<string, number>
+  companies: CompanyStat[]
+  jobs: Job[]
+  gaps: Gap[]
   generatedAt?: string
 }
 
+type Tab = 'jobs' | 'companies' | 'gaps'
+
 const STATUS_CLASS: Record<string, string> = {
   queued: 'st-queued',
+  discovered: 'st-queued',
   'gap-only': 'st-gap',
   filling: 'st-fill',
   'waiting-on-you': 'st-wait',
@@ -36,83 +66,339 @@ const STATUS_CLASS: Record<string, string> = {
   failed: 'st-fail',
 }
 
+const EMPTY: Payload = {
+  tracks: [],
+  stats: {},
+  companies: [],
+  jobs: [],
+  gaps: [],
+}
+
 export function App() {
-  const [data, setData] = useState<Payload>({ tracks: [], queue: [] })
-  const [jd, setJd] = useState('')
-  const [pickPreview, setPickPreview] = useState<string | null>(null)
-  const [pending, startTransition] = useTransition()
+  const [data, setData] = useState<Payload>(EMPTY)
+  const [tab, setTab] = useState<Tab>('jobs')
+  const [status, setStatus] = useState('all')
+  const [company, setCompany] = useState('all')
+  const [q, setQ] = useState('')
+  const [usOnly, setUsOnly] = useState(true)
+  const [ftOnly, setFtOnly] = useState(true)
+  const deferredQ = useDeferredValue(q)
 
-  useEffect(() => {
-    fetch('/api/state')
-      .then((r) => r.json())
-      .then((j) => setData(j))
-      .catch(() => {
-        // Vite static fallback: try relative JSON if API proxy absent
-        Promise.all([
-          fetch('/resume-index.json').then((r) => (r.ok ? r.json() : null)),
-          fetch('/queue.json').then((r) => (r.ok ? r.json() : [])),
-        ]).then(([index, queue]) => {
-          setData({
-            tracks: index?.tracks || [],
-            queue: queue || [],
-            generatedAt: index?.generatedAt,
-          })
-        })
+  async function load() {
+    try {
+      const r = await fetch('/api/state')
+      const j = await r.json()
+      setData({
+        tracks: j.tracks || [],
+        stats: j.stats || {},
+        companies: j.companies || [],
+        jobs: j.jobs || [],
+        gaps: j.gaps || [],
+        generatedAt: j.generatedAt,
       })
-  }, [])
-
-  const counts = useMemo(() => {
-    const c: Record<string, number> = {}
-    for (const q of data.queue) c[q.status] = (c[q.status] || 0) + 1
-    return c
-  }, [data.queue])
-
-  function previewPick() {
-    startTransition(() => {
-      const text = jd.toLowerCase()
-      let best = data.tracks[0]
-      let bestScore = -1
-      for (const t of data.tracks) {
-        let hit = 0
-        for (const k of t.keywords) if (text.includes(k.toLowerCase())) hit++
-        if (hit > bestScore) {
-          bestScore = hit
-          best = t
-        }
-      }
-      setPickPreview(
-        best
-          ? `${best.label} (${best.id}) — file stays as-is: ${best.filePath}`
-          : 'Index resumes first (npm run index:resumes)',
-      )
-    })
+    } catch {
+      setData(EMPTY)
+    }
   }
 
+  useEffect(() => {
+    load()
+    const t = setInterval(load, 12_000)
+    return () => clearInterval(t)
+  }, [])
+
+  const filteredJobs = useMemo(() => {
+    const needle = deferredQ.trim().toLowerCase()
+    return data.jobs.filter((j) => {
+      if (status !== 'all' && j.status !== status) return false
+      if (company !== 'all' && j.company_id !== company) return false
+      if (needle) {
+        const blob = `${j.title} ${j.company_id} ${j.location || ''} ${j.url}`.toLowerCase()
+        if (!blob.includes(needle)) return false
+      }
+      if (usOnly) {
+        const loc = `${j.location || ''} ${j.title}`.toLowerCase()
+        if (
+          /\b(brazil|brasil|s[aã]o paulo|latam|toronto|london|india|bangalore|europe|remote\s*[-:]?\s*(emea|latam|apac))\b/.test(
+            loc,
+          )
+        ) {
+          return false
+        }
+      }
+      if (ftOnly) {
+        if (/\b(intern|internship|co-op|part[-\s]?time)\b/i.test(j.title)) return false
+      }
+      return true
+    })
+  }, [data.jobs, status, company, deferredQ, usOnly, ftOnly])
+
+  const filteredGaps = useMemo(() => {
+    const needle = deferredQ.trim().toLowerCase()
+    return data.gaps.filter((g) => {
+      if (company !== 'all' && g.company !== company) return false
+      if (!needle) return true
+      return `${g.company} ${g.role} ${g.gap} ${g.why || ''} ${g.learn_next || ''}`
+        .toLowerCase()
+        .includes(needle)
+    })
+  }, [data.gaps, company, deferredQ])
+
+  const filteredCompanies = useMemo(() => {
+    const needle = deferredQ.trim().toLowerCase()
+    return data.companies.filter((c) => {
+      if (!needle) return true
+      return `${c.name} ${c.id} ${c.ats || ''}`.toLowerCase().includes(needle)
+    })
+  }, [data.companies, deferredQ])
+
+  const totalJobs = Object.values(data.stats).reduce((a, b) => a + b, 0)
+
   return (
-    <div className="shell">
-      <header className="hero">
+    <div className="shell wide">
+      <header className="hero compact">
         <p className="eyebrow">Kingdom · Agent Jugaad</p>
         <h1>Job Jugaad</h1>
         <p className="lede">
-          Read the JD. Pick the best resume you already wrote. Apply headed —
-          never rewrite the file.
+          Track every company and job link. Apply US full-time only — never the
+          same URL twice.
         </p>
         <div className="cta-row">
-          <a className="btn primary" href="#queue">
-            Open queue
-          </a>
+          <button className="btn primary" type="button" onClick={load}>
+            Refresh
+          </button>
           <a className="btn ghost" href="/gaps.xlsx" download>
-            Download gaps Excel
+            Gaps Excel
           </a>
+        </div>
+        <div className="stat-strip" aria-label="Pipeline stats">
+          <span>
+            <strong>{totalJobs}</strong> jobs
+          </span>
+          <span>
+            <strong>{data.stats.queued || 0}</strong> queued
+          </span>
+          <span>
+            <strong>{data.stats.submitted || 0}</strong> submitted
+          </span>
+          <span>
+            <strong>{data.stats['waiting-on-you'] || 0}</strong> waiting
+          </span>
+          <span>
+            <strong>{data.gaps.length}</strong> gaps
+          </span>
+          <span>
+            <strong>{data.companies.length}</strong> companies
+          </span>
         </div>
       </header>
 
+      <nav className="tabs" aria-label="Tracking views">
+        {(
+          [
+            ['jobs', 'Jobs'],
+            ['companies', 'Companies'],
+            ['gaps', 'Gaps'],
+          ] as const
+        ).map(([id, label]) => (
+          <button
+            key={id}
+            type="button"
+            className={tab === id ? 'tab on' : 'tab'}
+            onClick={() => setTab(id)}
+          >
+            {label}
+          </button>
+        ))}
+      </nav>
+
+      <section className="band filters" aria-label="Filters">
+        <div className="filter-row">
+          <label>
+            Search
+            <input
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+              placeholder="title, company, location…"
+            />
+          </label>
+          <label>
+            Status
+            <select value={status} onChange={(e) => setStatus(e.target.value)}>
+              <option value="all">All</option>
+              {[
+                'queued',
+                'discovered',
+                'filling',
+                'waiting-on-you',
+                'submitted',
+                'failed',
+              ].map((s) => (
+                <option key={s} value={s}>
+                  {s} ({data.stats[s] || 0})
+                </option>
+              ))}
+            </select>
+          </label>
+          <label>
+            Company
+            <select value={company} onChange={(e) => setCompany(e.target.value)}>
+              <option value="all">All</option>
+              {data.companies.map((c) => (
+                <option key={c.id} value={c.id}>
+                  {c.name} ({c.total})
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="check">
+            <input
+              type="checkbox"
+              checked={usOnly}
+              onChange={(e) => setUsOnly(e.target.checked)}
+            />
+            US only
+          </label>
+          <label className="check">
+            <input
+              type="checkbox"
+              checked={ftOnly}
+              onChange={(e) => setFtOnly(e.target.checked)}
+            />
+            Full-time
+          </label>
+        </div>
+        <p className="sub tiny">
+          SQLite live · {data.generatedAt ? `synced ${data.generatedAt}` : '—'} ·
+          Brazil / LatAm / non-US filtered when US only is on
+        </p>
+      </section>
+
+      {tab === 'jobs' && (
+        <section className="band" aria-label="Jobs">
+          <h2>Jobs</h2>
+          <p className="sub">
+            Showing {filteredJobs.length} of {data.jobs.length} loaded rows
+          </p>
+          <div className="table-wrap">
+            <table className="grid">
+              <thead>
+                <tr>
+                  <th>Company</th>
+                  <th>Role</th>
+                  <th>Loc</th>
+                  <th>Fit</th>
+                  <th>Resume</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredJobs.map((j) => (
+                  <tr key={j.id}>
+                    <td>{j.company_id}</td>
+                    <td>
+                      <a href={j.url} target="_blank" rel="noreferrer">
+                        {j.title}
+                      </a>
+                      {j.error && <div className="err">{j.error}</div>}
+                    </td>
+                    <td className="muted">{j.location || '—'}</td>
+                    <td>{Math.round(j.fit_score)}</td>
+                    <td className="muted">{j.resume_track || '—'}</td>
+                    <td>
+                      <span className={`pill ${STATUS_CLASS[j.status] || ''}`}>
+                        {j.status}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            {!filteredJobs.length && <p className="empty">No jobs match filters.</p>}
+          </div>
+        </section>
+      )}
+
+      {tab === 'companies' && (
+        <section className="band" aria-label="Companies">
+          <h2>Companies</h2>
+          <p className="sub">Pipeline counts per company from SQLite.</p>
+          <div className="table-wrap">
+            <table className="grid">
+              <thead>
+                <tr>
+                  <th>Company</th>
+                  <th>ATS</th>
+                  <th>Queued</th>
+                  <th>Submitted</th>
+                  <th>Waiting</th>
+                  <th>Failed</th>
+                  <th>Discovered</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredCompanies.map((c) => (
+                  <tr key={c.id}>
+                    <td>
+                      <button
+                        type="button"
+                        className="linkish"
+                        onClick={() => {
+                          setCompany(c.id)
+                          setTab('jobs')
+                        }}
+                      >
+                        {c.name}
+                      </button>
+                    </td>
+                    <td className="muted">{c.ats || '—'}</td>
+                    <td>{c.queued}</td>
+                    <td>{c.submitted}</td>
+                    <td>{c.waiting}</td>
+                    <td>{c.failed}</td>
+                    <td>{c.discovered}</td>
+                    <td>{c.total}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      )}
+
+      {tab === 'gaps' && (
+        <section className="band" aria-label="Gaps">
+          <h2>Gaps to care about</h2>
+          <p className="sub">
+            Skill / apply failures stored in SQLite (+ Excel export).
+          </p>
+          <div className="queue">
+            {filteredGaps.map((g) => (
+              <article key={g.id} className="row">
+                <div>
+                  <h3>
+                    {g.company} — {g.role}
+                  </h3>
+                  <p>
+                    <strong>{g.gap}</strong>
+                    {g.why ? ` · ${g.why}` : ''}
+                  </p>
+                  {g.learn_next && <p className="learn">Next: {g.learn_next}</p>}
+                </div>
+                <span className="pill st-gap">{g.chosen_resume || 'gap'}</span>
+              </article>
+            ))}
+            {!filteredGaps.length && (
+              <p className="empty">No gaps yet — failures will land here.</p>
+            )}
+          </div>
+        </section>
+      )}
+
       <section className="band" aria-label="Resume library">
         <h2>Resume library</h2>
-        <p className="sub">
-          Read-only tracks from Desktop (fixtures when Desktop is missing).
-          Job Jugaad never edits these files.
-        </p>
+        <p className="sub">Read-only tracks — Job Jugaad never edits these files.</p>
         <ul className="tracks">
           {data.tracks.map((t) => (
             <li key={t.id}>
@@ -127,56 +413,8 @@ export function App() {
         </ul>
       </section>
 
-      <section className="band" aria-label="JD picker">
-        <h2>JD → best resume</h2>
-        <p className="sub">Paste a JD to preview which track would be chosen.</p>
-        <textarea
-          value={jd}
-          onChange={(e) => setJd(e.target.value)}
-          placeholder="Paste job description…"
-          rows={7}
-        />
-        <button className="btn primary" type="button" onClick={previewPick}>
-          {pending ? 'Picking…' : 'Pick resume'}
-        </button>
-        {pickPreview && <p className="pick">{pickPreview}</p>}
-      </section>
-
-      <section className="band" id="queue" aria-label="Apply queue">
-        <h2>Apply queue</h2>
-        <p className="sub">
-          Status strip:{' '}
-          {Object.entries(counts)
-            .map(([k, v]) => `${k} ${v}`)
-            .join(' · ') || 'empty — run npm run discover'}
-        </p>
-        <div className="queue">
-          {data.queue.map((q) => (
-            <article key={q.id} className="row">
-              <div>
-                <h3>
-                  {q.companyName} — {q.title}
-                </h3>
-                <p>
-                  Resume <strong>{q.chosenResumeId || '—'}</strong> · fit{' '}
-                  {q.fitScore}
-                  {q.gaps?.length ? ` · ${q.gaps.length} gaps` : ''}
-                </p>
-                {q.error && <p className="err">{q.error}</p>}
-              </div>
-              <span className={`pill ${STATUS_CLASS[q.status] || ''}`}>
-                {q.status}
-              </span>
-            </article>
-          ))}
-          {!data.queue.length && (
-            <p className="empty">No jobs queued yet.</p>
-          )}
-        </div>
-      </section>
-
       <footer>
-        Secrets are prompted each apply run — never stored in .env.
+        Secrets stay memory-only. Duplicate job URLs are blocked at apply time.
       </footer>
     </div>
   )

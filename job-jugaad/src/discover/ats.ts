@@ -9,6 +9,7 @@ export type DiscoveredJob = {
   url: string
   jdText: string
   ats: string
+  location?: string | null
 }
 
 async function fetchGreenhouse(company: Company): Promise<DiscoveredJob[]> {
@@ -26,6 +27,8 @@ async function fetchGreenhouse(company: Company): Promise<DiscoveredJob[]> {
       title: string
       absolute_url: string
       content?: string
+      location?: { name?: string }
+      offices?: Array<{ name?: string; location?: string }>
     }>
   }
   return (data.jobs || []).map((j) => ({
@@ -34,6 +37,10 @@ async function fetchGreenhouse(company: Company): Promise<DiscoveredJob[]> {
     title: j.title,
     url: normalizeGreenhouseUrl(company.board_token || company.id, j),
     jdText: stripHtml(j.content || j.title),
+    location:
+      j.location?.name ||
+      j.offices?.map((o) => o.name || o.location).filter(Boolean).join('; ') ||
+      null,
     ats: 'greenhouse',
   }))
 }
@@ -65,6 +72,7 @@ async function fetchLever(company: Company): Promise<DiscoveredJob[]> {
     hostedUrl: string
     descriptionPlain?: string
     description?: string
+    categories?: { location?: string; commitment?: string }
   }>
   return (data || []).map((j) => ({
     companyId: company.id,
@@ -72,6 +80,7 @@ async function fetchLever(company: Company): Promise<DiscoveredJob[]> {
     title: j.text,
     url: j.hostedUrl,
     jdText: j.descriptionPlain || stripHtml(j.description || j.text),
+    location: j.categories?.location || null,
     ats: 'lever',
   }))
 }
@@ -91,6 +100,8 @@ async function fetchAshby(company: Company): Promise<DiscoveredJob[]> {
       jobUrl: string
       descriptionHtml?: string
       descriptionPlain?: string
+      location?: string
+      secondaryLocations?: Array<{ location?: string }>
     }>
   }
   return (data.jobs || []).map((j) => ({
@@ -99,6 +110,13 @@ async function fetchAshby(company: Company): Promise<DiscoveredJob[]> {
     title: j.title,
     url: j.jobUrl,
     jdText: j.descriptionPlain || stripHtml(j.descriptionHtml || j.title),
+    location:
+      [
+        j.location,
+        ...(j.secondaryLocations || []).map((s) => s.location),
+      ]
+        .filter(Boolean)
+        .join('; ') || null,
     ats: 'ashby',
   }))
 }

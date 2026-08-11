@@ -1,11 +1,18 @@
 /**
- * Tiny static file server for the Job Jugaad UI (no secret env).
- * Serves built UI or vite-dev can proxy via npm run dev after copying JSON.
+ * Job Jugaad UI + SQLite API (no secrets).
+ * Serves dashboard + /api/jobs|/api/companies|/api/gaps|/api/state
  */
 import http from 'node:http'
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import {
+  dashboardPayload,
+  queryJobs,
+  companyStats,
+  listGaps,
+  jobStats,
+} from '../src/db/client.js'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const port = Number(process.env.PORT || 5178)
@@ -16,27 +23,92 @@ function read(rel: string) {
   return fs.readFileSync(p)
 }
 
+function json(res: http.ServerResponse, body: unknown, code = 200) {
+  res.writeHead(code, {
+    'Content-Type': 'application/json',
+    'Cache-Control': 'no-store',
+  })
+  res.end(JSON.stringify(body))
+}
+
 const server = http.createServer((req, res) => {
   const url = new URL(req.url || '/', `http://localhost:${port}`)
+
   if (url.pathname === '/api/state') {
     const index = read('data/resume-index.json')
-    const queue = read('data/queue.json')
-    const body = {
-      tracks: index ? JSON.parse(index.toString()).tracks : [],
-      queue: queue ? JSON.parse(queue.toString()) : [],
-      generatedAt: index
-        ? JSON.parse(index.toString()).generatedAt
-        : undefined,
-    }
-    res.writeHead(200, { 'Content-Type': 'application/json' })
-    res.end(JSON.stringify(body))
+    const payload = dashboardPayload()
+    const tracks = index ? JSON.parse(index.toString()).tracks : []
+    json(res, {
+      ...payload,
+      tracks,
+      // legacy queue shape for older UI bits
+      queue: payload.jobs
+        .filter((j) =>
+          ['queued', 'filling', 'waiting-on-you', 'submitted', 'failed'].includes(
+            j.status,
+          ),
+        )
+        .slice(0, 80)
+        .map((j) => ({
+          id: j.id,
+          companyName: j.company_id,
+          title: j.title,
+          url: j.url,
+          location: j.location,
+          chosenResumeId: j.resume_track,
+          fitScore: j.fit_score,
+          status: j.status,
+          gaps: [],
+          error: j.error || undefined,
+        })),
+    })
     return
   }
+
+  if (url.pathname === '/api/stats') {
+    json(res, { stats: jobStats(), at: new Date().toISOString() })
+    return
+  }
+
+  if (url.pathname === '/api/jobs') {
+    json(
+      res,
+      queryJobs({
+        status: url.searchParams.get('status') || undefined,
+        companyId: url.searchParams.get('company') || undefined,
+        q: url.searchParams.get('q') || undefined,
+        minFit: Number(url.searchParams.get('minFit') || 0),
+        limit: Number(url.searchParams.get('limit') || 100),
+        offset: Number(url.searchParams.get('offset') || 0),
+        usOnly: url.searchParams.get('us') !== '0',
+        fullTimeOnly: url.searchParams.get('ft') !== '0',
+      }),
+    )
+    return
+  }
+
+  if (url.pathname === '/api/companies') {
+    json(res, companyStats())
+    return
+  }
+
+  if (url.pathname === '/api/gaps') {
+    json(
+      res,
+      listGaps({
+        company: url.searchParams.get('company') || undefined,
+        q: url.searchParams.get('q') || undefined,
+        limit: Number(url.searchParams.get('limit') || 150),
+      }),
+    )
+    return
+  }
+
   if (url.pathname === '/gaps.xlsx') {
     const x = read('data/gaps.xlsx')
     if (!x) {
       res.writeHead(404)
-      res.end('No gaps.xlsx yet — run npm run score:jd -- --demo')
+      res.end('No gaps.xlsx yet')
       return
     }
     res.writeHead(200, {
@@ -47,19 +119,14 @@ const server = http.createServer((req, res) => {
     res.end(x)
     return
   }
+
   if (url.pathname === '/resume-index.json') {
     const x = read('data/resume-index.json')
     res.writeHead(x ? 200 : 404, { 'Content-Type': 'application/json' })
     res.end(x || '{"tracks":[]}')
     return
   }
-  if (url.pathname === '/queue.json') {
-    const x = read('data/queue.json')
-    res.writeHead(200, { 'Content-Type': 'application/json' })
-    res.end(x || '[]')
-    return
-  }
-  // SPA fallback from apps/dashboard/dist
+
   const dist = path.join(root, 'apps/dashboard/dist')
   let file = path.join(dist, url.pathname === '/' ? 'index.html' : url.pathname)
   if (!file.startsWith(dist)) {
@@ -75,8 +142,8 @@ const server = http.createServer((req, res) => {
     res.end(
       `<!doctype html><html><body style="font-family:sans-serif;padding:2rem">
       <h1>Job Jugaad</h1>
-      <p>UI not built yet. Run <code>npm run build:ui</code> or <code>npm run dev</code>.</p>
-      <p><a href="/api/state">/api/state</a> · <a href="/gaps.xlsx">gaps.xlsx</a></p>
+      <p>UI not built yet. Run <code>npm run build:ui</code>.</p>
+      <p><a href="/api/state">/api/state</a> · <a href="/api/jobs">/api/jobs</a></p>
       </body></html>`,
     )
     return

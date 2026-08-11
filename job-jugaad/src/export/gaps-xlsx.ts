@@ -2,6 +2,7 @@ import ExcelJS from 'exceljs'
 import path from 'node:path'
 import type { GapRow } from '../lib/paths.js'
 import { resolveFromRoot } from '../lib/paths.js'
+import { insertGap } from '../db/client.js'
 
 export async function writeGapsExcel(
   rows: GapRow[],
@@ -19,7 +20,17 @@ export async function writeGapsExcel(
     { header: 'Why', key: 'why', width: 48 },
     { header: 'Learn next', key: 'learnNext', width: 48 },
   ]
-  for (const r of rows) sheet.addRow(r)
+  for (const r of rows) {
+    sheet.addRow(r)
+    insertGap({
+      company: r.company,
+      role: r.role,
+      chosen_resume: r.chosenResume,
+      gap: r.gap,
+      why: r.why,
+      learn_next: r.learnNext,
+    })
+  }
   sheet.getRow(1).font = { bold: true }
   await wb.xlsx.writeFile(out)
   return out
@@ -49,7 +60,17 @@ export async function appendGapsExcel(
     ]
     sheet.getRow(1).font = { bold: true }
   }
-  for (const r of rows) sheet.addRow(r)
+  for (const r of rows) {
+    sheet.addRow(r)
+    insertGap({
+      company: r.company,
+      role: r.role,
+      chosen_resume: r.chosenResume,
+      gap: r.gap,
+      why: r.why,
+      learn_next: r.learnNext,
+    })
+  }
   await wb.xlsx.writeFile(out)
   return path.resolve(out)
 }

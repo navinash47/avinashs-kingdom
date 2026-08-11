@@ -1,7 +1,9 @@
 import { DatabaseSync } from 'node:sqlite'
 import fs from 'node:fs'
 import { resolveFromRoot } from '../lib/paths.js'
-import { isFullTimeRole, isTargetApplyRole } from '../jobs/full-time.js'
+import { isTargetApplyRole } from '../jobs/full-time.js'
+import { isUsRole } from '../jobs/location.js'
+import { normalizeJobUrl } from '../jobs/url.js'
 
 export type CompanyRow = {
   id: string
@@ -43,6 +45,20 @@ export type ApplicationRow = {
   notes: string | null
   created_at: string
 }
+
+export type GapDbRow = {
+  id: number
+  company: string
+  role: string
+  job_id: string | null
+  chosen_resume: string | null
+  gap: string
+  why: string | null
+  learn_next: string | null
+  created_at: string
+}
+
+const APPLIED_STATUSES = new Set(['submitted', 'filling', 'waiting-on-you'])
 
 let db: DatabaseSync | null = null
 
@@ -93,9 +109,23 @@ export function getDb(): DatabaseSync {
       created_at TEXT NOT NULL,
       FOREIGN KEY (job_id) REFERENCES jobs(id)
     );
+    CREATE TABLE IF NOT EXISTS gaps (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      company TEXT NOT NULL,
+      role TEXT NOT NULL,
+      job_id TEXT,
+      chosen_resume TEXT,
+      gap TEXT NOT NULL,
+      why TEXT,
+      learn_next TEXT,
+      created_at TEXT NOT NULL
+    );
     CREATE INDEX IF NOT EXISTS idx_jobs_status ON jobs(status);
     CREATE INDEX IF NOT EXISTS idx_jobs_fit ON jobs(fit_score DESC);
     CREATE INDEX IF NOT EXISTS idx_jobs_company ON jobs(company_id);
+    CREATE INDEX IF NOT EXISTS idx_jobs_url ON jobs(url);
+    CREATE INDEX IF NOT EXISTS idx_gaps_company ON gaps(company);
+    CREATE INDEX IF NOT EXISTS idx_apps_job ON applications(job_id);
   `)
   return db
 }
@@ -152,6 +182,35 @@ export function upsertJob(input: {
   relevance?: number
 }): void {
   const now = new Date().toISOString()
+  const url = normalizeJobUrl(input.url)
+  const existing = getDb()
+    .prepare(`SELECT id, status FROM jobs WHERE url=?`)
+    .get(url) as { id: string; status: string } | undefined
+
+  // Never re-queue / overwrite a job link already in apply flow or submitted
+  if (existing && APPLIED_STATUSES.has(existing.status)) {
+    getDb()
+      .prepare(
+        `UPDATE jobs SET
+           title=?,
+           location=COALESCE(?, location),
+           jd_text=CASE WHEN length(?)>length(jd_text) THEN ? ELSE jd_text END,
+           fit_score=MAX(fit_score, ?),
+           updated_at=?
+         WHERE url=?`,
+      )
+      .run(
+        input.title,
+        input.location ?? null,
+        input.jd_text ?? '',
+        input.jd_text ?? '',
+        input.fit_score ?? 0,
+        now,
+        url,
+      )
+    return
+  }
+
   getDb()
     .prepare(
       `INSERT INTO jobs (
@@ -166,14 +225,18 @@ export function upsertJob(input: {
          fit_score=CASE WHEN excluded.fit_score>jobs.fit_score THEN excluded.fit_score ELSE jobs.fit_score END,
          resume_track=COALESCE(excluded.resume_track, jobs.resume_track),
          resume_path=COALESCE(excluded.resume_path, jobs.resume_path),
+         status=CASE
+           WHEN jobs.status IN ('submitted','filling','waiting-on-you') THEN jobs.status
+           ELSE COALESCE(excluded.status, jobs.status)
+         END,
          relevance=CASE WHEN excluded.relevance>jobs.relevance THEN excluded.relevance ELSE jobs.relevance END,
          updated_at=excluded.updated_at`,
     )
     .run(
-      input.id,
+      existing?.id || input.id,
       input.company_id,
       input.title,
-      input.url,
+      url,
       input.location ?? null,
       input.source,
       input.ats ?? null,
@@ -194,9 +257,7 @@ export function updateJobStatus(
   error?: string | null,
 ): void {
   getDb()
-    .prepare(
-      `UPDATE jobs SET status=?, error=?, updated_at=? WHERE id=?`,
-    )
+    .prepare(`UPDATE jobs SET status=?, error=?, updated_at=? WHERE id=?`)
     .run(status, error ?? null, new Date().toISOString(), id)
 }
 
@@ -220,30 +281,167 @@ export function recordApplication(input: {
     )
 }
 
+/** True if this job id or normalized URL was already submitted / in-flight / waiting. */
+export function alreadyApplied(jobIdOrUrl: string): boolean {
+  const conn = getDb()
+  const url = normalizeJobUrl(jobIdOrUrl)
+  const byId = conn
+    .prepare(`SELECT status FROM jobs WHERE id=? OR url=? LIMIT 1`)
+    .get(jobIdOrUrl, url) as { status: string } | undefined
+  if (
+    byId &&
+    (byId.status === 'submitted' ||
+      byId.status === 'filling' ||
+      byId.status === 'waiting-on-you')
+  ) {
+    return true
+  }
+  const app = conn
+    .prepare(
+      `SELECT a.status FROM applications a
+       JOIN jobs j ON j.id=a.job_id
+       WHERE (j.id=? OR j.url=?) AND a.status IN ('submitted','waiting-on-you','filling')
+       LIMIT 1`,
+    )
+    .get(jobIdOrUrl, url) as { status: string } | undefined
+  return Boolean(app)
+}
+
+export function insertGap(input: {
+  company: string
+  role: string
+  job_id?: string | null
+  chosen_resume?: string | null
+  gap: string
+  why?: string | null
+  learn_next?: string | null
+}): void {
+  getDb()
+    .prepare(
+      `INSERT INTO gaps (company, role, job_id, chosen_resume, gap, why, learn_next, created_at)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+    )
+    .run(
+      input.company,
+      input.role,
+      input.job_id ?? null,
+      input.chosen_resume ?? null,
+      input.gap,
+      input.why ?? null,
+      input.learn_next ?? null,
+      new Date().toISOString(),
+    )
+}
+
+export function listGaps(opts: {
+  company?: string
+  q?: string
+  limit?: number
+} = {}): GapDbRow[] {
+  const limit = opts.limit ?? 200
+  const conn = getDb()
+  if (opts.company) {
+    return conn
+      .prepare(`SELECT * FROM gaps WHERE company=? ORDER BY id DESC LIMIT ?`)
+      .all(opts.company, limit) as GapDbRow[]
+  }
+  if (opts.q) {
+    const like = `%${opts.q}%`
+    return conn
+      .prepare(
+        `SELECT * FROM gaps WHERE company LIKE ? OR role LIKE ? OR gap LIKE ? OR why LIKE ? OR learn_next LIKE ?
+         ORDER BY id DESC LIMIT ?`,
+      )
+      .all(like, like, like, like, like, limit) as GapDbRow[]
+  }
+  return conn
+    .prepare(`SELECT * FROM gaps ORDER BY id DESC LIMIT ?`)
+    .all(limit) as GapDbRow[]
+}
+
+export function queryJobs(opts: {
+  status?: string
+  companyId?: string
+  q?: string
+  minFit?: number
+  limit?: number
+  offset?: number
+  usOnly?: boolean
+  fullTimeOnly?: boolean
+} = {}): JobRow[] {
+  const limit = opts.limit ?? 100
+  const offset = opts.offset ?? 0
+  const minFit = opts.minFit ?? 0
+  const clauses: string[] = ['fit_score>=?']
+  const params: Array<string | number> = [minFit]
+  if (opts.status) {
+    clauses.push('status=?')
+    params.push(opts.status)
+  }
+  if (opts.companyId) {
+    clauses.push('company_id=?')
+    params.push(opts.companyId)
+  }
+  if (opts.q) {
+    clauses.push("(title LIKE ? OR url LIKE ? OR IFNULL(location,'') LIKE ?)")
+    const like = `%${opts.q}%`
+    params.push(like, like, like)
+  }
+  params.push(Math.max(limit * 6, 300), offset)
+  const rows = getDb()
+    .prepare(
+      `SELECT * FROM jobs WHERE ${clauses.join(' AND ')}
+       ORDER BY fit_score DESC, updated_at DESC
+       LIMIT ? OFFSET ?`,
+    )
+    .all(...params) as JobRow[]
+
+  return rows
+    .filter((r) => {
+      if (
+        opts.fullTimeOnly !== false &&
+        !isTargetApplyRole(r.title, r.jd_text || '')
+      ) {
+        return false
+      }
+      if (
+        opts.usOnly !== false &&
+        !isUsRole(r.location, r.title, r.jd_text || '')
+      ) {
+        return false
+      }
+      return true
+    })
+    .slice(0, limit)
+}
+
 export function listJobs(opts: {
   status?: string
   minFit?: number
   limit?: number
   diversifyCompanies?: boolean
   preferFreshCompanies?: boolean
-  /** Default true — skip internships / part-time / co-op titles */
   fullTimeOnly?: boolean
+  usOnly?: boolean
 } = {}): JobRow[] {
   const minFit = opts.minFit ?? 0
   const limit = opts.limit ?? 100
   const fullTimeOnly = opts.fullTimeOnly !== false
-  const db = getDb()
+  const usOnly = opts.usOnly !== false
+  const conn = getDb()
 
-  const filterFt = (rows: JobRow[]) =>
-    fullTimeOnly
-      ? rows.filter((r) => isTargetApplyRole(r.title, r.jd_text || ''))
-      : rows
+  const filterRows = (rows: JobRow[]) =>
+    rows.filter((r) => {
+      if (fullTimeOnly && !isTargetApplyRole(r.title, r.jd_text || '')) return false
+      if (usOnly && !isUsRole(r.location, r.title, r.jd_text || '')) return false
+      return true
+    })
 
   if (opts.diversifyCompanies) {
     const busy = opts.preferFreshCompanies
       ? new Set(
           (
-            db
+            conn
               .prepare(
                 `SELECT DISTINCT company_id FROM jobs WHERE status IN ('submitted','filling','waiting-on-you','failed')`,
               )
@@ -252,9 +450,8 @@ export function listJobs(opts: {
         )
       : new Set<string>()
 
-    // Pull extra rows so FT filter + diversify still fills the limit
-    const fetchN = Math.max(limit * 12, 120)
-    const perCompany = db
+    const fetchN = Math.max(limit * 20, 200)
+    const perCompany = conn
       .prepare(
         opts.status
           ? `SELECT * FROM (
@@ -262,7 +459,7 @@ export function listJobs(opts: {
                  PARTITION BY company_id ORDER BY fit_score DESC, relevance DESC
                ) AS rn
                FROM jobs WHERE status=? AND fit_score>=?
-             ) t WHERE rn<=3
+             ) t WHERE rn<=5
              ORDER BY fit_score DESC, relevance DESC
              LIMIT ?`
           : `SELECT * FROM (
@@ -270,7 +467,7 @@ export function listJobs(opts: {
                  PARTITION BY company_id ORDER BY fit_score DESC, relevance DESC
                ) AS rn
                FROM jobs WHERE fit_score>=?
-             ) t WHERE rn<=3
+             ) t WHERE rn<=5
              ORDER BY fit_score DESC, relevance DESC
              LIMIT ?`,
       )
@@ -278,11 +475,10 @@ export function listJobs(opts: {
         ...(opts.status ? [opts.status, minFit, fetchN] : [minFit, fetchN]),
       ) as Array<JobRow & { rn?: number }>
 
-    const ft = filterFt(perCompany)
-    // One best FT role per company
+    const filtered = filterRows(perCompany)
     const seen = new Set<string>()
     const onePer: JobRow[] = []
-    for (const r of ft) {
+    for (const r of filtered) {
       if (seen.has(r.company_id)) continue
       seen.add(r.company_id)
       onePer.push(r)
@@ -292,28 +488,66 @@ export function listJobs(opts: {
     return [...fresh, ...used].slice(0, limit)
   }
 
-  const fetchLimit = fullTimeOnly ? Math.max(limit * 8, 80) : limit
+  const fetchLimit = fullTimeOnly || usOnly ? Math.max(limit * 10, 100) : limit
   let rows: JobRow[]
   if (opts.status) {
-    rows = db
+    rows = conn
       .prepare(
         `SELECT * FROM jobs WHERE status=? AND fit_score>=? ORDER BY fit_score DESC, relevance DESC LIMIT ?`,
       )
       .all(opts.status, minFit, fetchLimit) as JobRow[]
   } else {
-    rows = db
+    rows = conn
       .prepare(
         `SELECT * FROM jobs WHERE fit_score>=? ORDER BY fit_score DESC, relevance DESC LIMIT ?`,
       )
       .all(minFit, fetchLimit) as JobRow[]
   }
-  return filterFt(rows).slice(0, limit)
+  return filterRows(rows).slice(0, limit)
 }
 
 export function listCompanies(): CompanyRow[] {
   return getDb()
     .prepare(`SELECT * FROM companies ORDER BY name`)
     .all() as CompanyRow[]
+}
+
+export function companyStats(): Array<{
+  id: string
+  name: string
+  ats: string | null
+  queued: number
+  submitted: number
+  waiting: number
+  failed: number
+  discovered: number
+  total: number
+}> {
+  return getDb()
+    .prepare(
+      `SELECT c.id, c.name, c.ats,
+         SUM(CASE WHEN j.status='queued' THEN 1 ELSE 0 END) AS queued,
+         SUM(CASE WHEN j.status='submitted' THEN 1 ELSE 0 END) AS submitted,
+         SUM(CASE WHEN j.status='waiting-on-you' THEN 1 ELSE 0 END) AS waiting,
+         SUM(CASE WHEN j.status='failed' THEN 1 ELSE 0 END) AS failed,
+         SUM(CASE WHEN j.status='discovered' THEN 1 ELSE 0 END) AS discovered,
+         COUNT(j.id) AS total
+       FROM companies c
+       LEFT JOIN jobs j ON j.company_id=c.id
+       GROUP BY c.id
+       ORDER BY queued DESC, total DESC`,
+    )
+    .all() as Array<{
+    id: string
+    name: string
+    ats: string | null
+    queued: number
+    submitted: number
+    waiting: number
+    failed: number
+    discovered: number
+    total: number
+  }>
 }
 
 export function jobStats(): Record<string, number> {
@@ -323,4 +557,14 @@ export function jobStats(): Record<string, number> {
   const out: Record<string, number> = {}
   for (const r of rows) out[r.status] = Number(r.n)
   return out
+}
+
+export function dashboardPayload() {
+  return {
+    stats: jobStats(),
+    companies: companyStats(),
+    jobs: queryJobs({ limit: 200, usOnly: false, fullTimeOnly: false, minFit: 0 }),
+    gaps: listGaps({ limit: 150 }),
+    generatedAt: new Date().toISOString(),
+  }
 }

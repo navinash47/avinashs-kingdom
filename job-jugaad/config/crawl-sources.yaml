@@ -83,3 +83,4 @@ min_fit_to_queue: 55
 specialized_margin: 0.12  # only leave main resume if specialized beats by this
 apply_batch_limit: 5
 full_time_only: true  # never auto-apply internships / part-time / co-op
+us_only: true         # US / US-remote only — skip Brazil, LatAm, EMEA-only, etc.

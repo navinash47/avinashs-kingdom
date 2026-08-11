@@ -1,13 +1,14 @@
 /**
  * Autonomous apply from SQLite queue.
- * Prefers main resume track (general). Headed browser; CAPTCHA pauses for human when TTY.
- * Safe for Cursor automations: `npm run auto:apply -- --limit 5`
+ * US full-time only by default; never re-applies the same job URL.
  */
 import {
   listJobs,
   recordApplication,
   updateJobStatus,
   jobStats,
+  alreadyApplied,
+  insertGap,
 } from '../src/db/client.js'
 import { applyQueueItem } from '../src/apply/browser.js'
 import type { QueueItem } from '../src/lib/paths.js'
@@ -49,26 +50,41 @@ async function main() {
   const jobs = listJobs({
     status: 'queued',
     minFit,
-    limit,
+    limit: limit * 3,
     diversifyCompanies: !process.argv.includes('--no-diversify'),
     preferFreshCompanies: !process.argv.includes('--allow-repeat-company'),
     fullTimeOnly: !process.argv.includes('--allow-intern'),
+    usOnly: !process.argv.includes('--allow-non-us'),
   })
+    .filter((j) => !alreadyApplied(j.id) && !alreadyApplied(j.url))
+    .slice(0, limit)
+
   console.log(
-    `Auto-apply: ${jobs.length} queued full-time jobs (limit=${limit}, minFit=${minFit}, main resume preferred)`,
+    `Auto-apply: ${jobs.length} queued US full-time jobs (limit=${limit}, minFit=${minFit}; skip duplicates)`,
   )
   if (!jobs.length) {
     console.log('Nothing queued — run npm run crawl:jobs first')
     return
   }
 
-  const results: Array<{ id: string; title: string; status: string; error?: string }> =
-    []
+  const results: Array<{
+    id: string
+    title: string
+    status: string
+    error?: string
+  }> = []
 
   for (const job of jobs) {
     console.log(`\n=== ${job.company_id} — ${job.title} (${job.fit_score}) ===`)
-    console.log(`  resume=${job.resume_track} source=${job.source}`)
+    console.log(
+      `  resume=${job.resume_track} loc=${job.location || '—'} source=${job.source}`,
+    )
     console.log(`  ${job.url}`)
+    if (alreadyApplied(job.url)) {
+      console.log('  → skip — already applied this job link')
+      results.push({ id: job.id, title: job.title, status: 'skipped-duplicate' })
+      continue
+    }
     if (dry) {
       results.push({ id: job.id, title: job.title, status: 'dry-run' })
       continue
@@ -84,6 +100,15 @@ async function main() {
       notes: result.error || result.learnedQuestions?.join('; ') || null,
     })
     if (result.status === 'failed' && result.error) {
+      insertGap({
+        company: job.company_id,
+        role: job.title,
+        job_id: job.id,
+        chosen_resume: job.resume_track,
+        gap: 'apply-failure',
+        why: result.error,
+        learn_next: 'Retry after CAPTCHA or fix profile field',
+      })
       await appendGapsExcel([
         {
           company: job.company_id,
