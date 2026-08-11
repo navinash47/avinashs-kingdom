@@ -51,6 +51,7 @@ async function main() {
     minFit,
     limit,
     diversifyCompanies: !process.argv.includes('--no-diversify'),
+    preferFreshCompanies: !process.argv.includes('--allow-repeat-company'),
   })
   console.log(
     `Auto-apply: ${jobs.length} queued jobs (limit=${limit}, minFit=${minFit}, main resume preferred)`,

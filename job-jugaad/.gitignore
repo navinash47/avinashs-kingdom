@@ -15,6 +15,11 @@ data/resume-index.json
 data/apply-targets.json
 data/gaps.xlsx
 data/browser-profile/
+data/browser-profile-linkedin/
+data/browser-profile-linkedin-dbg/
+data/linkedin-login-state.png
+data/linkedin-waiting-on-you.png
+data/linkedin-debug.png
 *.log
 .DS_Store
 apps/dashboard/dist/

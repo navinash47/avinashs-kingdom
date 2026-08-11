@@ -224,41 +224,64 @@ export function listJobs(opts: {
   minFit?: number
   limit?: number
   diversifyCompanies?: boolean
+  preferFreshCompanies?: boolean
 } = {}): JobRow[] {
   const minFit = opts.minFit ?? 0
   const limit = opts.limit ?? 100
-  let rows: JobRow[]
+  const db = getDb()
+
+  if (opts.diversifyCompanies) {
+    const busy = opts.preferFreshCompanies
+      ? new Set(
+          (
+            db
+              .prepare(
+                `SELECT DISTINCT company_id FROM jobs WHERE status IN ('submitted','filling','waiting-on-you','failed')`,
+              )
+              .all() as Array<{ company_id: string }>
+          ).map((r) => r.company_id),
+        )
+      : new Set<string>()
+
+    const perCompany = db
+      .prepare(
+        opts.status
+          ? `SELECT * FROM (
+               SELECT *, ROW_NUMBER() OVER (
+                 PARTITION BY company_id ORDER BY fit_score DESC, relevance DESC
+               ) AS rn
+               FROM jobs WHERE status=? AND fit_score>=?
+             ) t WHERE rn=1
+             ORDER BY fit_score DESC, relevance DESC`
+          : `SELECT * FROM (
+               SELECT *, ROW_NUMBER() OVER (
+                 PARTITION BY company_id ORDER BY fit_score DESC, relevance DESC
+               ) AS rn
+               FROM jobs WHERE fit_score>=?
+             ) t WHERE rn=1
+             ORDER BY fit_score DESC, relevance DESC`,
+      )
+      .all(
+        ...(opts.status ? [opts.status, minFit] : [minFit]),
+      ) as Array<JobRow & { rn?: number }>
+
+    const fresh = perCompany.filter((r) => !busy.has(r.company_id))
+    const used = perCompany.filter((r) => busy.has(r.company_id))
+    return [...fresh, ...used].slice(0, limit)
+  }
+
   if (opts.status) {
-    rows = getDb()
+    return db
       .prepare(
         `SELECT * FROM jobs WHERE status=? AND fit_score>=? ORDER BY fit_score DESC, relevance DESC LIMIT ?`,
       )
-      .all(opts.status, minFit, Math.max(limit * 8, 80)) as JobRow[]
-  } else {
-    rows = getDb()
-      .prepare(
-        `SELECT * FROM jobs WHERE fit_score>=? ORDER BY fit_score DESC, relevance DESC LIMIT ?`,
-      )
-      .all(minFit, Math.max(limit * 8, 80)) as JobRow[]
+      .all(opts.status, minFit, limit) as JobRow[]
   }
-  if (!opts.diversifyCompanies) return rows.slice(0, limit)
-  const seen = new Set<string>()
-  const out: JobRow[] = []
-  for (const r of rows) {
-    if (seen.has(r.company_id)) continue
-    seen.add(r.company_id)
-    out.push(r)
-    if (out.length >= limit) break
-  }
-  // If fewer companies than limit, fill with next-best
-  if (out.length < limit) {
-    for (const r of rows) {
-      if (out.find((x) => x.id === r.id)) continue
-      out.push(r)
-      if (out.length >= limit) break
-    }
-  }
-  return out
+  return db
+    .prepare(
+      `SELECT * FROM jobs WHERE fit_score>=? ORDER BY fit_score DESC, relevance DESC LIMIT ?`,
+    )
+    .all(minFit, limit) as JobRow[]
 }
 
 export function listCompanies(): CompanyRow[] {

@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "Job Jugaad — AI apply agent: pick best resume, headed apply, Gmail OTP prompts, Excel gaps",
+  "description": "Job Jugaad \u2014 AI apply agent: pick best resume, headed apply, Gmail OTP prompts, Excel gaps",
   "scripts": {
     "dev": "vite --config apps/dashboard/vite.config.ts",
     "build:ui": "vite build --config apps/dashboard/vite.config.ts",
@@ -11,6 +11,7 @@
     "enrich:profile": "tsx scripts/enrich-profile.ts",
     "crawl:jobs": "tsx scripts/crawl-jobs.ts",
     "crawl:linkedin": "tsx scripts/crawl-linkedin-headed.ts",
+    "crawl:linkedin:auth": "JOB_JUGAAD_FORCE_HEADED=1 tsx scripts/crawl-linkedin-auth.ts",
     "db:status": "tsx scripts/db-status.ts",
     "auto:apply": "tsx scripts/auto-apply.ts",
     "auto:apply:dry": "tsx scripts/auto-apply.ts --dry-run",

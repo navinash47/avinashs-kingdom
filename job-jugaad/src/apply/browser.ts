@@ -366,21 +366,36 @@ export async function applyQueueItem(item: QueueItem): Promise<ApplyResult> {
     }
 
     // Prefer direct application URL when greenhouse job page has #app / apply path
-    if (!/\/apply/i.test(page.url())) {
+    if (!/\/application|\/apply/i.test(page.url())) {
       const applyLink = page
         .locator(
-          'a:has-text("Apply"), button:has-text("Apply"), a:has-text("Submit application"), a[href*="apply"]',
+          'a:has-text("Apply"), button:has-text("Apply"), a:has-text("Submit application"), a[href*="apply"], a[href*="application"]',
         )
         .first()
       if ((await applyLink.count()) > 0) {
-        await applyLink.click().catch(() => undefined)
+        await Promise.all([
+          page.waitForLoadState('domcontentloaded').catch(() => undefined),
+          applyLink.click().catch(() => undefined),
+        ])
         await page.waitForTimeout(1500)
-      } else if (/boards\.greenhouse\.io|job-boards\.greenhouse\.io/i.test(page.url())) {
-        const applyUrl = page.url().replace(/\/?(\?.*)?$/, '') + '/application'
-        await page.goto(applyUrl, { waitUntil: 'domcontentloaded' }).catch(() => undefined)
-        await page.waitForTimeout(1000)
+      }
+      if (/boards\.greenhouse\.io|job-boards\.greenhouse\.io/i.test(page.url())) {
+        const base = page.url().split('?')[0].replace(/\/$/, '')
+        if (!/\/application$/i.test(base)) {
+          await page
+            .goto(`${base}/application`, { waitUntil: 'domcontentloaded' })
+            .catch(() => undefined)
+          await page.waitForTimeout(1200)
+        }
       }
     }
+
+    // Wait briefly for file input to appear (forms hydrate)
+    await page
+      .locator('input[type="file"]')
+      .first()
+      .waitFor({ state: 'attached', timeout: 8000 })
+      .catch(() => undefined)
 
     if (await pageLooksBlocked(page)) {
       if (!process.stdin.isTTY) {
