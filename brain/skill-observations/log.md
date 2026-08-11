@@ -47,3 +47,8 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 - Product need: apply agents need a SQLite-backed Jobs/Companies/Gaps UI with filters, not only chat logs.
 - Hard gates that must live in DB+apply path: US-only (explicitly reject Brazil/LatAm), full-time IC, unique normalized job URL never re-applied.
 - Pattern: demote bad queued rows in place when rules tighten, then restart apply — don't rely on crawl alone.
+
+## 2026-08-11 — CAPTCHA: email take-control not bypass
+
+- Do not integrate CAPTCHA farms / Cloudflare bypass; sites still force Turnstile.
+- Working pattern: human-like Playwright (Bezier click/type, real Chrome) + email notify + resume:waiting; automate every 15m not 1m.
