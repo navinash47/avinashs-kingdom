@@ -1,6 +1,7 @@
 import { DatabaseSync } from 'node:sqlite'
 import fs from 'node:fs'
 import { resolveFromRoot } from '../lib/paths.js'
+import { isFullTimeRole } from '../jobs/full-time.js'
 
 export type CompanyRow = {
   id: string
@@ -225,10 +226,18 @@ export function listJobs(opts: {
   limit?: number
   diversifyCompanies?: boolean
   preferFreshCompanies?: boolean
+  /** Default true — skip internships / part-time / co-op titles */
+  fullTimeOnly?: boolean
 } = {}): JobRow[] {
   const minFit = opts.minFit ?? 0
   const limit = opts.limit ?? 100
+  const fullTimeOnly = opts.fullTimeOnly !== false
   const db = getDb()
+
+  const filterFt = (rows: JobRow[]) =>
+    fullTimeOnly
+      ? rows.filter((r) => isFullTimeRole(r.title, r.jd_text || ''))
+      : rows
 
   if (opts.diversifyCompanies) {
     const busy = opts.preferFreshCompanies
@@ -243,6 +252,8 @@ export function listJobs(opts: {
         )
       : new Set<string>()
 
+    // Pull extra rows so FT filter + diversify still fills the limit
+    const fetchN = Math.max(limit * 12, 120)
     const perCompany = db
       .prepare(
         opts.status
@@ -251,37 +262,52 @@ export function listJobs(opts: {
                  PARTITION BY company_id ORDER BY fit_score DESC, relevance DESC
                ) AS rn
                FROM jobs WHERE status=? AND fit_score>=?
-             ) t WHERE rn=1
-             ORDER BY fit_score DESC, relevance DESC`
+             ) t WHERE rn<=3
+             ORDER BY fit_score DESC, relevance DESC
+             LIMIT ?`
           : `SELECT * FROM (
                SELECT *, ROW_NUMBER() OVER (
                  PARTITION BY company_id ORDER BY fit_score DESC, relevance DESC
                ) AS rn
                FROM jobs WHERE fit_score>=?
-             ) t WHERE rn=1
-             ORDER BY fit_score DESC, relevance DESC`,
+             ) t WHERE rn<=3
+             ORDER BY fit_score DESC, relevance DESC
+             LIMIT ?`,
       )
       .all(
-        ...(opts.status ? [opts.status, minFit] : [minFit]),
+        ...(opts.status ? [opts.status, minFit, fetchN] : [minFit, fetchN]),
       ) as Array<JobRow & { rn?: number }>
 
-    const fresh = perCompany.filter((r) => !busy.has(r.company_id))
-    const used = perCompany.filter((r) => busy.has(r.company_id))
+    const ft = filterFt(perCompany)
+    // One best FT role per company
+    const seen = new Set<string>()
+    const onePer: JobRow[] = []
+    for (const r of ft) {
+      if (seen.has(r.company_id)) continue
+      seen.add(r.company_id)
+      onePer.push(r)
+    }
+    const fresh = onePer.filter((r) => !busy.has(r.company_id))
+    const used = onePer.filter((r) => busy.has(r.company_id))
     return [...fresh, ...used].slice(0, limit)
   }
 
+  const fetchLimit = fullTimeOnly ? Math.max(limit * 8, 80) : limit
+  let rows: JobRow[]
   if (opts.status) {
-    return db
+    rows = db
       .prepare(
         `SELECT * FROM jobs WHERE status=? AND fit_score>=? ORDER BY fit_score DESC, relevance DESC LIMIT ?`,
       )
-      .all(opts.status, minFit, limit) as JobRow[]
+      .all(opts.status, minFit, fetchLimit) as JobRow[]
+  } else {
+    rows = db
+      .prepare(
+        `SELECT * FROM jobs WHERE fit_score>=? ORDER BY fit_score DESC, relevance DESC LIMIT ?`,
+      )
+      .all(minFit, fetchLimit) as JobRow[]
   }
-  return db
-    .prepare(
-      `SELECT * FROM jobs WHERE fit_score>=? ORDER BY fit_score DESC, relevance DESC LIMIT ?`,
-    )
-    .all(minFit, limit) as JobRow[]
+  return filterFt(rows).slice(0, limit)
 }
 
 export function listCompanies(): CompanyRow[] {

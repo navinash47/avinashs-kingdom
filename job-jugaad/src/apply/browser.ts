@@ -262,35 +262,72 @@ async function trySubmit(page: Page): Promise<boolean> {
   return true
 }
 
-async function handleOtpIfNeeded(page: Page): Promise<void> {
+async function handleOtpIfNeeded(page: Page, item: QueueItem): Promise<void> {
   const html = await page.content()
   if (!/otp|verification code|enter the code|verify your email/i.test(html)) {
     return
   }
-  console.log('OTP / verify flow detected — prompting Gmail and polling IMAP…')
-  const creds = await promptGmailCreds()
-  const result = await waitForOtpOrLink({
-    address: creds.address,
-    appPassword: creds.appPassword,
-    timeoutMs: 180_000,
-  })
-  if (!result) {
-    throw new Error('Timed out waiting for OTP / verify link in Gmail')
-  }
-  if (result.verifyUrl) {
-    await page.goto(result.verifyUrl, { waitUntil: 'domcontentloaded' })
+  const envAddr = process.env.JOB_JUGAAD_GMAIL_USER?.trim()
+  const envPass = process.env.JOB_JUGAAD_GMAIL_APP_PASSWORD?.trim()
+  if (envAddr && envPass) {
+    console.log('OTP / verify flow detected — polling Gmail IMAP (env creds)…')
+    const result = await waitForOtpOrLink({
+      address: envAddr,
+      appPassword: envPass,
+      timeoutMs: 180_000,
+    })
+    if (!result) {
+      throw new Error('Timed out waiting for OTP / verify link in Gmail')
+    }
+    if (result.verifyUrl) {
+      await page.goto(result.verifyUrl, { waitUntil: 'domcontentloaded' })
+      return
+    }
+    if (result.code) {
+      const otpInput = page
+        .locator(
+          'input[name*="otp" i], input[name*="code" i], input[autocomplete="one-time-code"], input[type="tel"]',
+        )
+        .first()
+      if ((await otpInput.count()) > 0) {
+        await otpInput.fill(result.code)
+      }
+    }
     return
   }
-  if (result.code) {
-    const otpInput = page
-      .locator(
-        'input[name*="otp" i], input[name*="code" i], input[autocomplete="one-time-code"], input[type="tel"]',
-      )
-      .first()
-    if ((await otpInput.count()) > 0) {
-      await otpInput.fill(result.code)
+
+  if (process.stdin.isTTY) {
+    console.log('OTP / verify flow detected — prompting Gmail and polling IMAP…')
+    const creds = await promptGmailCreds()
+    const result = await waitForOtpOrLink({
+      address: creds.address,
+      appPassword: creds.appPassword,
+      timeoutMs: 180_000,
+    })
+    if (!result) {
+      throw new Error('Timed out waiting for OTP / verify link in Gmail')
     }
+    if (result.verifyUrl) {
+      await page.goto(result.verifyUrl, { waitUntil: 'domcontentloaded' })
+      return
+    }
+    if (result.code) {
+      const otpInput = page
+        .locator(
+          'input[name*="otp" i], input[name*="code" i], input[autocomplete="one-time-code"], input[type="tel"]',
+        )
+        .first()
+      if ((await otpInput.count()) > 0) {
+        await otpInput.fill(result.code)
+      }
+    }
+    return
   }
+
+  console.log(
+    'OTP / email verify detected — complete it in the headed browser (no Gmail secrets in this process).',
+  )
+  await waitForHumanClear(page, item)
 }
 
 async function draftAnswer(
@@ -443,7 +480,7 @@ export async function applyQueueItem(item: QueueItem): Promise<ApplyResult> {
     learnedQuestions.push(...learned)
     profile = loadProfile()
 
-    await handleOtpIfNeeded(page)
+    await handleOtpIfNeeded(page, item)
 
     if (await pageLooksBlocked(page)) {
       await waitForHumanClear(page, item)

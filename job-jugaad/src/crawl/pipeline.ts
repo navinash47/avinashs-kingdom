@@ -5,6 +5,7 @@ import { discoverForCompany, type DiscoveredJob } from '../discover/ats.js'
 import { crawlPublicProfile } from '../profile/enrich.js'
 import { upsertCompany, upsertJob } from '../db/client.js'
 import { pickResumeForJd } from '../score/pick-resume.js'
+import { isFullTimeRole } from '../jobs/full-time.js'
 
 export type CrawlConfig = {
   default_resume_track: string
@@ -218,8 +219,11 @@ export async function ingestDiscovered(
       specializedMargin: margin,
     })
     const relevant = RELEVANT_TITLE.test(job.title) ? 1 : 0.3
+    const fullTime = isFullTimeRole(job.title, job.jdText)
     const status =
-      pick.fitScore >= minFit && relevant >= 1 ? 'queued' : 'discovered'
+      fullTime && pick.fitScore >= minFit && relevant >= 1
+        ? 'queued'
+        : 'discovered'
     upsertJob({
       id: jobId(job.url),
       company_id: job.companyId,
@@ -232,7 +236,7 @@ export async function ingestDiscovered(
       resume_track: pick.track.id,
       resume_path: pick.track.filePath,
       status,
-      relevance: relevant * (pick.fitScore / 100),
+      relevance: relevant * (pick.fitScore / 100) * (fullTime ? 1 : 0.2),
     })
     n++
   }

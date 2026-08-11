@@ -52,9 +52,10 @@ async function main() {
     limit,
     diversifyCompanies: !process.argv.includes('--no-diversify'),
     preferFreshCompanies: !process.argv.includes('--allow-repeat-company'),
+    fullTimeOnly: !process.argv.includes('--allow-intern'),
   })
   console.log(
-    `Auto-apply: ${jobs.length} queued jobs (limit=${limit}, minFit=${minFit}, main resume preferred)`,
+    `Auto-apply: ${jobs.length} queued full-time jobs (limit=${limit}, minFit=${minFit}, main resume preferred)`,
   )
   if (!jobs.length) {
     console.log('Nothing queued — run npm run crawl:jobs first')
