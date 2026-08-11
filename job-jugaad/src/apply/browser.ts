@@ -53,20 +53,47 @@ async function pageLooksBlocked(page: Page): Promise<boolean> {
 }
 
 async function waitForHumanClear(page: Page, item: QueueItem): Promise<void> {
+  const continueFile = '/tmp/job-jugaad-apply-continue'
+  fs.rmSync(continueFile, { force: true })
+  const timeoutMs = Number(process.env.JOB_JUGAAD_HUMAN_WAIT_MS || 600_000)
   console.log(
     `\n⏸  CAPTCHA / bot wall / manual step on ${item.companyName} — ${item.title}\n` +
-      `   Browser is open. Solve it, then press Enter here to continue…`,
+      `   Solve it in the headed Chrome window (Cursor cloud desktop).\n` +
+      `   Optional: touch ${continueFile} or press Enter (TTY) when done.\n` +
+      `   Waiting up to ${Math.round(timeoutMs / 1000)}s…\n`,
   )
-  if (!process.stdin.isTTY) {
-    console.warn('No TTY — waiting 45s for manual intervention…')
-    await page.waitForTimeout(45_000)
+
+  if (process.stdin.isTTY) {
+    await Promise.race([
+      new Promise<void>((resolve) => {
+        process.stdin.resume()
+        process.stdin.once('data', () => resolve())
+      }),
+      pollUntilClear(page, continueFile, timeoutMs),
+    ])
+    await page.waitForTimeout(500)
     return
   }
-  await new Promise<void>((resolve) => {
-    process.stdin.resume()
-    process.stdin.once('data', () => resolve())
-  })
+
+  // Cloud / no TTY: still wait — user can click in DISPLAY desktop
+  await pollUntilClear(page, continueFile, timeoutMs)
   await page.waitForTimeout(500)
+}
+
+async function pollUntilClear(
+  page: Page,
+  continueFile: string,
+  timeoutMs: number,
+): Promise<void> {
+  const start = Date.now()
+  while (Date.now() - start < timeoutMs) {
+    if (fs.existsSync(continueFile)) {
+      fs.unlinkSync(continueFile)
+      return
+    }
+    if (!(await pageLooksBlocked(page))) return
+    await page.waitForTimeout(2500)
+  }
 }
 
 function fieldLabel(name: string): string {
@@ -359,10 +386,10 @@ export async function applyQueueItem(item: QueueItem): Promise<ApplyResult> {
   try {
     await page.goto(item.url, { waitUntil: 'domcontentloaded', timeout: 60_000 })
     if (await pageLooksBlocked(page)) {
-      if (!process.stdin.isTTY) {
+      await waitForHumanClear(page, item)
+      if (await pageLooksBlocked(page)) {
         return { status: 'waiting-on-you', error: 'CAPTCHA / bot wall' }
       }
-      await waitForHumanClear(page, item)
     }
 
     // Prefer direct application URL when greenhouse job page has #app / apply path
@@ -398,10 +425,10 @@ export async function applyQueueItem(item: QueueItem): Promise<ApplyResult> {
       .catch(() => undefined)
 
     if (await pageLooksBlocked(page)) {
-      if (!process.stdin.isTTY) {
+      await waitForHumanClear(page, item)
+      if (await pageLooksBlocked(page)) {
         return { status: 'waiting-on-you', error: 'CAPTCHA / bot wall after Apply' }
       }
-      await waitForHumanClear(page, item)
     }
 
     const credsEmail = profile.email || ''
@@ -425,16 +452,22 @@ export async function applyQueueItem(item: QueueItem): Promise<ApplyResult> {
     const submitted = await trySubmit(page)
     if (!submitted) {
       console.log(
-        'Could not find Submit — leaving browser open for you to finish. Press Enter when done…',
+        'Could not find Submit — leaving browser open for you to finish…',
       )
-      if (!process.stdin.isTTY) {
+      await waitForHumanClear(page, item)
+      // If user finished manually, count as submitted when URL/thanks hints appear
+      const html = (await page.content().catch(() => '')).toLowerCase()
+      const thanks =
+        /thank you|application (has been )?submitted|we received your application/i.test(
+          html,
+        )
+      if (!thanks) {
         return {
           status: 'waiting-on-you',
-          error: 'Submit not found / needs manual finish (no TTY)',
+          error: 'Submit not found / needs manual finish',
           learnedQuestions,
         }
       }
-      await waitForHumanClear(page, item)
     }
 
     return { status: 'submitted', learnedQuestions }
