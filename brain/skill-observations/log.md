@@ -52,3 +52,18 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 
 - Do not integrate CAPTCHA farms / Cloudflare bypass; sites still force Turnstile.
 - Working pattern: human-like Playwright (Bezier click/type, real Chrome) + email notify + resume:waiting; automate every 15m not 1m.
+
+### Observation 3: Prefer chromiumSandbox:true over ignoreDefaultArgs for --no-sandbox
+
+**Status:** OPEN
+**Date:** 2026-08-11
+**Session context:** Job Jugaad — remove Playwright --no-sandbox fingerprint in cloud
+**Skill:** New skill candidate: headed-apply-ops
+**Type:** open-source
+**Phase/Area:** browser launch
+
+**Issue:** `ignoreDefaultArgs: ['--no-sandbox']` did not remove the flag because Playwright injects `--no-sandbox` whenever `chromiumSandbox !== true` inside defaultArgs construction; the reliable API is `chromiumSandbox: true`, with a logged fallback when the host cannot run sandboxed Chrome.
+
+**Suggested improvement:** Document `chromiumSandbox: true` first, env force-no-sandbox only as escape hatch; verify via process cmdline after launch.
+
+**Principle:** Prefer the library’s intentional sandbox toggle over filtering default args — fingerprint flags often sit behind named options, not just argv lists.
