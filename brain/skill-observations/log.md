@@ -41,3 +41,9 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 - Pattern: LinkedIn login in cloud agents needs (1) memory-only creds, (2) long OTP file wait, (3) headed browser + `waiting_on_you` pause for manual captcha clicks — do not automate CAPTCHA bypass.
 - Friction: short OTP timeouts drop sessions before the user can reply; restart loses the challenge and requests a new code.
 - Keep: `/tmp/job-jugaad-linkedin-otp` + `/tmp/job-jugaad-linkedin-continue` + status JSON for human-in-the-loop auth.
+
+## 2026-08-11 — Job Jugaad tracking + US gate
+
+- Product need: apply agents need a SQLite-backed Jobs/Companies/Gaps UI with filters, not only chat logs.
+- Hard gates that must live in DB+apply path: US-only (explicitly reject Brazil/LatAm), full-time IC, unique normalized job URL never re-applied.
+- Pattern: demote bad queued rows in place when rules tighten, then restart apply — don't rely on crawl alone.
