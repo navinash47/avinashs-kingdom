@@ -35,3 +35,9 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 **Suggested improvement:** Document Mac-only live apply gate; keep cloud for discover/rank/profile enrich.
 
 **Principle:** Automations that claim “submitted” must require either a confirmation signal (email/DOM) or an interactive human gate — never treat a timed wait as success.
+
+## 2026-08-11 — LinkedIn auth in cloud: OTP + human CAPTCHA
+
+- Pattern: LinkedIn login in cloud agents needs (1) memory-only creds, (2) long OTP file wait, (3) headed browser + `waiting_on_you` pause for manual captcha clicks — do not automate CAPTCHA bypass.
+- Friction: short OTP timeouts drop sessions before the user can reply; restart loses the challenge and requests a new code.
+- Keep: `/tmp/job-jugaad-linkedin-otp` + `/tmp/job-jugaad-linkedin-continue` + status JSON for human-in-the-loop auth.
