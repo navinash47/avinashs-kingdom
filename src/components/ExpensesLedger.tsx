@@ -115,7 +115,11 @@ export function ExpensesLedger({
           <li key={e.id}>
             <span>{e.date}</span>
             <span>
-              {e.label} <em className="muted">({e.category})</em>
+              {e.label}{' '}
+              <em className="muted">({e.category})</em>
+              {String(e.id).startsWith('sync-') ? (
+                <em className="muted"> · synced</em>
+              ) : null}
             </span>
             <strong>
               {e.currency === 'USD' ? '$' : '₹'}

@@ -10,7 +10,7 @@ import type {
   Venture,
 } from '../types'
 
-const STORAGE_KEY = 'avinash-kingdom-v1'
+const STORAGE_KEY = 'avinash-kingdom-v2'
 
 async function loadJson<T>(url: string): Promise<T | null> {
   try {

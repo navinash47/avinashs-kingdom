@@ -100,7 +100,18 @@ function writeStatusMd(filePath, fields) {
     lines.push(`${i + 1}. ${fields.tasks[i] || 'TBD'}`)
   }
   lines.push('')
-  fs.writeFileSync(filePath, lines.join('\n'))
+  try {
+    fs.writeFileSync(filePath, lines.join('\n'))
+    return true
+  } catch (err) {
+    console.warn(
+      'Skip STATUS write',
+      filePath,
+      '—',
+      err instanceof Error ? err.message : err,
+    )
+    return false
+  }
 }
 
 function syncMac() {
@@ -247,7 +258,7 @@ function syncCityStatus() {
       'City before Comic while Comic stays V1',
     ],
   })
-  console.log('Wrote ProceduralCity/STATUS.md ·', version, progress + '%')
+  console.log('City status patch ·', version, progress + '%')
   return patch
 }
 
@@ -284,7 +295,7 @@ function syncComicStatus() {
       'Do not outrank City this week',
     ],
   })
-  console.log('Wrote ComicEngine/STATUS.md ·', version, progress + '%')
+  console.log('Comic status patch ·', version, progress + '%')
   return patch
 }
 

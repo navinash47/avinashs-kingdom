@@ -9,8 +9,8 @@
     "weight": 35,
     "agentId": "agent-cash",
     "repoPath": "/Users/avinashnandyala/Projects/whatsapp-voice-agents",
-    "nextMilestone": "Ship one India vertical offer (real estate or coaching) with demo script",
-    "notes": "Highest ROI cash lane. Hindi/Telugu WhatsApp + voice lead qualification."
+    "nextMilestone": "Pick first vertical (real estate OR coaching) and write offer one-pager.",
+    "notes": "Next: 1) Pick first vertical (real estate OR coaching) and write offer one-pager. · 2) Draft WhatsApp conversation script (Hindi/English) for lead qualification. · 3) Build minimal demo: webhook or n8n stub that answers FAQs and books a call."
   },
   {
     "id": "youtube-editor",
@@ -22,8 +22,8 @@
     "weight": 20,
     "agentId": "agent-cut",
     "repoPath": "/Users/avinashnandyala/Projects/youtube-editor-lab",
-    "nextMilestone": "Define clip researcher + screenplay desk MVP (anti-slop, real footage)",
-    "notes": "Long-form 8–15 min. No Shorts focus. Dogfood on own channel."
+    "nextMilestone": "Spec the two surfaces: Clip Researcher + Screenplay Desk.",
+    "notes": "Next: 1) Spec the two surfaces: Clip Researcher + Screenplay Desk. · 2) Define asset provenance schema (source URL, fair-use note, subclip times). · 3) Dogfood: pick one channel idea and write a beat sheet by hand using the schema."
   },
   {
     "id": "research-frontier",
@@ -35,26 +35,26 @@
     "weight": 15,
     "agentId": "agent-atlas",
     "repoPath": "/Users/avinashnandyala/Projects/research-frontier-lab",
-    "nextMilestone": "Seed one vertical corpus (generative comics / multimodal consistency)",
-    "notes": "15% portfolio. Club papers → gaps/analogies. Do not neglect."
+    "nextMilestone": "Seed one vertical: generative comics / multimodal consistency papers.",
+    "notes": "Next: 1) Seed one vertical: generative comics / multimodal consistency papers. · 2) Ingest abstracts + citation graph via OpenAlex / Semantic Scholar (no full-PDF dump). · 3) Prototype claim/limitation extraction → ranked open questions for that club."
   },
   {
     "id": "procedural-city",
     "name": "Procedural City",
-    "version": "v0.2",
-    "progress": 35,
+    "version": "Stage C · Phase 26",
+    "progress": 28,
     "priority": "P1",
     "status": "active",
     "weight": 15,
     "agentId": "agent-metro",
     "repoPath": "/Users/avinashnandyala/ProceduralCity",
-    "nextMilestone": "Prioritize before ComicEngine; next gate after Phase 0 PASS",
-    "notes": "Existing project. City before Comic while Comic is still V1."
+    "nextMilestone": "Phase 26: Road mesh generation (pending)",
+    "notes": "City tracking: 26/92 phases pass · updated 2026-08-10T10:55:25.125175+00:00"
   },
   {
     "id": "comic-engine",
     "name": "ComicEngine",
-    "version": "V1",
+    "version": "V1 · Phase 2.2",
     "progress": 55,
     "priority": "P2",
     "status": "active",
@@ -62,7 +62,7 @@
     "agentId": "agent-ink",
     "repoPath": "/Users/avinashnandyala/ComicEngine",
     "nextMilestone": "Improve consistency pipeline after City P1 milestones",
-    "notes": "Keep improving. Monetize via B2B outcomes later. Secondary to City for now."
+    "notes": "Secondary to City for now. Monetize via B2B later."
   },
   {
     "id": "kingdom-ops",
@@ -74,7 +74,7 @@
     "weight": 5,
     "agentId": "agent-steward",
     "repoPath": "/Users/avinashnandyala/Projects/avinashs-kingdom",
-    "nextMilestone": "Kill unused subscriptions; reclaim low-risk disk caches",
+    "nextMilestone": "Cancel/review 11 kill-list seats; reclaim low-risk disk (45.8% used)",
     "notes": "Subscription audit + Mac storage audit live here."
   },
   {

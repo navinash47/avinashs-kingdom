@@ -1,42 +1,122 @@
 [
   {
-    "id": "exp-cursor",
-    "date": "2026-08-01",
+    "id": "sync-sub-jobright-ai",
+    "date": "2026-08-11",
     "category": "tools",
-    "label": "Cursor (est. monthly)",
-    "amount": 85,
+    "label": "Jobright.ai (est. monthly)",
+    "amount": 19.99,
     "currency": "USD",
     "ventureId": "kingdom-ops",
-    "notes": "From subscription kill list cadence — audit weekly"
+    "notes": "Synced from kill list · $19.99 monthly · ~$240/yr"
   },
   {
-    "id": "exp-openai",
-    "date": "2026-08-01",
-    "category": "api",
-    "label": "OpenAI / ChatGPT Plus",
-    "amount": 21.25,
+    "id": "sync-sub-rocket-money",
+    "date": "2026-08-11",
+    "category": "tools",
+    "label": "Rocket Money (est. monthly)",
+    "amount": 3.19,
     "currency": "USD",
     "ventureId": "kingdom-ops",
-    "notes": "Review if OmniRoute covers coding needs"
+    "notes": "Synced from kill list · $3.19 monthly · ~$38/yr"
   },
   {
-    "id": "exp-fal",
-    "date": "2026-08-09",
-    "category": "api",
-    "label": "fal image gen (City/Comic)",
-    "amount": 15,
-    "currency": "USD",
-    "ventureId": "procedural-city",
-    "notes": "Bakeoff + smokes — keep under phase budgets"
-  },
-  {
-    "id": "exp-coursera",
-    "date": "2026-08-01",
+    "id": "sync-sub-coursera",
+    "date": "2026-08-11",
     "category": "learning",
-    "label": "Coursera",
+    "label": "Coursera (est. monthly)",
     "amount": 49,
     "currency": "USD",
     "ventureId": "research-frontier",
-    "notes": "Cancel candidate if unused this month"
+    "notes": "Synced from kill list · $49.00 monthly · ~$588/yr"
+  },
+  {
+    "id": "sync-sub-doordash-dashpass",
+    "date": "2026-08-11",
+    "category": "other",
+    "label": "DoorDash DashPass (est. monthly)",
+    "amount": 9.99,
+    "currency": "USD",
+    "ventureId": "kingdom-ops",
+    "notes": "Synced from kill list · $9.99 monthly · ~$120/yr"
+  },
+  {
+    "id": "sync-sub-openai-chatgpt-plus",
+    "date": "2026-08-11",
+    "category": "api",
+    "label": "OpenAI / ChatGPT Plus (est. monthly)",
+    "amount": 21.25,
+    "currency": "USD",
+    "ventureId": "kingdom-ops",
+    "notes": "Synced from kill list · $21.25 monthly · ~$255/yr"
+  },
+  {
+    "id": "sync-sub-comcast-xfinity",
+    "date": "2026-08-11",
+    "category": "infra",
+    "label": "Comcast / Xfinity (est. monthly)",
+    "amount": 65.94,
+    "currency": "USD",
+    "ventureId": "kingdom-ops",
+    "notes": "Synced from kill list · $65.94 monthly · ~$791/yr"
+  },
+  {
+    "id": "sync-sub-cursor",
+    "date": "2026-08-11",
+    "category": "tools",
+    "label": "Cursor (est. monthly)",
+    "amount": 92.08,
+    "currency": "USD",
+    "ventureId": "kingdom-ops",
+    "notes": "Synced from kill list · $21.25 weekly · ~$1105/yr"
+  },
+  {
+    "id": "sync-sub-claude-ai-anthropic",
+    "date": "2026-08-11",
+    "category": "api",
+    "label": "Claude.ai / Anthropic (est. monthly)",
+    "amount": 10.67,
+    "currency": "USD",
+    "ventureId": "kingdom-ops",
+    "notes": "Synced from kill list · $21.25 irregular · ~$128/yr"
+  },
+  {
+    "id": "sync-sub-csc-serviceworks-laundry",
+    "date": "2026-08-11",
+    "category": "other",
+    "label": "CSC ServiceWorks (laundry) (est. monthly)",
+    "amount": 10,
+    "currency": "USD",
+    "ventureId": "kingdom-ops",
+    "notes": "Synced from kill list · $10.00 monthly · ~$120/yr"
+  },
+  {
+    "id": "sync-sub-apple-app-store-icloud",
+    "date": "2026-08-11",
+    "category": "infra",
+    "label": "Apple / App Store / iCloud (est. monthly)",
+    "amount": 1.5,
+    "currency": "USD",
+    "ventureId": "kingdom-ops",
+    "notes": "Synced from kill list · $2.99 irregular · ~$18/yr"
+  },
+  {
+    "id": "sync-sub-market",
+    "date": "2026-08-11",
+    "category": "other",
+    "label": "Market (est. monthly)",
+    "amount": 7.92,
+    "currency": "USD",
+    "ventureId": "kingdom-ops",
+    "notes": "Synced from kill list · $15.76 irregular · ~$95/yr"
+  },
+  {
+    "id": "sync-city-api",
+    "date": "2026-08-11",
+    "category": "api",
+    "label": "Procedural City API (fal / Gemini)",
+    "amount": 1.08,
+    "currency": "USD",
+    "ventureId": "procedural-city",
+    "notes": "Synced from tracking/expenses.jsonl · 7 billable rows"
   }
 ]
