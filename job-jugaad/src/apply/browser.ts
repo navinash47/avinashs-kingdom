@@ -1,6 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
-import { chromium, type BrowserContext, type Frame, type Page } from 'playwright'
+import type { BrowserContext, Frame, Page } from 'playwright'
 import { resolveFromRoot } from '../lib/paths.js'
 import type { QueueItem } from '../lib/paths.js'
 import { waitForOtpOrLink } from '../mail/gmail-imap.js'
@@ -13,6 +13,7 @@ import { answerFromProfile, learnQa } from '../profile/qa-memory.js'
 import { isOmniReachable, omniChat } from '../omni/client.js'
 import { humanClick, humanPause, humanType } from './human.js'
 import { notifyWaitingOnYou } from '../notify/email.js'
+import { launchJobBrowser } from './launch.js'
 
 export type ApplyResult = {
   status: QueueItem['status']
@@ -34,36 +35,7 @@ const CAPTCHA_HINTS = [
 const CONTINUE_FILE = '/tmp/job-jugaad-apply-continue'
 
 async function launchContext(): Promise<BrowserContext> {
-  const userData = resolveFromRoot('data/browser-profile')
-  fs.mkdirSync(userData, { recursive: true })
-  const headed =
-    process.env.JOB_JUGAAD_FORCE_HEADED === '1' ||
-    Boolean(process.env.DISPLAY) ||
-    process.platform === 'darwin'
-  // Prefer real Google Chrome when present (better fingerprint than bundled Chromium)
-  const preferChrome =
-    process.env.JOB_JUGAAD_USE_CHROMIUM !== '1' &&
-    (process.platform === 'darwin' ||
-      process.platform === 'linux' ||
-      process.platform === 'win32')
-  try {
-    return await chromium.launchPersistentContext(userData, {
-      headless: !headed,
-      channel: preferChrome ? 'chrome' : undefined,
-      viewport: { width: 1280, height: 900 },
-      acceptDownloads: true,
-      locale: 'en-US',
-      timezoneId: 'America/New_York',
-    })
-  } catch {
-    return chromium.launchPersistentContext(userData, {
-      headless: !headed,
-      viewport: { width: 1280, height: 900 },
-      acceptDownloads: true,
-      locale: 'en-US',
-      timezoneId: 'America/New_York',
-    })
-  }
+  return launchJobBrowser({ userDataDir: 'data/browser-profile' })
 }
 
 async function pageLooksBlocked(page: Page): Promise<boolean> {
@@ -101,7 +73,23 @@ async function waitForHumanClear(
   opts: { requireContinue?: boolean } = {},
 ): Promise<void> {
   fs.rmSync(CONTINUE_FILE, { force: true })
-  const timeoutMs = Number(process.env.JOB_JUGAAD_HUMAN_WAIT_MS || 600_000)
+  // Autonomous / digest mode: don't block 10m — email + mark waiting, retry later
+  const skipWait =
+    process.env.JOB_JUGAAD_SKIP_HUMAN_WAIT === '1' ||
+    process.env.JOB_JUGAAD_HUMAN_WAIT_MS === '0'
+  const timeoutMs = skipWait
+    ? 0
+    : Number(process.env.JOB_JUGAAD_HUMAN_WAIT_MS || 600_000)
+
+  if (timeoutMs <= 0) {
+    console.log(
+      `\n⏸  CAPTCHA / bot wall on ${item.companyName} — ${item.title}\n` +
+        `   Not waiting in-process (JOB_JUGAAD_SKIP_HUMAN_WAIT / HUMAN_WAIT_MS=0).\n` +
+        `   Apply manually from the digest email, or: npm run resume:waiting\n`,
+    )
+    return
+  }
+
   console.log(
     `\n⏸  CAPTCHA / bot wall / manual step on ${item.companyName} — ${item.title}\n` +
       `   Solve it in the headed Chrome window (Cursor cloud desktop).\n` +

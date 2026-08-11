@@ -33,6 +33,7 @@ export type JobRow = {
   relevance: number
   error: string | null
   confirmation_email_seen: number
+  attempt_count: number
   first_seen_at: string
   updated_at: string
 }
@@ -60,7 +61,31 @@ export type GapDbRow = {
 
 const APPLIED_STATUSES = new Set(['submitted', 'filling', 'waiting-on-you'])
 
+/** Max auto-apply attempts per job before marking manual-apply (not applied). */
+export function maxApplyAttempts(): number {
+  const n = Number(process.env.JOB_JUGAAD_MAX_ATTEMPTS || 3)
+  return Number.isFinite(n) && n >= 1 ? Math.min(Math.floor(n), 10) : 3
+}
+
 let db: DatabaseSync | null = null
+
+function migrateSchema(conn: DatabaseSync): void {
+  const cols = conn
+    .prepare(`PRAGMA table_info(jobs)`)
+    .all() as Array<{ name: string }>
+  const names = new Set(cols.map((c) => c.name))
+  if (!names.has('attempt_count')) {
+    conn.exec(
+      `ALTER TABLE jobs ADD COLUMN attempt_count INTEGER NOT NULL DEFAULT 0`,
+    )
+    // Prior waiting/failed rows already burned ≥1 attempt before this column existed
+    conn.exec(
+      `UPDATE jobs SET attempt_count = 1
+       WHERE attempt_count = 0
+         AND status IN ('waiting-on-you','failed','manual-apply')`,
+    )
+  }
+}
 
 export function getDb(): DatabaseSync {
   if (db) return db
@@ -96,6 +121,7 @@ export function getDb(): DatabaseSync {
       relevance REAL NOT NULL DEFAULT 0,
       error TEXT,
       confirmation_email_seen INTEGER NOT NULL DEFAULT 0,
+      attempt_count INTEGER NOT NULL DEFAULT 0,
       first_seen_at TEXT NOT NULL,
       updated_at TEXT NOT NULL,
       FOREIGN KEY (company_id) REFERENCES companies(id)
@@ -127,6 +153,7 @@ export function getDb(): DatabaseSync {
     CREATE INDEX IF NOT EXISTS idx_gaps_company ON gaps(company);
     CREATE INDEX IF NOT EXISTS idx_apps_job ON applications(job_id);
   `)
+  migrateSchema(db)
   return db
 }
 
@@ -226,7 +253,7 @@ export function upsertJob(input: {
          resume_track=COALESCE(excluded.resume_track, jobs.resume_track),
          resume_path=COALESCE(excluded.resume_path, jobs.resume_path),
          status=CASE
-           WHEN jobs.status IN ('submitted','filling','waiting-on-you') THEN jobs.status
+           WHEN jobs.status IN ('submitted','filling','waiting-on-you','manual-apply') THEN jobs.status
            ELSE COALESCE(excluded.status, jobs.status)
          END,
          relevance=CASE WHEN excluded.relevance>jobs.relevance THEN excluded.relevance ELSE jobs.relevance END,
@@ -261,6 +288,78 @@ export function updateJobStatus(
     .run(status, error ?? null, new Date().toISOString(), id)
 }
 
+/** Bump attempt_count; returns the new count. */
+export function incrementAttempt(id: string): number {
+  const conn = getDb()
+  const now = new Date().toISOString()
+  conn
+    .prepare(
+      `UPDATE jobs SET attempt_count = attempt_count + 1, updated_at=? WHERE id=?`,
+    )
+    .run(now, id)
+  const row = conn
+    .prepare(`SELECT attempt_count FROM jobs WHERE id=?`)
+    .get(id) as { attempt_count: number } | undefined
+  return Number(row?.attempt_count ?? 0)
+}
+
+export function getAttemptCount(id: string): number {
+  const row = getDb()
+    .prepare(`SELECT attempt_count FROM jobs WHERE id=?`)
+    .get(id) as { attempt_count: number } | undefined
+  return Number(row?.attempt_count ?? 0)
+}
+
+/**
+ * After an apply attempt: if not submitted and attempts >= max → manual-apply
+ * (not applied — human applies via emailed link). Returns final status.
+ */
+export function finalizeApplyAttempt(
+  id: string,
+  resultStatus: string,
+  error?: string | null,
+): string {
+  const attempts = getAttemptCount(id)
+  const max = maxApplyAttempts()
+  if (resultStatus === 'submitted') {
+    updateJobStatus(id, 'submitted', error)
+    return 'submitted'
+  }
+  if (
+    (resultStatus === 'waiting-on-you' ||
+      resultStatus === 'failed' ||
+      resultStatus === 'filling') &&
+    attempts >= max
+  ) {
+    const reason =
+      (error ? `${error} · ` : '') +
+      `Auto-apply exhausted (${attempts}/${max}) — apply manually`
+    updateJobStatus(id, 'manual-apply', reason)
+    return 'manual-apply'
+  }
+  updateJobStatus(id, resultStatus, error)
+  return resultStatus
+}
+
+/** Jobs needing human apply: Cloudflare walls, CAPTCHA, exhausted retries. */
+export function listManualDigestJobs(limit = 50): JobRow[] {
+  return getDb()
+    .prepare(
+      `SELECT * FROM jobs
+       WHERE status IN ('manual-apply','waiting-on-you')
+          OR (status='failed' AND (
+            error LIKE '%CAPTCHA%' OR error LIKE '%bot wall%' OR
+            error LIKE '%Cloudflare%' OR error LIKE '%cloudflare%' OR
+            error LIKE '%Attention Required%' OR error LIKE '%Just a moment%'
+          ))
+       ORDER BY
+         CASE status WHEN 'manual-apply' THEN 0 WHEN 'waiting-on-you' THEN 1 ELSE 2 END,
+         updated_at DESC
+       LIMIT ?`,
+    )
+    .all(limit) as JobRow[]
+}
+
 export function recordApplication(input: {
   job_id: string
   status: string
@@ -281,20 +380,37 @@ export function recordApplication(input: {
     )
 }
 
-/** True if this job id or normalized URL was already submitted / in-flight.
- *  When allowWaitingResume=true, waiting-on-you rows can be resumed. */
+/** True if auto-apply should skip this job (submitted / in-flight / manual-apply).
+ *  allowWaitingResume: resume:waiting can re-open waiting-on-you.
+ *  allowRetryWaiting: auto-apply may retry waiting-on-you while attempts < max. */
 export function alreadyApplied(
   jobIdOrUrl: string,
-  opts: { allowWaitingResume?: boolean } = {},
+  opts: { allowWaitingResume?: boolean; allowRetryWaiting?: boolean } = {},
 ): boolean {
   const conn = getDb()
   const url = normalizeJobUrl(jobIdOrUrl)
   const byId = conn
-    .prepare(`SELECT status FROM jobs WHERE id=? OR url=? LIMIT 1`)
-    .get(jobIdOrUrl, url) as { status: string } | undefined
+    .prepare(
+      `SELECT status, attempt_count FROM jobs WHERE id=? OR url=? LIMIT 1`,
+    )
+    .get(jobIdOrUrl, url) as
+    | { status: string; attempt_count: number }
+    | undefined
   if (byId) {
     if (byId.status === 'submitted' || byId.status === 'filling') return true
-    if (byId.status === 'waiting-on-you' && !opts.allowWaitingResume) return true
+    if (byId.status === 'manual-apply') return true
+    if (byId.status === 'waiting-on-you') {
+      if (opts.allowWaitingResume) {
+        // fall through — check applications for submitted only
+      } else if (
+        opts.allowRetryWaiting &&
+        Number(byId.attempt_count) < maxApplyAttempts()
+      ) {
+        return false
+      } else {
+        return true
+      }
+    }
   }
   const statuses = opts.allowWaitingResume
     ? `('submitted','filling')`
@@ -446,7 +562,7 @@ export function listJobs(opts: {
           (
             conn
               .prepare(
-                `SELECT DISTINCT company_id FROM jobs WHERE status IN ('submitted','filling','waiting-on-you','failed')`,
+                `SELECT DISTINCT company_id FROM jobs WHERE status IN ('submitted','filling','waiting-on-you','manual-apply','failed')`,
               )
               .all() as Array<{ company_id: string }>
           ).map((r) => r.company_id),
@@ -522,6 +638,7 @@ export function companyStats(): Array<{
   queued: number
   submitted: number
   waiting: number
+  manual: number
   failed: number
   discovered: number
   total: number
@@ -532,6 +649,7 @@ export function companyStats(): Array<{
          SUM(CASE WHEN j.status='queued' THEN 1 ELSE 0 END) AS queued,
          SUM(CASE WHEN j.status='submitted' THEN 1 ELSE 0 END) AS submitted,
          SUM(CASE WHEN j.status='waiting-on-you' THEN 1 ELSE 0 END) AS waiting,
+         SUM(CASE WHEN j.status='manual-apply' THEN 1 ELSE 0 END) AS manual,
          SUM(CASE WHEN j.status='failed' THEN 1 ELSE 0 END) AS failed,
          SUM(CASE WHEN j.status='discovered' THEN 1 ELSE 0 END) AS discovered,
          COUNT(j.id) AS total
@@ -547,6 +665,7 @@ export function companyStats(): Array<{
     queued: number
     submitted: number
     waiting: number
+    manual: number
     failed: number
     discovered: number
     total: number

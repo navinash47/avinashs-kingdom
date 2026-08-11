@@ -109,3 +109,86 @@ export async function notifyWaitingOnYou(info: WaitingNotify): Promise<boolean> 
     return false
   }
 }
+
+export type DigestJob = {
+  company: string
+  title: string
+  url: string
+  jobId: string
+  status: string
+  attempts?: number
+  error?: string | null
+  source?: string | null
+}
+
+/** Every-15m digest of Cloudflare / CAPTCHA / manual-apply links for human apply. */
+export async function notifyManualDigest(
+  jobs: DigestJob[],
+): Promise<boolean> {
+  if (!jobs.length) {
+    console.log('Digest: nothing pending for manual apply')
+    return false
+  }
+
+  const profile = loadProfile()
+  const to =
+    process.env.JOB_JUGAAD_NOTIFY_EMAIL?.trim() ||
+    profile.email ||
+    'avinashnandyala2@gmail.com'
+
+  const creds = await resolveMailCreds()
+  if (!creds) {
+    console.warn(
+      'Digest email skipped — set JOB_JUGAAD_GMAIL_USER + JOB_JUGAAD_GMAIL_APP_PASSWORD',
+    )
+    for (const j of jobs) {
+      console.log(`  • [${j.status}] ${j.company} — ${j.title}\n    ${j.url}`)
+    }
+    return false
+  }
+
+  const lines = jobs.map((j, i) => {
+    const err = j.error ? `\n   note: ${j.error}` : ''
+    const att =
+      j.attempts !== undefined ? ` · attempts=${j.attempts}` : ''
+    return (
+      `${i + 1}. [${j.status}] ${j.company} — ${j.title}${att}\n` +
+      `   ${j.url}${err}`
+    )
+  })
+
+  const subject = `[Job Jugaad] ${jobs.length} link(s) need manual apply (Cloudflare / not applied)`
+  const text =
+    `Job Jugaad could not finish these applications automatically.\n` +
+    `Apply manually in your browser (Cloudflare / CAPTCHA / ATS).\n\n` +
+    lines.join('\n\n') +
+    `\n\nAgent keeps crawling LinkedIn + web/Firecrawl; auto-apply retries each jid up to 3× then marks manual-apply.\n` +
+    `This digest runs about every 15 minutes while items remain.\n`
+
+  const transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
+      user: creds.address,
+      pass: creds.appPassword.replace(/\s+/g, ''),
+    },
+  })
+
+  try {
+    await transporter.sendMail({
+      from: `"Job Jugaad" <${creds.address}>`,
+      to,
+      subject,
+      text,
+    })
+    console.log(`📧 Digest emailed to ${to} — ${jobs.length} manual link(s)`)
+    return true
+  } catch (err) {
+    console.warn(
+      'Digest email failed:',
+      err instanceof Error ? err.message : err,
+    )
+    return false
+  }
+}

@@ -3,12 +3,10 @@
  * Opens public LinkedIn jobs search pages, extracts /jobs/view/ and ATS links.
  * Requires DISPLAY / Mac. Does not log into LinkedIn Easy Apply.
  */
-import { chromium } from 'playwright'
 import { loadCrawlConfig, ingestDiscovered } from '../src/crawl/pipeline.js'
 import type { DiscoveredJob } from '../src/discover/ats.js'
 import { buildResumeIndex } from '../src/score/index-resumes.js'
-import { resolveFromRoot } from '../src/lib/paths.js'
-import fs from 'node:fs'
+import { launchJobBrowser } from '../src/apply/launch.js'
 
 const JOB_URL_RE =
   /https?:\/\/(?:www\.)?(?:linkedin\.com\/jobs\/view\/\d+[^\s"'<>]*|boards\.greenhouse\.io\/[^/\s"'<>]+\/jobs\/\d+[^\s"'<>]*|jobs\.lever\.co\/[^/\s"'<>]+\/[a-f0-9-]+[^\s"'<>]*|jobs\.ashbyhq\.com\/[^/\s"'<>]+\/[a-f0-9-]+[^\s"'<>]*)/gi
@@ -16,14 +14,8 @@ const JOB_URL_RE =
 async function main() {
   buildResumeIndex()
   const cfg = loadCrawlConfig()
-  const userData = resolveFromRoot('data/browser-profile-linkedin')
-  fs.mkdirSync(userData, { recursive: true })
-  const headed =
-    process.env.JOB_JUGAAD_FORCE_HEADED === '1' ||
-    Boolean(process.env.DISPLAY) ||
-    process.platform === 'darwin'
-  const context = await chromium.launchPersistentContext(userData, {
-    headless: !headed,
+  const context = await launchJobBrowser({
+    userDataDir: 'data/browser-profile-linkedin',
     viewport: { width: 1280, height: 900 },
   })
   const page = context.pages()[0] || (await context.newPage())
@@ -40,7 +32,11 @@ async function main() {
         await page.waitForTimeout(800)
       }
       const html = await page.content()
-      const urls = [...new Set((html.match(JOB_URL_RE) || []).map((u) => u.replace(/[),.;]+$/, '')))]
+      const urls = [
+        ...new Set(
+          (html.match(JOB_URL_RE) || []).map((u) => u.replace(/[),.;]+$/, '')),
+        ),
+      ]
       console.log(`  links=${urls.length}`)
       for (const u of urls) {
         found.push({

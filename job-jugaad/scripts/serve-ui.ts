@@ -44,7 +44,7 @@ const server = http.createServer((req, res) => {
       // legacy queue shape for older UI bits
       queue: payload.jobs
         .filter((j) =>
-          ['queued', 'filling', 'waiting-on-you', 'submitted', 'failed'].includes(
+          ['queued', 'filling', 'waiting-on-you', 'manual-apply', 'submitted', 'failed'].includes(
             j.status,
           ),
         )

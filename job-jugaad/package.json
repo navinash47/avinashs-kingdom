@@ -13,9 +13,11 @@
     "crawl:linkedin": "tsx scripts/crawl-linkedin-headed.ts",
     "crawl:linkedin:auth": "JOB_JUGAAD_FORCE_HEADED=1 tsx scripts/crawl-linkedin-auth.ts",
     "db:status": "tsx scripts/db-status.ts",
-    "auto:apply": "JOB_JUGAAD_FORCE_HEADED=1 tsx scripts/auto-apply.ts",
+    "auto:apply": "JOB_JUGAAD_FORCE_HEADED=1 JOB_JUGAAD_SKIP_HUMAN_WAIT=1 tsx scripts/auto-apply.ts",
     "auto:apply:dry": "JOB_JUGAAD_FORCE_HEADED=1 tsx scripts/auto-apply.ts --dry-run",
     "resume:waiting": "JOB_JUGAAD_FORCE_HEADED=1 tsx scripts/resume-waiting.ts",
+    "notify:digest": "tsx scripts/notify-digest.ts",
+    "tick:15m": "tsx scripts/tick-15m.ts",
     "score:jd": "tsx scripts/score-jd.ts",
     "discover": "tsx scripts/discover.ts",
     "rank:apply": "tsx scripts/rank-apply-queue.ts",
@@ -25,7 +27,7 @@
     "serve": "tsx scripts/serve-ui.ts",
     "smoke": "tsx scripts/smoke.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "apply:linkedin": "JOB_JUGAAD_FORCE_HEADED=1 tsx scripts/apply-linkedin.ts"
+    "apply:linkedin": "JOB_JUGAAD_FORCE_HEADED=1 JOB_JUGAAD_SKIP_HUMAN_WAIT=1 tsx scripts/apply-linkedin.ts"
   },
   "dependencies": {
     "adm-zip": "^0.6.0",

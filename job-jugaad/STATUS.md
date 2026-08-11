@@ -1,11 +1,11 @@
 # STATUS
 
-- **Version:** Phase 5 · Crawl DB + auto-apply + take-control email
+- **Version:** Phase 6 · Retry→manual-apply + 15m digest + sandboxed Chrome
 - **Agent:** Agent Jugaad
-- **Progress:** 92%
+- **Progress:** 95%
 - **Priority:** P1
 
 ## Next 3 tasks
-1. Set `JOB_JUGAAD_GMAIL_USER` + `JOB_JUGAAD_GMAIL_APP_PASSWORD` for CAPTCHA email notifies
-2. Cursor Automations every **15 min**: `auto:apply --limit 3` + `resume:waiting`
-3. On CAPTCHA email: take Cursor cloud Chrome → `npm run resume:waiting`
+1. Run `npm run tick:15m` every 15 min (crawl LI + Firecrawl → apply ≤3× → digest)
+2. Apply manually from digest emails (Cloudflare / `manual-apply` links)
+3. Keep Gmail + LinkedIn process env set for the automation process only

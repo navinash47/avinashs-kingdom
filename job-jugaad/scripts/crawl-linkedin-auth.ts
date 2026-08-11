@@ -6,7 +6,8 @@
  * No Easy Apply in this script — listings → SQLite; ATS apply via auto:apply.
  */
 import fs from 'node:fs'
-import { chromium, type Page } from 'playwright'
+import type { Page } from 'playwright'
+import { launchJobBrowser } from '../src/apply/launch.js'
 import { loadCrawlConfig, ingestDiscovered } from '../src/crawl/pipeline.js'
 import type { DiscoveredJob } from '../src/discover/ats.js'
 import { buildResumeIndex } from '../src/score/index-resumes.js'
@@ -477,15 +478,8 @@ async function main() {
 
   buildResumeIndex()
   const cfg = loadCrawlConfig()
-  const userData = resolveFromRoot('data/browser-profile-linkedin')
-  fs.mkdirSync(userData, { recursive: true })
-  const headed =
-    process.env.JOB_JUGAAD_FORCE_HEADED === '1' ||
-    Boolean(process.env.DISPLAY) ||
-    process.platform === 'darwin'
-
-  const context = await chromium.launchPersistentContext(userData, {
-    headless: !headed,
+  const context = await launchJobBrowser({
+    userDataDir: 'data/browser-profile-linkedin',
     viewport: { width: 1400, height: 900 },
   })
   const page = context.pages()[0] || (await context.newPage())

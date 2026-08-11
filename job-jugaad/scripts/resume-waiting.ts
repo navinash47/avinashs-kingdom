@@ -10,6 +10,9 @@ import {
   updateJobStatus,
   jobStats,
   alreadyApplied,
+  incrementAttempt,
+  finalizeApplyAttempt,
+  maxApplyAttempts,
 } from '../src/db/client.js'
 import { applyQueueItem } from '../src/apply/browser.js'
 import type { QueueItem } from '../src/lib/paths.js'
@@ -69,22 +72,27 @@ async function main() {
       console.log('  → skip — already submitted')
       continue
     }
+    const attempt = incrementAttempt(job.id)
     updateJobStatus(job.id, 'filling')
     const result = await applyQueueItem(toQueueItem(job))
-    updateJobStatus(job.id, result.status, result.error)
+    const finalStatus = finalizeApplyAttempt(job.id, result.status, result.error)
     recordApplication({
       job_id: job.id,
-      status: result.status,
+      status: finalStatus,
       resume_track: job.resume_track,
-      notes: result.error || result.learnedQuestions?.join('; ') || null,
+      notes:
+        `resume attempt ${attempt}/${maxApplyAttempts()}` +
+        (result.error || result.learnedQuestions?.length
+          ? ` — ${result.error || result.learnedQuestions?.join('; ')}`
+          : ''),
     })
     results.push({
       id: job.id,
       title: job.title,
-      status: result.status,
+      status: finalStatus,
       error: result.error,
     })
-    console.log(`  → ${result.status}${result.error ? ` — ${result.error}` : ''}`)
+    console.log(`  → ${finalStatus}${result.error ? ` — ${result.error}` : ''}`)
   }
 
   clearSessionSecrets()

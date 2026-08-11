@@ -62,6 +62,7 @@ const STATUS_CLASS: Record<string, string> = {
   'gap-only': 'st-gap',
   filling: 'st-fill',
   'waiting-on-you': 'st-wait',
+  'manual-apply': 'st-wait',
   submitted: 'st-ok',
   failed: 'st-fail',
 }
@@ -154,6 +155,7 @@ export function App() {
 
   const totalJobs = Object.values(data.stats).reduce((a, b) => a + b, 0)
   const waitingCount = data.stats['waiting-on-you'] || 0
+  const manualCount = data.stats['manual-apply'] || 0
 
   return (
     <div className="shell wide">
@@ -162,7 +164,7 @@ export function App() {
         <h1>Job Jugaad</h1>
         <p className="lede">
           Track every company and job link. Apply US full-time only — never the
-          same URL twice.
+          same URL twice. After 3 auto attempts, links move to manual-apply.
         </p>
         <div className="cta-row">
           <button className="btn primary" type="button" onClick={load}>
@@ -172,25 +174,29 @@ export function App() {
             Gaps Excel
           </a>
         </div>
-        {waitingCount > 0 && (
+        {(waitingCount > 0 || manualCount > 0) && (
           <div className="wait-banner" role="status">
-            <strong>{waitingCount} waiting on you</strong>
+            <strong>
+              {manualCount > 0
+                ? `${manualCount} manual-apply`
+                : `${waitingCount} waiting`}
+              {manualCount > 0 && waitingCount > 0
+                ? ` · ${waitingCount} waiting`
+                : ''}
+            </strong>
             <span>
-              CAPTCHA / bot wall — check email, take control of headed Chrome in
-              Cursor cloud, then run{' '}
-              <code>npm run resume:waiting</code> or{' '}
-              <code>touch /tmp/job-jugaad-apply-continue</code>. Automations run
-              every 15 minutes (not every minute).
+              Cloudflare / CAPTCHA — check the 15‑min digest email and apply
+              those links yourself. Agent keeps crawling LinkedIn + Firecrawl.
             </span>
             <button
               type="button"
               className="btn ghost"
               onClick={() => {
-                setStatus('waiting-on-you')
+                setStatus(manualCount > 0 ? 'manual-apply' : 'waiting-on-you')
                 setTab('jobs')
               }}
             >
-              Show waiting jobs
+              Show links
             </button>
           </div>
         )}
@@ -254,6 +260,7 @@ export function App() {
                 'discovered',
                 'filling',
                 'waiting-on-you',
+                'manual-apply',
                 'submitted',
                 'failed',
               ].map((s) => (

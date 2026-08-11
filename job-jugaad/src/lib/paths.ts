@@ -88,6 +88,7 @@ export type QueueItem = {
     | 'gap-only'
     | 'filling'
     | 'waiting-on-you'
+    | 'manual-apply'
     | 'submitted'
     | 'failed'
   error?: string

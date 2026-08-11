@@ -1,13 +1,13 @@
 # Cursor automation hooks for Job Jugaad
 #
 # Cadence (do NOT run every minute — looks bot-like and burns CAPTCHAs):
-# 1) Hourly:     npm run crawl:jobs
-# 2) Every 15m:  npm run auto:apply -- --limit 3
-# 3) Every 15m:  npm run resume:waiting -- --limit 5
-# 4) Hourly:     npm run verify:mail
-# 5) Status:     npm run db:status
+# Primary every 15m: npm run tick:15m
+#   → crawl ATS + Firecrawl/web (+ LinkedIn auth if LI env set)
+#   → auto:apply (≤3 attempts per jid → manual-apply / not applied)
+#   → notify:digest (email Cloudflare / unapplied links for manual apply)
 #
-# On CAPTCHA: email → take control in Cursor cloud Chrome → resume:waiting
+# On CAPTCHA: digest email with links — you apply manually in browser
+# Chrome: chromiumSandbox=true by default (no --no-sandbox); set JOB_JUGAAD_NO_SANDBOX=1 only if launch fails
 # Main resume track: general (Avinash_Nandyala_Resume)
 # DB: data/job-jugaad.sqlite
 # Secrets: process env / prompt only — never .env
@@ -15,21 +15,13 @@
 name: job-jugaad-automations
 interval_minutes: 15
 steps:
-  crawl:
-    command: npm run crawl:jobs
-    cadence: hourly
-    notes: ATS + web/Firecrawl (+ LinkedIn listings if reachable)
+  tick:
+    command: npm run tick:15m
+    cadence: every_15_min
+    notes: Crawl (LI + Firecrawl) + apply retries + manual-link digest email
   status:
     command: npm run db:status
     cadence: hourly
-  apply:
-    command: npm run auto:apply -- --limit 3
-    cadence: every_15_min
-    notes: Headed real Chrome + human-like mouse/type; emails on CAPTCHA
-  resume:
-    command: npm run resume:waiting -- --limit 5
-    cadence: every_15_min
-    notes: After you clear CAPTCHA in Cursor cloud desktop
   verify:
     command: npm run verify:mail
     cadence: hourly

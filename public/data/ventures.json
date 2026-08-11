@@ -93,14 +93,14 @@
   {
     "id": "job-jugaad",
     "name": "Job Jugaad",
-    "version": "Phase 5 · Crawl DB + auto-apply",
-    "progress": 90,
+    "version": "Phase 6 · Retry→manual-apply + 15m digest + sandboxed Chrome",
+    "progress": 95,
     "priority": "P1",
     "status": "active",
     "weight": 5,
     "agentId": "agent-jugaad",
     "repoPath": "/Users/avinashnandyala/Projects/job-jugaad",
-    "nextMilestone": "On Mac: `npm run crawl:jobs` then `npm run crawl:linkedin` (headed) for LinkedIn listings",
-    "notes": "Next: 1) On Mac: `npm run crawl:jobs` then `npm run crawl:linkedin` (headed) for LinkedIn listings · 2) `npm run auto:apply -- --limit 5` in a real terminal — clear CAPTCHAs when prompted · 3) Wire Cursor Automations from `automations.yaml` (crawl → apply → verify:mail)"
+    "nextMilestone": "Run `npm run tick:15m` every 15 min (crawl LI + Firecrawl → apply ≤3× → digest)",
+    "notes": "Next: 1) Run `npm run tick:15m` every 15 min (crawl LI + Firecrawl → apply ≤3× → digest) · 2) Apply manually from digest emails (Cloudflare / `manual-apply` links) · 3) Keep Gmail + LinkedIn process env set for the automation process only"
   }
 ]
