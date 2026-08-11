@@ -1,0 +1,13 @@
+---
+description: Prefer compiling durable knowledge into brain/; sync Kingdom after venture status edits
+alwaysApply: true
+---
+
+# Kingdom brain
+
+- Durable portfolio, research, and decision knowledge belongs in `brain/` (Karpathy LLM wiki), not only in chat.
+- Schema: `brain/AGENTS.md`. Catalog: `brain/wiki/index.md`.
+- Use personal skills: `kingdom-wiki`, `sync-kingdom`, `log-outreach`, `youtube-provenance`, `phase-gate`, `kingdom-tunnels`, `task-observer`.
+- On substantive multi-step work (not casual Q&A), load `task-observer` and log to `brain/skill-observations/` (see skill `KINGDOM.md`). Ask “any observations?” at session end when useful.
+- After editing venture `STATUS.md`, phases, or expenses in linked repos, run `npm run sync` from this repo.
+- Do not put secrets or raw contact dumps in `brain/`.

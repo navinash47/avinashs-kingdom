@@ -9,7 +9,11 @@
     "lint": "oxlint",
     "preview": "vite preview",
     "sync": "node scripts/sync-kingdom.mjs",
-    "sync:audits": "node scripts/sync-kingdom.mjs"
+    "sync:audits": "node scripts/sync-kingdom.mjs",
+    "headroom:start": "bash scripts/headroom-kingdom.sh start",
+    "headroom:stop": "bash scripts/headroom-kingdom.sh stop",
+    "headroom:status": "bash scripts/headroom-kingdom.sh status",
+    "headroom:setup": "bash scripts/headroom-kingdom.sh setup-print"
   },
   "dependencies": {
     "react": "^19.2.8",
