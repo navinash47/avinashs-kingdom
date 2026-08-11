@@ -28,36 +28,62 @@ function localPick(
   index: ResumeIndex,
   company: string,
   role: string,
+  opts: { preferMainResume?: boolean; specializedMargin?: number } = {},
 ): PickResult {
+  const preferMain = opts.preferMainResume !== false
+  const margin = opts.specializedMargin ?? 0.12
   const jdTokens = tokenize(`${role}\n${role}\n${jdText}`)
   let best: ResumeIndexEntry | null = null
   let bestScore = -1
   const scores: Array<{ id: string; score: number }> = []
+  let generalTrack: ResumeIndexEntry | null = null
+  let generalScore = -1
 
   for (const t of index.tracks) {
     const bag = tokenize([...t.keywords, t.label, t.summary].join(' '))
     let hit = 0
     for (const k of bag) if (jdTokens.has(k)) hit++
-    // Prefer specialized tracks when their keywords appear in the role title
     const title = role.toLowerCase()
     let boost = 0
     for (const k of t.keywords) {
       if (title.includes(k.toLowerCase())) boost += 0.15
     }
     if (t.id === 'backend' && /backend|api engineer/i.test(title)) boost += 0.35
-    if (t.id === 'backend-mle' && /mle|machine learning|ml infra|rl training|reinforcement/i.test(title))
+    if (
+      t.id === 'backend-mle' &&
+      /mle|machine learning|ml infra|rl training|reinforcement/i.test(title)
+    ) {
       boost += 0.35
-    if (t.id === 'genai-llm' && /genai|llm|applied ai|language model/i.test(title))
+    }
+    if (t.id === 'genai-llm' && /genai|llm|applied ai|language model/i.test(title)) {
       boost += 0.35
-    if (t.id !== 'general') boost += 0.02
+    }
+    // Main resume (general / Avinash Resume) gets a mild prior
+    if (t.id === 'general') boost += preferMain ? 0.08 : 0
+    else boost += 0.02
     const score = (bag.size ? hit / Math.min(40, bag.size) : 0) + boost
     scores.push({ id: t.id, score })
+    if (t.id === 'general') {
+      generalTrack = t
+      generalScore = score
+    }
     if (score > bestScore) {
       bestScore = score
       best = t
     }
   }
   if (!best) throw new Error('Resume index is empty')
+
+  // Keep Avinash Resume (general) unless specialized clearly wins
+  if (
+    preferMain &&
+    generalTrack &&
+    best.id !== 'general' &&
+    bestScore < generalScore + margin
+  ) {
+    best = generalTrack
+    bestScore = generalScore
+  }
 
   const confidence = Math.max(0.15, Math.min(0.95, bestScore * 1.4))
   const fitScore = Math.round(confidence * 100)
@@ -96,7 +122,7 @@ function localPick(
     track: best,
     confidence,
     fitScore,
-    reason: `Local keyword match; scores=${scores
+    reason: `Local keyword match (main=general preferred); scores=${scores
       .map((s) => `${s.id}:${s.score.toFixed(2)}`)
       .join(',')}`,
     gaps,
@@ -157,11 +183,16 @@ export async function pickResumeForJd(opts: {
   company?: string
   role?: string
   useLlm?: boolean
+  preferMainResume?: boolean
+  specializedMargin?: number
 }): Promise<PickResult> {
   const index = loadResumeIndex()
   const company = opts.company || 'Unknown'
   const role = opts.role || 'Role'
-  const pick = localPick(opts.jdText, index, company, role)
+  const pick = localPick(opts.jdText, index, company, role, {
+    preferMainResume: opts.preferMainResume,
+    specializedMargin: opts.specializedMargin,
+  })
 
   if (opts.useLlm !== false && (await isOmniReachable())) {
     const gaps = await llmRefineGaps(opts.jdText, pick, company, role)

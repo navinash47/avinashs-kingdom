@@ -3,6 +3,10 @@
 !.env.example
 env.txt
 **/env.txt
+data/job-jugaad.sqlite
+data/job-jugaad.sqlite-*
+data/crawl-report.json
+data/auto-apply-report.json
 *.upload.pdf
 node_modules/
 dist/

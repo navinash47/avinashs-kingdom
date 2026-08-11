@@ -1,0 +1,25 @@
+# Cursor automation hooks for Job Jugaad
+#
+# Suggested recurring tasks (Cloud / cron / Cursor Automations):
+# 1) Hourly:  npm run crawl:jobs -- --skip-linkedin
+# 2) Daily:   npm run crawl:jobs
+# 3) Apply:   npm run auto:apply -- --limit 5   (needs headed Mac session for CAPTCHA)
+# 4) Verify:  npm run verify:mail
+# 5) Status:  npm run db:status && npm run sync (from Kingdom root)
+#
+# Main resume track: general (Avinash_Nandyala_Resume)
+# DB: data/job-jugaad.sqlite
+# Secrets: prompt each apply/verify run — never .env
+
+name: job-jugaad-automations
+steps:
+  crawl:
+    command: npm run crawl:jobs
+    notes: ATS + web/Firecrawl (+ LinkedIn listings if reachable)
+  status:
+    command: npm run db:status
+  apply:
+    command: npm run auto:apply -- --limit 5
+    notes: Headed Playwright; pauses on CAPTCHA when TTY present
+  verify:
+    command: npm run verify:mail

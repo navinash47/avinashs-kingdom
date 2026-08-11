@@ -93,14 +93,14 @@
   {
     "id": "job-jugaad",
     "name": "Job Jugaad",
-    "version": "Phase 4 · Profile crawl + live apply test",
-    "progress": 85,
+    "version": "Phase 5 · Crawl DB + auto-apply",
+    "progress": 90,
     "priority": "P1",
     "status": "active",
     "weight": 5,
     "agentId": "agent-jugaad",
     "repoPath": "/Users/avinashnandyala/Projects/job-jugaad",
-    "nextMilestone": "On Mac: `npm run enrich:profile` (Desktop hyperlinks) then add phone to `data/profile.yaml`",
-    "notes": "Next: 1) On Mac: `npm run enrich:profile` (Desktop hyperlinks) then add phone to `data/profile.yaml` · 2) Run `npm run apply` in a real terminal (TTY) to clear CAPTCHA for Anthropic/OpenAI waiting-on-you · 3) Run `npm run verify:mail` and confirm application emails arrived"
+    "nextMilestone": "On Mac: `npm run crawl:jobs` then `npm run crawl:linkedin` (headed) for LinkedIn listings",
+    "notes": "Next: 1) On Mac: `npm run crawl:jobs` then `npm run crawl:linkedin` (headed) for LinkedIn listings · 2) `npm run auto:apply -- --limit 5` in a real terminal — clear CAPTCHAs when prompted · 3) Wire Cursor Automations from `automations.yaml` (crawl → apply → verify:mail)"
   }
 ]

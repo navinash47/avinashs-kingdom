@@ -96,20 +96,24 @@ async function fillByPatterns(
   const inputs = root.locator(
     'input:visible, textarea:visible, select:visible',
   )
-  const count = await inputs.count()
+  const count = Math.min(await inputs.count(), 40)
   for (let i = 0; i < count; i++) {
     const el = inputs.nth(i)
-    const meta = `${await el.getAttribute('name')} ${await el.getAttribute('id')} ${await el.getAttribute('placeholder')} ${await el.getAttribute('aria-label')} ${await el.getAttribute('autocomplete')}`
-    const tag = await el.evaluate((n) => n.tagName.toLowerCase())
-    for (const [re, value] of pairs) {
-      if (!value || !re.test(meta)) continue
-      if (tag === 'select') {
-        await el.selectOption({ label: value }).catch(async () => {
-          await el.selectOption({ value }).catch(() => undefined)
-        })
-      } else {
-        await el.fill(value).catch(() => undefined)
+    try {
+      const meta = `${await el.getAttribute('name', { timeout: 800 })} ${await el.getAttribute('id', { timeout: 800 })} ${await el.getAttribute('placeholder', { timeout: 800 })} ${await el.getAttribute('aria-label', { timeout: 800 })} ${await el.getAttribute('autocomplete', { timeout: 800 })}`
+      const tag = await el.evaluate((n) => n.tagName.toLowerCase())
+      for (const [re, value] of pairs) {
+        if (!value || !re.test(meta)) continue
+        if (tag === 'select') {
+          await el.selectOption({ label: value }).catch(async () => {
+            await el.selectOption({ value }).catch(() => undefined)
+          })
+        } else {
+          await el.fill(value, { timeout: 1500 }).catch(() => undefined)
+        }
       }
+    } catch {
+      /* stale/hidden node — skip */
     }
   }
 }
