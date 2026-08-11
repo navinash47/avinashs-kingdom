@@ -488,13 +488,59 @@ export async function applyQueueItem(item: QueueItem): Promise<ApplyResult> {
   let emailed = false
 
   try {
-    await page.goto(item.url, { waitUntil: 'domcontentloaded', timeout: 60_000 })
+    let startUrl = item.url
+    // Greenhouse: go straight to the application form when possible
+    const gh = item.url.match(
+      /(?:job-)?boards\.greenhouse\.io\/([^/?#]+)\/jobs\/(\d+)/i,
+    )
+    if (gh) {
+      startUrl = `https://boards.greenhouse.io/${gh[1]}/jobs/${gh[2]}/application`
+    }
+
+    await page.goto(startUrl, { waitUntil: 'domcontentloaded', timeout: 60_000 })
     await humanPause(400, 900)
     if (await pageLooksBlocked(page)) {
       const n = await notifyAndWait(page, item, 'CAPTCHA / bot wall')
       emailed = n.emailed
       if (await pageLooksBlocked(page)) {
         return { status: 'waiting-on-you', error: 'CAPTCHA / bot wall', emailed }
+      }
+    }
+
+    // LinkedIn job view → open company website apply (skip Easy Apply modal)
+    if (/linkedin\.com\/jobs\/view\//i.test(page.url())) {
+      const companyApply = page
+        .locator(
+          'a:has-text("Apply on company website"), button:has-text("Apply on company website"), a:has-text("Apply on company site")',
+        )
+        .first()
+      if ((await companyApply.count()) > 0) {
+        const [popup] = await Promise.all([
+          page.context().waitForEvent('page', { timeout: 8000 }).catch(() => null),
+          humanClick(page, companyApply),
+        ])
+        if (popup) {
+          await popup.waitForLoadState('domcontentloaded').catch(() => undefined)
+          // Continue filling on the external ATS tab
+          const ext = popup
+          // swap: close LI tab work on popup by navigating main page to popup URL
+          const extUrl = popup.url()
+          await page.goto(extUrl, { waitUntil: 'domcontentloaded' }).catch(() => undefined)
+          await popup.close().catch(() => undefined)
+          await humanPause(600, 1200)
+        } else {
+          await humanPause(800, 1500)
+        }
+      } else {
+        // If only Easy Apply exists, leave for human — we don't automate Easy Apply
+        const easy = page.locator('button:has-text("Easy Apply"), button.jobs-apply-button')
+        if ((await easy.count()) > 0) {
+          return {
+            status: 'waiting-on-you',
+            error: 'LinkedIn Easy Apply only — open in cloud Chrome or find company ATS link',
+            emailed,
+          }
+        }
       }
     }
 
@@ -521,12 +567,28 @@ export async function applyQueueItem(item: QueueItem): Promise<ApplyResult> {
       }
     }
 
-    // Wait briefly for file input to appear (forms hydrate)
-    await page
-      .locator('input[type="file"]')
-      .first()
-      .waitFor({ state: 'attached', timeout: 8000 })
-      .catch(() => undefined)
+    // Wait for form fields (Greenhouse often hydrates slowly / in iframes)
+    for (const sel of [
+      'input[type="file"]',
+      'input[type="email"]',
+      'input[name="job_application[first_name]"]',
+      'input[autocomplete="email"]',
+      '#first_name',
+    ]) {
+      const found = await page
+        .locator(sel)
+        .first()
+        .waitFor({ state: 'attached', timeout: 5000 })
+        .then(() => true)
+        .catch(() => false)
+      if (found) break
+      // also check frames
+      for (const frame of page.frames()) {
+        const n = await frame.locator(sel).count().catch(() => 0)
+        if (n > 0) break
+      }
+    }
+    await humanPause(400, 800)
 
     if (await pageLooksBlocked(page)) {
       const n = await notifyAndWait(page, item, 'CAPTCHA / bot wall after Apply')
