@@ -1,0 +1,50 @@
+[
+  {
+    "id": "agent-cash",
+    "name": "Agent Cash",
+    "ventureId": "whatsapp-voice",
+    "focus": "WhatsApp/voice lead agents for India SMBs. Close offers, not features.",
+    "tokenBudgetUsd": 40,
+    "tokenUsedUsd": 0
+  },
+  {
+    "id": "agent-cut",
+    "name": "Agent Cut",
+    "ventureId": "youtube-editor",
+    "focus": "Screenplay desk + real clip research. Anti-slop long-form only.",
+    "tokenBudgetUsd": 50,
+    "tokenUsedUsd": 0
+  },
+  {
+    "id": "agent-atlas",
+    "name": "Agent Atlas",
+    "ventureId": "research-frontier",
+    "focus": "Paper clubbing, frontier ranking, gap/analogy extraction for one vertical.",
+    "tokenBudgetUsd": 35,
+    "tokenUsedUsd": 0
+  },
+  {
+    "id": "agent-metro",
+    "name": "Agent Metro",
+    "ventureId": "procedural-city",
+    "focus": "Procedural city gates before Comic. Control fal/Gemini spend.",
+    "tokenBudgetUsd": 60,
+    "tokenUsedUsd": 12
+  },
+  {
+    "id": "agent-ink",
+    "name": "Agent Ink",
+    "ventureId": "comic-engine",
+    "focus": "V1 comic quality + consistency. Batch jobs; cache refs.",
+    "tokenBudgetUsd": 45,
+    "tokenUsedUsd": 18
+  },
+  {
+    "id": "agent-steward",
+    "name": "Agent Steward",
+    "ventureId": "kingdom-ops",
+    "focus": "Subscription kill list, disk reclaim, expense hygiene, token caps.",
+    "tokenBudgetUsd": 10,
+    "tokenUsedUsd": 2
+  }
+]

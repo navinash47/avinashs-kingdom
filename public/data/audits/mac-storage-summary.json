@@ -1,0 +1,95 @@
+{
+  "generated_at": "2026-08-11T02:57:31.898004+00:00",
+  "source": "/Users/avinashnandyala/Projects/mac-storage-audit/reports/latest.json",
+  "disk": {
+    "note": "Macintosh HD: 210.7 GB used / 460.4 GB (45.8%), 249.7 GB free",
+    "percent_used": 45.8,
+    "total_bytes": 494332366848,
+    "used_bytes": 226238181376,
+    "free_bytes": 268094185472
+  },
+  "top_home": [
+    {
+      "path": "/Users/avinashnandyala/Library",
+      "bytes": 88785262094
+    },
+    {
+      "path": "/Users/avinashnandyala/Desktop",
+      "bytes": 7541279560
+    },
+    {
+      "path": "/Users/avinashnandyala/.android",
+      "bytes": 7213735711
+    },
+    {
+      "path": "/Users/avinashnandyala/Documents",
+      "bytes": 2596300354
+    },
+    {
+      "path": "/Users/avinashnandyala/acads",
+      "bytes": 2458211808
+    },
+    {
+      "path": "/Users/avinashnandyala/ProceduralCity",
+      "bytes": 1770387122
+    },
+    {
+      "path": "/Users/avinashnandyala/OmniRoute",
+      "bytes": 846110851
+    },
+    {
+      "path": "/Users/avinashnandyala/Movies",
+      "bytes": 678094805
+    }
+  ],
+  "recommendations": [
+    {
+      "priority": 1,
+      "title": "Clear ~/Library/Caches",
+      "bytes": 1973245440,
+      "risk": "low",
+      "action": "open ~/Library/Caches  # delete heavy app subfolders, not the whole Caches directory at once",
+      "rationale": "All user Library caches"
+    },
+    {
+      "priority": 2,
+      "title": "Remove duplicate large files",
+      "bytes": 224132909,
+      "risk": "medium",
+      "action": "# Review duplicate groups in the HTML/JSON report, keep one copy each",
+      "rationale": "Same-size + same-hash files found outside caches"
+    },
+    {
+      "priority": 3,
+      "title": "Review cloud folder ~/Library/Group Containers/group.net.whatsapp.WhatsApp.shared",
+      "bytes": 6717933570,
+      "risk": "high",
+      "action": "open '/Users/avinashnandyala/Library/Group Containers/group.net.whatsapp.WhatsApp.shared'",
+      "rationale": "Large synced/cloud-related local data"
+    },
+    {
+      "priority": 3,
+      "title": "Review large folder ~/Library/Android/sdk",
+      "bytes": 5271700969,
+      "risk": "medium",
+      "action": "open '/Users/avinashnandyala/Library/Android/sdk'  # inspect before deleting",
+      "rationale": "Android SDK — large but needed for Android work"
+    },
+    {
+      "priority": 3,
+      "title": "Review large folder ~/Library/Application Support/Cursor",
+      "bytes": 2929560887,
+      "risk": "high",
+      "action": "open '/Users/avinashnandyala/Library/Application Support/Cursor'  # inspect before deleting",
+      "rationale": "Cursor app support (may include caches)"
+    },
+    {
+      "priority": 3,
+      "title": "Review cloud folder ~/Library/Mobile Documents/57T9237FN3~net~whatsapp~WhatsApp",
+      "bytes": 2877328444,
+      "risk": "high",
+      "action": "open '/Users/avinashnandyala/Library/Mobile Documents/57T9237FN3~net~whatsapp~WhatsApp'",
+      "rationale": "Large synced/cloud-related local data"
+    }
+  ]
+}

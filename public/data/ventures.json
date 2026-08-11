@@ -1,0 +1,93 @@
+[
+  {
+    "id": "whatsapp-voice",
+    "name": "WhatsApp / Voice cash engine",
+    "version": "v0.1",
+    "progress": 8,
+    "priority": "P0",
+    "status": "active",
+    "weight": 35,
+    "agentId": "agent-cash",
+    "repoPath": "/Users/avinashnandyala/Projects/whatsapp-voice-agents",
+    "nextMilestone": "Ship one India vertical offer (real estate or coaching) with demo script",
+    "notes": "Highest ROI cash lane. Hindi/Telugu WhatsApp + voice lead qualification."
+  },
+  {
+    "id": "youtube-editor",
+    "name": "YouTube editor + screenplay",
+    "version": "v0.1",
+    "progress": 5,
+    "priority": "P0",
+    "status": "active",
+    "weight": 20,
+    "agentId": "agent-cut",
+    "repoPath": "/Users/avinashnandyala/Projects/youtube-editor-lab",
+    "nextMilestone": "Define clip researcher + screenplay desk MVP (anti-slop, real footage)",
+    "notes": "Long-form 8–15 min. No Shorts focus. Dogfood on own channel."
+  },
+  {
+    "id": "research-frontier",
+    "name": "Research Frontier Lab",
+    "version": "v0.1",
+    "progress": 10,
+    "priority": "P1",
+    "status": "active",
+    "weight": 15,
+    "agentId": "agent-atlas",
+    "repoPath": "/Users/avinashnandyala/Projects/research-frontier-lab",
+    "nextMilestone": "Seed one vertical corpus (generative comics / multimodal consistency)",
+    "notes": "15% portfolio. Club papers → gaps/analogies. Do not neglect."
+  },
+  {
+    "id": "procedural-city",
+    "name": "Procedural City",
+    "version": "v0.2",
+    "progress": 35,
+    "priority": "P1",
+    "status": "active",
+    "weight": 15,
+    "agentId": "agent-metro",
+    "repoPath": "/Users/avinashnandyala/ProceduralCity",
+    "nextMilestone": "Prioritize before ComicEngine; next gate after Phase 0 PASS",
+    "notes": "Existing project. City before Comic while Comic is still V1."
+  },
+  {
+    "id": "comic-engine",
+    "name": "ComicEngine",
+    "version": "V1",
+    "progress": 55,
+    "priority": "P2",
+    "status": "active",
+    "weight": 10,
+    "agentId": "agent-ink",
+    "repoPath": "/Users/avinashnandyala/ComicEngine",
+    "nextMilestone": "Improve consistency pipeline after City P1 milestones",
+    "notes": "Keep improving. Monetize via B2B outcomes later. Secondary to City for now."
+  },
+  {
+    "id": "kingdom-ops",
+    "name": "Kingdom ops (subs + storage + expenses)",
+    "version": "v1.0",
+    "progress": 70,
+    "priority": "P1",
+    "status": "active",
+    "weight": 5,
+    "agentId": "agent-steward",
+    "repoPath": "/Users/avinashnandyala/Projects/avinashs-kingdom",
+    "nextMilestone": "Kill unused subscriptions; reclaim low-risk disk caches",
+    "notes": "Subscription audit + Mac storage audit live here."
+  },
+  {
+    "id": "shorts",
+    "name": "Shorts tooling",
+    "version": "—",
+    "progress": 0,
+    "priority": "parked",
+    "status": "parked",
+    "weight": 0,
+    "agentId": null,
+    "repoPath": null,
+    "nextMilestone": "Do not focus",
+    "notes": "Parked per portfolio decision."
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "exp-cursor",
+    "date": "2026-08-01",
+    "category": "tools",
+    "label": "Cursor (est. monthly)",
+    "amount": 85,
+    "currency": "USD",
+    "ventureId": "kingdom-ops",
+    "notes": "From subscription kill list cadence — audit weekly"
+  },
+  {
+    "id": "exp-openai",
+    "date": "2026-08-01",
+    "category": "api",
+    "label": "OpenAI / ChatGPT Plus",
+    "amount": 21.25,
+    "currency": "USD",
+    "ventureId": "kingdom-ops",
+    "notes": "Review if OmniRoute covers coding needs"
+  },
+  {
+    "id": "exp-fal",
+    "date": "2026-08-09",
+    "category": "api",
+    "label": "fal image gen (City/Comic)",
+    "amount": 15,
+    "currency": "USD",
+    "ventureId": "procedural-city",
+    "notes": "Bakeoff + smokes — keep under phase budgets"
+  },
+  {
+    "id": "exp-coursera",
+    "date": "2026-08-01",
+    "category": "learning",
+    "label": "Coursera",
+    "amount": 49,
+    "currency": "USD",
+    "ventureId": "research-frontier",
+    "notes": "Cancel candidate if unused this month"
+  }
+]
