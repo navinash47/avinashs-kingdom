@@ -44,6 +44,11 @@ function localPick(
     for (const k of t.keywords) {
       if (title.includes(k.toLowerCase())) boost += 0.15
     }
+    if (t.id === 'backend' && /backend|api engineer/i.test(title)) boost += 0.35
+    if (t.id === 'backend-mle' && /mle|machine learning|ml infra|rl training|reinforcement/i.test(title))
+      boost += 0.35
+    if (t.id === 'genai-llm' && /genai|llm|applied ai|language model/i.test(title))
+      boost += 0.35
     if (t.id !== 'general') boost += 0.02
     const score = (bag.size ? hit / Math.min(40, bag.size) : 0) + boost
     scores.push({ id: t.id, score })

@@ -1,17 +1,44 @@
-# Form facts only — not a resume rewrite. Used for ATS field fill.
 name:
   first: Avinash
   last: Nandyala
   full: Avinash Nandyala
-email: ""  # optional display; Gmail login is prompted separately each run
-phone: ""
-location: ""
-linkedin: ""
-github: ""
-website: ""
-work_authorization: ""
-sponsorship_needed: ""
-years_experience: ""
+email: avinashnandyala2@gmail.com
+phone: ''
+location: Amherst, Massachusetts, United States
+linkedin: https://www.linkedin.com/in/avinash-nandyala-06a88b199
+github: https://github.com/navinash47
+website: https://hcr.cs.umass.edu/people.html
+work_authorization: F-1 OPT
+sponsorship_needed: 'yes'
+years_experience: 4+
 canned_answers:
-  why_company: "I build reliable AI/backend systems and want to contribute where the product leverage is high."
-  biggest_strength: "Shipping end-to-end systems from data/models to production APIs."
+  why_company: I build reliable AI/backend systems and want to contribute where the product leverage is high.
+  biggest_strength: Shipping end-to-end systems from data/models to production APIs.
+  work_auth_detail: Currently on F-1 OPT; will require future work authorization / sponsorship.
+  legally_authorized: 'Yes'
+  require_sponsorship: 'Yes'
+  visa_status: F-1 OPT
+  Are you legally authorized to work in the United States?: 'Yes'
+  Will you now or in the future require sponsorship for employment visa status?: Yes — currently on F-1 OPT and will need future work authorization / sponsorship.
+  What is your visa / work authorization status?: F-1 OPT
+learned_answers:
+  Why Anthropic?* Why Anthropic?* null Why Anthropic? null: I build reliable AI/backend systems and want to contribute where the product leverage is high.
+  Additional Information Additional Information null Additional Information null: I build reliable AI/backend systems and want to contribute where the product leverage is high.
+  Are you legally authorized to work in the United States?: 'Yes'
+  Will you now or in the future require sponsorship for employment visa status?: Yes — currently on F-1 OPT and will need future work authorization / sponsorship.
+  What is your visa / work authorization status?: F-1 OPT
+youtube: https://www.youtube.com/@avinashnandyala
+authorized_to_work: 'yes'
+visa_status: OPT
+enrich_sources:
+  - /workspace/job-jugaad/fixtures/resumes/general.txt
+  - /workspace/job-jugaad/fixtures/resumes/backend-mle.txt
+  - /workspace/job-jugaad/fixtures/resumes/backend.txt
+  - /workspace/job-jugaad/fixtures/resumes/genai-llm.txt
+  - /workspace/job-jugaad/fixtures/resumes/healthcare-ai.txt
+enriched_at: '2026-08-11T21:51:22.138Z'
+headline: MSCS at UMass Amherst | Robotics & Reinforcement Learning | Backend Systems | Ex-Mastercard
+about: >-
+  Software Development Engineer with 4+ years building secure, scalable systems across fintech, ML,
+  and robotics. Graduate researcher at UMass Amherst (Human-Centered Robotics Lab). Previously
+  Mastercard. Currently on F-1 OPT; will need future work authorization.

@@ -1,24 +1,21 @@
 import fs from 'node:fs'
 import path from 'node:path'
-import { chromium, type BrowserContext, type Page } from 'playwright'
+import { chromium, type BrowserContext, type Frame, type Page } from 'playwright'
 import { resolveFromRoot } from '../lib/paths.js'
 import type { QueueItem } from '../lib/paths.js'
-import { readYaml } from '../lib/paths.js'
 import { waitForOtpOrLink } from '../mail/gmail-imap.js'
 import { promptGmailCreds } from '../secrets/prompt.js'
+import {
+  loadProfile,
+  type ProfileData,
+} from '../profile/enrich.js'
+import { answerFromProfile, learnQa } from '../profile/qa-memory.js'
+import { isOmniReachable, omniChat } from '../omni/client.js'
 
 export type ApplyResult = {
   status: QueueItem['status']
   error?: string
-}
-
-type Profile = {
-  name: { first: string; last: string; full: string }
-  email?: string
-  phone?: string
-  linkedin?: string
-  github?: string
-  canned_answers?: Record<string, string>
+  learnedQuestions?: string[]
 }
 
 const CAPTCHA_HINTS = [
@@ -34,8 +31,13 @@ const CAPTCHA_HINTS = [
 async function launchContext(): Promise<BrowserContext> {
   const userData = resolveFromRoot('data/browser-profile')
   fs.mkdirSync(userData, { recursive: true })
+  // Prefer headed; fall back to headless only if DISPLAY missing (cloud CI)
+  const headed =
+    process.env.JOB_JUGAAD_FORCE_HEADED === '1' ||
+    Boolean(process.env.DISPLAY) ||
+    process.platform === 'darwin'
   return chromium.launchPersistentContext(userData, {
-    headless: false,
+    headless: !headed,
     viewport: { width: 1280, height: 900 },
     acceptDownloads: true,
   })
@@ -52,9 +54,14 @@ async function pageLooksBlocked(page: Page): Promise<boolean> {
 
 async function waitForHumanClear(page: Page, item: QueueItem): Promise<void> {
   console.log(
-    `\n⏸  CAPTCHA / bot wall on ${item.companyName} — ${item.title}\n` +
+    `\n⏸  CAPTCHA / bot wall / manual step on ${item.companyName} — ${item.title}\n` +
       `   Browser is open. Solve it, then press Enter here to continue…`,
   )
+  if (!process.stdin.isTTY) {
+    console.warn('No TTY — waiting 45s for manual intervention…')
+    await page.waitForTimeout(45_000)
+    return
+  }
   await new Promise<void>((resolve) => {
     process.stdin.resume()
     process.stdin.once('data', () => resolve())
@@ -62,42 +69,145 @@ async function waitForHumanClear(page: Page, item: QueueItem): Promise<void> {
   await page.waitForTimeout(500)
 }
 
-async function fillCommonFields(page: Page, profile: Profile, email: string) {
-  const pairs: Array<[RegExp, string]> = [
-    [/first.?name/i, profile.name.first],
-    [/last.?name/i, profile.name.last],
-    [/^name$/i, profile.name.full],
-    [/email/i, email || profile.email || ''],
-    [/phone|mobile/i, profile.phone || ''],
-    [/linkedin/i, profile.linkedin || ''],
-    [/github/i, profile.github || ''],
-  ]
-  for (const [re, value] of pairs) {
-    if (!value) continue
-    const loc = page
-      .locator(
-        'input, textarea',
-      )
-      .filter({ has: page.locator(`xpath=ancestor-or-self::*`) })
-    const inputs = page.locator('input:visible, textarea:visible')
-    const count = await inputs.count()
-    for (let i = 0; i < count; i++) {
-      const el = inputs.nth(i)
-      const name = `${await el.getAttribute('name')} ${await el.getAttribute('id')} ${await el.getAttribute('placeholder')} ${await el.getAttribute('aria-label')}`
-      if (re.test(name)) {
+function fieldLabel(name: string): string {
+  return name.toLowerCase()
+}
+
+async function formRoots(page: Page): Promise<Array<Page | Frame>> {
+  const roots: Array<Page | Frame> = [page, ...page.frames()]
+  return roots
+}
+
+async function findRootWithSelector(
+  page: Page,
+  selector: string,
+): Promise<Page | Frame> {
+  for (const root of await formRoots(page)) {
+    const n = await root.locator(selector).count().catch(() => 0)
+    if (n > 0) return root
+  }
+  return page
+}
+
+async function fillByPatterns(
+  root: Page | Frame,
+  pairs: Array<[RegExp, string]>,
+): Promise<void> {
+  const inputs = root.locator(
+    'input:visible, textarea:visible, select:visible',
+  )
+  const count = await inputs.count()
+  for (let i = 0; i < count; i++) {
+    const el = inputs.nth(i)
+    const meta = `${await el.getAttribute('name')} ${await el.getAttribute('id')} ${await el.getAttribute('placeholder')} ${await el.getAttribute('aria-label')} ${await el.getAttribute('autocomplete')}`
+    const tag = await el.evaluate((n) => n.tagName.toLowerCase())
+    for (const [re, value] of pairs) {
+      if (!value || !re.test(meta)) continue
+      if (tag === 'select') {
+        await el.selectOption({ label: value }).catch(async () => {
+          await el.selectOption({ value }).catch(() => undefined)
+        })
+      } else {
         await el.fill(value).catch(() => undefined)
       }
     }
-    void loc
   }
+}
+
+async function clickYesNo(
+  root: Page | Frame,
+  questionRe: RegExp,
+  wantYes: boolean,
+): Promise<boolean> {
+  const labels = root.locator('label, legend, span, p, div')
+  const n = Math.min(await labels.count(), 200)
+  for (let i = 0; i < n; i++) {
+    const t = ((await labels.nth(i).innerText().catch(() => '')) || '').trim()
+    if (!questionRe.test(t) || t.length > 220) continue
+    const container = labels
+      .nth(i)
+      .locator('xpath=ancestor::*[self::fieldset or self::div][1]')
+    const choice = wantYes
+      ? container.getByText(/^(yes|y)$/i).first()
+      : container.getByText(/^(no|n)$/i).first()
+    if ((await choice.count()) > 0) {
+      await choice.click().catch(() => undefined)
+      return true
+    }
+  }
+  return false
+}
+
+async function fillCommonFields(
+  page: Page,
+  profile: ProfileData,
+  email: string,
+): Promise<void> {
+  const root = await findRootWithSelector(
+    page,
+    'input:visible, textarea:visible, select:visible',
+  )
+  await fillByPatterns(root, [
+    [/first.?name/i, profile.name.first],
+    [/last.?name/i, profile.name.last],
+    [/^name$|full.?name/i, profile.name.full],
+    [/e-?mail/i, email || profile.email || ''],
+    [/phone|mobile|tel/i, profile.phone || ''],
+    [/linkedin/i, profile.linkedin || ''],
+    [/github/i, profile.github || ''],
+    [/website|portfolio|personal.?site/i, profile.website || ''],
+    [/city|location|reside/i, profile.location || ''],
+    [/visa|immigration|work.?auth/i, profile.work_authorization || 'F-1 OPT'],
+  ])
+
+  await clickYesNo(
+    root,
+    /legally authorized to work|authorized to work in the (united states|us)/i,
+    true,
+  )
+  await clickYesNo(
+    root,
+    /require.*sponsorship|need.*sponsor|future.*work authorization|will you now or in the future/i,
+    true,
+  )
+}
+
+async function resolveUploadPath(resumePath: string): Promise<string> {
+  if (!resumePath.endsWith('.txt')) return resumePath
+  // ATS usually rejects .txt — wrap fixture text into a minimal PDF for cloud/dev only
+  const out = resumePath.replace(/\.txt$/i, '.upload.pdf')
+  const text = fs.readFileSync(resumePath, 'utf8').replace(/[()\\]/g, ' ')
+  const content = `BT /F1 11 Tf 50 750 Td (${text.slice(0, 1800)}) Tj ET`
+  const objects = [
+    '1 0 obj<< /Type /Catalog /Pages 2 0 R >>endobj\n',
+    '2 0 obj<< /Type /Pages /Kids [3 0 R] /Count 1 >>endobj\n',
+    '3 0 obj<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources<< /Font<< /F1 5 0 R >> >> >>endobj\n',
+    `4 0 obj<< /Length ${content.length} >>stream\n${content}\nendstream\nendobj\n`,
+    '5 0 obj<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>endobj\n',
+  ]
+  let pdf = '%PDF-1.4\n'
+  const offsets = [0]
+  for (const obj of objects) {
+    offsets.push(Buffer.byteLength(pdf, 'utf8'))
+    pdf += obj
+  }
+  const xref = Buffer.byteLength(pdf, 'utf8')
+  pdf += `xref\n0 ${objects.length + 1}\n`
+  pdf += '0000000000 65535 f \n'
+  for (let i = 1; i < offsets.length; i++) {
+    pdf += `${String(offsets[i]).padStart(10, '0')} 00000 n \n`
+  }
+  pdf += `trailer<< /Size ${objects.length + 1} /Root 1 0 R >>\nstartxref\n${xref}\n%%EOF\n`
+  fs.writeFileSync(out, pdf)
+  return out
 }
 
 async function uploadResume(page: Page, resumePath: string) {
   if (!fs.existsSync(resumePath)) {
     throw new Error(`Resume file missing: ${resumePath}`)
   }
-  // Prefer .pdf/.docx for ATS; skip .txt fixtures if a binary sibling exists
-  const upload = page.locator('input[type="file"]').first()
+  const root = await findRootWithSelector(page, 'input[type="file"]')
+  const upload = root.locator('input[type="file"]').first()
   if ((await upload.count()) === 0) {
     console.warn('No file input found — resume upload skipped')
     return
@@ -106,9 +216,13 @@ async function uploadResume(page: Page, resumePath: string) {
 }
 
 async function trySubmit(page: Page): Promise<boolean> {
-  const btn = page
+  const root = await findRootWithSelector(
+    page,
+    'button:has-text("Submit"), input[type="submit"], button:has-text("Submit application"), button:has-text("Send application")',
+  )
+  const btn = root
     .locator(
-      'button:has-text("Submit"), input[type="submit"], button:has-text("Apply"), button:has-text("Send application")',
+      'button:has-text("Submit"), input[type="submit"], button:has-text("Submit application"), button:has-text("Send application")',
     )
     .first()
   if ((await btn.count()) === 0) return false
@@ -148,6 +262,83 @@ async function handleOtpIfNeeded(page: Page): Promise<void> {
   }
 }
 
+async function draftAnswer(
+  question: string,
+  profile: ProfileData,
+): Promise<string> {
+  const known = answerFromProfile(question, profile)
+  if (known) return known
+  if (!(await isOmniReachable())) {
+    if (/sponsor|visa|opt|authoriz/i.test(question)) {
+      return (
+        profile.canned_answers?.work_auth_detail ||
+        'Currently on F-1 OPT; will require future work authorization / sponsorship.'
+      )
+    }
+    return profile.canned_answers?.why_company || 'See resume.'
+  }
+  const ans = await omniChat(
+    [
+      {
+        role: 'system',
+        content:
+          'Answer ATS application questions briefly in first person. Work auth: F-1 OPT, legally authorized yes, needs future sponsorship yes. Do not invent phone numbers.',
+      },
+      {
+        role: 'user',
+        content: `Profile JSON (no secrets): ${JSON.stringify({
+          name: profile.name,
+          location: profile.location,
+          headline: profile.headline,
+          about: profile.about,
+          linkedin: profile.linkedin,
+          github: profile.github,
+          work_authorization: profile.work_authorization,
+          sponsorship_needed: profile.sponsorship_needed,
+          learned_answers: profile.learned_answers,
+        }).slice(0, 3500)}\n\nQuestion: ${question}`,
+      },
+    ],
+    { temperature: 0.2 },
+  )
+  return ans.slice(0, 800) || 'See resume.'
+}
+
+async function fillCustomQuestions(
+  page: Page,
+  profile: ProfileData,
+  item: QueueItem,
+): Promise<string[]> {
+  const learned: string[] = []
+  const root = await findRootWithSelector(page, 'textarea:visible')
+  const textareas = root.locator('textarea:visible')
+  const n = await textareas.count()
+  for (let i = 0; i < n; i++) {
+    const el = textareas.nth(i)
+    const current = await el.inputValue().catch(() => '')
+    if (current && current.trim()) continue
+    const meta = `${await el.getAttribute('name')} ${await el.getAttribute('aria-label')} ${await el.getAttribute('placeholder')}`
+    const nearby = await el
+      .evaluate((node) => {
+        const label = node.closest('label')?.innerText
+        const prev = (node as HTMLElement).previousElementSibling?.textContent
+        const parent = node.parentElement?.innerText
+        return `${label || ''} ${prev || ''} ${(parent || '').slice(0, 240)}`
+      })
+      .catch(() => meta)
+    const question = `${nearby} ${meta}`.replace(/\s+/g, ' ').trim()
+    if (question.length < 8) continue
+    const answer = await draftAnswer(question, profile)
+    await el.fill(answer).catch(() => undefined)
+    learnQa(question, answer, {
+      company: item.companyName,
+      role: item.title,
+    })
+    learned.push(question.slice(0, 120))
+  }
+  return learned
+}
+
 export async function applyQueueItem(item: QueueItem): Promise<ApplyResult> {
   if (!item.chosenResumePath) {
     return { status: 'failed', error: 'No resume selected' }
@@ -156,42 +347,55 @@ export async function applyQueueItem(item: QueueItem): Promise<ApplyResult> {
     return { status: 'gap-only' }
   }
 
-  const profile = readYaml<Profile>('data/profile.yaml')
+  let profile = loadProfile()
   const context = await launchContext()
   const page = context.pages()[0] || (await context.newPage())
+  const learnedQuestions: string[] = []
 
   try {
     await page.goto(item.url, { waitUntil: 'domcontentloaded', timeout: 60_000 })
     if (await pageLooksBlocked(page)) {
-      return { status: 'waiting-on-you', error: 'CAPTCHA / bot wall' }
-      // caller flips status and may re-enter after human clears
-    }
-
-    // Try to open apply form
-    const applyLink = page
-      .locator(
-        'a:has-text("Apply"), button:has-text("Apply"), a:has-text("Submit application")',
-      )
-      .first()
-    if ((await applyLink.count()) > 0) {
-      await applyLink.click().catch(() => undefined)
-      await page.waitForTimeout(1000)
-    }
-
-    if (await pageLooksBlocked(page)) {
+      if (!process.stdin.isTTY) {
+        return { status: 'waiting-on-you', error: 'CAPTCHA / bot wall' }
+      }
       await waitForHumanClear(page, item)
     }
 
-    const creds = await promptGmailCreds()
-    await fillCommonFields(page, profile, creds.address)
-
-    let resumePath = item.chosenResumePath
-    // Prefer non-txt when Desktop binary exists next to fixture
-    if (resumePath.endsWith('.txt')) {
-      const base = path.basename(resumePath, '.txt')
-      void base
+    // Prefer direct application URL when greenhouse job page has #app / apply path
+    if (!/\/apply/i.test(page.url())) {
+      const applyLink = page
+        .locator(
+          'a:has-text("Apply"), button:has-text("Apply"), a:has-text("Submit application"), a[href*="apply"]',
+        )
+        .first()
+      if ((await applyLink.count()) > 0) {
+        await applyLink.click().catch(() => undefined)
+        await page.waitForTimeout(1500)
+      } else if (/boards\.greenhouse\.io|job-boards\.greenhouse\.io/i.test(page.url())) {
+        const applyUrl = page.url().replace(/\/?(\?.*)?$/, '') + '/application'
+        await page.goto(applyUrl, { waitUntil: 'domcontentloaded' }).catch(() => undefined)
+        await page.waitForTimeout(1000)
+      }
     }
-    await uploadResume(page, resumePath)
+
+    if (await pageLooksBlocked(page)) {
+      if (!process.stdin.isTTY) {
+        return { status: 'waiting-on-you', error: 'CAPTCHA / bot wall after Apply' }
+      }
+      await waitForHumanClear(page, item)
+    }
+
+    const credsEmail = profile.email || ''
+    if (!credsEmail) {
+      const creds = await promptGmailCreds()
+      await fillCommonFields(page, profile, creds.address)
+    } else {
+      await fillCommonFields(page, profile, credsEmail)
+    }
+    await uploadResume(page, await resolveUploadPath(item.chosenResumePath))
+    const learned = await fillCustomQuestions(page, profile, item)
+    learnedQuestions.push(...learned)
+    profile = loadProfile()
 
     await handleOtpIfNeeded(page)
 
@@ -204,23 +408,32 @@ export async function applyQueueItem(item: QueueItem): Promise<ApplyResult> {
       console.log(
         'Could not find Submit — leaving browser open for you to finish. Press Enter when done…',
       )
+      if (!process.stdin.isTTY) {
+        return {
+          status: 'waiting-on-you',
+          error: 'Submit not found / needs manual finish (no TTY)',
+          learnedQuestions,
+        }
+      }
       await waitForHumanClear(page, item)
     }
 
-    return { status: 'submitted' }
+    return { status: 'submitted', learnedQuestions }
   } catch (err) {
     return {
       status: 'failed',
       error: err instanceof Error ? err.message : String(err),
+      learnedQuestions,
     }
   } finally {
-    // Keep browser profile; close context so next job can relaunch cleanly
     await context.close().catch(() => undefined)
   }
 }
 
-/** Re-enter a waiting-on-you item after human cleared CAPTCHA in persistent profile */
 export async function resumeAfterCaptcha(item: QueueItem): Promise<ApplyResult> {
   console.log(`Resuming ${item.companyName} — ${item.title} after CAPTCHA…`)
   return applyQueueItem({ ...item, status: 'queued' })
 }
+
+void path
+void fieldLabel

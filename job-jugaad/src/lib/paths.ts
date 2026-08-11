@@ -91,6 +91,8 @@ export type QueueItem = {
     | 'submitted'
     | 'failed'
   error?: string
+  confirmationEmailSeen?: boolean
+  learnedQuestions?: string[]
   updatedAt: string
 }
 

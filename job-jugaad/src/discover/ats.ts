@@ -28,14 +28,26 @@ async function fetchGreenhouse(company: Company): Promise<DiscoveredJob[]> {
       content?: string
     }>
   }
-  return (data.jobs || []).slice(0, 40).map((j) => ({
+  return (data.jobs || []).map((j) => ({
     companyId: company.id,
     companyName: company.name,
     title: j.title,
-    url: j.absolute_url,
+    url: normalizeGreenhouseUrl(company.board_token || company.id, j),
     jdText: stripHtml(j.content || j.title),
     ats: 'greenhouse',
   }))
+}
+
+function normalizeGreenhouseUrl(
+  token: string,
+  j: { id: number; absolute_url: string },
+): string {
+  const abs = j.absolute_url || ''
+  const ghJid = abs.match(/gh_jid=(\d+)/)?.[1]
+  if (ghJid || /stripe\.com\/jobs/i.test(abs)) {
+    return `https://boards.greenhouse.io/${token}/jobs/${ghJid || j.id}`
+  }
+  return abs || `https://boards.greenhouse.io/${token}/jobs/${j.id}`
 }
 
 async function fetchLever(company: Company): Promise<DiscoveredJob[]> {
@@ -54,7 +66,7 @@ async function fetchLever(company: Company): Promise<DiscoveredJob[]> {
     descriptionPlain?: string
     description?: string
   }>
-  return (data || []).slice(0, 40).map((j) => ({
+  return (data || []).map((j) => ({
     companyId: company.id,
     companyName: company.name,
     title: j.text,
@@ -81,7 +93,7 @@ async function fetchAshby(company: Company): Promise<DiscoveredJob[]> {
       descriptionPlain?: string
     }>
   }
-  return (data.jobs || []).slice(0, 40).map((j) => ({
+  return (data.jobs || []).map((j) => ({
     companyId: company.id,
     companyName: company.name,
     title: j.title,

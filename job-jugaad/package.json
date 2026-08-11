@@ -8,15 +8,19 @@
     "dev": "vite --config apps/dashboard/vite.config.ts",
     "build:ui": "vite build --config apps/dashboard/vite.config.ts",
     "index:resumes": "tsx scripts/index-resumes.ts",
+    "enrich:profile": "tsx scripts/enrich-profile.ts",
     "score:jd": "tsx scripts/score-jd.ts",
     "discover": "tsx scripts/discover.ts",
+    "rank:apply": "tsx scripts/rank-apply-queue.ts",
     "apply": "tsx scripts/run-apply.ts",
+    "verify:mail": "tsx scripts/verify-confirmations.ts",
     "gaps:demo": "tsx scripts/score-jd.ts --demo",
     "serve": "tsx scripts/serve-ui.ts",
     "smoke": "tsx scripts/smoke.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
+    "adm-zip": "^0.6.0",
     "exceljs": "^4.4.0",
     "imapflow": "^1.0.184",
     "js-yaml": "^4.1.0",
@@ -27,6 +31,7 @@
     "yaml": "^2.8.0"
   },
   "devDependencies": {
+    "@types/adm-zip": "^0.5.8",
     "@types/js-yaml": "^4.0.9",
     "@types/mailparser": "^3.4.5",
     "@types/node": "^24.2.0",

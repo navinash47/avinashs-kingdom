@@ -3,10 +3,12 @@
 !.env.example
 env.txt
 **/env.txt
+*.upload.pdf
 node_modules/
 dist/
 data/queue.json
 data/resume-index.json
+data/apply-targets.json
 data/gaps.xlsx
 data/browser-profile/
 *.log

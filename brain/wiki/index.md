@@ -37,10 +37,13 @@ Catalog of pages. Agents update this on every ingest. Last full refresh: **2026-
 | [where-files-live](concepts/where-files-live.md) | Path map for all provinces |
 | [task-observer-headroom](concepts/task-observer-headroom.md) | Meta-skill observer vs token compressor — roles split |
 | [job-jugaad](concepts/job-jugaad.md) | Resume pick-only apply agent + prompt-for-secrets |
+| [job-jugaad-qa-memory](concepts/job-jugaad-qa-memory.md) | Learned ATS Q&A → profile.yaml + entity KG |
 
 ## Entities
 
-_None yet._
+| Page | Summary |
+|------|---------|
+| [avinash-profile](entities/avinash-profile.md) | Apply-profile KG (no phone/email dumps) |
 
 ## Sources
 
