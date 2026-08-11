@@ -1,0 +1,4 @@
+Avinash Nandyala — Healthcare AI Engineer
+Skills: Clinical ML, HIPAA-aware systems, FHIR, medical NLP, imaging pipelines
+Experience: Applied AI in healthcare contexts with privacy and reliability constraints.
+Keywords: healthcare, clinical, hipaa, medical, fhir

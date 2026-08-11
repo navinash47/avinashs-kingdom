@@ -56,6 +56,7 @@ Tracker: `data/usage.db` (`task` + `api_call` tables). Dashboard: `python script
 |---------|------|
 | YouTube editor | `~/Projects/youtube-editor-lab` (SRS: `docs/SRS.md`) |
 | Research Frontier | `~/Projects/research-frontier-lab` |
+| Job Jugaad | `~/Projects/job-jugaad` (Desktop resumes read-only; secrets prompted) |
 | Subscription audit | `~/Projects/subscription-audit` |
 | Mac storage audit | `~/Projects/mac-storage-audit` |
 

@@ -1,0 +1,4 @@
+Avinash Nandyala — Backend Engineer
+Skills: APIs, microservices, PostgreSQL, Kafka, Redis, Go/Python, observability
+Experience: Designed scalable backend services and data-intensive APIs.
+Keywords: backend engineer, api, microservices, databases, kafka

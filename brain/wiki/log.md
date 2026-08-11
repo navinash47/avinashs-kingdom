@@ -2,6 +2,10 @@
 
 Append-only. Prefix each entry with `## [YYYY-MM-DD] <op> | <title>` so recent activity is greppable.
 
+## [2026-08-11] ingest | Job Jugaad venture
+
+Seeded Kingdom venture `job-jugaad` + Agent Jugaad, repo scaffold (resume pick-only, headed apply, Gmail prompted secrets, Excel gaps), alwaysApply `kingdom-secrets` rule. Concept [[concepts/job-jugaad]]; venture [[ventures/job-jugaad]].
+
 ## [2026-08-11] ops | Headroom = MCP only (OmniRoute keeps Base URL)
 
 Cursor Override Base URL stays OmniRoute. Headroom used via MCP compress/retrieve/stats; proxy optional for stats only. Updated [[ops/headroom]].

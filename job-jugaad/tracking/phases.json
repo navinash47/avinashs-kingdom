@@ -1,0 +1,12 @@
+{
+  "venture": "job-jugaad",
+  "phases": [
+    { "id": 0, "name": "Scaffold + Kingdom", "status": "pass" },
+    { "id": 1, "name": "Resume index + JD gaps + UI", "status": "pass" },
+    { "id": 2, "name": "Discover + queue", "status": "pass" },
+    { "id": 3, "name": "Headed apply + Gmail OTP", "status": "pass" },
+    { "id": 4, "name": "Hardening", "status": "pending" }
+  ],
+  "current_phase": 4,
+  "updated_at": "2026-08-11T21:45:00.000Z"
+}

@@ -1,0 +1,44 @@
+:root {
+  --ink: #1a1714;
+  --muted: #5c564e;
+  --paper: #f3efe6;
+  --wash: #e7e0d2;
+  --accent: #0f6b5c;
+  --accent-2: #c45c26;
+  --line: rgba(26, 23, 20, 0.12);
+  --ok: #1f7a4d;
+  --wait: #b7791f;
+  --fail: #9b2c2c;
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-body);
+  background:
+    radial-gradient(1200px 600px at 10% -10%, #fff8e8 0%, transparent 55%),
+    radial-gradient(900px 500px at 100% 0%, #d9efe9 0%, transparent 50%),
+    linear-gradient(165deg, #f7f2e8 0%, #ebe4d6 48%, #e4ddd0 100%);
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+a {
+  color: var(--accent);
+}

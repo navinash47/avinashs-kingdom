@@ -1,0 +1,14 @@
+.env
+.env.*
+!.env.example
+env.txt
+**/env.txt
+node_modules/
+dist/
+data/queue.json
+data/resume-index.json
+data/gaps.xlsx
+data/browser-profile/
+*.log
+.DS_Store
+apps/dashboard/dist/

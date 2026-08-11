@@ -6,15 +6,16 @@
   "weeklyFocus": [
     "Close first WhatsApp/voice cash offer draft",
     "YouTube screenplay+clip desk MVP outline",
-    "Keep Research Frontier Lab at 15% (one vertical seed)"
+    "Job Jugaad: index resumes + first JD gap Excel"
   ],
   "weights": [
-    { "ventureId": "whatsapp-voice", "weight": 35, "label": "WhatsApp / Voice" },
-    { "ventureId": "youtube-editor", "weight": 20, "label": "YouTube editor" },
-    { "ventureId": "research-frontier", "weight": 15, "label": "Research Frontier" },
+    { "ventureId": "whatsapp-voice", "weight": 33, "label": "WhatsApp / Voice" },
+    { "ventureId": "youtube-editor", "weight": 18, "label": "YouTube editor" },
+    { "ventureId": "research-frontier", "weight": 14, "label": "Research Frontier" },
     { "ventureId": "procedural-city", "weight": 15, "label": "Procedural City" },
     { "ventureId": "comic-engine", "weight": 10, "label": "ComicEngine" },
     { "ventureId": "kingdom-ops", "weight": 5, "label": "Kingdom ops" },
+    { "ventureId": "job-jugaad", "weight": 5, "label": "Job Jugaad" },
     { "ventureId": "shorts", "weight": 0, "label": "Shorts (parked)" }
   ]
 }

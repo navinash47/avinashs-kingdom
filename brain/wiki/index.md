@@ -23,6 +23,7 @@ Catalog of pages. Agents update this on every ingest. Last full refresh: **2026-
 | [comic-engine](ventures/comic-engine.md) | ComicMainEngine · 22/22 tasks · Desktop path |
 | [kingdom-ops](ventures/kingdom-ops.md) | Steward · 70% · 7 kills · disk 45.8% |
 | [shorts](ventures/shorts.md) | Parked |
+| [job-jugaad](ventures/job-jugaad.md) | AI apply · resume pick-only · headed ATS · Gmail prompted |
 
 ## Concepts
 
@@ -35,6 +36,7 @@ Catalog of pages. Agents update this on every ingest. Last full refresh: **2026-
 | [llm-wiki](concepts/llm-wiki.md) | Karpathy compile-once pattern |
 | [where-files-live](concepts/where-files-live.md) | Path map for all provinces |
 | [task-observer-headroom](concepts/task-observer-headroom.md) | Meta-skill observer vs token compressor — roles split |
+| [job-jugaad](concepts/job-jugaad.md) | Resume pick-only apply agent + prompt-for-secrets |
 
 ## Entities
 

@@ -46,5 +46,13 @@
     "focus": "Subscription kill list, disk reclaim, expense hygiene, token caps.",
     "tokenBudgetUsd": 10,
     "tokenUsedUsd": 2
+  },
+  {
+    "id": "agent-jugaad",
+    "name": "Agent Jugaad",
+    "ventureId": "job-jugaad",
+    "focus": "JD→best resume pick (read-only), headed ATS apply, Gmail OTP prompts, Excel skill gaps.",
+    "tokenBudgetUsd": 25,
+    "tokenUsedUsd": 0
   }
 ]

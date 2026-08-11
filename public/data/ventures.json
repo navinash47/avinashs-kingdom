@@ -6,7 +6,7 @@
     "progress": 8,
     "priority": "P0",
     "status": "active",
-    "weight": 35,
+    "weight": 33,
     "agentId": "agent-cash",
     "repoPath": "/Users/avinashnandyala/Projects/whatsapp-voice-agents",
     "nextMilestone": "Pick first vertical (real estate OR coaching) and write offer one-pager.",
@@ -19,7 +19,7 @@
     "progress": 5,
     "priority": "P0",
     "status": "active",
-    "weight": 20,
+    "weight": 18,
     "agentId": "agent-cut",
     "repoPath": "/Users/avinashnandyala/Projects/youtube-editor-lab",
     "nextMilestone": "Spec the two surfaces: Clip Researcher + Screenplay Desk.",
@@ -32,7 +32,7 @@
     "progress": 10,
     "priority": "P1",
     "status": "active",
-    "weight": 15,
+    "weight": 14,
     "agentId": "agent-atlas",
     "repoPath": "/Users/avinashnandyala/Projects/research-frontier-lab",
     "nextMilestone": "Seed one vertical: generative comics / multimodal consistency papers.",
@@ -74,7 +74,7 @@
     "weight": 5,
     "agentId": "agent-steward",
     "repoPath": "/Users/avinashnandyala/Projects/avinashs-kingdom",
-    "nextMilestone": "Cancel/review 11 kill-list seats; reclaim low-risk disk (45.8% used)",
+    "nextMilestone": "Run subscription + storage audits, then re-sync",
     "notes": "Subscription audit + Mac storage audit live here."
   },
   {
@@ -89,5 +89,18 @@
     "repoPath": null,
     "nextMilestone": "Do not focus",
     "notes": "Parked per portfolio decision."
+  },
+  {
+    "id": "job-jugaad",
+    "name": "Job Jugaad",
+    "version": "Phase 3 · Headed apply + Gmail prompt",
+    "progress": 70,
+    "priority": "P1",
+    "status": "active",
+    "weight": 5,
+    "agentId": "agent-jugaad",
+    "repoPath": "/Users/avinashnandyala/Projects/job-jugaad",
+    "nextMilestone": "Add your real company list to config/companies.yaml and run `npm run discover`",
+    "notes": "Next: 1) Add your real company list to config/companies.yaml and run `npm run discover` · 2) Run `npm run apply` locally (headed) — enter Gmail + App Password when prompted · 3) Review data/gaps.xlsx and learn listed JD gaps (resumes stay unchanged)"
   }
 ]

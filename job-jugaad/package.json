@@ -1,0 +1,40 @@
+{
+  "name": "job-jugaad",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Job Jugaad — AI apply agent: pick best resume, headed apply, Gmail OTP prompts, Excel gaps",
+  "scripts": {
+    "dev": "vite --config apps/dashboard/vite.config.ts",
+    "build:ui": "vite build --config apps/dashboard/vite.config.ts",
+    "index:resumes": "tsx scripts/index-resumes.ts",
+    "score:jd": "tsx scripts/score-jd.ts",
+    "discover": "tsx scripts/discover.ts",
+    "apply": "tsx scripts/run-apply.ts",
+    "gaps:demo": "tsx scripts/score-jd.ts --demo",
+    "serve": "tsx scripts/serve-ui.ts",
+    "smoke": "tsx scripts/smoke.ts",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "exceljs": "^4.4.0",
+    "imapflow": "^1.0.184",
+    "js-yaml": "^4.1.0",
+    "mailparser": "^3.7.2",
+    "playwright": "^1.54.2",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "yaml": "^2.8.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/mailparser": "^3.4.5",
+    "@types/node": "^24.2.0",
+    "@types/react": "^19.1.9",
+    "@types/react-dom": "^19.1.7",
+    "@vitejs/plugin-react": "^4.7.0",
+    "tsx": "^4.20.3",
+    "typescript": "^5.9.2",
+    "vite": "^7.0.6"
+  }
+}

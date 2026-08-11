@@ -1,0 +1,29 @@
+# Target companies — add board tokens / career URLs.
+# ats: greenhouse | lever | ashby | career_page
+companies:
+  - id: stripe
+    name: Stripe
+    ats: greenhouse
+    board_token: stripe
+    career_url: https://stripe.com/jobs
+    notes: Example — replace/extend with your list
+  - id: notion
+    name: Notion
+    ats: greenhouse
+    board_token: notion
+    career_url: https://www.notion.so/careers
+  - id: anthropic
+    name: Anthropic
+    ats: greenhouse
+    board_token: anthropic
+    career_url: https://www.anthropic.com/careers
+  - id: openai
+    name: OpenAI
+    ats: ashby
+    board_token: openai
+    career_url: https://openai.com/careers
+  - id: vercel
+    name: Vercel
+    ats: ashby
+    board_token: vercel
+    career_url: https://vercel.com/careers

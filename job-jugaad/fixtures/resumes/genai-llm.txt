@@ -1,0 +1,4 @@
+Avinash Nandyala — GenAI / LLM Engineer
+Skills: RAG, agents, LangChain, prompt engineering, OpenAI/Anthropic APIs, evaluation
+Experience: Built LLM apps, retrieval pipelines, and agent workflows.
+Keywords: genai, llm, rag, agents, langchain, multimodal

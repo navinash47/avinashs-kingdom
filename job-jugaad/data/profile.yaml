@@ -1,0 +1,17 @@
+# Form facts only — not a resume rewrite. Used for ATS field fill.
+name:
+  first: Avinash
+  last: Nandyala
+  full: Avinash Nandyala
+email: ""  # optional display; Gmail login is prompted separately each run
+phone: ""
+location: ""
+linkedin: ""
+github: ""
+website: ""
+work_authorization: ""
+sponsorship_needed: ""
+years_experience: ""
+canned_answers:
+  why_company: "I build reliable AI/backend systems and want to contribute where the product leverage is high."
+  biggest_strength: "Shipping end-to-end systems from data/models to production APIs."

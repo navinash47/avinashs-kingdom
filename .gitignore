@@ -12,6 +12,12 @@ dist
 dist-ssr
 *.local
 
+# Secrets — never commit (prompt interactively per kingdom-secrets rule)
+.env
+.env.*
+env.txt
+**/env.txt
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
