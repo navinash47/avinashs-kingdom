@@ -67,3 +67,18 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 **Suggested improvement:** Document `chromiumSandbox: true` first, env force-no-sandbox only as escape hatch; verify via process cmdline after launch.
 
 **Principle:** Prefer the library’s intentional sandbox toggle over filtering default args — fingerprint flags often sit behind named options, not just argv lists.
+
+### Observation 4: Standalone OSS extract when product outgrows private portfolio
+
+**Status:** OPEN
+**Date:** 2026-08-11
+**Session context:** Job Jugaad public repo request separate from Kingdom
+**Skill:** New skill candidate: oss-extract-from-portfolio
+**Type:** open-source
+**Phase/Area:** packaging
+
+**Issue:** Cloud agent tokens can push to an existing private repo but cannot create a new public GitHub repository (403 integration scope), so OSS extracts need a one-click empty-repo step from the human before push.
+
+**Suggested improvement:** Document PUBLISH.md + ready git tree + tarball artifact; ask user to create empty public repo then push.
+
+**Principle:** When shipping a product out of a private portfolio, build a clean standalone tree first; treat remote creation as a human gate when the agent token lacks `repo` create scope.
