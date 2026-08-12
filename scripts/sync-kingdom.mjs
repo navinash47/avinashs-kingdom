@@ -37,6 +37,11 @@ const STATUS_SOURCES = [
     id: 'research-frontier',
     statusPath: path.join(home, 'Projects/research-frontier-lab/STATUS.md'),
   },
+  {
+    id: 'job-jugaad',
+    statusPath: path.join(home, 'Projects/job-jugaad/STATUS.md'),
+    fallbackStatusPath: path.join(root, 'job-jugaad/STATUS.md'),
+  },
 ]
 
 function readJson(p, fallback = null) {
@@ -334,11 +339,16 @@ function syncVentures({ sub, mac }) {
   const patches = {}
 
   for (const src of STATUS_SOURCES) {
-    if (!fs.existsSync(src.statusPath)) {
+    const statusPath = fs.existsSync(src.statusPath)
+      ? src.statusPath
+      : src.fallbackStatusPath && fs.existsSync(src.fallbackStatusPath)
+        ? src.fallbackStatusPath
+        : null
+    if (!statusPath) {
       console.warn('Missing STATUS.md', src.statusPath)
       continue
     }
-    const parsed = parseStatusMd(fs.readFileSync(src.statusPath, 'utf8'))
+    const parsed = parseStatusMd(fs.readFileSync(statusPath, 'utf8'))
     patches[src.id] = parsed
     console.log('Status', src.id, '→', parsed.version, parsed.progress + '%')
   }

@@ -1,0 +1,87 @@
+# Crawl sources for Job Jugaad
+# LinkedIn: listing URLs only (no Easy Apply). Prefer company ATS apply links extracted from posts.
+# web/firecrawl: public career pages + job boards via OmniRoute Firecrawl when available.
+
+default_resume_track: general  # Avinash_Nandyala_Resume — main
+
+queries:
+  - software engineer
+  - backend engineer
+  - machine learning engineer
+  - LLM engineer
+  - applied AI engineer
+  - ML infrastructure engineer
+
+linkedin_search_urls:
+  # f_JT=F = Full-time, location=United States, past 24h
+  - https://www.linkedin.com/jobs/search/?keywords=software%20engineer&location=United%20States&f_TPR=r86400&f_JT=F
+  - https://www.linkedin.com/jobs/search/?keywords=backend%20engineer&location=United%20States&f_TPR=r86400&f_JT=F
+  - https://www.linkedin.com/jobs/search/?keywords=machine%20learning%20engineer&location=United%20States&f_TPR=r86400&f_JT=F
+  - https://www.linkedin.com/jobs/search/?keywords=LLM%20OR%20GenAI%20OR%20%22applied%20AI%22%20engineer&location=United%20States&f_TPR=r86400&f_JT=F
+
+web_job_boards:
+  - name: Greenhouse directory sample
+    urls:
+      - https://boards.greenhouse.io/embed/job_board?for=stripe
+      - https://boards.greenhouse.io/embed/job_board?for=anthropic
+      - https://boards.greenhouse.io/embed/job_board?for=databricks
+      - https://boards.greenhouse.io/embed/job_board?for=robinhood
+      - https://boards.greenhouse.io/embed/job_board?for=coinbase
+  - name: Lever postings
+    urls:
+      - https://jobs.lever.co/netflix
+      - https://jobs.lever.co/spotify
+  - name: Ashby boards
+    urls:
+      - https://jobs.ashbyhq.com/openai
+      - https://jobs.ashbyhq.com/anthropic
+      - https://jobs.ashbyhq.com/ramp
+
+# Extra ATS companies beyond config/companies.yaml
+extra_companies:
+  - id: databricks
+    name: Databricks
+    ats: greenhouse
+    board_token: databricks
+    career_url: https://www.databricks.com/company/careers
+  - id: robinhood
+    name: Robinhood
+    ats: greenhouse
+    board_token: robinhood
+    career_url: https://careers.robinhood.com
+  - id: coinbase
+    name: Coinbase
+    ats: greenhouse
+    board_token: coinbase
+    career_url: https://www.coinbase.com/careers
+  - id: netflix
+    name: Netflix
+    ats: lever
+    board_token: netflix
+    career_url: https://jobs.netflix.com
+  - id: spotify
+    name: Spotify
+    ats: lever
+    board_token: spotify
+    career_url: https://www.lifeatspotify.com
+  - id: ramp
+    name: Ramp
+    ats: ashby
+    board_token: ramp
+    career_url: https://ramp.com/careers
+  - id: scaleai
+    name: Scale AI
+    ats: ashby
+    board_token: scaleai
+    career_url: https://scale.com/careers
+  - id: adept
+    name: Adept
+    ats: ashby
+    board_token: adept
+    career_url: https://www.adept.ai/careers
+
+min_fit_to_queue: 55
+specialized_margin: 0.12  # only leave main resume if specialized beats by this
+apply_batch_limit: 5
+full_time_only: true  # never auto-apply internships / part-time / co-op
+us_only: true         # US / US-remote only — skip Brazil, LatAm, EMEA-only, etc.

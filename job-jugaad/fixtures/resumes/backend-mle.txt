@@ -1,0 +1,4 @@
+Avinash Nandyala — Backend / Machine Learning Engineer
+Skills: Python, PyTorch, model serving, MLOps, feature stores, FastAPI, Kubernetes
+Experience: Built training/serving pipelines and backend APIs for ML products.
+Keywords: machine learning engineer, mle, backend, mlops, model serving

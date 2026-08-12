@@ -1,0 +1,38 @@
+# Resume library — paths only. Files are NEVER modified by Job Jugaad.
+# Prefer Desktop originals; fixtures exist for cloud/dev when Desktop is absent.
+#
+# MAIN resume (default for apply): general → Avinash_Nandyala_Resume
+# Specialized tracks only win when they clearly beat main (see specialized_margin).
+
+tracks:
+  - id: general
+    label: Avinash Resume (main)
+    keywords: [software engineer, full stack, backend, python, typescript, distributed systems]
+    paths:
+      - ~/Desktop/Avinash_Nandyala_Resume.pdf
+      - ~/Desktop/Avinash_Nandyala_Resume.docx
+      - fixtures/resumes/general.txt
+  - id: backend-mle
+    label: Backend / MLE
+    keywords: [machine learning engineer, mle, backend, mlops, model serving, pytorch, feature store]
+    paths:
+      - ~/Desktop/Avinash_Nandyala_Backend_MLE_resume.docx
+      - fixtures/resumes/backend-mle.txt
+  - id: backend
+    label: Backend
+    keywords: [backend engineer, api, microservices, golang, java, databases, kafka]
+    paths:
+      - ~/Desktop/Avinash_Nandyala_Backend_Resume.docx
+      - fixtures/resumes/backend.txt
+  - id: genai-llm
+    label: GenAI / LLM
+    keywords: [genai, llm, rag, agents, langchain, prompt, openai, anthropic, multimodal]
+    paths:
+      - ~/Desktop/Avinash_Nandyala_GENAI_LLM.docx
+      - fixtures/resumes/genai-llm.txt
+  - id: healthcare-ai
+    label: Healthcare AI
+    keywords: [healthcare, clinical, hipaa, medical, fhir, radiology, biotech]
+    paths:
+      - ~/Desktop/Avinash_Nandyala_Healthcare_AI_resume.docx
+      - fixtures/resumes/healthcare-ai.txt

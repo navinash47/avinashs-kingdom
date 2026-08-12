@@ -1,49 +1,19 @@
 {
-  "synced_at": "2026-08-11T05:56:59.006Z",
+  "synced_at": "2026-08-11T23:55:05.679Z",
   "patches": {
-    "whatsapp-voice": {
-      "version": "v0.1",
-      "progress": 8,
-      "priority": "P0",
-      "nextMilestone": "Pick first vertical (real estate OR coaching) and write offer one-pager.",
-      "notes": "Next: 1) Pick first vertical (real estate OR coaching) and write offer one-pager. · 2) Draft WhatsApp conversation script (Hindi/English) for lead qualification. · 3) Build minimal demo: webhook or n8n stub that answers FAQs and books a call."
-    },
-    "youtube-editor": {
-      "version": "v0.1",
-      "progress": 5,
-      "priority": "P0",
-      "nextMilestone": "Spec the two surfaces: Clip Researcher + Screenplay Desk.",
-      "notes": "Next: 1) Spec the two surfaces: Clip Researcher + Screenplay Desk. · 2) Define asset provenance schema (source URL, fair-use note, subclip times). · 3) Dogfood: pick one channel idea and write a beat sheet by hand using the schema."
-    },
-    "research-frontier": {
-      "version": "v0.1",
-      "progress": 10,
+    "job-jugaad": {
+      "version": "Phase 6 · Retry→manual-apply + 15m digest + sandboxed Chrome",
+      "progress": 95,
       "priority": "P1",
-      "nextMilestone": "Seed one vertical: generative comics / multimodal consistency papers.",
-      "notes": "Next: 1) Seed one vertical: generative comics / multimodal consistency papers. · 2) Ingest abstracts + citation graph via OpenAlex / Semantic Scholar (no full-PDF dump). · 3) Prototype claim/limitation extraction → ranked open questions for that club."
-    },
-    "procedural-city": {
-      "version": "Stage C · Phase 26",
-      "progress": 28,
-      "priority": "P1",
-      "status": "active",
-      "nextMilestone": "Phase 26: Road mesh generation (pending)",
-      "notes": "City tracking: 26/92 phases pass · updated 2026-08-10T10:55:25.125175+00:00"
-    },
-    "comic-engine": {
-      "version": "V1 · Phase 2.2",
-      "progress": 55,
-      "priority": "P2",
-      "status": "active",
-      "nextMilestone": "Improve consistency pipeline after City P1 milestones",
-      "notes": "Secondary to City for now. Monetize via B2B later."
+      "nextMilestone": "Run `npm run tick:15m` every 15 min (crawl LI + Firecrawl → apply ≤3× → digest)",
+      "notes": "Next: 1) Run `npm run tick:15m` every 15 min (crawl LI + Firecrawl → apply ≤3× → digest) · 2) Apply manually from digest emails (Cloudflare / `manual-apply` links) · 3) Keep Gmail + LinkedIn process env set for the automation process only"
     },
     "kingdom-ops": {
       "version": "v1.0",
       "progress": 70,
       "priority": "P1",
       "status": "active",
-      "nextMilestone": "Cancel/review 11 kill-list seats; reclaim low-risk disk (45.8% used)",
+      "nextMilestone": "Run subscription + storage audits, then re-sync",
       "notes": "Subscription audit + Mac storage audit live here."
     }
   }

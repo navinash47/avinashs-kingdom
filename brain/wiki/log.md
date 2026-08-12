@@ -2,6 +2,18 @@
 
 Append-only. Prefix each entry with `## [YYYY-MM-DD] <op> | <title>` so recent activity is greppable.
 
+## [2026-08-11] ingest | Job Jugaad crawl DB + auto-apply
+
+SQLite `data/job-jugaad.sqlite` for companies/jobs/applications. Crawl ATS + web boards (LinkedIn headed harvest optional). Main resume = Avinash Resume (`general`). Scripts: `crawl:jobs`, `auto:apply`, `db:status`, `automations.yaml` for Cursor Automations.
+
+## [2026-08-11] ingest | Job Jugaad profile crawl + live apply test
+
+Enriched `job-jugaad/data/profile.yaml` (LinkedIn/GitHub/lab + F-1 OPT sponsorship facts). Added Q&A memory → [[entities/avinash-profile]] + [[concepts/job-jugaad-qa-memory]]. Discovered Stripe/Anthropic/OpenAI roles; ranked top-1 each. Cloud apply: Stripe submitted; Anthropic/OpenAI waiting-on-you (CAPTCHA / no TTY). Mac: finish CAPTCHA + `npm run verify:mail`.
+
+## [2026-08-11] ingest | Job Jugaad venture
+
+Seeded Kingdom venture `job-jugaad` + Agent Jugaad, repo scaffold (resume pick-only, headed apply, Gmail prompted secrets, Excel gaps), alwaysApply `kingdom-secrets` rule. Concept [[concepts/job-jugaad]]; venture [[ventures/job-jugaad]].
+
 ## [2026-08-11] ops | Headroom = MCP only (OmniRoute keeps Base URL)
 
 Cursor Override Base URL stays OmniRoute. Headroom used via MCP compress/retrieve/stats; proxy optional for stats only. Updated [[ops/headroom]].

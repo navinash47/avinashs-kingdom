@@ -1,0 +1,27 @@
+# Cursor automation hooks for Job Jugaad
+#
+# Cadence (do NOT run every minute — looks bot-like and burns CAPTCHAs):
+# Primary every 15m: npm run tick:15m
+#   → crawl ATS + Firecrawl/web (+ LinkedIn auth if LI env set)
+#   → auto:apply (≤3 attempts per jid → manual-apply / not applied)
+#   → notify:digest (email Cloudflare / unapplied links for manual apply)
+#
+# On CAPTCHA: digest email with links — you apply manually in browser
+# Chrome: chromiumSandbox=true by default (no --no-sandbox); set JOB_JUGAAD_NO_SANDBOX=1 only if launch fails
+# Main resume track: general (Avinash_Nandyala_Resume)
+# DB: data/job-jugaad.sqlite
+# Secrets: process env / prompt only — never .env
+
+name: job-jugaad-automations
+interval_minutes: 15
+steps:
+  tick:
+    command: npm run tick:15m
+    cadence: every_15_min
+    notes: Crawl (LI + Firecrawl) + apply retries + manual-link digest email
+  status:
+    command: npm run db:status
+    cadence: hourly
+  verify:
+    command: npm run verify:mail
+    cadence: hourly

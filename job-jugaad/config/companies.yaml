@@ -1,0 +1,47 @@
+# Target companies — synced into SQLite on crawl. Extra boards also in crawl-sources.yaml.
+companies:
+  - id: stripe
+    name: Stripe
+    ats: greenhouse
+    board_token: stripe
+    career_url: https://stripe.com/jobs
+  - id: anthropic
+    name: Anthropic
+    ats: greenhouse
+    board_token: anthropic
+    career_url: https://www.anthropic.com/careers
+  - id: openai
+    name: OpenAI
+    ats: ashby
+    board_token: openai
+    career_url: https://openai.com/careers
+  - id: databricks
+    name: Databricks
+    ats: greenhouse
+    board_token: databricks
+    career_url: https://www.databricks.com/company/careers
+  - id: robinhood
+    name: Robinhood
+    ats: greenhouse
+    board_token: robinhood
+    career_url: https://careers.robinhood.com
+  - id: coinbase
+    name: Coinbase
+    ats: greenhouse
+    board_token: coinbase
+    career_url: https://www.coinbase.com/careers
+  - id: netflix
+    name: Netflix
+    ats: lever
+    board_token: netflix
+    career_url: https://jobs.netflix.com
+  - id: spotify
+    name: Spotify
+    ats: lever
+    board_token: spotify
+    career_url: https://www.lifeatspotify.com
+  - id: ramp
+    name: Ramp
+    ats: ashby
+    board_token: ramp
+    career_url: https://ramp.com/careers

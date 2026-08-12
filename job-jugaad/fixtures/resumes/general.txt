@@ -1,0 +1,4 @@
+Avinash Nandyala — Software Engineer
+Skills: Python, TypeScript, distributed systems, APIs, cloud, SQL, React
+Experience: Backend and full-stack product engineering; shipped production services.
+Keywords: software engineer, full stack, backend, python, typescript
