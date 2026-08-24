@@ -12,6 +12,25 @@
   margin: 0 0 16px;
 }
 
+.research-live-banner {
+  border: 1px solid color-mix(in srgb, var(--brass) 55%, var(--stroke));
+  background: color-mix(in srgb, var(--brass) 10%, transparent);
+  padding: 14px 16px;
+  margin: 0 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.research-live-banner h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.research-live-banner .live-train {
+  margin: 0;
+}
+
 .research-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));

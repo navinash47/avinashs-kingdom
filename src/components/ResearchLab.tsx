@@ -115,6 +115,10 @@ function showLiveTraining(project: LabProject) {
   return project.id === 'beamdojo' || project.training != null
 }
 
+function pinBeamdojoFirst(projects: LabProject[]) {
+  return [...projects].sort((a, b) => Number(b.id === 'beamdojo') - Number(a.id === 'beamdojo'))
+}
+
 function LiveTrainingPanel({ project }: { project: LabProject }) {
   const training = project.training ?? null
   const statusRaw = training?.status
@@ -314,7 +318,8 @@ export function ResearchLab({ onOpenVenture, onOpenGraph, onOpenExpenses }: Rese
     }
   }, [])
 
-  const projects = data?.projects ?? []
+  const projects = pinBeamdojoFirst(data?.projects ?? [])
+  const beamdojo = projects.find((p) => p.id === 'beamdojo') ?? null
 
   return (
     <section className="panel research-lab">
@@ -349,6 +354,17 @@ export function ResearchLab({ onOpenVenture, onOpenGraph, onOpenExpenses }: Rese
         <p className="muted">No research projects yet.</p>
       ) : null}
 
+      {beamdojo && showLiveTraining(beamdojo) ? (
+        <section id="live-training" className="research-live-banner" aria-label="BeamDojo live training">
+          <h3>BeamDojo live training</h3>
+          <p className="muted tiny">
+            This is the Kingdom webpage for the GPU job. Weights &amp; Biases is the live metric UI.
+            Status refreshes every 5s.
+          </p>
+          <LiveTrainingPanel project={beamdojo} />
+        </section>
+      ) : null}
+
       <div className="research-grid">
         {projects.map((p) => {
           const diagram = firstDiagram(p)
@@ -367,7 +383,7 @@ export function ResearchLab({ onOpenVenture, onOpenGraph, onOpenExpenses }: Rese
               </p>
               {p.nextMilestone ? <p>{p.nextMilestone}</p> : null}
 
-              {showLiveTraining(p) ? <LiveTrainingPanel project={p} /> : null}
+              {showLiveTraining(p) && p.id !== 'beamdojo' ? <LiveTrainingPanel project={p} /> : null}
 
               {diagram?.svg_inline ? (
                 <div
