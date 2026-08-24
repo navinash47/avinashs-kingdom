@@ -147,6 +147,43 @@ describe('loadTrainingStatus', () => {
     assert.equal(got.status, 'unknown')
   })
 
+  it('passes PPO metrics and history through (does not drop them)', () => {
+    const got = normalizeTrainingStatus({
+      status: 'running',
+      wandb_project: 'beamdojo',
+      terrain: 'beam',
+      task: 'Isaac-BeamDojo-Stage1-H1-v0',
+      mean_reward: 2.5,
+      mean_episode_length: 40,
+      fps: 1200,
+      value_loss: 0.3,
+      foothold_value_loss: 0.1,
+      history: [
+        { iteration: 0, mean_reward: 1 },
+        { iteration: 10, mean_reward: 2.5, fps: 1100 },
+        { iteration: 11 },
+      ],
+    })
+    assert.equal(got.status, 'running')
+    assert.equal(got.terrain, 'beam')
+    assert.equal(got.task, 'Isaac-BeamDojo-Stage1-H1-v0')
+    assert.equal(got.mean_reward, 2.5)
+    assert.equal(got.mean_episode_length, 40)
+    assert.equal(got.fps, 1200)
+    assert.equal(got.value_loss, 0.3)
+    assert.equal(got.foothold_value_loss, 0.1)
+    assert.deepEqual(got.history, [
+      { iteration: 0, mean_reward: 1 },
+      { iteration: 10, mean_reward: 2.5, fps: 1100 },
+    ])
+  })
+
+  it('does not invent metrics when the snapshot has none', () => {
+    const got = normalizeTrainingStatus({ status: 'idle', wandb_project: 'beamdojo' })
+    assert.equal(got.mean_reward, undefined)
+    assert.equal(got.history, undefined)
+  })
+
   it('loadTrainingStatusFromRepo uses NFS logs when tracking only has the example', () => {
     const dir = scratch()
     fs.mkdirSync(path.join(dir, 'tracking'))

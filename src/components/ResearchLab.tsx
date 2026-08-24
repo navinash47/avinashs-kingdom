@@ -20,12 +20,21 @@ type LabDiagram = {
   svg_inline?: string | null
 }
 
+type LabHistoryPoint = {
+  iteration?: number
+  mean_reward?: number
+  mean_episode_length?: number
+  fps?: number
+}
+
 type LabTraining = {
   updated?: string | null
   status?: 'idle' | 'running' | 'unknown' | string
   host?: string | null
   robot?: string | null
   stage?: number | string | null
+  terrain?: string | null
+  task?: string | null
   num_envs?: number | null
   max_iterations?: number | null
   iteration?: number | null
@@ -37,6 +46,14 @@ type LabTraining = {
   checkpoint?: string | null
   note?: string | null
   source?: string | null
+  mean_reward?: number | null
+  mean_episode_length?: number | null
+  fps?: number | null
+  value_loss?: number | null
+  surrogate_loss?: number | null
+  entropy?: number | null
+  foothold_value_loss?: number | null
+  history?: LabHistoryPoint[] | null
 }
 
 type LabProject = {
@@ -110,6 +127,43 @@ function statusLabel(status: string) {
   return 'Unknown'
 }
 
+function formatMetric(value: number) {
+  if (!Number.isFinite(value)) return '—'
+  const abs = Math.abs(value)
+  if (abs >= 100) return value.toFixed(0)
+  if (abs >= 10) return value.toFixed(1)
+  return value.toFixed(2)
+}
+
+function RewardSparkline({ history }: { history: LabHistoryPoint[] }) {
+  const pts = history.filter((p) => Number.isFinite(Number(p.mean_reward)))
+  if (pts.length < 2) return null
+  const ys = pts.map((p) => Number(p.mean_reward))
+  const min = Math.min(...ys)
+  const max = Math.max(...ys)
+  const span = max - min || 1
+  const w = 320
+  const h = 56
+  const d = pts
+    .map((p, i) => {
+      const x = (i / (pts.length - 1)) * w
+      const y = h - ((Number(p.mean_reward) - min) / span) * (h - 4) - 2
+      return `${i === 0 ? 'M' : 'L'}${x.toFixed(1)} ${y.toFixed(1)}`
+    })
+    .join(' ')
+  return (
+    <figure className="live-spark">
+      <figcaption className="eyebrow">Mean reward</figcaption>
+      <svg viewBox={`0 0 ${w} ${h}`} role="img" aria-label="Mean reward over recent iterations">
+        <path d={d} fill="none" stroke="currentColor" strokeWidth="2" />
+      </svg>
+      <p className="muted tiny">
+        {formatMetric(ys[0])} → {formatMetric(ys[ys.length - 1])}
+      </p>
+    </figure>
+  )
+}
+
 /** Keep in sync with showLiveTrainingCard in scripts/lib/research-lab.mjs. */
 function showLiveTraining(project: LabProject) {
   return project.id === 'beamdojo' || project.training != null
@@ -132,11 +186,26 @@ function LiveTrainingPanel({ project }: { project: LabProject }) {
   if (training?.host) meta.push({ label: 'Host', value: String(training.host) })
   if (training?.robot) meta.push({ label: 'Robot', value: String(training.robot) })
   if (training?.stage != null) meta.push({ label: 'Stage', value: String(training.stage) })
+  if (training?.terrain) meta.push({ label: 'Terrain', value: String(training.terrain) })
   if (training?.num_envs != null) meta.push({ label: 'Envs', value: String(training.num_envs) })
   if (training?.iteration != null || training?.max_iterations != null) {
     const cur = training?.iteration != null ? String(training.iteration) : '—'
     const max = training?.max_iterations != null ? String(training.max_iterations) : '—'
     meta.push({ label: 'Iteration', value: `${cur} / ${max}` })
+  }
+  if (training?.mean_reward != null) {
+    meta.push({ label: status === 'idle' ? 'Last reward' : 'Mean reward', value: formatMetric(training.mean_reward) })
+  }
+  if (training?.mean_episode_length != null) {
+    meta.push({ label: 'Ep length', value: formatMetric(training.mean_episode_length) })
+  }
+  if (training?.fps != null) meta.push({ label: 'FPS', value: formatMetric(training.fps) })
+  if (training?.value_loss != null) meta.push({ label: 'Value loss', value: formatMetric(training.value_loss) })
+  if (training?.surrogate_loss != null) {
+    meta.push({ label: 'Surrogate', value: formatMetric(training.surrogate_loss) })
+  }
+  if (training?.foothold_value_loss != null) {
+    meta.push({ label: 'Foothold VF', value: formatMetric(training.foothold_value_loss) })
   }
   if (training?.logger) meta.push({ label: 'Logger', value: String(training.logger) })
 
@@ -145,8 +214,8 @@ function LiveTrainingPanel({ project }: { project: LabProject }) {
       ? 'Idle — no long train is running from the last status snapshot.'
       : status === 'running'
         ? training?.source === 'wandb'
-          ? 'A W&B run has a fresh heartbeat. Open Weights & Biases for live curves.'
-          : 'A train is marked running in the last synced JSON. Open Weights & Biases for live curves.'
+          ? 'A W&B run has a fresh heartbeat. Reward/loss below are the latest W&B summary (full curves stay on Weights & Biases).'
+          : 'A train is marked running in the last synced JSON. Reward/loss below are the last PPO snapshot (every 10 iters).'
         : 'Unknown — no live status file on last sync (or it could not be read). Not claiming a train is running.'
 
   const wandbHint =
@@ -182,6 +251,7 @@ function LiveTrainingPanel({ project }: { project: LabProject }) {
           ))}
         </dl>
       ) : null}
+      {training?.history?.length ? <RewardSparkline history={training.history} /> : null}
       <a
         className="btn primary live-train-wandb"
         href={link.href}
@@ -191,9 +261,10 @@ function LiveTrainingPanel({ project }: { project: LabProject }) {
         Open Weights &amp; Biases
       </a>
       <p className="live-train-how">
-        Lambda has no public Isaac webpage. Weights &amp; Biases is the browser UI for live
-        metrics. This card re-reads status every 5s from the BeamDojo checkout (dev) or last
-        sync.
+        Lambda has no public Isaac webpage. This card shows the last PPO snapshot (mean reward,
+        losses, FPS) when the GPU writer or a fresh W&amp;B summary provides them. Weights &amp;
+        Biases remains the full live-curve UI. Status re-reads every 5s from the BeamDojo checkout
+        (dev) or last sync.
         {link.needsProjectHint ? (
           <>
             {' '}
@@ -365,8 +436,9 @@ export function ResearchLab({ onOpenVenture, onOpenGraph, onOpenExpenses }: Rese
         <section id="live-training" className="research-live-banner" aria-label="BeamDojo live training">
           <h3>BeamDojo live training</h3>
           <p className="muted tiny">
-            This is the Kingdom webpage for the GPU job. Weights &amp; Biases is the live metric UI.
-            Status refreshes every 5s.
+            This is the Kingdom webpage for the GPU job. Mean reward and losses appear here when a
+            train is writing status or W&amp;B has a fresh heartbeat. Full curves stay on Weights
+            &amp; Biases. Status refreshes every 5s.
           </p>
           <LiveTrainingPanel project={beamdojo} />
         </section>

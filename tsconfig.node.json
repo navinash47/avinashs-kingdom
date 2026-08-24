@@ -19,5 +19,5 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["vite.config.ts", "scripts/lib/wandb-live.d.mts"]
+  "include": ["vite.config.ts", "scripts/lib/wandb-live.d.mts", "scripts/lib/research-lab.d.mts"]
 }

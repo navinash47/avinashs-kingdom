@@ -5,6 +5,51 @@ import { resolveRepoPath } from './registry.mjs'
 export const DEFAULT_WANDB_PROJECT = 'beamdojo'
 export const DEFAULT_TRAINING_STATUS_REL = 'tracking/training-status.json'
 const ALLOWED_STATUS = new Set(['idle', 'running', 'unknown'])
+const HISTORY_CAP = 120
+const METRIC_NUM_KEYS = [
+  'mean_reward',
+  'mean_episode_length',
+  'fps',
+  'value_loss',
+  'surrogate_loss',
+  'entropy',
+  'foothold_value_loss',
+  'collection_time',
+  'learn_time',
+  'num_steps_per_env',
+]
+const METRIC_STR_KEYS = ['terrain', 'task']
+
+function extraTrainingFields(raw) {
+  const extra = {}
+  for (const key of METRIC_NUM_KEYS) {
+    if (raw[key] == null || raw[key] === '') continue
+    const n = Number(raw[key])
+    if (Number.isFinite(n)) extra[key] = n
+  }
+  for (const key of METRIC_STR_KEYS) {
+    if (typeof raw[key] === 'string' && raw[key].trim()) extra[key] = raw[key].trim()
+  }
+  if (Array.isArray(raw.history)) extra.history = normalizeHistory(raw.history)
+  return extra
+}
+
+export function normalizeHistory(rows) {
+  if (!Array.isArray(rows)) return []
+  const out = []
+  for (const row of rows) {
+    if (!row || typeof row !== 'object') continue
+    const point = {}
+    const iteration = Number(row.iteration)
+    if (Number.isFinite(iteration)) point.iteration = iteration
+    for (const key of ['mean_reward', 'mean_episode_length', 'fps']) {
+      const n = Number(row[key])
+      if (Number.isFinite(n)) point[key] = n
+    }
+    if (point.iteration != null && Object.keys(point).length > 1) out.push(point)
+  }
+  return out.slice(-HISTORY_CAP)
+}
 
 /** Research Lab: BeamDojo always, others only when sync found a status file. */
 export function showLiveTrainingCard(project) {
@@ -50,6 +95,8 @@ export function normalizeTrainingStatus(raw, { source = 'live' } = {}) {
     host: raw.host ?? null,
     robot: raw.robot ?? null,
     stage: raw.stage ?? null,
+    terrain: typeof raw.terrain === 'string' ? raw.terrain : null,
+    task: typeof raw.task === 'string' ? raw.task : null,
     num_envs: raw.num_envs ?? null,
     max_iterations: raw.max_iterations ?? null,
     iteration: raw.iteration ?? null,
@@ -61,6 +108,7 @@ export function normalizeTrainingStatus(raw, { source = 'live' } = {}) {
     checkpoint: raw.checkpoint ?? null,
     note: raw.note ?? null,
     source,
+    ...extraTrainingFields(raw),
   }
 }
 

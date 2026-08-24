@@ -5,14 +5,115 @@ import path from 'node:path'
 const GRAPHQL_URL = 'https://api.wandb.ai/graphql'
 const DEFAULT_MAX_AGE_MS = 10 * 60 * 1000
 const CACHE_TTL_MS = 5000
+const HISTORY_CAP = 120
 
 const RUNS_QUERY = `query BeamDojoRuns($entity: String!, $project: String!) {
   project(name: $project, entityName: $entity) {
     runs(first: 10, order: "-heartbeat_at") {
-      edges { node { name displayName state heartbeatAt } }
+      edges { node { name displayName state heartbeatAt summaryMetrics } }
     }
   }
 }`
+
+const HISTORY_QUERY = `query BeamDojoRunHistory($entity: String!, $project: String!, $name: String!) {
+  project(name: $project, entityName: $entity) {
+    run(name: $name) {
+      sampledHistory(keys: ["Train/mean_reward", "_step"], samples: 120)
+    }
+  }
+}`
+
+const SUMMARY_KEY_ALIASES = {
+  mean_reward: ['Train/mean_reward', 'train/mean_reward', 'mean_reward'],
+  mean_episode_length: ['Train/mean_episode_length', 'train/mean_episode_length', 'mean_episode_length'],
+  value_loss: ['Loss/value_function', 'loss/value_function', 'value_loss'],
+  surrogate_loss: ['Loss/surrogate', 'loss/surrogate', 'surrogate_loss'],
+  entropy: ['Loss/entropy', 'loss/entropy', 'entropy'],
+  foothold_value_loss: [
+    'Loss/foothold_value_function',
+    'loss/foothold_value_function',
+    'foothold_value_loss',
+  ],
+  fps: ['Perf/total_fps', 'perf/total_fps', 'fps'],
+  iteration: ['_step', 'trainer/global_step', 'Train/iteration', 'iteration'],
+}
+
+function pickNumber(obj, names) {
+  for (const name of names) {
+    if (obj[name] == null || obj[name] === '') continue
+    const n = Number(obj[name])
+    if (Number.isFinite(n)) return n
+  }
+  return undefined
+}
+
+export function parseWandbSummary(raw) {
+  let obj = raw
+  if (typeof raw === 'string') {
+    try {
+      obj = JSON.parse(raw)
+    } catch {
+      return {}
+    }
+  }
+  if (!obj || typeof obj !== 'object' || Array.isArray(obj)) return {}
+  const out = {}
+  for (const [dest, names] of Object.entries(SUMMARY_KEY_ALIASES)) {
+    const n = pickNumber(obj, names)
+    if (n != null) out[dest] = n
+  }
+  return out
+}
+
+export function parseWandbSampledHistory(raw) {
+  if (!Array.isArray(raw)) return []
+  const points = []
+  for (const sample of raw) {
+    const merged = {}
+    const parts = Array.isArray(sample) ? sample : [sample]
+    for (const part of parts) {
+      let obj = part
+      if (typeof part === 'string') {
+        try {
+          obj = JSON.parse(part)
+        } catch {
+          continue
+        }
+      }
+      if (obj && typeof obj === 'object' && !Array.isArray(obj)) Object.assign(merged, obj)
+    }
+    const iteration = pickNumber(merged, ['_step', 'iteration'])
+    const mean_reward = pickNumber(merged, ['Train/mean_reward', 'mean_reward'])
+    if (iteration == null || mean_reward == null) continue
+    points.push({ iteration, mean_reward })
+  }
+  return points.slice(-HISTORY_CAP)
+}
+
+function wandbMetrics(wandbRun) {
+  if (!wandbRun || typeof wandbRun !== 'object') return { metrics: {}, history: [] }
+  const metrics =
+    wandbRun.metrics && typeof wandbRun.metrics === 'object' && !Array.isArray(wandbRun.metrics)
+      ? wandbRun.metrics
+      : parseWandbSummary(wandbRun.summaryMetrics)
+  const history = Array.isArray(wandbRun.history)
+    ? wandbRun.history
+    : parseWandbSampledHistory(wandbRun.sampledHistory)
+  return { metrics, history }
+}
+
+function withWandbMetrics(base, wandbRun) {
+  const { metrics, history } = wandbMetrics(wandbRun)
+  const next = { ...(base || {}) }
+  for (const [key, value] of Object.entries(metrics || {})) {
+    if (value == null) continue
+    if (next[key] == null) next[key] = value
+  }
+  if ((!Array.isArray(next.history) || next.history.length === 0) && history.length) {
+    next.history = history
+  }
+  return next
+}
 
 const VIEWER_QUERY = `{ viewer { entity } }`
 
@@ -93,15 +194,16 @@ export function mergeFileAndWandb(fileStatus, wandbRun, { now = Date.now() } = {
   const wandbRunning = isFreshRunningWandb(wandbRun, now)
 
   if (file?.status === 'running') {
+    let running = file
     if (wandbRunning && file.wandb_url && !String(file.wandb_url).includes('/runs/')) {
-      return {
+      running = {
         ...file,
         wandb_url: wandbRun.url,
         wandb_entity: wandbRun.entity ?? file.wandb_entity,
         wandb_project: wandbRun.project ?? file.wandb_project,
       }
     }
-    return file
+    return wandbRunning ? withWandbMetrics(running, wandbRun) : running
   }
 
   const fileUpdated = file?.updated ? Date.parse(file.updated) : Number.NaN
@@ -116,18 +218,21 @@ export function mergeFileAndWandb(fileStatus, wandbRun, { now = Date.now() } = {
   }
 
   if (wandbRunning) {
-    return {
-      ...(file || {}),
-      status: 'running',
-      wandb_url: wandbRun.url,
-      wandb_entity: wandbRun.entity ?? file?.wandb_entity ?? null,
-      wandb_project: wandbRun.project ?? file?.wandb_project ?? 'beamdojo',
-      source: 'wandb',
-      logger: file?.logger || 'wandb',
-      updated: wandbRun.heartbeatAt || new Date(now).toISOString(),
-      note:
-        'Live W&B run (fresh heartbeat). Open Weights & Biases for curves. Local JSON was idle or missing.',
-    }
+    return withWandbMetrics(
+      {
+        ...(file || {}),
+        status: 'running',
+        wandb_url: wandbRun.url,
+        wandb_entity: wandbRun.entity ?? file?.wandb_entity ?? null,
+        wandb_project: wandbRun.project ?? file?.wandb_project ?? 'beamdojo',
+        source: 'wandb',
+        logger: file?.logger || 'wandb',
+        updated: wandbRun.heartbeatAt || new Date(now).toISOString(),
+        note:
+          'Live W&B run (fresh heartbeat). Open Weights & Biases for curves. Local JSON was idle or missing.',
+      },
+      wandbRun,
+    )
   }
   return file
 }
@@ -180,11 +285,27 @@ export async function fetchFreshWandbRunUncached({
         displayName: node.displayName,
         state: node.state,
         heartbeatAt: node.heartbeatAt,
+        summaryMetrics: node.summaryMetrics,
+        metrics: parseWandbSummary(node.summaryMetrics),
         entity: ent,
         project,
         url: wandbRunUrl(ent, project, node.name),
       }
-      if (isFreshRunningWandb(run, now, maxAgeMs)) return run
+      if (!isFreshRunningWandb(run, now, maxAgeMs)) continue
+      try {
+        const hist = await graphql(
+          fetchImpl,
+          apiKey,
+          HISTORY_QUERY,
+          { entity: ent, project, name: node.name },
+          graphqlUrl,
+        )
+        run.sampledHistory = hist?.project?.run?.sampledHistory
+        run.history = parseWandbSampledHistory(run.sampledHistory)
+      } catch {
+        run.history = []
+      }
+      return run
     }
     return null
   } catch {

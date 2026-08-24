@@ -9,6 +9,10 @@ export function wandbSecretsFromDisk(opts?: {
   entity: string
   project: string
 }
+export function parseWandbSummary(raw: unknown): Record<string, number>
+export function parseWandbSampledHistory(
+  raw: unknown,
+): Array<{ iteration: number; mean_reward: number }>
 export function fetchFreshWandbRun(opts?: {
   apiKey?: string
   entity?: string
@@ -23,6 +27,8 @@ export function fetchFreshWandbRun(opts?: {
   state?: string
   heartbeatAt?: string
   name?: string
+  metrics?: Record<string, number>
+  history?: Array<{ iteration: number; mean_reward: number }>
 } | null>
 export function mergeFileAndWandb(
   fileStatus: Record<string, unknown> | null,

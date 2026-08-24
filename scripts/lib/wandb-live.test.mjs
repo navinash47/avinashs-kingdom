@@ -7,6 +7,8 @@ import {
   fetchFreshWandbRunUncached,
   isFreshRunningWandb,
   mergeFileAndWandb,
+  parseWandbSampledHistory,
+  parseWandbSummary,
   readEnvFiles,
   resetWandbLiveCache,
   wandbRunUrl,
@@ -112,6 +114,70 @@ describe('mergeFileAndWandb', () => {
     assert.equal(merged.status, 'running')
     assert.equal(merged.iteration, 12)
     assert.equal(merged.wandb_url, liveRun.url)
+  })
+})
+
+describe('parseWandbSummary / parseWandbSampledHistory', () => {
+  it('maps rsl-rl Train/Loss keys', () => {
+    const metrics = parseWandbSummary(
+      JSON.stringify({
+        'Train/mean_reward': 2.25,
+        'Train/mean_episode_length': 18,
+        'Loss/value_function': 0.4,
+        'Loss/foothold_value_function': 0.15,
+        'Perf/total_fps': 900,
+        _step: 40,
+      }),
+    )
+    assert.equal(metrics.mean_reward, 2.25)
+    assert.equal(metrics.mean_episode_length, 18)
+    assert.equal(metrics.value_loss, 0.4)
+    assert.equal(metrics.foothold_value_loss, 0.15)
+    assert.equal(metrics.fps, 900)
+    assert.equal(metrics.iteration, 40)
+  })
+
+  it('parses sampledHistory JSON strings', () => {
+    const history = parseWandbSampledHistory([
+      ['{"_step":0}', '{"Train/mean_reward":1}'],
+      '{"_step":10,"Train/mean_reward":2}',
+    ])
+    assert.deepEqual(history, [
+      { iteration: 0, mean_reward: 1 },
+      { iteration: 10, mean_reward: 2 },
+    ])
+  })
+})
+
+describe('mergeFileAndWandb metrics', () => {
+  const now = Date.parse('2026-08-24T21:00:00Z')
+  const liveRun = {
+    state: 'running',
+    heartbeatAt: '2026-08-24T20:58:00Z',
+    entity: 'lab',
+    project: 'beamdojo',
+    name: 'abc',
+    url: 'https://wandb.ai/lab/beamdojo/runs/abc',
+    metrics: { mean_reward: 3.5, iteration: 20 },
+    history: [{ iteration: 0, mean_reward: 1 }, { iteration: 20, mean_reward: 3.5 }],
+  }
+
+  it('copies W&B summary metrics onto an idle file overlay', () => {
+    const merged = mergeFileAndWandb({ status: 'idle', host: 'local' }, liveRun, { now })
+    assert.equal(merged.status, 'running')
+    assert.equal(merged.mean_reward, 3.5)
+    assert.equal(merged.iteration, 20)
+    assert.equal(merged.history.length, 2)
+  })
+
+  it('keeps local PPO metrics when the file is already running', () => {
+    const merged = mergeFileAndWandb(
+      { status: 'running', mean_reward: 9.9, history: [{ iteration: 10, mean_reward: 9.9 }] },
+      liveRun,
+      { now },
+    )
+    assert.equal(merged.mean_reward, 9.9)
+    assert.deepEqual(merged.history, [{ iteration: 10, mean_reward: 9.9 }])
   })
 })
 

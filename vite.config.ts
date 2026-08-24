@@ -8,6 +8,7 @@ import {
   mergeFileAndWandb,
   wandbSecretsFromDisk,
 } from './scripts/lib/wandb-live.mjs'
+import { normalizeTrainingStatus } from './scripts/lib/research-lab.mjs'
 
 function liveStatusFile(): string | null {
   const home = process.env.HOME ?? ''
@@ -43,7 +44,10 @@ async function resolveLivePayload(): Promise<Record<string, unknown> | null> {
         project: secrets.project,
       })
     : null
-  return mergeFileAndWandb(fileStatus, wandb)
+  const merged = mergeFileAndWandb(fileStatus, wandb)
+  if (!merged) return null
+  const source = typeof merged.source === 'string' ? merged.source : 'live'
+  return normalizeTrainingStatus(merged, { source }) as Record<string, unknown> | null
 }
 
 function sendLiveStatus(_req: IncomingMessage, res: ServerResponse, next: () => void) {
