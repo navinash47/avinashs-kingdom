@@ -230,7 +230,9 @@ function LiveTrainingPanel({
         ? training?.source === 'wandb'
           ? 'A W&B run has a fresh heartbeat. Reward/loss below are the latest W&B summary (full curves stay on Weights & Biases).'
           : 'A train is marked running in the last synced JSON. Reward/loss below are the last PPO snapshot (every 10 iters).'
-        : 'Unknown — no live status file on last sync (or it could not be read). Not claiming a train is running.'
+        : training?.robot || training?.task || training?.note
+          ? 'Unknown — Isaac is starting or the logger has not opened a W&B run yet. Not claiming live PPO curves.'
+          : 'Unknown — no live status file on last sync (or it could not be read). Not claiming a train is running.'
 
   const wandbHint =
     training?.source === 'wandb'
@@ -252,6 +254,7 @@ function LiveTrainingPanel({
         {exampleHint}
         {wandbHint}
       </p>
+      {training?.note ? <p className="muted tiny live-train-note">{training.note}</p> : null}
       {training?.updated ? (
         <p className="muted tiny">Status written {new Date(training.updated).toLocaleString()}</p>
       ) : null}

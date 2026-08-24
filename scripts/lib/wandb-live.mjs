@@ -223,7 +223,7 @@ export function mergeFileAndWandb(fileStatus, wandbRun, { now = Date.now() } = {
   const fileUpdated = file?.updated ? Date.parse(file.updated) : Number.NaN
   const beat = wandbRun?.heartbeatAt ? Date.parse(wandbRun.heartbeatAt) : Number.NaN
   if (
-    file?.status === 'idle' &&
+    (file?.status === 'idle' || file?.status === 'unknown') &&
     Number.isFinite(fileUpdated) &&
     Number.isFinite(beat) &&
     fileUpdated >= beat

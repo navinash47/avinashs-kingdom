@@ -137,6 +137,10 @@
   margin: 0;
 }
 
+.live-train-note {
+  margin: 0;
+}
+
 .badge.running {
   background: color-mix(in srgb, var(--ok) 40%, transparent);
   color: #d5ead8;

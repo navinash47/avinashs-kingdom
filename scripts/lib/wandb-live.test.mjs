@@ -115,6 +115,16 @@ describe('mergeFileAndWandb', () => {
     assert.equal(merged.note, 'A10 terminating')
   })
 
+  it('keeps a newer local unknown (Isaac boot) over a stale W&B heartbeat', () => {
+    const merged = mergeFileAndWandb(
+      { status: 'unknown', updated: '2026-08-24T20:59:00Z', note: 'gym.make' },
+      liveRun,
+      { now },
+    )
+    assert.equal(merged.status, 'unknown')
+    assert.equal(merged.note, 'gym.make')
+  })
+
   it('keeps local running and fills a missing run URL', () => {
     const merged = mergeFileAndWandb(
       { status: 'running', wandb_url: 'https://wandb.ai', iteration: 12 },
