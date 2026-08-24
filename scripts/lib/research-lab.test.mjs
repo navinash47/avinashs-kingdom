@@ -5,6 +5,7 @@ import path from 'node:path'
 import { afterEach, describe, it } from 'node:test'
 import {
   loadTrainingStatus,
+  loadTrainingStatusFromRepo,
   normalizeTrainingStatus,
   showLiveTrainingCard,
   wandbUrlFromStatus,
@@ -144,6 +145,24 @@ describe('loadTrainingStatus', () => {
   it('coerces invalid status to unknown', () => {
     const got = normalizeTrainingStatus({ status: 'training', wandb_project: 'beamdojo' })
     assert.equal(got.status, 'unknown')
+  })
+
+  it('loadTrainingStatusFromRepo uses NFS logs when tracking only has the example', () => {
+    const dir = scratch()
+    fs.mkdirSync(path.join(dir, 'tracking'))
+    fs.mkdirSync(path.join(dir, 'logs'))
+    fs.writeFileSync(
+      path.join(dir, 'tracking/training-status.example.json'),
+      JSON.stringify({ status: 'idle', note: 'example only' }),
+    )
+    fs.writeFileSync(
+      path.join(dir, 'logs/training-status.json'),
+      JSON.stringify({ status: 'idle', note: 'from nfs logs', wandb_entity: 'lab' }),
+    )
+    const training = loadTrainingStatusFromRepo(dir)
+    assert.equal(training.source, 'live')
+    assert.equal(training.note, 'from nfs logs')
+    assert.equal(training.wandb_url, 'https://wandb.ai/lab/beamdojo')
   })
 })
 

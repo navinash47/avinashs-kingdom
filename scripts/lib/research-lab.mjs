@@ -64,30 +64,62 @@ export function normalizeTrainingStatus(raw, { source = 'live' } = {}) {
   }
 }
 
+export function loadLiveTrainingFile(repoRoot, relPath) {
+  if (!repoRoot || !relPath) return null
+  const livePath = path.join(repoRoot, relPath)
+  if (!fs.existsSync(livePath)) return null
+  try {
+    const raw = JSON.parse(fs.readFileSync(livePath, 'utf8'))
+    return normalizeTrainingStatus(raw, { source: 'live' })
+  } catch {
+    return normalizeTrainingStatus(
+      {
+        status: 'unknown',
+        wandb_project: DEFAULT_WANDB_PROJECT,
+        wandb_url: 'https://wandb.ai',
+        note: `Could not parse ${path.basename(livePath)}`,
+      },
+      { source: 'live' },
+    )
+  }
+}
+
 export function loadTrainingStatus(repoRoot, relPath = DEFAULT_TRAINING_STATUS_REL) {
   if (!repoRoot) return null
   const livePath = path.join(repoRoot, relPath)
   const examplePath = path.join(path.dirname(livePath), 'training-status.example.json')
-
-  const tryRead = (filePath, source) => {
-    if (!fs.existsSync(filePath)) return null
+  const tryExample = () => {
+    if (!fs.existsSync(examplePath)) return null
     try {
-      const raw = JSON.parse(fs.readFileSync(filePath, 'utf8'))
-      return normalizeTrainingStatus(raw, { source })
+      const raw = JSON.parse(fs.readFileSync(examplePath, 'utf8'))
+      return normalizeTrainingStatus(raw, { source: 'example' })
     } catch {
       return normalizeTrainingStatus(
         {
           status: 'unknown',
           wandb_project: DEFAULT_WANDB_PROJECT,
           wandb_url: 'https://wandb.ai',
-          note: `Could not parse ${path.basename(filePath)}`,
+          note: `Could not parse ${path.basename(examplePath)}`,
         },
-        { source },
+        { source: 'example' },
       )
     }
   }
+  return loadLiveTrainingFile(repoRoot, relPath) ?? tryExample()
+}
 
-  return tryRead(livePath, 'live') ?? tryRead(examplePath, 'example')
+/** Prefer gitignored live JSON in tracking/ or NFS logs/, then the example file. */
+export function loadTrainingStatusFromRepo(repoRoot, preferredRel = DEFAULT_TRAINING_STATUS_REL) {
+  if (!repoRoot) return null
+  const rels = [preferredRel, 'tracking/training-status.json', 'logs/training-status.json']
+  const seen = new Set()
+  for (const rel of rels) {
+    if (!rel || seen.has(rel)) continue
+    seen.add(rel)
+    const live = loadLiveTrainingFile(repoRoot, rel)
+    if (live) return live
+  }
+  return loadTrainingStatus(repoRoot, preferredRel)
 }
 
 function jsonlSpend(filePath) {
@@ -168,7 +200,7 @@ export function syncResearchLab(registry, kingdomRoot, dataDir, ventures) {
     const expRel = entry.paths?.expenses
     const spend = jsonlSpend(expRel && repoRoot ? path.join(repoRoot, expRel) : null)
     const statusRel = entry.paths?.trainingStatus || DEFAULT_TRAINING_STATUS_REL
-    const training = loadTrainingStatus(repoRoot, statusRel)
+    const training = loadTrainingStatusFromRepo(repoRoot, statusRel)
     if (training) {
       const dest = path.join(outDir, entry.id)
       fs.mkdirSync(dest, { recursive: true })
