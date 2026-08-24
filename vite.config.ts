@@ -8,8 +8,11 @@ function liveStatusFile(): string | null {
   const home = process.env.HOME ?? ''
   const candidates = [
     path.resolve(process.cwd(), '..', 'beamdojo', 'tracking', 'training-status.json'),
+    path.resolve(process.cwd(), '..', 'BeamDojo', 'tracking', 'training-status.json'),
     '/agent/repos/beamdojo/tracking/training-status.json',
     path.join(home, 'Projects/BeamDojo/tracking/training-status.json'),
+    path.join(home, 'Projects/BeamDojo/logs/training-status.json'),
+    '/lambda/nfs/beamdojo/logs/training-status.json',
   ]
   return candidates.find((p) => fs.existsSync(p)) ?? null
 }

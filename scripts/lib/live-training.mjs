@@ -10,18 +10,26 @@ export function beamdojoRepoCandidates({ cwd, home } = {}) {
     path.join(h, 'Projects/BeamDojo'),
     path.resolve(c, '..', 'beamdojo'),
     path.resolve(c, '..', 'BeamDojo'),
+    '/lambda/nfs/beamdojo',
   ]
+}
+
+export function liveStatusRelPaths() {
+  return ['tracking/training-status.json', 'logs/training-status.json']
 }
 
 /** Live gitignored JSON only — not the checked-in idle example. */
 export function readLiveTrainingStatus(opts = {}) {
   const roots = opts.roots ?? beamdojoRepoCandidates(opts)
+  const rels = opts.rels ?? liveStatusRelPaths()
   for (const root of roots) {
     if (!root || !fs.existsSync(root)) continue
-    const livePath = path.join(root, 'tracking', 'training-status.json')
-    if (!fs.existsSync(livePath)) continue
-    const training = loadTrainingStatus(root)
-    if (training) return { training, repoRoot: root, path: livePath }
+    for (const rel of rels) {
+      const livePath = path.join(root, rel)
+      if (!fs.existsSync(livePath)) continue
+      const training = loadTrainingStatus(root, rel)
+      if (training && training.source === 'live') return { training, repoRoot: root, path: livePath }
+    }
   }
   return null
 }
