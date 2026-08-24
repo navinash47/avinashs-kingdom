@@ -53,6 +53,7 @@ type LabTraining = {
   surrogate_loss?: number | null
   entropy?: number | null
   foothold_value_loss?: number | null
+  foothold_penalty?: number | null
   history?: LabHistoryPoint[] | null
 }
 
@@ -216,6 +217,9 @@ function LiveTrainingPanel({
   }
   if (training?.foothold_value_loss != null) {
     meta.push({ label: 'Foothold VF', value: formatMetric(training.foothold_value_loss) })
+  }
+  if (training?.foothold_penalty != null) {
+    meta.push({ label: 'Foothold', value: formatMetric(training.foothold_penalty) })
   }
   if (training?.logger) meta.push({ label: 'Logger', value: String(training.logger) })
 

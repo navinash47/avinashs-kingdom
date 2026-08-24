@@ -158,6 +158,7 @@ describe('loadTrainingStatus', () => {
       fps: 1200,
       value_loss: 0.3,
       foothold_value_loss: 0.1,
+      foothold_penalty: -0.4,
       history: [
         { iteration: 0, mean_reward: 1 },
         { iteration: 10, mean_reward: 2.5, fps: 1100 },
@@ -172,6 +173,7 @@ describe('loadTrainingStatus', () => {
     assert.equal(got.fps, 1200)
     assert.equal(got.value_loss, 0.3)
     assert.equal(got.foothold_value_loss, 0.1)
+    assert.equal(got.foothold_penalty, -0.4)
     assert.deepEqual(got.history, [
       { iteration: 0, mean_reward: 1 },
       { iteration: 10, mean_reward: 2.5, fps: 1100 },
@@ -181,6 +183,7 @@ describe('loadTrainingStatus', () => {
   it('does not invent metrics when the snapshot has none', () => {
     const got = normalizeTrainingStatus({ status: 'idle', wandb_project: 'beamdojo' })
     assert.equal(got.mean_reward, undefined)
+    assert.equal(got.foothold_penalty, undefined)
     assert.equal(got.history, undefined)
   })
 

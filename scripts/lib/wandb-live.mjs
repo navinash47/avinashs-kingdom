@@ -36,6 +36,12 @@ const SUMMARY_KEY_ALIASES = {
     'loss/foothold_value_function',
     'foothold_value_loss',
   ],
+  foothold_penalty: [
+    'Episode/foothold_penalty',
+    'Episode/Episode_Reward/foothold_penalty',
+    'Episode_Reward/foothold_penalty',
+    'foothold_penalty',
+  ],
   fps: ['Perf/total_fps', 'perf/total_fps', 'fps'],
   iteration: ['_step', 'trainer/global_step', 'Train/iteration', 'iteration'],
 }

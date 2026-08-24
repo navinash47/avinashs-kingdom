@@ -125,6 +125,7 @@ describe('parseWandbSummary / parseWandbSampledHistory', () => {
         'Train/mean_episode_length': 18,
         'Loss/value_function': 0.4,
         'Loss/value_foothold': 0.15,
+        'Episode/foothold_penalty': -0.4,
         'Perf/total_fps': 900,
         _step: 40,
       }),
@@ -133,6 +134,7 @@ describe('parseWandbSummary / parseWandbSampledHistory', () => {
     assert.equal(metrics.mean_episode_length, 18)
     assert.equal(metrics.value_loss, 0.4)
     assert.equal(metrics.foothold_value_loss, 0.15)
+    assert.equal(metrics.foothold_penalty, -0.4)
     assert.equal(metrics.fps, 900)
     assert.equal(metrics.iteration, 40)
   })

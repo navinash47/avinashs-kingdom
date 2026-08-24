@@ -14,6 +14,7 @@ const METRIC_NUM_KEYS = [
   'surrogate_loss',
   'entropy',
   'foothold_value_loss',
+  'foothold_penalty',
   'collection_time',
   'learn_time',
   'num_steps_per_env',
