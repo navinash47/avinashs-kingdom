@@ -287,7 +287,16 @@ export function ResearchLab({ onOpenVenture, onOpenGraph, onOpenExpenses }: Rese
           const overlay = live?.status ? live : synced?.status ? synced : null
           if (overlay) {
             lab.projects = lab.projects.map((p) =>
-              p.id === 'beamdojo' ? { ...p, training: { ...p.training, ...overlay } } : p,
+              p.id === 'beamdojo'
+                ? {
+                    ...p,
+                    training: {
+                      ...p.training,
+                      ...overlay,
+                      source: live?.status ? (live.source ?? 'live') : overlay.source,
+                    },
+                  }
+                : p,
             )
           }
           setData(lab)
