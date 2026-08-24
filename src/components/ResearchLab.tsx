@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
+import './ResearchLab.css'
 
 type ResearchLabProps = {
   onOpenVenture?: (id: string, tab?: string) => void
@@ -6,14 +7,20 @@ type ResearchLabProps = {
   onOpenExpenses?: () => void
 }
 
-type ResearchExperiment = {
+/** Matches public/data/research-lab.json from npm run sync. */
+type LabExperiment = {
   date: string
   summary: string
   source?: string
   video?: string | null
 }
 
-type ResearchProject = {
+type LabDiagram = {
+  source?: string
+  svg_inline?: string | null
+}
+
+type LabProject = {
   id: string
   name: string
   field: string
@@ -22,43 +29,87 @@ type ResearchProject = {
   nextMilestone: string | null
   spendUsd: number
   videos: string[]
-  experiments: ResearchExperiment[]
-  architecture: {
-    sections?: Record<
-      string,
-      { diagrams?: { svg_inline?: string | null; source?: string }[] }
-    >
+  experiments: LabExperiment[]
+  architecture?: {
+    sections?: Record<string, { diagrams?: LabDiagram[] }>
   } | null
 }
 
-type ResearchLabData = {
+type LabPayload = {
   updated: string
-  projects: ResearchProject[]
+  projects: LabProject[]
 }
 
-function mermaidNodeLabels(source: string): string[] {
-  const labels: string[] = []
-  const re = /\[["']([^"'\]]+)["']\]/g
+type FlowNode = { id: string; label: string }
+type FlowEdge = { from: string; to: string; label?: string }
+
+function parseMermaidFlow(source: string): { nodes: FlowNode[]; edges: FlowEdge[] } {
+  const nodes = new Map<string, string>()
+  const edges: FlowEdge[] = []
+  const nodeRe = /([A-Za-z][\w]*)\s*\[\s*"([^"]+)"\s*\]/g
   let m: RegExpExecArray | null
-  while ((m = re.exec(source))) {
-    labels.push(m[1])
+  while ((m = nodeRe.exec(source))) {
+    nodes.set(m[1], m[2])
   }
-  return labels
+  const labeled = /([A-Za-z][\w]*)\s*-->\|([^|]*)\|\s*([A-Za-z][\w]*)/g
+  while ((m = labeled.exec(source))) {
+    edges.push({ from: m[1], to: m[3], label: m[2].trim() })
+    if (!nodes.has(m[1])) nodes.set(m[1], m[1])
+    if (!nodes.has(m[3])) nodes.set(m[3], m[3])
+  }
+  const plain = /([A-Za-z][\w]*)\s*-->\s*([A-Za-z][\w]*)/g
+  while ((m = plain.exec(source))) {
+    if (edges.some((e) => e.from === m![1] && e.to === m![2])) continue
+    edges.push({ from: m[1], to: m[2] })
+    if (!nodes.has(m[1])) nodes.set(m[1], m[1])
+    if (!nodes.has(m[2])) nodes.set(m[2], m[2])
+  }
+  return {
+    nodes: [...nodes.entries()].map(([id, label]) => ({ id, label })),
+    edges,
+  }
 }
 
-function firstFlow(project: ResearchProject): { svg: string | null; nodes: string[] } {
-  const sections = project.architecture?.sections ?? {}
-  for (const section of Object.values(sections)) {
+function firstDiagram(project: LabProject): LabDiagram | null {
+  for (const section of Object.values(project.architecture?.sections ?? {})) {
     for (const d of section.diagrams ?? []) {
-      if (d.svg_inline) return { svg: d.svg_inline, nodes: [] }
-      if (d.source) return { svg: null, nodes: mermaidNodeLabels(d.source) }
+      if (d.svg_inline || d.source) return d
     }
   }
-  return { svg: null, nodes: [] }
+  return null
+}
+
+function FileTalkGraph({ source }: { source: string }) {
+  const { nodes, edges } = useMemo(() => parseMermaidFlow(source), [source])
+  if (!nodes.length) return null
+  return (
+    <div className="file-talk" role="figure" aria-label="How files talk to each other">
+      <p className="eyebrow">How files talk</p>
+      <div className="file-talk-nodes">
+        {nodes.map((n) => (
+          <div key={n.id} className="file-talk-node" title={n.id}>
+            <span className="file-talk-id">{n.id}</span>
+            <strong>{n.label}</strong>
+          </div>
+        ))}
+      </div>
+      {edges.length ? (
+        <ul className="file-talk-edges">
+          {edges.map((e) => (
+            <li key={`${e.from}-${e.to}-${e.label ?? ''}`}>
+              <code>{e.from}</code>
+              <span className="file-talk-arrow">{e.label ? `— ${e.label} →` : '→'}</span>
+              <code>{e.to}</code>
+            </li>
+          ))}
+        </ul>
+      ) : null}
+    </div>
+  )
 }
 
 export function ResearchLab({ onOpenVenture, onOpenGraph, onOpenExpenses }: ResearchLabProps) {
-  const [data, setData] = useState<ResearchLabData | null>(null)
+  const [data, setData] = useState<LabPayload | null>(null)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
@@ -66,7 +117,7 @@ export function ResearchLab({ onOpenVenture, onOpenGraph, onOpenExpenses }: Rese
     void fetch(`/data/research-lab.json?_=${Date.now()}`, { cache: 'no-store' })
       .then((r) => {
         if (!r.ok) throw new Error(`research-lab.json ${r.status}`)
-        return r.json() as Promise<ResearchLabData>
+        return r.json() as Promise<LabPayload>
       })
       .then((j) => {
         if (!cancelled) setData(j)
@@ -87,8 +138,8 @@ export function ResearchLab({ onOpenVenture, onOpenGraph, onOpenExpenses }: Rese
         <div>
           <h2>Research Lab</h2>
           <p className="muted">
-            GPU and paper projects live here, separate from cash ventures. Add a repo with{' '}
-            <code>kind: research</code> in the venture registry and re-sync.
+            GPU and paper projects live here, not on the cash-venture board. Register a repo with{' '}
+            <code>kind: research</code> and run <code>npm run sync</code>.
           </p>
         </div>
         {data?.updated ? (
@@ -97,20 +148,23 @@ export function ResearchLab({ onOpenVenture, onOpenGraph, onOpenExpenses }: Rese
       </header>
 
       <p className="research-insurance">
-        Model weights are not in git. After any train, copy checkpoints off the GPU box as
-        insurance — tell Avinash the NFS path.
+        Model weights are never git. After any train, tell Avinash the NFS/local checkpoint path so he
+        can copy them as insurance.
       </p>
 
-      {error ? <p className="muted">{error}. Run <code>npm run sync</code>.</p> : null}
+      {error ? (
+        <p className="muted">
+          {error}. Run <code>npm run sync</code>.
+        </p>
+      ) : null}
       {!error && !projects.length ? (
-        <p className="muted">No research projects yet. Register one with kind: research.</p>
+        <p className="muted">No research projects yet.</p>
       ) : null}
 
       <div className="research-grid">
         {projects.map((p) => {
-          const { svg, nodes } = firstFlow(p)
-          const videos = p.experiments.map((e) => e.video).filter(Boolean) as string[]
-          const uniqueVideos = [...new Set(videos.length ? videos : p.videos.map((n) => `/data/research/${p.id}/${n}`))]
+          const diagram = firstDiagram(p)
+          const experiments = p.experiments ?? []
           return (
             <article key={p.id} className="research-card">
               <header className="research-card-head">
@@ -121,56 +175,41 @@ export function ResearchLab({ onOpenVenture, onOpenGraph, onOpenExpenses }: Rese
                 <span className="stat-v">{p.progress}%</span>
               </header>
               <p className="muted tiny">
-                {p.version ?? '—'} · spend ${p.spendUsd.toFixed(2)}
+                {p.version ?? '—'} · spend ${Number(p.spendUsd ?? 0).toFixed(2)}
               </p>
               {p.nextMilestone ? <p>{p.nextMilestone}</p> : null}
 
-              {svg ? (
+              {diagram?.svg_inline ? (
                 <div
                   className="mermaid-svg arch-mermaid research-flow"
-                  dangerouslySetInnerHTML={{ __html: svg }}
+                  dangerouslySetInnerHTML={{ __html: diagram.svg_inline }}
                 />
-              ) : nodes.length ? (
-                <div className="arch-flow research-flow" role="list">
-                  {nodes.map((label, i) => (
-                    <div key={`${label}-${i}`} className="arch-flow-item" role="listitem">
-                      {i > 0 ? (
-                        <span className="arch-chev" aria-hidden="true">
-                          →
-                        </span>
-                      ) : null}
-                      <div className={`arch-node ${i === 0 ? 'in' : i === nodes.length - 1 ? 'out' : ''}`}>
-                        <strong>{label}</strong>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+              ) : diagram?.source ? (
+                <FileTalkGraph source={diagram.source} />
               ) : null}
 
-              {uniqueVideos.length ? (
-                <div className="research-videos">
-                  {uniqueVideos.map((src) => (
-                    <figure key={src}>
-                      <video className="research-video" src={src} controls playsInline preload="metadata" />
-                      <figcaption className="muted tiny">{src.split('/').pop()}</figcaption>
-                    </figure>
-                  ))}
-                </div>
-              ) : (
-                <p className="muted tiny">No proof video yet.</p>
-              )}
-
-              {p.experiments.length ? (
+              {experiments.length ? (
                 <ul className="exp-list">
-                  {p.experiments.slice(0, 6).map((e) => (
+                  {experiments.slice(0, 8).map((e) => (
                     <li key={`${e.date}-${e.summary}`}>
                       <span className="badge ghost">{e.date}</span>{' '}
                       {e.source ? <span className="badge ghost tiny">{e.source}</span> : null}{' '}
                       {e.summary}
+                      {e.video ? (
+                        <video
+                          className="research-video"
+                          src={e.video}
+                          controls
+                          playsInline
+                          preload="metadata"
+                        />
+                      ) : null}
                     </li>
                   ))}
                 </ul>
-              ) : null}
+              ) : (
+                <p className="muted tiny">No experiments logged yet.</p>
+              )}
 
               <div className="research-actions">
                 {onOpenVenture ? (

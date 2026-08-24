@@ -13,11 +13,11 @@ Mac is the orchestrator. Training and RTX video run on a Lambda **A10** (RT core
 ```mermaid
 flowchart LR
   Mac["Mac · BeamDojo repo + Kingdom"] -->|ssh / rsync| GPU["Lambda A10 · Isaac Sim Docker"]
-  Train["train_beamdojo.py"] --> Runtime["beamdojo_runtime.py"]
+  Train["scripts/rsl_rl/train_beamdojo.py"] --> Runtime["scripts/rsl_rl/beamdojo_runtime.py"]
   Runtime --> Cfg["h1_cfg/beamdojo_stage1_cfg.py"]
   Cfg --> Isaac["Isaac Lab + PhysX + RTX"]
   Isaac --> NFS["NFS logs / model_*.pt"]
-  Play["play_beamdojo.py --video"] --> Proofs["proofs/*.mp4"]
+  Play["scripts/rsl_rl/play_beamdojo.py --video"] --> Proofs["proofs/*.mp4"]
   STATUS["STATUS.md + expenses.jsonl"] --> Sync["Kingdom npm run sync"]
   Proofs --> Sync
   Sync --> Lab["Research Lab tab"]

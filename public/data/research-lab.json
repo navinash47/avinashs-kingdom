@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-24T18:32:40.925Z",
+  "updated": "2026-08-24T19:01:07.729Z",
   "projects": [
     {
       "id": "research-frontier",
@@ -135,6 +135,11 @@
         },
         {
           "date": "2026-08-24",
+          "summary": "Track Kingdom status, A10 smoke proof, and Lambda spend without weights.",
+          "source": "git"
+        },
+        {
+          "date": "2026-08-24",
           "summary": "checkpoint before checking out main",
           "source": "git"
         }
@@ -146,11 +151,11 @@
         "sections": {
           "system design": {
             "title": "System design",
-            "content": "Mac is the orchestrator. Training and RTX video run on a Lambda **A10** (RT cores) inside Isaac Sim 5.1 + Isaac Lab 2.3.2 Docker. BeamDojo source is bind-mounted from NFS so terminate does not wipe code. Checkpoints stay on NFS. Kingdom syncs STATUS, expenses, and proof mp4s into the Research Lab.\n\n```mermaid\nflowchart LR\n  Mac[\"Mac · BeamDojo repo + Kingdom\"] -->|ssh / rsync| GPU[\"Lambda A10 · Isaac Sim Docker\"]\n  Train[\"train_beamdojo.py\"] --> Runtime[\"beamdojo_runtime.py\"]\n  Runtime --> Cfg[\"h1_cfg/beamdojo_stage1_cfg.py\"]\n  Cfg --> Isaac[\"Isaac Lab + PhysX + RTX\"]\n  Isaac --> NFS[\"NFS logs / model_*.pt\"]\n  Play[\"play_beamdojo.py --video\"] --> Proofs[\"proofs/*.mp4\"]\n  STATUS[\"STATUS.md + expenses.jsonl\"] --> Sync[\"Kingdom npm run sync\"]\n  Proofs --> Sync\n  Sync --> Lab[\"Research Lab tab\"]\n```",
+            "content": "Mac is the orchestrator. Training and RTX video run on a Lambda **A10** (RT cores) inside Isaac Sim 5.1 + Isaac Lab 2.3.2 Docker. BeamDojo source is bind-mounted from NFS so terminate does not wipe code. Checkpoints stay on NFS. Kingdom syncs STATUS, expenses, and proof mp4s into the Research Lab.\n\n```mermaid\nflowchart LR\n  Mac[\"Mac · BeamDojo repo + Kingdom\"] -->|ssh / rsync| GPU[\"Lambda A10 · Isaac Sim Docker\"]\n  Train[\"scripts/rsl_rl/train_beamdojo.py\"] --> Runtime[\"scripts/rsl_rl/beamdojo_runtime.py\"]\n  Runtime --> Cfg[\"h1_cfg/beamdojo_stage1_cfg.py\"]\n  Cfg --> Isaac[\"Isaac Lab + PhysX + RTX\"]\n  Isaac --> NFS[\"NFS logs / model_*.pt\"]\n  Play[\"scripts/rsl_rl/play_beamdojo.py --video\"] --> Proofs[\"proofs/*.mp4\"]\n  STATUS[\"STATUS.md + expenses.jsonl\"] --> Sync[\"Kingdom npm run sync\"]\n  Proofs --> Sync\n  Sync --> Lab[\"Research Lab tab\"]\n```",
             "markdown": "Mac is the orchestrator. Training and RTX video run on a Lambda **A10** (RT cores) inside Isaac Sim 5.1 + Isaac Lab 2.3.2 Docker. BeamDojo source is bind-mounted from NFS so terminate does not wipe code. Checkpoints stay on NFS. Kingdom syncs STATUS, expenses, and proof mp4s into the Research Lab.",
             "diagrams": [
               {
-                "source": "flowchart LR\n  Mac[\"Mac · BeamDojo repo + Kingdom\"] -->|ssh / rsync| GPU[\"Lambda A10 · Isaac Sim Docker\"]\n  Train[\"train_beamdojo.py\"] --> Runtime[\"beamdojo_runtime.py\"]\n  Runtime --> Cfg[\"h1_cfg/beamdojo_stage1_cfg.py\"]\n  Cfg --> Isaac[\"Isaac Lab + PhysX + RTX\"]\n  Isaac --> NFS[\"NFS logs / model_*.pt\"]\n  Play[\"play_beamdojo.py --video\"] --> Proofs[\"proofs/*.mp4\"]\n  STATUS[\"STATUS.md + expenses.jsonl\"] --> Sync[\"Kingdom npm run sync\"]\n  Proofs --> Sync\n  Sync --> Lab[\"Research Lab tab\"]",
+                "source": "flowchart LR\n  Mac[\"Mac · BeamDojo repo + Kingdom\"] -->|ssh / rsync| GPU[\"Lambda A10 · Isaac Sim Docker\"]\n  Train[\"scripts/rsl_rl/train_beamdojo.py\"] --> Runtime[\"scripts/rsl_rl/beamdojo_runtime.py\"]\n  Runtime --> Cfg[\"h1_cfg/beamdojo_stage1_cfg.py\"]\n  Cfg --> Isaac[\"Isaac Lab + PhysX + RTX\"]\n  Isaac --> NFS[\"NFS logs / model_*.pt\"]\n  Play[\"scripts/rsl_rl/play_beamdojo.py --video\"] --> Proofs[\"proofs/*.mp4\"]\n  STATUS[\"STATUS.md + expenses.jsonl\"] --> Sync[\"Kingdom npm run sync\"]\n  Proofs --> Sync\n  Sync --> Lab[\"Research Lab tab\"]",
                 "svg_path": null,
                 "svg_inline": null
               }

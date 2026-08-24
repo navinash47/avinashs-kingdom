@@ -22,6 +22,11 @@
     },
     {
       "date": "2026-08-24",
+      "summary": "Track Kingdom status, A10 smoke proof, and Lambda spend without weights.",
+      "source": "git"
+    },
+    {
+      "date": "2026-08-24",
       "summary": "checkpoint before checking out main",
       "source": "git"
     }

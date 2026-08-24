@@ -36,14 +36,14 @@ function copyProofVideos(repoRoot, destDir, items) {
     item.video = `/data/research/${path.basename(destDir)}/${name}`
     copied.push(name)
   }
-  // Also copy any leftover mp4s in proofs/ so the lab is complete even if wiki omitted Video:
-  const proofsDir = path.join(repoRoot, 'proofs')
-  if (fs.existsSync(proofsDir)) {
-    for (const name of fs.readdirSync(proofsDir)) {
+  for (const folder of ['proofs', 'videos', 'proofs']) {
+    const dir = path.join(repoRoot, folder)
+    if (!fs.existsSync(dir)) continue
+    for (const name of fs.readdirSync(dir)) {
       if (!name.endsWith('.mp4')) continue
       const dest = path.join(destDir, name)
       if (!fs.existsSync(dest)) {
-        fs.copyFileSync(path.join(proofsDir, name), dest)
+        fs.copyFileSync(path.join(dir, name), dest)
       }
       copied.push(name)
     }
