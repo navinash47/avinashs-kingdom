@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import type { Agent, Venture } from '../types'
 import { ProgressDial } from './ProgressDial'
 import { SegmentedControl } from './SegmentedControl'
@@ -6,11 +6,16 @@ import { SegmentedControl } from './SegmentedControl'
 type Props = {
   ventures: Venture[]
   agents: Agent[]
+  focusId?: string | null
   onUpdate: (id: string, patch: Partial<Venture>) => void
 }
 
-export function VentureBoard({ ventures, agents, onUpdate }: Props) {
+export function VentureBoard({ ventures, agents, focusId, onUpdate }: Props) {
   const [filter, setFilter] = useState('active')
+
+  useEffect(() => {
+    if (focusId) setFilter('all')
+  }, [focusId])
 
   const agentMap = useMemo(() => {
     const m = new Map<string, Agent>()
@@ -19,6 +24,7 @@ export function VentureBoard({ ventures, agents, onUpdate }: Props) {
   }, [agents])
 
   const visible = ventures.filter((v) => {
+    if (focusId && v.id === focusId) return true
     if (filter === 'all') return true
     if (filter === 'p0') return v.priority === 'P0'
     if (filter === 'parked') return v.status === 'parked'
@@ -48,7 +54,10 @@ export function VentureBoard({ ventures, agents, onUpdate }: Props) {
         {visible.map((v) => {
           const agent = v.agentId ? agentMap.get(v.agentId) : null
           return (
-            <article key={v.id} className={`venture-card pri-${v.priority}`}>
+            <article
+              key={v.id}
+              className={`venture-card pri-${v.priority}${v.id === focusId ? ' focus' : ''}`}
+            >
               <div className="venture-top">
                 <ProgressDial value={v.progress} />
                 <div>

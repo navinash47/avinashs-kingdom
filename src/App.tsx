@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import { AgentRoster } from './components/AgentRoster'
 import { ExpensesLedger } from './components/ExpensesLedger'
+import { FleetGraph } from './components/FleetGraph'
 import { MacStorageAuditPanel } from './components/MacStorageAuditPanel'
 import { SegmentedControl } from './components/SegmentedControl'
 import { SubscriptionAuditPanel } from './components/SubscriptionAuditPanel'
@@ -15,6 +16,7 @@ const NAV = [
   { id: 'throne', label: 'Throne' },
   { id: 'ventures', label: 'Ventures' },
   { id: 'research', label: 'Research' },
+  { id: 'graph', label: 'Fleet' },
   { id: 'tokens', label: 'Tokens' },
   { id: 'expenses', label: 'Expenses' },
   { id: 'subs', label: 'Subs' },
@@ -40,9 +42,21 @@ function App() {
   } = useKingdomState()
   const [tab, setTab] = useState(() => {
     const q = new URLSearchParams(window.location.search).get('tab')
-    const ok = ['throne', 'ventures', 'research', 'tokens', 'expenses', 'subs', 'storage', 'agents']
+    const ok = [
+      'throne',
+      'ventures',
+      'research',
+      'graph',
+      'tokens',
+      'expenses',
+      'subs',
+      'storage',
+      'agents',
+    ]
     return q && ok.includes(q) ? q : 'throne'
   })
+  const [focusVentureId, setFocusVentureId] = useState<string | null>(null)
+  const [focusGraphNode, setFocusGraphNode] = useState<string | null>(null)
   const fileRef = useRef<HTMLInputElement>(null)
 
   if (!ready) {
@@ -114,11 +128,29 @@ function App() {
           <VentureBoard
             ventures={state.ventures}
             agents={state.agents}
+            focusId={focusVentureId}
             onUpdate={updateVenture}
           />
         )}
         {tab === 'research' && (
-          <ResearchLab onOpenExpenses={() => setTab('expenses')} />
+          <ResearchLab
+            onOpenVenture={(id) => {
+              setFocusVentureId(id)
+              setTab('ventures')
+            }}
+            onOpenGraph={(nodeId) => {
+              setFocusGraphNode(nodeId)
+              setTab('graph')
+            }}
+            onOpenExpenses={() => setTab('expenses')}
+          />
+        )}
+        {tab === 'graph' && (
+          <FleetGraph
+            agents={state.agents}
+            ventures={state.ventures}
+            focusNode={focusGraphNode}
+          />
         )}
         {tab === 'tokens' && (
           <TokenMaxxing
