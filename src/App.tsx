@@ -1,34 +1,39 @@
-import { useRef, useState } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import { AgentRoster } from './components/AgentRoster'
+import { CommandPalette } from './components/CommandPalette'
 import { ExpensesLedger } from './components/ExpensesLedger'
-import { MacStorageAuditPanel } from './components/MacStorageAuditPanel'
 import { SegmentedControl } from './components/SegmentedControl'
 import { SubscriptionAuditPanel } from './components/SubscriptionAuditPanel'
 import { ThroneOverview } from './components/ThroneOverview'
 import { TokenMaxxing } from './components/TokenMaxxing'
-import { VentureBoard } from './components/VentureBoard'
+import { VentureSidebar } from './components/VentureSidebar'
+import { ShareBanner } from './components/ShareBanner'
+import { bumpMirrorRefresh } from './lib/mirrorRefresh'
+import { VenturePage } from './components/VenturePage'
+import { FleetGraphPage } from './components/FleetGraph/FleetGraphPage'
 import { ResearchLab } from './components/ResearchLab'
+import { OrchestratorProvider, useOrchestrator } from './context/OrchestratorContext'
 import { useKingdomState } from './hooks/useKingdomState'
+import { useShareMode } from './hooks/useShareMode'
 import './App.css'
 
 const NAV = [
   { id: 'throne', label: 'Throne' },
-  { id: 'ventures', label: 'Ventures' },
+  { id: 'graph', label: 'Graph' },
   { id: 'research', label: 'Research' },
+  { id: 'ventures', label: 'Ventures' },
   { id: 'tokens', label: 'Tokens' },
   { id: 'expenses', label: 'Expenses' },
   { id: 'subs', label: 'Subs' },
-  { id: 'storage', label: 'Storage' },
   { id: 'agents', label: 'Agents' },
 ]
 
-function App() {
+function KingdomApp() {
   const {
     state,
     ready,
     error,
     totals,
-    updateVenture,
     updateAgentBudget,
     addExpense,
     removeExpense,
@@ -37,13 +42,52 @@ function App() {
     importState,
     resetToSeed,
     lastSyncAt,
+    globalSuggestions,
+    refreshFromHost,
   } = useKingdomState()
-  const [tab, setTab] = useState(() => {
-    const q = new URLSearchParams(window.location.search).get('tab')
-    const ok = ['throne', 'ventures', 'research', 'tokens', 'expenses', 'subs', 'storage', 'agents']
-    return q && ok.includes(q) ? q : 'throne'
-  })
+  const {
+    mainTab,
+    setMainTab,
+    selectedVentureId,
+    setPaletteOpen,
+    openVenture,
+    graphNodeId,
+    focusGraphNode,
+  } = useOrchestrator()
+  const shareMode = useShareMode()
   const fileRef = useRef<HTMLInputElement>(null)
+  const autoSelectedRef = useRef(false)
+
+  const selectedVenture = useMemo(
+    () => state?.ventures.find((v) => v.id === selectedVentureId) ?? null,
+    [state, selectedVentureId],
+  )
+
+  const selectedAgent = useMemo(
+    () =>
+      selectedVenture?.agentId
+        ? state?.agents.find((a) => a.id === selectedVenture.agentId) ?? null
+        : null,
+    [state, selectedVenture],
+  )
+
+  const registryEntry = useMemo(
+    () =>
+      state?.registry?.ventures.find((v) => v.id === selectedVentureId) ?? null,
+    [state, selectedVentureId],
+  )
+
+  useEffect(() => {
+    if (!state || autoSelectedRef.current || mainTab !== 'ventures') return
+    if (selectedVentureId) return
+    const firstP0 = state.ventures.find(
+      (v) => v.priority === 'P0' && v.status === 'active',
+    )
+    if (firstP0) {
+      autoSelectedRef.current = true
+      openVenture(firstP0.id, 'run')
+    }
+  }, [state, mainTab, selectedVentureId, openVenture])
 
   if (!ready) {
     return (
@@ -63,23 +107,38 @@ function App() {
 
   return (
     <div className="kingdom">
+      <ShareBanner lastSyncAt={lastSyncAt} onRefreshMirror={refreshFromHost} />
       <header className="hero-bar">
         <div>
-          <p className="eyebrow">Command center</p>
+          <p className="eyebrow">{shareMode ? 'Live guest view' : 'Command orchestrator'}</p>
           <h1>AVINASH&apos;S KINGDOM</h1>
           <p className="tagline">
-            Track ventures · max tokens · cut burn · push frontiers
+            {shareMode
+              ? 'Read-only mirror — use Refresh mirror to sync with the host'
+              : 'Run dashboards · tests · sync — all ventures in one place'}
           </p>
         </div>
+        {shareMode ? (
+          <div className="hero-actions">
+            <button
+              type="button"
+              className="btn primary"
+              onClick={() =>
+                void refreshFromHost().then(() => bumpMirrorRefresh())
+              }
+            >
+              Refresh mirror
+            </button>
+          </div>
+        ) : (
         <div className="hero-actions">
+          <button type="button" className="btn primary" onClick={() => setPaletteOpen(true)}>
+            ⌘K Command
+          </button>
           <button type="button" className="btn" onClick={exportState}>
             Export
           </button>
-          <button
-            type="button"
-            className="btn"
-            onClick={() => fileRef.current?.click()}
-          >
+          <button type="button" className="btn" onClick={() => fileRef.current?.click()}>
             Import
           </button>
           <button type="button" className="btn ghost" onClick={resetToSeed}>
@@ -96,70 +155,134 @@ function App() {
             }}
           />
         </div>
+        )}
       </header>
 
       <nav className="top-nav">
-        <SegmentedControl options={NAV} value={tab} onChange={setTab} />
+        <SegmentedControl options={NAV} value={mainTab} onChange={setMainTab} />
       </nav>
 
-      <main className="main">
-        {tab === 'throne' && (
-          <ThroneOverview
-            state={state}
-            expenseUsd={totals.expenseUsd}
-            tokenBurn={totals.tokenBurn}
-          />
+      <div className={`main-layout${mainTab === 'ventures' ? ' venture-workspace' : ''}${mainTab === 'graph' ? ' graph-workspace' : ''}`}>
+        {mainTab === 'ventures' ? (
+          <>
+            <VentureSidebar ventures={state.ventures} selectedId={selectedVentureId} />
+            <main className="main venture-main">
+              {selectedVenture ? (
+                <VenturePage
+                  venture={selectedVenture}
+                  agent={selectedAgent}
+                  registryEntry={registryEntry}
+                  manifest={
+                    selectedVentureId ? state.manifests[selectedVentureId] ?? null : null
+                  }
+                  architecture={
+                    selectedVentureId
+                      ? state.architecture[selectedVentureId] ?? null
+                      : null
+                  }
+                  experiments={
+                    selectedVentureId
+                      ? state.experiments[selectedVentureId] ?? null
+                      : null
+                  }
+                  cicd={selectedVentureId ? state.cicd[selectedVentureId] ?? null : null}
+                  whatsapp={state.whatsapp}
+                  lastSyncAt={lastSyncAt}
+                  globalSuggestions={globalSuggestions}
+                  onRefresh={() => window.location.reload()}
+                />
+              ) : (
+                <div className="venture-pick panel">
+                  <h2>Select a venture</h2>
+                  <p className="muted">Pick from the sidebar or press ⌘K</p>
+                </div>
+              )}
+            </main>
+          </>
+        ) : (
+          <main className={`main${mainTab === 'graph' ? ' main-graph' : ''}`}>
+            {mainTab === 'throne' && (
+              <ThroneOverview
+                state={state}
+                expenseUsd={totals.expenseUsd}
+                tokenBurn={totals.tokenBurn}
+                syncSubs={totals.syncSubs}
+                syncApi={totals.syncApi}
+                manualUsd={totals.manualUsd}
+                manifests={state.manifests}
+                cicd={state.cicd}
+              />
+            )}
+            {mainTab === 'graph' && (
+              <FleetGraphPage
+                ventures={state.ventures}
+                agents={state.agents}
+                registry={state.registry}
+                skillGraph={state.skillGraph}
+                architecture={state.architecture}
+                focusNodeId={graphNodeId}
+              />
+            )}
+            {mainTab === 'research' && (
+              <ResearchLab
+                onOpenVenture={(id, tab) => openVenture(id, tab ?? 'experiments')}
+                onOpenGraph={(id) => focusGraphNode(id)}
+                onOpenExpenses={() => setMainTab('expenses')}
+              />
+            )}
+            {mainTab === 'tokens' && (
+              <TokenMaxxing
+                tokens={state.tokens}
+                ventures={state.ventures}
+                agents={state.agents}
+                onAdd={addTokenEntry}
+              />
+            )}
+            {mainTab === 'expenses' && (
+              <ExpensesLedger
+                expenses={state.expenses}
+                ventures={state.ventures}
+                subAnnualHint={state.subscription?.annual_estimate}
+                onAdd={addExpense}
+                onRemove={removeExpense}
+              />
+            )}
+            {mainTab === 'subs' && <SubscriptionAuditPanel data={state.subscription} />}
+            {mainTab === 'agents' && (
+              <AgentRoster
+                agents={state.agents}
+                ventures={state.ventures}
+                skillGraph={state.skillGraph}
+                tokens={state.tokens}
+                onBudget={updateAgentBudget}
+              />
+            )}
+          </main>
         )}
-        {tab === 'ventures' && (
-          <VentureBoard
-            ventures={state.ventures}
-            agents={state.agents}
-            onUpdate={updateVenture}
-          />
-        )}
-        {tab === 'research' && (
-          <ResearchLab onOpenExpenses={() => setTab('expenses')} />
-        )}
-        {tab === 'tokens' && (
-          <TokenMaxxing
-            tokens={state.tokens}
-            ventures={state.ventures}
-            agents={state.agents}
-            onAdd={addTokenEntry}
-          />
-        )}
-        {tab === 'expenses' && (
-          <ExpensesLedger
-            expenses={state.expenses}
-            ventures={state.ventures}
-            subAnnualHint={state.subscription?.annual_estimate}
-            onAdd={addExpense}
-            onRemove={removeExpense}
-          />
-        )}
-        {tab === 'subs' && (
-          <SubscriptionAuditPanel data={state.subscription} />
-        )}
-        {tab === 'storage' && <MacStorageAuditPanel data={state.mac} />}
-        {tab === 'agents' && (
-          <AgentRoster
-            agents={state.agents}
-            ventures={state.ventures}
-            onBudget={updateAgentBudget}
-          />
-        )}
-      </main>
+      </div>
+
+      <CommandPalette
+        ventures={state.ventures}
+        agents={state.agents}
+        registry={state.registry?.ventures ?? []}
+      />
 
       <footer className="foot">
-        <span>Kingdom v1.0</span>
+        <span>Kingdom v2.1 · operational control plane</span>
         <span className="muted">
-          P0 this week: WhatsApp Voice + YouTube · Research 15% · City before Comic
-          {lastSyncAt
-            ? ` · synced ${new Date(lastSyncAt).toLocaleString()}`
-            : ' · run npm run sync'}
+          ⌘K · Start/Stop dashboards from Run tab
+          {lastSyncAt ? ` · synced ${new Date(lastSyncAt).toLocaleString()}` : ''}
         </span>
       </footer>
     </div>
+  )
+}
+
+function App() {
+  return (
+    <OrchestratorProvider>
+      <KingdomApp />
+    </OrchestratorProvider>
   )
 }
 

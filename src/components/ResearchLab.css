@@ -37,9 +37,38 @@
   margin: 2px 0 0;
 }
 
-.research-flow {
-  max-height: 240px;
-  overflow: auto;
+.research-flow-canvas {
+  height: 280px;
+  min-height: 280px;
+  width: 100%;
+  border: 1px solid var(--stroke);
+  background: #000;
+}
+
+.research-talk-node {
+  min-width: 140px;
+  max-width: 190px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  border: 1px solid var(--stroke);
+  background: #1c1c1e;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.research-talk-node .file-talk-id,
+.research-talk-node .file-talk-id {
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.research-talk-node strong {
+  font-size: 0.78rem;
+  line-height: 1.25;
+  color: var(--fog);
 }
 
 .research-video {

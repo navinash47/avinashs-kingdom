@@ -1,23 +1,20 @@
 import { useEffect, useMemo, useState } from 'react'
 import './ResearchLab.css'
+import { ResearchFlowGraph } from './ResearchFlowGraph'
+import { extractMermaid } from '../lib/researchGraph'
+import type { InspectorTab } from '../types'
 
 type ResearchLabProps = {
-  onOpenVenture?: (id: string, tab?: string) => void
+  onOpenVenture?: (id: string, tab?: InspectorTab) => void
   onOpenGraph?: (nodeId: string) => void
   onOpenExpenses?: () => void
 }
 
-/** Matches public/data/research-lab.json from npm run sync. */
 type LabExperiment = {
   date: string
   summary: string
   source?: string
   video?: string | null
-}
-
-type LabDiagram = {
-  source?: string
-  svg_inline?: string | null
 }
 
 type LabProject = {
@@ -30,86 +27,96 @@ type LabProject = {
   spendUsd: number
   videos: string[]
   experiments: LabExperiment[]
-  architecture?: {
-    sections?: Record<string, { diagrams?: LabDiagram[] }>
-  } | null
+  mermaid: string | null
 }
 
-type LabPayload = {
-  updated: string
-  projects: LabProject[]
+function isRecord(v: unknown): v is Record<string, unknown> {
+  return typeof v === 'object' && v !== null
 }
 
-type FlowNode = { id: string; label: string }
-type FlowEdge = { from: string; to: string; label?: string }
-
-function parseMermaidFlow(source: string): { nodes: FlowNode[]; edges: FlowEdge[] } {
-  const nodes = new Map<string, string>()
-  const edges: FlowEdge[] = []
-  const nodeRe = /([A-Za-z][\w]*)\s*\[\s*"([^"]+)"\s*\]/g
-  let m: RegExpExecArray | null
-  while ((m = nodeRe.exec(source))) {
-    nodes.set(m[1], m[2])
-  }
-  const labeled = /([A-Za-z][\w]*)\s*-->\|([^|]*)\|\s*([A-Za-z][\w]*)/g
-  while ((m = labeled.exec(source))) {
-    edges.push({ from: m[1], to: m[3], label: m[2].trim() })
-    if (!nodes.has(m[1])) nodes.set(m[1], m[1])
-    if (!nodes.has(m[3])) nodes.set(m[3], m[3])
-  }
-  const plain = /([A-Za-z][\w]*)\s*-->\s*([A-Za-z][\w]*)/g
-  while ((m = plain.exec(source))) {
-    if (edges.some((e) => e.from === m![1] && e.to === m![2])) continue
-    edges.push({ from: m[1], to: m[2] })
-    if (!nodes.has(m[1])) nodes.set(m[1], m[1])
-    if (!nodes.has(m[2])) nodes.set(m[2], m[2])
-  }
-  return {
-    nodes: [...nodes.entries()].map(([id, label]) => ({ id, label })),
-    edges,
-  }
+function str(v: unknown): string {
+  return typeof v === 'string' ? v : v == null ? '' : String(v)
 }
 
-function firstDiagram(project: LabProject): LabDiagram | null {
-  for (const section of Object.values(project.architecture?.sections ?? {})) {
-    for (const d of section.diagrams ?? []) {
-      if (d.svg_inline || d.source) return d
+function num(v: unknown): number {
+  const n = Number(v)
+  return Number.isFinite(n) ? n : 0
+}
+
+function pick<T = unknown>(row: Record<string, unknown>, ...keys: string[]): T | undefined {
+  for (const k of keys) {
+    if (row[k] !== undefined) return row[k] as T
+  }
+  return undefined
+}
+
+function mermaidFromArchitecture(arch: unknown): string | null {
+  if (!isRecord(arch)) return null
+  const sections = pick<Record<string, unknown>>(arch, 'sections', 'sections')
+  if (!isRecord(sections)) {
+    return extractMermaid(str(pick(arch, 'content', 'markdown')))
+  }
+  for (const section of Object.values(sections)) {
+    if (!isRecord(section)) continue
+    const diagrams = pick<unknown[]>(section, 'diagrams', 'diagrams') ?? []
+    for (const d of diagrams) {
+      if (!isRecord(d)) continue
+      const source = str(pick(d, 'source', 'source'))
+      if (source.includes('-->') || source.includes('flowchart') || source.includes('graph ')) {
+        return source
+      }
     }
+    const blob = [str(pick(section, 'content', 'content')), str(pick(section, 'markdown', 'markdown'))]
+      .filter(Boolean)
+      .join('\n')
+    const fenced = extractMermaid(blob)
+    if (fenced) return fenced
   }
   return null
 }
 
-function FileTalkGraph({ source }: { source: string }) {
-  const { nodes, edges } = useMemo(() => parseMermaidFlow(source), [source])
-  if (!nodes.length) return null
-  return (
-    <div className="file-talk" role="figure" aria-label="How files talk to each other">
-      <p className="eyebrow">How files talk</p>
-      <div className="file-talk-nodes">
-        {nodes.map((n) => (
-          <div key={n.id} className="file-talk-node" title={n.id}>
-            <span className="file-talk-id">{n.id}</span>
-            <strong>{n.label}</strong>
-          </div>
-        ))}
-      </div>
-      {edges.length ? (
-        <ul className="file-talk-edges">
-          {edges.map((e) => (
-            <li key={`${e.from}-${e.to}-${e.label ?? ''}`}>
-              <code>{e.from}</code>
-              <span className="file-talk-arrow">{e.label ? `— ${e.label} →` : '→'}</span>
-              <code>{e.to}</code>
-            </li>
-          ))}
-        </ul>
-      ) : null}
-    </div>
-  )
+function normalizeExperiment(raw: unknown): LabExperiment | null {
+  if (!isRecord(raw)) return null
+  const summary = str(pick(raw, 'summary', 'summary', 'title'))
+  if (!summary) return null
+  return {
+    date: str(pick(raw, 'date', 'date')) || '—',
+    summary,
+    source: str(pick(raw, 'source', 'source')) || undefined,
+    video: (pick(raw, 'video', 'video') as string | null | undefined) ?? null,
+  }
+}
+
+function normalizeProject(raw: unknown): LabProject | null {
+  if (!isRecord(raw)) return null
+  const id = str(pick(raw, 'id', 'id'))
+  if (!id) return null
+  const experimentsRaw = pick<unknown[]>(raw, 'experiments', 'experiments') ?? []
+  const videosRaw = pick<unknown[]>(raw, 'videos', 'videos') ?? []
+  return {
+    id,
+    name: str(pick(raw, 'name', 'name')) || id,
+    field: str(pick(raw, 'field', 'field')) || 'research',
+    progress: num(pick(raw, 'progress', 'progress')),
+    version: (pick(raw, 'version', 'version') as string | null | undefined) ?? null,
+    nextMilestone:
+      (pick(raw, 'nextMilestone', 'next_milestone') as string | null | undefined) ?? null,
+    spendUsd: num(pick(raw, 'spendUsd', 'spend_usd')),
+    videos: videosRaw.map((v) => str(v)).filter(Boolean),
+    experiments: experimentsRaw.map(normalizeExperiment).filter((e): e is LabExperiment => !!e),
+    mermaid: mermaidFromArchitecture(pick(raw, 'architecture', 'architecture')),
+  }
+}
+
+function normalizePayload(raw: unknown): LabProject[] {
+  if (!isRecord(raw)) return []
+  const list = pick<unknown[]>(raw, 'projects', 'projects') ?? []
+  return list.map(normalizeProject).filter((p): p is LabProject => !!p)
 }
 
 export function ResearchLab({ onOpenVenture, onOpenGraph, onOpenExpenses }: ResearchLabProps) {
-  const [data, setData] = useState<LabPayload | null>(null)
+  const [projects, setProjects] = useState<LabProject[]>([])
+  const [updated, setUpdated] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
@@ -117,10 +124,15 @@ export function ResearchLab({ onOpenVenture, onOpenGraph, onOpenExpenses }: Rese
     void fetch(`/data/research-lab.json?_=${Date.now()}`, { cache: 'no-store' })
       .then((r) => {
         if (!r.ok) throw new Error(`research-lab.json ${r.status}`)
-        return r.json() as Promise<LabPayload>
+        return r.json() as Promise<unknown>
       })
       .then((j) => {
-        if (!cancelled) setData(j)
+        if (cancelled) return
+        const list = normalizePayload(j)
+        setProjects(list)
+        setUpdated(
+          isRecord(j) ? str(pick(j, 'updated', 'updated')) || null : null,
+        )
       })
       .catch((e) => {
         if (!cancelled) setError(e instanceof Error ? e.message : 'Failed to load research lab')
@@ -130,7 +142,7 @@ export function ResearchLab({ onOpenVenture, onOpenGraph, onOpenExpenses }: Rese
     }
   }, [])
 
-  const projects = data?.projects ?? []
+  const count = useMemo(() => projects.length, [projects])
 
   return (
     <section className="panel research-lab">
@@ -142,8 +154,8 @@ export function ResearchLab({ onOpenVenture, onOpenGraph, onOpenExpenses }: Rese
             <code>kind: research</code> and run <code>npm run sync</code>.
           </p>
         </div>
-        {data?.updated ? (
-          <span className="muted tiny">synced {new Date(data.updated).toLocaleString()}</span>
+        {updated ? (
+          <span className="muted tiny">synced {new Date(updated).toLocaleString()}</span>
         ) : null}
       </header>
 
@@ -157,84 +169,81 @@ export function ResearchLab({ onOpenVenture, onOpenGraph, onOpenExpenses }: Rese
           {error}. Run <code>npm run sync</code>.
         </p>
       ) : null}
-      {!error && !projects.length ? (
-        <p className="muted">No research projects yet.</p>
-      ) : null}
+      {!error && !count ? <p className="muted">No research projects yet.</p> : null}
 
       <div className="research-grid">
-        {projects.map((p) => {
-          const diagram = firstDiagram(p)
-          const experiments = p.experiments ?? []
-          return (
-            <article key={p.id} className="research-card">
-              <header className="research-card-head">
-                <div>
-                  <p className="eyebrow">{p.field}</p>
-                  <h3>{p.name}</h3>
-                </div>
-                <span className="stat-v">{p.progress}%</span>
-              </header>
-              <p className="muted tiny">
-                {p.version ?? '—'} · spend ${Number(p.spendUsd ?? 0).toFixed(2)}
-              </p>
-              {p.nextMilestone ? <p>{p.nextMilestone}</p> : null}
-
-              {diagram?.svg_inline ? (
-                <div
-                  className="mermaid-svg arch-mermaid research-flow"
-                  dangerouslySetInnerHTML={{ __html: diagram.svg_inline }}
-                />
-              ) : diagram?.source ? (
-                <FileTalkGraph source={diagram.source} />
-              ) : null}
-
-              {experiments.length ? (
-                <ul className="exp-list">
-                  {experiments.slice(0, 8).map((e) => (
-                    <li key={`${e.date}-${e.summary}`}>
-                      <span className="badge ghost">{e.date}</span>{' '}
-                      {e.source ? <span className="badge ghost tiny">{e.source}</span> : null}{' '}
-                      {e.summary}
-                      {e.video ? (
-                        <video
-                          className="research-video"
-                          src={e.video}
-                          controls
-                          playsInline
-                          preload="metadata"
-                        />
-                      ) : null}
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <p className="muted tiny">No experiments logged yet.</p>
-              )}
-
-              <div className="research-actions">
-                {onOpenVenture ? (
-                  <button
-                    type="button"
-                    className="btn primary"
-                    onClick={() => onOpenVenture(p.id, 'experiments')}
-                  >
-                    Open venture
-                  </button>
-                ) : null}
-                {onOpenGraph ? (
-                  <button type="button" className="btn" onClick={() => onOpenGraph(`venture:${p.id}`)}>
-                    Fleet graph
-                  </button>
-                ) : null}
-                {onOpenExpenses ? (
-                  <button type="button" className="btn ghost" onClick={() => onOpenExpenses()}>
-                    Expenses
-                  </button>
-                ) : null}
+        {projects.map((p) => (
+          <article key={p.id} className="research-card">
+            <header className="research-card-head">
+              <div>
+                <p className="eyebrow">{p.field}</p>
+                <h3>{p.name}</h3>
               </div>
-            </article>
-          )
-        })}
+              <span className="stat-v">{p.progress}%</span>
+            </header>
+            <p className="muted tiny">
+              {p.version ?? '—'} · spend ${p.spendUsd.toFixed(2)}
+            </p>
+            {p.nextMilestone ? <p>{p.nextMilestone}</p> : null}
+
+            <ResearchFlowGraph
+              mermaid={p.mermaid}
+              name={p.name}
+              field={p.field}
+              experiments={p.experiments}
+              videos={p.videos}
+            />
+
+            {p.experiments.length ? (
+              <ul className="exp-list">
+                {p.experiments.slice(0, 8).map((e) => (
+                  <li key={`${e.date}-${e.summary}`}>
+                    <span className="badge ghost">{e.date}</span>{' '}
+                    {e.source ? <span className="badge ghost tiny">{e.source}</span> : null}{' '}
+                    {e.summary}
+                    {e.video ? (
+                      <video
+                        className="research-video"
+                        src={e.video}
+                        controls
+                        playsInline
+                        preload="metadata"
+                      />
+                    ) : null}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="muted tiny">No experiments logged yet.</p>
+            )}
+
+            <div className="research-actions">
+              {onOpenVenture ? (
+                <button
+                  type="button"
+                  className="btn primary"
+                  onClick={() => onOpenVenture(p.id, 'experiments')}
+                >
+                  Open venture
+                </button>
+              ) : null}
+              {onOpenGraph ? (
+                <button
+                  type="button"
+                  className="btn"
+                  onClick={() => onOpenGraph(`venture:${p.id}`)}
+                >
+                  Kingdom graph
+                </button>
+              ) : null}
+              {onOpenExpenses ? (
+                <button type="button" className="btn ghost" onClick={() => onOpenExpenses()}>
+                  Expenses
+                </button>
+              ) : null}
+            </div>
+          </article>
+        ))}
       </div>
     </section>
   )
