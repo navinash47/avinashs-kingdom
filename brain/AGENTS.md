@@ -71,8 +71,9 @@ Periodically check for: orphan pages, broken `[[links]]`, duplicate topics, stal
 2. Register in `config/venture-registry.json` with `"kind": "research"` and a `field`.
 3. Wiki: `ventures/`, `architecture/` (mermaid file graph), `experiments/` (include `Video: proofs/...` when a clip exists).
 4. `npm run sync` from Kingdom. Panel: `/?tab=research`.
-5. After a train: update STATUS + expenses; **do not** commit `.pt`. Tell the human to copy NFS checkpoints.
+5. After a train: update STATUS + expenses; **do not** commit `.pt`. Tell the human to copy NFS checkpoints. Live metrics: Weights & Biases project `beamdojo` (Kingdom Research Lab card). TensorBoard only via SSH tunnel.
 6. After a major chunk: commit and push the research repo **and** Kingdom (no secrets, no weights).
+7. GPU box may write gitignored `tracking/training-status.json`. Sync attaches it as `training` on the Research Lab project. Missing file → idle/unknown; never invent a running job.
 
 ## Skills
 

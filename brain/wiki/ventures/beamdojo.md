@@ -25,6 +25,15 @@ Get a humanoid to walk a balance beam in sim, then (later) the paper robot G1. P
 
 Weights stay on `/lambda/nfs/beamdojo/logs/`. Never commit `.pt`. Tell Avinash after any train so he can copy them off-box.
 
+## How to watch a train
+
+Lambda does not serve a public Isaac webpage.
+
+1. Open Kingdom **Research** (`/?tab=research`) → BeamDojo **Live training**.
+2. Click **Open Weights & Biases**. If there is no entity yet, that link is `https://wandb.ai` — after `wandb login` on the GPU box, open project **beamdojo**.
+3. TensorBoard (SSH only): `ssh -L 6006:localhost:6006 lambda-beamdojo`, then TensorBoard on `/lambda/nfs/beamdojo/logs`, browser `http://localhost:6006`.
+4. Status badge is idle/unknown unless `tracking/training-status.json` says `running`. Do not assume a 10k-iter job from proof videos.
+
 ## Related
 
 - [[architecture/beamdojo]]

@@ -20,6 +20,25 @@ type LabDiagram = {
   svg_inline?: string | null
 }
 
+type LabTraining = {
+  updated?: string | null
+  status?: 'idle' | 'running' | 'unknown' | string
+  host?: string | null
+  robot?: string | null
+  stage?: number | string | null
+  num_envs?: number | null
+  max_iterations?: number | null
+  iteration?: number | null
+  logger?: string | null
+  wandb_project?: string | null
+  wandb_entity?: string | null
+  wandb_url?: string | null
+  log_dir?: string | null
+  checkpoint?: string | null
+  note?: string | null
+  source?: string | null
+}
+
 type LabProject = {
   id: string
   name: string
@@ -33,6 +52,7 @@ type LabProject = {
   architecture?: {
     sections?: Record<string, { diagrams?: LabDiagram[] }>
   } | null
+  training?: LabTraining | null
 }
 
 type LabPayload = {
@@ -68,6 +88,135 @@ function parseMermaidFlow(source: string): { nodes: FlowNode[]; edges: FlowEdge[
     nodes: [...nodes.entries()].map(([id, label]) => ({ id, label })),
     edges,
   }
+}
+
+function wandbLink(training: LabTraining | null | undefined, projectId: string) {
+  const project = training?.wandb_project || (projectId === 'beamdojo' ? 'beamdojo' : projectId)
+  const entity = training?.wandb_entity?.trim() || ''
+  const explicit = training?.wandb_url?.trim() || ''
+  if (explicit && explicit !== 'https://wandb.ai' && explicit !== 'https://wandb.ai/') {
+    const hasProjectPath = /wandb\.ai\/[^/]+\/[^/]+/.test(explicit)
+    return { href: explicit, project, needsProjectHint: !entity && !hasProjectPath }
+  }
+  if (entity) {
+    return { href: `https://wandb.ai/${entity}/${project}`, project, needsProjectHint: false }
+  }
+  return { href: 'https://wandb.ai', project, needsProjectHint: true }
+}
+
+function statusLabel(status: string) {
+  if (status === 'running') return 'Running'
+  if (status === 'idle') return 'Idle'
+  return 'Unknown'
+}
+
+function LiveTrainingPanel({ project }: { project: LabProject }) {
+  const training = project.training ?? null
+  const statusRaw = training?.status
+  const status =
+    statusRaw === 'running' || statusRaw === 'idle' || statusRaw === 'unknown'
+      ? statusRaw
+      : 'unknown'
+  const gpuProject = project.id === 'beamdojo'
+  const link = wandbLink(training, project.id)
+  const meta: { label: string; value: string }[] = []
+  if (training?.host) meta.push({ label: 'Host', value: String(training.host) })
+  if (training?.robot) meta.push({ label: 'Robot', value: String(training.robot) })
+  if (training?.stage != null) meta.push({ label: 'Stage', value: String(training.stage) })
+  if (training?.num_envs != null) meta.push({ label: 'Envs', value: String(training.num_envs) })
+  if (training?.iteration != null || training?.max_iterations != null) {
+    const cur = training?.iteration != null ? String(training.iteration) : '—'
+    const max = training?.max_iterations != null ? String(training.max_iterations) : '—'
+    meta.push({ label: 'Iteration', value: `${cur} / ${max}` })
+  }
+  if (training?.logger) meta.push({ label: 'Logger', value: String(training.logger) })
+
+  const idleCopy =
+    status === 'idle'
+      ? 'Idle — no long train is running from the last status snapshot.'
+      : status === 'running'
+        ? 'A train is marked running in the last synced JSON. Open Weights & Biases for live curves.'
+        : 'Unknown — no live status file on last sync (or it could not be read). Not claiming a train is running.'
+
+  const exampleHint =
+    training?.source === 'example'
+      ? ' Showing the checked-in idle example; the live file is gitignored and was not present.'
+      : ''
+
+  return (
+    <div className="live-train">
+      <div className="live-train-head">
+        <p className="eyebrow">Live training</p>
+        <span className={`badge ${status}`}>{statusLabel(status)}</span>
+      </div>
+      <p className="muted tiny">
+        {idleCopy}
+        {exampleHint}
+      </p>
+      {training?.updated ? (
+        <p className="muted tiny">Status written {new Date(training.updated).toLocaleString()}</p>
+      ) : null}
+      {meta.length ? (
+        <dl className="live-train-meta">
+          {meta.map((row) => (
+            <div key={row.label}>
+              <dt>{row.label}</dt>
+              <dd>{row.value}</dd>
+            </div>
+          ))}
+        </dl>
+      ) : null}
+      <a
+        className="btn primary live-train-wandb"
+        href={link.href}
+        target="_blank"
+        rel="noreferrer"
+      >
+        Open Weights &amp; Biases
+      </a>
+      <p className="live-train-how">
+        Lambda has no public Isaac webpage. Weights &amp; Biases is the browser UI for live
+        metrics.
+        {link.needsProjectHint ? (
+          <>
+            {' '}
+            After <code>wandb login</code> on the GPU box, open project{' '}
+            <strong>{link.project}</strong> (this link is the W&amp;B home page until an entity is
+            set).
+          </>
+        ) : (
+          <> This link opens the W&amp;B project.</>
+        )}
+      </p>
+      {gpuProject ? (
+        <>
+          <p className="live-train-how">
+            TensorBoard is SSH-only (not a public URL). From your Mac:
+          </p>
+          <pre className="mono-path">ssh -L 6006:localhost:6006 lambda-beamdojo</pre>
+          <p className="live-train-how">
+            Then run TensorBoard on <code>/lambda/nfs/beamdojo/logs</code> and open{' '}
+            <code>http://localhost:6006</code>.
+          </p>
+        </>
+      ) : null}
+      {training?.log_dir ? (
+        <p className="mono-path" title="NFS / log dir">
+          log_dir: {training.log_dir}
+        </p>
+      ) : gpuProject ? (
+        <p className="mono-path">NFS logs (default): /lambda/nfs/beamdojo/logs</p>
+      ) : null}
+      {training?.checkpoint ? (
+        <p className="mono-path" title="Checkpoint (never git)">
+          checkpoint: {training.checkpoint}
+        </p>
+      ) : (
+        <p className="muted tiny">No checkpoint path recorded. Model weights are never git.</p>
+      )}
+      {training?.note ? <p className="muted tiny">{training.note}</p> : null}
+    </div>
+  )
 }
 
 function firstDiagram(project: LabProject): LabDiagram | null {
@@ -178,6 +327,8 @@ export function ResearchLab({ onOpenVenture, onOpenGraph, onOpenExpenses }: Rese
                 {p.version ?? '—'} · spend ${Number(p.spendUsd ?? 0).toFixed(2)}
               </p>
               {p.nextMilestone ? <p>{p.nextMilestone}</p> : null}
+
+              <LiveTrainingPanel project={p} />
 
               {diagram?.svg_inline ? (
                 <div

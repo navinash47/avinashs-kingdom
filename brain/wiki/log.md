@@ -2,6 +2,10 @@
 
 Append-only. Prefix each entry with `## [YYYY-MM-DD] <op> | <title>` so recent activity is greppable.
 
+## [2026-08-24] ops | Research Lab live training + W&B
+
+Kingdom Research Lab now shows a **Live training** card (status idle/running/unknown, W&B link, NFS/checkpoint paths). BeamDojo sync reads gitignored `tracking/training-status.json` (example snapshot if live file is missing). Lambda has no public Isaac page — Avinash watches metrics at Weights & Biases project `beamdojo`, or TensorBoard through `ssh -L 6006:localhost:6006 lambda-beamdojo`. Do not claim a long train is running without that JSON. [[concepts/research-lab]] · [[ventures/beamdojo]].
+
 ## [2026-08-24] ops | Research Lab + BeamDojo GPU province
 
 Kingdom gained a **Research** tab (`/?tab=research`) for future lab projects. First GPU project: **BeamDojo** (`~/Projects/BeamDojo`) — Isaac Lab H1 Stage 1 CUDA smoke on Lambda A10, proof mp4, expenses JSONL. Orchestrator rule: checkpoints never git; tell Avinash to copy them as insurance. Wiki [[concepts/research-lab]] · [[ventures/beamdojo]].

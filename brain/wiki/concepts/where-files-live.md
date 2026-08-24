@@ -63,7 +63,7 @@ Dashboard: `python scripts/run_dashboard.py` → http://127.0.0.1:8770/v2a
 |---------|------|
 | YouTube editor | `~/Projects/youtube-editor-lab` (SRS: `docs/SRS.md`) |
 | Research Frontier | `~/Projects/research-frontier-lab` |
-| BeamDojo | `~/Projects/BeamDojo` (`STATUS.md`, `tracking/expenses.jsonl`, `proofs/*.mp4`) |
+| BeamDojo | `~/Projects/BeamDojo` (`STATUS.md`, `tracking/expenses.jsonl`, gitignored `tracking/training-status.json`, `proofs/*.mp4`). Live metrics: W&B project `beamdojo`. |
 | Job Jugaad | `~/Projects/job-jugaad` (tracker UI + API `:8790`, `data/applications.json`) |
 | Mac optimize audit | `~/Projects/mac-optimize-audit` (live dashboard `:8742`, `reports/latest.json`) |
 | Subscription audit | `~/Projects/subscription-audit` |

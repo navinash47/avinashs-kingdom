@@ -106,7 +106,8 @@
       },
       "paths": {
         "status": "STATUS.md",
-        "expenses": "tracking/expenses.jsonl"
+        "expenses": "tracking/expenses.jsonl",
+        "trainingStatus": "tracking/training-status.json"
       },
       "github": {
         "owner": "navinash47",

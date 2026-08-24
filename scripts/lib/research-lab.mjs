@@ -2,6 +2,87 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { resolveRepoPath } from './registry.mjs'
 
+export const DEFAULT_WANDB_PROJECT = 'beamdojo'
+export const DEFAULT_TRAINING_STATUS_REL = 'tracking/training-status.json'
+const ALLOWED_STATUS = new Set(['idle', 'running', 'unknown'])
+
+export function wandbUrlFromStatus(training) {
+  const project = String(training?.wandb_project || DEFAULT_WANDB_PROJECT)
+  const entity = String(training?.wandb_entity || '').trim()
+  const explicit = String(training?.wandb_url || '').trim()
+  const specific =
+    explicit &&
+    explicit !== 'https://wandb.ai' &&
+    explicit !== 'https://wandb.ai/'
+  if (specific) {
+    const hasProjectPath = /wandb\.ai\/[^/]+\/[^/]+/.test(explicit)
+    return {
+      href: explicit,
+      project,
+      needsProjectHint: !entity && !hasProjectPath,
+    }
+  }
+  if (entity) {
+    return {
+      href: `https://wandb.ai/${entity}/${project}`,
+      project,
+      needsProjectHint: false,
+    }
+  }
+  return { href: 'https://wandb.ai', project, needsProjectHint: true }
+}
+
+export function normalizeTrainingStatus(raw, { source = 'live' } = {}) {
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return null
+  const status = ALLOWED_STATUS.has(raw.status) ? raw.status : 'unknown'
+  const safeStatus = source === 'example' && status === 'running' ? 'unknown' : status
+  const link = wandbUrlFromStatus({ ...raw, status: safeStatus })
+  return {
+    updated: raw.updated ?? null,
+    status: safeStatus,
+    host: raw.host ?? null,
+    robot: raw.robot ?? null,
+    stage: raw.stage ?? null,
+    num_envs: raw.num_envs ?? null,
+    max_iterations: raw.max_iterations ?? null,
+    iteration: raw.iteration ?? null,
+    logger: raw.logger ?? null,
+    wandb_project: raw.wandb_project || DEFAULT_WANDB_PROJECT,
+    wandb_entity: raw.wandb_entity ?? null,
+    wandb_url: link.href,
+    log_dir: raw.log_dir ?? null,
+    checkpoint: raw.checkpoint ?? null,
+    note: raw.note ?? null,
+    source,
+  }
+}
+
+export function loadTrainingStatus(repoRoot, relPath = DEFAULT_TRAINING_STATUS_REL) {
+  if (!repoRoot) return null
+  const livePath = path.join(repoRoot, relPath)
+  const examplePath = path.join(path.dirname(livePath), 'training-status.example.json')
+
+  const tryRead = (filePath, source) => {
+    if (!fs.existsSync(filePath)) return null
+    try {
+      const raw = JSON.parse(fs.readFileSync(filePath, 'utf8'))
+      return normalizeTrainingStatus(raw, { source })
+    } catch {
+      return normalizeTrainingStatus(
+        {
+          status: 'unknown',
+          wandb_project: DEFAULT_WANDB_PROJECT,
+          wandb_url: 'https://wandb.ai',
+          note: `Could not parse ${path.basename(filePath)}`,
+        },
+        { source },
+      )
+    }
+  }
+
+  return tryRead(livePath, 'live') ?? tryRead(examplePath, 'example')
+}
+
 function jsonlSpend(filePath) {
   if (!filePath || !fs.existsSync(filePath)) return { total: 0, rows: 0 }
   let total = 0
@@ -70,17 +151,17 @@ export function syncResearchLab(registry, kingdomRoot, dataDir, ventures) {
       : null
 
     const items = Array.isArray(experiments.items) ? experiments.items : []
-    const videos = copyProofVideos(
-      repoRoot,
-      path.join(outDir, entry.id),
-      items,
-    )
+    const videos = repoRoot
+      ? copyProofVideos(repoRoot, path.join(outDir, entry.id), items)
+      : []
     if (fs.existsSync(expPath)) {
       fs.writeFileSync(expPath, JSON.stringify(experiments, null, 2) + '\n')
     }
 
     const expRel = entry.paths?.expenses
     const spend = jsonlSpend(expRel && repoRoot ? path.join(repoRoot, expRel) : null)
+    const statusRel = entry.paths?.trainingStatus || DEFAULT_TRAINING_STATUS_REL
+    const training = loadTrainingStatus(repoRoot, statusRel)
 
     projects.push({
       id: entry.id,
@@ -97,6 +178,7 @@ export function syncResearchLab(registry, kingdomRoot, dataDir, ventures) {
       videos,
       experiments: items.slice(0, 12),
       architecture,
+      training,
     })
   }
 
