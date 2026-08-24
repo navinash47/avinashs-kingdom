@@ -25,7 +25,8 @@ Lambda has **no public Isaac webpage**. The browser UI for live metrics is **Wei
 3. Research tab → **Live training** card: status badge (idle / running / unknown) + **Open Weights & Biases**.
 4. If `wandb_entity` is missing, the link is `https://wandb.ai`. After `wandb login` on the GPU box, open project **beamdojo**. Do not invent a run URL.
 5. TensorBoard is SSH-only: `ssh -L 6006:localhost:6006 lambda-beamdojo`, then TensorBoard on `/lambda/nfs/beamdojo/logs`.
-6. Missing live JSON → unknown/idle. Never claim a 10k-iter train is running.
+6. Research tab polls `/live/training-status.json` every 5s in `npm run dev` (reads the gitignored BeamDojo file) and `/data/research/beamdojo/training-status.json` after sync.
+7. Missing live JSON → unknown/idle. Never claim a 10k-iter train is running.
 
 ## Rules for GPU / trained models
 

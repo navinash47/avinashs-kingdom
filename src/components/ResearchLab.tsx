@@ -181,7 +181,8 @@ function LiveTrainingPanel({ project }: { project: LabProject }) {
       </a>
       <p className="live-train-how">
         Lambda has no public Isaac webpage. Weights &amp; Biases is the browser UI for live
-        metrics.
+        metrics. This card re-reads status every 5s from the BeamDojo checkout (dev) or last
+        sync.
         {link.needsProjectHint ? (
           <>
             {' '}
@@ -268,19 +269,39 @@ export function ResearchLab({ onOpenVenture, onOpenGraph, onOpenExpenses }: Rese
 
   useEffect(() => {
     let cancelled = false
-    void fetch(`/data/research-lab.json?_=${Date.now()}`, { cache: 'no-store' })
-      .then((r) => {
-        if (!r.ok) throw new Error(`research-lab.json ${r.status}`)
-        return r.json() as Promise<LabPayload>
-      })
-      .then((j) => {
-        if (!cancelled) setData(j)
-      })
-      .catch((e) => {
-        if (!cancelled) setError(e instanceof Error ? e.message : 'Failed to load research lab')
-      })
+    const load = () => {
+      void Promise.all([
+        fetch(`/data/research-lab.json?_=${Date.now()}`, { cache: 'no-store' }).then((r) => {
+          if (!r.ok) throw new Error(`research-lab.json ${r.status}`)
+          return r.json() as Promise<LabPayload>
+        }),
+        fetch(`/live/training-status.json?_=${Date.now()}`, { cache: 'no-store' })
+          .then((r) => (r.ok ? (r.json() as Promise<LabTraining>) : null))
+          .catch(() => null),
+        fetch(`/data/research/beamdojo/training-status.json?_=${Date.now()}`, { cache: 'no-store' })
+          .then((r) => (r.ok ? (r.json() as Promise<LabTraining>) : null))
+          .catch(() => null),
+      ])
+        .then(([lab, live, synced]) => {
+          if (cancelled) return
+          const overlay = live?.status ? live : synced?.status ? synced : null
+          if (overlay) {
+            lab.projects = lab.projects.map((p) =>
+              p.id === 'beamdojo' ? { ...p, training: { ...p.training, ...overlay } } : p,
+            )
+          }
+          setData(lab)
+          setError(null)
+        })
+        .catch((e) => {
+          if (!cancelled) setError(e instanceof Error ? e.message : 'Failed to load research lab')
+        })
+    }
+    load()
+    const id = window.setInterval(load, 5000)
     return () => {
       cancelled = true
+      window.clearInterval(id)
     }
   }, [])
 
@@ -297,8 +318,12 @@ export function ResearchLab({ onOpenVenture, onOpenGraph, onOpenExpenses }: Rese
           </p>
         </div>
         {data?.updated ? (
-          <span className="muted tiny">synced {new Date(data.updated).toLocaleString()}</span>
-        ) : null}
+          <span className="muted tiny">
+            synced {new Date(data.updated).toLocaleString()} · live poll 5s
+          </span>
+        ) : (
+          <span className="muted tiny">live poll 5s</span>
+        )}
       </header>
 
       <p className="research-insurance">

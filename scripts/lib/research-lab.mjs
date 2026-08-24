@@ -169,6 +169,14 @@ export function syncResearchLab(registry, kingdomRoot, dataDir, ventures) {
     const spend = jsonlSpend(expRel && repoRoot ? path.join(repoRoot, expRel) : null)
     const statusRel = entry.paths?.trainingStatus || DEFAULT_TRAINING_STATUS_REL
     const training = loadTrainingStatus(repoRoot, statusRel)
+    if (training) {
+      const dest = path.join(outDir, entry.id)
+      fs.mkdirSync(dest, { recursive: true })
+      fs.writeFileSync(
+        path.join(dest, 'training-status.json'),
+        JSON.stringify(training, null, 2) + '\n',
+      )
+    }
 
     projects.push({
       id: entry.id,
