@@ -51,6 +51,7 @@ function liveTrainingStatusPlugin(): Plugin {
 export default defineConfig({
   plugins: [react(), liveTrainingStatusPlugin()],
   server: {
+    host: true,
     port: 5173,
     strictPort: true,
     allowedHosts: ['.trycloudflare.com', 'localhost', '127.0.0.1'],
