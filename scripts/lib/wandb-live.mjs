@@ -30,6 +30,8 @@ const SUMMARY_KEY_ALIASES = {
   surrogate_loss: ['Loss/surrogate', 'loss/surrogate', 'surrogate_loss'],
   entropy: ['Loss/entropy', 'loss/entropy', 'entropy'],
   foothold_value_loss: [
+    'Loss/value_foothold',
+    'loss/value_foothold',
     'Loss/foothold_value_function',
     'loss/foothold_value_function',
     'foothold_value_loss',

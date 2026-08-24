@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "test": "node --test scripts/lib/*.test.mjs",
+    "test": "node --experimental-strip-types --test scripts/lib/*.test.mjs",
     "sync": "node scripts/sync-kingdom.mjs",
     "sync:audits": "node scripts/sync-kingdom.mjs",
     "headroom:start": "bash scripts/headroom-kingdom.sh start",

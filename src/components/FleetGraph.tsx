@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import type { Agent, Venture } from '../types'
+import { ventureIdFromFocus } from '../lib/tab-url'
 
 type SkillNode = { id: string; path?: string }
 type GraphAgent = {
@@ -22,12 +23,6 @@ type Props = {
   focusNode?: string | null
 }
 
-function ventureIdFromFocus(focusNode?: string | null) {
-  if (!focusNode) return null
-  const m = /^venture:(.+)$/.exec(focusNode)
-  return m?.[1] ?? null
-}
-
 export function FleetGraph({ agents, ventures, focusNode }: Props) {
   const [file, setFile] = useState<SkillGraphFile | null>(null)
   const focusVenture = ventureIdFromFocus(focusNode)
@@ -48,14 +43,17 @@ export function FleetGraph({ agents, ventures, focusNode }: Props) {
   }, [])
 
   const graphAgents: GraphAgent[] = useMemo(() => {
-    if (file?.agents?.length) return file.agents
-    return agents.map((a) => ({
+    const fromState = agents.map((a) => ({
       id: a.id,
       name: a.name,
       venture_id: a.ventureId,
       focus: a.focus,
-      skills: [],
+      skills: [] as string[],
     }))
+    if (!file?.agents?.length) return fromState
+    const byId = new Map(fromState.map((a) => [a.id, a]))
+    for (const a of file.agents) byId.set(a.id, a)
+    return [...byId.values()]
   }, [file, agents])
 
   const visible = focusVenture
@@ -65,7 +63,7 @@ export function FleetGraph({ agents, ventures, focusNode }: Props) {
   const ventureName = (id: string) => ventures.find((v) => v.id === id)?.name ?? id
 
   return (
-    <section className="panel fleet-graph">
+    <section className="panel fleet-graph" data-focus-venture={focusVenture ?? ''}>
       <header className="panel-head">
         <div>
           <h2>Fleet graph</h2>
@@ -82,7 +80,9 @@ export function FleetGraph({ agents, ventures, focusNode }: Props) {
 
       {!visible.length ? (
         <p className="muted">
-          No agents in this fleet slice. Run <code>npm run sync</code>.
+          {focusVenture
+            ? `No agents for ${ventureName(focusVenture)} (${focusVenture}). Run npm run sync.`
+            : 'No agents in this fleet slice. Run npm run sync.'}
         </p>
       ) : (
         <div className="fleet-nodes">

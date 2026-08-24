@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { AgentRoster } from './components/AgentRoster'
 import { ExpensesLedger } from './components/ExpensesLedger'
 import { FleetGraph } from './components/FleetGraph'
@@ -10,6 +10,8 @@ import { TokenMaxxing } from './components/TokenMaxxing'
 import { VentureBoard } from './components/VentureBoard'
 import { ResearchLab } from './components/ResearchLab'
 import { useKingdomState } from './hooks/useKingdomState'
+import { KINGDOM_TABS, kingdomSearch, parseKingdomUrl, ventureIdFromFocus } from './lib/tab-url'
+import type { KingdomTab } from './lib/tab-url'
 import './App.css'
 
 const NAV = [
@@ -40,24 +42,39 @@ function App() {
     resetToSeed,
     lastSyncAt,
   } = useKingdomState()
-  const [tab, setTab] = useState(() => {
-    const q = new URLSearchParams(window.location.search).get('tab')
-    const ok = [
-      'throne',
-      'ventures',
-      'research',
-      'graph',
-      'tokens',
-      'expenses',
-      'subs',
-      'storage',
-      'agents',
-    ]
-    return q && ok.includes(q) ? q : 'throne'
-  })
-  const [focusVentureId, setFocusVentureId] = useState<string | null>(null)
-  const [focusGraphNode, setFocusGraphNode] = useState<string | null>(null)
+  const initial = parseKingdomUrl(window.location.search)
+  const [tab, setTab] = useState(initial.tab)
+  const [focusVentureId, setFocusVentureId] = useState<string | null>(
+    ventureIdFromFocus(initial.focus),
+  )
+  const [focusGraphNode, setFocusGraphNode] = useState<string | null>(initial.focus)
   const fileRef = useRef<HTMLInputElement>(null)
+
+  const go = (nextTab: string, nextFocus: string | null = focusGraphNode) => {
+    if (!(KINGDOM_TABS as readonly string[]).includes(nextTab)) return
+    setTab(nextTab as KingdomTab)
+    if (nextFocus) {
+      setFocusGraphNode(nextFocus)
+      const id = ventureIdFromFocus(nextFocus)
+      if (id) setFocusVentureId(id)
+    }
+    window.history.replaceState(
+      {},
+      '',
+      kingdomSearch(nextTab, nextTab === 'research' ? null : nextFocus),
+    )
+  }
+
+  useEffect(() => {
+    const onPop = () => {
+      const parsed = parseKingdomUrl(window.location.search)
+      setTab(parsed.tab)
+      setFocusGraphNode(parsed.focus)
+      setFocusVentureId(ventureIdFromFocus(parsed.focus))
+    }
+    window.addEventListener('popstate', onPop)
+    return () => window.removeEventListener('popstate', onPop)
+  }, [])
 
   if (!ready) {
     return (
@@ -113,7 +130,7 @@ function App() {
       </header>
 
       <nav className="top-nav">
-        <SegmentedControl options={NAV} value={tab} onChange={setTab} />
+        <SegmentedControl options={NAV} value={tab} onChange={(id) => go(id)} />
       </nav>
 
       <main className="main">
@@ -135,14 +152,12 @@ function App() {
         {tab === 'research' && (
           <ResearchLab
             onOpenVenture={(id) => {
-              setFocusVentureId(id)
-              setTab('ventures')
+              go('ventures', `venture:${id}`)
             }}
             onOpenGraph={(nodeId) => {
-              setFocusGraphNode(nodeId)
-              setTab('graph')
+              go('graph', nodeId)
             }}
-            onOpenExpenses={() => setTab('expenses')}
+            onOpenExpenses={() => go('expenses')}
           />
         )}
         {tab === 'graph' && (

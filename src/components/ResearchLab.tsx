@@ -173,7 +173,17 @@ function pinBeamdojoFirst(projects: LabProject[]) {
   return [...projects].sort((a, b) => Number(b.id === 'beamdojo') - Number(a.id === 'beamdojo'))
 }
 
-function LiveTrainingPanel({ project }: { project: LabProject }) {
+function LiveTrainingPanel({
+  project,
+  onOpenVenture,
+  onOpenGraph,
+  onOpenExpenses,
+}: {
+  project: LabProject
+  onOpenVenture?: (id: string, tab?: string) => void
+  onOpenGraph?: (nodeId: string) => void
+  onOpenExpenses?: () => void
+}) {
   const training = project.training ?? null
   const statusRaw = training?.status
   const status =
@@ -260,6 +270,28 @@ function LiveTrainingPanel({ project }: { project: LabProject }) {
       >
         Open Weights &amp; Biases
       </a>
+      <div className="live-train-actions">
+        {onOpenVenture ? (
+          <button type="button" className="btn" onClick={() => onOpenVenture(project.id, 'experiments')}>
+            Open venture
+          </button>
+        ) : null}
+        {onOpenGraph ? (
+          <button
+            type="button"
+            className="btn"
+            aria-label={`Fleet graph for ${project.name}`}
+            onClick={() => onOpenGraph(`venture:${project.id}`)}
+          >
+            Fleet graph
+          </button>
+        ) : null}
+        {onOpenExpenses ? (
+          <button type="button" className="btn ghost" onClick={() => onOpenExpenses()}>
+            Expenses
+          </button>
+        ) : null}
+      </div>
       <p className="live-train-how">
         Lambda has no public Isaac webpage. This card shows the last PPO snapshot (mean reward,
         losses, FPS) when the GPU writer or a fresh W&amp;B summary provides them. Weights &amp;
@@ -440,7 +472,12 @@ export function ResearchLab({ onOpenVenture, onOpenGraph, onOpenExpenses }: Rese
             train is writing status or W&amp;B has a fresh heartbeat. Full curves stay on Weights
             &amp; Biases. Status refreshes every 5s.
           </p>
-          <LiveTrainingPanel project={beamdojo} />
+          <LiveTrainingPanel
+            project={beamdojo}
+            onOpenVenture={onOpenVenture}
+            onOpenGraph={onOpenGraph}
+            onOpenExpenses={onOpenExpenses}
+          />
         </section>
       ) : null}
 
@@ -462,7 +499,14 @@ export function ResearchLab({ onOpenVenture, onOpenGraph, onOpenExpenses }: Rese
               </p>
               {p.nextMilestone ? <p>{p.nextMilestone}</p> : null}
 
-              {showLiveTraining(p) && p.id !== 'beamdojo' ? <LiveTrainingPanel project={p} /> : null}
+              {showLiveTraining(p) && p.id !== 'beamdojo' ? (
+                <LiveTrainingPanel
+                  project={p}
+                  onOpenVenture={onOpenVenture}
+                  onOpenGraph={onOpenGraph}
+                  onOpenExpenses={onOpenExpenses}
+                />
+              ) : null}
 
               {diagram?.svg_inline ? (
                 <div

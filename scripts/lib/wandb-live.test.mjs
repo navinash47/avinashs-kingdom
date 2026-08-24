@@ -124,7 +124,7 @@ describe('parseWandbSummary / parseWandbSampledHistory', () => {
         'Train/mean_reward': 2.25,
         'Train/mean_episode_length': 18,
         'Loss/value_function': 0.4,
-        'Loss/foothold_value_function': 0.15,
+        'Loss/value_foothold': 0.15,
         'Perf/total_fps': 900,
         _step: 40,
       }),

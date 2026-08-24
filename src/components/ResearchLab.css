@@ -212,6 +212,12 @@ a.live-train-wandb {
   display: block;
 }
 
+.live-train-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
 .mono-path {
   font-family: 'IBM Plex Mono', ui-monospace, monospace;
   font-size: 0.75rem;
