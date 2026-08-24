@@ -19,7 +19,7 @@ Catalog of pages. Agents update this on every ingest. Last full refresh: **2026-
 | [whatsapp-voice](ventures/whatsapp-voice.md) | Cash engine · Phase 8 · 80% · $0/$40 · files at ~/Projects/whatsapp-voice-agents |
 | [youtube-editor](ventures/youtube-editor.md) | Screenplay + Veritasium formula · Phase 2 · Cut Control · show-first craft |
 | [research-frontier](ventures/research-frontier.md) | Paper club · v0.1 · 12% · brain as store |
-| [beamdojo](ventures/beamdojo.md) | Isaac Lab locomotion · Stage 1 GPU smoke · Research Lab |
+| [beamdojo](ventures/beamdojo.md) | Isaac Lab locomotion · Stage 1 GPU smoke · live train via W&B |
 | [procedural-city](ventures/procedural-city.md) | City · Phase 49 · ~53% · 49/92 via origin/main · $70 |
 | [comic-engine](ventures/comic-engine.md) | ComicMainEngine · 2A A0 passed · A1 next · 17% |
 | [kingdom-ops](ventures/kingdom-ops.md) | Steward · 70% · kill list |
@@ -36,7 +36,7 @@ Catalog of pages. Agents update this on every ingest. Last full refresh: **2026-
 | [veritasium-formula](concepts/veritasium-formula.md) | Misconception → Q→E → A/B → packaging → payoff |
 | [multi-agent-youtube](concepts/multi-agent-youtube.md) | Junior SWE trackers + race control for Cut lab |
 | [llm-wiki](concepts/llm-wiki.md) | Karpathy compile-once pattern |
-| [research-lab](concepts/research-lab.md) | How to add GPU/paper projects to the Research tab |
+| [research-lab](concepts/research-lab.md) | Research tab + live W&B training card (idle/unknown unless JSON says running) |
 | [where-files-live](concepts/where-files-live.md) | Path map for all provinces |
 | [layman-screenplay-craft](concepts/layman-screenplay-craft.md) | Show-first detail + Video 1 locks (E2, title, pauses) |
 | [youtube-house-video-style](concepts/youtube-house-video-style.md) | **Canonical house style for ALL future Cut videos** |

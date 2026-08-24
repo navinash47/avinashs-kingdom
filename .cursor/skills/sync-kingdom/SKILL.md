@@ -42,7 +42,7 @@ Read these files. **Do not treat Kingdom `STATUS.md` / `ventures.json` as eviden
 | WhatsApp | `~/Projects/whatsapp-voice-agents` | `tracking/phases.json` |
 | YouTube | `~/Projects/youtube-editor-lab` | `STATUS.md` + `tracking/` / Cut Control state |
 | Research / Atlas | `~/Projects/research-frontier-lab` | `STATUS.md` |
-| BeamDojo / Dojo | `~/Projects/BeamDojo` | `STATUS.md` + `tracking/expenses.jsonl` + `proofs/` |
+| BeamDojo / Dojo | `~/Projects/BeamDojo` | `STATUS.md` + `tracking/expenses.jsonl` + `tracking/training-status.json` + `proofs/` |
 | City | `~/ProceduralCity` | `tracking/phases.json` — prefer `origin/main` if local branch is stale |
 | Comic | `~/Desktop/ComicMainEngine` | `data/v2a_program.json` (2A A0–A5). V1 board is `data/usage.db`. Dashboard `:8770/v2a` |
 | Job Jugaad | `~/Projects/job-jugaad` | `data/applications.json` |

@@ -22,6 +22,12 @@
     },
     {
       "date": "2026-08-24",
+      "summary": "Watch GPU trains in the browser via Weights & Biases (project `beamdojo`), not a public Isaac page. Kingdom Research Lab shows last-known `tracking/training-status.json` (idle/unknown unless a live file says running). TensorBoard: `ssh -L 6006:localhost:6006 lambda-beamdojo` then TensorBoard on `/lambda/nfs/beamdojo/logs`.",
+      "source": "wiki",
+      "video": null
+    },
+    {
+      "date": "2026-08-24",
       "summary": "Track Kingdom status, A10 smoke proof, and Lambda spend without weights.",
       "source": "git"
     },

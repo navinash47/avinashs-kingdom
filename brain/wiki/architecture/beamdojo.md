@@ -8,7 +8,7 @@ updated: 2026-08-24
 
 ## System design
 
-Mac is the orchestrator. Training and RTX video run on a Lambda **A10** (RT cores) inside Isaac Sim 5.1 + Isaac Lab 2.3.2 Docker. BeamDojo source is bind-mounted from NFS so terminate does not wipe code. Checkpoints stay on NFS. Kingdom syncs STATUS, expenses, and proof mp4s into the Research Lab.
+Mac is the orchestrator. Training and RTX video run on a Lambda **A10** (RT cores) inside Isaac Sim 5.1 + Isaac Lab 2.3.2 Docker. BeamDojo source is bind-mounted from NFS so terminate does not wipe code. Checkpoints stay on NFS. Kingdom syncs STATUS, expenses, proof mp4s, and `tracking/training-status.json` into the Research Lab. Live curves are **Weights & Biases** (not an Isaac webpage).
 
 ```mermaid
 flowchart LR
@@ -17,16 +17,20 @@ flowchart LR
   Runtime --> Cfg["h1_cfg/beamdojo_stage1_cfg.py"]
   Cfg --> Isaac["Isaac Lab + PhysX + RTX"]
   Isaac --> NFS["NFS logs / model_*.pt"]
+  Train --> WB["Weights & Biases · project beamdojo"]
+  Train --> Status["tracking/training-status.json"]
   Play["scripts/rsl_rl/play_beamdojo.py --video"] --> Proofs["proofs/*.mp4"]
   STATUS["STATUS.md + expenses.jsonl"] --> Sync["Kingdom npm run sync"]
+  Status --> Sync
   Proofs --> Sync
   Sync --> Lab["Research Lab tab"]
+  Lab --> WB
 ```
 
 ## Input / output flows
 
 - **In:** H1 USD, Stage 1 cfg, PPO hyperparams, A10 CUDA
-- **Out:** `model_*.pt` on NFS, TensorBoard, RTX mp4 proofs, expense JSONL, STATUS.md
+- **Out:** `model_*.pt` on NFS, W&B (browser), TensorBoard via SSH tunnel, RTX mp4 proofs, expense JSONL, STATUS.md, gitignored training-status.json
 
 ## Data stores
 
@@ -36,6 +40,7 @@ flowchart LR
 | GPU logs | NFS | /lambda/nfs/beamdojo/logs |
 | Proof clips | git (small) | ~/Projects/BeamDojo/proofs |
 | Spend | JSONL | ~/Projects/BeamDojo/tracking/expenses.jsonl |
+| Live train status | JSON (gitignored) | ~/Projects/BeamDojo/tracking/training-status.json |
 | Kingdom mirror | JSON | avinashs-kingdom/public/data/research/ |
 
 ## Future plans

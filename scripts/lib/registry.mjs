@@ -17,6 +17,19 @@ export function getRegistryEntry(registry, id) {
   return registry.ventures?.find((v) => v.id === id) ?? null
 }
 
+/** Cloud / workspace clones when the Mac path is absent. */
+const BEAMDOJO_FALLBACKS = [
+  '/agent/repos/beamdojo',
+  path.resolve(process.cwd(), '..', 'beamdojo'),
+]
+
 export function resolveRepoPath(entry) {
-  return expandHome(entry?.repoPath)
+  const primary = expandHome(entry?.repoPath)
+  if (primary && fs.existsSync(primary)) return primary
+  if (entry?.id === 'beamdojo') {
+    for (const candidate of BEAMDOJO_FALLBACKS) {
+      if (candidate && fs.existsSync(candidate)) return candidate
+    }
+  }
+  return primary
 }
