@@ -7,6 +7,7 @@ import {
   fetchFreshWandbRun,
   mergeFileAndWandb,
   wandbSecretsFromDisk,
+  entityForWandbFetch,
 } from './scripts/lib/wandb-live.mjs'
 import { normalizeTrainingStatus } from './scripts/lib/research-lab.mjs'
 
@@ -40,7 +41,7 @@ async function resolveLivePayload(): Promise<Record<string, unknown> | null> {
   const wandb = secrets.apiKey
     ? await fetchFreshWandbRun({
         apiKey: secrets.apiKey,
-        entity: secrets.entity,
+        entity: entityForWandbFetch(secrets, fileStatus),
         project: secrets.project,
       })
     : null

@@ -9,6 +9,10 @@ export function wandbSecretsFromDisk(opts?: {
   entity: string
   project: string
 }
+export function entityForWandbFetch(
+  secrets: { entity?: string | null } | null | undefined,
+  fileStatus: { wandb_entity?: unknown } | null | undefined,
+): string
 export function parseWandbSummary(raw: unknown): Record<string, number>
 export function parseWandbSampledHistory(
   raw: unknown,

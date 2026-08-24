@@ -184,6 +184,12 @@ export function wandbSecretsFromDisk({ env = process.env, paths, cwd, home } = {
   }
 }
 
+export function entityForWandbFetch(secrets, fileStatus) {
+  const fromSecrets = String(secrets?.entity || '').trim()
+  if (fromSecrets) return fromSecrets
+  return String(fileStatus?.wandb_entity || '').trim()
+}
+
 export function wandbRunUrl(entity, project, name) {
   if (!entity || !project || !name) return null
   return `https://wandb.ai/${entity}/${project}/runs/${name}`

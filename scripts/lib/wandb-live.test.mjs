@@ -4,6 +4,7 @@ import os from 'node:os'
 import path from 'node:path'
 import { afterEach, describe, it } from 'node:test'
 import {
+  entityForWandbFetch,
   fetchFreshWandbRunUncached,
   isFreshRunningWandb,
   mergeFileAndWandb,
@@ -41,6 +42,15 @@ describe('readEnvFiles / wandbSecretsFromDisk', () => {
     assert.equal(secrets.entity, 'lab')
     assert.equal(secrets.project, 'beamdojo')
     assert.equal(readEnvFiles([envPath]).WANDB_API_KEY, 'secret-test-key')
+  })
+})
+
+describe('entityForWandbFetch', () => {
+  it('uses .env entity first, then live JSON entity from the A10 run', () => {
+    assert.equal(entityForWandbFetch({ entity: 'env-lab' }, { wandb_entity: 'from-run' }), 'env-lab')
+    assert.equal(entityForWandbFetch({ entity: '' }, { wandb_entity: 'from-run' }), 'from-run')
+    assert.equal(entityForWandbFetch({ entity: '  ' }, { wandb_entity: 'from-run' }), 'from-run')
+    assert.equal(entityForWandbFetch({ entity: '' }, { wandb_entity: null }), '')
   })
 })
 
