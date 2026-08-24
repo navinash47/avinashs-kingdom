@@ -1,17 +1,7 @@
 [
   {
-    "id": "sync-sub-jobright-ai",
-    "date": "2026-08-11",
-    "category": "tools",
-    "label": "Jobright.ai (est. monthly)",
-    "amount": 19.99,
-    "currency": "USD",
-    "ventureId": "kingdom-ops",
-    "notes": "Synced from kill list · $19.99 monthly · ~$240/yr"
-  },
-  {
     "id": "sync-sub-rocket-money",
-    "date": "2026-08-11",
+    "date": "2026-08-24",
     "category": "tools",
     "label": "Rocket Money (est. monthly)",
     "amount": 3.19,
@@ -20,18 +10,8 @@
     "notes": "Synced from kill list · $3.19 monthly · ~$38/yr"
   },
   {
-    "id": "sync-sub-coursera",
-    "date": "2026-08-11",
-    "category": "learning",
-    "label": "Coursera (est. monthly)",
-    "amount": 49,
-    "currency": "USD",
-    "ventureId": "research-frontier",
-    "notes": "Synced from kill list · $49.00 monthly · ~$588/yr"
-  },
-  {
     "id": "sync-sub-doordash-dashpass",
-    "date": "2026-08-11",
+    "date": "2026-08-24",
     "category": "other",
     "label": "DoorDash DashPass (est. monthly)",
     "amount": 9.99,
@@ -41,7 +21,7 @@
   },
   {
     "id": "sync-sub-openai-chatgpt-plus",
-    "date": "2026-08-11",
+    "date": "2026-08-24",
     "category": "api",
     "label": "OpenAI / ChatGPT Plus (est. monthly)",
     "amount": 21.25,
@@ -50,18 +30,8 @@
     "notes": "Synced from kill list · $21.25 monthly · ~$255/yr"
   },
   {
-    "id": "sync-sub-comcast-xfinity",
-    "date": "2026-08-11",
-    "category": "infra",
-    "label": "Comcast / Xfinity (est. monthly)",
-    "amount": 65.94,
-    "currency": "USD",
-    "ventureId": "kingdom-ops",
-    "notes": "Synced from kill list · $65.94 monthly · ~$791/yr"
-  },
-  {
     "id": "sync-sub-cursor",
-    "date": "2026-08-11",
+    "date": "2026-08-24",
     "category": "tools",
     "label": "Cursor (est. monthly)",
     "amount": 92.08,
@@ -71,7 +41,7 @@
   },
   {
     "id": "sync-sub-claude-ai-anthropic",
-    "date": "2026-08-11",
+    "date": "2026-08-24",
     "category": "api",
     "label": "Claude.ai / Anthropic (est. monthly)",
     "amount": 10.67,
@@ -80,18 +50,8 @@
     "notes": "Synced from kill list · $21.25 irregular · ~$128/yr"
   },
   {
-    "id": "sync-sub-csc-serviceworks-laundry",
-    "date": "2026-08-11",
-    "category": "other",
-    "label": "CSC ServiceWorks (laundry) (est. monthly)",
-    "amount": 10,
-    "currency": "USD",
-    "ventureId": "kingdom-ops",
-    "notes": "Synced from kill list · $10.00 monthly · ~$120/yr"
-  },
-  {
     "id": "sync-sub-apple-app-store-icloud",
-    "date": "2026-08-11",
+    "date": "2026-08-24",
     "category": "infra",
     "label": "Apple / App Store / iCloud (est. monthly)",
     "amount": 1.5,
@@ -100,23 +60,33 @@
     "notes": "Synced from kill list · $2.99 irregular · ~$18/yr"
   },
   {
-    "id": "sync-sub-market",
-    "date": "2026-08-11",
-    "category": "other",
-    "label": "Market (est. monthly)",
-    "amount": 7.92,
-    "currency": "USD",
-    "ventureId": "kingdom-ops",
-    "notes": "Synced from kill list · $15.76 irregular · ~$95/yr"
-  },
-  {
     "id": "sync-city-api",
-    "date": "2026-08-11",
+    "date": "2026-08-24",
     "category": "api",
     "label": "Procedural City API (fal / Gemini)",
     "amount": 1.08,
     "currency": "USD",
     "ventureId": "procedural-city",
-    "notes": "Synced from tracking/expenses.jsonl · 7 billable rows"
+    "notes": "Synced from tracking/expenses.jsonl · 28 billable rows"
+  },
+  {
+    "id": "sync-wa-api",
+    "date": "2026-08-24",
+    "category": "api",
+    "label": "WhatsApp Agent Cash API spend",
+    "amount": 0,
+    "currency": "USD",
+    "ventureId": "whatsapp-voice",
+    "notes": "Synced from WA expenses.jsonl · 0 billable · ceiling $40"
+  },
+  {
+    "id": "sync-beamdojo-gpu",
+    "date": "2026-08-24",
+    "category": "infra",
+    "label": "beamdojo GPU / compute",
+    "amount": 3.87,
+    "currency": "USD",
+    "ventureId": "beamdojo",
+    "notes": "Synced from tracking/expenses.jsonl · 1 billable rows"
   }
 ]

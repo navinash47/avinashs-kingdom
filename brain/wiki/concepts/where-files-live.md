@@ -1,6 +1,6 @@
 ---
 type: concept
-updated: 2026-08-11
+updated: 2026-08-16
 tags: [paths, map, citizens]
 ---
 
@@ -48,7 +48,14 @@ Plain map for citizens of the Kingdom. All paths are on this Mac unless noted.
 |--------|-------------------------|
 | `~/Desktop/ComicMainEngine` | `~/ComicEngine` (legacy stub / old notes) |
 
-Tracker: `data/usage.db` (`task` + `api_call` tables). Dashboard: `python scripts/run_dashboard.py`.
+| File | Purpose |
+|------|---------|
+| `data/v2a_program.json` | **Kingdom progress for 2A** (A0–A5). Live UI `/v2a` on `:8770` |
+| `docs/V2A_ARCHITECTURE.md` | Storyboard-first architecture |
+| `data/v2_program.json` | Version 2 (phases 12–20) — **frozen** while 2A runs |
+| `data/usage.db` | V1 task board + `api_call` spend (historical) |
+
+Dashboard: `python scripts/run_dashboard.py` → http://127.0.0.1:8770/v2a
 
 ## Other provinces
 
@@ -56,8 +63,11 @@ Tracker: `data/usage.db` (`task` + `api_call` tables). Dashboard: `python script
 |---------|------|
 | YouTube editor | `~/Projects/youtube-editor-lab` (SRS: `docs/SRS.md`) |
 | Research Frontier | `~/Projects/research-frontier-lab` |
+| BeamDojo | `~/Projects/BeamDojo` (`STATUS.md`, `tracking/expenses.jsonl`, `proofs/*.mp4`) |
+| Job Jugaad | `~/Projects/job-jugaad` (tracker UI + API `:8790`, `data/applications.json`) |
+| Mac optimize audit | `~/Projects/mac-optimize-audit` (live dashboard `:8742`, `reports/latest.json`) |
 | Subscription audit | `~/Projects/subscription-audit` |
-| Mac storage audit | `~/Projects/mac-storage-audit` |
+| Mac storage audit (legacy) | `~/Projects/mac-storage-audit` |
 
 ## Skills backup
 
@@ -84,9 +94,12 @@ Restore: `./scripts/restore-cursor-skills.sh` from Kingdom.
 
 ```bash
 cd ~/Projects/avinashs-kingdom
-npm run tunnels:list     # ports + start hints
-npm run tunnels          # tunnel every dashboard that is UP
-# or: ./scripts/cloudflare-dashboards.sh kingdom city comic
+npm run dashboards           # start all locals
+npm run dashboards:status
+npm run dashboards:stop
+npm run tunnels:list         # ports + start hints
+npm run tunnels              # public URLs for every dashboard that is UP
 ```
 
-Writes URLs to `brain/wiki/ops/cloudflare-links.md`. Chat: **cloudflare links**.
+Chat: **start dashboards** · **cloudflare links**  
+URLs file: `brain/wiki/ops/cloudflare-links.md`.

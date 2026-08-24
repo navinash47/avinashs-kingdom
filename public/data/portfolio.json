@@ -6,15 +6,19 @@
   "weeklyFocus": [
     "Close first WhatsApp/voice cash offer draft",
     "YouTube screenplay+clip desk MVP outline",
-    "Keep Research Frontier Lab at 15% (one vertical seed)"
+    "Keep Research Frontier Lab at 15% (one vertical seed)",
+    "BeamDojo Stage 1 GPU train after dual-terrain; copy checkpoints off Lambda as insurance"
   ],
   "weights": [
     { "ventureId": "whatsapp-voice", "weight": 35, "label": "WhatsApp / Voice" },
     { "ventureId": "youtube-editor", "weight": 20, "label": "YouTube editor" },
-    { "ventureId": "research-frontier", "weight": 15, "label": "Research Frontier" },
-    { "ventureId": "procedural-city", "weight": 15, "label": "Procedural City" },
-    { "ventureId": "comic-engine", "weight": 10, "label": "ComicEngine" },
-    { "ventureId": "kingdom-ops", "weight": 5, "label": "Kingdom ops" },
+    { "ventureId": "research-frontier", "weight": 8, "label": "Research Frontier" },
+    { "ventureId": "beamdojo", "weight": 6, "label": "BeamDojo" },
+    { "ventureId": "procedural-city", "weight": 10, "label": "Procedural City" },
+    { "ventureId": "comic-engine", "weight": 8, "label": "ComicMainEngine" },
+    { "ventureId": "job-jugaad", "weight": 8, "label": "Job Jugaad" },
+    { "ventureId": "kingdom-ops", "weight": 2, "label": "Kingdom ops" },
+    { "ventureId": "mac-optimize-audit", "weight": 3, "label": "Mac optimize" },
     { "ventureId": "shorts", "weight": 0, "label": "Shorts (parked)" }
   ]
 }

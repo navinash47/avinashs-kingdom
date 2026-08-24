@@ -24,6 +24,14 @@
     "tokenUsedUsd": 0
   },
   {
+    "id": "agent-dojo",
+    "name": "Agent Dojo",
+    "ventureId": "beamdojo",
+    "focus": "Isaac Lab BeamDojo on Lambda GPU. Proof videos in Kingdom Research Lab. Never git-commit weights.",
+    "tokenBudgetUsd": 20,
+    "tokenUsedUsd": 0
+  },
+  {
     "id": "agent-metro",
     "name": "Agent Metro",
     "ventureId": "procedural-city",
@@ -35,7 +43,7 @@
     "id": "agent-ink",
     "name": "Agent Ink",
     "ventureId": "comic-engine",
-    "focus": "V1 comic quality + consistency. Batch jobs; cache refs.",
+    "focus": "ComicMainEngine (onceuponatime) — V1 board done; V2/phase12+ after City. Batch jobs; usage.db.",
     "tokenBudgetUsd": 45,
     "tokenUsedUsd": 18
   },
@@ -43,8 +51,24 @@
     "id": "agent-steward",
     "name": "Agent Steward",
     "ventureId": "kingdom-ops",
-    "focus": "Subscription kill list, disk reclaim, expense hygiene, token caps.",
+    "focus": "Subscription kill list, expense hygiene, token caps, brain wiki hygiene.",
     "tokenBudgetUsd": 10,
     "tokenUsedUsd": 2
+  },
+  {
+    "id": "agent-janitor",
+    "name": "Agent Janitor",
+    "ventureId": "mac-optimize-audit",
+    "focus": "Mac RAM/CPU/swap audit, safe cache cleaners, keep the Air from stalling.",
+    "tokenBudgetUsd": 5,
+    "tokenUsedUsd": 0
+  },
+  {
+    "id": "agent-jugaad",
+    "name": "Agent Jugaad",
+    "ventureId": "job-jugaad",
+    "focus": "Track applied companies + roles; pipeline board; later resume-pick + headed apply.",
+    "tokenBudgetUsd": 15,
+    "tokenUsedUsd": 0
   }
 ]

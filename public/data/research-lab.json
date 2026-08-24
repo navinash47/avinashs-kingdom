@@ -1,0 +1,227 @@
+{
+  "updated": "2026-08-24T18:32:40.925Z",
+  "projects": [
+    {
+      "id": "research-frontier",
+      "name": "Research Frontier Lab",
+      "field": "generative comics / multimodal consistency",
+      "progress": 12,
+      "version": "v0.1",
+      "priority": "P1",
+      "nextMilestone": "Ingest 1–3 abstracts into Kingdom brain via kingdom-wiki (vertical: generative comics / multimodal consistency).",
+      "repoPath": "/Users/avinashnandyala/Projects/research-frontier-lab",
+      "github": {
+        "owner": "navinash47",
+        "repo": "research-frontier-lab",
+        "default_branch": "main"
+      },
+      "spendUsd": 0,
+      "expenseRows": 0,
+      "videos": [],
+      "experiments": [
+        {
+          "date": "2026-08-24",
+          "summary": "Initial commit",
+          "source": "git"
+        },
+        {
+          "date": "2026-08-20",
+          "summary": "Architecture wiki + sync bundle for inspector Architecture tab.",
+          "source": "wiki",
+          "video": null
+        },
+        {
+          "date": "2026-08-11",
+          "summary": "Venture registered in Kingdom orchestrator registry.",
+          "source": "wiki",
+          "video": null
+        }
+      ],
+      "architecture": {
+        "venture_id": "research-frontier",
+        "updated": "2026-08-24",
+        "type": "architecture",
+        "sections": {
+          "system design": {
+            "title": "System design",
+            "content": "Paper clubbing and frontier ranking for generative comics / multimodal consistency vertical. Brain wiki is the knowledge store.",
+            "markdown": "Paper clubbing and frontier ranking for generative comics / multimodal consistency vertical. Brain wiki is the knowledge store.",
+            "diagrams": [],
+            "tables": []
+          },
+          "input / output flows": {
+            "title": "Input / output flows",
+            "content": "- **In:** abstracts, OpenAlex/Semantic Scholar citations\n- **Out:** ranked open questions, concept pages in brain/wiki",
+            "markdown": "- **In:** abstracts, OpenAlex/Semantic Scholar citations\n- **Out:** ranked open questions, concept pages in brain/wiki",
+            "diagrams": [],
+            "tables": []
+          },
+          "data stores": {
+            "title": "Data stores",
+            "content": "| Store | Type | Path |\n|-------|------|------|\n| Brain | Markdown | ~/Projects/avinashs-kingdom/brain |",
+            "markdown": "| Store | Type | Path |\n|-------|------|------|\n| Brain | Markdown | ~/Projects/avinashs-kingdom/brain |",
+            "diagrams": [],
+            "tables": [
+              {
+                "headers": [
+                  "Store",
+                  "Type",
+                  "Path"
+                ],
+                "rows": [
+                  [
+                    "Brain",
+                    "Markdown",
+                    "~/Projects/avinashs-kingdom/brain"
+                  ]
+                ]
+              }
+            ]
+          },
+          "future plans": {
+            "title": "Future plans",
+            "content": "- Ingest 1-3 abstracts via kingdom-wiki\n- Citation graph pull",
+            "markdown": "- Ingest 1-3 abstracts via kingdom-wiki\n- Citation graph pull",
+            "diagrams": [],
+            "tables": []
+          }
+        },
+        "section_titles": [
+          "System design",
+          "Input / output flows",
+          "Data stores",
+          "Future plans"
+        ],
+        "source_path": "brain/wiki/architecture/research-frontier.md"
+      }
+    },
+    {
+      "id": "beamdojo",
+      "name": "BeamDojo (Isaac Lab locomotion)",
+      "field": "robot learning / humanoid locomotion",
+      "progress": 18,
+      "version": "Stage 1 smoke",
+      "priority": "P1",
+      "nextMilestone": "Dual-terrain Stage 1 (flat physics + imagined beam height scan) then 1024-env CUDA train on the A10.",
+      "repoPath": "/Users/avinashnandyala/Projects/BeamDojo",
+      "github": {
+        "owner": "navinash47",
+        "repo": "BeamDojo",
+        "default_branch": "main"
+      },
+      "spendUsd": 3.87,
+      "expenseRows": 1,
+      "videos": [
+        "stage1-smoke-gpu.mp4"
+      ],
+      "experiments": [
+        {
+          "date": "2026-08-24",
+          "summary": "Stage 1 CUDA smoke on Lambda A10 — 64 envs, 5 PPO iters, ~2k steps/s, checkpoints `model_0.pt` / `model_4.pt` on NFS.",
+          "source": "wiki",
+          "video": "/data/research/beamdojo/stage1-smoke-gpu.mp4"
+        },
+        {
+          "date": "2026-08-24",
+          "summary": "Isaac Lab 2.3.2 + Isaac Sim 5.1 Docker on A10; Vulkan needed `libnvidia-gl-580-server` + regenerated NVIDIA CDI.",
+          "source": "wiki",
+          "video": null
+        },
+        {
+          "date": "2026-08-24",
+          "summary": "Foot-frame 15-sample foothold vs env-local beam (not world XY). Dual-terrain height scan still TODO.",
+          "source": "wiki",
+          "video": null
+        },
+        {
+          "date": "2026-08-24",
+          "summary": "checkpoint before checking out main",
+          "source": "git"
+        }
+      ],
+      "architecture": {
+        "venture_id": "beamdojo",
+        "updated": "2026-08-24",
+        "type": "architecture",
+        "sections": {
+          "system design": {
+            "title": "System design",
+            "content": "Mac is the orchestrator. Training and RTX video run on a Lambda **A10** (RT cores) inside Isaac Sim 5.1 + Isaac Lab 2.3.2 Docker. BeamDojo source is bind-mounted from NFS so terminate does not wipe code. Checkpoints stay on NFS. Kingdom syncs STATUS, expenses, and proof mp4s into the Research Lab.\n\n```mermaid\nflowchart LR\n  Mac[\"Mac · BeamDojo repo + Kingdom\"] -->|ssh / rsync| GPU[\"Lambda A10 · Isaac Sim Docker\"]\n  Train[\"train_beamdojo.py\"] --> Runtime[\"beamdojo_runtime.py\"]\n  Runtime --> Cfg[\"h1_cfg/beamdojo_stage1_cfg.py\"]\n  Cfg --> Isaac[\"Isaac Lab + PhysX + RTX\"]\n  Isaac --> NFS[\"NFS logs / model_*.pt\"]\n  Play[\"play_beamdojo.py --video\"] --> Proofs[\"proofs/*.mp4\"]\n  STATUS[\"STATUS.md + expenses.jsonl\"] --> Sync[\"Kingdom npm run sync\"]\n  Proofs --> Sync\n  Sync --> Lab[\"Research Lab tab\"]\n```",
+            "markdown": "Mac is the orchestrator. Training and RTX video run on a Lambda **A10** (RT cores) inside Isaac Sim 5.1 + Isaac Lab 2.3.2 Docker. BeamDojo source is bind-mounted from NFS so terminate does not wipe code. Checkpoints stay on NFS. Kingdom syncs STATUS, expenses, and proof mp4s into the Research Lab.",
+            "diagrams": [
+              {
+                "source": "flowchart LR\n  Mac[\"Mac · BeamDojo repo + Kingdom\"] -->|ssh / rsync| GPU[\"Lambda A10 · Isaac Sim Docker\"]\n  Train[\"train_beamdojo.py\"] --> Runtime[\"beamdojo_runtime.py\"]\n  Runtime --> Cfg[\"h1_cfg/beamdojo_stage1_cfg.py\"]\n  Cfg --> Isaac[\"Isaac Lab + PhysX + RTX\"]\n  Isaac --> NFS[\"NFS logs / model_*.pt\"]\n  Play[\"play_beamdojo.py --video\"] --> Proofs[\"proofs/*.mp4\"]\n  STATUS[\"STATUS.md + expenses.jsonl\"] --> Sync[\"Kingdom npm run sync\"]\n  Proofs --> Sync\n  Sync --> Lab[\"Research Lab tab\"]",
+                "svg_path": null,
+                "svg_inline": null
+              }
+            ],
+            "tables": []
+          },
+          "input / output flows": {
+            "title": "Input / output flows",
+            "content": "- **In:** H1 USD, Stage 1 cfg, PPO hyperparams, A10 CUDA\n- **Out:** `model_*.pt` on NFS, TensorBoard, RTX mp4 proofs, expense JSONL, STATUS.md",
+            "markdown": "- **In:** H1 USD, Stage 1 cfg, PPO hyperparams, A10 CUDA\n- **Out:** `model_*.pt` on NFS, TensorBoard, RTX mp4 proofs, expense JSONL, STATUS.md",
+            "diagrams": [],
+            "tables": []
+          },
+          "data stores": {
+            "title": "Data stores",
+            "content": "| Store | Type | Path |\n|-------|------|------|\n| Code | git | ~/Projects/BeamDojo |\n| GPU logs | NFS | /lambda/nfs/beamdojo/logs |\n| Proof clips | git (small) | ~/Projects/BeamDojo/proofs |\n| Spend | JSONL | ~/Projects/BeamDojo/tracking/expenses.jsonl |\n| Kingdom mirror | JSON | avinashs-kingdom/public/data/research/ |",
+            "markdown": "| Store | Type | Path |\n|-------|------|------|\n| Code | git | ~/Projects/BeamDojo |\n| GPU logs | NFS | /lambda/nfs/beamdojo/logs |\n| Proof clips | git (small) | ~/Projects/BeamDojo/proofs |\n| Spend | JSONL | ~/Projects/BeamDojo/tracking/expenses.jsonl |\n| Kingdom mirror | JSON | avinashs-kingdom/public/data/research/ |",
+            "diagrams": [],
+            "tables": [
+              {
+                "headers": [
+                  "Store",
+                  "Type",
+                  "Path"
+                ],
+                "rows": [
+                  [
+                    "Code",
+                    "git",
+                    "~/Projects/BeamDojo"
+                  ],
+                  [
+                    "GPU logs",
+                    "NFS",
+                    "/lambda/nfs/beamdojo/logs"
+                  ],
+                  [
+                    "Proof clips",
+                    "git (small)",
+                    "~/Projects/BeamDojo/proofs"
+                  ],
+                  [
+                    "Spend",
+                    "JSONL",
+                    "~/Projects/BeamDojo/tracking/expenses.jsonl"
+                  ],
+                  [
+                    "Kingdom mirror",
+                    "JSON",
+                    "avinashs-kingdom/public/data/research/"
+                  ]
+                ]
+              }
+            ]
+          },
+          "future plans": {
+            "title": "Future plans",
+            "content": "- Dual-terrain Stage 1 (flat collision + hidden beam heightfield)\n- 1024-env CUDA train, then Stage 2 hard beam\n- Unitree G1 + double critic as in the paper\n- Do not train until Avinash has a place to copy checkpoints",
+            "markdown": "- Dual-terrain Stage 1 (flat collision + hidden beam heightfield)\n- 1024-env CUDA train, then Stage 2 hard beam\n- Unitree G1 + double critic as in the paper\n- Do not train until Avinash has a place to copy checkpoints",
+            "diagrams": [],
+            "tables": []
+          }
+        },
+        "section_titles": [
+          "System design",
+          "Input / output flows",
+          "Data stores",
+          "Future plans"
+        ],
+        "source_path": "brain/wiki/architecture/beamdojo.md"
+      }
+    }
+  ]
+}

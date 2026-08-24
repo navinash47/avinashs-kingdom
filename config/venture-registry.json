@@ -1,0 +1,277 @@
+{
+  "version": "1",
+  "updated": "2026-08-24",
+  "ventures": [
+    {
+      "id": "whatsapp-voice",
+      "repoPath": "~/Projects/whatsapp-voice-agents",
+      "agentId": "agent-cash",
+      "dashboard": { "port": 8787, "label": "WhatsApp demo" },
+      "wiki": {
+        "venture": "brain/wiki/ventures/whatsapp-voice.md",
+        "architecture": "brain/wiki/architecture/whatsapp-voice.md",
+        "experiments": "brain/wiki/experiments/whatsapp-voice.md"
+      },
+      "paths": {
+        "status": "STATUS.md",
+        "phases": "tracking/phases.json",
+        "expenses": "tracking/expenses.jsonl"
+      },
+      "github": {
+        "owner": "navinash47",
+        "repo": "whatsapp-voice-agents",
+        "default_branch": "main"
+      },
+      "tests": {
+        "commands": [
+          {
+            "id": "unit",
+            "label": "Node tests",
+            "cmd": "npm test",
+            "type": "unit",
+            "description": "Runs demo server unit tests (qualify FSM, webhook handlers)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "youtube-editor",
+      "repoPath": "~/Projects/youtube-editor-lab",
+      "agentId": "agent-cut",
+      "dashboard": null,
+      "wiki": {
+        "venture": "brain/wiki/ventures/youtube-editor.md",
+        "architecture": "brain/wiki/architecture/youtube-editor.md",
+        "experiments": "brain/wiki/experiments/youtube-editor.md"
+      },
+      "paths": { "status": "STATUS.md", "srs": "docs/SRS.md" },
+      "github": {
+        "owner": "navinash47",
+        "repo": "youtube-editor-lab",
+        "default_branch": "main"
+      },
+      "tests": {
+        "commands": [
+          {
+            "id": "unit",
+            "label": "npm test",
+            "cmd": "npm test",
+            "type": "unit",
+            "description": "YouTube editor lab test suite (clip research, provenance lint)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "research-frontier",
+      "repoPath": "~/Projects/research-frontier-lab",
+      "agentId": "agent-atlas",
+      "kind": "research",
+      "field": "generative comics / multimodal consistency",
+      "dashboard": null,
+      "wiki": {
+        "venture": "brain/wiki/ventures/research-frontier.md",
+        "architecture": "brain/wiki/architecture/research-frontier.md",
+        "experiments": "brain/wiki/experiments/research-frontier.md"
+      },
+      "paths": { "status": "STATUS.md" },
+      "github": {
+        "owner": "navinash47",
+        "repo": "research-frontier-lab",
+        "default_branch": "main"
+      },
+      "tests": { "commands": [] }
+    },
+    {
+      "id": "beamdojo",
+      "repoPath": "~/Projects/BeamDojo",
+      "agentId": "agent-dojo",
+      "kind": "research",
+      "field": "robot learning / humanoid locomotion",
+      "dashboard": null,
+      "wiki": {
+        "venture": "brain/wiki/ventures/beamdojo.md",
+        "architecture": "brain/wiki/architecture/beamdojo.md",
+        "experiments": "brain/wiki/experiments/beamdojo.md"
+      },
+      "paths": {
+        "status": "STATUS.md",
+        "expenses": "tracking/expenses.jsonl"
+      },
+      "github": {
+        "owner": "navinash47",
+        "repo": "BeamDojo",
+        "default_branch": "main"
+      },
+      "tests": { "commands": [] }
+    },
+    {
+      "id": "procedural-city",
+      "repoPath": "~/ProceduralCity",
+      "agentId": "agent-metro",
+      "dashboard": { "port": 8765, "label": "City dashboard" },
+      "wiki": {
+        "venture": "brain/wiki/ventures/procedural-city.md",
+        "architecture": "brain/wiki/architecture/procedural-city.md",
+        "experiments": "brain/wiki/experiments/procedural-city.md"
+      },
+      "paths": {
+        "status": "STATUS.md",
+        "phases": "tracking/phases.json",
+        "expenses": "tracking/expenses.jsonl"
+      },
+      "github": {
+        "owner": "navinash47",
+        "repo": "ProceduralCity",
+        "default_branch": "main"
+      },
+      "tests": {
+        "commands": [
+          {
+            "id": "unit",
+            "label": "pytest",
+            "cmd": "pytest -q",
+            "type": "unit",
+            "description": "ProceduralCity Python unit tests"
+          }
+        ]
+      }
+    },
+    {
+      "id": "comic-engine",
+      "repoPath": "~/Desktop/ComicMainEngine",
+      "agentId": "agent-ink",
+      "dashboard": { "port": 8770, "label": "Comic v2a dashboard" },
+      "wiki": {
+        "venture": "brain/wiki/ventures/comic-engine.md",
+        "architecture": "brain/wiki/architecture/comic-engine.md",
+        "experiments": "brain/wiki/experiments/comic-engine.md"
+      },
+      "paths": {
+        "status": "STATUS.md",
+        "program": "data/v2a_program.json",
+        "usage_db": "data/usage.db"
+      },
+      "github": {
+        "owner": "navinash47",
+        "repo": "ComicMainEngine",
+        "default_branch": "main"
+      },
+      "tests": {
+        "commands": [
+          {
+            "id": "unit",
+            "label": "pytest",
+            "cmd": "pytest -q",
+            "type": "unit",
+            "description": "ComicMainEngine v2a pytest suite"
+          }
+        ]
+      }
+    },
+    {
+      "id": "kingdom-ops",
+      "repoPath": "~/Projects/avinashs-kingdom",
+      "agentId": "agent-steward",
+      "dashboard": { "port": 5173, "label": "Kingdom panel" },
+      "wiki": {
+        "venture": "brain/wiki/ventures/kingdom-ops.md",
+        "architecture": "brain/wiki/architecture/kingdom-ops.md",
+        "experiments": "brain/wiki/experiments/kingdom-ops.md"
+      },
+      "paths": { "status": "STATUS.md", "sync": "scripts/sync-kingdom.mjs" },
+      "github": {
+        "owner": "navinash47",
+        "repo": "avinashs-kingdom",
+        "default_branch": "main"
+      },
+      "tests": {
+        "commands": [
+          {
+            "id": "lint",
+            "label": "oxlint",
+            "cmd": "npm run lint",
+            "type": "unit",
+            "description": "Static analysis for Kingdom panel and scripts"
+          },
+          {
+            "id": "build",
+            "label": "vite build",
+            "cmd": "npm run build",
+            "type": "regression",
+            "description": "Typecheck + production bundle (orchestrator UI)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "mac-optimize-audit",
+      "repoPath": "~/Projects/mac-optimize-audit",
+      "agentId": "agent-janitor",
+      "dashboard": { "port": 8742, "label": "Mac audit dashboard" },
+      "wiki": {
+        "venture": "brain/wiki/ventures/mac-optimize-audit.md",
+        "architecture": "brain/wiki/architecture/mac-optimize-audit.md",
+        "experiments": "brain/wiki/experiments/mac-optimize-audit.md"
+      },
+      "paths": { "status": "STATUS.md", "report": "reports/latest.json" },
+      "github": {
+        "owner": "navinash47",
+        "repo": "mac-optimize-audit",
+        "default_branch": "main"
+      },
+      "tests": {
+        "commands": [
+          {
+            "id": "unit",
+            "label": "pytest",
+            "cmd": "pytest -q",
+            "type": "unit",
+            "description": "Mac optimize audit pytest suite"
+          }
+        ]
+      }
+    },
+    {
+      "id": "job-jugaad",
+      "repoPath": "~/Projects/job-jugaad",
+      "agentId": "agent-jugaad",
+      "dashboard": { "port": 8790, "label": "Job tracker" },
+      "wiki": {
+        "venture": "brain/wiki/ventures/job-jugaad.md",
+        "architecture": "brain/wiki/architecture/job-jugaad.md",
+        "experiments": "brain/wiki/experiments/job-jugaad.md"
+      },
+      "paths": {
+        "status": "STATUS.md",
+        "applications": "data/applications.json"
+      },
+      "github": {
+        "owner": "navinash47",
+        "repo": "job-jugaad",
+        "default_branch": "main"
+      },
+      "tests": {
+        "commands": [
+          {
+            "id": "unit",
+            "label": "npm test",
+            "cmd": "npm test",
+            "type": "unit",
+            "description": "Job Jugaad application tracker tests"
+          }
+        ]
+      }
+    },
+    {
+      "id": "shorts",
+      "repoPath": null,
+      "agentId": null,
+      "dashboard": null,
+      "wiki": { "venture": "brain/wiki/ventures/shorts.md" },
+      "paths": {},
+      "github": null,
+      "tests": { "commands": [] }
+    }
+  ]
+}

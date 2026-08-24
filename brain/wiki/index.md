@@ -1,6 +1,6 @@
 # Wiki index
 
-Catalog of pages. Agents update this on every ingest. Last full refresh: **2026-08-11** (live venture + audit sync).
+Catalog of pages. Agents update this on every ingest. Last full refresh: **2026-08-16** (Comic 2A progress source).
 
 ## Meta / citizens
 
@@ -17,11 +17,14 @@ Catalog of pages. Agents update this on every ingest. Last full refresh: **2026-
 | Page | Summary |
 |------|---------|
 | [whatsapp-voice](ventures/whatsapp-voice.md) | Cash engine · Phase 8 · 80% · $0/$40 · files at ~/Projects/whatsapp-voice-agents |
-| [youtube-editor](ventures/youtube-editor.md) | Screenplay + Veritasium formula · Phase 0 · 12% |
+| [youtube-editor](ventures/youtube-editor.md) | Screenplay + Veritasium formula · Phase 2 · Cut Control · show-first craft |
 | [research-frontier](ventures/research-frontier.md) | Paper club · v0.1 · 12% · brain as store |
+| [beamdojo](ventures/beamdojo.md) | Isaac Lab locomotion · Stage 1 GPU smoke · Research Lab |
 | [procedural-city](ventures/procedural-city.md) | City · Phase 49 · ~53% · 49/92 via origin/main · $70 |
-| [comic-engine](ventures/comic-engine.md) | ComicMainEngine · 22/22 tasks · Desktop path |
-| [kingdom-ops](ventures/kingdom-ops.md) | Steward · 70% · 7 kills · disk 45.8% |
+| [comic-engine](ventures/comic-engine.md) | ComicMainEngine · 2A A0 passed · A1 next · 17% |
+| [kingdom-ops](ventures/kingdom-ops.md) | Steward · 70% · kill list |
+| [mac-optimize-audit](ventures/mac-optimize-audit.md) | Janitor · RAM/CPU/swap dashboard `:8742` |
+| [job-jugaad](ventures/job-jugaad.md) | Applications tracker · company+role pipeline · :8790 |
 | [shorts](ventures/shorts.md) | Parked |
 
 ## Concepts
@@ -33,8 +36,13 @@ Catalog of pages. Agents update this on every ingest. Last full refresh: **2026-
 | [veritasium-formula](concepts/veritasium-formula.md) | Misconception → Q→E → A/B → packaging → payoff |
 | [multi-agent-youtube](concepts/multi-agent-youtube.md) | Junior SWE trackers + race control for Cut lab |
 | [llm-wiki](concepts/llm-wiki.md) | Karpathy compile-once pattern |
+| [research-lab](concepts/research-lab.md) | How to add GPU/paper projects to the Research tab |
 | [where-files-live](concepts/where-files-live.md) | Path map for all provinces |
+| [layman-screenplay-craft](concepts/layman-screenplay-craft.md) | Show-first detail + Video 1 locks (E2, title, pauses) |
+| [youtube-house-video-style](concepts/youtube-house-video-style.md) | **Canonical house style for ALL future Cut videos** |
 | [task-observer-headroom](concepts/task-observer-headroom.md) | Meta-skill observer vs token compressor — roles split |
+| [agentic-interview-prep](concepts/agentic-interview-prep.md) | LC + AI system design + agent evals study stack for Job Jugaad |
+| [agentic-resume-gates](concepts/agentic-resume-gates.md) | Kingdom milestones → honest resume claim language |
 
 ## Entities
 
@@ -42,4 +50,7 @@ _None yet._
 
 ## Sources
 
-_None yet._
+| Page | Summary |
+|------|---------|
+| [youtube-screenplay-layman-craft-2026-08-11](sources/youtube-screenplay-layman-craft-2026-08-11.md) | Early show-first craft locks |
+| [youtube-house-video-style-2026-08-11](sources/youtube-house-video-style-2026-08-11.md) | Full house style log for future videos |

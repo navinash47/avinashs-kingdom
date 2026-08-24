@@ -7,12 +7,14 @@ import { SubscriptionAuditPanel } from './components/SubscriptionAuditPanel'
 import { ThroneOverview } from './components/ThroneOverview'
 import { TokenMaxxing } from './components/TokenMaxxing'
 import { VentureBoard } from './components/VentureBoard'
+import { ResearchLab } from './components/ResearchLab'
 import { useKingdomState } from './hooks/useKingdomState'
 import './App.css'
 
 const NAV = [
   { id: 'throne', label: 'Throne' },
   { id: 'ventures', label: 'Ventures' },
+  { id: 'research', label: 'Research' },
   { id: 'tokens', label: 'Tokens' },
   { id: 'expenses', label: 'Expenses' },
   { id: 'subs', label: 'Subs' },
@@ -36,7 +38,11 @@ function App() {
     resetToSeed,
     lastSyncAt,
   } = useKingdomState()
-  const [tab, setTab] = useState('throne')
+  const [tab, setTab] = useState(() => {
+    const q = new URLSearchParams(window.location.search).get('tab')
+    const ok = ['throne', 'ventures', 'research', 'tokens', 'expenses', 'subs', 'storage', 'agents']
+    return q && ok.includes(q) ? q : 'throne'
+  })
   const fileRef = useRef<HTMLInputElement>(null)
 
   if (!ready) {
@@ -110,6 +116,9 @@ function App() {
             agents={state.agents}
             onUpdate={updateVenture}
           />
+        )}
+        {tab === 'research' && (
+          <ResearchLab onOpenExpenses={() => setTab('expenses')} />
         )}
         {tab === 'tokens' && (
           <TokenMaxxing

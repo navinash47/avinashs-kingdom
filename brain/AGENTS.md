@@ -62,8 +62,17 @@ Periodically check for: orphan pages, broken `[[links]]`, duplicate topics, stal
 
 - **Cash / WhatsApp:** India SMB, real-estate broker vertical, pilot outreach — do not invent US-entity pivots.
 - **YouTube:** Anti-slop long-form; real clip provenance required.
-- **Research:** First vertical = generative comics / multimodal consistency; abstracts + claims, not full-PDF dumps by default.
+- **Research:** First vertical = generative comics / multimodal consistency (Atlas). GPU locomotion = BeamDojo (Dojo). Future papers/GPU labs get their own `kind: research` registry row + Research tab — see [[wiki/concepts/research-lab]]. Abstracts + claims, not full-PDF dumps by default. **Never git-commit model weights**; tell Avinash the checkpoint path as insurance.
 - **Portfolio weights:** Prefer Kingdom README / `wiki/overview.md` over chat memory.
+
+## Research Lab playbook
+
+1. New research project → repo with `STATUS.md` (+ optional `tracking/expenses.jsonl`, `proofs/*.mp4`).
+2. Register in `config/venture-registry.json` with `"kind": "research"` and a `field`.
+3. Wiki: `ventures/`, `architecture/` (mermaid file graph), `experiments/` (include `Video: proofs/...` when a clip exists).
+4. `npm run sync` from Kingdom. Panel: `/?tab=research`.
+5. After a train: update STATUS + expenses; **do not** commit `.pt`. Tell the human to copy NFS checkpoints.
+6. After a major chunk: commit and push the research repo **and** Kingdom (no secrets, no weights).
 
 ## Skills
 
