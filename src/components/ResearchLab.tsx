@@ -144,9 +144,15 @@ function LiveTrainingPanel({ project }: { project: LabProject }) {
     status === 'idle'
       ? 'Idle — no long train is running from the last status snapshot.'
       : status === 'running'
-        ? 'A train is marked running in the last synced JSON. Open Weights & Biases for live curves.'
+        ? training?.source === 'wandb'
+          ? 'A W&B run has a fresh heartbeat. Open Weights & Biases for live curves.'
+          : 'A train is marked running in the last synced JSON. Open Weights & Biases for live curves.'
         : 'Unknown — no live status file on last sync (or it could not be read). Not claiming a train is running.'
 
+  const wandbHint =
+    training?.source === 'wandb'
+      ? ' Overlay from a W&B run with a fresh heartbeat (not a stale JSON writer).'
+      : ''
   const exampleHint =
     training?.source === 'example'
       ? ' Showing the checked-in idle example; the live file is gitignored and was not present.'
@@ -161,6 +167,7 @@ function LiveTrainingPanel({ project }: { project: LabProject }) {
       <p className="muted tiny">
         {idleCopy}
         {exampleHint}
+        {wandbHint}
       </p>
       {training?.updated ? (
         <p className="muted tiny">Status written {new Date(training.updated).toLocaleString()}</p>
