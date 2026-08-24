@@ -6,6 +6,13 @@ export const DEFAULT_WANDB_PROJECT = 'beamdojo'
 export const DEFAULT_TRAINING_STATUS_REL = 'tracking/training-status.json'
 const ALLOWED_STATUS = new Set(['idle', 'running', 'unknown'])
 
+/** Research Lab: BeamDojo always, others only when sync found a status file. */
+export function showLiveTrainingCard(project) {
+  if (!project || typeof project !== 'object') return false
+  if (project.id === 'beamdojo') return true
+  return project.training != null
+}
+
 export function wandbUrlFromStatus(training) {
   const project = String(training?.wandb_project || DEFAULT_WANDB_PROJECT)
   const entity = String(training?.wandb_entity || '').trim()

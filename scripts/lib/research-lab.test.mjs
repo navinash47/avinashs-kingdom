@@ -6,6 +6,7 @@ import { afterEach, describe, it } from 'node:test'
 import {
   loadTrainingStatus,
   normalizeTrainingStatus,
+  showLiveTrainingCard,
   wandbUrlFromStatus,
 } from './research-lab.mjs'
 import { resolveRepoPath } from './registry.mjs'
@@ -53,6 +54,15 @@ describe('wandbUrlFromStatus', () => {
       wandb_url: 'https://wandb.ai/someone/beamdojo',
     })
     assert.equal(link.href, 'https://wandb.ai/someone/beamdojo')
+    assert.equal(link.needsProjectHint, false)
+  })
+
+  it('keeps a live run URL from the GPU writer', () => {
+    const link = wandbUrlFromStatus({
+      wandb_project: 'beamdojo',
+      wandb_url: 'https://wandb.ai/avinash/beamdojo/runs/abc123',
+    })
+    assert.equal(link.href, 'https://wandb.ai/avinash/beamdojo/runs/abc123')
     assert.equal(link.needsProjectHint, false)
   })
 })
@@ -134,6 +144,23 @@ describe('loadTrainingStatus', () => {
   it('coerces invalid status to unknown', () => {
     const got = normalizeTrainingStatus({ status: 'training', wandb_project: 'beamdojo' })
     assert.equal(got.status, 'unknown')
+  })
+})
+
+describe('showLiveTrainingCard', () => {
+  it('always shows for beamdojo even without a status snapshot', () => {
+    assert.equal(showLiveTrainingCard({ id: 'beamdojo', training: null }), true)
+  })
+
+  it('hides other research projects when training is null', () => {
+    assert.equal(showLiveTrainingCard({ id: 'research-frontier', training: null }), false)
+  })
+
+  it('shows other projects when a status object exists', () => {
+    assert.equal(
+      showLiveTrainingCard({ id: 'research-frontier', training: { status: 'idle' } }),
+      true,
+    )
   })
 })
 

@@ -110,6 +110,11 @@ function statusLabel(status: string) {
   return 'Unknown'
 }
 
+/** Keep in sync with showLiveTrainingCard in scripts/lib/research-lab.mjs. */
+function showLiveTraining(project: LabProject) {
+  return project.id === 'beamdojo' || project.training != null
+}
+
 function LiveTrainingPanel({ project }: { project: LabProject }) {
   const training = project.training ?? null
   const statusRaw = training?.status
@@ -328,7 +333,7 @@ export function ResearchLab({ onOpenVenture, onOpenGraph, onOpenExpenses }: Rese
               </p>
               {p.nextMilestone ? <p>{p.nextMilestone}</p> : null}
 
-              <LiveTrainingPanel project={p} />
+              {showLiveTraining(p) ? <LiveTrainingPanel project={p} /> : null}
 
               {diagram?.svg_inline ? (
                 <div
