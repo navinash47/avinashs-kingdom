@@ -16,7 +16,7 @@ Temporary live board for the hard ~10%. SRS: [[concepts/personal-os-phase2-srs]]
 | W1 Obs 11 merge playbook | **done** | 100 | `c2df411` | sync-kingdom + ops playbook + Obs 11 ACTIONED |
 | W2 LLM contradiction judge | **done** | 100 | `4e95d71` | `brain:judge` + fixture + reports/ |
 | W3 Full auto wiki | **done** | 100 | `20df245` | `brain:auto-wiki` draft→promote |
-| W4 MCP per app (pilot + template) | **done** | 100 | (fill after push) | kingdom-ops `mcp:smoke` + registry |
+| W4 MCP per app (pilot + template) | **done** | 100 | `b678d51` | kingdom-ops `mcp:smoke` + registry |
 
 ## Checklist detail
 
