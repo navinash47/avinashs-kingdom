@@ -15,6 +15,7 @@ Catalog of pages. Agents update this on every ingest. Last full refresh: **2026-
 | [ops/personal-os-phase2-tracker](ops/personal-os-phase2-tracker.md) | Phase 2 hard-10% live progress board |
 | [ops/personal-os-phase2-builder-prompt](ops/personal-os-phase2-builder-prompt.md) | Pasteable Agent/`/goal` prompt for Phase 2 |
 | [ops/cloud-ui-merge-playbook](ops/cloud-ui-merge-playbook.md) | Cloud→Mac UI merges: keep orchestrator; fold features |
+| [drafts/README](drafts/README.md) | Auto-wiki unpublished drafts gate |
 | [ops/ci-template](ops/ci-template.md) | Reusable CI / phase-board patterns |
 | [ops/cloudflare-links](ops/cloudflare-links.md) | Dashboard tunnel / Cloudflare link ops |
 | [ops/git-repos](ops/git-repos.md) | GitHub + local repo census |
@@ -94,5 +95,6 @@ _None yet._
 
 | Page | Summary |
 |------|---------|
+| [Phase 2 auto-wiki smoke source](sources/phase2-auto-wiki-smoke-2026-09-02.md) | Auto-wiki W3 smoke — draft→promote path |
 | [youtube-screenplay-layman-craft-2026-08-11](sources/youtube-screenplay-layman-craft-2026-08-11.md) | Early show-first craft locks |
 | [youtube-house-video-style-2026-08-11](sources/youtube-house-video-style-2026-08-11.md) | Full house style log for future videos |

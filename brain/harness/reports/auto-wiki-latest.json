@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "op": "promote",
+  "slug": "phase2-auto-wiki-smoke-2026-09-02",
+  "source": "wiki/sources/phase2-auto-wiki-smoke-2026-09-02.md",
+  "index_row": "| [Phase 2 auto-wiki smoke source](sources/phase2-auto-wiki-smoke-2026-09-02.md) | source | _published via auto-wiki promote_ |",
+  "log_line": "## [2026-09-02] ingest | Phase 2 auto-wiki smoke source",
+  "lint_ok": true,
+  "judge_ran": false,
+  "at": "2026-09-02T22:48:04.622Z"
+}

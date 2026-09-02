@@ -20,7 +20,7 @@ How Avinash runs the Kingdom **personal OS** day to day. Architecture: [[concept
 | Need | Do this |
 |------|---------|
 | Progress changed in a venture repo | Edit STATUS/phases/expenses there → `npm run sync` |
-| Research / decision to keep | `npm run brain:ingest -- --file …` (stub + title/summary extract + checklist) → **review/complete with kingdom-wiki** → index + log |
+| Research / decision to keep | `npm run brain:ingest -- --file …` (stub + checklist) **or** `npm run brain:auto-wiki` (inbox → drafts) → review → `--promote <slug>` |
 | Question against memory | `npm run brain:query -- <terms>` or skill query mode; cite `brain/wiki/…` |
 | Topology / “what can I start?” | `npm run brain:harness -- list` · `capabilities` · `allow sync` |
 | Phase close | **phase-gate** skill |
@@ -60,6 +60,8 @@ npm run sync
 npm run brain:lint
 npm run brain:judge              # advisory contradictions → brain/harness/reports/ (dry-run)
 npm run brain:judge:fixture     # golden synthetic conflict
+npm run brain:auto-wiki         # inbox → drafts + proposals (idempotent)
+npm run brain:auto-wiki -- --promote <slug>  # lint then publish
 npm run brain:query -- personal OS
 npm run brain:ingest -- --list
 npm run brain:ingest -- --file brain/raw/inbox/<source>.md
@@ -67,7 +69,7 @@ npm run brain:harness -- list
 npm run venture:new -- --id demo --repo ~/Projects/demo --agent agent-demo
 ```
 
-`brain:lint` is **heuristic v2** (links/orphans/stale `updated:`/duplicate titles/`venture_id` + light conflicting status phrases, duplicate claim bullets, updated-vs-log lag). `brain:judge` is the **additive** LLM/offline contradiction judge (default dry-run report; `--apply` → proposals only — never silent wiki rewrite). Run both when reviewing claim health. `brain:ingest --file` is semi-auto (stub with best-effort title/summary + checklist); review/complete with kingdom-wiki.
+`brain:lint` is **heuristic v2**. `brain:judge` is the **additive** contradiction judge. `brain:auto-wiki` is the **full auto** path (drafts under `wiki/drafts/`; explicit `--promote`). `brain:ingest --file` remains the semi-auto single-file checklist path.
 
 ## Do not
 

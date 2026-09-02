@@ -33,6 +33,7 @@
     "brain:judge:fixture": "node brain/harness/judge.mjs --fixture --offline",
     "brain:query": "node brain/harness/wiki-query.mjs",
     "brain:ingest": "node brain/harness/ingest.mjs",
+    "brain:auto-wiki": "node brain/harness/auto-wiki.mjs",
     "brain:harness": "node brain/harness/query.mjs",
     "venture:new": "node scripts/new-venture.mjs",
     "headroom:start": "bash scripts/headroom-kingdom.sh start",

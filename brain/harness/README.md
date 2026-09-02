@@ -24,8 +24,9 @@ brain/harness/
   query.mjs                 ← KG/FSM CLI: list / neighbors / path / fsm / capabilities
   lint.mjs                  ← wiki health (heuristic v2): links + stale/dupes + light status/claim heuristics
   judge.mjs                 ← Phase 2 LLM/offline contradiction judge (advisory; dry-run default)
+  auto-wiki.mjs             ← Phase 2 full auto wiki: inbox → drafts → gated promote
   fixtures/judge-conflict/  ← synthetic contradiction golden for `brain:judge --fixture`
-  reports/                  ← judge report artifacts (gitignored JSON; see .gitkeep.md)
+  reports/                  ← judge / auto-wiki report artifacts (mostly gitignored JSON)
   wiki-query.mjs            ← keyword search over compiled wiki
   ingest.mjs                ← semi-auto: file → stub (title/summary extract) + index/log checklist
   empty-model/
@@ -68,6 +69,9 @@ npm run brain:lint -- --log-lag-days 14 # updated: lagging recent wiki/log menti
 npm run brain:judge                     # LLM/offline contradiction judge (dry-run → reports/)
 npm run brain:judge:fixture             # golden synthetic conflict (offline)
 npm run brain:judge -- --apply          # gated: write proposals/ only (no wiki rewrite)
+npm run brain:auto-wiki                 # inbox → wiki/drafts + index/log proposals (idempotent)
+npm run brain:auto-wiki -- --promote <slug>   # lint (+ optional --judge) then publish
+npm run brain:auto-wiki -- --watch      # poll inbox
 npm run brain:query -- personal OS
 npm run brain:ingest -- --list
 npm run brain:ingest -- --file brain/raw/inbox/<source>.md   # stub + title/summary extract + checklist
@@ -107,6 +111,15 @@ This is structural + light phrase hygiene, **not** a full LLM contradiction / cl
 | Golden | — | `npm run brain:judge:fixture` |
 
 Both are required in the personal OS playbook: lint for structure, judge for claim review prompts. Human still approves material wiki edits.
+
+### `brain:auto-wiki` — full auto wiki (Phase 2)
+
+1. Drop markdown in `brain/raw/inbox/` (raw stays immutable).
+2. `npm run brain:auto-wiki` → draft under `wiki/drafts/sources/` + index/log **proposals** + `reports/auto-wiki-latest.json`.
+3. Re-run is **idempotent** (content-hash state).
+4. Publish only with `npm run brain:auto-wiki -- --promote <slug>` (runs `brain:lint`; add `--judge` to also run the judge). Moves draft → `wiki/sources/`, updates index + log.
+
+Semi-auto single-file still available via `brain:ingest` (checklist-oriented). Auto-wiki is the batch/watch path with an explicit draft gate.
 
 ### `brain:ingest` — semi-auto happy path
 

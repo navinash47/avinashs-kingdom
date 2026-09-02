@@ -2,6 +2,14 @@
 
 Append-only. Prefix each entry with `## [YYYY-MM-DD] <op> | <title>` so recent activity is greppable.
 
+## [2026-09-02] ops | Phase 2 W3 — full auto wiki
+
+Added `brain/harness/auto-wiki.mjs` + `npm run brain:auto-wiki`: inbox → `wiki/drafts/sources/` + index/log proposals; idempotent by content hash; `--promote` runs lint then publishes to `wiki/sources/`. Status: `reports/auto-wiki-latest.json`. Smoke source promoted as acceptance evidence.
+
+## [2026-09-02] ingest | Phase 2 auto-wiki smoke source
+
+Auto-wiki promote of draft `phase2-auto-wiki-smoke-2026-09-02` → `wiki/sources/phase2-auto-wiki-smoke-2026-09-02.md` after lint.
+
 ## [2026-09-02] ops | Phase 2 W2 — LLM contradiction judge
 
 Added `brain/harness/judge.mjs` + `npm run brain:judge` (dry-run → `brain/harness/reports/`; OmniRoute LLM with offline fallback; gated `--apply` → proposals only). Golden: `npm run brain:judge:fixture`. Documented judge ≠ heuristic lint v2 in harness README, [[ops/personal-os-playbook]], kingdom-wiki skill.

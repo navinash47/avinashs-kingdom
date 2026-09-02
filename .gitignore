@@ -14,8 +14,11 @@ dist-ssr
 
 # Brain judge runtime reports (keep directory; fixtures stay tracked)
 brain/harness/reports/judge-*.json
+brain/harness/reports/auto-wiki-*.json
+brain/harness/reports/auto-wiki-state.json
 brain/harness/reports/proposals/
 !brain/harness/reports/.gitkeep.md
+!brain/harness/reports/auto-wiki-latest.json
 
 # Editor directories and files
 .vscode/*

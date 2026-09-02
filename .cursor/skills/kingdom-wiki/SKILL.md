@@ -18,6 +18,18 @@ Detect mode from the user request: **ingest** | **query** | **lint**.
 
 ### Ingest
 
+Prefer the mechanical CLI first, then LLM compile — or use **auto-wiki** for inbox batch with a draft gate:
+
+```bash
+cd /Users/avinashnandyala/Projects/avinashs-kingdom
+npm run brain:auto-wiki -- --file path/to/source.md   # → wiki/drafts/sources/<slug>.md + proposals
+npm run brain:auto-wiki -- --promote <slug>           # lint (+ optional --judge) → published
+# OR semi-auto single-file checklist:
+npm run brain:ingest -- --file path/to/source.md
+```
+
+### Ingest (semi-auto / kingdom-wiki)
+
 Prefer the mechanical CLI first, then LLM compile:
 
 ```bash

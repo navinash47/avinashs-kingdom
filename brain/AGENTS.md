@@ -48,19 +48,19 @@ tags: []
 | `npm run venture:new -- --id … --repo … --agent …` | Dry-run onboard from `venture-template.json` (`--write` to apply) |
 | `npm run sync` | Refresh Throne control surface + harness graph |
 
-Scripts live under `brain/harness/` (lint, wiki-query, ingest, query) and `scripts/new-venture.mjs`.
+Scripts live under `brain/harness/` (lint, judge, auto-wiki, wiki-query, ingest, query) and `scripts/new-venture.mjs`.
 
 ### Ingest
 
-1. Place or fetch source into `raw/inbox/` (or `raw/research/` for papers). Optional: `npm run brain:ingest -- --file <path> --scaffold`.
+1. Place or fetch source into `raw/inbox/` (or `raw/research/` for papers). Prefer `npm run brain:auto-wiki` (draft gate) or `npm run brain:ingest -- --file <path>`.
 2. Read the source. Do not modify the raw file after filing.
-3. Write `wiki/sources/<slug>.md` (summary, key claims, limitations, links).
+3. Auto-wiki writes `wiki/drafts/sources/<slug>.md`; promote with `npm run brain:auto-wiki -- --promote <slug>` (lint first). Or write `wiki/sources/<slug>.md` via kingdom-wiki.
 4. Update related venture / concept / entity pages (create if missing).
-5. Update `wiki/index.md`.
+5. Update `wiki/index.md` (promote does this for auto-wiki).
 6. Append to `wiki/log.md`:
    `## [YYYY-MM-DD] ingest | Title`
 7. Prefer one source per ingest pass unless the human asks for a batch.
-8. Hygiene: `npm run brain:lint`.
+8. Hygiene: `npm run brain:lint` (+ optional `npm run brain:judge`).
 
 ### Query
 

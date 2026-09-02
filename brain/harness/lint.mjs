@@ -51,6 +51,7 @@ const EXEMPT_ORPHANS = new Set([
   'index.md',
   'overview.md',
   'log.md',
+  'drafts/README.md',
 ])
 
 const EXEMPT_UPDATED = new Set([
@@ -349,12 +350,14 @@ const staleAnchor = logLatest ?? today
 const missingIndex = []
 for (const rel of pages.keys()) {
   if (rel === 'index.md' || rel === 'log.md') continue
+  if (rel.startsWith('drafts/')) continue // unpublished auto-wiki drafts
   if (!indexed.has(rel)) missingIndex.push(rel)
 }
 
 const orphans = []
 for (const [rel, count] of inbound) {
   if (EXEMPT_ORPHANS.has(rel)) continue
+  if (rel.startsWith('drafts/')) continue
   if (count === 0) orphans.push(rel)
 }
 

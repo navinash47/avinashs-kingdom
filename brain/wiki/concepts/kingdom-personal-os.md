@@ -39,6 +39,7 @@ Serious builders (2024–2026) converge on: compile durable knowledge ([Karpathy
 |------------|--------|------|
 | `brain:lint` | `brain/harness/lint.mjs` | Heuristic v2: broken links (error); orphans/index/stale `updated:`/dup titles/`venture_id`/status-phrase conflicts/claim dupes/log-lag (warn) — structure, not LLM claim judge |
 | `brain:judge` | `brain/harness/judge.mjs` | Phase 2 additive contradiction judge (dry-run → `harness/reports/`; OmniRoute LLM with offline fallback; `--apply` → proposals only) |
+| `brain:auto-wiki` | `brain/harness/auto-wiki.mjs` | Phase 2 full auto wiki: inbox → `wiki/drafts/` → gated `--promote` (lint first) |
 | `brain:query` | `brain/harness/wiki-query.mjs` | Keyword search over wiki |
 | `brain:ingest` | `brain/harness/ingest.mjs` | Semi-auto: `--file` → stub with best-effort title/summary + checklist; review/complete with kingdom-wiki |
 | `brain:harness` | `brain/harness/query.mjs` | KG/FSM topology queries |
