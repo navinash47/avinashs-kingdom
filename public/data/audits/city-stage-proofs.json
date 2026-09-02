@@ -1,7 +1,7 @@
 {
-  "synced_at": "2026-09-02T20:03:44.110Z",
+  "synced_at": "2026-09-02T20:08:54.705Z",
   "source": "/Users/avinashnandyala/ProceduralCity/dashboard/data.js",
-  "generated_at": "2026-09-02T20:03:44.101067+00:00",
+  "generated_at": "2026-09-02T20:08:54.699733+00:00",
   "count": 14,
   "dashboard_proofs_url": "http://127.0.0.1:8765/#proofs",
   "proofs": [
@@ -68,7 +68,7 @@
     {
       "id": "E48",
       "title": "Stage E — Phase 48 structured smoke",
-      "status": "fail",
+      "status": "pass",
       "terminal": "reports/stage_e_phase48_verify_terminal.txt",
       "gate": "reports/phase48_structured_verify.json",
       "unity_video": null,
@@ -203,7 +203,7 @@
     {
       "id": "E57",
       "title": "Stage E — GATE (1km walk / coherence)",
-      "status": "incomplete",
+      "status": "pass",
       "terminal": "reports/stage_e_gate_verify_terminal.txt",
       "gate": "reports/stage_e_gate.json",
       "unity_video": "reports/phase57_walkthrough.mp4",

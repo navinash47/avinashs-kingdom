@@ -3,6 +3,16 @@
   "updated": "2026-08-24",
   "items": [
     {
+      "date": "2026-09-02",
+      "summary": "Refresh STATUS after Kingdom sync health score.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Refresh STATUS from latest Mac optimize audit.",
+      "source": "git"
+    },
+    {
       "date": "2026-08-24",
       "summary": "Initial commit",
       "source": "git"

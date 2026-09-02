@@ -1,11 +1,11 @@
 {
   "venture_id": "kingdom-ops",
-  "synced_at": "2026-09-02T20:02:56.230Z",
+  "synced_at": "2026-09-02T20:06:06.460Z",
   "repo": {
     "path": "/Users/avinashnandyala/Projects/avinashs-kingdom",
-    "head": "e4f06f13f81f591c40875ad13c0f2e7443cc2b28",
+    "head": "271f6ae6bc24e548b82cbcc768af43fb01d90c7f",
     "branch": "cursor/live-training-wandb-73ce",
-    "last_commit_at": "2026-09-02T12:59:23-07:00",
+    "last_commit_at": "2026-09-02T13:04:50-07:00",
     "remote_url": "https://github.com/navinash47/avinashs-kingdom.git",
     "github": {
       "owner": "navinash47",
@@ -14,14 +14,14 @@
     }
   },
   "stats": {
-    "files": 291,
-    "lines": 35742,
+    "files": 294,
+    "lines": 36919,
     "primary_language": "JSON",
     "languages": [
       {
         "language": "JSON",
-        "files": 80,
-        "lines": 10896
+        "files": 83,
+        "lines": 12025
       },
       {
         "language": "TypeScript",
@@ -31,12 +31,12 @@
       {
         "language": "Markdown",
         "files": 91,
-        "lines": 5541
+        "lines": 5574
       },
       {
         "language": "JavaScript",
         "files": 27,
-        "lines": 4916
+        "lines": 4931
       },
       {
         "language": "CSS",
@@ -65,7 +65,7 @@
       }
     ],
     "truncated": false,
-    "sampled_files": 291,
+    "sampled_files": 294,
     "source": "walker"
   },
   "dependencies": {

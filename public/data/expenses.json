@@ -80,6 +80,16 @@
     "notes": "Synced from WA expenses.jsonl · 0 billable · ceiling $40"
   },
   {
+    "id": "sync-jugaad-api",
+    "date": "2026-09-02",
+    "category": "api",
+    "label": "Job Jugaad API / infra spend",
+    "amount": 0,
+    "currency": "USD",
+    "ventureId": "job-jugaad",
+    "notes": "Synced from tracking/expenses.jsonl · 0 billable rows"
+  },
+  {
     "id": "sync-beamdojo-gpu",
     "date": "2026-09-02",
     "category": "infra",

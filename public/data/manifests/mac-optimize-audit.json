@@ -1,11 +1,11 @@
 {
   "venture_id": "mac-optimize-audit",
-  "synced_at": "2026-09-02T20:03:44.610Z",
+  "synced_at": "2026-09-02T20:08:55.072Z",
   "repo": {
     "path": "/Users/avinashnandyala/Projects/mac-optimize-audit",
-    "head": "7e407a918ad804c94993c16b7d8da4a64e902f07",
+    "head": "4a716b23bd4275f0bddb2d0112f141690b71b1bf",
     "branch": "main",
-    "last_commit_at": "2026-08-24T01:34:42-07:00",
+    "last_commit_at": "2026-09-02T13:04:48-07:00",
     "remote_url": "https://github.com/navinash47/mac-optimize-audit.git",
     "github": {
       "owner": "navinash47",
@@ -14,14 +14,14 @@
     }
   },
   "stats": {
-    "files": 3059,
-    "lines": 2161639,
+    "files": 8000,
+    "lines": 5677717,
     "primary_language": "JSON",
     "languages": [
       {
         "language": "JSON",
-        "files": 3047,
-        "lines": 2160113
+        "files": 7988,
+        "lines": 5676191
       },
       {
         "language": "Python",
@@ -44,8 +44,8 @@
         "lines": 8
       }
     ],
-    "truncated": false,
-    "sampled_files": 3059,
+    "truncated": true,
+    "sampled_files": 8000,
     "source": "walker"
   },
   "dependencies": {
@@ -63,7 +63,7 @@
   "models_detected": [],
   "spend_usd": null,
   "ceiling_usd": null,
-  "progress": 60,
+  "progress": 67,
   "version": "v0.1",
   "test_commands": [
     {

@@ -1,6 +1,7 @@
 {
-  "synced_at": "2026-09-02T20:03:51.003Z",
-  "version": 1,
+  "synced_at": "2026-09-02T20:09:00.820Z",
+  "version": 2,
+  "contract": "kingdom-personal-os",
   "fsm": {
     "state": "ready",
     "last_transition": "sync_complete",
@@ -25,7 +26,8 @@
     "agents": 9,
     "agents_with_skills": 9,
     "agents_without_skills": [],
-    "phases_board_synced_at": "2026-09-02T20:03:44.136Z"
+    "capabilities": 15,
+    "phases_board_synced_at": "2026-09-02T20:08:54.725Z"
   },
   "ventures": [
     {
@@ -95,15 +97,15 @@
     {
       "id": "procedural-city",
       "name": "Procedural City",
-      "progress": 62,
+      "progress": 63,
       "priority": "P1",
       "status": "active",
       "agentId": "agent-metro",
       "repoPath": "~/ProceduralCity",
       "dashboardPort": 8765,
       "dashboardLabel": "City dashboard",
-      "nextMilestone": "Phase 57: STAGE E GATE (pending)",
-      "phasesPassed": 57,
+      "nextMilestone": "Phase 58: Asset manifest system (pending)",
+      "phasesPassed": 58,
       "phasesTotal": 92,
       "kind": null,
       "github": "navinash47/ProceduralCity"
@@ -143,14 +145,14 @@
     {
       "id": "mac-optimize-audit",
       "name": "Mac optimize audit",
-      "progress": 60,
+      "progress": 67,
       "priority": "P1",
       "status": "active",
       "agentId": "agent-janitor",
       "repoPath": "~/Projects/mac-optimize-audit",
       "dashboardPort": 8742,
       "dashboardLabel": "Mac audit dashboard",
-      "nextMilestone": "Quit runaway Python (100% CPU)",
+      "nextMilestone": "Memory pressure is warning",
       "phasesPassed": null,
       "phasesTotal": null,
       "kind": null,
@@ -159,14 +161,14 @@
     {
       "id": "job-jugaad",
       "name": "Job Jugaad",
-      "progress": 0,
+      "progress": 100,
       "priority": "P1",
       "status": "active",
       "agentId": "agent-jugaad",
       "repoPath": "~/Projects/job-jugaad",
       "dashboardPort": 8790,
       "dashboardLabel": "Job tracker",
-      "nextMilestone": "Log first applied company + role in Job Jugaad board",
+      "nextMilestone": "Keep logging — 413/413 toward target",
       "phasesPassed": null,
       "phasesTotal": null,
       "kind": null,
@@ -353,6 +355,96 @@
         "id": "skill:task-observer",
         "type": "skill",
         "label": "task-observer"
+      },
+      {
+        "id": "capability:dashboard:8787",
+        "type": "capability",
+        "label": "dashboard:8787",
+        "venture_id": "whatsapp-voice"
+      },
+      {
+        "id": "capability:tests:whatsapp-voice",
+        "type": "capability",
+        "label": "tests:whatsapp-voice",
+        "venture_id": "whatsapp-voice"
+      },
+      {
+        "id": "capability:tests:youtube-editor",
+        "type": "capability",
+        "label": "tests:youtube-editor",
+        "venture_id": "youtube-editor"
+      },
+      {
+        "id": "capability:research:research-frontier",
+        "type": "capability",
+        "label": "research:research-frontier",
+        "venture_id": "research-frontier"
+      },
+      {
+        "id": "capability:research:beamdojo",
+        "type": "capability",
+        "label": "research:beamdojo",
+        "venture_id": "beamdojo"
+      },
+      {
+        "id": "capability:dashboard:8765",
+        "type": "capability",
+        "label": "dashboard:8765",
+        "venture_id": "procedural-city"
+      },
+      {
+        "id": "capability:tests:procedural-city",
+        "type": "capability",
+        "label": "tests:procedural-city",
+        "venture_id": "procedural-city"
+      },
+      {
+        "id": "capability:dashboard:8770",
+        "type": "capability",
+        "label": "dashboard:8770",
+        "venture_id": "comic-engine"
+      },
+      {
+        "id": "capability:tests:comic-engine",
+        "type": "capability",
+        "label": "tests:comic-engine",
+        "venture_id": "comic-engine"
+      },
+      {
+        "id": "capability:dashboard:5173",
+        "type": "capability",
+        "label": "dashboard:5173",
+        "venture_id": "kingdom-ops"
+      },
+      {
+        "id": "capability:tests:kingdom-ops",
+        "type": "capability",
+        "label": "tests:kingdom-ops",
+        "venture_id": "kingdom-ops"
+      },
+      {
+        "id": "capability:dashboard:8742",
+        "type": "capability",
+        "label": "dashboard:8742",
+        "venture_id": "mac-optimize-audit"
+      },
+      {
+        "id": "capability:tests:mac-optimize-audit",
+        "type": "capability",
+        "label": "tests:mac-optimize-audit",
+        "venture_id": "mac-optimize-audit"
+      },
+      {
+        "id": "capability:dashboard:8790",
+        "type": "capability",
+        "label": "dashboard:8790",
+        "venture_id": "job-jugaad"
+      },
+      {
+        "id": "capability:tests:job-jugaad",
+        "type": "capability",
+        "label": "tests:job-jugaad",
+        "venture_id": "job-jugaad"
       }
     ],
     "edges": [
@@ -607,7 +699,111 @@
         "from": "agent:agent-jugaad",
         "to": "skill:log-outreach",
         "rel": "skill"
+      },
+      {
+        "id": "e-venture:whatsapp-voice-capability:dashboard:8787",
+        "from": "venture:whatsapp-voice",
+        "to": "capability:dashboard:8787",
+        "rel": "capability"
+      },
+      {
+        "id": "e-venture:whatsapp-voice-capability:tests:whatsapp-voice",
+        "from": "venture:whatsapp-voice",
+        "to": "capability:tests:whatsapp-voice",
+        "rel": "capability"
+      },
+      {
+        "id": "e-venture:youtube-editor-capability:tests:youtube-editor",
+        "from": "venture:youtube-editor",
+        "to": "capability:tests:youtube-editor",
+        "rel": "capability"
+      },
+      {
+        "id": "e-venture:research-frontier-capability:research:research-frontier",
+        "from": "venture:research-frontier",
+        "to": "capability:research:research-frontier",
+        "rel": "capability"
+      },
+      {
+        "id": "e-venture:beamdojo-capability:research:beamdojo",
+        "from": "venture:beamdojo",
+        "to": "capability:research:beamdojo",
+        "rel": "capability"
+      },
+      {
+        "id": "e-venture:procedural-city-capability:dashboard:8765",
+        "from": "venture:procedural-city",
+        "to": "capability:dashboard:8765",
+        "rel": "capability"
+      },
+      {
+        "id": "e-venture:procedural-city-capability:tests:procedural-city",
+        "from": "venture:procedural-city",
+        "to": "capability:tests:procedural-city",
+        "rel": "capability"
+      },
+      {
+        "id": "e-venture:comic-engine-capability:dashboard:8770",
+        "from": "venture:comic-engine",
+        "to": "capability:dashboard:8770",
+        "rel": "capability"
+      },
+      {
+        "id": "e-venture:comic-engine-capability:tests:comic-engine",
+        "from": "venture:comic-engine",
+        "to": "capability:tests:comic-engine",
+        "rel": "capability"
+      },
+      {
+        "id": "e-venture:kingdom-ops-capability:dashboard:5173",
+        "from": "venture:kingdom-ops",
+        "to": "capability:dashboard:5173",
+        "rel": "capability"
+      },
+      {
+        "id": "e-venture:kingdom-ops-capability:tests:kingdom-ops",
+        "from": "venture:kingdom-ops",
+        "to": "capability:tests:kingdom-ops",
+        "rel": "capability"
+      },
+      {
+        "id": "e-venture:mac-optimize-audit-capability:dashboard:8742",
+        "from": "venture:mac-optimize-audit",
+        "to": "capability:dashboard:8742",
+        "rel": "capability"
+      },
+      {
+        "id": "e-venture:mac-optimize-audit-capability:tests:mac-optimize-audit",
+        "from": "venture:mac-optimize-audit",
+        "to": "capability:tests:mac-optimize-audit",
+        "rel": "capability"
+      },
+      {
+        "id": "e-venture:job-jugaad-capability:dashboard:8790",
+        "from": "venture:job-jugaad",
+        "to": "capability:dashboard:8790",
+        "rel": "capability"
+      },
+      {
+        "id": "e-venture:job-jugaad-capability:tests:job-jugaad",
+        "from": "venture:job-jugaad",
+        "to": "capability:tests:job-jugaad",
+        "rel": "capability"
       }
+    ]
+  },
+  "onboarding": {
+    "template": "config/venture-template.json",
+    "wiki": "brain/wiki/concepts/onboard-new-project.md",
+    "architecture": "brain/wiki/concepts/kingdom-personal-os.md",
+    "has_template": true,
+    "after_register": [
+      "Add AGENT_SKILL_MAP entry in scripts/lib/skill-graph.mjs",
+      "Create wiki venture/architecture/experiments pages",
+      "Update brain/wiki/concepts/where-files-live.md",
+      "Update sync-kingdom skill path map if needed",
+      "npm run sync",
+      "Verify Throne + graph show the new node"
     ]
   },
   "open": {

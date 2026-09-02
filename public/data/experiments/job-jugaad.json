@@ -3,6 +3,16 @@
   "updated": "2026-08-24",
   "items": [
     {
+      "date": "2026-09-02",
+      "summary": "Add takeout parsers, job search config, and dashboard wiring.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Add takeout analysis docs and LinkedIn import notes.",
+      "source": "git"
+    },
+    {
       "date": "2026-09-01",
       "summary": "Register six primary resume tracks for application targeting.",
       "source": "git"

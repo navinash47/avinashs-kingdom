@@ -1,11 +1,11 @@
 {
   "venture_id": "comic-engine",
-  "synced_at": "2026-09-02T20:03:44.481Z",
+  "synced_at": "2026-09-02T20:08:54.972Z",
   "repo": {
     "path": "/Users/avinashnandyala/Desktop/ComicMainEngine",
-    "head": "87418a472837d541626ba43114256940668fe7ab",
+    "head": "30ebec49a0577791b0ed7197768654ebd6abda74",
     "branch": "master",
-    "last_commit_at": "2026-08-29T03:33:31-07:00",
+    "last_commit_at": "2026-09-02T13:04:09-07:00",
     "remote_url": "https://github.com/navinash47/ComicMainEngine.git",
     "github": {
       "owner": "navinash47",
@@ -14,14 +14,14 @@
     }
   },
   "stats": {
-    "files": 1590,
-    "lines": 748313,
+    "files": 1630,
+    "lines": 752759,
     "primary_language": "Python",
     "languages": [
       {
         "language": "Python",
-        "files": 894,
-        "lines": 304265
+        "files": 929,
+        "lines": 308323
       },
       {
         "language": "Other",
@@ -30,8 +30,8 @@
       },
       {
         "language": "JSON",
-        "files": 225,
-        "lines": 190402
+        "files": 226,
+        "lines": 190467
       },
       {
         "language": "YAML",
@@ -40,8 +40,8 @@
       },
       {
         "language": "JavaScript",
-        "files": 37,
-        "lines": 5041
+        "files": 38,
+        "lines": 5123
       },
       {
         "language": "CSS",
@@ -50,13 +50,13 @@
       },
       {
         "language": "Markdown",
-        "files": 24,
-        "lines": 2378
+        "files": 26,
+        "lines": 2581
       },
       {
         "language": "HTML",
-        "files": 24,
-        "lines": 1655
+        "files": 25,
+        "lines": 1693
       },
       {
         "language": "Shell",
@@ -70,7 +70,7 @@
       }
     ],
     "truncated": false,
-    "sampled_files": 1590,
+    "sampled_files": 1630,
     "source": "walker"
   },
   "dependencies": {

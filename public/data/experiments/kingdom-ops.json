@@ -4,6 +4,16 @@
   "items": [
     {
       "date": "2026-09-02",
+      "summary": "Log sync/control-surface skill observations from control plane session.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Restore virtual control plane and sync-owned control surface.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
       "summary": "Link City Stage Proofs from Kingdom Run tab.",
       "source": "git"
     },
@@ -65,16 +75,6 @@
     {
       "date": "2026-09-01",
       "summary": "Set share_site_url after Vercel production deploy.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-01",
-      "summary": "Link Kingdom Resume tab to family share site.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-01",
-      "summary": "Add fleet control plane, resume knowledge mirror, and steward orchestration.",
       "source": "git"
     },
     {

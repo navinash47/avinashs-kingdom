@@ -1,11 +1,11 @@
 {
   "venture_id": "procedural-city",
-  "synced_at": "2026-09-02T20:03:44.396Z",
+  "synced_at": "2026-09-02T20:08:54.922Z",
   "repo": {
     "path": "/Users/avinashnandyala/ProceduralCity",
-    "head": "3a4116350f7942852a9fba2b28077b40ae9eeee7",
-    "branch": "phase57",
-    "last_commit_at": "2026-09-02T12:59:14-07:00",
+    "head": "d9d5dfc03b4ad154f24b89243c4c4b4ce4b14679",
+    "branch": "phase58",
+    "last_commit_at": "2026-09-02T13:08:12-07:00",
     "remote_url": "https://github.com/navinash47/ProceduralCity.git",
     "github": {
       "owner": "navinash47",
@@ -15,13 +15,13 @@
   },
   "stats": {
     "files": 869,
-    "lines": 663295,
+    "lines": 663256,
     "primary_language": "JSON",
     "languages": [
       {
         "language": "JSON",
         "files": 655,
-        "lines": 616706
+        "lines": 616708
       },
       {
         "language": "Python",
@@ -41,7 +41,7 @@
       {
         "language": "Markdown",
         "files": 38,
-        "lines": 3781
+        "lines": 3740
       },
       {
         "language": "CSS",
@@ -119,8 +119,8 @@
   "models_detected": [],
   "spend_usd": null,
   "ceiling_usd": 70,
-  "progress": 62,
-  "version": "Stage E · Phase 57",
+  "progress": 63,
+  "version": "Stage F · Phase 58",
   "test_commands": [
     {
       "id": "unit",

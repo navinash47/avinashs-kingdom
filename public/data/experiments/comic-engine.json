@@ -3,6 +3,11 @@
   "updated": "2026-08-16",
   "items": [
     {
+      "date": "2026-09-02",
+      "summary": "Update model recommendations and keep 2A/2B STATUS sections.",
+      "source": "git"
+    },
+    {
       "date": "2026-08-29",
       "summary": "phase-v2b-g2: record G2 commit hash in v2b logs",
       "source": "git"

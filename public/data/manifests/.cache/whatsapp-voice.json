@@ -1,17 +1,21 @@
 {
   "venture_id": "whatsapp-voice",
-  "synced_at": "2026-08-24T06:25:15.216Z",
+  "synced_at": "2026-09-02T20:06:05.209Z",
   "repo": {
     "path": "/Users/avinashnandyala/Projects/whatsapp-voice-agents",
-    "head": "8d9d95dcba08533d7ed4ff534f0c3a0ab12c1062",
+    "head": "df724bcb37bb7dadc9662320daf58d85ffd7e1ac",
     "branch": "main",
-    "last_commit_at": "2026-08-11T02:08:56-04:00",
-    "remote_url": null,
-    "github": null
+    "last_commit_at": "2026-09-02T13:03:58-07:00",
+    "remote_url": "https://github.com/navinash47/whatsapp-voice-agents.git",
+    "github": {
+      "owner": "navinash47",
+      "repo": "whatsapp-voice-agents",
+      "default_branch": "main"
+    }
   },
   "stats": {
     "files": 40,
-    "lines": 2030,
+    "lines": 2116,
     "primary_language": "JavaScript",
     "languages": [
       {
@@ -22,7 +26,7 @@
       {
         "language": "JavaScript",
         "files": 5,
-        "lines": 713
+        "lines": 799
       },
       {
         "language": "JSON",
@@ -66,7 +70,8 @@
       "id": "unit",
       "label": "Node tests",
       "cmd": "npm test",
-      "type": "unit"
+      "type": "unit",
+      "description": "Runs demo server unit tests (qualify FSM, webhook handlers)"
     }
   ],
   "suggestions": []

@@ -1,11 +1,11 @@
 {
   "venture_id": "job-jugaad",
-  "synced_at": "2026-09-02T20:03:44.670Z",
+  "synced_at": "2026-09-02T20:08:55.119Z",
   "repo": {
     "path": "/Users/avinashnandyala/Projects/job-jugaad",
-    "head": "31772ba981f8f049e469b2275b5fe66fe07616db",
+    "head": "5563327ba6a2d1ac08ed0f5353d6c16ffdfa49a3",
     "branch": "main",
-    "last_commit_at": "2026-09-01T21:26:40-07:00",
+    "last_commit_at": "2026-09-02T13:04:46-07:00",
     "remote_url": "https://github.com/navinash47/job-jugaad.git",
     "github": {
       "owner": "navinash47",
@@ -14,34 +14,39 @@
     }
   },
   "stats": {
-    "files": 22,
-    "lines": 3991,
+    "files": 41,
+    "lines": 8580,
     "primary_language": "JSON",
     "languages": [
       {
         "language": "JSON",
-        "files": 5,
-        "lines": 2400
+        "files": 11,
+        "lines": 3894
+      },
+      {
+        "language": "JavaScript",
+        "files": 7,
+        "lines": 1376
+      },
+      {
+        "language": "Other",
+        "files": 4,
+        "lines": 1055
       },
       {
         "language": "TypeScript",
         "files": 6,
-        "lines": 520
+        "lines": 803
+      },
+      {
+        "language": "Markdown",
+        "files": 10,
+        "lines": 707
       },
       {
         "language": "CSS",
         "files": 1,
-        "lines": 494
-      },
-      {
-        "language": "JavaScript",
-        "files": 2,
-        "lines": 348
-      },
-      {
-        "language": "Markdown",
-        "files": 4,
-        "lines": 166
+        "lines": 690
       },
       {
         "language": "YAML",
@@ -52,15 +57,10 @@
         "language": "HTML",
         "files": 1,
         "lines": 19
-      },
-      {
-        "language": "Other",
-        "files": 2,
-        "lines": 8
       }
     ],
     "truncated": false,
-    "sampled_files": 22,
+    "sampled_files": 41,
     "source": "walker"
   },
   "dependencies": {
@@ -112,10 +112,15 @@
       "note": "Registry path"
     }
   ],
-  "models_detected": [],
+  "models_detected": [
+    {
+      "name": "models",
+      "source": "config scan"
+    }
+  ],
   "spend_usd": null,
   "ceiling_usd": null,
-  "progress": 0,
+  "progress": 100,
   "version": "Tracker v0.1",
   "test_commands": [
     {

@@ -4,6 +4,16 @@
   "items": [
     {
       "date": "2026-09-02",
+      "summary": "Pass Phase 57: Stage E gate (human perfect-eval).",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Sync Stage E Phase 57 status and dashboard census.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
       "summary": "Refresh dashboard Stage Proofs after E57 heatmap wiring.",
       "source": "git"
     },
@@ -65,16 +75,6 @@
     {
       "date": "2026-08-24",
       "summary": "Pass Phase 50: semantic tile_plan validation and pipeline L1.5.",
-      "source": "git"
-    },
-    {
-      "date": "2026-08-24",
-      "summary": "Polish Stage Proofs video embeds in README and dashboard.",
-      "source": "git"
-    },
-    {
-      "date": "2026-08-24",
-      "summary": "Pass Phase 49: L1/L2/L3 tile_plan pipeline and stage proof videos.",
       "source": "git"
     },
     {
