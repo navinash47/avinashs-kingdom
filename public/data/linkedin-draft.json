@@ -1,7 +1,7 @@
 {
   "updated": "2026-09-02",
-  "status": "DRAFT — approve in Resume tab before posting",
-  "kingdom_approve_note": "Open Venture Fleet Control Plane → Resume tab to review headline/about variants and sign off before updating LinkedIn.",
+  "status": "APPROVED",
+  "kingdom_approve_note": "Approved in Kingdom Resume tab — safe to post headline + about to LinkedIn (Featured links per featured-verdict.md).",
   "linkedin_url": "https://www.linkedin.com/in/avinash-nandyala-06a88b199",
   "ingest_note": "LinkedIn profile fetch blocked (HTTP 500) 2026-09-02 — sourced from existing linkedin-draft.json, Portfolio site, legacy .tex tracks, portfolio brain wikis",
   "headline_options": [
@@ -51,9 +51,13 @@
     "bullet_draft": "Built a verification-first agent portfolio command center (React + Vite) syncing STATUS, phase gates, expenses, and architecture across 10+ repos; featured shipped/lab systems include ComicMainEngine (generative comic pipeline), Procedural City (LLM scene director under spend ceiling), and BeamDojo (Isaac Lab locomotion research), with schema-backed evals and provenance logging, not prompt-only demos."
   },
   "notes": [
-    "DRAFT — approve headline/about in Resume tab before posting to LinkedIn.",
     "Do not feature WhatsApp Voice or YouTube Editor on LinkedIn until gates pass (see knowledge/featured-verdict.md).",
     "Align posted experience bullet with approved Venture Fleet Control Plane project bullets option from dashboard.",
+    "Verify BioNLP diagnosis metric with PI before citing 27 w-F1 publicly.",
+    "APPROVED 2026-09-02 via Kingdom Resume tab — post headline + about when ready.",
+    "Do not feature WhatsApp Voice or YouTube Editor on LinkedIn until gates pass (see knowledge/featured-verdict.md).",
     "Verify BioNLP diagnosis metric with PI before citing 27 w-F1 publicly."
-  ]
+  ],
+  "approved_at": "2026-09-02T04:25:11.145Z",
+  "approved_via": "kingdom-resume-tab"
 }

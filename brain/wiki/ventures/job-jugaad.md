@@ -54,18 +54,24 @@ Applications tracker: **company + specific role** through a pipeline (wishlist �
 
 PDFs live at `~/Projects/resume/tracks/preview-pdf/`. Re-export after dashboard ratings: `npm run export` in resume repo.
 
+### Registered primary tracks (2026-09-02)
+
+| Track id | PDF |
+|----------|-----|
+| `agentic-engineer` | `Avinash_Nandyala_Agentic_Engineer.pdf` |
+| `ai-engineer` | `Avinash_Nandyala_AI_Engineer.pdf` |
+| `fde` | `Avinash_Nandyala_FDE.pdf` |
+| `sde-mid` | `Avinash_Nandyala_SDE_Mid.pdf` |
+| `robotics` | `Avinash_Nandyala_Robotics.pdf` |
+| `mle` | `Avinash_Nandyala_MLE.pdf` |
+
+Config: `~/Projects/job-jugaad/config/resume-tracks.json` · mirrored in `data/applications.json` `primary_tracks`. SDE Entry excluded (new-grad only).
+
 ### Suggested default tracks (placeholder — edit before registering)
 
-Per [knowledge/ROLE_COMPARISON.md](~/Projects/resume/knowledge/ROLE_COMPARISON.md), suggested primary pair until you pick explicitly:
+~~Per [knowledge/ROLE_COMPARISON.md](~/Projects/resume/knowledge/ROLE_COMPARISON.md), suggested primary pair until you pick explicitly:~~
 
-| Priority | Track | PDF | Rationale |
-|----------|-------|-----|-----------|
-| **Primary (suggested)** | Agentic Engineer | `Avinash_Nandyala_Agentic_Engineer.pdf` | Strongest honest agent + eval story (Comic, City, BioNLP, Mastercard) |
-| **Secondary (suggested)** | Robotics / RL Engineer | `Avinash_Nandyala_Robotics.pdf` | RL/locomotion niche (BeamDojo, robotics-lab experience) |
-
-**Not auto-registered** — edit this section or `data/applications.json` when you confirm tracks after comparing PDFs. Alternative secondary: AI Engineer (GenAI product) or SDE Mid (fintech/backend safety net).
-
-To register: update wishlist rows in Job Jugaad with chosen `default_resume_track` when tracker supports it (config TBD).
+**Superseded** — see Registered primary tracks above.
 
 ### After ratings
 
