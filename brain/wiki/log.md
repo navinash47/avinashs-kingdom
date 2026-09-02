@@ -2,6 +2,14 @@
 
 Append-only. Prefix each entry with `## [YYYY-MM-DD] <op> | <title>` so recent activity is greppable.
 
+## [2026-09-02] ops | Phase 2 W1 — Obs 11 merge playbook
+
+Encoded cloud→Mac UI merge rules in `.cursor/skills/sync-kingdom/SKILL.md` (+ `~/.cursor` mirror) and [[ops/cloud-ui-merge-playbook]]. Keep-ours: App.tsx / OrchestratorProvider / VentureSidebar·VenturePage / FleetGraph/. Fold-in: Research Lab / Vite `/live`. Obs 11 → ACTIONED.
+
+## [2026-09-02] ops | Phase 2 hard-10% design pack
+
+SRS [[concepts/personal-os-phase2-srs]], builder prompt [[ops/personal-os-phase2-builder-prompt]], live tracker [[ops/personal-os-phase2-tracker]], plan `.cursor/plans/personal_os_phase2_hard10.plan.md`. Workstreams ordered W1 merge playbook → W2 LLM judge → W3 auto-wiki → W4 MCP. Implementation not started (W0 design only).
+
 ## [2026-09-02] ops | Lint heuristic v2 + ingest extract + hygiene
 
 `brain/harness/lint.mjs` → heuristic **v2**: still errors only on broken links; new **warnings** for conflicting venture lifecycle/priority phrases across pages, duplicate claim bullets, and `updated:` lagging recent `wiki/log.md` mentions (`--log-lag-days`). `brain:ingest --file` best-effort extracts title + summary bullets into the source stub and prints review/complete-with-kingdom-wiki checklist. Fixed missing `updated:` on [[ops/ci-template]]. Triaged skill-observation backlog (8 ACTIONED, 7 remain OPEN). Sync panel refresh committed. Docs: harness README, [[ops/personal-os-playbook]], AGENTS, kingdom-wiki skill. **Still not** an LLM claim judge.

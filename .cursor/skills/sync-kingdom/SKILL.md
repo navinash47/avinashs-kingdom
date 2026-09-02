@@ -70,6 +70,28 @@ Path map page: `brain/wiki/concepts/where-files-live.md`.
 
 **Sync Kingdom ⇒ update virtual control app always.** Do not treat sync as “ventures.json only.” The Throne control bar, fleet strip, skill graph, and harness empty-model are part of the same pass (`scripts/lib/control-surface.mjs`). Wiki: `brain/wiki/concepts/virtual-control-surface.md`.
 
+## Cloud UI merge (Obs 11 — required)
+
+When merging cloud/Cursor UI branches into Mac Kingdom `main`, **do not** take “theirs” for the App shell. Full playbook: `brain/wiki/ops/cloud-ui-merge-playbook.md`.
+
+### Keep-ours
+
+- `src/App.tsx` + `OrchestratorProvider` / OrchestratorContext wiring
+- `VentureSidebar` / `VenturePage` (not VentureBoard+onUpdate)
+- `src/components/FleetGraph/` **directory** (not a single-file `FleetGraph.tsx`)
+
+### Fold-in
+
+Land the branch’s *feature* as plugins / Research Lab / Vite middleware `/live/...`. Never replace the Mac router with an older `useState` tab shell.
+
+### Drop collisions
+
+If incoming adds `FleetGraph.tsx` while `FleetGraph/` exists — **drop** the file; port unique bits into the folder. Do not reintroduce removed Storage nav / board-only shells.
+
+### Verify
+
+`npm run build` (or typecheck) + smoke `/?tab=throne` and the feature surface. Checklist is in the ops playbook; an agent reading this skill alone must be able to merge without wiping OrchestratorContext.
+
 ## Notes
 
 - Panel progress bars are **read-only**; editing the source file + sync updates them.

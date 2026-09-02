@@ -34,6 +34,13 @@ How Avinash runs the Kingdom **personal OS** day to day. Architecture: [[concept
 3. Append wiki `log.md` only when an ingest/ops event happened (agents do this on ingest; `brain:ingest` prints the exact line)
 4. Ask “any observations?” if the session was substantive
 
+## Phase 2 (hard ~10% — when building next)
+
+- SRS: [[concepts/personal-os-phase2-srs]]
+- Paste prompt: [[ops/personal-os-phase2-builder-prompt]]
+- Watch progress: [[ops/personal-os-phase2-tracker]]
+- Cloud UI merges: [[ops/cloud-ui-merge-playbook]] (keep Mac orchestrator shell)
+
 ## Weekly
 
 - Skim `wiki/log.md` last 7 entries: `grep "^## \[" brain/wiki/log.md | tail -10`

@@ -12,6 +12,9 @@ Catalog of pages. Agents update this on every ingest. Last full refresh: **2026-
 | [ops/live-tracker](ops/live-tracker.md) | Auto census on every `npm run sync` |
 | [ops/headroom](ops/headroom.md) | Token proxy + Cursor BYOK / MCP runbook |
 | [ops/personal-os-playbook](ops/personal-os-playbook.md) | Daily how-to run the Kingdom personal OS |
+| [ops/personal-os-phase2-tracker](ops/personal-os-phase2-tracker.md) | Phase 2 hard-10% live progress board |
+| [ops/personal-os-phase2-builder-prompt](ops/personal-os-phase2-builder-prompt.md) | Pasteable Agent/`/goal` prompt for Phase 2 |
+| [ops/cloud-ui-merge-playbook](ops/cloud-ui-merge-playbook.md) | Cloud→Mac UI merges: keep orchestrator; fold features |
 | [ops/ci-template](ops/ci-template.md) | Reusable CI / phase-board patterns |
 | [ops/cloudflare-links](ops/cloudflare-links.md) | Dashboard tunnel / Cloudflare link ops |
 | [ops/git-repos](ops/git-repos.md) | GitHub + local repo census |
@@ -80,6 +83,7 @@ Catalog of pages. Agents update this on every ingest. Last full refresh: **2026-
 | [virtual-control-surface](concepts/virtual-control-surface.md) | Sync-owned Throne control plane + control-surface.json |
 | [brain-harness-fsm](concepts/brain-harness-fsm.md) | Deterministic KG/FSM empty model under brain/harness |
 | [kingdom-personal-os](concepts/kingdom-personal-os.md) | Primary architecture: brain + skills + registry/orchestrator + Throne |
+| [personal-os-phase2-srs](concepts/personal-os-phase2-srs.md) | Hard ~10% SRS: auto-wiki, MCP, LLM judge, obs 11 merge |
 | [onboard-new-project](concepts/onboard-new-project.md) | Checklist to plug a future venture into brain + sync + Throne |
 
 ## Entities

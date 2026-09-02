@@ -156,8 +156,7 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 
 ### Observation 11: Cloud-agent UI branches replay an older App shell
 
-**Status:** OPEN
-**Last review:** 2026-09-02 — still open; keep as merge playbook until encoded in sync-kingdom skill
+**Status:** ACTIONED (2026-09-02) — encoded in sync-kingdom skill + brain/wiki/ops/cloud-ui-merge-playbook.md
 **Date:** 2026-08-24
 **Session context:** Merge origin/cursor/live-training-wandb-73ce into Mac Kingdom main
 **Skill:** sync-kingdom
