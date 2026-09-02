@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-02T05:09:51.740Z",
+  "updated": "2026-09-02T05:14:35.093Z",
   "phase": 1,
   "repo": "https://github.com/navinash47/resume",
   "local_path": "~/Projects/resume",
@@ -85,11 +85,16 @@
       "id": "sde-entry",
       "label": "SDE",
       "level": "entry"
+    },
+    {
+      "id": "linkedin-master",
+      "label": "LinkedIn Master",
+      "level": "master"
     }
   ],
   "bullet_counts": {
-    "summary": 9,
-    "skills": 5,
+    "summary": 11,
+    "skills": 7,
     "mastercard": 13,
     "bionlp": 7,
     "independent": 7,
@@ -102,54 +107,60 @@
     "fcm": 5,
     "whatsapp": 3,
     "youtube": 3,
-    "total": 89
+    "total": 93
   },
   "ratings_stats": {
-    "rated_overall": 89,
-    "unrated_overall": 0,
-    "total_bullets": 89,
+    "rated_overall": 92,
+    "unrated_overall": 1,
+    "total_bullets": 93,
     "per_role": {
       "ai-engineer": {
         "label": "AI Engineer",
         "level": "mid",
-        "rated": 66,
-        "total": 89
+        "rated": 70,
+        "total": 93
       },
       "fde": {
         "label": "FDE",
         "level": "mid",
-        "rated": 59,
-        "total": 89
+        "rated": 62,
+        "total": 93
       },
       "agentic-engineer": {
         "label": "Agentic Engineer",
         "level": "mid",
-        "rated": 60,
-        "total": 89
+        "rated": 64,
+        "total": 93
       },
       "mle": {
         "label": "MLE",
         "level": "mid",
-        "rated": 37,
-        "total": 89
+        "rated": 40,
+        "total": 93
       },
       "robotics": {
         "label": "Robotics / RL Engineer",
         "level": "mid",
         "rated": 23,
-        "total": 89
+        "total": 93
       },
       "sde-mid": {
         "label": "SDE",
         "level": "mid",
-        "rated": 41,
-        "total": 89
+        "rated": 40,
+        "total": 93
       },
       "sde-entry": {
         "label": "SDE",
         "level": "entry",
-        "rated": 39,
-        "total": 89
+        "rated": 38,
+        "total": 93
+      },
+      "linkedin-master": {
+        "label": "LinkedIn Master",
+        "level": "master",
+        "rated": 4,
+        "total": 93
       }
     },
     "legacy_approvals": {
@@ -248,6 +259,11 @@
       "role": "sde-entry",
       "label": "SDE",
       "path": "tracks/preview-pdf/Avinash_Nandyala_SDE_Entry.pdf"
+    },
+    {
+      "role": "linkedin-master",
+      "label": "LinkedIn Master",
+      "path": "tracks/preview-pdf/Avinash_Nandyala_LinkedIn_Master.pdf"
     }
   ],
   "share_site_url": "https://share-site-ruddy.vercel.app",
