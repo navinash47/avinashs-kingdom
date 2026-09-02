@@ -567,6 +567,25 @@ export function ResumeKnowledgePanel({ data, portfolio: portfolioProp }: Props) 
         </>
       ) : null}
 
+      <h3 className="subhead">Family share site</h3>
+      <p className="muted tiny">
+        Password-protected Vercel portal for PDF/DOCX resumes + cover letters (gf + dad). Local preview:{' '}
+        <a href={data.share_site_local ?? 'http://localhost:5299'} target="_blank" rel="noreferrer">
+          {data.share_site_local ?? 'http://localhost:5299'}
+        </a>
+        {data.share_site_url ? (
+          <>
+            {' '}
+            · Deployed:{' '}
+            <a href={data.share_site_url} target="_blank" rel="noreferrer">
+              {data.share_site_url}
+            </a>
+          </>
+        ) : (
+          <span className="muted"> · Set SHARE_SITE_URL after first Vercel deploy (see share-site/README.md)</span>
+        )}
+      </p>
+
       <h3 className="subhead">Export pipeline</h3>
       {data.preview_tex_generated ? (
         <p className="muted tiny">

@@ -249,6 +249,9 @@ export type ResumeKnowledge = {
   dashboard_ui?: string
   preview_tex_generated?: boolean
   preview_pdfs?: Array<{ role: string; label?: string; path: string }>
+  share_site_url?: string | null
+  share_site_local?: string
+  share_site_readme?: string
 }
 
 export type KingdomState = {
