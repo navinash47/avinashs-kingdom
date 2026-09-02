@@ -13,6 +13,17 @@ export function loadRegistry(kingdomRoot) {
   return JSON.parse(fs.readFileSync(p, 'utf8'))
 }
 
+/** Empty-but-real schema for plugging a future venture into brain + Throne. */
+export function loadVentureTemplate(kingdomRoot) {
+  const p = path.join(kingdomRoot, 'config', 'venture-template.json')
+  if (!fs.existsSync(p)) return null
+  return JSON.parse(fs.readFileSync(p, 'utf8'))
+}
+
+export function ventureTemplatePath(kingdomRoot) {
+  return path.join(kingdomRoot, 'config', 'venture-template.json')
+}
+
 export function getRegistryEntry(registry, id) {
   return registry.ventures?.find((v) => v.id === id) ?? null
 }

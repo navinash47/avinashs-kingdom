@@ -1,0 +1,87 @@
+{
+  "venture_id": "mac-optimize-audit",
+  "synced_at": "2026-09-02T20:16:49.815Z",
+  "repo": {
+    "path": "/Users/avinashnandyala/Projects/mac-optimize-audit",
+    "head": "4a716b23bd4275f0bddb2d0112f141690b71b1bf",
+    "branch": "main",
+    "last_commit_at": "2026-09-02T13:04:48-07:00",
+    "remote_url": "https://github.com/navinash47/mac-optimize-audit.git",
+    "github": {
+      "owner": "navinash47",
+      "repo": "mac-optimize-audit",
+      "default_branch": "main"
+    }
+  },
+  "stats": {
+    "files": 8000,
+    "lines": 5677717,
+    "primary_language": "JSON",
+    "languages": [
+      {
+        "language": "JSON",
+        "files": 7988,
+        "lines": 5676191
+      },
+      {
+        "language": "Python",
+        "files": 7,
+        "lines": 1195
+      },
+      {
+        "language": "HTML",
+        "files": 1,
+        "lines": 248
+      },
+      {
+        "language": "Markdown",
+        "files": 2,
+        "lines": 75
+      },
+      {
+        "language": "Other",
+        "files": 2,
+        "lines": 8
+      }
+    ],
+    "truncated": true,
+    "sampled_files": 8000,
+    "source": "walker"
+  },
+  "dependencies": {
+    "ecosystem": null,
+    "runtime": [],
+    "dev": []
+  },
+  "storage": [
+    {
+      "type": "json",
+      "path": "reports/latest.json",
+      "note": "Registry path"
+    }
+  ],
+  "models_detected": [],
+  "spend_usd": null,
+  "ceiling_usd": null,
+  "progress": 67,
+  "version": "v0.1",
+  "test_commands": [
+    {
+      "id": "unit",
+      "label": "pytest",
+      "cmd": "pytest -q",
+      "type": "unit",
+      "description": "Mac optimize audit pytest suite"
+    }
+  ],
+  "suggestions": [],
+  "services": [
+    {
+      "id": "dashboard",
+      "label": "Mac audit dashboard",
+      "port": 8742,
+      "url": "http://127.0.0.1:8742",
+      "status": "up"
+    }
+  ]
+}

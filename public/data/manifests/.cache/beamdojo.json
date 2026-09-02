@@ -1,0 +1,70 @@
+{
+  "venture_id": "beamdojo",
+  "synced_at": "2026-08-24T19:00:32.389Z",
+  "repo": {
+    "path": "/Users/avinashnandyala/Projects/BeamDojo",
+    "head": "99d253db170edaadec1db63c1a0268aa07d8a7bf",
+    "branch": "main",
+    "last_commit_at": "2026-08-24T11:44:26-07:00",
+    "remote_url": "https://github.com/navinash47/BeamDojo.git",
+    "github": {
+      "owner": "navinash47",
+      "repo": "BeamDojo",
+      "default_branch": "main"
+    }
+  },
+  "stats": {
+    "files": 38,
+    "lines": 6014,
+    "primary_language": "Python",
+    "languages": [
+      {
+        "language": "Python",
+        "files": 17,
+        "lines": 2899
+      },
+      {
+        "language": "Other",
+        "files": 8,
+        "lines": 1871
+      },
+      {
+        "language": "Markdown",
+        "files": 6,
+        "lines": 1032
+      },
+      {
+        "language": "Shell",
+        "files": 6,
+        "lines": 195
+      },
+      {
+        "language": "YAML",
+        "files": 1,
+        "lines": 17
+      }
+    ],
+    "truncated": false,
+    "sampled_files": 38,
+    "source": "walker"
+  },
+  "dependencies": {
+    "ecosystem": null,
+    "runtime": [],
+    "dev": []
+  },
+  "storage": [
+    {
+      "type": "jsonl",
+      "path": "tracking/expenses.jsonl",
+      "note": "Registry path"
+    }
+  ],
+  "models_detected": [],
+  "spend_usd": null,
+  "ceiling_usd": null,
+  "progress": 18,
+  "version": "Stage 1 smoke",
+  "test_commands": [],
+  "suggestions": []
+}

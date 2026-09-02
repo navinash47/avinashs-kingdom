@@ -1,0 +1,11 @@
+{
+  "url": "https://artists-calgary-ecommerce-hotels.trycloudflare.com",
+  "services": {
+    "5173": "https://artists-calgary-ecommerce-hotels.trycloudflare.com"
+  },
+  "by_name": {
+    "kingdom": "https://artists-calgary-ecommerce-hotels.trycloudflare.com"
+  },
+  "updated_at": "2026-08-24T19:04:45Z",
+  "note": "Open url only. Iframes use real per-service tunnel URLs."
+}

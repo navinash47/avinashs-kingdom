@@ -5,6 +5,52 @@ import { resolveRepoPath } from './registry.mjs'
 export const DEFAULT_WANDB_PROJECT = 'beamdojo'
 export const DEFAULT_TRAINING_STATUS_REL = 'tracking/training-status.json'
 const ALLOWED_STATUS = new Set(['idle', 'running', 'unknown'])
+const HISTORY_CAP = 120
+const METRIC_NUM_KEYS = [
+  'mean_reward',
+  'mean_episode_length',
+  'fps',
+  'value_loss',
+  'surrogate_loss',
+  'entropy',
+  'foothold_value_loss',
+  'foothold_penalty',
+  'collection_time',
+  'learn_time',
+  'num_steps_per_env',
+]
+const METRIC_STR_KEYS = ['terrain', 'task']
+
+function extraTrainingFields(raw) {
+  const extra = {}
+  for (const key of METRIC_NUM_KEYS) {
+    if (raw[key] == null || raw[key] === '') continue
+    const n = Number(raw[key])
+    if (Number.isFinite(n)) extra[key] = n
+  }
+  for (const key of METRIC_STR_KEYS) {
+    if (typeof raw[key] === 'string' && raw[key].trim()) extra[key] = raw[key].trim()
+  }
+  if (Array.isArray(raw.history)) extra.history = normalizeHistory(raw.history)
+  return extra
+}
+
+export function normalizeHistory(rows) {
+  if (!Array.isArray(rows)) return []
+  const out = []
+  for (const row of rows) {
+    if (!row || typeof row !== 'object') continue
+    const point = {}
+    const iteration = Number(row.iteration)
+    if (Number.isFinite(iteration)) point.iteration = iteration
+    for (const key of ['mean_reward', 'mean_episode_length', 'fps']) {
+      const n = Number(row[key])
+      if (Number.isFinite(n)) point[key] = n
+    }
+    if (point.iteration != null && Object.keys(point).length > 1) out.push(point)
+  }
+  return out.slice(-HISTORY_CAP)
+}
 
 /** Research Lab: BeamDojo always, others only when sync found a status file. */
 export function showLiveTrainingCard(project) {
@@ -50,6 +96,8 @@ export function normalizeTrainingStatus(raw, { source = 'live' } = {}) {
     host: raw.host ?? null,
     robot: raw.robot ?? null,
     stage: raw.stage ?? null,
+    terrain: typeof raw.terrain === 'string' ? raw.terrain : null,
+    task: typeof raw.task === 'string' ? raw.task : null,
     num_envs: raw.num_envs ?? null,
     max_iterations: raw.max_iterations ?? null,
     iteration: raw.iteration ?? null,
@@ -61,6 +109,27 @@ export function normalizeTrainingStatus(raw, { source = 'live' } = {}) {
     checkpoint: raw.checkpoint ?? null,
     note: raw.note ?? null,
     source,
+    ...extraTrainingFields(raw),
+  }
+}
+
+export function loadLiveTrainingFile(repoRoot, relPath) {
+  if (!repoRoot || !relPath) return null
+  const livePath = path.join(repoRoot, relPath)
+  if (!fs.existsSync(livePath)) return null
+  try {
+    const raw = JSON.parse(fs.readFileSync(livePath, 'utf8'))
+    return normalizeTrainingStatus(raw, { source: 'live' })
+  } catch {
+    return normalizeTrainingStatus(
+      {
+        status: 'unknown',
+        wandb_project: DEFAULT_WANDB_PROJECT,
+        wandb_url: 'https://wandb.ai',
+        note: `Could not parse ${path.basename(livePath)}`,
+      },
+      { source: 'live' },
+    )
   }
 }
 
@@ -68,26 +137,38 @@ export function loadTrainingStatus(repoRoot, relPath = DEFAULT_TRAINING_STATUS_R
   if (!repoRoot) return null
   const livePath = path.join(repoRoot, relPath)
   const examplePath = path.join(path.dirname(livePath), 'training-status.example.json')
-
-  const tryRead = (filePath, source) => {
-    if (!fs.existsSync(filePath)) return null
+  const tryExample = () => {
+    if (!fs.existsSync(examplePath)) return null
     try {
-      const raw = JSON.parse(fs.readFileSync(filePath, 'utf8'))
-      return normalizeTrainingStatus(raw, { source })
+      const raw = JSON.parse(fs.readFileSync(examplePath, 'utf8'))
+      return normalizeTrainingStatus(raw, { source: 'example' })
     } catch {
       return normalizeTrainingStatus(
         {
           status: 'unknown',
           wandb_project: DEFAULT_WANDB_PROJECT,
           wandb_url: 'https://wandb.ai',
-          note: `Could not parse ${path.basename(filePath)}`,
+          note: `Could not parse ${path.basename(examplePath)}`,
         },
-        { source },
+        { source: 'example' },
       )
     }
   }
+  return loadLiveTrainingFile(repoRoot, relPath) ?? tryExample()
+}
 
-  return tryRead(livePath, 'live') ?? tryRead(examplePath, 'example')
+/** Prefer gitignored live JSON in tracking/ or NFS logs/, then the example file. */
+export function loadTrainingStatusFromRepo(repoRoot, preferredRel = DEFAULT_TRAINING_STATUS_REL) {
+  if (!repoRoot) return null
+  const rels = [preferredRel, 'tracking/training-status.json', 'logs/training-status.json']
+  const seen = new Set()
+  for (const rel of rels) {
+    if (!rel || seen.has(rel)) continue
+    seen.add(rel)
+    const live = loadLiveTrainingFile(repoRoot, rel)
+    if (live) return live
+  }
+  return loadTrainingStatus(repoRoot, preferredRel)
 }
 
 function jsonlSpend(filePath) {
@@ -168,7 +249,7 @@ export function syncResearchLab(registry, kingdomRoot, dataDir, ventures) {
     const expRel = entry.paths?.expenses
     const spend = jsonlSpend(expRel && repoRoot ? path.join(repoRoot, expRel) : null)
     const statusRel = entry.paths?.trainingStatus || DEFAULT_TRAINING_STATUS_REL
-    const training = loadTrainingStatus(repoRoot, statusRel)
+    const training = loadTrainingStatusFromRepo(repoRoot, statusRel)
     if (training) {
       const dest = path.join(outDir, entry.id)
       fs.mkdirSync(dest, { recursive: true })

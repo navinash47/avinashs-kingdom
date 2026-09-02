@@ -1,0 +1,6 @@
+flowchart LR
+  WA[WhatsApp webhook] --> Demo[Node demo :8787]
+  Demo --> FSM[Qualify FSM]
+  FSM --> Lead[Qualified lead]
+  FSM --> Book[Site visit signal]
+  Lead --> Handoff[Nurture / handoff]

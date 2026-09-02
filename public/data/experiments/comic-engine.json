@@ -1,0 +1,74 @@
+{
+  "venture_id": "comic-engine",
+  "updated": "2026-08-16",
+  "items": [
+    {
+      "date": "2026-09-02",
+      "summary": "Update model recommendations and keep 2A/2B STATUS sections.",
+      "source": "git"
+    },
+    {
+      "date": "2026-08-29",
+      "summary": "phase-v2b-g2: record G2 commit hash in v2b logs",
+      "source": "git"
+    },
+    {
+      "date": "2026-08-29",
+      "summary": "phase-v2b-g2: licensed glTF characters replace block humanoids",
+      "source": "git"
+    },
+    {
+      "date": "2026-08-27",
+      "summary": "phase-v2b-b6: record B6 commit hash in v2b logs",
+      "source": "git"
+    },
+    {
+      "date": "2026-08-27",
+      "summary": "phase-v2b-b6: mask-driven multi-character LoRAs without bleed",
+      "source": "git"
+    },
+    {
+      "date": "2026-08-27",
+      "summary": "phase-v2b-b5: record B5 commit hash in v2b logs",
+      "source": "git"
+    },
+    {
+      "date": "2026-08-27",
+      "summary": "phase-v2b-b5: spec-driven locations with four-axis scorecards",
+      "source": "git"
+    },
+    {
+      "date": "2026-08-27",
+      "summary": "phase-v2b-b4: record B4 commit hash in v2b logs",
+      "source": "git"
+    },
+    {
+      "date": "2026-08-27",
+      "summary": "phase-v2b-b4: bootstrap character LoRA from stylized 3D turntable",
+      "source": "git"
+    },
+    {
+      "date": "2026-08-27",
+      "summary": "phase-v2b-g1: record G1 commit hash in v2b logs",
+      "source": "git"
+    },
+    {
+      "date": "2026-08-27",
+      "summary": "phase-v2b-g1: pairwise eval harness and preference log on HIMYM p1",
+      "source": "git"
+    },
+    {
+      "date": "2026-08-16",
+      "summary": "Version 2A parallel track beside frozen V2",
+      "source": "wiki",
+      "video": null
+    },
+    {
+      "date": "2026-08-16",
+      "summary": "A1 Story Architect signed for Aranya Capture series",
+      "source": "wiki",
+      "video": null
+    }
+  ],
+  "source_path": "brain/wiki/experiments/comic-engine.md"
+}

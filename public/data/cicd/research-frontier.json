@@ -1,0 +1,16 @@
+{
+  "venture_id": "research-frontier",
+  "synced_at": "2026-09-02T20:16:52.821Z",
+  "github": {
+    "owner": "navinash47",
+    "repo": "research-frontier-lab",
+    "default_branch": "main",
+    "available": true,
+    "runs": [],
+    "last_conclusion": null
+  },
+  "local_tests": {
+    "commands": [],
+    "last_run": null
+  }
+}

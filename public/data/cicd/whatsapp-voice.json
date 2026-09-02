@@ -1,0 +1,24 @@
+{
+  "venture_id": "whatsapp-voice",
+  "synced_at": "2026-09-02T20:16:51.630Z",
+  "github": {
+    "owner": "navinash47",
+    "repo": "whatsapp-voice-agents",
+    "default_branch": "main",
+    "available": true,
+    "runs": [],
+    "last_conclusion": null
+  },
+  "local_tests": {
+    "commands": [
+      {
+        "id": "unit",
+        "label": "Node tests",
+        "cmd": "npm test",
+        "type": "unit",
+        "description": "Runs demo server unit tests (qualify FSM, webhook handlers)"
+      }
+    ],
+    "last_run": null
+  }
+}

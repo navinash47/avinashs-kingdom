@@ -1,0 +1,39 @@
+{
+  "venture_id": "job-jugaad",
+  "updated": "2026-08-24",
+  "items": [
+    {
+      "date": "2026-09-02",
+      "summary": "Add takeout parsers, job search config, and dashboard wiring.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Add takeout analysis docs and LinkedIn import notes.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-01",
+      "summary": "Register six primary resume tracks for application targeting.",
+      "source": "git"
+    },
+    {
+      "date": "2026-08-24",
+      "summary": "Initial commit",
+      "source": "git"
+    },
+    {
+      "date": "2026-08-20",
+      "summary": "Registry manifest + architecture bundle added for inspector.",
+      "source": "wiki",
+      "video": null
+    },
+    {
+      "date": "2026-08-11",
+      "summary": "Application tracker synced to Kingdom audits panel.",
+      "source": "wiki",
+      "video": null
+    }
+  ],
+  "source_path": "brain/wiki/experiments/job-jugaad.md"
+}

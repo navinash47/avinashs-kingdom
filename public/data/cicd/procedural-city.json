@@ -1,0 +1,45 @@
+{
+  "venture_id": "procedural-city",
+  "synced_at": "2026-09-02T20:16:54.191Z",
+  "github": {
+    "owner": "navinash47",
+    "repo": "ProceduralCity",
+    "default_branch": "main",
+    "available": true,
+    "runs": [
+      {
+        "conclusion": "success",
+        "createdAt": "2026-08-10T02:57:07Z",
+        "databaseId": 31351194440,
+        "displayTitle": "Graph Update: pip in /. #1516071854",
+        "event": "dynamic",
+        "status": "completed",
+        "url": "https://github.com/navinash47/ProceduralCity/actions/runs/31351194440",
+        "workflowName": "Dependency Graph"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-08-10T01:52:04Z",
+        "databaseId": 31348223982,
+        "displayTitle": "Graph Update: pip in /. #1515935709",
+        "event": "dynamic",
+        "status": "completed",
+        "url": "https://github.com/navinash47/ProceduralCity/actions/runs/31348223982",
+        "workflowName": "Dependency Graph"
+      }
+    ],
+    "last_conclusion": "success"
+  },
+  "local_tests": {
+    "commands": [
+      {
+        "id": "unit",
+        "label": "pytest",
+        "cmd": "pytest -q",
+        "type": "unit",
+        "description": "ProceduralCity Python unit tests"
+      }
+    ],
+    "last_run": null
+  }
+}

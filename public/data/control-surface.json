@@ -1,0 +1,817 @@
+{
+  "synced_at": "2026-09-02T20:16:56.892Z",
+  "version": 2,
+  "contract": "kingdom-personal-os",
+  "fsm": {
+    "state": "ready",
+    "last_transition": "sync_complete",
+    "allowed": [
+      "sync",
+      "start_service",
+      "stop_service",
+      "start_all",
+      "stop_all",
+      "open_venture",
+      "open_graph",
+      "open_research",
+      "run_tests"
+    ]
+  },
+  "summary": {
+    "ventures_total": 10,
+    "ventures_active": 9,
+    "ventures_p0": 2,
+    "dashboards_configured": 6,
+    "skills": 7,
+    "agents": 9,
+    "agents_with_skills": 9,
+    "agents_without_skills": [],
+    "capabilities": 15,
+    "phases_board_synced_at": "2026-09-02T20:16:49.442Z"
+  },
+  "ventures": [
+    {
+      "id": "whatsapp-voice",
+      "name": "WhatsApp / Voice cash engine",
+      "progress": 80,
+      "priority": "P0",
+      "status": "active",
+      "agentId": "agent-cash",
+      "repoPath": "~/Projects/whatsapp-voice-agents",
+      "dashboardPort": 8787,
+      "dashboardLabel": "WhatsApp demo",
+      "nextMilestone": "Phase 8: Pilot client contract (pending)",
+      "phasesPassed": 8,
+      "phasesTotal": 10,
+      "kind": null,
+      "github": "navinash47/whatsapp-voice-agents"
+    },
+    {
+      "id": "youtube-editor",
+      "name": "YouTube editor + screenplay",
+      "progress": 55,
+      "priority": "P0",
+      "status": "active",
+      "agentId": "agent-cut",
+      "repoPath": "~/Projects/youtube-editor-lab",
+      "dashboardPort": null,
+      "dashboardLabel": null,
+      "nextMilestone": "Add Google creds (`GOOGLE_APPLICATION_CREDENTIALS` + `GCS_BUCKET` or Drive folder) → set `CLIP_CLOUD=gcs` and re-run `npm run clips:fetch` to sync cloud.",
+      "phasesPassed": null,
+      "phasesTotal": null,
+      "kind": null,
+      "github": "navinash47/youtube-editor-lab"
+    },
+    {
+      "id": "research-frontier",
+      "name": "Research Frontier Lab",
+      "progress": 12,
+      "priority": "P1",
+      "status": "active",
+      "agentId": "agent-atlas",
+      "repoPath": "~/Projects/research-frontier-lab",
+      "dashboardPort": null,
+      "dashboardLabel": null,
+      "nextMilestone": "Ingest 1–3 abstracts into Kingdom brain via kingdom-wiki (vertical: generative comics / multimodal consistency).",
+      "phasesPassed": null,
+      "phasesTotal": null,
+      "kind": "research",
+      "github": "navinash47/research-frontier-lab"
+    },
+    {
+      "id": "beamdojo",
+      "name": "BeamDojo (Isaac Lab locomotion)",
+      "progress": 18,
+      "priority": "P1",
+      "status": "active",
+      "agentId": "agent-dojo",
+      "repoPath": "~/Projects/BeamDojo",
+      "dashboardPort": null,
+      "dashboardLabel": null,
+      "nextMilestone": "Dual-terrain Stage 1 (flat physics + imagined beam height scan) then 1024-env CUDA train on the A10.",
+      "phasesPassed": null,
+      "phasesTotal": null,
+      "kind": "research",
+      "github": "navinash47/BeamDojo"
+    },
+    {
+      "id": "procedural-city",
+      "name": "Procedural City",
+      "progress": 63,
+      "priority": "P1",
+      "status": "active",
+      "agentId": "agent-metro",
+      "repoPath": "~/ProceduralCity",
+      "dashboardPort": 8765,
+      "dashboardLabel": "City dashboard",
+      "nextMilestone": "Phase 58: Asset manifest system (pending)",
+      "phasesPassed": 58,
+      "phasesTotal": 92,
+      "kind": null,
+      "github": "navinash47/ProceduralCity"
+    },
+    {
+      "id": "comic-engine",
+      "name": "ComicMainEngine",
+      "progress": 33,
+      "priority": "P2",
+      "status": "active",
+      "agentId": "agent-ink",
+      "repoPath": "~/Desktop/ComicMainEngine",
+      "dashboardPort": 8770,
+      "dashboardLabel": "Comic v2a dashboard",
+      "nextMilestone": "A2 Scene cards + storyboard ingest (start)",
+      "phasesPassed": 2,
+      "phasesTotal": 6,
+      "kind": null,
+      "github": "navinash47/ComicMainEngine"
+    },
+    {
+      "id": "kingdom-ops",
+      "name": "Kingdom ops (subs + expenses)",
+      "progress": 70,
+      "priority": "P1",
+      "status": "active",
+      "agentId": "agent-steward",
+      "repoPath": "~/Projects/avinashs-kingdom",
+      "dashboardPort": 5173,
+      "dashboardLabel": "Kingdom panel",
+      "nextMilestone": "Cancel/review 6 kill-list seats; reclaim low-risk disk (51.4% used)",
+      "phasesPassed": null,
+      "phasesTotal": null,
+      "kind": null,
+      "github": "navinash47/avinashs-kingdom"
+    },
+    {
+      "id": "mac-optimize-audit",
+      "name": "Mac optimize audit",
+      "progress": 67,
+      "priority": "P1",
+      "status": "active",
+      "agentId": "agent-janitor",
+      "repoPath": "~/Projects/mac-optimize-audit",
+      "dashboardPort": 8742,
+      "dashboardLabel": "Mac audit dashboard",
+      "nextMilestone": "Memory pressure is warning",
+      "phasesPassed": null,
+      "phasesTotal": null,
+      "kind": null,
+      "github": "navinash47/mac-optimize-audit"
+    },
+    {
+      "id": "job-jugaad",
+      "name": "Job Jugaad",
+      "progress": 83,
+      "priority": "P1",
+      "status": "active",
+      "agentId": "agent-jugaad",
+      "repoPath": "~/Projects/job-jugaad",
+      "dashboardPort": 8790,
+      "dashboardLabel": "Job tracker",
+      "nextMilestone": "Keep logging — 414/500 toward ongoing target",
+      "phasesPassed": null,
+      "phasesTotal": null,
+      "kind": null,
+      "github": "navinash47/job-jugaad"
+    },
+    {
+      "id": "shorts",
+      "name": "Shorts tooling",
+      "progress": 0,
+      "priority": "parked",
+      "status": "parked",
+      "agentId": null,
+      "repoPath": null,
+      "dashboardPort": null,
+      "dashboardLabel": null,
+      "nextMilestone": "Do not focus",
+      "phasesPassed": null,
+      "phasesTotal": null,
+      "kind": null,
+      "github": null
+    }
+  ],
+  "skills": [
+    "kingdom-tunnels",
+    "kingdom-wiki",
+    "log-outreach",
+    "phase-gate",
+    "sync-kingdom",
+    "task-observer",
+    "youtube-provenance"
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "id": "hub:kingdom",
+        "type": "orchestrator",
+        "label": "Venture Fleet Control Plane"
+      },
+      {
+        "id": "venture:whatsapp-voice",
+        "type": "venture",
+        "label": "WhatsApp / Voice cash engine",
+        "venture_id": "whatsapp-voice"
+      },
+      {
+        "id": "venture:youtube-editor",
+        "type": "venture",
+        "label": "YouTube editor + screenplay",
+        "venture_id": "youtube-editor"
+      },
+      {
+        "id": "venture:research-frontier",
+        "type": "venture",
+        "label": "Research Frontier Lab",
+        "venture_id": "research-frontier"
+      },
+      {
+        "id": "venture:beamdojo",
+        "type": "venture",
+        "label": "BeamDojo (Isaac Lab locomotion)",
+        "venture_id": "beamdojo"
+      },
+      {
+        "id": "venture:procedural-city",
+        "type": "venture",
+        "label": "Procedural City",
+        "venture_id": "procedural-city"
+      },
+      {
+        "id": "venture:comic-engine",
+        "type": "venture",
+        "label": "ComicMainEngine",
+        "venture_id": "comic-engine"
+      },
+      {
+        "id": "venture:kingdom-ops",
+        "type": "venture",
+        "label": "Kingdom ops (subs + expenses)",
+        "venture_id": "kingdom-ops"
+      },
+      {
+        "id": "venture:mac-optimize-audit",
+        "type": "venture",
+        "label": "Mac optimize audit",
+        "venture_id": "mac-optimize-audit"
+      },
+      {
+        "id": "venture:job-jugaad",
+        "type": "venture",
+        "label": "Job Jugaad",
+        "venture_id": "job-jugaad"
+      },
+      {
+        "id": "venture:shorts",
+        "type": "venture",
+        "label": "Shorts tooling",
+        "venture_id": "shorts"
+      },
+      {
+        "id": "agent:agent-cash",
+        "type": "agent",
+        "label": "agent-cash",
+        "venture_id": "whatsapp-voice"
+      },
+      {
+        "id": "agent:agent-cut",
+        "type": "agent",
+        "label": "agent-cut",
+        "venture_id": "youtube-editor"
+      },
+      {
+        "id": "agent:agent-atlas",
+        "type": "agent",
+        "label": "agent-atlas",
+        "venture_id": "research-frontier"
+      },
+      {
+        "id": "agent:agent-dojo",
+        "type": "agent",
+        "label": "agent-dojo",
+        "venture_id": "beamdojo"
+      },
+      {
+        "id": "agent:agent-metro",
+        "type": "agent",
+        "label": "agent-metro",
+        "venture_id": "procedural-city"
+      },
+      {
+        "id": "agent:agent-ink",
+        "type": "agent",
+        "label": "agent-ink",
+        "venture_id": "comic-engine"
+      },
+      {
+        "id": "agent:agent-steward",
+        "type": "agent",
+        "label": "agent-steward",
+        "venture_id": "kingdom-ops"
+      },
+      {
+        "id": "agent:agent-janitor",
+        "type": "agent",
+        "label": "agent-janitor",
+        "venture_id": "mac-optimize-audit"
+      },
+      {
+        "id": "agent:agent-jugaad",
+        "type": "agent",
+        "label": "agent-jugaad",
+        "venture_id": "job-jugaad"
+      },
+      {
+        "id": "skill:log-outreach",
+        "type": "skill",
+        "label": "log-outreach"
+      },
+      {
+        "id": "skill:phase-gate",
+        "type": "skill",
+        "label": "phase-gate"
+      },
+      {
+        "id": "skill:sync-kingdom",
+        "type": "skill",
+        "label": "sync-kingdom"
+      },
+      {
+        "id": "skill:kingdom-tunnels",
+        "type": "skill",
+        "label": "kingdom-tunnels"
+      },
+      {
+        "id": "skill:youtube-provenance",
+        "type": "skill",
+        "label": "youtube-provenance"
+      },
+      {
+        "id": "skill:kingdom-wiki",
+        "type": "skill",
+        "label": "kingdom-wiki"
+      },
+      {
+        "id": "skill:task-observer",
+        "type": "skill",
+        "label": "task-observer"
+      },
+      {
+        "id": "capability:dashboard:8787",
+        "type": "capability",
+        "label": "dashboard:8787",
+        "venture_id": "whatsapp-voice"
+      },
+      {
+        "id": "capability:tests:whatsapp-voice",
+        "type": "capability",
+        "label": "tests:whatsapp-voice",
+        "venture_id": "whatsapp-voice"
+      },
+      {
+        "id": "capability:tests:youtube-editor",
+        "type": "capability",
+        "label": "tests:youtube-editor",
+        "venture_id": "youtube-editor"
+      },
+      {
+        "id": "capability:research:research-frontier",
+        "type": "capability",
+        "label": "research:research-frontier",
+        "venture_id": "research-frontier"
+      },
+      {
+        "id": "capability:research:beamdojo",
+        "type": "capability",
+        "label": "research:beamdojo",
+        "venture_id": "beamdojo"
+      },
+      {
+        "id": "capability:dashboard:8765",
+        "type": "capability",
+        "label": "dashboard:8765",
+        "venture_id": "procedural-city"
+      },
+      {
+        "id": "capability:tests:procedural-city",
+        "type": "capability",
+        "label": "tests:procedural-city",
+        "venture_id": "procedural-city"
+      },
+      {
+        "id": "capability:dashboard:8770",
+        "type": "capability",
+        "label": "dashboard:8770",
+        "venture_id": "comic-engine"
+      },
+      {
+        "id": "capability:tests:comic-engine",
+        "type": "capability",
+        "label": "tests:comic-engine",
+        "venture_id": "comic-engine"
+      },
+      {
+        "id": "capability:dashboard:5173",
+        "type": "capability",
+        "label": "dashboard:5173",
+        "venture_id": "kingdom-ops"
+      },
+      {
+        "id": "capability:tests:kingdom-ops",
+        "type": "capability",
+        "label": "tests:kingdom-ops",
+        "venture_id": "kingdom-ops"
+      },
+      {
+        "id": "capability:dashboard:8742",
+        "type": "capability",
+        "label": "dashboard:8742",
+        "venture_id": "mac-optimize-audit"
+      },
+      {
+        "id": "capability:tests:mac-optimize-audit",
+        "type": "capability",
+        "label": "tests:mac-optimize-audit",
+        "venture_id": "mac-optimize-audit"
+      },
+      {
+        "id": "capability:dashboard:8790",
+        "type": "capability",
+        "label": "dashboard:8790",
+        "venture_id": "job-jugaad"
+      },
+      {
+        "id": "capability:tests:job-jugaad",
+        "type": "capability",
+        "label": "tests:job-jugaad",
+        "venture_id": "job-jugaad"
+      }
+    ],
+    "edges": [
+      {
+        "id": "e-hub-venture:whatsapp-voice",
+        "from": "hub:kingdom",
+        "to": "venture:whatsapp-voice",
+        "rel": "sync"
+      },
+      {
+        "id": "e-venture:whatsapp-voice-agent:agent-cash",
+        "from": "venture:whatsapp-voice",
+        "to": "agent:agent-cash",
+        "rel": "agent"
+      },
+      {
+        "id": "e-hub-venture:youtube-editor",
+        "from": "hub:kingdom",
+        "to": "venture:youtube-editor",
+        "rel": "sync"
+      },
+      {
+        "id": "e-venture:youtube-editor-agent:agent-cut",
+        "from": "venture:youtube-editor",
+        "to": "agent:agent-cut",
+        "rel": "agent"
+      },
+      {
+        "id": "e-hub-venture:research-frontier",
+        "from": "hub:kingdom",
+        "to": "venture:research-frontier",
+        "rel": "sync"
+      },
+      {
+        "id": "e-venture:research-frontier-agent:agent-atlas",
+        "from": "venture:research-frontier",
+        "to": "agent:agent-atlas",
+        "rel": "agent"
+      },
+      {
+        "id": "e-hub-venture:beamdojo",
+        "from": "hub:kingdom",
+        "to": "venture:beamdojo",
+        "rel": "sync"
+      },
+      {
+        "id": "e-venture:beamdojo-agent:agent-dojo",
+        "from": "venture:beamdojo",
+        "to": "agent:agent-dojo",
+        "rel": "agent"
+      },
+      {
+        "id": "e-hub-venture:procedural-city",
+        "from": "hub:kingdom",
+        "to": "venture:procedural-city",
+        "rel": "sync"
+      },
+      {
+        "id": "e-venture:procedural-city-agent:agent-metro",
+        "from": "venture:procedural-city",
+        "to": "agent:agent-metro",
+        "rel": "agent"
+      },
+      {
+        "id": "e-hub-venture:comic-engine",
+        "from": "hub:kingdom",
+        "to": "venture:comic-engine",
+        "rel": "sync"
+      },
+      {
+        "id": "e-venture:comic-engine-agent:agent-ink",
+        "from": "venture:comic-engine",
+        "to": "agent:agent-ink",
+        "rel": "agent"
+      },
+      {
+        "id": "e-hub-venture:kingdom-ops",
+        "from": "hub:kingdom",
+        "to": "venture:kingdom-ops",
+        "rel": "sync"
+      },
+      {
+        "id": "e-venture:kingdom-ops-agent:agent-steward",
+        "from": "venture:kingdom-ops",
+        "to": "agent:agent-steward",
+        "rel": "agent"
+      },
+      {
+        "id": "e-hub-venture:mac-optimize-audit",
+        "from": "hub:kingdom",
+        "to": "venture:mac-optimize-audit",
+        "rel": "sync"
+      },
+      {
+        "id": "e-venture:mac-optimize-audit-agent:agent-janitor",
+        "from": "venture:mac-optimize-audit",
+        "to": "agent:agent-janitor",
+        "rel": "agent"
+      },
+      {
+        "id": "e-hub-venture:job-jugaad",
+        "from": "hub:kingdom",
+        "to": "venture:job-jugaad",
+        "rel": "sync"
+      },
+      {
+        "id": "e-venture:job-jugaad-agent:agent-jugaad",
+        "from": "venture:job-jugaad",
+        "to": "agent:agent-jugaad",
+        "rel": "agent"
+      },
+      {
+        "id": "e-hub-venture:shorts",
+        "from": "hub:kingdom",
+        "to": "venture:shorts",
+        "rel": "sync"
+      },
+      {
+        "id": "e-agent:agent-cash-skill:log-outreach",
+        "from": "agent:agent-cash",
+        "to": "skill:log-outreach",
+        "rel": "skill"
+      },
+      {
+        "id": "e-agent:agent-cash-skill:phase-gate",
+        "from": "agent:agent-cash",
+        "to": "skill:phase-gate",
+        "rel": "skill"
+      },
+      {
+        "id": "e-agent:agent-cash-skill:sync-kingdom",
+        "from": "agent:agent-cash",
+        "to": "skill:sync-kingdom",
+        "rel": "skill"
+      },
+      {
+        "id": "e-agent:agent-cash-skill:kingdom-tunnels",
+        "from": "agent:agent-cash",
+        "to": "skill:kingdom-tunnels",
+        "rel": "skill"
+      },
+      {
+        "id": "e-agent:agent-cut-skill:youtube-provenance",
+        "from": "agent:agent-cut",
+        "to": "skill:youtube-provenance",
+        "rel": "skill"
+      },
+      {
+        "id": "e-agent:agent-cut-skill:sync-kingdom",
+        "from": "agent:agent-cut",
+        "to": "skill:sync-kingdom",
+        "rel": "skill"
+      },
+      {
+        "id": "e-agent:agent-cut-skill:phase-gate",
+        "from": "agent:agent-cut",
+        "to": "skill:phase-gate",
+        "rel": "skill"
+      },
+      {
+        "id": "e-agent:agent-atlas-skill:kingdom-wiki",
+        "from": "agent:agent-atlas",
+        "to": "skill:kingdom-wiki",
+        "rel": "skill"
+      },
+      {
+        "id": "e-agent:agent-atlas-skill:sync-kingdom",
+        "from": "agent:agent-atlas",
+        "to": "skill:sync-kingdom",
+        "rel": "skill"
+      },
+      {
+        "id": "e-agent:agent-dojo-skill:sync-kingdom",
+        "from": "agent:agent-dojo",
+        "to": "skill:sync-kingdom",
+        "rel": "skill"
+      },
+      {
+        "id": "e-agent:agent-dojo-skill:kingdom-wiki",
+        "from": "agent:agent-dojo",
+        "to": "skill:kingdom-wiki",
+        "rel": "skill"
+      },
+      {
+        "id": "e-agent:agent-dojo-skill:phase-gate",
+        "from": "agent:agent-dojo",
+        "to": "skill:phase-gate",
+        "rel": "skill"
+      },
+      {
+        "id": "e-agent:agent-metro-skill:phase-gate",
+        "from": "agent:agent-metro",
+        "to": "skill:phase-gate",
+        "rel": "skill"
+      },
+      {
+        "id": "e-agent:agent-metro-skill:sync-kingdom",
+        "from": "agent:agent-metro",
+        "to": "skill:sync-kingdom",
+        "rel": "skill"
+      },
+      {
+        "id": "e-agent:agent-ink-skill:phase-gate",
+        "from": "agent:agent-ink",
+        "to": "skill:phase-gate",
+        "rel": "skill"
+      },
+      {
+        "id": "e-agent:agent-ink-skill:sync-kingdom",
+        "from": "agent:agent-ink",
+        "to": "skill:sync-kingdom",
+        "rel": "skill"
+      },
+      {
+        "id": "e-agent:agent-steward-skill:kingdom-wiki",
+        "from": "agent:agent-steward",
+        "to": "skill:kingdom-wiki",
+        "rel": "skill"
+      },
+      {
+        "id": "e-agent:agent-steward-skill:sync-kingdom",
+        "from": "agent:agent-steward",
+        "to": "skill:sync-kingdom",
+        "rel": "skill"
+      },
+      {
+        "id": "e-agent:agent-steward-skill:log-outreach",
+        "from": "agent:agent-steward",
+        "to": "skill:log-outreach",
+        "rel": "skill"
+      },
+      {
+        "id": "e-agent:agent-steward-skill:task-observer",
+        "from": "agent:agent-steward",
+        "to": "skill:task-observer",
+        "rel": "skill"
+      },
+      {
+        "id": "e-agent:agent-janitor-skill:sync-kingdom",
+        "from": "agent:agent-janitor",
+        "to": "skill:sync-kingdom",
+        "rel": "skill"
+      },
+      {
+        "id": "e-agent:agent-jugaad-skill:sync-kingdom",
+        "from": "agent:agent-jugaad",
+        "to": "skill:sync-kingdom",
+        "rel": "skill"
+      },
+      {
+        "id": "e-agent:agent-jugaad-skill:log-outreach",
+        "from": "agent:agent-jugaad",
+        "to": "skill:log-outreach",
+        "rel": "skill"
+      },
+      {
+        "id": "e-venture:whatsapp-voice-capability:dashboard:8787",
+        "from": "venture:whatsapp-voice",
+        "to": "capability:dashboard:8787",
+        "rel": "capability"
+      },
+      {
+        "id": "e-venture:whatsapp-voice-capability:tests:whatsapp-voice",
+        "from": "venture:whatsapp-voice",
+        "to": "capability:tests:whatsapp-voice",
+        "rel": "capability"
+      },
+      {
+        "id": "e-venture:youtube-editor-capability:tests:youtube-editor",
+        "from": "venture:youtube-editor",
+        "to": "capability:tests:youtube-editor",
+        "rel": "capability"
+      },
+      {
+        "id": "e-venture:research-frontier-capability:research:research-frontier",
+        "from": "venture:research-frontier",
+        "to": "capability:research:research-frontier",
+        "rel": "capability"
+      },
+      {
+        "id": "e-venture:beamdojo-capability:research:beamdojo",
+        "from": "venture:beamdojo",
+        "to": "capability:research:beamdojo",
+        "rel": "capability"
+      },
+      {
+        "id": "e-venture:procedural-city-capability:dashboard:8765",
+        "from": "venture:procedural-city",
+        "to": "capability:dashboard:8765",
+        "rel": "capability"
+      },
+      {
+        "id": "e-venture:procedural-city-capability:tests:procedural-city",
+        "from": "venture:procedural-city",
+        "to": "capability:tests:procedural-city",
+        "rel": "capability"
+      },
+      {
+        "id": "e-venture:comic-engine-capability:dashboard:8770",
+        "from": "venture:comic-engine",
+        "to": "capability:dashboard:8770",
+        "rel": "capability"
+      },
+      {
+        "id": "e-venture:comic-engine-capability:tests:comic-engine",
+        "from": "venture:comic-engine",
+        "to": "capability:tests:comic-engine",
+        "rel": "capability"
+      },
+      {
+        "id": "e-venture:kingdom-ops-capability:dashboard:5173",
+        "from": "venture:kingdom-ops",
+        "to": "capability:dashboard:5173",
+        "rel": "capability"
+      },
+      {
+        "id": "e-venture:kingdom-ops-capability:tests:kingdom-ops",
+        "from": "venture:kingdom-ops",
+        "to": "capability:tests:kingdom-ops",
+        "rel": "capability"
+      },
+      {
+        "id": "e-venture:mac-optimize-audit-capability:dashboard:8742",
+        "from": "venture:mac-optimize-audit",
+        "to": "capability:dashboard:8742",
+        "rel": "capability"
+      },
+      {
+        "id": "e-venture:mac-optimize-audit-capability:tests:mac-optimize-audit",
+        "from": "venture:mac-optimize-audit",
+        "to": "capability:tests:mac-optimize-audit",
+        "rel": "capability"
+      },
+      {
+        "id": "e-venture:job-jugaad-capability:dashboard:8790",
+        "from": "venture:job-jugaad",
+        "to": "capability:dashboard:8790",
+        "rel": "capability"
+      },
+      {
+        "id": "e-venture:job-jugaad-capability:tests:job-jugaad",
+        "from": "venture:job-jugaad",
+        "to": "capability:tests:job-jugaad",
+        "rel": "capability"
+      }
+    ]
+  },
+  "onboarding": {
+    "template": "config/venture-template.json",
+    "wiki": "brain/wiki/concepts/onboard-new-project.md",
+    "architecture": "brain/wiki/concepts/kingdom-personal-os.md",
+    "has_template": true,
+    "after_register": [
+      "Add AGENT_SKILL_MAP entry in scripts/lib/skill-graph.mjs",
+      "Create wiki venture/architecture/experiments pages (or use npm run venture:new -- --write)",
+      "Update brain/wiki/concepts/where-files-live.md",
+      "Update sync-kingdom skill path map if needed",
+      "npm run sync",
+      "npm run brain:lint",
+      "Verify Throne + graph show the new node"
+    ]
+  },
+  "open": {
+    "throne": "/?tab=throne",
+    "graph": "/?tab=graph",
+    "research": "/?tab=research",
+    "ventures": "/?tab=ventures",
+    "harness": "brain/harness/empty-model/"
+  }
+}

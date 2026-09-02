@@ -1,0 +1,15 @@
+{
+  "synced_at": "2026-09-02T20:16:49.367Z",
+  "source": "local working tree",
+  "current_phase": 58,
+  "stage": "F",
+  "stage_name": "Generative Assets",
+  "passed": 58,
+  "total": 92,
+  "progress": 63,
+  "version": "Stage F · Phase 58",
+  "next_milestone": "Phase 58: Asset manifest system (pending)",
+  "updated_at": "2026-09-02T20:16:38.995444+00:00",
+  "ceiling_usd": 70,
+  "local_stale": false
+}

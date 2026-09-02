@@ -1,0 +1,135 @@
+{
+  "venture_id": "comic-engine",
+  "synced_at": "2026-09-02T20:16:49.697Z",
+  "repo": {
+    "path": "/Users/avinashnandyala/Desktop/ComicMainEngine",
+    "head": "30ebec49a0577791b0ed7197768654ebd6abda74",
+    "branch": "master",
+    "last_commit_at": "2026-09-02T13:04:09-07:00",
+    "remote_url": "https://github.com/navinash47/ComicMainEngine.git",
+    "github": {
+      "owner": "navinash47",
+      "repo": "ComicMainEngine",
+      "default_branch": "main"
+    }
+  },
+  "stats": {
+    "files": 1630,
+    "lines": 752759,
+    "primary_language": "Python",
+    "languages": [
+      {
+        "language": "Python",
+        "files": 929,
+        "lines": 308323
+      },
+      {
+        "language": "Other",
+        "files": 330,
+        "lines": 231932
+      },
+      {
+        "language": "JSON",
+        "files": 226,
+        "lines": 190467
+      },
+      {
+        "language": "YAML",
+        "files": 48,
+        "lines": 8987
+      },
+      {
+        "language": "JavaScript",
+        "files": 38,
+        "lines": 5123
+      },
+      {
+        "language": "CSS",
+        "files": 4,
+        "lines": 3402
+      },
+      {
+        "language": "Markdown",
+        "files": 26,
+        "lines": 2581
+      },
+      {
+        "language": "HTML",
+        "files": 25,
+        "lines": 1693
+      },
+      {
+        "language": "Shell",
+        "files": 2,
+        "lines": 148
+      },
+      {
+        "language": "TOML",
+        "files": 2,
+        "lines": 103
+      }
+    ],
+    "truncated": false,
+    "sampled_files": 1630,
+    "source": "walker"
+  },
+  "dependencies": {
+    "ecosystem": "python",
+    "runtime": [],
+    "dev": []
+  },
+  "storage": [
+    {
+      "type": "sqlite",
+      "path": "ComfyUI/user/comfyui.db",
+      "note": "Auto-detected database file"
+    },
+    {
+      "type": "sqlite",
+      "path": "data/usage.db",
+      "note": "Auto-detected database file"
+    },
+    {
+      "type": "json",
+      "path": "data/v2a_program.json",
+      "note": "Registry path"
+    }
+  ],
+  "models_detected": [
+    {
+      "name": "Models",
+      "source": "config scan"
+    },
+    {
+      "name": "MODEL",
+      "source": "config scan"
+    },
+    {
+      "name": "model",
+      "source": "config scan"
+    }
+  ],
+  "spend_usd": 5.92,
+  "ceiling_usd": null,
+  "progress": 33,
+  "version": "2A · A1 passed · A2 Scene cards + storyboard ingest",
+  "test_commands": [
+    {
+      "id": "unit",
+      "label": "pytest",
+      "cmd": "pytest -q",
+      "type": "unit",
+      "description": "ComicMainEngine v2a pytest suite"
+    }
+  ],
+  "suggestions": [],
+  "services": [
+    {
+      "id": "dashboard",
+      "label": "Comic v2a dashboard",
+      "port": 8770,
+      "url": "http://127.0.0.1:8770",
+      "status": "down"
+    }
+  ]
+}

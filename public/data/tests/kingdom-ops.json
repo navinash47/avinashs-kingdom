@@ -1,0 +1,22 @@
+{
+  "venture_id": "kingdom-ops",
+  "ran_at": "2026-08-24T06:17:03.281Z",
+  "duration_ms": 1129,
+  "ok": true,
+  "results": [
+    {
+      "id": "lint",
+      "label": "oxlint",
+      "type": "unit",
+      "ok": true,
+      "duration_ms": 145
+    },
+    {
+      "id": "build",
+      "label": "vite build",
+      "type": "regression",
+      "ok": true,
+      "duration_ms": 984
+    }
+  ]
+}

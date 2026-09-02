@@ -10,9 +10,10 @@ const AGENT_SKILL_MAP = {
   'agent-cash': ['log-outreach', 'phase-gate', 'sync-kingdom', 'kingdom-tunnels'],
   'agent-cut': ['youtube-provenance', 'sync-kingdom', 'phase-gate'],
   'agent-atlas': ['kingdom-wiki', 'sync-kingdom'],
+  'agent-dojo': ['sync-kingdom', 'kingdom-wiki', 'phase-gate'],
   'agent-metro': ['phase-gate', 'sync-kingdom'],
   'agent-ink': ['phase-gate', 'sync-kingdom'],
-  'agent-steward': ['kingdom-wiki', 'sync-kingdom', 'log-outreach'],
+  'agent-steward': ['kingdom-wiki', 'sync-kingdom', 'log-outreach', 'task-observer'],
   'agent-janitor': ['sync-kingdom'],
   'agent-jugaad': ['sync-kingdom', 'log-outreach'],
 }

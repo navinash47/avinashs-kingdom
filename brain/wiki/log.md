@@ -2,6 +2,18 @@
 
 Append-only. Prefix each entry with `## [YYYY-MM-DD] <op> | <title>` so recent activity is greppable.
 
+## [2026-09-02] ops | Personal OS wiki toolchain + playbook
+
+Shipped compiled-wiki commands under `brain/harness/`: `lint.mjs`, `wiki-query.mjs`, `ingest.mjs`; npm `brain:lint` / `brain:query` / `brain:ingest` / `brain:harness`; `scripts/new-venture.mjs` (`venture:new`). Throne Virtual control surfaces capability chips + onboard hint from control-surface. Daily loop: [[ops/personal-os-playbook]] · architecture [[concepts/kingdom-personal-os]] · onboard [[concepts/onboard-new-project]].
+
+## [2026-09-02] ops | Kingdom personal OS architecture
+
+Brain reframed as reusable personal OS (not FSM/KG toy): [[concepts/kingdom-personal-os]] + [[concepts/onboard-new-project]]. Harness schema now documents venture/skill/capability/sync/control contract; `config/venture-template.json` + control-surface `onboarding` pointer. Sync emits capability edges. [[concepts/brain-harness-fsm]] · [[concepts/virtual-control-surface]].
+
+## [2026-09-02] ops | Resume knowledge phase 2 prep
+
+Phase 2 scaffolding without final bullet lock: full `scripts/export-tex.mjs` (approvals gate + consensus fallback + `--dry-run`), `scripts/sync-kingdom-data.mjs` → `public/data/resume-knowledge.json` approval/eval stats, LinkedIn drafts (`knowledge/linkedin.json` mirrored to `public/data/linkedin-draft.json`). Dashboard gained eval rank display, status filter (pending/approved/rejected), and **Approve top pick per section** bulk action. Kingdom `npm run build` fixed (ThroneOverview + AgentRoster props, `updateVenture`). Featured projects remain ComicMainEngine, Procedural City, BeamDojo (+ CS685 / Five College if approved). WhatsApp + YouTube excluded. **Blocked:** user must approve bullets in dashboard before export writes final `.tex` and LinkedIn manual update. [[concepts/resume-master-knowledge]] · [[ventures/job-jugaad]]
+
 ## [2026-08-24] ops | Research Lab live training + W&B
 
 Kingdom Research Lab now shows a **Live training** card (status idle/running/unknown, W&B link, NFS/checkpoint paths). BeamDojo sync reads gitignored `tracking/training-status.json` (example snapshot if live file is missing). Lambda has no public Isaac page — Avinash watches metrics at Weights & Biases project `beamdojo`, or TensorBoard through `ssh -L 6006:localhost:6006 lambda-beamdojo`. Do not claim a long train is running without that JSON. [[concepts/research-lab]] · [[ventures/beamdojo]].
@@ -67,3 +79,9 @@ Created vault layout (`raw/`, `wiki/`), overview, venture pages, starter concept
 - Track A/B resumes (LaTeX + Desktop PDFs); Portfolio bio → Applied AI / agents
 - Job Jugaad wishlist: 30 company+role rows; CAREER_MARKETING.md + STUDY.md
 - Wiki concepts: agentic-interview-prep, agentic-resume-gates
+
+## [2026-09-02] ingest | Virtual control surface + brain harness
+
+- Added [[concepts/virtual-control-surface]] and [[concepts/brain-harness-fsm]].
+- Sync now writes `public/data/control-surface.json` and `brain/harness/empty-model/{graph,fsm}.json`.
+- Restored OrchestratorProvider control plane App (Throne = virtual control).

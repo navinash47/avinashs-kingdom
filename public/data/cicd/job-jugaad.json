@@ -1,0 +1,24 @@
+{
+  "venture_id": "job-jugaad",
+  "synced_at": "2026-09-02T20:16:56.888Z",
+  "github": {
+    "owner": "navinash47",
+    "repo": "job-jugaad",
+    "default_branch": "main",
+    "available": true,
+    "runs": [],
+    "last_conclusion": null
+  },
+  "local_tests": {
+    "commands": [
+      {
+        "id": "unit",
+        "label": "npm test",
+        "cmd": "npm test",
+        "type": "unit",
+        "description": "Job Jugaad application tracker tests"
+      }
+    ],
+    "last_run": null
+  }
+}

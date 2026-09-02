@@ -1,28 +1,14 @@
 {
-  "generated_from": "Kill list 2026-08-10T23:34:29",
-  "annual_estimate": "Annual ~$3497",
+  "generated_from": "Kill list 2026-08-11T05:28:59",
+  "annual_estimate": "Annual ~$1664",
   "source_path": "/Users/avinashnandyala/Projects/subscription-audit/reports/latest-kill-list.txt",
   "items": [
-    {
-      "name": "Jobright.ai",
-      "cadence": "$19.99 monthly",
-      "annual": "~$240/yr",
-      "source": "bank",
-      "cancel_url": "https://jobright.ai/"
-    },
     {
       "name": "Rocket Money",
       "cadence": "$3.19 monthly",
       "annual": "~$38/yr",
       "source": "bank",
       "cancel_url": "https://app.rocketmoney.com/"
-    },
-    {
-      "name": "Coursera",
-      "cadence": "$49.00 monthly",
-      "annual": "~$588/yr",
-      "source": "credit",
-      "cancel_url": "https://www.coursera.org/account-settings"
     },
     {
       "name": "DoorDash DashPass",
@@ -39,13 +25,6 @@
       "cancel_url": "https://chatgpt.com/#settings/Account"
     },
     {
-      "name": "Comcast / Xfinity",
-      "cadence": "$65.94 monthly",
-      "annual": "~$791/yr",
-      "source": "bank,credit",
-      "cancel_url": "https://www.xfinity.com/support/articles/cancel-xfinity-services"
-    },
-    {
       "name": "Cursor",
       "cadence": "$21.25 weekly",
       "annual": "~$1105/yr",
@@ -60,25 +39,11 @@
       "cancel_url": "https://claude.ai/settings/billing"
     },
     {
-      "name": "CSC ServiceWorks (laundry)",
-      "cadence": "$10.00 monthly",
-      "annual": "~$120/yr",
-      "source": "bank,credit",
-      "cancel_url": "https://www.cscsw.com/"
-    },
-    {
       "name": "Apple / App Store / iCloud",
       "cadence": "$2.99 irregular",
       "annual": "~$18/yr",
       "source": "credit",
       "cancel_url": "https://support.apple.com/HT202039"
-    },
-    {
-      "name": "Market",
-      "cadence": "$15.76 irregular",
-      "annual": "~$95/yr",
-      "source": "credit",
-      "cancel_url": "https://duckduckgo.com/?q=Market+cancel+subscription+official"
     }
   ]
 }

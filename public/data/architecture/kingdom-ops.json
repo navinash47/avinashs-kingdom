@@ -1,0 +1,102 @@
+{
+  "venture_id": "kingdom-ops",
+  "updated": "2026-08-24",
+  "type": "architecture",
+  "sections": {
+    "system design": {
+      "title": "System design",
+      "content": "React + Vite command orchestrator with local control API (:5174). `npm run dev` starts UI + API. Venture **Run** tabs embed live dashboards and expose Start/Stop/Test/Sync buttons. `npm run sync` pulls venture data into `public/data/`.",
+      "markdown": "React + Vite command orchestrator with local control API (:5174). `npm run dev` starts UI + API. Venture **Run** tabs embed live dashboards and expose Start/Stop/Test/Sync buttons. `npm run sync` pulls venture data into `public/data/`.",
+      "diagrams": [],
+      "tables": []
+    },
+    "input / output flows": {
+      "title": "Input / output flows",
+      "content": "```mermaid\nflowchart LR\n  subgraph in [Inputs]\n    STATUS[STATUS.md]\n    Phases[phases.json]\n    Wiki[brain/wiki]\n    Repos[sibling repos]\n  end\n  subgraph sync [sync-kingdom.mjs]\n    Census[census.mjs]\n    Arch[architecture.mjs]\n    Cicd[cicd.mjs]\n  end\n  subgraph out [Outputs]\n    Panel[public/data JSON]\n    UI[Kingdom panel UI]\n  end\n  Repos --> Census\n  Wiki --> Arch\n  STATUS --> sync\n  Phases --> sync\n  sync --> Panel --> UI\n```\n\n- **In:** sibling repo STATUS.md, phases.json, expenses.jsonl, registry paths, brain/wiki/architecture/*.md\n- **Out:** ventures.json, manifests, architecture JSON, live-tracker.md, panel UI via fetch('/data/…')",
+      "markdown": "- **In:** sibling repo STATUS.md, phases.json, expenses.jsonl, registry paths, brain/wiki/architecture/*.md\n- **Out:** ventures.json, manifests, architecture JSON, live-tracker.md, panel UI via fetch('/data/…')",
+      "diagrams": [
+        {
+          "source": "flowchart LR\n  subgraph in [Inputs]\n    STATUS[STATUS.md]\n    Phases[phases.json]\n    Wiki[brain/wiki]\n    Repos[sibling repos]\n  end\n  subgraph sync [sync-kingdom.mjs]\n    Census[census.mjs]\n    Arch[architecture.mjs]\n    Cicd[cicd.mjs]\n  end\n  subgraph out [Outputs]\n    Panel[public/data JSON]\n    UI[Kingdom panel UI]\n  end\n  Repos --> Census\n  Wiki --> Arch\n  STATUS --> sync\n  Phases --> sync\n  sync --> Panel --> UI",
+          "svg_path": null,
+          "svg_inline": null
+        }
+      ],
+      "tables": []
+    },
+    "data stores": {
+      "title": "Data stores",
+      "content": "| Store | Type | Path |\n|-------|------|------|\n| Panel seed | JSON | public/data/*.json |\n| Manifests | JSON | public/data/manifests/ |\n| Brain wiki | Markdown | brain/wiki/ |\n| User edits | localStorage | avinash-kingdom-v4 |",
+      "markdown": "| Store | Type | Path |\n|-------|------|------|\n| Panel seed | JSON | public/data/*.json |\n| Manifests | JSON | public/data/manifests/ |\n| Brain wiki | Markdown | brain/wiki/ |\n| User edits | localStorage | avinash-kingdom-v4 |",
+      "diagrams": [],
+      "tables": [
+        {
+          "headers": [
+            "Store",
+            "Type",
+            "Path"
+          ],
+          "rows": [
+            [
+              "Panel seed",
+              "JSON",
+              "public/data/*.json"
+            ],
+            [
+              "Manifests",
+              "JSON",
+              "public/data/manifests/"
+            ],
+            [
+              "Brain wiki",
+              "Markdown",
+              "brain/wiki/"
+            ],
+            [
+              "User edits",
+              "localStorage",
+              "avinash-kingdom-v4"
+            ]
+          ]
+        }
+      ]
+    },
+    "key libraries": {
+      "title": "Key libraries",
+      "content": "- React 19, Vite 8, TypeScript\n- sync-kingdom.mjs orchestrator modules (census, architecture, health, cicd)",
+      "markdown": "- React 19, Vite 8, TypeScript\n- sync-kingdom.mjs orchestrator modules (census, architecture, health, cicd)",
+      "diagrams": [],
+      "tables": []
+    },
+    "version history": {
+      "title": "Version history",
+      "content": "- v1.0 — venture board + sync\n- v2.1 — operational control plane (API, embedded dashboards, test runner)",
+      "markdown": "- v1.0 — venture board + sync\n- v2.1 — operational control plane (API, embedded dashboards, test runner)",
+      "diagrams": [],
+      "tables": []
+    },
+    "future plans": {
+      "title": "Future plans",
+      "content": "- Raycast hotkey layer (optional)\n- Agent trace tab (LangSmith-style)\n- Auto-run local tests on sync (opt-in)",
+      "markdown": "- Raycast hotkey layer (optional)\n- Agent trace tab (LangSmith-style)\n- Auto-run local tests on sync (opt-in)",
+      "diagrams": [],
+      "tables": []
+    },
+    "experiments log": {
+      "title": "Experiments log",
+      "content": "See [[experiments/kingdom-ops]].",
+      "markdown": "See [[experiments/kingdom-ops]].",
+      "diagrams": [],
+      "tables": []
+    }
+  },
+  "section_titles": [
+    "System design",
+    "Input / output flows",
+    "Data stores",
+    "Key libraries",
+    "Version history",
+    "Future plans",
+    "Experiments log"
+  ],
+  "source_path": "brain/wiki/architecture/kingdom-ops.md"
+}

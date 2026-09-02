@@ -2,6 +2,8 @@ import { useEffect, useMemo, useRef } from 'react'
 import { AgentRoster } from './components/AgentRoster'
 import { CommandPalette } from './components/CommandPalette'
 import { ExpensesLedger } from './components/ExpensesLedger'
+import { MacStorageAuditPanel } from './components/MacStorageAuditPanel'
+import { ResumeKnowledgePanel } from './components/ResumeKnowledgePanel'
 import { SegmentedControl } from './components/SegmentedControl'
 import { SubscriptionAuditPanel } from './components/SubscriptionAuditPanel'
 import { ThroneOverview } from './components/ThroneOverview'
@@ -15,6 +17,7 @@ import { ResearchLab } from './components/ResearchLab'
 import { OrchestratorProvider, useOrchestrator } from './context/OrchestratorContext'
 import { useKingdomState } from './hooks/useKingdomState'
 import { useShareMode } from './hooks/useShareMode'
+import type { InspectorTab } from './types'
 import './App.css'
 
 const NAV = [
@@ -22,9 +25,11 @@ const NAV = [
   { id: 'graph', label: 'Graph' },
   { id: 'research', label: 'Research' },
   { id: 'ventures', label: 'Ventures' },
+  { id: 'resume', label: 'Resume' },
   { id: 'tokens', label: 'Tokens' },
   { id: 'expenses', label: 'Expenses' },
   { id: 'subs', label: 'Subs' },
+  { id: 'storage', label: 'Storage' },
   { id: 'agents', label: 'Agents' },
 ]
 
@@ -110,12 +115,12 @@ function KingdomApp() {
       <ShareBanner lastSyncAt={lastSyncAt} onRefreshMirror={refreshFromHost} />
       <header className="hero-bar">
         <div>
-          <p className="eyebrow">{shareMode ? 'Live guest view' : 'Command orchestrator'}</p>
+          <p className="eyebrow">{shareMode ? 'Live guest view' : 'Virtual control plane'}</p>
           <h1>AVINASH&apos;S KINGDOM</h1>
           <p className="tagline">
             {shareMode
               ? 'Read-only mirror — use Refresh mirror to sync with the host'
-              : 'Run dashboards · tests · sync — all ventures in one place'}
+              : 'Orchestrate every venture · sync refreshes this surface'}
           </p>
         </div>
         {shareMode ? (
@@ -131,30 +136,30 @@ function KingdomApp() {
             </button>
           </div>
         ) : (
-        <div className="hero-actions">
-          <button type="button" className="btn primary" onClick={() => setPaletteOpen(true)}>
-            ⌘K Command
-          </button>
-          <button type="button" className="btn" onClick={exportState}>
-            Export
-          </button>
-          <button type="button" className="btn" onClick={() => fileRef.current?.click()}>
-            Import
-          </button>
-          <button type="button" className="btn ghost" onClick={resetToSeed}>
-            Reset seed
-          </button>
-          <input
-            ref={fileRef}
-            type="file"
-            accept="application/json"
-            hidden
-            onChange={(e) => {
-              const f = e.target.files?.[0]
-              if (f) void importState(f)
-            }}
-          />
-        </div>
+          <div className="hero-actions">
+            <button type="button" className="btn primary" onClick={() => setPaletteOpen(true)}>
+              ⌘K Command
+            </button>
+            <button type="button" className="btn" onClick={exportState}>
+              Export
+            </button>
+            <button type="button" className="btn" onClick={() => fileRef.current?.click()}>
+              Import
+            </button>
+            <button type="button" className="btn ghost" onClick={resetToSeed}>
+              Reset seed
+            </button>
+            <input
+              ref={fileRef}
+              type="file"
+              accept="application/json"
+              hidden
+              onChange={(e) => {
+                const f = e.target.files?.[0]
+                if (f) void importState(f)
+              }}
+            />
+          </div>
         )}
       </header>
 
@@ -162,7 +167,11 @@ function KingdomApp() {
         <SegmentedControl options={NAV} value={mainTab} onChange={setMainTab} />
       </nav>
 
-      <div className={`main-layout${mainTab === 'ventures' ? ' venture-workspace' : ''}${mainTab === 'graph' ? ' graph-workspace' : ''}`}>
+      <div
+        className={`main-layout${mainTab === 'ventures' ? ' venture-workspace' : ''}${
+          mainTab === 'graph' ? ' graph-workspace' : ''
+        }`}
+      >
         {mainTab === 'ventures' ? (
           <>
             <VentureSidebar ventures={state.ventures} selectedId={selectedVentureId} />
@@ -211,6 +220,8 @@ function KingdomApp() {
                 manualUsd={totals.manualUsd}
                 manifests={state.manifests}
                 cicd={state.cicd}
+                lastSyncAt={lastSyncAt}
+                onSynced={refreshFromHost}
               />
             )}
             {mainTab === 'graph' && (
@@ -225,9 +236,17 @@ function KingdomApp() {
             )}
             {mainTab === 'research' && (
               <ResearchLab
-                onOpenVenture={(id, tab) => openVenture(id, tab ?? 'experiments')}
+                onOpenVenture={(id, tab) =>
+                  openVenture(id, (tab as InspectorTab | undefined) ?? 'experiments')
+                }
                 onOpenGraph={(id) => focusGraphNode(id)}
                 onOpenExpenses={() => setMainTab('expenses')}
+              />
+            )}
+            {mainTab === 'resume' && (
+              <ResumeKnowledgePanel
+                data={state.resumeKnowledge}
+                portfolio={state.portfolioRepo}
               />
             )}
             {mainTab === 'tokens' && (
@@ -248,6 +267,7 @@ function KingdomApp() {
               />
             )}
             {mainTab === 'subs' && <SubscriptionAuditPanel data={state.subscription} />}
+            {mainTab === 'storage' && <MacStorageAuditPanel data={state.mac} />}
             {mainTab === 'agents' && (
               <AgentRoster
                 agents={state.agents}
@@ -268,9 +288,9 @@ function KingdomApp() {
       />
 
       <footer className="foot">
-        <span>Kingdom v2.1 · operational control plane</span>
+        <span>Kingdom v2.2 · virtual control plane</span>
         <span className="muted">
-          ⌘K · Start/Stop dashboards from Run tab
+          ⌘K · Throne = fleet control · sync refreshes this surface
           {lastSyncAt ? ` · synced ${new Date(lastSyncAt).toLocaleString()}` : ''}
         </span>
       </footer>

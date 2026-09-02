@@ -1,0 +1,78 @@
+{
+  "venture_id": "whatsapp-voice",
+  "synced_at": "2026-09-02T20:06:05.209Z",
+  "repo": {
+    "path": "/Users/avinashnandyala/Projects/whatsapp-voice-agents",
+    "head": "df724bcb37bb7dadc9662320daf58d85ffd7e1ac",
+    "branch": "main",
+    "last_commit_at": "2026-09-02T13:03:58-07:00",
+    "remote_url": "https://github.com/navinash47/whatsapp-voice-agents.git",
+    "github": {
+      "owner": "navinash47",
+      "repo": "whatsapp-voice-agents",
+      "default_branch": "main"
+    }
+  },
+  "stats": {
+    "files": 40,
+    "lines": 2116,
+    "primary_language": "JavaScript",
+    "languages": [
+      {
+        "language": "Markdown",
+        "files": 25,
+        "lines": 954
+      },
+      {
+        "language": "JavaScript",
+        "files": 5,
+        "lines": 799
+      },
+      {
+        "language": "JSON",
+        "files": 5,
+        "lines": 328
+      },
+      {
+        "language": "Other",
+        "files": 5,
+        "lines": 35
+      }
+    ],
+    "truncated": false,
+    "sampled_files": 40,
+    "source": "walker"
+  },
+  "dependencies": {
+    "ecosystem": "node",
+    "runtime": [],
+    "dev": []
+  },
+  "storage": [
+    {
+      "type": "json",
+      "path": "tracking/phases.json",
+      "note": "Registry path"
+    },
+    {
+      "type": "jsonl",
+      "path": "tracking/expenses.jsonl",
+      "note": "Registry path"
+    }
+  ],
+  "models_detected": [],
+  "spend_usd": 0,
+  "ceiling_usd": 40,
+  "progress": 80,
+  "version": "Stage C · Phase 8",
+  "test_commands": [
+    {
+      "id": "unit",
+      "label": "Node tests",
+      "cmd": "npm test",
+      "type": "unit",
+      "description": "Runs demo server unit tests (qualify FSM, webhook handlers)"
+    }
+  ],
+  "suggestions": []
+}

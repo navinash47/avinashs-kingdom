@@ -1,0 +1,6 @@
+flowchart LR
+  Abs["Abstracts / OpenAlex"] -->|ingest| Club["Paper clubbing"]
+  Club --> Brain["brain/wiki"]
+  Cites["Citation graph"] --> Brain
+  Brain --> Rank["Frontier ranking"]
+  Rank --> Q["Open questions"]

@@ -1,0 +1,137 @@
+{
+  "synced_at": "2026-09-02T20:16:49.353Z",
+  "source": "/Users/avinashnandyala/Projects/whatsapp-voice-agents/tracking/phases.json",
+  "vertical": "real-estate",
+  "ceiling_usd": 40,
+  "spend_usd": 0,
+  "current_phase": 8,
+  "stage": "C",
+  "stage_name": "First rupees",
+  "passed": 8,
+  "total": 10,
+  "progress": 80,
+  "version": "Stage C · Phase 8",
+  "next_milestone": "Phase 8: Pilot client contract (pending)",
+  "last_evaluation": {
+    "result": "PASS",
+    "measured": "ops/waba-verification.md; DECISIONS Cloud API DIY + BSP clients; demo/.env.example; meta-cloud.mjs verify+send skeletons; Kingdom sync",
+    "threshold": "Checklist + decisions + env example + stub + Kingdom Phase 7 PASS",
+    "date": "2026-08-11T06:30:00.000Z"
+  },
+  "stages": [
+    {
+      "id": "A",
+      "name": "Offer & script",
+      "start": 0,
+      "end": 3
+    },
+    {
+      "id": "B",
+      "name": "Working demo",
+      "start": 4,
+      "end": 6
+    },
+    {
+      "id": "C",
+      "name": "First rupees",
+      "start": 7,
+      "end": 9
+    }
+  ],
+  "phases": [
+    {
+      "id": 0,
+      "name": "Repo + memory + RE lock",
+      "stage": "A",
+      "status": "pass",
+      "evaluation": {
+        "result": "PASS",
+        "date": "2026-08-11T06:10:00.000Z"
+      }
+    },
+    {
+      "id": 1,
+      "name": "RE offer one-pager",
+      "stage": "A",
+      "status": "pass",
+      "evaluation": {
+        "result": "PASS",
+        "date": "2026-08-11T06:23:00.000Z"
+      }
+    },
+    {
+      "id": 2,
+      "name": "WA qualify script (RE)",
+      "stage": "A",
+      "status": "pass",
+      "evaluation": {
+        "result": "PASS",
+        "date": "2026-08-11T06:23:00.000Z"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Voice layer spec",
+      "stage": "A",
+      "status": "pass",
+      "evaluation": {
+        "result": "PASS",
+        "date": "2026-08-11T06:23:00.000Z"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Inbound webhook stub",
+      "stage": "B",
+      "status": "pass",
+      "evaluation": {
+        "result": "PASS",
+        "date": "2026-08-11T06:23:00.000Z"
+      }
+    },
+    {
+      "id": 5,
+      "name": "Calendar / handoff",
+      "stage": "B",
+      "status": "pass",
+      "evaluation": {
+        "result": "PASS",
+        "date": "2026-08-11T06:23:00.000Z"
+      }
+    },
+    {
+      "id": 6,
+      "name": "Dogfood + sales kit",
+      "stage": "B",
+      "status": "pass",
+      "evaluation": {
+        "result": "PASS",
+        "date": "2026-08-11T06:23:00.000Z"
+      }
+    },
+    {
+      "id": 7,
+      "name": "WABA verification path",
+      "stage": "C",
+      "status": "pass",
+      "evaluation": {
+        "result": "PASS",
+        "date": "2026-08-11T06:30:00.000Z"
+      }
+    },
+    {
+      "id": 8,
+      "name": "Pilot client contract",
+      "stage": "C",
+      "status": "pending",
+      "evaluation": null
+    },
+    {
+      "id": 9,
+      "name": "Retainer invoice + metrics",
+      "stage": "C",
+      "status": "pending",
+      "evaluation": null
+    }
+  ]
+}

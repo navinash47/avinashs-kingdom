@@ -1,0 +1,94 @@
+{
+  "venture_id": "kingdom-ops",
+  "updated": "2026-08-24",
+  "items": [
+    {
+      "date": "2026-09-02",
+      "summary": "Sync Kingdom after Procedural City Stage E close (Phase 58).",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Log sync/control-surface skill observations from control plane session.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Restore virtual control plane and sync-owned control surface.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Link City Stage Proofs from Kingdom Run tab.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Surface Procedural City Stage E walkthrough proofs on Kingdom.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-01",
+      "summary": "Sync kingdom resume data after LinkedIn master resume export.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-01",
+      "summary": "Sync resume knowledge after LinkedIn Master track export.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-01",
+      "summary": "Add orchestrator cover letter update endpoint for share site editor.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-01",
+      "summary": "Sync LinkedIn APPROVED status and Job Jugaad primary tracks closure.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-01",
+      "summary": "Sync resume knowledge after share-site overview parity update.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-01",
+      "summary": "Sync venture data and update portfolio-repo metadata.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-01",
+      "summary": "Show resume knowledge updated times in UTC.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-01",
+      "summary": "Refresh venture manifests and live tracker after npm run sync.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-01",
+      "summary": "Sync LinkedIn draft with IIT Kharagpur education in about variants.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-01",
+      "summary": "Link Kingdom Resume panel to share-site All Resumes overview.",
+      "source": "git"
+    },
+    {
+      "date": "2026-08-24",
+      "summary": "Command orchestrator Phase 1 — Cmd-K palette + venture inspector",
+      "source": "wiki",
+      "video": null
+    },
+    {
+      "date": "2026-08-20",
+      "summary": "Task observer + headroom MCP integration for skill logging",
+      "source": "wiki",
+      "video": null
+    }
+  ],
+  "source_path": "brain/wiki/experiments/kingdom-ops.md"
+}

@@ -16,6 +16,7 @@ import {
 import { attachHealthToManifests } from './lib/health.mjs'
 import { syncCicdSnapshots } from './lib/cicd.mjs'
 import { syncSkillGraph, rollupComicModels } from './lib/skill-graph.mjs'
+import { syncControlSurface } from './lib/control-surface.mjs'
 import { syncResearchLab, researchExpenseRows } from './lib/research-lab.mjs'
 
 const DRY_RUN = process.argv.includes('--dry-run')
@@ -42,6 +43,7 @@ const PATHS = {
   comicV2a: path.join(home, 'Desktop/ComicMainEngine/data/v2a_program.json'),
   comicLegacy: path.join(home, 'ComicEngine'),
   jugaadRoot: path.join(home, 'Projects/job-jugaad'),
+  jugaadExpenses: path.join(home, 'Projects/job-jugaad/tracking/expenses.jsonl'),
   jugaadApps: path.join(home, 'Projects/job-jugaad/data/applications.json'),
   ventures: path.join(dataDir, 'ventures.json'),
   expenses: path.join(dataDir, 'expenses.json'),
@@ -169,6 +171,20 @@ function parseStatusMd(text) {
 }
 
 function writeStatusMd(filePath, fields) {
+  let preserved = ''
+  try {
+    if (fs.existsSync(filePath)) {
+      const prev = fs.readFileSync(filePath, 'utf8')
+      // Keep parallel program notes (e.g. Comic 2B) below the first --- separator.
+      const sep = prev.indexOf('\n---\n')
+      if (sep !== -1) {
+        preserved = prev.slice(sep + 1).trimEnd()
+        if (preserved && !preserved.endsWith('\n')) preserved += '\n'
+      }
+    }
+  } catch {
+    /* ignore read errors; still write core STATUS */
+  }
   const lines = [
     '# STATUS',
     '',
@@ -183,8 +199,9 @@ function writeStatusMd(filePath, fields) {
     lines.push(`${i + 1}. ${fields.tasks[i] || 'TBD'}`)
   }
   lines.push('')
+  const body = lines.join('\n') + (preserved ? `\n${preserved}` : '')
   try {
-    fs.writeFileSync(filePath, lines.join('\n'))
+    fs.writeFileSync(filePath, body)
     return true
   } catch (err) {
     console.warn(
@@ -484,6 +501,7 @@ function syncCityStageProofs() {
     source: dataJs,
     generated_at: doc.generated_at || null,
     count: proofs.length,
+    dashboard_proofs_url: 'http://127.0.0.1:8765/#proofs',
     proofs,
   }
   writeJson(path.join(auditsDir, 'city-stage-proofs.json'), out)
@@ -544,8 +562,8 @@ function syncCityStatus() {
     priority: 'P1',
     tasks: [
       next,
-      'Keep fal/Gemini spend under $70 ceiling',
-      'Local checkout may lag origin/main — pull/checkout main for full tree',
+      'Human: write reports/stage_e_perfect_eval.json before Phase 57 PASS (do not invent)',
+      'Dashboard proofs: http://127.0.0.1:8765/#proofs · keep fal/Gemini under $70',
     ],
   })
   console.log(
@@ -1087,6 +1105,27 @@ function syncExpenses(sub, registry) {
     })
   }
 
+  
+  if (fs.existsSync(PATHS.jugaadExpenses)) {
+    const rows = fs
+      .readFileSync(PATHS.jugaadExpenses, 'utf8')
+      .split('\n')
+      .filter((line) => line.trim() && !line.trim().startsWith('#'))
+      .map((line) => JSON.parse(line))
+      .filter((r) => Number(r.actual_usd) > 0)
+    const total = rows.reduce((s, r) => s + Number(r.actual_usd), 0)
+    synced.push({
+      id: 'sync-jugaad-api',
+      date: today,
+      category: 'api',
+      label: 'Job Jugaad API / infra spend',
+      amount: Math.round(total * 100) / 100,
+      currency: 'USD',
+      ventureId: 'job-jugaad',
+      notes: `Synced from tracking/expenses.jsonl · ${rows.length} billable rows`,
+    })
+  }
+
   synced.push(...researchExpenseRows(registry ?? { ventures: [] }, today))
 
   const next = [...synced, ...manual]
@@ -1123,6 +1162,15 @@ if (!DRY_RUN) {
   const agents = readJson(path.join(dataDir, 'agents.json')) ?? []
   syncSkillGraph(registry, root, dataDir, agents)
   syncResearchLab(registry, root, dataDir, ventures)
+  const skillGraph = readJson(path.join(dataDir, 'skill-graph.json'))
+  const phasesBoard = readJson(path.join(auditsDir, 'phases-board.json'))
+  syncControlSurface({
+    dataDir,
+    registry,
+    ventures,
+    skillGraph,
+    phasesBoard,
+  })
 } else {
   console.log('Dry run — skipped orchestrator manifests')
 }

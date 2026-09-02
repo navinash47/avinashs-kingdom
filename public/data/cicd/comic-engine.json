@@ -1,0 +1,45 @@
+{
+  "venture_id": "comic-engine",
+  "synced_at": "2026-09-02T20:16:54.973Z",
+  "github": {
+    "owner": "navinash47",
+    "repo": "ComicMainEngine",
+    "default_branch": "main",
+    "available": true,
+    "runs": [
+      {
+        "conclusion": "success",
+        "createdAt": "2026-08-09T09:27:36Z",
+        "databaseId": 31305955273,
+        "displayTitle": "Graph Update: pip in /. #1514620831",
+        "event": "dynamic",
+        "status": "completed",
+        "url": "https://github.com/navinash47/ComicMainEngine/actions/runs/31305955273",
+        "workflowName": "Dependency Graph"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-08-09T07:57:40Z",
+        "databaseId": 31302365665,
+        "displayTitle": "Graph Update: pip in /. #1514483306",
+        "event": "dynamic",
+        "status": "completed",
+        "url": "https://github.com/navinash47/ComicMainEngine/actions/runs/31302365665",
+        "workflowName": "Dependency Graph"
+      }
+    ],
+    "last_conclusion": "success"
+  },
+  "local_tests": {
+    "commands": [
+      {
+        "id": "unit",
+        "label": "pytest",
+        "cmd": "pytest -q",
+        "type": "unit",
+        "description": "ComicMainEngine v2a pytest suite"
+      }
+    ],
+    "last_run": null
+  }
+}

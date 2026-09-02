@@ -1,0 +1,103 @@
+{
+  "venture_id": "kingdom-ops",
+  "synced_at": "2026-09-02T20:16:55.968Z",
+  "github": {
+    "owner": "navinash47",
+    "repo": "avinashs-kingdom",
+    "default_branch": "main",
+    "available": true,
+    "runs": [
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-09-02T19:59:29Z",
+        "databaseId": 33676591953,
+        "displayTitle": "Show live W&B training status on the Research Lab tab",
+        "event": "pull_request",
+        "status": "completed",
+        "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33676591953",
+        "workflowName": "Kingdom CI"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-09-02T19:57:37Z",
+        "databaseId": 33676411415,
+        "displayTitle": "Show live W&B training status on the Research Lab tab",
+        "event": "pull_request",
+        "status": "completed",
+        "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33676411415",
+        "workflowName": "Kingdom CI"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-09-02T05:16:28Z",
+        "databaseId": 33594030550,
+        "displayTitle": "Show live W&B training status on the Research Lab tab",
+        "event": "pull_request",
+        "status": "completed",
+        "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33594030550",
+        "workflowName": "Kingdom CI"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-09-02T05:15:05Z",
+        "databaseId": 33593937893,
+        "displayTitle": "Show live W&B training status on the Research Lab tab",
+        "event": "pull_request",
+        "status": "completed",
+        "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33593937893",
+        "workflowName": "Kingdom CI"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-09-02T05:10:32Z",
+        "databaseId": 33593634765,
+        "displayTitle": "Show live W&B training status on the Research Lab tab",
+        "event": "pull_request",
+        "status": "completed",
+        "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33593634765",
+        "workflowName": "Kingdom CI"
+      }
+    ],
+    "last_conclusion": "failure"
+  },
+  "local_tests": {
+    "commands": [
+      {
+        "id": "lint",
+        "label": "oxlint",
+        "cmd": "npm run lint",
+        "type": "unit",
+        "description": "Static analysis for Kingdom panel and scripts"
+      },
+      {
+        "id": "build",
+        "label": "vite build",
+        "cmd": "npm run build",
+        "type": "regression",
+        "description": "Typecheck + production bundle (orchestrator UI)"
+      }
+    ],
+    "last_run": {
+      "venture_id": "kingdom-ops",
+      "ran_at": "2026-08-24T06:17:03.281Z",
+      "duration_ms": 1129,
+      "ok": true,
+      "results": [
+        {
+          "id": "lint",
+          "label": "oxlint",
+          "type": "unit",
+          "ok": true,
+          "duration_ms": 145
+        },
+        {
+          "id": "build",
+          "label": "vite build",
+          "type": "regression",
+          "ok": true,
+          "duration_ms": 984
+        }
+      ]
+    }
+  }
+}

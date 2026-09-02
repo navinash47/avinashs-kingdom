@@ -1,0 +1,135 @@
+{
+  "venture_id": "job-jugaad",
+  "synced_at": "2026-09-02T20:06:08.552Z",
+  "repo": {
+    "path": "/Users/avinashnandyala/Projects/job-jugaad",
+    "head": "5563327ba6a2d1ac08ed0f5353d6c16ffdfa49a3",
+    "branch": "main",
+    "last_commit_at": "2026-09-02T13:04:46-07:00",
+    "remote_url": "https://github.com/navinash47/job-jugaad.git",
+    "github": {
+      "owner": "navinash47",
+      "repo": "job-jugaad",
+      "default_branch": "main"
+    }
+  },
+  "stats": {
+    "files": 41,
+    "lines": 8580,
+    "primary_language": "JSON",
+    "languages": [
+      {
+        "language": "JSON",
+        "files": 11,
+        "lines": 3894
+      },
+      {
+        "language": "JavaScript",
+        "files": 7,
+        "lines": 1376
+      },
+      {
+        "language": "Other",
+        "files": 4,
+        "lines": 1055
+      },
+      {
+        "language": "TypeScript",
+        "files": 6,
+        "lines": 803
+      },
+      {
+        "language": "Markdown",
+        "files": 10,
+        "lines": 707
+      },
+      {
+        "language": "CSS",
+        "files": 1,
+        "lines": 690
+      },
+      {
+        "language": "YAML",
+        "files": 1,
+        "lines": 36
+      },
+      {
+        "language": "HTML",
+        "files": 1,
+        "lines": 19
+      }
+    ],
+    "truncated": false,
+    "sampled_files": 41,
+    "source": "walker"
+  },
+  "dependencies": {
+    "ecosystem": "node",
+    "runtime": [
+      {
+        "name": "react",
+        "version": "^19.1.0",
+        "ecosystem": "npm"
+      },
+      {
+        "name": "react-dom",
+        "version": "^19.1.0",
+        "ecosystem": "npm"
+      }
+    ],
+    "dev": [
+      {
+        "name": "@types/react",
+        "version": "^19.1.2",
+        "ecosystem": "npm"
+      },
+      {
+        "name": "@types/react-dom",
+        "version": "^19.1.2",
+        "ecosystem": "npm"
+      },
+      {
+        "name": "@vitejs/plugin-react",
+        "version": "^4.4.1",
+        "ecosystem": "npm"
+      },
+      {
+        "name": "typescript",
+        "version": "^5.8.3",
+        "ecosystem": "npm"
+      },
+      {
+        "name": "vite",
+        "version": "^6.3.3",
+        "ecosystem": "npm"
+      }
+    ]
+  },
+  "storage": [
+    {
+      "type": "json",
+      "path": "data/applications.json",
+      "note": "Registry path"
+    }
+  ],
+  "models_detected": [
+    {
+      "name": "models",
+      "source": "config scan"
+    }
+  ],
+  "spend_usd": null,
+  "ceiling_usd": null,
+  "progress": 0,
+  "version": "Tracker v0.1",
+  "test_commands": [
+    {
+      "id": "unit",
+      "label": "npm test",
+      "cmd": "npm test",
+      "type": "unit",
+      "description": "Job Jugaad application tracker tests"
+    }
+  ],
+  "suggestions": []
+}

@@ -1,0 +1,50 @@
+{
+  "venture_id": "research-frontier",
+  "synced_at": "2026-09-02T20:16:49.547Z",
+  "repo": {
+    "path": "/Users/avinashnandyala/Projects/research-frontier-lab",
+    "head": "c117a61563f2bf85217ebf42f43f8170d24c34b3",
+    "branch": "main",
+    "last_commit_at": "2026-08-24T01:34:42-07:00",
+    "remote_url": "https://github.com/navinash47/research-frontier-lab.git",
+    "github": {
+      "owner": "navinash47",
+      "repo": "research-frontier-lab",
+      "default_branch": "main"
+    }
+  },
+  "stats": {
+    "files": 3,
+    "lines": 43,
+    "primary_language": "Markdown",
+    "languages": [
+      {
+        "language": "Markdown",
+        "files": 2,
+        "lines": 36
+      },
+      {
+        "language": "Other",
+        "files": 1,
+        "lines": 7
+      }
+    ],
+    "truncated": false,
+    "sampled_files": 3,
+    "source": "walker"
+  },
+  "dependencies": {
+    "ecosystem": null,
+    "runtime": [],
+    "dev": []
+  },
+  "storage": [],
+  "models_detected": [],
+  "spend_usd": null,
+  "ceiling_usd": null,
+  "progress": 12,
+  "version": "v0.1",
+  "test_commands": [],
+  "suggestions": [],
+  "services": []
+}

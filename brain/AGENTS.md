@@ -37,9 +37,22 @@ tags: []
 
 ## Operations
 
+### Toolchain (deterministic)
+
+| Command | Purpose |
+|---------|---------|
+| `npm run brain:lint` | Orphans, broken `[[links]]`, missing index rows |
+| `npm run brain:query -- <terms>` | Keyword search over compiled wiki |
+| `npm run brain:ingest` | List raw inbox / scaffold source page + print AGENTS checklist |
+| `npm run brain:harness -- list` | Query sync-owned KG/FSM (`capabilities`, `neighbors`, …) |
+| `npm run venture:new -- --id … --repo … --agent …` | Dry-run onboard from `venture-template.json` (`--write` to apply) |
+| `npm run sync` | Refresh Throne control surface + harness graph |
+
+Scripts live under `brain/harness/` (lint, wiki-query, ingest, query) and `scripts/new-venture.mjs`.
+
 ### Ingest
 
-1. Place or fetch source into `raw/inbox/` (or `raw/research/` for papers).
+1. Place or fetch source into `raw/inbox/` (or `raw/research/` for papers). Optional: `npm run brain:ingest -- --file <path> --scaffold`.
 2. Read the source. Do not modify the raw file after filing.
 3. Write `wiki/sources/<slug>.md` (summary, key claims, limitations, links).
 4. Update related venture / concept / entity pages (create if missing).
@@ -47,16 +60,17 @@ tags: []
 6. Append to `wiki/log.md`:
    `## [YYYY-MM-DD] ingest | Title`
 7. Prefer one source per ingest pass unless the human asks for a batch.
+8. Hygiene: `npm run brain:lint`.
 
 ### Query
 
-1. Read `wiki/index.md` first, then drill into relevant pages.
+1. Prefer `npm run brain:query -- <terms>` or read `wiki/index.md` first, then drill into relevant pages.
 2. Answer with citations (page paths). Prefer wiki over re-deriving from raw unless raw is needed.
 3. File valuable answers back as `wiki/concepts/` or venture notes when the human agrees (or when clearly durable).
 
 ### Lint
 
-Periodically check for: orphan pages, broken `[[links]]`, duplicate topics, stale claims vs newer sources, concepts mentioned but lacking a page. Report findings; fix only what the human approves unless they said “lint and fix”.
+Run `npm run brain:lint` (or `node brain/harness/lint.mjs --strict`). Checks orphans, broken `[[links]]`, missing index entries. Report findings; fix only what the human approves unless they said “lint and fix”.
 
 ## Domain focus
 
@@ -78,6 +92,27 @@ Periodically check for: orphan pages, broken `[[links]]`, duplicate topics, stal
 ## Skills
 
 Use Cursor skills: `kingdom-wiki`, `sync-kingdom`, `log-outreach`, `youtube-provenance`, `phase-gate`, `kingdom-tunnels`, `task-observer`.
+
+## Personal OS (brain + skills + orchestrator + Throne)
+
+Kingdom brain is a **reusable personal OS** for current and future projects — not an FSM/KG demo.
+
+| Layer | Where |
+|-------|--------|
+| Durable instructions | this file + `wiki/` |
+| Skills | Cursor skills (`kingdom-wiki`, `sync-kingdom`, …) |
+| Project plug-in | `config/venture-registry.json` + `config/venture-template.json` + `npm run venture:new` |
+| Typed world model / control contract | `brain/harness/` (KG + FSM slice) |
+| Compiled-wiki toolchain | `brain:lint` / `brain:query` / `brain:ingest` |
+| One-pane UI | panel `/?tab=throne` |
+
+Architecture: [[wiki/concepts/kingdom-personal-os]].  
+Daily ops: [[wiki/ops/personal-os-playbook]].  
+Onboard a venture: [[wiki/concepts/onboard-new-project]].
+
+## Harness (deterministic KG / FSM)
+
+`brain/harness/` holds the empty-model graph + control FSM (orchestrator contract, not the whole OS) **and** the wiki compile toolchain (`lint.mjs`, `wiki-query.mjs`, `ingest.mjs`). Every `npm run sync` refreshes `empty-model/graph.json`, `empty-model/fsm.json`, and `public/data/control-surface.json` (includes `onboarding.template`). Query harness with `npm run brain:harness -- list`. See [[wiki/concepts/brain-harness-fsm]] and [[wiki/concepts/virtual-control-surface]].
 
 ## Secrets
 

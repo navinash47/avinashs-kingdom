@@ -1,0 +1,89 @@
+{
+  "venture_id": "procedural-city",
+  "updated": "2026-08-24",
+  "items": [
+    {
+      "date": "2026-09-02",
+      "summary": "Re-close Stage E after mistaken perfect-eval revert.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Pass Phase 57: Stage E gate (human perfect-eval).",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Revert \"Pass Phase 57: Stage E gate (human perfect-eval).\"",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Sync Stage E Phase 57 status and dashboard census.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Refresh dashboard Stage Proofs after E57 heatmap wiring.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Wire Stage E gate heatmap SVG into Stage Proofs refresh.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Refresh Stage Proofs panel copy for Stage E walkthroughs.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Add Stage E walkthrough proof artifact (gate still awaiting human).",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Prepare Phase 57 Stage E gate (awaiting human perfect-eval).",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Pass Phase 56: geometry-cache regen reproducibility with Stage E tracking.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Pass Phase 55: district-median fallback plans wired into pipeline L3.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Pass Phase 54: landmark tile designation with spacing and hero assets.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Pass Phase 53: batch LLM world generation with cost tracking.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Pass Phase 52: district-coherent batch planning with schema and SVG proofs.",
+      "source": "git"
+    },
+    {
+      "date": "2026-08-20",
+      "summary": "Census truncation flag tested — large asset dirs excluded from LOC walk.",
+      "source": "wiki",
+      "video": null
+    },
+    {
+      "date": "2026-08-11",
+      "summary": "Phase gate sync wired into fleet control plane manifests.",
+      "source": "wiki",
+      "video": null
+    }
+  ],
+  "source_path": "brain/wiki/experiments/procedural-city.md"
+}

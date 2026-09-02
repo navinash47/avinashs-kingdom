@@ -1,0 +1,58 @@
+{
+  "version": "1",
+  "description": "Empty-but-real template for onboarding a future Kingdom venture into brain + orchestrator + Throne. Copy fields into config/venture-registry.json; do not leave secrets here.",
+  "venture": {
+    "id": "<slug>",
+    "repoPath": "~/Projects/<slug>",
+    "agentId": "agent-<short>",
+    "kind": null,
+    "field": null,
+    "dashboard": null,
+    "wiki": {
+      "venture": "brain/wiki/ventures/<slug>.md",
+      "architecture": "brain/wiki/architecture/<slug>.md",
+      "experiments": "brain/wiki/experiments/<slug>.md"
+    },
+    "paths": {
+      "status": "STATUS.md",
+      "phases": "tracking/phases.json",
+      "expenses": "tracking/expenses.jsonl"
+    },
+    "github": {
+      "owner": "navinash47",
+      "repo": "<slug>",
+      "default_branch": "main"
+    },
+    "tests": {
+      "commands": []
+    },
+    "capabilities": [],
+    "skills": ["sync-kingdom"]
+  },
+  "orchestrator_contract": {
+    "nodes": ["venture", "agent", "skill", "capability"],
+    "sync_state_fields": ["synced_at", "fsm.state", "summary"],
+    "control_actions": [
+      "sync",
+      "start_service",
+      "stop_service",
+      "start_all",
+      "stop_all",
+      "open_venture",
+      "open_graph",
+      "open_research",
+      "run_tests"
+    ],
+    "throne_tab": "/?tab=throne",
+    "harness": "brain/harness/empty-model/",
+    "after_register": [
+      "Add AGENT_SKILL_MAP entry in scripts/lib/skill-graph.mjs",
+      "Create wiki venture/architecture/experiments pages (or use npm run venture:new -- --write)",
+      "Update brain/wiki/concepts/where-files-live.md",
+      "Update sync-kingdom skill path map if needed",
+      "npm run sync",
+      "npm run brain:lint",
+      "Verify Throne + graph show the new node"
+    ]
+  }
+}

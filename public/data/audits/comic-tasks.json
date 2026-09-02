@@ -1,0 +1,55 @@
+{
+  "synced_at": "2026-09-02T20:16:49.441Z",
+  "repo": "/Users/avinashnandyala/Desktop/ComicMainEngine",
+  "version": "2A · A1 passed · A2 Scene cards + storyboard ingest",
+  "progress": 33,
+  "priority": "P2",
+  "status": "active",
+  "nextMilestone": "A2 Scene cards + storyboard ingest (start)",
+  "notes": "ComicMainEngine @ Desktop · 2A 2/6 · V1 22/22 · API spend $5.92 · secondary to City",
+  "progressSource": "v2a_program.json 2/6 phases complete (V1 usage.db 22/22)",
+  "phasesPassed": 2,
+  "phasesTotal": 6,
+  "spendUsd": 5.92,
+  "ceilingUsd": null,
+  "api_calls": 274,
+  "v1_tasks": {
+    "passed": 22,
+    "total": 22
+  },
+  "v2a": {
+    "active_phase_id": "a2",
+    "phases": [
+      {
+        "id": "a0",
+        "title": "Architecture freeze",
+        "status": "complete"
+      },
+      {
+        "id": "a1",
+        "title": "Story Architect",
+        "status": "complete"
+      },
+      {
+        "id": "a2",
+        "title": "Scene cards + storyboard ingest",
+        "status": "locked"
+      },
+      {
+        "id": "a3",
+        "title": "Sketch-conditioned enhance",
+        "status": "locked"
+      },
+      {
+        "id": "a4",
+        "title": "Panel memory + human gate",
+        "status": "locked"
+      },
+      {
+        "id": "a5",
+        "title": "Distill loop",
+        "status": "locked"
+      }
+    ]
+  }
+}

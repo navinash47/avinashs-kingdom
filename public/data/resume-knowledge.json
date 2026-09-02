@@ -1,0 +1,274 @@
+{
+  "updated": "2026-09-02T05:34:40.687Z",
+  "phase": 1,
+  "repo": "https://github.com/navinash47/resume",
+  "local_path": "~/Projects/resume",
+  "dashboard_url": "http://localhost:5199/",
+  "wiki": "brain/wiki/concepts/resume-master-knowledge.md",
+  "excluded_projects": [
+    "whatsapp-voice",
+    "youtube-editor"
+  ],
+  "featured_projects": [
+    {
+      "id": "comic-engine",
+      "name": "ComicMainEngine",
+      "git": "https://github.com/navinash47/ComicMainEngine",
+      "honesty_gate": "lab"
+    },
+    {
+      "id": "procedural-city",
+      "name": "Procedural City",
+      "git": "https://github.com/navinash47/ProceduralCity",
+      "honesty_gate": "lab"
+    },
+    {
+      "id": "beamdojo",
+      "name": "BeamDojo",
+      "git": "https://github.com/navinash47/BeamDojo",
+      "honesty_gate": "research"
+    }
+  ],
+  "deferred_projects": [
+    {
+      "id": "whatsapp-voice",
+      "name": "WhatsApp Voice Agents",
+      "git": "https://github.com/navinash47/whatsapp-voice-agents",
+      "honesty_gate": "lab",
+      "defer_reason": "Phase 8+ pilot not closed — see knowledge/featured-verdict.md"
+    },
+    {
+      "id": "youtube-editor",
+      "name": "YouTube Editor Lab",
+      "git": "https://github.com/navinash47/youtube-editor-lab",
+      "honesty_gate": "lab",
+      "defer_reason": "Dogfood video + provenance trail not shipped"
+    }
+  ],
+  "linkedin_url": "https://www.linkedin.com/in/avinash-nandyala-06a88b199",
+  "featured_verdict": "knowledge/featured-verdict.md",
+  "goal_checklist": "GOAL_CHECKLIST.md",
+  "role_comparison": "knowledge/ROLE_COMPARISON.md",
+  "rating_guide": "knowledge/RATING_GUIDE.md",
+  "roles": [
+    {
+      "id": "ai-engineer",
+      "label": "AI Engineer",
+      "level": "mid"
+    },
+    {
+      "id": "fde",
+      "label": "FDE",
+      "level": "mid"
+    },
+    {
+      "id": "agentic-engineer",
+      "label": "Agentic Engineer",
+      "level": "mid"
+    },
+    {
+      "id": "mle",
+      "label": "MLE",
+      "level": "mid"
+    },
+    {
+      "id": "robotics",
+      "label": "Robotics / RL Engineer",
+      "level": "mid"
+    },
+    {
+      "id": "sde-mid",
+      "label": "SDE",
+      "level": "mid"
+    },
+    {
+      "id": "sde-entry",
+      "label": "SDE",
+      "level": "entry"
+    },
+    {
+      "id": "linkedin-master",
+      "label": "LinkedIn Master",
+      "level": "master"
+    }
+  ],
+  "bullet_counts": {
+    "summary": 11,
+    "skills": 7,
+    "mastercard": 13,
+    "bionlp": 7,
+    "independent": 7,
+    "robotics-lab": 4,
+    "kingdom": 7,
+    "comic": 10,
+    "city": 8,
+    "beamdojo": 9,
+    "cs685": 6,
+    "fcm": 5,
+    "whatsapp": 3,
+    "youtube": 3,
+    "total": 93
+  },
+  "ratings_stats": {
+    "rated_overall": 91,
+    "unrated_overall": 2,
+    "total_bullets": 93,
+    "per_role": {
+      "ai-engineer": {
+        "label": "AI Engineer",
+        "level": "mid",
+        "rated": 69,
+        "total": 93
+      },
+      "fde": {
+        "label": "FDE",
+        "level": "mid",
+        "rated": 61,
+        "total": 93
+      },
+      "agentic-engineer": {
+        "label": "Agentic Engineer",
+        "level": "mid",
+        "rated": 63,
+        "total": 93
+      },
+      "mle": {
+        "label": "MLE",
+        "level": "mid",
+        "rated": 40,
+        "total": 93
+      },
+      "robotics": {
+        "label": "Robotics / RL Engineer",
+        "level": "mid",
+        "rated": 23,
+        "total": 93
+      },
+      "sde-mid": {
+        "label": "SDE",
+        "level": "mid",
+        "rated": 40,
+        "total": 93
+      },
+      "sde-entry": {
+        "label": "SDE",
+        "level": "entry",
+        "rated": 38,
+        "total": 93
+      },
+      "linkedin-master": {
+        "label": "LinkedIn Master",
+        "level": "master",
+        "rated": 24,
+        "total": 93
+      }
+    },
+    "legacy_approvals": {
+      "approved": 0,
+      "rejected": 0
+    },
+    "unrated_policy": "treated_as_zero"
+  },
+  "suggestions_updated": "2026-09-02T02:37:26.403Z",
+  "eval_stats": {
+    "updated": "2026-09-02T02:53:40.074Z",
+    "sections": 12,
+    "top_consensus": [
+      {
+        "id": "mc-ecc-latency-xyz-v1",
+        "consensus": 95
+      },
+      {
+        "id": "mc-fraud-disputes-xyz-v1",
+        "consensus": 95
+      },
+      {
+        "id": "bionlp-diagnosis-xyz-v1",
+        "consensus": 90
+      },
+      {
+        "id": "mc-ecc-latency-car-v1",
+        "consensus": 90
+      },
+      {
+        "id": "mc-pci-xyz-v1",
+        "consensus": 90
+      },
+      {
+        "id": "fcm-backend-xyz-v1",
+        "consensus": 90
+      },
+      {
+        "id": "cs685-perplexity-xyz-v1",
+        "consensus": 89
+      },
+      {
+        "id": "youtube-cut-control-lab-v1",
+        "consensus": 88
+      }
+    ]
+  },
+  "confirmed_metrics": {
+    "mastercard_ecc_latency": "~20%",
+    "bionlp_diagnosis": "27 w-F1 @ Recall@10 (verify)",
+    "comic_v1_board": "22/22",
+    "city_phases": "52/92",
+    "beamdojo_stage": "Stage 1 smoke 18%"
+  },
+  "maturity_top5": [
+    "job-jugaad",
+    "research-frontier-lab",
+    "mac-optimize-audit",
+    "Five College Marketplace",
+    "Context-Aggregation-of-Transcripts"
+  ],
+  "status": "ready_for_export",
+  "preview_tex_generated": true,
+  "preview_pdfs": [
+    {
+      "role": "ai-engineer",
+      "label": "AI Engineer",
+      "path": "tracks/preview-pdf/Avinash_Nandyala_AI_Engineer.pdf"
+    },
+    {
+      "role": "fde",
+      "label": "FDE",
+      "path": "tracks/preview-pdf/Avinash_Nandyala_FDE.pdf"
+    },
+    {
+      "role": "agentic-engineer",
+      "label": "Agentic Engineer",
+      "path": "tracks/preview-pdf/Avinash_Nandyala_Agentic_Engineer.pdf"
+    },
+    {
+      "role": "mle",
+      "label": "MLE",
+      "path": "tracks/preview-pdf/Avinash_Nandyala_MLE.pdf"
+    },
+    {
+      "role": "robotics",
+      "label": "Robotics / RL Engineer",
+      "path": "tracks/preview-pdf/Avinash_Nandyala_Robotics.pdf"
+    },
+    {
+      "role": "sde-mid",
+      "label": "SDE",
+      "path": "tracks/preview-pdf/Avinash_Nandyala_SDE_Mid.pdf"
+    },
+    {
+      "role": "sde-entry",
+      "label": "SDE",
+      "path": "tracks/preview-pdf/Avinash_Nandyala_SDE_Entry.pdf"
+    },
+    {
+      "role": "linkedin-master",
+      "label": "LinkedIn Master",
+      "path": "tracks/preview-pdf/Avinash_Nandyala_LinkedIn_Master.pdf"
+    }
+  ],
+  "share_site_url": "https://share-site-ruddy.vercel.app",
+  "share_site_local": "http://localhost:5299",
+  "share_site_readme": "share-site/README.md",
+  "dashboard_ui": "v3-role-ratings",
+  "dashboard_readme": "dashboard/README.md"
+}
