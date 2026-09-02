@@ -12,11 +12,11 @@ Fleet connectivity after Phase 2. SRS: [[concepts/personal-os-phase2b-srs]]. Par
 
 | Workstream | Status | % | Evidence / SHA | Notes |
 |------------|--------|---|----------------|-------|
-| B0 SRS + this tracker | **done** | 100 | wiki pages | Linked from phase2 SRS |
-| B1 Cursor mcpServers | **done** | 100 | `.cursor/mcp.json` | Keep headroom + kingdom-* |
-| B2 Fleet MCP roll-out | **done** | 100 | `mcp:smoke:fleet` 9/9 | shorts skipped (null repo) |
-| B3 Gated write tools | **done** | 100 | `KINGDOM_MCP_WRITES=1` | append_log + trigger_sync dry_run |
-| B4 Judge live path docs | **done** | 100 | harness README | Offline green; OmniRoute down |
+| B0 SRS + this tracker | **done** | 100 | `4295ec9` | Linked from phase2 SRS |
+| B1 Cursor mcpServers | **done** | 100 | `4295ec9` | `.cursor/mcp.json` |
+| B2 Fleet MCP roll-out | **done** | 100 | `4295ec9` | `mcp:smoke:fleet` 9/9 |
+| B3 Gated write tools | **done** | 100 | `4295ec9` | `KINGDOM_MCP_WRITES=1` |
+| B4 Judge live path docs | **done** | 100 | `4295ec9` | Offline green; OmniRoute down |
 
 ## Checklist detail
 
