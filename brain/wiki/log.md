@@ -2,6 +2,10 @@
 
 Append-only. Prefix each entry with `## [YYYY-MM-DD] <op> | <title>` so recent activity is greppable.
 
+## [2026-09-02] ops | Phase 2 W4 — MCP per app (kingdom-ops pilot)
+
+Shipped `mcp/venture-server.mjs` template + `config/mcp-registry.json`; tools `get_status` / `get_phases` / `list_capabilities` (read-only). Pilot kingdom-ops verified via `npm run mcp:smoke -- kingdom-ops`. Control-surface `mcp` snapshot on sync. Onboard doc + venture-template MCP section. Phase 2 W1–W4 complete.
+
 ## [2026-09-02] ops | Phase 2 W3 — full auto wiki
 
 Added `brain/harness/auto-wiki.mjs` + `npm run brain:auto-wiki`: inbox → `wiki/drafts/sources/` + index/log proposals; idempotent by content hash; `--promote` runs lint then publishes to `wiki/sources/`. Status: `reports/auto-wiki-latest.json`. Smoke source promoted as acceptance evidence.

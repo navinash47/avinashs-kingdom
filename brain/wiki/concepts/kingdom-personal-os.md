@@ -10,7 +10,7 @@ tags: [architecture, personal-os, brain, orchestrator, throne]
 
 Optional overlays later: MCP tool servers per venture, decision-trace “context graph” logging, vector RAG only for large raw corpora.
 
-**Phase 2 (hard ~10%):** design pack ready — [[personal-os-phase2-srs]] · tracker [[ops/personal-os-phase2-tracker]] · builder prompt [[ops/personal-os-phase2-builder-prompt]].
+**Phase 2 (hard ~10%):** **done** on `main` — [[personal-os-phase2-srs]] · tracker [[ops/personal-os-phase2-tracker]] · MCP [[ops/personal-os-playbook]] / `mcp/README.md`.
 
 ## Why this (vs pure FSM-only or pure vector RAG-only)
 

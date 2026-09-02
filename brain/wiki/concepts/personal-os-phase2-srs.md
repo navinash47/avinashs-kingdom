@@ -6,11 +6,12 @@ tags: [architecture, personal-os, srs, phase2, mcp, wiki, lint]
 
 # Personal OS Phase 2 — hard 10% (SRS / system design)
 
-**Status:** implementation in progress (W1 done; W2–W4 pending).  
+**Status:** Phase 2 implementation complete (W1–W4 acceptance green).  
 **Parent OS:** [[kingdom-personal-os]] (Phase 1 done on `main`).  
 **Builder prompt:** [[ops/personal-os-phase2-builder-prompt]].  
 **Live tracker:** [[ops/personal-os-phase2-tracker]].  
 **Merge playbook (W1):** [[ops/cloud-ui-merge-playbook]].  
+**MCP:** `mcp/README.md` · `config/mcp-registry.json`  
 **Plan mirror:** `.cursor/plans/personal_os_phase2_hard10.plan.md`
 
 ## Problem

@@ -62,6 +62,7 @@ npm run brain:judge              # advisory contradictions → brain/harness/rep
 npm run brain:judge:fixture     # golden synthetic conflict
 npm run brain:auto-wiki         # inbox → drafts + proposals (idempotent)
 npm run brain:auto-wiki -- --promote <slug>  # lint then publish
+npm run mcp:smoke -- kingdom-ops
 npm run brain:query -- personal OS
 npm run brain:ingest -- --list
 npm run brain:ingest -- --file brain/raw/inbox/<source>.md
@@ -69,7 +70,7 @@ npm run brain:harness -- list
 npm run venture:new -- --id demo --repo ~/Projects/demo --agent agent-demo
 ```
 
-`brain:lint` is **heuristic v2**. `brain:judge` is the **additive** contradiction judge. `brain:auto-wiki` is the **full auto** path (drafts under `wiki/drafts/`; explicit `--promote`). `brain:ingest --file` remains the semi-auto single-file checklist path.
+`brain:lint` is **heuristic v2**. `brain:judge` is the **additive** contradiction judge. `brain:auto-wiki` is the **full auto** path (drafts under `wiki/drafts/`; explicit `--promote`). `mcp:smoke` verifies read-only venture MCP tools (`mcp/README.md`). `brain:ingest --file` remains the semi-auto single-file checklist path.
 
 ## Do not
 

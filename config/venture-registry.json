@@ -203,7 +203,13 @@
             "description": "Typecheck + production bundle (orchestrator UI)"
           }
         ]
-      }
+      },
+      "mcp": {
+        "id": "mcp-kingdom-ops",
+        "enabled": true,
+        "read_only": true
+      },
+      "capabilities": ["mcp:kingdom-ops"]
     },
     {
       "id": "mac-optimize-audit",

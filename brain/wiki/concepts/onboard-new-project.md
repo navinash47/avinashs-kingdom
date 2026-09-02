@@ -38,6 +38,18 @@ Use this whenever a future venture should appear in the Kingdom OS — not only 
    - `npm run brain:harness -- neighbors venture:<id>`  
    - Research tab only if `kind: research`.
 
+## Optional MCP (Phase 2)
+
+Read-only per-venture tools (`get_status`, `get_phases`, `list_capabilities`). Template: `mcp/venture-server.mjs`. Registry: `config/mcp-registry.json`. Docs: `mcp/README.md`.
+
+1. Add a server row to `config/mcp-registry.json` with `venture_id` + `KINGDOM_VENTURE_ID`.
+2. Optionally set `"mcp": { "enabled": true, "read_only": true }` on the registry venture row.
+3. Cursor: add `mcpServers` snippet from `mcp/README.md` (absolute path to `venture-server.mjs`).
+4. Smoke: `npm run mcp:smoke -- <venture-id>` (or `KINGDOM_VENTURE_ID=<id> node mcp/venture-server.mjs --smoke`).
+5. `npm run sync` — Throne control-surface includes `mcp.servers[]` with `health: configured`.
+
+**Do not** expose `.env`, secrets, or weights via MCP. Write tools (`append_log`, `trigger_sync`) are Phase 2b only.
+
 ## What sync must refresh
 
 Per [[virtual-control-surface]]: `control-surface.json`, harness `graph.json` + `fsm.json`, ventures/skill-graph, and `onboarding.template` pointer to the venture template.

@@ -27,7 +27,12 @@
       "commands": []
     },
     "capabilities": [],
-    "skills": ["sync-kingdom"]
+    "skills": ["sync-kingdom"],
+    "mcp": {
+      "enabled": false,
+      "read_only": true,
+      "note": "Optional Phase 2: copy config/mcp-registry.json template; run mcp/venture-server.mjs with KINGDOM_VENTURE_ID"
+    }
   },
   "orchestrator_contract": {
     "nodes": ["venture", "agent", "skill", "capability"],
@@ -50,6 +55,7 @@
       "Create wiki venture/architecture/experiments pages (or use npm run venture:new -- --write)",
       "Update brain/wiki/concepts/where-files-live.md",
       "Update sync-kingdom skill path map if needed",
+      "Optional MCP: add row to config/mcp-registry.json + Cursor mcpServers snippet (mcp/README.md)",
       "npm run sync",
       "npm run brain:lint",
       "Verify Throne + graph show the new node"

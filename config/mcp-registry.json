@@ -1,0 +1,41 @@
+{
+  "version": "1",
+  "updated": "2026-09-02",
+  "description": "Kingdom MCP registry — venture_id → stdio server command. Read-only tools first. Never expose .env/secrets/weights.",
+  "template": {
+    "command": "node",
+    "args": ["mcp/venture-server.mjs"],
+    "cwd": "~/Projects/avinashs-kingdom",
+    "env": {
+      "KINGDOM_VENTURE_ID": "<venture-id>"
+    },
+    "read_only": true,
+    "tools": ["get_status", "get_phases", "list_capabilities"]
+  },
+  "servers": [
+    {
+      "id": "mcp-kingdom-ops",
+      "venture_id": "kingdom-ops",
+      "transport": "stdio",
+      "command": "node",
+      "args": ["mcp/venture-server.mjs"],
+      "cwd": "~/Projects/avinashs-kingdom",
+      "env": {
+        "KINGDOM_VENTURE_ID": "kingdom-ops"
+      },
+      "read_only": true,
+      "tools": ["get_status", "get_phases", "list_capabilities"],
+      "cursor_snippet": {
+        "kingdom-ops": {
+          "command": "node",
+          "args": [
+            "/Users/avinashnandyala/Projects/avinashs-kingdom/mcp/venture-server.mjs"
+          ],
+          "env": {
+            "KINGDOM_VENTURE_ID": "kingdom-ops"
+          }
+        }
+      }
+    }
+  ]
+}

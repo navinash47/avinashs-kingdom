@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-09-02T20:42:12.000Z",
+  "synced_at": "2026-09-02T22:50:26.756Z",
   "version": 2,
   "contract": "kingdom-personal-os",
   "fsm": {
@@ -22,12 +22,13 @@
     "ventures_active": 9,
     "ventures_p0": 2,
     "dashboards_configured": 6,
-    "skills": 7,
+    "skills": 9,
     "agents": 9,
     "agents_with_skills": 9,
     "agents_without_skills": [],
-    "capabilities": 15,
-    "phases_board_synced_at": "2026-09-02T20:42:05.593Z"
+    "capabilities": 16,
+    "mcp_servers": 1,
+    "phases_board_synced_at": "2026-09-02T22:50:19.824Z"
   },
   "ventures": [
     {
@@ -44,7 +45,10 @@
       "phasesPassed": 8,
       "phasesTotal": 10,
       "kind": null,
-      "github": "navinash47/whatsapp-voice-agents"
+      "github": "navinash47/whatsapp-voice-agents",
+      "mcp": {
+        "enabled": false
+      }
     },
     {
       "id": "youtube-editor",
@@ -60,7 +64,10 @@
       "phasesPassed": null,
       "phasesTotal": null,
       "kind": null,
-      "github": "navinash47/youtube-editor-lab"
+      "github": "navinash47/youtube-editor-lab",
+      "mcp": {
+        "enabled": false
+      }
     },
     {
       "id": "research-frontier",
@@ -76,7 +83,10 @@
       "phasesPassed": null,
       "phasesTotal": null,
       "kind": "research",
-      "github": "navinash47/research-frontier-lab"
+      "github": "navinash47/research-frontier-lab",
+      "mcp": {
+        "enabled": false
+      }
     },
     {
       "id": "beamdojo",
@@ -92,23 +102,29 @@
       "phasesPassed": null,
       "phasesTotal": null,
       "kind": "research",
-      "github": "navinash47/BeamDojo"
+      "github": "navinash47/BeamDojo",
+      "mcp": {
+        "enabled": false
+      }
     },
     {
       "id": "procedural-city",
       "name": "Procedural City",
-      "progress": 65,
+      "progress": 86,
       "priority": "P1",
       "status": "active",
       "agentId": "agent-metro",
       "repoPath": "~/ProceduralCity",
       "dashboardPort": 8765,
       "dashboardLabel": "City dashboard",
-      "nextMilestone": "Phase 63: Scale and orientation normalization (pending)",
-      "phasesPassed": 63,
+      "nextMilestone": "Phase 83: Failure-mode hardening (pending)",
+      "phasesPassed": 83,
       "phasesTotal": 97,
       "kind": null,
-      "github": "navinash47/ProceduralCity"
+      "github": "navinash47/ProceduralCity",
+      "mcp": {
+        "enabled": false
+      }
     },
     {
       "id": "comic-engine",
@@ -124,7 +140,10 @@
       "phasesPassed": 2,
       "phasesTotal": 6,
       "kind": null,
-      "github": "navinash47/ComicMainEngine"
+      "github": "navinash47/ComicMainEngine",
+      "mcp": {
+        "enabled": false
+      }
     },
     {
       "id": "kingdom-ops",
@@ -136,16 +155,21 @@
       "repoPath": "~/Projects/avinashs-kingdom",
       "dashboardPort": 5173,
       "dashboardLabel": "Kingdom panel",
-      "nextMilestone": "Cancel/review 6 kill-list seats; reclaim low-risk disk (51.7% used)",
+      "nextMilestone": "Cancel/review 6 kill-list seats; reclaim low-risk disk (52% used)",
       "phasesPassed": null,
       "phasesTotal": null,
       "kind": null,
-      "github": "navinash47/avinashs-kingdom"
+      "github": "navinash47/avinashs-kingdom",
+      "mcp": {
+        "enabled": true,
+        "read_only": true,
+        "id": "mcp-kingdom-ops"
+      }
     },
     {
       "id": "mac-optimize-audit",
       "name": "Mac optimize audit",
-      "progress": 55,
+      "progress": 67,
       "priority": "P1",
       "status": "active",
       "agentId": "agent-janitor",
@@ -156,23 +180,29 @@
       "phasesPassed": null,
       "phasesTotal": null,
       "kind": null,
-      "github": "navinash47/mac-optimize-audit"
+      "github": "navinash47/mac-optimize-audit",
+      "mcp": {
+        "enabled": false
+      }
     },
     {
       "id": "job-jugaad",
       "name": "Job Jugaad",
-      "progress": 88,
+      "progress": 43950088,
       "priority": "P1",
       "status": "active",
       "agentId": "agent-jugaad",
       "repoPath": "~/Projects/job-jugaad",
       "dashboardPort": 8790,
       "dashboardLabel": "Job tracker",
-      "nextMilestone": "Keep logging — 439/500 toward ongoing target",
+      "nextMilestone": "Keep logging — 439/500 toward milestone",
       "phasesPassed": null,
       "phasesTotal": null,
       "kind": null,
-      "github": "navinash47/job-jugaad"
+      "github": "navinash47/job-jugaad",
+      "mcp": {
+        "enabled": false
+      }
     },
     {
       "id": "shorts",
@@ -188,10 +218,15 @@
       "phasesPassed": null,
       "phasesTotal": null,
       "kind": null,
-      "github": null
+      "github": null,
+      "mcp": {
+        "enabled": false
+      }
     }
   ],
   "skills": [
+    "career-rebrand",
+    "cicstep-weekly",
     "kingdom-tunnels",
     "kingdom-wiki",
     "log-outreach",
@@ -200,6 +235,26 @@
     "task-observer",
     "youtube-provenance"
   ],
+  "mcp": {
+    "registry": "config/mcp-registry.json",
+    "template": "mcp/venture-server.mjs",
+    "docs": "mcp/README.md",
+    "servers": [
+      {
+        "id": "mcp-kingdom-ops",
+        "venture_id": "kingdom-ops",
+        "transport": "stdio",
+        "read_only": true,
+        "tools": [
+          "get_status",
+          "get_phases",
+          "list_capabilities"
+        ],
+        "health": "configured"
+      }
+    ],
+    "enabled": 1
+  },
   "graph": {
     "nodes": [
       {
@@ -409,6 +464,12 @@
         "type": "capability",
         "label": "tests:comic-engine",
         "venture_id": "comic-engine"
+      },
+      {
+        "id": "capability:mcp:kingdom-ops",
+        "type": "capability",
+        "label": "mcp:kingdom-ops",
+        "venture_id": "kingdom-ops"
       },
       {
         "id": "capability:dashboard:5173",
@@ -755,6 +816,12 @@
         "rel": "capability"
       },
       {
+        "id": "e-venture:kingdom-ops-capability:mcp:kingdom-ops",
+        "from": "venture:kingdom-ops",
+        "to": "capability:mcp:kingdom-ops",
+        "rel": "capability"
+      },
+      {
         "id": "e-venture:kingdom-ops-capability:dashboard:5173",
         "from": "venture:kingdom-ops",
         "to": "capability:dashboard:5173",
@@ -796,12 +863,14 @@
     "template": "config/venture-template.json",
     "wiki": "brain/wiki/concepts/onboard-new-project.md",
     "architecture": "brain/wiki/concepts/kingdom-personal-os.md",
+    "mcp": "mcp/README.md",
     "has_template": true,
     "after_register": [
       "Add AGENT_SKILL_MAP entry in scripts/lib/skill-graph.mjs",
       "Create wiki venture/architecture/experiments pages (or use npm run venture:new -- --write)",
       "Update brain/wiki/concepts/where-files-live.md",
       "Update sync-kingdom skill path map if needed",
+      "Optional MCP: add row to config/mcp-registry.json + Cursor mcpServers snippet (mcp/README.md)",
       "npm run sync",
       "npm run brain:lint",
       "Verify Throne + graph show the new node"

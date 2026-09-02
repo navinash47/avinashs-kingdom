@@ -164,6 +164,39 @@ export function syncControlSurface({
   const ventureTemplate = loadVentureTemplate(kingdomRoot)
   const capabilityCount = nodes.filter((n) => n.type === 'capability').length
 
+  let mcpSnapshot = { registry: 'config/mcp-registry.json', servers: [], enabled: 0 }
+  try {
+    const mcpPath = path.join(kingdomRoot, 'config', 'mcp-registry.json')
+    if (fs.existsSync(mcpPath)) {
+      const mcpReg = JSON.parse(fs.readFileSync(mcpPath, 'utf8'))
+      const servers = (mcpReg.servers || []).map((s) => ({
+        id: s.id,
+        venture_id: s.venture_id,
+        transport: s.transport || 'stdio',
+        read_only: s.read_only !== false,
+        tools: s.tools || [],
+        health: 'configured', // cheap: presence in registry; live probe is Cursor/mcp:smoke
+      }))
+      mcpSnapshot = {
+        registry: 'config/mcp-registry.json',
+        template: 'mcp/venture-server.mjs',
+        docs: 'mcp/README.md',
+        servers,
+        enabled: servers.length,
+      }
+    }
+  } catch {
+    /* ignore mcp registry parse errors */
+  }
+
+  // Attach mcp flag onto surface ventures when registry entry has mcp.enabled
+  for (const sv of surfaceVentures) {
+    const entry = entries.find((e) => e.id === sv.id)
+    sv.mcp = entry?.mcp?.enabled
+      ? { enabled: true, read_only: entry.mcp.read_only !== false, id: entry.mcp.id || null }
+      : { enabled: false }
+  }
+
   const surface = {
     synced_at: syncedAt,
     version: 2,
@@ -193,15 +226,18 @@ export function syncControlSurface({
       agents_with_skills: agentsWithSkills,
       agents_without_skills: agentsWithoutSkills,
       capabilities: capabilityCount,
+      mcp_servers: mcpSnapshot.enabled,
       phases_board_synced_at: phasesBoard?.synced_at ?? null,
     },
     ventures: surfaceVentures,
     skills: skillIds,
+    mcp: mcpSnapshot,
     graph: { nodes, edges },
     onboarding: {
       template: 'config/venture-template.json',
       wiki: 'brain/wiki/concepts/onboard-new-project.md',
       architecture: 'brain/wiki/concepts/kingdom-personal-os.md',
+      mcp: 'mcp/README.md',
       has_template: Boolean(ventureTemplate),
       after_register: ventureTemplate?.orchestrator_contract?.after_register ?? [],
     },
