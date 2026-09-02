@@ -484,6 +484,7 @@ function syncCityStageProofs() {
     source: dataJs,
     generated_at: doc.generated_at || null,
     count: proofs.length,
+    dashboard_proofs_url: 'http://127.0.0.1:8765/#proofs',
     proofs,
   }
   writeJson(path.join(auditsDir, 'city-stage-proofs.json'), out)
@@ -544,8 +545,8 @@ function syncCityStatus() {
     priority: 'P1',
     tasks: [
       next,
-      'Keep fal/Gemini spend under $70 ceiling',
-      'Local checkout may lag origin/main — pull/checkout main for full tree',
+      'Human: write reports/stage_e_perfect_eval.json before Phase 57 PASS (do not invent)',
+      'Dashboard proofs: http://127.0.0.1:8765/#proofs · keep fal/Gemini under $70',
     ],
   })
   console.log(

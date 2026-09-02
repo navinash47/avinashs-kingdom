@@ -6,7 +6,7 @@ tags: [tracker, sync, citizens]
 
 # Live tracker
 
-Auto-written by `npm run sync` at **2026-09-02T19:57:09.869Z**. Do not hand-edit — re-run sync after venture gates.
+Auto-written by `npm run sync` at **2026-09-02T19:58:39.342Z**. Do not hand-edit — re-run sync after venture gates.
 
 ## How progress is calculated
 
@@ -39,7 +39,7 @@ Auto-written by `npm run sync` at **2026-09-02T19:57:09.869Z**. Do not hand-edit
 | Procedural City | Stage E · Phase 57 | 62% | 57/92 | P1 · active | Phase 57: STAGE E GATE (pending) |
 | ComicMainEngine | 2A · A1 passed · A2 Scene cards + storyboard ingest | 33% | 2/6 | P2 · active | A2 Scene cards + storyboard ingest (start) |
 | Kingdom ops (subs + expenses) | v1.0 | 70% | — | P1 · active | Cancel/review 6 kill-list seats; reclaim low-risk disk (51.4% used) |
-| Mac optimize audit | v0.1 | 60% | — | P1 · active | Quit runaway git-remote-https (93% CPU) |
+| Mac optimize audit | v0.1 | 60% | — | P1 · active | Quit runaway nsurlsessiond (99% CPU) |
 | Job Jugaad | Tracker v0.1 | 0% | — | P1 · active | Log first applied company + role in Job Jugaad board |
 | Shorts tooling | — | 0% | — | parked · parked | Do not focus |
 | BeamDojo (Isaac Lab locomotion) | Stage 1 smoke | 18% | — | P1 · active | Dual-terrain Stage 1 (flat physics + imagined beam height scan) then 1024-env CUDA train on the A10. |

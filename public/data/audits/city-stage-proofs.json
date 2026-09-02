@@ -1,8 +1,9 @@
 {
-  "synced_at": "2026-09-02T19:57:09.777Z",
+  "synced_at": "2026-09-02T19:58:39.323Z",
   "source": "/Users/avinashnandyala/ProceduralCity/dashboard/data.js",
-  "generated_at": "2026-09-02T19:57:09.746485+00:00",
+  "generated_at": "2026-09-02T19:58:39.317611+00:00",
   "count": 14,
+  "dashboard_proofs_url": "http://127.0.0.1:8765/#proofs",
   "proofs": [
     {
       "id": "A",
@@ -211,7 +212,7 @@
       "checklist": "reports/phase57_walkthrough_checklist.md",
       "unity_report": "reports/unity_stage_e_walkthrough.json",
       "svg": "reports/phase57_district_coherence.svg",
-      "heatmap": null,
+      "heatmap": "reports/stage_e_gate_heatmap.svg",
       "walkthrough_skipped": true
     }
   ]

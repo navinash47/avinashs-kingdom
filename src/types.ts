@@ -513,5 +513,6 @@ export type CityStageProofs = {
   source: string
   generated_at: string | null
   count: number
+  dashboard_proofs_url?: string
   proofs: CityStageProof[]
 }

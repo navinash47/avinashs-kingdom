@@ -104,7 +104,15 @@ export function CityStageProofsPanel({ port, up }: Props) {
               ? 'Live from city dashboard'
               : seed?.synced_at
                 ? `Synced ${new Date(seed.synced_at).toLocaleString()}`
-                : 'Run Sync Kingdom after recording'}
+                : 'Run Sync Kingdom after recording'}{' '}
+            ·{' '}
+            <a
+              href={base ? `${base.replace(/\/$/, '')}/#proofs` : 'http://127.0.0.1:8765/#proofs'}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Open Stage Proofs
+            </a>
           </p>
         </div>
         {!up ? (
