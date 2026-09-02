@@ -522,8 +522,20 @@ function syncCityStatus() {
     (phases.phases || []).find((p) => p.id === phases.current_phase) || null
   const progress = progressFromPhases(passed, total)
   const version = `Stage ${current?.stage || '?'} · Phase ${phases.current_phase}`
+  let awaitingHumanG = false
+  try {
+    const gate = JSON.parse(
+      fs.readFileSync(path.join(PATHS.cityRoot, 'reports/stage_g_gate.json'), 'utf8'),
+    )
+    awaitingHumanG =
+      Boolean(gate.awaiting_human_review) && gate.gate_closed === false
+  } catch {
+    /* ignore */
+  }
   const next = current
-    ? `Phase ${current.id}: ${current.name} (${current.status})`
+    ? phases.current_phase === 82 && awaitingHumanG
+      ? 'Phase 82: STAGE G GATE — awaiting human review (do not invent stage_g_human_review.json)'
+      : `Phase ${current.id}: ${current.name} (${current.status})`
     : 'Continue next phase'
   const ceilingUsd = Number(phases.ceiling_usd) || 70
   const patch = {
@@ -555,17 +567,43 @@ function syncCityStatus() {
     local_stale: best.source !== 'local working tree',
   })
   syncCityStageProofs()
-  writeStatusMd(path.join(PATHS.cityRoot, 'STATUS.md'), {
-    version,
-    agent: 'Agent Metro',
-    progress,
-    priority: 'P1',
-    tasks: [
-      next,
-      'Human: write reports/stage_e_perfect_eval.json before Phase 57 PASS (do not invent)',
-      'Dashboard proofs: http://127.0.0.1:8765/#proofs · keep fal/Gemini under $70',
-    ],
-  })
+  const cityStatusPath = path.join(PATHS.cityRoot, 'STATUS.md')
+  let keepHandoff = false
+  try {
+    if (fs.existsSync(cityStatusPath)) {
+      const existing = fs.readFileSync(cityStatusPath, 'utf8')
+      keepHandoff = existing.includes('kingdom-sync:keep-handoff')
+    }
+  } catch {
+    /* ignore */
+  }
+  if (keepHandoff || (phases.current_phase === 82 && awaitingHumanG)) {
+    console.log(
+      'City STATUS handoff preserved · Phase 82 awaiting human review (skip STATUS rewrite)',
+    )
+  } else {
+    const stageGTasks = [
+      'Human: watch stage-g-walkthrough.mp4 + Stage Proofs, then write reports/stage_g_human_review.json (do not invent)',
+      'After human signal: verify_stage_g.py → close Phase 82 PASS → Stage H Phase 83',
+      'Dashboard proofs: http://127.0.0.1:8765/#proofs · Vercel: https://procedural-city-web.vercel.app/stage-g-walkthrough.mp4',
+    ]
+    writeStatusMd(cityStatusPath, {
+      version: awaitingHumanG
+        ? `${version} (GATE — awaiting human review)`
+        : version,
+      agent: 'Agent Metro',
+      progress,
+      priority: 'P1',
+      tasks:
+        phases.current_phase >= 73
+          ? stageGTasks
+          : [
+              next,
+              'Human: write reports/stage_e_perfect_eval.json before Phase 57 PASS (do not invent)',
+              'Dashboard proofs: http://127.0.0.1:8765/#proofs · keep fal/Gemini under $70',
+            ],
+    })
+  }
   console.log(
     'City status patch ·',
     version,
