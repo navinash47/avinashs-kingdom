@@ -3,6 +3,31 @@
   "updated": "2026-08-24",
   "items": [
     {
+      "date": "2026-09-01",
+      "summary": "Sync LinkedIn draft with IIT Kharagpur education in about variants.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-01",
+      "summary": "Link Kingdom Resume panel to share-site All Resumes overview.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-01",
+      "summary": "Set share_site_url after Vercel production deploy.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-01",
+      "summary": "Link Kingdom Resume tab to family share site.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-01",
+      "summary": "Add fleet control plane, resume knowledge mirror, and steward orchestration.",
+      "source": "git"
+    },
+    {
       "date": "2026-08-24",
       "summary": "Command orchestrator Phase 1 — Cmd-K palette + venture inspector",
       "source": "wiki",
@@ -56,31 +81,6 @@
     {
       "date": "2026-08-24",
       "summary": "Poll NFS and rsynced log copies of training-status.json in the Research Lab.",
-      "source": "git"
-    },
-    {
-      "date": "2026-08-24",
-      "summary": "Keep Research Lab live training and wire Fleet graph + Open venture.",
-      "source": "git"
-    },
-    {
-      "date": "2026-08-24",
-      "summary": "Stop labeling a live training overlay as the checked-in example.",
-      "source": "git"
-    },
-    {
-      "date": "2026-08-24",
-      "summary": "Bind Vite to all interfaces so a Cloudflare tunnel can reach the Research Lab.",
-      "source": "git"
-    },
-    {
-      "date": "2026-08-24",
-      "summary": "Poll BeamDojo training-status.json so the Research Lab can update live.",
-      "source": "git"
-    },
-    {
-      "date": "2026-08-24",
-      "summary": "Hide the live-training card on research projects without a GPU status file.",
       "source": "git"
     },
     {
