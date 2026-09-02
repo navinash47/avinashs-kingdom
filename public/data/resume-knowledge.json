@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-02T05:14:35.093Z",
+  "updated": "2026-09-02T05:15:33.824Z",
   "phase": 1,
   "repo": "https://github.com/navinash47/resume",
   "local_path": "~/Projects/resume",
@@ -110,26 +110,26 @@
     "total": 93
   },
   "ratings_stats": {
-    "rated_overall": 92,
-    "unrated_overall": 1,
+    "rated_overall": 91,
+    "unrated_overall": 2,
     "total_bullets": 93,
     "per_role": {
       "ai-engineer": {
         "label": "AI Engineer",
         "level": "mid",
-        "rated": 70,
+        "rated": 69,
         "total": 93
       },
       "fde": {
         "label": "FDE",
         "level": "mid",
-        "rated": 62,
+        "rated": 61,
         "total": 93
       },
       "agentic-engineer": {
         "label": "Agentic Engineer",
         "level": "mid",
-        "rated": 64,
+        "rated": 63,
         "total": 93
       },
       "mle": {
@@ -159,7 +159,7 @@
       "linkedin-master": {
         "label": "LinkedIn Master",
         "level": "master",
-        "rated": 4,
+        "rated": 15,
         "total": 93
       }
     },
