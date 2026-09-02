@@ -65,16 +65,32 @@ const API = '/api'
 
 async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> {
   const res = await fetch(`${API}${path}`, init)
-  const body = await res.json().catch(() => ({ error: res.statusText }))
+  const ct = res.headers.get('content-type') ?? ''
+  // Vite/Vercel SPA fallbacks often return index.html with 200 for missing /api —
+  // reject that so callers treat the orchestrator as offline instead of crashing.
+  if (!ct.includes('application/json')) {
+    throw new Error(res.ok ? 'API unavailable (non-JSON response)' : res.statusText)
+  }
+  const body = (await res.json().catch(() => ({ error: res.statusText }))) as {
+    error?: string
+    output?: string
+  } & T
   if (!res.ok) {
     throw new Error(body.error ?? body.output ?? res.statusText)
   }
-  return body as T
+  return body
 }
 
 export async function fetchServices(): Promise<ServiceStatus[]> {
-  const data = await apiFetch<{ services: ServiceStatus[] }>('/services')
-  return data.services
+  const data = await apiFetch<{ services?: ServiceStatus[] }>('/services')
+  return Array.isArray(data.services) ? data.services : []
+}
+
+export function serviceForVenture(
+  services: ServiceStatus[] | null | undefined,
+  ventureId: string,
+): ServiceStatus | null {
+  return (services ?? []).find((s) => s.ventureId === ventureId) ?? null
 }
 
 export async function fetchVentureService(ventureId: string): Promise<ServiceStatus | null> {
@@ -153,13 +169,6 @@ export async function triggerSync(): Promise<SyncResult> {
     throw new Error(`Sync returned invalid JSON: ${text.slice(0, 200)}`)
   }
   return body
-}
-
-export function serviceForVenture(
-  services: ServiceStatus[],
-  ventureId: string,
-): ServiceStatus | null {
-  return services.find((s) => s.ventureId === ventureId) ?? null
 }
 
 export function formatTestOutput(result: TestRunResult): string {

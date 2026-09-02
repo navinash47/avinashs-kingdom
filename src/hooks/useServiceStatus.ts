@@ -9,11 +9,12 @@ export function useServiceStatus(pollMs = 3000) {
   const refresh = useCallback(async () => {
     try {
       const list = await fetchServices()
-      setServices(list)
+      setServices(Array.isArray(list) ? list : [])
       setApiOk(true)
       setError(null)
     } catch (e) {
       setApiOk(false)
+      setServices([])
       setError(e instanceof Error ? e.message : 'API unavailable')
     }
   }, [])

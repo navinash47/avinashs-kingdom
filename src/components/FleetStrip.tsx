@@ -30,10 +30,10 @@ function ciDot(conclusion: string | null | undefined) {
   return 'ci-none'
 }
 
-function tabLabel(key: string, services: { name: string; label: string }[]) {
+function tabLabel(key: string, services: { name: string; label: string }[] | null | undefined) {
   if (key === operationLogKey('fleet', 'global')) return 'Fleet'
   const name = key.replace(/^service:/, '')
-  return services.find((s) => s.name === name)?.label ?? name
+  return (services ?? []).find((s) => s.name === name)?.label ?? name
 }
 
 export function FleetStrip({ ventures, cicd }: Props) {
