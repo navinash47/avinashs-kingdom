@@ -1,15 +1,15 @@
 {
-  "synced_at": "2026-09-02T20:16:49.367Z",
+  "synced_at": "2026-09-02T20:42:05.499Z",
   "source": "local working tree",
-  "current_phase": 58,
+  "current_phase": 63,
   "stage": "F",
   "stage_name": "Generative Assets",
-  "passed": 58,
-  "total": 92,
-  "progress": 63,
-  "version": "Stage F · Phase 58",
-  "next_milestone": "Phase 58: Asset manifest system (pending)",
-  "updated_at": "2026-09-02T20:16:38.995444+00:00",
+  "passed": 63,
+  "total": 97,
+  "progress": 65,
+  "version": "Stage F · Phase 63",
+  "next_milestone": "Phase 63: Scale and orientation normalization (pending)",
+  "updated_at": "2026-09-02T20:42:05.286457+00:00",
   "ceiling_usd": 70,
   "local_stale": false
 }

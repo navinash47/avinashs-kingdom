@@ -1,14 +1,14 @@
 {
-  "synced_at": "2026-09-02T20:16:49.442Z",
+  "synced_at": "2026-09-02T20:42:05.593Z",
   "target": 500,
-  "total": 444,
-  "applied_or_beyond": 414,
+  "total": 469,
+  "applied_or_beyond": 417,
   "counts": {
     "wishlist": 30,
-    "applied": 414,
-    "interviewing": 0,
+    "applied": 264,
+    "interviewing": 6,
     "offer": 0,
-    "rejected": 0,
+    "rejected": 147,
     "ghosted": 0
   },
   "recent": [

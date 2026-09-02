@@ -6,10 +6,12 @@
  *   - list raw/inbox + raw/research
  *   - file a copy under raw/inbox when --file is outside brain/raw
  *   - scaffold wiki/sources/<slug>.md (default on --file; use --no-scaffold to skip)
+ *   - best-effort extract title + summary bullets from the raw text into the stub
  *   - print an exact index/log checklist with copy-pasteable lines
+ *   - remind: review/complete with kingdom-wiki (human still reviews)
  *
  * What stays manual / agent (kingdom-wiki ingest):
- *   - reading the source, writing summary/claims, updating related pages
+ *   - verifying extracted bullets, writing claims/limitations, updating related pages
  *   - full LLM compile into ventures/concepts/entities
  *
  * Usage:
@@ -80,35 +82,121 @@ function titleFromSlug(slug) {
 }
 
 /**
+ * Best-effort title + summary bullets from raw text (markdown or plain).
+ * Human must still review via kingdom-wiki — this is a stub helper only.
+ * @returns {{ title: string | null, bullets: string[], method: string }}
+ */
+function extractFromRaw(rawText, fallbackTitle) {
+  const text = String(rawText || '').replace(/^\uFEFF/, '')
+  // Prefer first markdown H1; else first non-empty line that looks like a title
+  let title = null
+  const h1 = text.match(/^#\s+(.+)$/m)
+  if (h1) {
+    title = h1[1].trim().replace(/\s+/g, ' ')
+  } else {
+    for (const line of text.split(/\r?\n/)) {
+      const t = line.trim()
+      if (!t || t.startsWith('---') || t.startsWith('```')) continue
+      if (t.startsWith('# ')) {
+        title = t.slice(2).trim()
+        break
+      }
+      // plain title-ish line (not a bullet, not too long)
+      if (!/^[-*+]/.test(t) && t.length >= 8 && t.length <= 120 && !/^https?:/i.test(t)) {
+        title = t.replace(/^["']|["']$/g, '')
+        break
+      }
+    }
+  }
+
+  const bullets = []
+  // Collect markdown bullets near the top (skip frontmatter / code fences lightly)
+  let inFence = false
+  let pastFrontmatter = !text.startsWith('---')
+  let fmDashes = 0
+  for (const line of text.split(/\r?\n/)) {
+    if (!pastFrontmatter) {
+      if (line.trim() === '---') {
+        fmDashes++
+        if (fmDashes >= 2) pastFrontmatter = true
+      }
+      continue
+    }
+    if (line.trim().startsWith('```')) {
+      inFence = !inFence
+      continue
+    }
+    if (inFence) continue
+    const m = line.match(/^\s*[-*+]\s+(.+)$/)
+    if (m) {
+      const b = m[1].trim().replace(/\s+/g, ' ')
+      if (b.length >= 12 && b.length <= 240) bullets.push(b)
+      if (bullets.length >= 8) break
+      continue
+    }
+    // After we have some bullets, stop at next heading
+    if (bullets.length && /^#{1,3}\s+/.test(line)) break
+  }
+
+  // Fallback: first 1–3 non-empty prose paragraphs → truncated bullets
+  if (!bullets.length) {
+    const body = text
+      .replace(/^---[\s\S]*?---\r?\n?/, '')
+      .replace(/^#.+\n+/, '')
+    const paras = body
+      .split(/\n\s*\n/)
+      .map((p) => p.replace(/\s+/g, ' ').trim())
+      .filter((p) => p.length >= 40 && !p.startsWith('```'))
+    for (const p of paras.slice(0, 3)) {
+      bullets.push(p.length > 200 ? `${p.slice(0, 197)}…` : p)
+    }
+  }
+
+  return {
+    title: title || fallbackTitle || null,
+    bullets,
+    method: bullets.length
+      ? title
+        ? 'h1_or_line+bullets_or_paras'
+        : 'bullets_or_paras'
+      : 'title_only_or_empty',
+  }
+}
+
+/**
  * Exact mechanical checklist — paths and paste lines, not vague advice.
  */
-function printChecklist({ slug, rawRel, sourceRel, sourceCreated, title }) {
+function printChecklist({ slug, rawRel, sourceRel, sourceCreated, title, extracted }) {
   const date = today()
   const displayTitle = title || titleFromSlug(slug)
-  const indexRow = `| [${displayTitle}](sources/${slug}.md) | source | _one-line summary_ |`
+  const oneLine =
+    extracted?.bullets?.[0]?.slice(0, 100) || '_one-line summary — review with kingdom-wiki_'
+  const indexRow = `| [${displayTitle}](sources/${slug}.md) | source | ${oneLine} |`
   const logEntry = `## [${date}] ingest | ${displayTitle}`
 
   console.log(`# Ingest checklist (mechanical) — ${slug}
 
 ## Done by this CLI
 1. Raw filed (immutable): \`${rawRel}\`
-2. Source stub: \`${sourceRel}\`${sourceCreated ? ' (created)' : ' (already existed — not overwritten)'}
+2. Source stub: \`${sourceRel}\`${sourceCreated ? ' (created; best-effort title/summary extracted)' : ' (already existed — not overwritten)'}
+${extracted?.bullets?.length ? `3. Extracted ${extracted.bullets.length} summary bullet(s) into the stub (best-effort — may be noisy)` : '3. No summary bullets extracted (stub has TODOs)'}
 
 ## Agent / human next (kingdom-wiki ingest — LLM compile)
-3. Fill \`wiki/sources/${slug}.md\` — Summary, Key claims, Limitations, [[links]]
-4. Update related \`wiki/ventures/\` · \`concepts/\` · \`entities/\` (create if needed)
-5. System/IO → \`wiki/architecture/\`; try logs → \`wiki/experiments/\`
+**Review / complete with kingdom-wiki** — verify title + bullets, fill claims/limitations, link related pages. Human still reviews.
+4. Fill \`wiki/sources/${slug}.md\` — Summary, Key claims, Limitations, [[links]]
+5. Update related \`wiki/ventures/\` · \`concepts/\` · \`entities/\` (create if needed)
+6. System/IO → \`wiki/architecture/\`; try logs → \`wiki/experiments/\`
 
 ## Exact catalog + log edits
-6. Add a row to \`wiki/index.md\` (Sources section), e.g.:
+7. Add a row to \`wiki/index.md\` (Sources section), e.g.:
    ${indexRow}
-7. Append to \`wiki/log.md\`:
+8. Append to \`wiki/log.md\`:
    ${logEntry}
    <one sentence: what was ingested and which pages updated>
 
 ## Hygiene
-8. If panel-facing STATUS/phases/expenses moved: \`npm run sync\`
-9. \`npm run brain:lint\`
+9. If panel-facing STATUS/phases/expenses moved: \`npm run sync\`
+10. \`npm run brain:lint\`
 
 Skill: kingdom-wiki (mode: ingest). Do not edit filed raw files.
 Secrets / contact dumps: never into brain/.
@@ -123,7 +211,7 @@ if (flag('--list') || args.length === 0) {
       {
         raw_pending: items,
         happy_path: 'npm run brain:ingest -- --file <path> [--slug my-slug]',
-        note: '--file scaffolds wiki/sources/<slug>.md by default; --no-scaffold skips stub',
+        note: '--file scaffolds wiki/sources/<slug>.md by default (best-effort title/summary); --no-scaffold skips stub; review/complete with kingdom-wiki',
       },
       null,
       2,
@@ -171,6 +259,10 @@ if (!underRaw) {
   rawRel = `raw/inbox/${base}`
 }
 
+const rawText = fs.readFileSync(abs, 'utf8')
+const extracted = extractFromRaw(rawText, titleFromSlug(slug))
+const displayTitle = extracted.title || titleFromSlug(slug)
+
 const noScaffold = flag('--no-scaffold')
 // Happy path: scaffold by default (--scaffold kept as explicit alias)
 const doScaffold = !noScaffold
@@ -183,28 +275,40 @@ if (doScaffold) {
   if (fs.existsSync(sourceAbs)) {
     console.error(`Source page exists (not overwritten): ${sourceRel}`)
   } else {
-    const title = titleFromSlug(slug)
+    const summaryBlock =
+      extracted.bullets.length > 0
+        ? extracted.bullets.map((b) => `- ${b}`).join('\n')
+        : '_TODO — fill via kingdom-wiki ingest (LLM compile)._'
+    const claimsBlock =
+      extracted.bullets.length > 0
+        ? extracted.bullets
+            .slice(0, 5)
+            .map((b) => `- ${b}`)
+            .join('\n')
+        : '- '
     const body = `---
 type: source
 updated: ${today()}
 tags: []
 ---
 
-# ${title}
+# ${displayTitle}
 
 **Raw:** \`${rawRel}\`
 
+> Best-effort extract from raw (\`${extracted.method}\`). **Review / complete with kingdom-wiki** — human still reviews.
+
 ## Summary
 
-_TODO — fill via kingdom-wiki ingest (LLM compile)._
+${summaryBlock}
 
 ## Key claims
 
-- 
+${claimsBlock}
 
 ## Limitations
 
-- 
+- Extraction is mechanical (first bullets / paragraphs) — verify against raw before trusting claims.
 
 ## Links
 
@@ -212,7 +316,7 @@ _TODO — fill via kingdom-wiki ingest (LLM compile)._
 `
     fs.writeFileSync(sourceAbs, body)
     sourceCreated = true
-    console.error(`Scaffolded ${sourceRel}`)
+    console.error(`Scaffolded ${sourceRel} (title + ${extracted.bullets.length} bullet(s) extracted)`)
   }
 } else {
   console.error('Skipped source scaffold (--no-scaffold)')
@@ -223,7 +327,8 @@ printChecklist({
   rawRel,
   sourceRel,
   sourceCreated: doScaffold ? sourceCreated : false,
-  title: titleFromSlug(slug),
+  title: displayTitle,
+  extracted,
 })
 
 // Machine-readable companion for agents
@@ -236,13 +341,20 @@ console.log(
       source: sourceRel,
       source_created: sourceCreated,
       scaffolded: doScaffold,
+      extracted: {
+        title: displayTitle,
+        bullet_count: extracted.bullets.length,
+        bullets: extracted.bullets,
+        method: extracted.method,
+      },
+      review_note: 'review/complete with kingdom-wiki — human still reviews',
       index_path: path.relative(brainRoot, indexPath),
       log_path: path.relative(brainRoot, logPath),
       next: [
-        `Fill ${sourceRel} summary/claims`,
+        `Review ${sourceRel} title/summary with kingdom-wiki`,
         'Update related wiki pages',
         `Add index row for sources/${slug}.md`,
-        `Append log: ## [${today()}] ingest | ${titleFromSlug(slug)}`,
+        `Append log: ## [${today()}] ingest | ${displayTitle}`,
         'npm run brain:lint',
       ],
     },

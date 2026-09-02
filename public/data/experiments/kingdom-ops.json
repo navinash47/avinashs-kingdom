@@ -4,6 +4,21 @@
   "items": [
     {
       "date": "2026-09-02",
+      "summary": "Add wiki lint heuristic v1 and semi-auto ingest happy path.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Land Karpathy-style personal OS: brain harness, wiki playbooks, Throne control surface, and venture onboard/sync.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Refresh Kingdom after Procedural City Stage E re-close.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
       "summary": "Sync Kingdom after Procedural City Stage E close (Phase 58).",
       "source": "git"
     },
@@ -55,26 +70,6 @@
     {
       "date": "2026-09-01",
       "summary": "Sync venture data and update portfolio-repo metadata.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-01",
-      "summary": "Show resume knowledge updated times in UTC.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-01",
-      "summary": "Refresh venture manifests and live tracker after npm run sync.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-01",
-      "summary": "Sync LinkedIn draft with IIT Kharagpur education in about variants.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-01",
-      "summary": "Link Kingdom Resume panel to share-site All Resumes overview.",
       "source": "git"
     },
     {

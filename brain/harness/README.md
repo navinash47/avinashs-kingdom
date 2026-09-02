@@ -22,9 +22,9 @@ Not a neural model. Not an FSM-only toy. Own it, query it, plug future ventures 
 brain/harness/
   README.md                 ← this file
   query.mjs                 ← KG/FSM CLI: list / neighbors / path / fsm / capabilities
-  lint.mjs                  ← wiki health (heuristic v1): broken links + stale/dupes
+  lint.mjs                  ← wiki health (heuristic v2): links + stale/dupes + light status/claim heuristics
   wiki-query.mjs            ← keyword search over compiled wiki
-  ingest.mjs                ← semi-auto: file → source stub + exact index/log checklist
+  ingest.mjs                ← semi-auto: file → stub (title/summary extract) + index/log checklist
   empty-model/
     graph.json              ← auto-filled by npm run sync
     fsm.json                ← auto-filled by npm run sync
@@ -57,13 +57,14 @@ Onboard: [[wiki/concepts/onboard-new-project]].
 ```bash
 cd ~/Projects/avinashs-kingdom
 
-# Compiled wiki (heuristic v1 — not an LLM contradiction engine)
+# Compiled wiki (heuristic v2 — not an LLM contradiction / claim judge)
 npm run brain:lint
 npm run brain:lint -- --strict          # fail on warnings too
 npm run brain:lint -- --stale-days 90   # tune stale updated: threshold
+npm run brain:lint -- --log-lag-days 14 # updated: lagging recent wiki/log mentions
 npm run brain:query -- personal OS
 npm run brain:ingest -- --list
-npm run brain:ingest -- --file brain/raw/inbox/<source>.md   # scaffolds stub + checklist
+npm run brain:ingest -- --file brain/raw/inbox/<source>.md   # stub + title/summary extract + checklist
 
 # Harness KG / FSM
 npm run brain:harness -- list
@@ -79,18 +80,18 @@ npm run venture:new -- --id demo --repo ~/Projects/demo --agent agent-demo
 
 After sync that touches wiki structure: run `npm run brain:lint` as hygiene.
 
-### `brain:lint` — heuristic v1
+### `brain:lint` — heuristic v2
 
 | Severity | What |
 |----------|------|
 | **Error** (exit 1) | Broken `[[wiki-links]]` / in-wiki markdown links |
-| **Warning** (exit 0 unless `--strict`) | Missing index rows, orphans, missing/stale `updated:` frontmatter, duplicate H1 titles, duplicate `venture_id` under `ventures/` only, path/`venture_id` mismatch, architecture|experiments without matching `ventures/<id>`, light same-basename+title across folders |
+| **Warning** (exit 0 unless `--strict`) | Missing index rows, orphans, missing/stale `updated:` frontmatter, duplicate H1 titles, duplicate `venture_id` under `ventures/` only, path/`venture_id` mismatch, architecture|experiments without matching `ventures/<id>`, light same-basename+title across folders, **conflicting lifecycle/priority phrases** across a venture’s pages (+ live-tracker lines), **duplicate claim bullets**, **`updated:` lagging a recent `wiki/log.md` mention** |
 
-This is structural hygiene, **not** a claim-level contradiction engine. Tune staleness with `--stale-days` (default 90; compared to latest `wiki/log.md` date when present).
+This is structural + light phrase hygiene, **not** a full LLM contradiction / claim judge. False positives are expected on status words in prose — treat new checks as review prompts. Tune with `--stale-days` (default 90) and `--log-lag-days` (default 14).
 
 ### `brain:ingest` — semi-auto happy path
 
-`--file` files the raw source under `raw/inbox/` if needed, **scaffolds** `wiki/sources/<slug>.md` by default, and prints an **exact** index-row + log-line checklist. Full LLM compile (summary/claims/related pages) stays manual via the **kingdom-wiki** skill. Use `--no-scaffold` to skip the stub.
+`--file` files the raw source under `raw/inbox/` if needed, **scaffolds** `wiki/sources/<slug>.md` by default with **best-effort title + summary bullets** extracted from the raw text, and prints an **exact** index-row + log-line checklist plus “review/complete with kingdom-wiki”. Human still reviews. Full LLM compile stays manual via the **kingdom-wiki** skill. Use `--no-scaffold` to skip the stub.
 
 ## Ownership rule
 

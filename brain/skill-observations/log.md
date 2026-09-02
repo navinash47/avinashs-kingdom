@@ -17,6 +17,7 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 ### Observation 1: Career rebrand deliverables live outside Kingdom-only paths
 
 **Status:** OPEN
+**Last review:** 2026-09-02 — still open; CAREER_MARKETING exists but no dedicated career-rebrand skill yet
 **Date:** 2026-08-11
 **Session context:** Implement Agentic AI career + resume plan (Track A/B, Job Jugaad wishlist, study/gates wiki)
 **Skill:** New skill candidate: career-rebrand / job-jugaad targeting
@@ -32,6 +33,7 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 ### Observation 5: CICStep weekly form is a recurring Kingdom-to-career mapping
 
 **Status:** OPEN
+**Last review:** 2026-09-02 — still open; cicstep-weekly skill not created
 **Date:** 2026-08-20
 **Session context:** Draft CICStep weekly check-in from Kingdom logs; user will rewrite; report last week because of San Jose move
 **Skill:** New skill candidate: cicstep-weekly (internal)
@@ -47,6 +49,7 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 ### Observation 6: CICStep drafts skipped P1 City because next-gate was pending
 
 **Status:** OPEN
+**Last review:** 2026-09-02 — still open; fold into cicstep-weekly when authored (with obs 5/12)
 **Date:** 2026-08-20
 **Session context:** User asked why Procedural City was missing from CICStep CS writeup
 **Skill:** New skill candidate: cicstep-weekly (internal)
@@ -61,7 +64,7 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 
 ### Observation 7: Mac “stuck” was CPU/swap, not disk percent
 
-**Status:** OPEN
+**Status:** ACTIONED (2026-09-02) — mac-optimize-audit live :8742 + Kingdom Mac tab; memory/CPU/swap is source of truth
 **Date:** 2026-08-20
 **Session context:** User asked to speed up a stalling Mac; Kingdom already had a storage-only audit at 45.8% disk
 **Skill:** sync-kingdom / kingdom-tunnels (mac port) · New skill candidate: mac-optimize
@@ -76,7 +79,7 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 
 ### Observation 8: macOS TCC blocks Python from listing ~/.Trash
 
-**Status:** OPEN
+**Status:** ACTIONED (2026-09-02) — mac_optimize/clean.py empties Trash via Finder osascript
 **Date:** 2026-08-21
 **Session context:** Empty Trash cleaner failed with EPERM on ~/.Trash
 **Skill:** New skill candidate: mac-optimize
@@ -94,6 +97,7 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 ### Observation 9: TMPDIR dashboard pidfiles vanish; recycled PIDs are not identity
 
 **Status:** OPEN
+**Last review:** 2026-09-02 — still open; kingdom-tunnels skill still lacks explicit pid≠identity diagnose steps
 **Date:** 2026-08-21
 **Session context:** Browser ERR_CONNECTION_REFUSED on Mac optimize dashboard :8742; last-known pid ~1914 from prior chat
 **Skill:** kingdom-tunnels
@@ -141,7 +145,7 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 
 ### Observation 10: Research file-talk graphs died on mermaid `ID["label"] -->` lines
 
-**Status:** OPEN
+**Status:** ACTIONED (2026-09-02) — `src/lib/researchGraph.ts` parseMermaidFlow allows optional `[...]` before `-->`
 **Date:** 2026-08-24
 **Session context:** User reported Fleet graph empty; meant the Research Lab how-files-talk graph
 **Skill:** sync-kingdom
@@ -157,6 +161,7 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 ### Observation 11: Cloud-agent UI branches replay an older App shell
 
 **Status:** OPEN
+**Last review:** 2026-09-02 — still open; keep as merge playbook until encoded in sync-kingdom skill
 **Date:** 2026-08-24
 **Session context:** Merge origin/cursor/live-training-wandb-73ce into Mac Kingdom main
 **Skill:** sync-kingdom
@@ -172,6 +177,7 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 ### Observation 12: CICStep Comic week can hide 2B if you only read v2a
 
 **Status:** OPEN
+**Last review:** 2026-09-02 — still open; fold into cicstep-weekly (parallel-track scan)
 **Date:** 2026-08-28
 **Session context:** CICStep weekly for Aug 21–28 from Kingdom + git
 **Skill:** New skill candidate: cicstep-weekly (internal)
@@ -187,6 +193,7 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 ### Observation 13: Resume rating guide accelerates user-blocked phase
 
 **Status:** OPEN
+**Last review:** 2026-09-02 — still open; RATING_GUIDE.md / panel button not found in job-jugaad
 **Date:** 2026-09-02
 **Session context:** Master resume goal — infra complete, 10/81 rated on disk, blocked on user ratings + LinkedIn
 **Skill:** sync-kingdom / resume-master-knowledge
@@ -203,7 +210,7 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 
 ### Observation 14: Sync must refresh control surface + preserve STATUS tails
 
-**Status:** OPEN
+**Status:** ACTIONED (2026-09-02) — writeStatusMd preserves below `---`; sync-kingdom After-sync requires control-surface.json
 **Date:** 2026-09-02
 **Session context:** Kingdom fleet sync, restore virtual control plane, brain harness empty-model
 **Skill:** sync-kingdom
@@ -218,7 +225,7 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 
 ### Observation 15: AGENT_SKILL_MAP must include every agent
 
-**Status:** OPEN
+**Status:** ACTIONED (2026-09-02) — agent-dojo mapped in scripts/lib/skill-graph.mjs; venture:new checklist requires map entry
 **Date:** 2026-09-02
 **Session context:** skill-graph audit after sync
 **Skill:** sync-kingdom
@@ -234,7 +241,7 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 
 ### Observation 16: Personal OS needs registry template + capability edges, not FSM-only framing
 
-**Status:** OPEN
+**Status:** ACTIONED (2026-09-02) — venture-template.json + kingdom-personal-os / onboard docs + capability edges on sync
 **Date:** 2026-09-02
 **Session context:** Kingdom brain personal-OS architecture research + lean harness upgrade
 **Skill:** sync-kingdom / kingdom-wiki
@@ -249,7 +256,7 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 
 ### Observation 17: Compiled-wiki CLI makes personal OS operable day-to-day
 
-**Status:** OPEN
+**Status:** ACTIONED (2026-09-02) — npm brain:lint|query|ingest + playbook; architecture/experiments catalogued
 **Date:** 2026-09-02
 **Session context:** Upgrade Kingdom brain into serious Karpathy personal OS (lint/query/ingest + venture:new + Throne chips)
 **Skill:** kingdom-wiki / sync-kingdom
@@ -264,7 +271,7 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 
 ### Observation 18: Lint venture_id must scope to ventures/ only
 
-**Status:** OPEN
+**Status:** ACTIONED (2026-09-02) — lint.mjs duplicate venture_id scoped to ventures/; satellites checked separately
 **Date:** 2026-09-02
 **Session context:** Goal: lint heuristic v1 + semi-auto ingest after merging personal OS to main
 **Skill:** kingdom-wiki
@@ -276,3 +283,18 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 **Suggested improvement:** Scope duplicate-`venture_id` warnings to `ventures/` only; keep path/`venture_id` mismatches and architecture|experiments satellites without a matching `ventures/<id>.md` as separate cheap signals. Document heuristic v1 ≠ contradiction engine in README/playbook.
 
 **Principle:** Structural linters must encode the wiki’s real page-type conventions — treating intentional multi-page venture triples as duplicates destroys trust in health checks.
+
+### Observation 19: Lint v2 + ingest extract shipped in same goal pass
+
+**Status:** OPEN
+**Date:** 2026-09-02
+**Session context:** Formal goal: hygiene + lint v2 + ingest extract + commit/push
+**Skill:** kingdom-wiki
+**Type:** open-source
+**Phase/Area:** brain/harness lint/ingest
+
+**Issue:** Status-phrase and log-lag heuristics produce useful review prompts but also false positives (e.g. "active" on live-tracker vs "parked" elsewhere; short path-like bullets counted as claims). Agents may treat warnings as defects to mass-edit.
+
+**Suggested improvement:** In kingdom-wiki lint mode, tell agents to report v2 warnings first and only fix broken links / missing updated unless asked. Optionally add allowlist for live-tracker lifecycle scrape or raise claim bullet min length.
+
+**Principle:** Cheap contradiction heuristics must stay warnings with an explicit "not a judge" framing, or noise trains people to ignore health checks.

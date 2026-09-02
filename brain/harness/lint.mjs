@@ -1,21 +1,26 @@
 #!/usr/bin/env node
 /**
- * Karpathy-style wiki health check for brain/wiki — heuristic v1.
+ * Karpathy-style wiki health check for brain/wiki — heuristic v2.
  *
- * This is a deterministic CLI, NOT an LLM contradiction engine.
+ * This is a deterministic CLI, NOT an LLM contradiction / claim judge.
  * It catches structural issues (broken links, orphans, missing index)
  * plus light heuristics (stale/missing updated:, duplicate titles,
- * duplicate venture_id claims). It does not reason about claim conflicts.
+ * duplicate venture_id claims, conflicting lifecycle phrases across a
+ * venture's pages, duplicate bullet claims, updated: lagging recent
+ * wiki/log mentions).
  *
  * Checks:
  *   ERRORS:   broken [[wiki-links]] / markdown links into wiki/
  *   WARNINGS: missing from index, orphans, missing/stale updated:,
- *             duplicate H1 titles, duplicate venture_id frontmatter
+ *             duplicate H1 titles, duplicate venture_id frontmatter,
+ *             conflicting venture status phrases, duplicate claims,
+ *             very stale updated vs recent log activity
  *
  * Usage:
  *   node brain/harness/lint.mjs
  *   node brain/harness/lint.mjs --strict          # warnings → exit 1
  *   node brain/harness/lint.mjs --stale-days 90   # default 90
+ *   node brain/harness/lint.mjs --log-lag-days 14 # updated vs log mention (default 14)
  *   npm run brain:lint
  *
  * Exit 0 when healthy or only warnings (without --strict).
@@ -40,6 +45,7 @@ function optInt(name, fallback) {
 }
 
 const staleDays = optInt('--stale-days', 90)
+const logLagDays = optInt('--log-lag-days', 14)
 
 const EXEMPT_ORPHANS = new Set([
   'index.md',
@@ -51,6 +57,15 @@ const EXEMPT_UPDATED = new Set([
   'index.md',
   'log.md',
 ])
+
+/** Lifecycle tokens that conflict when both appear across a venture's pages. */
+const LIFECYCLE_GROUPS = [
+  new Set(['active', 'in progress', 'shipping']),
+  new Set(['parked', 'paused', 'on hold', 'do not focus', 'dormant']),
+  new Set(['archived', 'retired', 'killed', 'deprecated', 'cancelled', 'canceled']),
+  new Set(['complete', 'completed', 'done', 'shipped']),
+  new Set(['blocked', 'waiting']),
+]
 
 /** @type {Map<string, string>} relPath → absolute */
 const pages = new Map()
@@ -140,16 +155,19 @@ function parseFrontmatter(text) {
     if ((v.startsWith('"') && v.endsWith('"')) || (v.startsWith("'") && v.endsWith("'"))) {
       v = v.slice(1, -1)
     }
-    // skip arrays / nested for heuristic v1
+    // skip arrays / nested for heuristic v2
     if (v.startsWith('[') || v.startsWith('{')) continue
     fields[kv[1]] = v
   }
   return { raw: m[1], fields }
 }
 
+function bodyText(text) {
+  return text.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n?/, '')
+}
+
 function firstH1(text) {
-  // skip frontmatter
-  const body = text.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n?/, '')
+  const body = bodyText(text)
   const m = body.match(/^#\s+(.+)$/m)
   return m ? m[1].trim().replace(/\s+/g, ' ') : null
 }
@@ -164,11 +182,102 @@ function latestLogDate(logText) {
   return best
 }
 
+/** @returns {{ date: string, title: string, body: string }[]} */
+function parseLogEntries(logText) {
+  const entries = []
+  const re = /^##\s+\[(\d{4}-\d{2}-\d{2})\]\s+(.+)$/gm
+  const matches = [...logText.matchAll(re)]
+  for (let i = 0; i < matches.length; i++) {
+    const m = matches[i]
+    const start = m.index + m[0].length
+    const end = i + 1 < matches.length ? matches[i + 1].index : logText.length
+    entries.push({
+      date: m[1],
+      title: m[2].trim(),
+      body: logText.slice(start, end),
+    })
+  }
+  return entries
+}
+
 function daysBetween(isoA, isoB) {
   const a = Date.parse(`${isoA}T00:00:00Z`)
   const b = Date.parse(`${isoB}T00:00:00Z`)
   if (!Number.isFinite(a) || !Number.isFinite(b)) return null
   return Math.floor((b - a) / 86_400_000)
+}
+
+function stripMdLite(s) {
+  return s
+    .replace(/\[\[([^\]|]+)(?:\|[^\]]+)?\]\]/g, '$1')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/`([^`]+)`/g, '$1')
+    .replace(/\*\*([^*]+)\*\*/g, '$1')
+    .replace(/\*([^*]+)\*/g, '$1')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+/**
+ * Cheap lifecycle / status phrase scrape (warnings only — not semantic truth).
+ * @returns {Set<string>}
+ */
+function extractLifecyclePhrases(text) {
+  const body = bodyText(text).toLowerCase()
+  const found = new Set()
+  const patterns = [
+    [/\bstatus\s*:\s*([a-z][a-z _-]{1,40})/g, 1],
+    [/\*\*status:\*\*\s*([a-z][a-z _-]{1,40})/gi, 1],
+    [/\b(do not focus)\b/g, 1],
+    [/\b(parked|paused|archived|retired|killed|deprecated|cancelled|canceled|blocked|dormant|active|complete|completed|shipping|shipped)\b/g, 1],
+    [/\bon hold\b/g, 0],
+    [/\bin progress\b/g, 0],
+  ]
+  for (const [re, group] of patterns) {
+    let m
+    const flags = re.flags.includes('g') ? re : new RegExp(re.source, re.flags + 'g')
+    while ((m = flags.exec(body))) {
+      const raw = group === 0 ? m[0] : m[group]
+      if (!raw) continue
+      const phrase = raw.trim().replace(/\s+/g, ' ').replace(/[.,;:]+$/, '')
+      if (phrase.length < 2 || phrase.length > 40) continue
+      // skip "active" inside "proactive", etc. — word-boundary already helps
+      found.add(phrase)
+    }
+  }
+  // Priority tokens
+  let pm
+  const pri = /\b(p[0-3])\b/gi
+  while ((pm = pri.exec(body))) {
+    found.add(pm[1].toLowerCase())
+  }
+  return found
+}
+
+function lifecycleGroupIndex(phrase) {
+  for (let i = 0; i < LIFECYCLE_GROUPS.length; i++) {
+    if (LIFECYCLE_GROUPS[i].has(phrase)) return i
+  }
+  return -1
+}
+
+/**
+ * Extract claim-like bullets (substantial list items).
+ * @returns {string[]}
+ */
+function extractClaimBullets(text) {
+  const body = bodyText(text)
+  const claims = []
+  for (const line of body.split(/\r?\n/)) {
+    const m = line.match(/^\s*[-*]\s+(.+)$/)
+    if (!m) continue
+    const raw = stripMdLite(m[1])
+    if (raw.length < 48) continue
+    if (/^_?todo|_?tbd|fill via|one-line summary/i.test(raw)) continue
+    if (/^\[.*\]\(.*\)$/.test(raw)) continue
+    claims.push(raw)
+  }
+  return claims
 }
 
 walk(wikiRoot)
@@ -219,6 +328,7 @@ const indexText = fs.existsSync(indexPath) ? fs.readFileSync(indexPath, 'utf8') 
 const indexed = collectIndexEntries(indexText)
 const logText = fs.existsSync(logPath) ? fs.readFileSync(logPath, 'utf8') : ''
 const logLatest = latestLogDate(logText)
+const logEntries = parseLogEntries(logText)
 const today = new Date().toISOString().slice(0, 10)
 const staleAnchor = logLatest ?? today
 
@@ -331,6 +441,155 @@ const duplicateTopics = [...basenameTitles.entries()]
     return { basename, title, pages: pagesList.sort() }
   })
 
+/**
+ * v2: conflicting lifecycle phrases across ventures|architecture|experiments/<id>.md
+ * (and live-tracker mentions for that id). Priority P0–P3 conflicts also warned.
+ */
+const venturePageSets = new Map()
+for (const rel of pages.keys()) {
+  const m = rel.match(/^(ventures|architecture|experiments)\/([^/]+)\.md$/i)
+  if (!m) continue
+  const id = m[2]
+  if (!venturePageSets.has(id)) venturePageSets.set(id, [])
+  venturePageSets.get(id).push(rel)
+}
+// live-tracker often carries status — include if present
+const liveTracker = 'ops/live-tracker.md'
+const conflictingVentureStatus = []
+for (const [ventureId, rels] of venturePageSets) {
+  const pagesInScope = [...rels]
+  if (pages.has(liveTracker)) pagesInScope.push(liveTracker)
+
+  /** @type {Map<string, Set<string>>} phrase → pages */
+  const phrasePages = new Map()
+  /** @type {Map<string, Set<string>>} priority → pages */
+  const priorityPages = new Map()
+
+  for (const rel of pagesInScope) {
+    const meta = pageMeta.get(rel)
+    if (!meta) continue
+    // For live-tracker, only count lines that mention the venture id / title
+    let text = meta.text
+    if (rel === liveTracker) {
+      const lines = text.split(/\r?\n/).filter((ln) => {
+        const low = ln.toLowerCase()
+        return low.includes(ventureId.toLowerCase()) || low.includes(ventureId.replace(/-/g, ' '))
+      })
+      if (!lines.length) continue
+      text = lines.join('\n')
+    }
+    const phrases = extractLifecyclePhrases(text)
+    for (const p of phrases) {
+      if (/^p[0-3]$/.test(p)) {
+        if (!priorityPages.has(p)) priorityPages.set(p, new Set())
+        priorityPages.get(p).add(rel)
+        continue
+      }
+      if (!phrasePages.has(p)) phrasePages.set(p, new Set())
+      phrasePages.get(p).add(rel)
+    }
+  }
+
+  const groupHits = new Map() // groupIdx → { phrases, pages }
+  for (const [phrase, pageSet] of phrasePages) {
+    const gi = lifecycleGroupIndex(phrase)
+    if (gi < 0) continue
+    if (!groupHits.has(gi)) groupHits.set(gi, { phrases: new Set(), pages: new Set() })
+    groupHits.get(gi).phrases.add(phrase)
+    for (const p of pageSet) groupHits.get(gi).pages.add(p)
+  }
+  if (groupHits.size >= 2) {
+    const groups = [...groupHits.entries()].map(([gi, v]) => ({
+      group: [...LIFECYCLE_GROUPS[gi]][0],
+      phrases: [...v.phrases].sort(),
+      pages: [...v.pages].sort(),
+    }))
+    conflictingVentureStatus.push({
+      venture_id: ventureId,
+      reason: 'conflicting_lifecycle_phrases',
+      groups,
+    })
+  }
+
+  if (priorityPages.size >= 2) {
+    conflictingVentureStatus.push({
+      venture_id: ventureId,
+      reason: 'conflicting_priority_tokens',
+      priorities: [...priorityPages.entries()].map(([p, set]) => ({
+        priority: p,
+        pages: [...set].sort(),
+      })),
+    })
+  }
+}
+conflictingVentureStatus.sort((a, b) => a.venture_id.localeCompare(b.venture_id))
+
+/**
+ * v2: duplicate claim bullets (normalized exact match across ≥2 pages).
+ */
+const claimBuckets = new Map()
+for (const [rel, meta] of pageMeta) {
+  if (rel === 'index.md' || rel === 'log.md') continue
+  for (const claim of extractClaimBullets(meta.text)) {
+    const key = claim.toLowerCase()
+    if (!claimBuckets.has(key)) claimBuckets.set(key, { claim, pages: new Set() })
+    claimBuckets.get(key).pages.add(rel)
+  }
+}
+const duplicateClaims = [...claimBuckets.values()]
+  .filter((v) => v.pages.size >= 2)
+  .map((v) => ({
+    claim: v.claim.slice(0, 160),
+    pages: [...v.pages].sort(),
+  }))
+  .sort((a, b) => a.claim.localeCompare(b.claim))
+  .slice(0, 50) // cap noise
+
+/**
+ * v2: page updated: lags a recent wiki/log mention of that page.
+ */
+const staleVsLogActivity = []
+for (const [rel, meta] of pageMeta) {
+  if (EXEMPT_UPDATED.has(rel)) continue
+  const updated = meta.fm.updated
+  if (!updated || !/^\d{4}-\d{2}-\d{2}$/.test(updated)) continue
+
+  const base = path.posix.basename(stem(rel))
+  const title = meta.title || ''
+  const needles = [
+    base,
+    base.replace(/-/g, ' '),
+    rel,
+    title,
+  ]
+    .filter(Boolean)
+    .map((s) => s.toLowerCase())
+
+  let latestMention = null
+  let mentionTitle = null
+  for (const ent of logEntries) {
+    const hay = `${ent.title}\n${ent.body}`.toLowerCase()
+    if (!needles.some((n) => n.length >= 3 && hay.includes(n))) continue
+    if (!latestMention || ent.date > latestMention) {
+      latestMention = ent.date
+      mentionTitle = ent.title
+    }
+  }
+  if (!latestMention) continue
+  const lag = daysBetween(updated, latestMention)
+  if (lag != null && lag > logLagDays) {
+    staleVsLogActivity.push({
+      page: rel,
+      updated,
+      log_mention_date: latestMention,
+      log_entry: mentionTitle,
+      lag_days: lag,
+      reason: `updated_lags_log_mention (>${logLagDays}d)`,
+    })
+  }
+}
+staleVsLogActivity.sort((a, b) => a.page.localeCompare(b.page))
+
 const warnings = {
   missing_from_index: missingIndex.length,
   orphans: orphans.length,
@@ -340,15 +599,19 @@ const warnings = {
   venture_path_mismatch: venturePathMismatch.length,
   orphan_venture_satellites: orphanVentureSatellites.length,
   duplicate_topics_light: duplicateTopics.length,
+  conflicting_venture_status: conflictingVentureStatus.length,
+  duplicate_claims: duplicateClaims.length,
+  stale_vs_log_activity: staleVsLogActivity.length,
 }
 
 const warningCount = Object.values(warnings).reduce((a, b) => a + b, 0)
 
 const report = {
-  heuristic: 'v1',
-  note: 'Deterministic structural + light heuristics. Not an LLM contradiction engine.',
+  heuristic: 'v2',
+  note: 'Deterministic structural + light heuristics (v2). Not an LLM contradiction / claim judge.',
   wiki_pages: pages.size,
   stale_days_threshold: staleDays,
+  log_lag_days_threshold: logLagDays,
   stale_anchor_date: staleAnchor,
   broken_links: broken.length,
   warnings,
@@ -363,18 +626,27 @@ const report = {
     a.page.localeCompare(b.page),
   ),
   duplicate_topics_light: duplicateTopics,
+  conflicting_venture_status: conflictingVentureStatus,
+  duplicate_claims: duplicateClaims,
+  stale_vs_log_activity: staleVsLogActivity,
 }
 
 console.log(JSON.stringify(report, null, 2))
+
+const warnSummary =
+  `index=${missingIndex.length} orphans=${orphans.length} stale=${staleUpdated.length}` +
+  ` dup_titles=${duplicateTitles.length} dup_venture_id=${duplicateVentureIds.length}` +
+  ` path_mismatch=${venturePathMismatch.length} orphan_satellites=${orphanVentureSatellites.length}` +
+  ` dup_topics=${duplicateTopics.length}` +
+  ` conflict_status=${conflictingVentureStatus.length} dup_claims=${duplicateClaims.length}` +
+  ` stale_log=${staleVsLogActivity.length}`
 
 const hasErrors = broken.length > 0
 const hasWarnings = warningCount > 0
 if (hasErrors || (strict && hasWarnings)) {
   console.error(
     `\nlint failed: ${broken.length} broken (errors)` +
-      (hasWarnings
-        ? `; warnings: index=${missingIndex.length} orphans=${orphans.length} stale=${staleUpdated.length} dup_titles=${duplicateTitles.length} dup_venture_id=${duplicateVentureIds.length} path_mismatch=${venturePathMismatch.length} orphan_satellites=${orphanVentureSatellites.length} dup_topics=${duplicateTopics.length}`
-        : '') +
+      (hasWarnings ? `; warnings: ${warnSummary}` : '') +
       (strict ? ' (--strict)' : ''),
   )
   process.exit(1)
@@ -382,7 +654,7 @@ if (hasErrors || (strict && hasWarnings)) {
 
 if (hasWarnings) {
   console.error(
-    `\nlint ok with warnings (heuristic v1): index=${missingIndex.length} orphans=${orphans.length} stale=${staleUpdated.length} dup_titles=${duplicateTitles.length} dup_venture_id=${duplicateVentureIds.length} path_mismatch=${venturePathMismatch.length} orphan_satellites=${orphanVentureSatellites.length} dup_topics=${duplicateTopics.length} (use --strict to fail; --stale-days N to tune)`,
+    `\nlint ok with warnings (heuristic v2): ${warnSummary} (use --strict to fail; --stale-days N / --log-lag-days N to tune)`,
   )
 } else {
   console.error(`\nlint ok: ${pages.size} pages, no broken links, no heuristic warnings`)

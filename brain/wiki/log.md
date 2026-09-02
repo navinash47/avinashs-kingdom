@@ -2,6 +2,10 @@
 
 Append-only. Prefix each entry with `## [YYYY-MM-DD] <op> | <title>` so recent activity is greppable.
 
+## [2026-09-02] ops | Lint heuristic v2 + ingest extract + hygiene
+
+`brain/harness/lint.mjs` → heuristic **v2**: still errors only on broken links; new **warnings** for conflicting venture lifecycle/priority phrases across pages, duplicate claim bullets, and `updated:` lagging recent `wiki/log.md` mentions (`--log-lag-days`). `brain:ingest --file` best-effort extracts title + summary bullets into the source stub and prints review/complete-with-kingdom-wiki checklist. Fixed missing `updated:` on [[ops/ci-template]]. Triaged skill-observation backlog (8 ACTIONED, 7 remain OPEN). Sync panel refresh committed. Docs: harness README, [[ops/personal-os-playbook]], AGENTS, kingdom-wiki skill. **Still not** an LLM claim judge.
+
 ## [2026-09-02] ops | Lint heuristic v1 + semi-auto ingest
 
 Extended `brain/harness/lint.mjs`: broken links remain errors; warnings for missing/stale `updated:`, duplicate H1 titles, duplicate `venture_id`, path mismatches, light duplicate topics (`--stale-days`, `--strict`). Hardened `brain:ingest --file` to scaffold `wiki/sources/<slug>.md` by default and print exact index/log checklist (LLM compile still kingdom-wiki). Documented in harness README, [[ops/personal-os-playbook]], [[concepts/kingdom-personal-os]], [[concepts/llm-wiki]].

@@ -22,13 +22,13 @@ Prefer the mechanical CLI first, then LLM compile:
 
 ```bash
 cd /Users/avinashnandyala/Projects/avinashs-kingdom
-npm run brain:ingest -- --file path/to/source.md   # files raw + scaffolds wiki/sources/<slug>.md + prints exact index/log lines
+npm run brain:ingest -- --file path/to/source.md   # files raw + scaffolds stub (best-effort title/summary) + prints index/log checklist
 ```
 
 Then finish the kingdom-wiki compile:
 
 1. Raw is already under `raw/inbox/` or `raw/research/` (CLI files a copy if needed). Do not alter filed raw files later.
-2. Fill `wiki/sources/<slug>.md` with summary, claims, limitations, outbound `[[links]]` (CLI may have stubbed this).
+2. **Review / complete** `wiki/sources/<slug>.md` (CLI may have extracted title + bullets — human still reviews); fill claims, limitations, outbound `[[links]]`.
 3. Update related `wiki/ventures/`, `wiki/concepts/`, `wiki/entities/` pages (create if needed).
 4. For system design / IO flows, update `wiki/architecture/<venture-id>.md`; for try logs, `wiki/experiments/<venture-id>.md`. Then remind to run `npm run sync`.
 5. Update `wiki/index.md` catalog rows (CLI prints a pasteable row).
@@ -43,13 +43,13 @@ Then finish the kingdom-wiki compile:
 
 ### Lint
 
-Prefer the deterministic CLI first (`heuristic v1` — structural + light dupes/stale; **not** an LLM contradiction engine):
+Prefer the deterministic CLI first (`heuristic v2` — structural + light dupes/stale/status-phrase/claim echoes; **still not** an LLM contradiction judge):
 
 ```bash
 cd /Users/avinashnandyala/Projects/avinashs-kingdom && npm run brain:lint
 ```
 
-Broken links → errors (exit 1). Missing index / orphans / stale `updated:` / duplicate titles / duplicate `venture_id` → warnings (exit 0 unless `--strict`).
+Broken links → errors (exit 1). Missing index / orphans / stale `updated:` / duplicate titles / duplicate `venture_id` / conflicting lifecycle phrases / duplicate claims / updated-vs-log lag → warnings (exit 0 unless `--strict`).
 
 Fix only if the user asked to fix; otherwise list proposed fixes. Complementary CLIs: `npm run brain:query -- <terms>`, `npm run brain:ingest -- --list`.
 

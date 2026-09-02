@@ -1,11 +1,11 @@
 {
   "venture_id": "procedural-city",
-  "synced_at": "2026-09-02T20:16:39.003Z",
+  "synced_at": "2026-09-02T20:36:15.951Z",
   "repo": {
     "path": "/Users/avinashnandyala/ProceduralCity",
-    "head": "126b48f1328284dd8e4bed412d625367c7dd5555",
-    "branch": "main",
-    "last_commit_at": "2026-09-02T13:16:18-07:00",
+    "head": "96bf079c0efdd94a8a7f21dbda17bb8514931db7",
+    "branch": "phase60",
+    "last_commit_at": "2026-09-02T13:36:05-07:00",
     "remote_url": "https://github.com/navinash47/ProceduralCity.git",
     "github": {
       "owner": "navinash47",
@@ -14,39 +14,44 @@
     }
   },
   "stats": {
-    "files": 867,
-    "lines": 663199,
+    "files": 898,
+    "lines": 666740,
     "primary_language": "JSON",
     "languages": [
       {
         "language": "JSON",
-        "files": 655,
-        "lines": 616708
+        "files": 662,
+        "lines": 618013
       },
       {
         "language": "Python",
-        "files": 100,
-        "lines": 18948
+        "files": 108,
+        "lines": 20188
       },
       {
         "language": "Other",
-        "files": 68,
-        "lines": 13902
+        "files": 73,
+        "lines": 13940
       },
       {
         "language": "JavaScript",
-        "files": 2,
-        "lines": 8812
+        "files": 3,
+        "lines": 8992
       },
       {
         "language": "Markdown",
-        "files": 38,
-        "lines": 3745
+        "files": 40,
+        "lines": 3919
       },
       {
         "language": "CSS",
-        "files": 1,
-        "lines": 785
+        "files": 2,
+        "lines": 1009
+      },
+      {
+        "language": "TypeScript",
+        "files": 7,
+        "lines": 380
       },
       {
         "language": "HTML",
@@ -60,7 +65,7 @@
       }
     ],
     "truncated": false,
-    "sampled_files": 867,
+    "sampled_files": 898,
     "source": "walker"
   },
   "dependencies": {
@@ -119,8 +124,8 @@
   "models_detected": [],
   "spend_usd": null,
   "ceiling_usd": 70,
-  "progress": 63,
-  "version": "Stage F · Phase 58",
+  "progress": 62,
+  "version": "Stage F · Phase 60",
   "test_commands": [
     {
       "id": "unit",

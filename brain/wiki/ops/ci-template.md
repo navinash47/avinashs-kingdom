@@ -1,3 +1,9 @@
+---
+type: overview
+updated: 2026-09-02
+tags: [ops, ci, template]
+---
+
 # CI template for Kingdom-linked ventures
 
 Copy `.github/workflows/kingdom.yml` pattern into sibling repos. Register test commands in `config/venture-registry.json` under `tests.commands`.

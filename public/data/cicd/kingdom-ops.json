@@ -1,12 +1,32 @@
 {
   "venture_id": "kingdom-ops",
-  "synced_at": "2026-09-02T20:16:55.968Z",
+  "synced_at": "2026-09-02T20:42:11.060Z",
   "github": {
     "owner": "navinash47",
     "repo": "avinashs-kingdom",
     "default_branch": "main",
     "available": true,
     "runs": [
+      {
+        "conclusion": "success",
+        "createdAt": "2026-09-02T20:39:01Z",
+        "databaseId": 33680545659,
+        "displayTitle": "Add wiki lint heuristic v1 and semi-auto ingest happy path.",
+        "event": "push",
+        "status": "completed",
+        "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33680545659",
+        "workflowName": "Kingdom CI"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-09-02T20:35:38Z",
+        "databaseId": 33680212267,
+        "displayTitle": "Merge cursor/live-training-wandb-73ce into main.",
+        "event": "push",
+        "status": "completed",
+        "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33680212267",
+        "workflowName": "Kingdom CI"
+      },
       {
         "conclusion": "failure",
         "createdAt": "2026-09-02T19:59:29Z",
@@ -36,29 +56,9 @@
         "status": "completed",
         "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33594030550",
         "workflowName": "Kingdom CI"
-      },
-      {
-        "conclusion": "failure",
-        "createdAt": "2026-09-02T05:15:05Z",
-        "databaseId": 33593937893,
-        "displayTitle": "Show live W&B training status on the Research Lab tab",
-        "event": "pull_request",
-        "status": "completed",
-        "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33593937893",
-        "workflowName": "Kingdom CI"
-      },
-      {
-        "conclusion": "failure",
-        "createdAt": "2026-09-02T05:10:32Z",
-        "databaseId": 33593634765,
-        "displayTitle": "Show live W&B training status on the Research Lab tab",
-        "event": "pull_request",
-        "status": "completed",
-        "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33593634765",
-        "workflowName": "Kingdom CI"
       }
     ],
-    "last_conclusion": "failure"
+    "last_conclusion": "success"
   },
   "local_tests": {
     "commands": [

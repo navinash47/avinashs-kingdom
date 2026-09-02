@@ -18,9 +18,9 @@ Pattern from Andrej Karpathy: compile knowledge into a persistent interlinked Ma
 
 | Op | Agent skill | CLI |
 |----|-------------|-----|
-| Ingest | kingdom-wiki ingest | `npm run brain:ingest -- --file …` (stub + checklist; LLM compile in skill) |
+| Ingest | kingdom-wiki ingest | `npm run brain:ingest -- --file …` (stub + title/summary extract + checklist; review/complete with kingdom-wiki) |
 | Query | kingdom-wiki query | `npm run brain:query -- <terms>` |
-| Lint | kingdom-wiki lint | `npm run brain:lint` (heuristic v1 — links/orphans/stale/dupes; not contradiction engine) |
+| Lint | kingdom-wiki lint | `npm run brain:lint` (heuristic v2 — links/orphans/stale/dupes + light status/claim echoes; still not LLM claim judge) |
 
 File good answers back into the wiki. Daily loop: [[ops/personal-os-playbook]].
 

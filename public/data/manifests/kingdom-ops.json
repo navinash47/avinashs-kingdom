@@ -1,11 +1,11 @@
 {
   "venture_id": "kingdom-ops",
-  "synced_at": "2026-09-02T20:16:49.762Z",
+  "synced_at": "2026-09-02T20:42:05.916Z",
   "repo": {
     "path": "/Users/avinashnandyala/Projects/avinashs-kingdom",
-    "head": "fe64770ae90b797b0806dc0655230bf4399f2cda",
-    "branch": "cursor/live-training-wandb-73ce",
-    "last_commit_at": "2026-09-02T13:09:01-07:00",
+    "head": "4f81118481836457769ab8c63bd24597af2a5e1c",
+    "branch": "main",
+    "last_commit_at": "2026-09-02T13:38:58-07:00",
     "remote_url": "https://github.com/navinash47/avinashs-kingdom.git",
     "github": {
       "owner": "navinash47",
@@ -14,39 +14,39 @@
     }
   },
   "stats": {
-    "files": 299,
-    "lines": 38046,
+    "files": 297,
+    "lines": 40109,
     "primary_language": "JSON",
     "languages": [
       {
         "language": "JSON",
         "files": 84,
-        "lines": 12517
+        "lines": 12564
       },
       {
         "language": "TypeScript",
-        "files": 50,
-        "lines": 8941
-      },
-      {
-        "language": "Markdown",
-        "files": 93,
-        "lines": 5823
+        "files": 49,
+        "lines": 8866
       },
       {
         "language": "JavaScript",
-        "files": 29,
-        "lines": 5317
+        "files": 31,
+        "lines": 5975
+      },
+      {
+        "language": "Markdown",
+        "files": 90,
+        "lines": 5379
       },
       {
         "language": "CSS",
         "files": 3,
-        "lines": 2633
+        "lines": 4323
       },
       {
         "language": "Other",
         "files": 27,
-        "lines": 1637
+        "lines": 1824
       },
       {
         "language": "Shell",
@@ -65,7 +65,7 @@
       }
     ],
     "truncated": false,
-    "sampled_files": 299,
+    "sampled_files": 297,
     "source": "walker"
   },
   "dependencies": {
@@ -89,6 +89,11 @@
     ],
     "dev": [
       {
+        "name": "@mermaid-js/mermaid-cli",
+        "version": "^11.16.0",
+        "ecosystem": "npm"
+      },
+      {
         "name": "@types/node",
         "version": "^24.13.3",
         "ecosystem": "npm"
@@ -106,6 +111,11 @@
       {
         "name": "@vitejs/plugin-react",
         "version": "^6.0.4",
+        "ecosystem": "npm"
+      },
+      {
+        "name": "concurrently",
+        "version": "^9.2.1",
         "ecosystem": "npm"
       },
       {

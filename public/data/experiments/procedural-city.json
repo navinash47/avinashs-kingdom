@@ -4,6 +4,16 @@
   "items": [
     {
       "date": "2026-09-02",
+      "summary": "Ignore Vercel local project metadata under web/.vercel.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Pass Phases 58–59: R3 asset manifest, PROP_LIST, web MVP scaffold.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
       "summary": "Re-close Stage E after mistaken perfect-eval revert.",
       "source": "git"
     },
@@ -60,16 +70,6 @@
     {
       "date": "2026-09-02",
       "summary": "Pass Phase 54: landmark tile designation with spacing and hero assets.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-02",
-      "summary": "Pass Phase 53: batch LLM world generation with cost tracking.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-02",
-      "summary": "Pass Phase 52: district-coherent batch planning with schema and SVG proofs.",
       "source": "git"
     },
     {

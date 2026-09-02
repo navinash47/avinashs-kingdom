@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-09-02T20:16:56.892Z",
+  "synced_at": "2026-09-02T20:42:12.000Z",
   "version": 2,
   "contract": "kingdom-personal-os",
   "fsm": {
@@ -27,7 +27,7 @@
     "agents_with_skills": 9,
     "agents_without_skills": [],
     "capabilities": 15,
-    "phases_board_synced_at": "2026-09-02T20:16:49.442Z"
+    "phases_board_synced_at": "2026-09-02T20:42:05.593Z"
   },
   "ventures": [
     {
@@ -97,16 +97,16 @@
     {
       "id": "procedural-city",
       "name": "Procedural City",
-      "progress": 63,
+      "progress": 65,
       "priority": "P1",
       "status": "active",
       "agentId": "agent-metro",
       "repoPath": "~/ProceduralCity",
       "dashboardPort": 8765,
       "dashboardLabel": "City dashboard",
-      "nextMilestone": "Phase 58: Asset manifest system (pending)",
-      "phasesPassed": 58,
-      "phasesTotal": 92,
+      "nextMilestone": "Phase 63: Scale and orientation normalization (pending)",
+      "phasesPassed": 63,
+      "phasesTotal": 97,
       "kind": null,
       "github": "navinash47/ProceduralCity"
     },
@@ -136,7 +136,7 @@
       "repoPath": "~/Projects/avinashs-kingdom",
       "dashboardPort": 5173,
       "dashboardLabel": "Kingdom panel",
-      "nextMilestone": "Cancel/review 6 kill-list seats; reclaim low-risk disk (51.4% used)",
+      "nextMilestone": "Cancel/review 6 kill-list seats; reclaim low-risk disk (51.7% used)",
       "phasesPassed": null,
       "phasesTotal": null,
       "kind": null,
@@ -145,7 +145,7 @@
     {
       "id": "mac-optimize-audit",
       "name": "Mac optimize audit",
-      "progress": 67,
+      "progress": 55,
       "priority": "P1",
       "status": "active",
       "agentId": "agent-janitor",
@@ -161,14 +161,14 @@
     {
       "id": "job-jugaad",
       "name": "Job Jugaad",
-      "progress": 83,
+      "progress": 88,
       "priority": "P1",
       "status": "active",
       "agentId": "agent-jugaad",
       "repoPath": "~/Projects/job-jugaad",
       "dashboardPort": 8790,
       "dashboardLabel": "Job tracker",
-      "nextMilestone": "Keep logging — 414/500 toward ongoing target",
+      "nextMilestone": "Keep logging — 439/500 toward ongoing target",
       "phasesPassed": null,
       "phasesTotal": null,
       "kind": null,

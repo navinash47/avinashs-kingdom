@@ -6,7 +6,7 @@ tags: [tracker, sync, citizens]
 
 # Live tracker
 
-Auto-written by `npm run sync` at **2026-09-02T20:16:49.442Z**. Do not hand-edit — re-run sync after venture gates.
+Auto-written by `npm run sync` at **2026-09-02T20:42:05.593Z**. Do not hand-edit — re-run sync after venture gates.
 
 ## How progress is calculated
 
@@ -36,11 +36,11 @@ Auto-written by `npm run sync` at **2026-09-02T20:16:49.442Z**. Do not hand-edit
 | WhatsApp / Voice cash engine | Stage C · Phase 8 | 80% | 8/10 | P0 · active | Phase 8: Pilot client contract (pending) |
 | YouTube editor + screenplay | Phase 4 · Clip research + provenance | 55% | — | P0 · active | Add Google creds (`GOOGLE_APPLICATION_CREDENTIALS` + `GCS_BUCKET` or Drive folder) → set `CLIP_CLOUD=gcs` and re-run `npm run clips:fetch` to sync cloud. |
 | Research Frontier Lab | v0.1 | 12% | — | P1 · active | Ingest 1–3 abstracts into Kingdom brain via kingdom-wiki (vertical: generative comics / multimodal consistency). |
-| Procedural City | Stage F · Phase 58 | 63% | 58/92 | P1 · active | Phase 58: Asset manifest system (pending) |
+| Procedural City | Stage F · Phase 63 | 65% | 63/97 | P1 · active | Phase 63: Scale and orientation normalization (pending) |
 | ComicMainEngine | 2A · A1 passed · A2 Scene cards + storyboard ingest | 33% | 2/6 | P2 · active | A2 Scene cards + storyboard ingest (start) |
-| Kingdom ops (subs + expenses) | v1.0 | 70% | — | P1 · active | Cancel/review 6 kill-list seats; reclaim low-risk disk (51.4% used) |
-| Mac optimize audit | v0.1 | 67% | — | P1 · active | Memory pressure is warning |
-| Job Jugaad | Tracker v0.1 | 83% | — | P1 · active | Keep logging — 414/500 toward ongoing target |
+| Kingdom ops (subs + expenses) | v1.0 | 70% | — | P1 · active | Cancel/review 6 kill-list seats; reclaim low-risk disk (51.7% used) |
+| Mac optimize audit | v0.1 | 55% | — | P1 · active | Memory pressure is warning |
+| Job Jugaad | Tracker v0.1 | 88% | — | P1 · active | Keep logging — 439/500 toward ongoing target |
 | Shorts tooling | — | 0% | — | parked · parked | Do not focus |
 | BeamDojo (Isaac Lab locomotion) | Stage 1 smoke | 18% | — | P1 · active | Dual-terrain Stage 1 (flat physics + imagined beam height scan) then 1024-env CUDA train on the A10. |
 

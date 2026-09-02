@@ -1,6 +1,6 @@
 {
   "venture_id": "job-jugaad",
-  "synced_at": "2026-09-02T20:16:49.863Z",
+  "synced_at": "2026-09-02T20:42:06.049Z",
   "repo": {
     "path": "/Users/avinashnandyala/Projects/job-jugaad",
     "head": "5563327ba6a2d1ac08ed0f5353d6c16ffdfa49a3",
@@ -120,7 +120,7 @@
   ],
   "spend_usd": null,
   "ceiling_usd": null,
-  "progress": 83,
+  "progress": 88,
   "version": "Tracker v0.1",
   "test_commands": [
     {

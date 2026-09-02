@@ -64,10 +64,10 @@
     "date": "2026-09-02",
     "category": "api",
     "label": "Procedural City API (fal / Gemini)",
-    "amount": 1.08,
+    "amount": 1.19,
     "currency": "USD",
     "ventureId": "procedural-city",
-    "notes": "Synced from tracking/expenses.jsonl · 28 billable rows"
+    "notes": "Synced from tracking/expenses.jsonl · 38 billable rows"
   },
   {
     "id": "sync-wa-api",
@@ -80,16 +80,6 @@
     "notes": "Synced from WA expenses.jsonl · 0 billable · ceiling $40"
   },
   {
-    "id": "sync-beamdojo-gpu",
-    "date": "2026-09-02",
-    "category": "infra",
-    "label": "beamdojo GPU / compute",
-    "amount": 3.87,
-    "currency": "USD",
-    "ventureId": "beamdojo",
-    "notes": "Synced from tracking/expenses.jsonl · 1 billable rows"
-  },
-  {
     "id": "sync-jugaad-api",
     "date": "2026-09-02",
     "category": "api",
@@ -98,5 +88,15 @@
     "currency": "USD",
     "ventureId": "job-jugaad",
     "notes": "Synced from tracking/expenses.jsonl · 0 billable rows"
+  },
+  {
+    "id": "sync-beamdojo-gpu",
+    "date": "2026-09-02",
+    "category": "infra",
+    "label": "beamdojo GPU / compute",
+    "amount": 3.87,
+    "currency": "USD",
+    "ventureId": "beamdojo",
+    "notes": "Synced from tracking/expenses.jsonl · 1 billable rows"
   }
 ]
