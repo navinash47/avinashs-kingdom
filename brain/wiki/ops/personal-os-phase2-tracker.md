@@ -8,13 +8,13 @@ tags: [ops, personal-os, phase2, tracker]
 
 Temporary live board for the hard ~10%. SRS: [[concepts/personal-os-phase2-srs]]. Prompt: [[ops/personal-os-phase2-builder-prompt]].
 
-**Overall:** `25%` · **Current step:** `W1 done — starting W2` · **Branch:** `main` · **Last update:** `2026-09-02`
+**Overall:** `25%` · **Current step:** `W2 LLM judge in_progress` · **Branch:** `main` · **Last update:** `2026-09-02`
 
 | Workstream | Status | % | Evidence / SHA | Notes |
 |------------|--------|---|----------------|-------|
 | W0 SRS + builder prompt + this tracker | **done** | 100 | design files on disk | — |
-| W1 Obs 11 merge playbook | **done** | 100 | see session log / commit SHA after push | sync-kingdom + ops playbook + Obs 11 ACTIONED |
-| W2 LLM contradiction judge | pending | 0 | — | After W1 |
+| W1 Obs 11 merge playbook | **done** | 100 | `c2df411` | sync-kingdom + ops playbook + Obs 11 ACTIONED |
+| W2 LLM contradiction judge | **in_progress** | 10 | — | Building CLI + fixture |
 | W3 Full auto wiki | pending | 0 | — | After W2 |
 | W4 MCP per app (pilot + template) | pending | 0 | — | After W3 |
 

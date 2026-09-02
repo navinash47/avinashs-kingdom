@@ -12,6 +12,11 @@ dist
 dist-ssr
 *.local
 
+# Brain judge runtime reports (keep directory; fixtures stay tracked)
+brain/harness/reports/judge-*.json
+brain/harness/reports/proposals/
+!brain/harness/reports/.gitkeep.md
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

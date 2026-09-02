@@ -23,6 +23,9 @@ brain/harness/
   README.md                 ← this file
   query.mjs                 ← KG/FSM CLI: list / neighbors / path / fsm / capabilities
   lint.mjs                  ← wiki health (heuristic v2): links + stale/dupes + light status/claim heuristics
+  judge.mjs                 ← Phase 2 LLM/offline contradiction judge (advisory; dry-run default)
+  fixtures/judge-conflict/  ← synthetic contradiction golden for `brain:judge --fixture`
+  reports/                  ← judge report artifacts (gitignored JSON; see .gitkeep.md)
   wiki-query.mjs            ← keyword search over compiled wiki
   ingest.mjs                ← semi-auto: file → stub (title/summary extract) + index/log checklist
   empty-model/
@@ -57,11 +60,14 @@ Onboard: [[wiki/concepts/onboard-new-project]].
 ```bash
 cd ~/Projects/avinashs-kingdom
 
-# Compiled wiki (heuristic v2 — not an LLM contradiction / claim judge)
-npm run brain:lint
+# Compiled wiki
+npm run brain:lint                      # heuristic v2 (structure) — NOT the LLM judge
 npm run brain:lint -- --strict          # fail on warnings too
 npm run brain:lint -- --stale-days 90   # tune stale updated: threshold
 npm run brain:lint -- --log-lag-days 14 # updated: lagging recent wiki/log mentions
+npm run brain:judge                     # LLM/offline contradiction judge (dry-run → reports/)
+npm run brain:judge:fixture             # golden synthetic conflict (offline)
+npm run brain:judge -- --apply          # gated: write proposals/ only (no wiki rewrite)
 npm run brain:query -- personal OS
 npm run brain:ingest -- --list
 npm run brain:ingest -- --file brain/raw/inbox/<source>.md   # stub + title/summary extract + checklist
@@ -89,6 +95,18 @@ After sync that touches wiki structure: run `npm run brain:lint` as hygiene.
 
 
 This is structural + light phrase hygiene, **not** a full LLM contradiction / claim judge. False positives are expected on status words in prose — treat new checks as review prompts. Tune with `--stale-days` (default 90) and `--log-lag-days` (default 14).
+
+### `brain:judge` — LLM / offline contradiction judge (Phase 2)
+
+| | `brain:lint` (heuristic v2) | `brain:judge` |
+|--|-----------------------------|---------------|
+| Role | Deterministic structure + cheap phrase echoes | Advisory claim A vs B contradictions |
+| Default | Always local | Dry-run report under `brain/harness/reports/` |
+| LLM | Never | Tries OmniRoute (`OMNIROUTE_BASE_URL`, default `http://127.0.0.1:20128/v1`); falls back to offline heuristics |
+| Writes wiki? | No (report only) | No — `--apply` writes **proposals** only |
+| Golden | — | `npm run brain:judge:fixture` |
+
+Both are required in the personal OS playbook: lint for structure, judge for claim review prompts. Human still approves material wiki edits.
 
 ### `brain:ingest` — semi-auto happy path
 

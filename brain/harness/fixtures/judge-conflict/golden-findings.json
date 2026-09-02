@@ -1,0 +1,10 @@
+{
+  "description": "Golden expectations for brain:judge --fixture (offline heuristic).",
+  "expect_min_contradictions": 2,
+  "expected_reasons_substrings": [
+    "immutable",
+    "parked",
+    "heuristic"
+  ],
+  "note": "Fixture pages intentionally contradict. Used as documented golden example for Phase 2 W2."
+}

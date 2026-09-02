@@ -29,6 +29,8 @@
     "dashboards:status": "bash scripts/start-dashboards.sh --status",
     "dashboards:stop": "bash scripts/start-dashboards.sh --stop",
     "brain:lint": "node brain/harness/lint.mjs",
+    "brain:judge": "node brain/harness/judge.mjs",
+    "brain:judge:fixture": "node brain/harness/judge.mjs --fixture --offline",
     "brain:query": "node brain/harness/wiki-query.mjs",
     "brain:ingest": "node brain/harness/ingest.mjs",
     "brain:harness": "node brain/harness/query.mjs",

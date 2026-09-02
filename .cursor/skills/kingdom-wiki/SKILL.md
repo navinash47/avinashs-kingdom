@@ -53,6 +53,14 @@ Broken links → errors (exit 1). Missing index / orphans / stale `updated:` / d
 
 **v2 warnings are review prompts, not a contradiction judge.** Report them first; fix broken links / missing `updated:` only when asked. Do **not** mass-edit wiki prose just to silence status-phrase or claim-echo warnings.
 
+For claim A vs B contradictions, run the additive judge (Phase 2):
+
+```bash
+cd /Users/avinashnandyala/Projects/avinashs-kingdom && npm run brain:judge
+```
+
+Default dry-run writes `brain/harness/reports/judge-*.json`. Optional `--apply` writes proposals only (human still edits wiki). Golden: `npm run brain:judge:fixture`. Judge ≠ lint — keep both.
+
 Fix only if the user asked to fix; otherwise list proposed fixes. Complementary CLIs: `npm run brain:query -- <terms>`, `npm run brain:ingest -- --list`.
 
 ## Rules

@@ -2,6 +2,10 @@
 
 Append-only. Prefix each entry with `## [YYYY-MM-DD] <op> | <title>` so recent activity is greppable.
 
+## [2026-09-02] ops | Phase 2 W2 — LLM contradiction judge
+
+Added `brain/harness/judge.mjs` + `npm run brain:judge` (dry-run → `brain/harness/reports/`; OmniRoute LLM with offline fallback; gated `--apply` → proposals only). Golden: `npm run brain:judge:fixture`. Documented judge ≠ heuristic lint v2 in harness README, [[ops/personal-os-playbook]], kingdom-wiki skill.
+
 ## [2026-09-02] ops | Phase 2 W1 — Obs 11 merge playbook
 
 Encoded cloud→Mac UI merge rules in `.cursor/skills/sync-kingdom/SKILL.md` (+ `~/.cursor` mirror) and [[ops/cloud-ui-merge-playbook]]. Keep-ours: App.tsx / OrchestratorProvider / VentureSidebar·VenturePage / FleetGraph/. Fold-in: Research Lab / Vite `/live`. Obs 11 → ACTIONED.

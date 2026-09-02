@@ -58,6 +58,8 @@ Then finish checklist in [[concepts/onboard-new-project]].
 cd ~/Projects/avinashs-kingdom
 npm run sync
 npm run brain:lint
+npm run brain:judge              # advisory contradictions → brain/harness/reports/ (dry-run)
+npm run brain:judge:fixture     # golden synthetic conflict
 npm run brain:query -- personal OS
 npm run brain:ingest -- --list
 npm run brain:ingest -- --file brain/raw/inbox/<source>.md
@@ -65,7 +67,7 @@ npm run brain:harness -- list
 npm run venture:new -- --id demo --repo ~/Projects/demo --agent agent-demo
 ```
 
-`brain:lint` is **heuristic v2** (links/orphans/stale `updated:`/duplicate titles/`venture_id` + light conflicting status phrases, duplicate claim bullets, updated-vs-log lag) — **still not** an LLM contradiction / claim judge. `brain:ingest --file` is semi-auto (stub with best-effort title/summary + checklist); review/complete with kingdom-wiki.
+`brain:lint` is **heuristic v2** (links/orphans/stale `updated:`/duplicate titles/`venture_id` + light conflicting status phrases, duplicate claim bullets, updated-vs-log lag). `brain:judge` is the **additive** LLM/offline contradiction judge (default dry-run report; `--apply` → proposals only — never silent wiki rewrite). Run both when reviewing claim health. `brain:ingest --file` is semi-auto (stub with best-effort title/summary + checklist); review/complete with kingdom-wiki.
 
 ## Do not
 
