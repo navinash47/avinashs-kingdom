@@ -167,6 +167,28 @@ function runFinishResume() {
   return { ok: status === 0, status, output }
 }
 
+function runUpdateCoverLetter(roleId, text) {
+  const workdir = resumeWorkdir()
+  if (!workdir) return { ok: false, status: 1, error: 'Resume service not configured', output: '' }
+  if (!roleId || !text?.trim()) {
+    return { ok: false, status: 400, error: 'roleId and text required', output: '' }
+  }
+
+  const result = spawnSync(
+    process.execPath,
+    [path.join(workdir, 'scripts', 'update-cover-letter.mjs'), '--role', roleId, '--text', text],
+    {
+      cwd: workdir,
+      encoding: 'utf8',
+      timeout: 120_000,
+      maxBuffer: 4 * 1024 * 1024,
+    },
+  )
+  const output = combineOutput(result.stdout ?? '', result.stderr ?? '')
+  const status = result.status ?? 1
+  return { ok: status === 0, status, output, roleId }
+}
+
 function runApproveLinkedIn() {
   const workdir = resumeWorkdir()
   if (!workdir) return { ok: false, status: 1, error: 'Resume service not configured', output: '' }
@@ -321,6 +343,24 @@ export async function handleOrchestratorRequest(req, res) {
           service: serviceStatus(name),
           output: out.output,
           error: out.error,
+        })
+        return true
+      }
+      if (action === 'update-cover-letter') {
+        if (name !== 'resume') {
+          json(res, 400, { error: 'update-cover-letter only available for resume service' })
+          return true
+        }
+        const body = await readBody(req)
+        const out = runUpdateCoverLetter(body.roleId, body.text)
+        const httpStatus = out.ok ? 200 : out.status === 400 ? 400 : 500
+        json(res, httpStatus, {
+          ok: out.ok,
+          status: out.status,
+          service: serviceStatus(name),
+          output: out.output,
+          error: out.error,
+          roleId: out.roleId,
         })
         return true
       }
