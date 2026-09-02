@@ -85,7 +85,8 @@ After sync that touches wiki structure: run `npm run brain:lint` as hygiene.
 | Severity | What |
 |----------|------|
 | **Error** (exit 1) | Broken `[[wiki-links]]` / in-wiki markdown links |
-| **Warning** (exit 0 unless `--strict`) | Missing index rows, orphans, missing/stale `updated:` frontmatter, duplicate H1 titles, duplicate `venture_id` under `ventures/` only, path/`venture_id` mismatch, architecture|experiments without matching `ventures/<id>`, light same-basename+title across folders, **conflicting lifecycle/priority phrases** across a venture’s pages (+ live-tracker lines), **duplicate claim bullets**, **`updated:` lagging a recent `wiki/log.md` mention** |
+| **Warning** (exit 0 unless `--strict`) | Missing index rows, orphans, missing/stale `updated:` frontmatter, duplicate H1 titles, duplicate `venture_id` under `ventures/` only, path/`venture_id` mismatch, architecture|experiments without matching `ventures/<id>`, light same-basename+title across folders, **conflicting lifecycle/priority phrases** across a venture’s `ventures|architecture|experiments` pages (status/census-cell contexts only — not live-tracker auto census), **duplicate claim bullets** (skips short/path-stub bullets), **`updated:` lagging a recent `wiki/log.md` wiki-link or path mention** |
+
 
 This is structural + light phrase hygiene, **not** a full LLM contradiction / claim judge. False positives are expected on status words in prose — treat new checks as review prompts. Tune with `--stale-days` (default 90) and `--log-lag-days` (default 14).
 
