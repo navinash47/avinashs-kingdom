@@ -7,6 +7,7 @@ import {
   startService,
   type ServiceStatus,
 } from '../lib/orchestratorApi'
+import { formatUtcDisplay } from '../lib/formatUtc'
 
 const DASHBOARD = 'http://127.0.0.1:5199'
 
@@ -226,7 +227,7 @@ export function ResumeKnowledgePanel({ data, portfolio: portfolioProp }: Props) 
       <header className="panel-head">
         <h2>Resume knowledge</h2>
         <p className="muted">
-          Phase {data.phase} · {data.status.replace(/_/g, ' ')} · updated {data.updated}
+          Phase {data.phase} · {data.status.replace(/_/g, ' ')} · updated {formatUtcDisplay(data.updated)}
           {data.dashboard_ui ? ` · ${data.dashboard_ui}` : ''}
         </p>
       </header>
@@ -471,8 +472,8 @@ export function ResumeKnowledgePanel({ data, portfolio: portfolioProp }: Props) 
               {linkedInApproved ? 'APPROVED' : 'DRAFT'}
             </span>
             <span className="muted tiny">
-              updated {linkedin.updated ?? '—'}
-              {linkedin.approved_at ? ` · approved ${linkedin.approved_at.slice(0, 10)}` : ''}
+              updated {formatUtcDisplay(linkedin.updated)}
+              {linkedin.approved_at ? ` · approved ${formatUtcDisplay(linkedin.approved_at)}` : ''}
             </span>
           </div>
           {!linkedInApproved ? (
