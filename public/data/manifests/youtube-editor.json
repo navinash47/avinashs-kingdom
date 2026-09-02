@@ -1,0 +1,110 @@
+{
+  "venture_id": "youtube-editor",
+  "synced_at": "2026-09-02T03:48:40.821Z",
+  "repo": {
+    "path": "/Users/avinashnandyala/Projects/youtube-editor-lab",
+    "head": "56d156b18a881db0f9f8ea1b962dfd1e35a92402",
+    "branch": "main",
+    "last_commit_at": "2026-08-24T01:34:42-07:00",
+    "remote_url": "https://github.com/navinash47/youtube-editor-lab.git",
+    "github": {
+      "owner": "navinash47",
+      "repo": "youtube-editor-lab",
+      "default_branch": "main"
+    }
+  },
+  "stats": {
+    "files": 145,
+    "lines": 22156,
+    "primary_language": "JSON",
+    "languages": [
+      {
+        "language": "Other",
+        "files": 79,
+        "lines": 10486
+      },
+      {
+        "language": "JSON",
+        "files": 24,
+        "lines": 6266
+      },
+      {
+        "language": "JavaScript",
+        "files": 13,
+        "lines": 3108
+      },
+      {
+        "language": "TypeScript",
+        "files": 5,
+        "lines": 924
+      },
+      {
+        "language": "Markdown",
+        "files": 21,
+        "lines": 909
+      },
+      {
+        "language": "CSS",
+        "files": 1,
+        "lines": 426
+      },
+      {
+        "language": "HTML",
+        "files": 1,
+        "lines": 19
+      },
+      {
+        "language": "YAML",
+        "files": 1,
+        "lines": 18
+      }
+    ],
+    "truncated": false,
+    "sampled_files": 145,
+    "source": "walker"
+  },
+  "dependencies": {
+    "ecosystem": "node",
+    "runtime": [
+      {
+        "name": "@google-cloud/storage",
+        "version": "^7.22.0",
+        "ecosystem": "npm"
+      },
+      {
+        "name": "googleapis",
+        "version": "^174.0.1",
+        "ecosystem": "npm"
+      }
+    ],
+    "dev": [
+      {
+        "name": "ajv",
+        "version": "^8.17.1",
+        "ecosystem": "npm"
+      },
+      {
+        "name": "ajv-formats",
+        "version": "^3.0.1",
+        "ecosystem": "npm"
+      }
+    ]
+  },
+  "storage": [],
+  "models_detected": [],
+  "spend_usd": null,
+  "ceiling_usd": null,
+  "progress": 55,
+  "version": "Phase 4 · Clip research + provenance",
+  "test_commands": [
+    {
+      "id": "unit",
+      "label": "npm test",
+      "cmd": "npm test",
+      "type": "unit",
+      "description": "YouTube editor lab test suite (clip research, provenance lint)"
+    }
+  ],
+  "suggestions": [],
+  "services": []
+}

@@ -1,0 +1,97 @@
+{
+  "venture_id": "youtube-editor",
+  "updated": "2026-08-24",
+  "type": "architecture",
+  "sections": {
+    "system design": {
+      "title": "System design",
+      "content": "Anti-slop long-form pipeline: Formula Desk → Clip Researcher → Script → Narration → Cut Control → timeline. Real clip provenance required. Phase 4: clip research + cloud sync.",
+      "markdown": "Anti-slop long-form pipeline: Formula Desk → Clip Researcher → Script → Narration → Cut Control → timeline. Real clip provenance required. Phase 4: clip research + cloud sync.",
+      "diagrams": [],
+      "tables": []
+    },
+    "input / output flows": {
+      "title": "Input / output flows",
+      "content": "```mermaid\nflowchart LR\n  Script[Screenplay MD] --> Formula[Formula Desk]\n  Formula --> Clips[Clip Researcher]\n  Clips --> Cut[Cut Control]\n  Cut --> Timeline[Timeline preview]\n  Clips --> Prov[Provenance log]\n```\n\n- **In:** screenplay markdown, clip candidates (local + GCS/Drive), formula lint rules\n- **Out:** selected clips with provenance, timeline preview, VO-ready cut",
+      "markdown": "- **In:** screenplay markdown, clip candidates (local + GCS/Drive), formula lint rules\n- **Out:** selected clips with provenance, timeline preview, VO-ready cut",
+      "diagrams": [
+        {
+          "source": "flowchart LR\n  Script[Screenplay MD] --> Formula[Formula Desk]\n  Formula --> Clips[Clip Researcher]\n  Clips --> Cut[Cut Control]\n  Cut --> Timeline[Timeline preview]\n  Clips --> Prov[Provenance log]",
+          "svg_path": null,
+          "svg_inline": null
+        }
+      ],
+      "tables": []
+    },
+    "data stores": {
+      "title": "Data stores",
+      "content": "| Store | Type | Path |\n|-------|------|------|\n| STATUS | Markdown | STATUS.md |\n| SRS | Markdown | docs/SRS.md |\n| Clip index | JSON/files | tracking/ (Cut Control state) |",
+      "markdown": "| Store | Type | Path |\n|-------|------|------|\n| STATUS | Markdown | STATUS.md |\n| SRS | Markdown | docs/SRS.md |\n| Clip index | JSON/files | tracking/ (Cut Control state) |",
+      "diagrams": [],
+      "tables": [
+        {
+          "headers": [
+            "Store",
+            "Type",
+            "Path"
+          ],
+          "rows": [
+            [
+              "STATUS",
+              "Markdown",
+              "STATUS.md"
+            ],
+            [
+              "SRS",
+              "Markdown",
+              "docs/SRS.md"
+            ],
+            [
+              "Clip index",
+              "JSON/files",
+              "tracking/ (Cut Control state)"
+            ]
+          ]
+        }
+      ]
+    },
+    "key libraries": {
+      "title": "Key libraries",
+      "content": "- Node.js tooling\n- Google Cloud Storage / Drive (optional CLIP_CLOUD=gcs)",
+      "markdown": "- Node.js tooling\n- Google Cloud Storage / Drive (optional CLIP_CLOUD=gcs)",
+      "diagrams": [],
+      "tables": []
+    },
+    "version history": {
+      "title": "Version history",
+      "content": "- Phase 4 · Clip research + provenance · 55%",
+      "markdown": "- Phase 4 · Clip research + provenance · 55%",
+      "diagrams": [],
+      "tables": []
+    },
+    "future plans": {
+      "title": "Future plans",
+      "content": "- GCS clip sync\n- Phase 5 timeline compiler + preview render",
+      "markdown": "- GCS clip sync\n- Phase 5 timeline compiler + preview render",
+      "diagrams": [],
+      "tables": []
+    },
+    "experiments log": {
+      "title": "Experiments log",
+      "content": "See [[experiments/youtube-editor]].",
+      "markdown": "See [[experiments/youtube-editor]].",
+      "diagrams": [],
+      "tables": []
+    }
+  },
+  "section_titles": [
+    "System design",
+    "Input / output flows",
+    "Data stores",
+    "Key libraries",
+    "Version history",
+    "Future plans",
+    "Experiments log"
+  ],
+  "source_path": "brain/wiki/architecture/youtube-editor.md"
+}

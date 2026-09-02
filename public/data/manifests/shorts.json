@@ -1,0 +1,13 @@
+{
+  "venture_id": "shorts",
+  "synced_at": "2026-09-02T03:48:41.246Z",
+  "repo": null,
+  "stats": null,
+  "dependencies": null,
+  "storage": [],
+  "models_detected": [],
+  "suggestions": [
+    "shorts: repo path missing or not found — check registry"
+  ],
+  "services": []
+}

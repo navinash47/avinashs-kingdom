@@ -2,6 +2,7 @@ export const KINGDOM_TABS = [
   'throne',
   'ventures',
   'research',
+  'resume',
   'graph',
   'tokens',
   'expenses',

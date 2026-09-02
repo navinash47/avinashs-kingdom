@@ -1,0 +1,24 @@
+{
+  "venture_id": "research-frontier",
+  "updated": "2026-08-24",
+  "items": [
+    {
+      "date": "2026-08-24",
+      "summary": "Initial commit",
+      "source": "git"
+    },
+    {
+      "date": "2026-08-20",
+      "summary": "Architecture wiki + sync bundle for inspector Architecture tab.",
+      "source": "wiki",
+      "video": null
+    },
+    {
+      "date": "2026-08-11",
+      "summary": "Venture registered in fleet control plane registry.",
+      "source": "wiki",
+      "video": null
+    }
+  ],
+  "source_path": "brain/wiki/experiments/research-frontier.md"
+}

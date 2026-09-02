@@ -1,0 +1,98 @@
+{
+  "synced_at": "2026-09-02T03:48:41.247Z",
+  "ventures": [
+    {
+      "id": "whatsapp-voice",
+      "name": "WhatsApp / Voice cash engine",
+      "primary_language": "JavaScript",
+      "lines": 2030,
+      "files": 40,
+      "truncated": false,
+      "synced_at": "2026-09-02T03:48:40.767Z"
+    },
+    {
+      "id": "youtube-editor",
+      "name": "YouTube editor + screenplay",
+      "primary_language": "JSON",
+      "lines": 22156,
+      "files": 145,
+      "truncated": false,
+      "synced_at": "2026-09-02T03:48:40.821Z"
+    },
+    {
+      "id": "research-frontier",
+      "name": "Research Frontier Lab",
+      "primary_language": "Markdown",
+      "lines": 43,
+      "files": 3,
+      "truncated": false,
+      "synced_at": "2026-09-02T03:48:40.872Z"
+    },
+    {
+      "id": "beamdojo",
+      "name": "BeamDojo (Isaac Lab locomotion)",
+      "primary_language": "Python",
+      "lines": 6014,
+      "files": 38,
+      "truncated": false,
+      "synced_at": "2026-09-02T03:48:40.935Z"
+    },
+    {
+      "id": "procedural-city",
+      "name": "Procedural City",
+      "primary_language": "Python",
+      "lines": 49891,
+      "files": 336,
+      "truncated": false,
+      "synced_at": "2026-09-02T03:48:40.988Z"
+    },
+    {
+      "id": "comic-engine",
+      "name": "ComicMainEngine",
+      "primary_language": "Python",
+      "lines": 748313,
+      "files": 1590,
+      "truncated": false,
+      "synced_at": "2026-09-02T03:48:41.042Z"
+    },
+    {
+      "id": "kingdom-ops",
+      "name": "Kingdom ops (subs + expenses)",
+      "primary_language": "JSON",
+      "lines": 31030,
+      "files": 274,
+      "truncated": false,
+      "synced_at": "2026-09-02T03:48:41.092Z"
+    },
+    {
+      "id": "mac-optimize-audit",
+      "name": "Mac optimize audit",
+      "primary_language": "JSON",
+      "lines": 2161639,
+      "files": 3059,
+      "truncated": false,
+      "synced_at": "2026-09-02T03:48:41.141Z"
+    },
+    {
+      "id": "job-jugaad",
+      "name": "Job Jugaad",
+      "primary_language": "JSON",
+      "lines": 3903,
+      "files": 21,
+      "truncated": false,
+      "synced_at": "2026-09-02T03:48:41.195Z"
+    },
+    {
+      "id": "shorts",
+      "name": "Shorts tooling",
+      "primary_language": null,
+      "lines": 0,
+      "files": 0,
+      "truncated": false,
+      "synced_at": "2026-09-02T03:48:41.246Z"
+    }
+  ],
+  "global_suggestions": [
+    "shorts: repo path missing or not found — check registry"
+  ]
+}

@@ -1,0 +1,159 @@
+{
+  "synced_at": "2026-09-02T03:48:46.543Z",
+  "skills": [
+    {
+      "id": "kingdom-tunnels",
+      "path": "/Users/avinashnandyala/.cursor/skills/kingdom-tunnels",
+      "has_skill_md": true
+    },
+    {
+      "id": "kingdom-wiki",
+      "path": "/Users/avinashnandyala/.cursor/skills/kingdom-wiki",
+      "has_skill_md": true
+    },
+    {
+      "id": "log-outreach",
+      "path": "/Users/avinashnandyala/.cursor/skills/log-outreach",
+      "has_skill_md": true
+    },
+    {
+      "id": "phase-gate",
+      "path": "/Users/avinashnandyala/.cursor/skills/phase-gate",
+      "has_skill_md": true
+    },
+    {
+      "id": "sync-kingdom",
+      "path": "/Users/avinashnandyala/.cursor/skills/sync-kingdom",
+      "has_skill_md": true
+    },
+    {
+      "id": "task-observer",
+      "path": "/Users/avinashnandyala/.cursor/skills/task-observer",
+      "has_skill_md": true
+    },
+    {
+      "id": "youtube-provenance",
+      "path": "/Users/avinashnandyala/.cursor/skills/youtube-provenance",
+      "has_skill_md": true
+    }
+  ],
+  "agents": [
+    {
+      "id": "agent-cash",
+      "name": "Agent Cash",
+      "venture_id": "whatsapp-voice",
+      "focus": "WhatsApp/voice lead agents for India SMBs. Close offers, not features.",
+      "skills": [
+        "log-outreach",
+        "phase-gate",
+        "sync-kingdom",
+        "kingdom-tunnels"
+      ],
+      "token_budget_usd": 40,
+      "token_used_usd": 0,
+      "recent_observations": []
+    },
+    {
+      "id": "agent-cut",
+      "name": "Agent Cut",
+      "venture_id": "youtube-editor",
+      "focus": "Screenplay desk + real clip research. Anti-slop long-form only.",
+      "skills": [
+        "youtube-provenance",
+        "sync-kingdom",
+        "phase-gate"
+      ],
+      "token_budget_usd": 50,
+      "token_used_usd": 0,
+      "recent_observations": []
+    },
+    {
+      "id": "agent-atlas",
+      "name": "Agent Atlas",
+      "venture_id": "research-frontier",
+      "focus": "Paper clubbing, frontier ranking, gap/analogy extraction for one vertical.",
+      "skills": [
+        "kingdom-wiki",
+        "sync-kingdom"
+      ],
+      "token_budget_usd": 35,
+      "token_used_usd": 0,
+      "recent_observations": []
+    },
+    {
+      "id": "agent-dojo",
+      "name": "Agent Dojo",
+      "venture_id": "beamdojo",
+      "focus": "Isaac Lab BeamDojo on Lambda GPU. Proof videos in Kingdom Research Lab. Never git-commit weights.",
+      "skills": [],
+      "token_budget_usd": 20,
+      "token_used_usd": 0,
+      "recent_observations": []
+    },
+    {
+      "id": "agent-metro",
+      "name": "Agent Metro",
+      "venture_id": "procedural-city",
+      "focus": "Procedural city gates before Comic. Control fal/Gemini spend.",
+      "skills": [
+        "phase-gate",
+        "sync-kingdom"
+      ],
+      "token_budget_usd": 60,
+      "token_used_usd": 12,
+      "recent_observations": []
+    },
+    {
+      "id": "agent-ink",
+      "name": "Agent Ink",
+      "venture_id": "comic-engine",
+      "focus": "ComicMainEngine (onceuponatime) — V1 board done; V2/phase12+ after City. Batch jobs; usage.db.",
+      "skills": [
+        "phase-gate",
+        "sync-kingdom"
+      ],
+      "token_budget_usd": 45,
+      "token_used_usd": 18,
+      "recent_observations": []
+    },
+    {
+      "id": "agent-steward",
+      "name": "Agent Steward",
+      "venture_id": "kingdom-ops",
+      "focus": "Subscription kill list, expense hygiene, token caps, brain wiki hygiene.",
+      "skills": [
+        "kingdom-wiki",
+        "sync-kingdom",
+        "log-outreach"
+      ],
+      "token_budget_usd": 10,
+      "token_used_usd": 2,
+      "recent_observations": []
+    },
+    {
+      "id": "agent-janitor",
+      "name": "Agent Janitor",
+      "venture_id": "mac-optimize-audit",
+      "focus": "Mac RAM/CPU/swap audit, safe cache cleaners, keep the Air from stalling.",
+      "skills": [
+        "sync-kingdom"
+      ],
+      "token_budget_usd": 5,
+      "token_used_usd": 0,
+      "recent_observations": []
+    },
+    {
+      "id": "agent-jugaad",
+      "name": "Agent Jugaad",
+      "venture_id": "job-jugaad",
+      "focus": "Track applied companies + roles; pipeline board; later resume-pick + headed apply.",
+      "skills": [
+        "sync-kingdom",
+        "log-outreach"
+      ],
+      "token_budget_usd": 15,
+      "token_used_usd": 0,
+      "recent_observations": []
+    }
+  ]
+}

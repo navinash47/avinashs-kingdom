@@ -1,0 +1,86 @@
+{
+  "synced_at": "2026-09-02T03:48:40.739Z",
+  "source": "/Users/avinashnandyala/ProceduralCity/dashboard/data.js",
+  "generated_at": "2026-09-02T03:48:40.733824+00:00",
+  "count": 6,
+  "proofs": [
+    {
+      "id": "A",
+      "title": "Stage A — Foundations",
+      "status": "partial",
+      "terminal": "reports/stage_a_verify_terminal.txt",
+      "gate": null,
+      "unity_video": null,
+      "poster": null,
+      "duration_sec": null,
+      "checklist": null,
+      "unity_report": null,
+      "walkthrough_skipped": null
+    },
+    {
+      "id": "B",
+      "title": "Stage B — Deterministic layout",
+      "status": "pass",
+      "terminal": "reports/stage_b_verify_terminal.txt",
+      "gate": "reports/stage_b_gate.json",
+      "unity_video": null,
+      "poster": null,
+      "duration_sec": null,
+      "checklist": null,
+      "unity_report": null,
+      "walkthrough_skipped": null
+    },
+    {
+      "id": "C",
+      "title": "Stage C — Unity geometry (3×3)",
+      "status": "pass",
+      "terminal": "reports/stage_c_verify_terminal.txt",
+      "gate": "reports/stage_c_gate.json",
+      "unity_video": "reports/phase37_walkthrough.mp4",
+      "poster": "reports/phase37_walkthrough_poster.jpg",
+      "duration_sec": 721.5,
+      "checklist": "reports/phase37_walkthrough_checklist.md",
+      "unity_report": "reports/unity_stage_c_walkthrough.json",
+      "walkthrough_skipped": false
+    },
+    {
+      "id": "D",
+      "title": "Stage D — Streaming",
+      "status": "pass",
+      "terminal": "reports/stage_d_verify_terminal.txt",
+      "gate": "reports/stage_d_gate.json",
+      "unity_video": "reports/phase47_walkthrough.mp4",
+      "poster": "reports/phase47_walkthrough_poster.jpg",
+      "duration_sec": 1925.6,
+      "checklist": "reports/phase47_streaming_walk_checklist.md",
+      "unity_report": "reports/unity_stage_d_walkthrough.json",
+      "walkthrough_skipped": false
+    },
+    {
+      "id": "E48",
+      "title": "Stage E — Phase 48 structured smoke",
+      "status": "pass",
+      "terminal": "reports/stage_e_phase48_verify_terminal.txt",
+      "gate": "reports/phase48_structured_verify.json",
+      "unity_video": null,
+      "poster": null,
+      "duration_sec": null,
+      "checklist": null,
+      "unity_report": null,
+      "walkthrough_skipped": null
+    },
+    {
+      "id": "E49",
+      "title": "Stage E — Phase 49 L1/L2/L3 pipeline",
+      "status": "pass",
+      "terminal": "reports/stage_e_phase49_verify_terminal.txt",
+      "gate": "reports/unity_phase49_pipeline.json",
+      "unity_video": null,
+      "poster": null,
+      "duration_sec": null,
+      "checklist": null,
+      "unity_report": null,
+      "walkthrough_skipped": null
+    }
+  ]
+}

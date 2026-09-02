@@ -1,0 +1,82 @@
+{
+  "venture_id": "whatsapp-voice",
+  "synced_at": "2026-09-02T03:48:40.767Z",
+  "repo": {
+    "path": "/Users/avinashnandyala/Projects/whatsapp-voice-agents",
+    "head": "8d9d95dcba08533d7ed4ff534f0c3a0ab12c1062",
+    "branch": "main",
+    "last_commit_at": "2026-08-11T02:08:56-04:00",
+    "remote_url": null,
+    "github": null
+  },
+  "stats": {
+    "files": 40,
+    "lines": 2030,
+    "primary_language": "JavaScript",
+    "languages": [
+      {
+        "language": "Markdown",
+        "files": 25,
+        "lines": 954
+      },
+      {
+        "language": "JavaScript",
+        "files": 5,
+        "lines": 713
+      },
+      {
+        "language": "JSON",
+        "files": 5,
+        "lines": 328
+      },
+      {
+        "language": "Other",
+        "files": 5,
+        "lines": 35
+      }
+    ],
+    "truncated": false,
+    "sampled_files": 40,
+    "source": "walker"
+  },
+  "dependencies": {
+    "ecosystem": "node",
+    "runtime": [],
+    "dev": []
+  },
+  "storage": [
+    {
+      "type": "json",
+      "path": "tracking/phases.json",
+      "note": "Registry path"
+    },
+    {
+      "type": "jsonl",
+      "path": "tracking/expenses.jsonl",
+      "note": "Registry path"
+    }
+  ],
+  "models_detected": [],
+  "spend_usd": 0,
+  "ceiling_usd": 40,
+  "progress": 80,
+  "version": "Stage C · Phase 8",
+  "test_commands": [
+    {
+      "id": "unit",
+      "label": "Node tests",
+      "cmd": "npm test",
+      "type": "unit"
+    }
+  ],
+  "suggestions": [],
+  "services": [
+    {
+      "id": "dashboard",
+      "label": "WhatsApp demo",
+      "port": 8787,
+      "url": "http://127.0.0.1:8787",
+      "status": "up"
+    }
+  ]
+}

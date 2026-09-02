@@ -1,0 +1,49 @@
+{
+  "venture_id": "mac-optimize-audit",
+  "updated": "2026-08-24",
+  "type": "architecture",
+  "sections": {
+    "system design": {
+      "title": "System design",
+      "content": "RAM/CPU/swap/disk audit with safe cleaner recommendations. Live dashboard :8742.",
+      "markdown": "RAM/CPU/swap/disk audit with safe cleaner recommendations. Live dashboard :8742.",
+      "diagrams": [],
+      "tables": []
+    },
+    "input / output flows": {
+      "title": "Input / output flows",
+      "content": "- **In:** macOS host metrics, process RSS\n- **Out:** latest.json report, steward dashboard",
+      "markdown": "- **In:** macOS host metrics, process RSS\n- **Out:** latest.json report, steward dashboard",
+      "diagrams": [],
+      "tables": []
+    },
+    "data stores": {
+      "title": "Data stores",
+      "content": "| Store | Type | Path |\n|-------|------|------|\n| Latest report | JSON | reports/latest.json |",
+      "markdown": "| Store | Type | Path |\n|-------|------|------|\n| Latest report | JSON | reports/latest.json |",
+      "diagrams": [],
+      "tables": [
+        {
+          "headers": [
+            "Store",
+            "Type",
+            "Path"
+          ],
+          "rows": [
+            [
+              "Latest report",
+              "JSON",
+              "reports/latest.json"
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "section_titles": [
+    "System design",
+    "Input / output flows",
+    "Data stores"
+  ],
+  "source_path": "brain/wiki/architecture/mac-optimize-audit.md"
+}

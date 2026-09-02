@@ -1,0 +1,86 @@
+{
+  "version": "1",
+  "updated": "2026-08-24",
+  "services": {
+    "kingdom": {
+      "ventureId": "kingdom-ops",
+      "label": "Kingdom panel",
+      "port": 5173,
+      "workdir": "~/Projects/avinashs-kingdom",
+      "cmd": "npm run sync && npm run dev -- --host 127.0.0.1 --port 5173",
+      "embed": false,
+      "note": "Orchestrator UI — do not iframe self; use control bar only"
+    },
+    "city": {
+      "ventureId": "procedural-city",
+      "label": "City dashboard",
+      "port": 8765,
+      "workdir": "~/ProceduralCity",
+      "cmd": "python3 scripts/serve_dashboard.py --host 127.0.0.1 --port 8765 --no-open",
+      "embed": true
+    },
+    "comic": {
+      "ventureId": "comic-engine",
+      "label": "Comic v2a dashboard",
+      "port": 8770,
+      "workdir": "~/Desktop/ComicMainEngine",
+      "cmd": "DASHBOARD_HOST=127.0.0.1 DASHBOARD_PORT=8770 PYTHONPATH=src .venv/bin/python scripts/run_dashboard.py",
+      "embed": true
+    },
+    "whatsapp": {
+      "ventureId": "whatsapp-voice",
+      "label": "WhatsApp demo",
+      "port": 8787,
+      "workdir": "~/Projects/whatsapp-voice-agents",
+      "cmd": "PORT=8787 node demo/server.mjs",
+      "embed": true,
+      "kind": "api",
+      "healthPath": "/health",
+      "note": "API demo — GET / is the chat UI, POST /webhook, GET /health"
+    },
+    "jugaad": {
+      "ventureId": "job-jugaad",
+      "label": "Job tracker",
+      "port": 8790,
+      "workdir": "~/Projects/job-jugaad",
+      "cmd": "npm run start",
+      "embed": true
+    },
+    "resume": {
+      "ventureId": "job-jugaad",
+      "label": "Resume dashboard",
+      "port": 5199,
+      "workdir": "~/Projects/resume",
+      "cmd": "npm run dashboard",
+      "embed": false,
+      "note": "Role-fit ratings + Legacy/Archive — approve bullets before export-tex"
+    },
+    "portfolio": {
+      "ventureId": "portfolio",
+      "label": "Portfolio site",
+      "port": null,
+      "workdir": "~/Portfolio",
+      "cmd": null,
+      "embed": false,
+      "kind": "static",
+      "site_url": "https://navinash47.github.io/Portfolio/",
+      "note": "GitHub Pages — no local dev server; open site_url"
+    },
+    "subs": {
+      "ventureId": null,
+      "label": "Subscription audit",
+      "port": 8741,
+      "workdir": "~/Projects/subscription-audit",
+      "cmd": "source .venv/bin/activate && subaudit serve",
+      "embed": true
+    },
+    "mac": {
+      "ventureId": "mac-optimize-audit",
+      "label": "Mac audit dashboard",
+      "port": 8742,
+      "workdir": "~/Projects/mac-optimize-audit",
+      "cmd": "python3 -m mac_optimize serve --host 127.0.0.1 --port 8742",
+      "embed": true
+    }
+  }
+}

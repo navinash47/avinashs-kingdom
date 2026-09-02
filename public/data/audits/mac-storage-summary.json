@@ -1,95 +1,288 @@
 {
-  "generated_at": "2026-08-11T02:57:31.898004+00:00",
-  "source": "/Users/avinashnandyala/Projects/mac-storage-audit/reports/latest.json",
+  "generated_at": "2026-09-01T22:09:44.024839+00:00",
+  "source": "/Users/avinashnandyala/Projects/mac-optimize-audit/reports/latest.json",
+  "dashboard": "http://127.0.0.1:8742",
   "disk": {
-    "note": "Macintosh HD: 210.7 GB used / 460.4 GB (45.8%), 249.7 GB free",
-    "percent_used": 45.8,
-    "total_bytes": 494332366848,
-    "used_bytes": 226238181376,
-    "free_bytes": 268094185472
+    "note": "Data volume: 221.2 GB used / 429.5 GB (51.5%), 208.3 GB free",
+    "percent_used": 51.5,
+    "total_bytes": 461142884352,
+    "used_bytes": 237491843072,
+    "free_bytes": 223651041280
   },
-  "top_home": [
+  "memory": {
+    "total_bytes": 17179869184,
+    "total_human": "16.0 GB",
+    "used_bytes": 14391410688,
+    "used_human": "13.4 GB",
+    "percent_used": 83.8,
+    "free_bytes": 148160512,
+    "wired_bytes": 3620683776,
+    "active_bytes": 3566501888,
+    "inactive_bytes": 3444228096,
+    "compressor_bytes": 5609275392,
+    "compressed_stored_bytes": 25873809408,
+    "file_cache_bytes": 1959231488,
+    "file_cache_human": "1.8 GB",
+    "swapins": 15017465,
+    "swapouts": 17448585,
+    "pressure_level": 2,
+    "pressure": "urgent",
+    "swap": {
+      "raw": "total = 9216.00M  used = 7990.94M  free = 1225.06M  (encrypted)",
+      "total_bytes": 9663676416,
+      "used_bytes": 8379107901,
+      "free_bytes": 1284568514,
+      "used_mb": 7990.9,
+      "total_mb": 9216
+    }
+  },
+  "cpu": {
+    "ncpu": 10,
+    "loadavg": [
+      3.16,
+      2.59,
+      2.45
+    ],
+    "load_human": "3.16 / 2.59 / 2.45"
+  },
+  "health": {
+    "score": 25,
+    "grade": "F",
+    "summary": "memory pressure urgent/critical; swap 7.8 GB; Cursor Helper (Plugin): extension-host Agents Window [3-65] at 123% CPU; uptime 11 days",
+    "reasons": [
+      "memory pressure urgent/critical",
+      "swap 7.8 GB",
+      "Cursor Helper (Plugin): extension-host Agents Window [3-65] at 123% CPU",
+      "uptime 11 days"
+    ]
+  },
+  "host": {
+    "model": "Mac17,3",
+    "chip": "arm",
+    "macos": {
+      "ProductName": "\tmacOS",
+      "ProductVersion": "\t26.6.2",
+      "BuildVersion": "\t25G83"
+    },
+    "uptime": "15:09  up 11 days,  2:30, 1 user, load averages: 3.16 2.59 2.45",
+    "uptime_days": 11,
+    "ncpu": 10
+  },
+  "app_groups": [
     {
-      "path": "/Users/avinashnandyala/Library",
-      "bytes": 88785262094
+      "name": "Cursor",
+      "count": 76,
+      "rss_bytes": 3273687040,
+      "rss_human": "3.0 GB",
+      "cpu": 174.3
     },
     {
-      "path": "/Users/avinashnandyala/Desktop",
-      "bytes": 7541279560
+      "name": "Zen Browser",
+      "count": 19,
+      "rss_bytes": 776470528,
+      "rss_human": "740.5 MB",
+      "cpu": 10
     },
     {
-      "path": "/Users/avinashnandyala/.android",
-      "bytes": 7213735711
+      "name": "mdworker_shared",
+      "count": 16,
+      "rss_bytes": 172802048,
+      "rss_human": "164.8 MB",
+      "cpu": 0
     },
     {
-      "path": "/Users/avinashnandyala/Documents",
-      "bytes": 2596300354
+      "name": "Spotlight",
+      "count": 9,
+      "rss_bytes": 151109632,
+      "rss_human": "144.1 MB",
+      "cpu": 0.3
     },
     {
-      "path": "/Users/avinashnandyala/acads",
-      "bytes": 2458211808
+      "name": "Surfshark",
+      "count": 2,
+      "rss_bytes": 94486528,
+      "rss_human": "90.1 MB",
+      "cpu": 3.7
     },
     {
-      "path": "/Users/avinashnandyala/ProceduralCity",
-      "bytes": 1770387122
+      "name": "cloudflared",
+      "count": 7,
+      "rss_bytes": 83116032,
+      "rss_human": "79.3 MB",
+      "cpu": 0
     },
     {
-      "path": "/Users/avinashnandyala/OmniRoute",
-      "bytes": 846110851
+      "name": "node",
+      "count": 5,
+      "rss_bytes": 81952768,
+      "rss_human": "78.2 MB",
+      "cpu": 0
     },
     {
-      "path": "/Users/avinashnandyala/Movies",
-      "bytes": 678094805
+      "name": "python",
+      "count": 8,
+      "rss_bytes": 75005952,
+      "rss_human": "71.5 MB",
+      "cpu": 0.7
     }
   ],
+  "top_cpu": [
+    {
+      "pid": 68378,
+      "name": "Cursor Helper (Plugin): extension-host Agents Window [3-65]",
+      "path": "Cursor Helper (Plugin): extension-host Agents Window [3-65]",
+      "group": "Cursor",
+      "rss_bytes": 555794432,
+      "rss_human": "530.0 MB",
+      "pmem": 3.2,
+      "pcpu": 123.1
+    },
+    {
+      "pid": 404,
+      "name": "WindowServer",
+      "path": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+      "group": "WindowServer",
+      "rss_bytes": 38076416,
+      "rss_human": "36.3 MB",
+      "pmem": 0.2,
+      "pcpu": 18.4
+    },
+    {
+      "pid": 801,
+      "name": "Cursor Helper",
+      "path": "/Applications/Cursor.app/Contents/Frameworks/Cursor Helper.app/Contents/MacOS/Cursor Helper",
+      "group": "Cursor",
+      "rss_bytes": 114278400,
+      "rss_human": "109.0 MB",
+      "pmem": 0.7,
+      "pcpu": 16.1
+    },
+    {
+      "pid": 63290,
+      "name": "Cursor Helper (Renderer)",
+      "path": "/Applications/Cursor.app/Contents/Frameworks/Cursor Helper (Renderer).app/Contents/MacOS/Cursor Helper (Renderer)",
+      "group": "Cursor",
+      "rss_bytes": 62177280,
+      "rss_human": "59.3 MB",
+      "pmem": 0.4,
+      "pcpu": 7.4
+    },
+    {
+      "pid": 6619,
+      "name": "Cursor Helper (Renderer)",
+      "path": "/Applications/Cursor.app/Contents/Frameworks/Cursor Helper (Renderer).app/Contents/MacOS/Cursor Helper (Renderer)",
+      "group": "Cursor",
+      "rss_bytes": 78381056,
+      "rss_human": "74.8 MB",
+      "pmem": 0.5,
+      "pcpu": 7.3
+    },
+    {
+      "pid": 67021,
+      "name": "Cursor Helper (Renderer)",
+      "path": "/Applications/Cursor.app/Contents/Frameworks/Cursor Helper (Renderer).app/Contents/MacOS/Cursor Helper (Renderer)",
+      "group": "Cursor",
+      "rss_bytes": 1099579392,
+      "rss_human": "1.0 GB",
+      "pmem": 6.4,
+      "pcpu": 7.3
+    },
+    {
+      "pid": 64378,
+      "name": "Cursor Helper (Renderer)",
+      "path": "/Applications/Cursor.app/Contents/Frameworks/Cursor Helper (Renderer).app/Contents/MacOS/Cursor Helper (Renderer)",
+      "group": "Cursor",
+      "rss_bytes": 76513280,
+      "rss_human": "73.0 MB",
+      "pmem": 0.4,
+      "pcpu": 7.1
+    },
+    {
+      "pid": 413,
+      "name": "trustd",
+      "path": "/usr/libexec/trustd",
+      "group": "trustd",
+      "rss_bytes": 9207808,
+      "rss_human": "8.8 MB",
+      "pmem": 0.1,
+      "pcpu": 5.8
+    }
+  ],
+  "top_home": [],
   "recommendations": [
     {
       "priority": 1,
-      "title": "Clear ~/Library/Caches",
-      "bytes": 1973245440,
+      "title": "Memory pressure is urgent",
+      "bytes": 0,
       "risk": "low",
-      "action": "open ~/Library/Caches  # delete heavy app subfolders, not the whole Caches directory at once",
-      "rationale": "All user Library caches"
-    },
-    {
-      "priority": 2,
-      "title": "Remove duplicate large files",
-      "bytes": 224132909,
-      "risk": "medium",
-      "action": "# Review duplicate groups in the HTML/JSON report, keep one copy each",
-      "rationale": "Same-size + same-hash files found outside caches"
+      "action": "quit_runaways + close Zen tabs, then reboot if still swapping",
+      "rationale": "15,017,465 swap-ins — the SSD is paging. That hitch is the freeze you feel."
     },
     {
       "priority": 3,
-      "title": "Review cloud folder ~/Library/Group Containers/group.net.whatsapp.WhatsApp.shared",
-      "bytes": 6717933570,
+      "title": "Cursor is heavy (3.0 GB, 76 processes)",
+      "bytes": 3273687040,
       "risk": "high",
-      "action": "open '/Users/avinashnandyala/Library/Group Containers/group.net.whatsapp.WhatsApp.shared'",
-      "rationale": "Large synced/cloud-related local data"
+      "action": "Close unused agent chats / windows. Do not force-quit from this tool.",
+      "rationale": "This session is using Cursor; we will not kill it from the cleaner."
     },
     {
-      "priority": 3,
-      "title": "Review large folder ~/Library/Android/sdk",
-      "bytes": 5271700969,
-      "risk": "medium",
-      "action": "open '/Users/avinashnandyala/Library/Android/sdk'  # inspect before deleting",
-      "rationale": "Android SDK — large but needed for Android work"
-    },
-    {
-      "priority": 3,
-      "title": "Review large folder ~/Library/Application Support/Cursor",
-      "bytes": 2929560887,
+      "priority": 4,
+      "title": "Review always-on helpers: us.zoom.updater.login.check.plist, us.zoom.updater.plist, com.teamviewer.Helper.plist, com.teamviewer.UninstallerHelper.plist",
+      "bytes": 0,
       "risk": "high",
-      "action": "open '/Users/avinashnandyala/Library/Application Support/Cursor'  # inspect before deleting",
-      "rationale": "Cursor app support (may include caches)"
+      "action": "System Settings → General → Login Items. Unload TeamViewer if you do not use it.",
+      "rationale": "Launch daemons wake on every boot and add background CPU."
+    }
+  ],
+  "cleaners": [
+    {
+      "id": "empty_trash",
+      "title": "Empty Trash",
+      "risk": "low",
+      "detail": "Uses Finder (macOS blocks Python from listing ~/.Trash)",
+      "estimated_bytes": 0,
+      "available": true
     },
     {
-      "priority": 3,
-      "title": "Review cloud folder ~/Library/Mobile Documents/57T9237FN3~net~whatsapp~WhatsApp",
-      "bytes": 2877328444,
-      "risk": "high",
-      "action": "open '/Users/avinashnandyala/Library/Mobile Documents/57T9237FN3~net~whatsapp~WhatsApp'",
-      "rationale": "Large synced/cloud-related local data"
+      "id": "clear_user_caches",
+      "title": "Clear user Library/Caches (non-Apple)",
+      "risk": "low",
+      "detail": "Deletes third-party cache folders. Apps rebuild them.",
+      "estimated_bytes": 0,
+      "available": true
+    },
+    {
+      "id": "clear_cursor_cache",
+      "title": "Clear Cursor Cache + GPUCache",
+      "risk": "low",
+      "detail": "0 B",
+      "estimated_bytes": 0,
+      "available": true
+    },
+    {
+      "id": "brew_cleanup",
+      "title": "Homebrew cleanup",
+      "risk": "low",
+      "detail": "brew cleanup -s",
+      "estimated_bytes": 0,
+      "available": true
+    },
+    {
+      "id": "npm_cache",
+      "title": "npm cache clean",
+      "risk": "low",
+      "detail": "npm cache",
+      "estimated_bytes": 0,
+      "available": true
+    },
+    {
+      "id": "pip_cache",
+      "title": "pip cache purge",
+      "risk": "low",
+      "detail": "pip cache",
+      "estimated_bytes": 0,
+      "available": true
     }
   ]
 }

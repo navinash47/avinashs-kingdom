@@ -1,7 +1,7 @@
 ---
 name: sync-kingdom
 description: >-
-  Sync Avinash Kingdom panel data from venture STATUS, phases, and expenses.
+  Sync Venture Fleet Control Plane panel data from venture STATUS, phases, and expenses.
   Use after editing STATUS.md, tracking/phases.json, tracking/expenses.jsonl, or
   when the user asks to sync Kingdom, refresh the command center, or update ventures.json.
 ---

@@ -1,0 +1,94 @@
+{
+  "venture_id": "kingdom-ops",
+  "updated": "2026-08-24",
+  "items": [
+    {
+      "date": "2026-08-24",
+      "summary": "Command orchestrator Phase 1 — Cmd-K palette + venture inspector",
+      "source": "wiki",
+      "video": null
+    },
+    {
+      "date": "2026-08-24",
+      "summary": "Show the live-status note and keep Isaac-boot unknown over a stale W&B run.",
+      "source": "git"
+    },
+    {
+      "date": "2026-08-24",
+      "summary": "Use the A10 status entity when overlaying a live W&B run.",
+      "source": "git"
+    },
+    {
+      "date": "2026-08-24",
+      "summary": "Show foothold penalty on the Research Lab live card.",
+      "source": "git"
+    },
+    {
+      "date": "2026-08-24",
+      "summary": "Keep BeamDojo Fleet graph on BeamDojo and sync the live-page URL.",
+      "source": "git"
+    },
+    {
+      "date": "2026-08-24",
+      "summary": "Show live PPO reward and losses on the Research Lab card.",
+      "source": "git"
+    },
+    {
+      "date": "2026-08-24",
+      "summary": "Overlay a fresh W&B run onto the Research Lab live status.",
+      "source": "git"
+    },
+    {
+      "date": "2026-08-24",
+      "summary": "Pin BeamDojo live training at the top of the Research Lab.",
+      "source": "git"
+    },
+    {
+      "date": "2026-08-24",
+      "summary": "Add a Mac merge script that never checkouts the live-training branch.",
+      "source": "git"
+    },
+    {
+      "date": "2026-08-24",
+      "summary": "Sync Research Lab live status from NFS logs as well as tracking/.",
+      "source": "git"
+    },
+    {
+      "date": "2026-08-24",
+      "summary": "Poll NFS and rsynced log copies of training-status.json in the Research Lab.",
+      "source": "git"
+    },
+    {
+      "date": "2026-08-24",
+      "summary": "Keep Research Lab live training and wire Fleet graph + Open venture.",
+      "source": "git"
+    },
+    {
+      "date": "2026-08-24",
+      "summary": "Stop labeling a live training overlay as the checked-in example.",
+      "source": "git"
+    },
+    {
+      "date": "2026-08-24",
+      "summary": "Bind Vite to all interfaces so a Cloudflare tunnel can reach the Research Lab.",
+      "source": "git"
+    },
+    {
+      "date": "2026-08-24",
+      "summary": "Poll BeamDojo training-status.json so the Research Lab can update live.",
+      "source": "git"
+    },
+    {
+      "date": "2026-08-24",
+      "summary": "Hide the live-training card on research projects without a GPU status file.",
+      "source": "git"
+    },
+    {
+      "date": "2026-08-20",
+      "summary": "Task observer + headroom MCP integration for skill logging",
+      "source": "wiki",
+      "video": null
+    }
+  ],
+  "source_path": "brain/wiki/experiments/kingdom-ops.md"
+}

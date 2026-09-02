@@ -25,6 +25,7 @@ Catalog of pages. Agents update this on every ingest. Last full refresh: **2026-
 | [kingdom-ops](ventures/kingdom-ops.md) | Steward · 70% · kill list |
 | [mac-optimize-audit](ventures/mac-optimize-audit.md) | Janitor · RAM/CPU/swap dashboard `:8742` |
 | [job-jugaad](ventures/job-jugaad.md) | Applications tracker · company+role pipeline · :8790 |
+| [portfolio](ventures/portfolio.md) | GitHub Pages site + legacy LaTeX resume tracks · linked to resume KB |
 | [shorts](ventures/shorts.md) | Parked |
 
 ## Concepts
@@ -43,6 +44,7 @@ Catalog of pages. Agents update this on every ingest. Last full refresh: **2026-
 | [task-observer-headroom](concepts/task-observer-headroom.md) | Meta-skill observer vs token compressor — roles split |
 | [agentic-interview-prep](concepts/agentic-interview-prep.md) | LC + AI system design + agent evals study stack for Job Jugaad |
 | [agentic-resume-gates](concepts/agentic-resume-gates.md) | Kingdom milestones → honest resume claim language |
+| [resume-master-knowledge](concepts/resume-master-knowledge.md) | Phase 1 resume KB + dashboard at ~/Projects/resume |
 
 ## Entities
 

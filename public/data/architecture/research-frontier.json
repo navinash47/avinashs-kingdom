@@ -1,0 +1,63 @@
+{
+  "venture_id": "research-frontier",
+  "updated": "2026-08-24",
+  "type": "architecture",
+  "sections": {
+    "system design": {
+      "title": "System design",
+      "content": "Paper clubbing and frontier ranking for generative comics / multimodal consistency vertical. Brain wiki is the knowledge store.\n\n```mermaid\nflowchart LR\n  Abs[\"Abstracts / OpenAlex\"] -->|ingest| Club[\"Paper clubbing\"]\n  Club --> Brain[\"brain/wiki\"]\n  Cites[\"Citation graph\"] --> Brain\n  Brain --> Rank[\"Frontier ranking\"]\n  Rank --> Q[\"Open questions\"]\n```",
+      "markdown": "Paper clubbing and frontier ranking for generative comics / multimodal consistency vertical. Brain wiki is the knowledge store.",
+      "diagrams": [
+        {
+          "source": "flowchart LR\n  Abs[\"Abstracts / OpenAlex\"] -->|ingest| Club[\"Paper clubbing\"]\n  Club --> Brain[\"brain/wiki\"]\n  Cites[\"Citation graph\"] --> Brain\n  Brain --> Rank[\"Frontier ranking\"]\n  Rank --> Q[\"Open questions\"]",
+          "svg_path": null,
+          "svg_inline": null
+        }
+      ],
+      "tables": []
+    },
+    "input / output flows": {
+      "title": "Input / output flows",
+      "content": "- **In:** abstracts, OpenAlex/Semantic Scholar citations\n- **Out:** ranked open questions, concept pages in brain/wiki",
+      "markdown": "- **In:** abstracts, OpenAlex/Semantic Scholar citations\n- **Out:** ranked open questions, concept pages in brain/wiki",
+      "diagrams": [],
+      "tables": []
+    },
+    "data stores": {
+      "title": "Data stores",
+      "content": "| Store | Type | Path |\n|-------|------|------|\n| Brain | Markdown | ~/Projects/avinashs-kingdom/brain |",
+      "markdown": "| Store | Type | Path |\n|-------|------|------|\n| Brain | Markdown | ~/Projects/avinashs-kingdom/brain |",
+      "diagrams": [],
+      "tables": [
+        {
+          "headers": [
+            "Store",
+            "Type",
+            "Path"
+          ],
+          "rows": [
+            [
+              "Brain",
+              "Markdown",
+              "~/Projects/avinashs-kingdom/brain"
+            ]
+          ]
+        }
+      ]
+    },
+    "future plans": {
+      "title": "Future plans",
+      "content": "- Ingest 1-3 abstracts via kingdom-wiki\n- Citation graph pull",
+      "markdown": "- Ingest 1-3 abstracts via kingdom-wiki\n- Citation graph pull",
+      "diagrams": [],
+      "tables": []
+    }
+  },
+  "section_titles": [
+    "System design",
+    "Input / output flows",
+    "Data stores",
+    "Future plans"
+  ],
+  "source_path": "brain/wiki/architecture/research-frontier.md"
+}

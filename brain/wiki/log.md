@@ -2,6 +2,10 @@
 
 Append-only. Prefix each entry with `## [YYYY-MM-DD] <op> | <title>` so recent activity is greppable.
 
+## [2026-09-02] ops | Resume knowledge phase 2 prep
+
+Phase 2 scaffolding without final bullet lock: full `scripts/export-tex.mjs` (approvals gate + consensus fallback + `--dry-run`), `scripts/sync-kingdom-data.mjs` → `public/data/resume-knowledge.json` approval/eval stats, LinkedIn drafts (`knowledge/linkedin.json` mirrored to `public/data/linkedin-draft.json`). Dashboard gained eval rank display, status filter (pending/approved/rejected), and **Approve top pick per section** bulk action. Kingdom `npm run build` fixed (ThroneOverview + AgentRoster props, `updateVenture`). Featured projects remain ComicMainEngine, Procedural City, BeamDojo (+ CS685 / Five College if approved). WhatsApp + YouTube excluded. **Blocked:** user must approve bullets in dashboard before export writes final `.tex` and LinkedIn manual update. [[concepts/resume-master-knowledge]] · [[ventures/job-jugaad]]
+
 ## [2026-08-24] ops | Research Lab live training + W&B
 
 Kingdom Research Lab now shows a **Live training** card (status idle/running/unknown, W&B link, NFS/checkpoint paths). BeamDojo sync reads gitignored `tracking/training-status.json` (example snapshot if live file is missing). Lambda has no public Isaac page — Avinash watches metrics at Weights & Biases project `beamdojo`, or TensorBoard through `ssh -L 6006:localhost:6006 lambda-beamdojo`. Do not claim a long train is running without that JSON. [[concepts/research-lab]] · [[ventures/beamdojo]].

@@ -3,6 +3,7 @@ import { AgentRoster } from './components/AgentRoster'
 import { ExpensesLedger } from './components/ExpensesLedger'
 import { FleetGraph } from './components/FleetGraph'
 import { MacStorageAuditPanel } from './components/MacStorageAuditPanel'
+import { ResumeKnowledgePanel } from './components/ResumeKnowledgePanel'
 import { SegmentedControl } from './components/SegmentedControl'
 import { SubscriptionAuditPanel } from './components/SubscriptionAuditPanel'
 import { ThroneOverview } from './components/ThroneOverview'
@@ -18,6 +19,7 @@ const NAV = [
   { id: 'throne', label: 'Throne' },
   { id: 'ventures', label: 'Ventures' },
   { id: 'research', label: 'Research' },
+  { id: 'resume', label: 'Resume' },
   { id: 'graph', label: 'Fleet' },
   { id: 'tokens', label: 'Tokens' },
   { id: 'expenses', label: 'Expenses' },
@@ -139,6 +141,11 @@ function App() {
             state={state}
             expenseUsd={totals.expenseUsd}
             tokenBurn={totals.tokenBurn}
+            syncSubs={totals.syncSubs}
+            syncApi={totals.syncApi}
+            manualUsd={totals.manualUsd}
+            manifests={state.manifests}
+            cicd={state.cicd}
           />
         )}
         {tab === 'ventures' && (
@@ -158,6 +165,12 @@ function App() {
               go('graph', nodeId)
             }}
             onOpenExpenses={() => go('expenses')}
+          />
+        )}
+        {tab === 'resume' && (
+          <ResumeKnowledgePanel
+            data={state.resumeKnowledge}
+            portfolio={state.portfolioRepo}
           />
         )}
         {tab === 'graph' && (
@@ -192,6 +205,8 @@ function App() {
           <AgentRoster
             agents={state.agents}
             ventures={state.ventures}
+            skillGraph={state.skillGraph}
+            tokens={state.tokens}
             onBudget={updateAgentBudget}
           />
         )}

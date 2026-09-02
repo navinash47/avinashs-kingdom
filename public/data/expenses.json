@@ -1,7 +1,7 @@
 [
   {
     "id": "sync-sub-rocket-money",
-    "date": "2026-08-24",
+    "date": "2026-09-02",
     "category": "tools",
     "label": "Rocket Money (est. monthly)",
     "amount": 3.19,
@@ -11,7 +11,7 @@
   },
   {
     "id": "sync-sub-doordash-dashpass",
-    "date": "2026-08-24",
+    "date": "2026-09-02",
     "category": "other",
     "label": "DoorDash DashPass (est. monthly)",
     "amount": 9.99,
@@ -21,7 +21,7 @@
   },
   {
     "id": "sync-sub-openai-chatgpt-plus",
-    "date": "2026-08-24",
+    "date": "2026-09-02",
     "category": "api",
     "label": "OpenAI / ChatGPT Plus (est. monthly)",
     "amount": 21.25,
@@ -31,7 +31,7 @@
   },
   {
     "id": "sync-sub-cursor",
-    "date": "2026-08-24",
+    "date": "2026-09-02",
     "category": "tools",
     "label": "Cursor (est. monthly)",
     "amount": 92.08,
@@ -41,7 +41,7 @@
   },
   {
     "id": "sync-sub-claude-ai-anthropic",
-    "date": "2026-08-24",
+    "date": "2026-09-02",
     "category": "api",
     "label": "Claude.ai / Anthropic (est. monthly)",
     "amount": 10.67,
@@ -51,7 +51,7 @@
   },
   {
     "id": "sync-sub-apple-app-store-icloud",
-    "date": "2026-08-24",
+    "date": "2026-09-02",
     "category": "infra",
     "label": "Apple / App Store / iCloud (est. monthly)",
     "amount": 1.5,
@@ -61,7 +61,7 @@
   },
   {
     "id": "sync-city-api",
-    "date": "2026-08-24",
+    "date": "2026-09-02",
     "category": "api",
     "label": "Procedural City API (fal / Gemini)",
     "amount": 1.08,
@@ -71,7 +71,7 @@
   },
   {
     "id": "sync-wa-api",
-    "date": "2026-08-24",
+    "date": "2026-09-02",
     "category": "api",
     "label": "WhatsApp Agent Cash API spend",
     "amount": 0,
@@ -81,7 +81,7 @@
   },
   {
     "id": "sync-beamdojo-gpu",
-    "date": "2026-08-24",
+    "date": "2026-09-02",
     "category": "infra",
     "label": "beamdojo GPU / compute",
     "amount": 3.87,

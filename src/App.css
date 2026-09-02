@@ -259,6 +259,155 @@ a {
   color: var(--brass-2);
 }
 
+.resume-knowledge-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  margin: 0.5rem 0;
+}
+
+.resume-knowledge-grid .stat-block {
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 0;
+}
+
+.resume-blocked-banner {
+  margin: 0.5rem 0;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid rgba(201, 162, 39, 0.35);
+  border-radius: 8px;
+  background: rgba(201, 162, 39, 0.08);
+  font-size: 0.92rem;
+}
+
+.resume-finish-three ol.resume-finish-steps {
+  margin: 0.45rem 0 0 1.1rem;
+  padding: 0;
+  font-size: 0.88rem;
+}
+
+.resume-finish-three ol.resume-finish-steps li {
+  margin: 0.25rem 0;
+}
+
+.resume-progress-block {
+  margin: 0.75rem 0 1rem;
+}
+
+.resume-progress-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.35rem;
+  font-size: 0.88rem;
+}
+
+.resume-progress-meta strong {
+  color: var(--brass-2);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.1rem;
+}
+
+.resume-progress-track {
+  height: 10px;
+  border-radius: 999px;
+  background: var(--stroke);
+  overflow: hidden;
+}
+
+.resume-progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--brass), var(--brass-2));
+  transition: width 0.3s ease;
+}
+
+.resume-unsynced-warn {
+  margin: 0 0 0.75rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid rgba(212, 120, 80, 0.4);
+  background: rgba(212, 120, 80, 0.1);
+  font-size: 0.85rem;
+}
+
+.linkedin-status-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.25rem;
+}
+
+.linkedin-status-badge {
+  display: inline-block;
+  padding: 0.15rem 0.55rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.linkedin-status-draft {
+  background: rgba(255, 180, 50, 0.18);
+  border: 1px solid rgba(255, 180, 50, 0.45);
+  color: #e8b84a;
+}
+
+.linkedin-status-approved {
+  background: rgba(80, 200, 120, 0.15);
+  border: 1px solid rgba(80, 200, 120, 0.45);
+  color: #6dd99a;
+}
+
+.linkedin-approved-note {
+  margin-top: 0.35rem;
+  color: #6dd99a;
+}
+
+@media (max-width: 720px) {
+  .resume-knowledge-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.linkedin-draft-preview {
+  margin: 0.5rem 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.linkedin-draft-option {
+  border: 1px solid var(--stroke);
+  border-radius: 6px;
+  padding: 0.35rem 0.6rem;
+  background: var(--ink);
+}
+
+.linkedin-draft-option summary {
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.linkedin-draft-text {
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--text-muted, #b8b0a0);
+}
+
+.linkedin-draft-text.pre-wrap {
+  white-space: pre-wrap;
+}
+
+.linkedin-about-block + .linkedin-about-block {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--stroke);
+}
+
 .burn-meter {
   height: 10px;
   background: var(--ink);

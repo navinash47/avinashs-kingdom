@@ -10,6 +10,7 @@ import {
   entityForWandbFetch,
 } from './scripts/lib/wandb-live.mjs'
 import { normalizeTrainingStatus } from './scripts/lib/research-lab.mjs'
+import { orchestratorApiPlugin } from './scripts/vite-plugins.mjs'
 
 function liveStatusFile(): string | null {
   const home = process.env.HOME ?? ''
@@ -89,7 +90,7 @@ function liveTrainingStatusPlugin(): Plugin {
 }
 
 export default defineConfig({
-  plugins: [react(), liveTrainingStatusPlugin()],
+  plugins: [react(), liveTrainingStatusPlugin(), orchestratorApiPlugin()],
   server: {
     host: true,
     port: 5173,

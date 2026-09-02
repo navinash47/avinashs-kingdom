@@ -1,0 +1,24 @@
+{
+  "venture_id": "mac-optimize-audit",
+  "synced_at": "2026-09-02T03:48:46.187Z",
+  "github": {
+    "owner": "navinash47",
+    "repo": "mac-optimize-audit",
+    "default_branch": "main",
+    "available": true,
+    "runs": [],
+    "last_conclusion": null
+  },
+  "local_tests": {
+    "commands": [
+      {
+        "id": "unit",
+        "label": "pytest",
+        "cmd": "pytest -q",
+        "type": "unit",
+        "description": "Mac optimize audit pytest suite"
+      }
+    ],
+    "last_run": null
+  }
+}

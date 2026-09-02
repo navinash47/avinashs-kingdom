@@ -1,0 +1,57 @@
+{
+  "venture_id": "job-jugaad",
+  "updated": "2026-08-24",
+  "type": "architecture",
+  "sections": {
+    "system design": {
+      "title": "System design",
+      "content": "Application tracker for FDE / AI Engineer roles. Tracker UI + API on :8790.",
+      "markdown": "Application tracker for FDE / AI Engineer roles. Tracker UI + API on :8790.",
+      "diagrams": [],
+      "tables": []
+    },
+    "input / output flows": {
+      "title": "Input / output flows",
+      "content": "- **In:** wishlist rows, applied status updates\n- **Out:** progress toward 30 applied+ target",
+      "markdown": "- **In:** wishlist rows, applied status updates\n- **Out:** progress toward 30 applied+ target",
+      "diagrams": [],
+      "tables": []
+    },
+    "data stores": {
+      "title": "Data stores",
+      "content": "| Store | Type | Path |\n|-------|------|------|\n| Applications | JSON | data/applications.json |",
+      "markdown": "| Store | Type | Path |\n|-------|------|------|\n| Applications | JSON | data/applications.json |",
+      "diagrams": [],
+      "tables": [
+        {
+          "headers": [
+            "Store",
+            "Type",
+            "Path"
+          ],
+          "rows": [
+            [
+              "Applications",
+              "JSON",
+              "data/applications.json"
+            ]
+          ]
+        }
+      ]
+    },
+    "future plans": {
+      "title": "Future plans",
+      "content": "- Move first 5 wishlist → applied\n- Resume-pick + headed apply automation",
+      "markdown": "- Move first 5 wishlist → applied\n- Resume-pick + headed apply automation",
+      "diagrams": [],
+      "tables": []
+    }
+  },
+  "section_titles": [
+    "System design",
+    "Input / output flows",
+    "Data stores",
+    "Future plans"
+  ],
+  "source_path": "brain/wiki/architecture/job-jugaad.md"
+}

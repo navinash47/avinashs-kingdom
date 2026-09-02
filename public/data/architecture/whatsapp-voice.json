@@ -1,0 +1,97 @@
+{
+  "venture_id": "whatsapp-voice",
+  "updated": "2026-08-24",
+  "type": "architecture",
+  "sections": {
+    "system design": {
+      "title": "System design",
+      "content": "India SMB WhatsApp lead qualification. RE vertical first. Phase-gated delivery: offer → demo → first rupees. Node demo server on :8787.",
+      "markdown": "India SMB WhatsApp lead qualification. RE vertical first. Phase-gated delivery: offer → demo → first rupees. Node demo server on :8787.",
+      "diagrams": [],
+      "tables": []
+    },
+    "input / output flows": {
+      "title": "Input / output flows",
+      "content": "```mermaid\nflowchart LR\n  WA[WhatsApp webhook] --> Demo[Node demo :8787]\n  Demo --> FSM[Qualify FSM]\n  FSM --> Lead[Qualified lead]\n  FSM --> Book[Site visit signal]\n  Lead --> Handoff[Nurture / handoff]\n```\n\n- **In:** inbound WA webhook (stub → live), broker lead messages\n- **Out:** qualified lead record, site-visit booking signal, nurture/handoff paths",
+      "markdown": "- **In:** inbound WA webhook (stub → live), broker lead messages\n- **Out:** qualified lead record, site-visit booking signal, nurture/handoff paths",
+      "diagrams": [
+        {
+          "source": "flowchart LR\n  WA[WhatsApp webhook] --> Demo[Node demo :8787]\n  Demo --> FSM[Qualify FSM]\n  FSM --> Lead[Qualified lead]\n  FSM --> Book[Site visit signal]\n  Lead --> Handoff[Nurture / handoff]",
+          "svg_path": null,
+          "svg_inline": null
+        }
+      ],
+      "tables": []
+    },
+    "data stores": {
+      "title": "Data stores",
+      "content": "| Store | Type | Path |\n|-------|------|------|\n| Phase gates | JSON | tracking/phases.json |\n| Spend log | JSONL | tracking/expenses.jsonl |\n| Scripts | Markdown | scripts/real-estate-wa.md |",
+      "markdown": "| Store | Type | Path |\n|-------|------|------|\n| Phase gates | JSON | tracking/phases.json |\n| Spend log | JSONL | tracking/expenses.jsonl |\n| Scripts | Markdown | scripts/real-estate-wa.md |",
+      "diagrams": [],
+      "tables": [
+        {
+          "headers": [
+            "Store",
+            "Type",
+            "Path"
+          ],
+          "rows": [
+            [
+              "Phase gates",
+              "JSON",
+              "tracking/phases.json"
+            ],
+            [
+              "Spend log",
+              "JSONL",
+              "tracking/expenses.jsonl"
+            ],
+            [
+              "Scripts",
+              "Markdown",
+              "scripts/real-estate-wa.md"
+            ]
+          ]
+        }
+      ]
+    },
+    "key libraries": {
+      "title": "Key libraries",
+      "content": "- Node.js demo server\n- FSM JSON for qualify paths",
+      "markdown": "- Node.js demo server\n- FSM JSON for qualify paths",
+      "diagrams": [],
+      "tables": []
+    },
+    "version history": {
+      "title": "Version history",
+      "content": "- Stage C · Phase 8 — pilot contract pending",
+      "markdown": "- Stage C · Phase 8 — pilot contract pending",
+      "diagrams": [],
+      "tables": []
+    },
+    "future plans": {
+      "title": "Future plans",
+      "content": "- Phase 8 pilot contract\n- Hindi/English qualify → site visit loop\n- Voice layer (Exotel) after chat MVP",
+      "markdown": "- Phase 8 pilot contract\n- Hindi/English qualify → site visit loop\n- Voice layer (Exotel) after chat MVP",
+      "diagrams": [],
+      "tables": []
+    },
+    "experiments log": {
+      "title": "Experiments log",
+      "content": "See [[experiments/whatsapp-voice]].",
+      "markdown": "See [[experiments/whatsapp-voice]].",
+      "diagrams": [],
+      "tables": []
+    }
+  },
+  "section_titles": [
+    "System design",
+    "Input / output flows",
+    "Data stores",
+    "Key libraries",
+    "Version history",
+    "Future plans",
+    "Experiments log"
+  ],
+  "source_path": "brain/wiki/architecture/whatsapp-voice.md"
+}

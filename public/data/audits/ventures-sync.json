@@ -1,50 +1,122 @@
 {
-  "synced_at": "2026-08-11T05:56:59.006Z",
+  "synced_at": "2026-09-02T03:48:40.765Z",
   "patches": {
-    "whatsapp-voice": {
-      "version": "v0.1",
-      "progress": 8,
-      "priority": "P0",
-      "nextMilestone": "Pick first vertical (real estate OR coaching) and write offer one-pager.",
-      "notes": "Next: 1) Pick first vertical (real estate OR coaching) and write offer one-pager. · 2) Draft WhatsApp conversation script (Hindi/English) for lead qualification. · 3) Build minimal demo: webhook or n8n stub that answers FAQs and books a call."
-    },
     "youtube-editor": {
-      "version": "v0.1",
-      "progress": 5,
+      "version": "Phase 4 · Clip research + provenance",
+      "progress": 55,
       "priority": "P0",
-      "nextMilestone": "Spec the two surfaces: Clip Researcher + Screenplay Desk.",
-      "notes": "Next: 1) Spec the two surfaces: Clip Researcher + Screenplay Desk. · 2) Define asset provenance schema (source URL, fair-use note, subclip times). · 3) Dogfood: pick one channel idea and write a beat sheet by hand using the schema."
+      "nextMilestone": "Add Google creds (`GOOGLE_APPLICATION_CREDENTIALS` + `GCS_BUCKET` or Drive folder) → set `CLIP_CLOUD=gcs` and re-run `npm run clips:fetch` to sync cloud.",
+      "notes": "Next: 1) Add Google creds (`GOOGLE_APPLICATION_CREDENTIALS` + `GCS_BUCKET` or Drive folder) → set `CLIP_CLOUD=gcs` and re-run `npm run clips:fetch` to sync cloud. · 2) Cut Control → Clips: Accept/Reject candidates; upload manual for KYM gaps. · 3) Phase 5: Timeline compiler + preview render from selected clips + VO.",
+      "status": "active",
+      "progressSource": "STATUS.md Progress field (agent-updated)",
+      "phasesPassed": null,
+      "phasesTotal": null,
+      "spendUsd": null,
+      "ceilingUsd": null
     },
     "research-frontier": {
       "version": "v0.1",
-      "progress": 10,
+      "progress": 12,
       "priority": "P1",
-      "nextMilestone": "Seed one vertical: generative comics / multimodal consistency papers.",
-      "notes": "Next: 1) Seed one vertical: generative comics / multimodal consistency papers. · 2) Ingest abstracts + citation graph via OpenAlex / Semantic Scholar (no full-PDF dump). · 3) Prototype claim/limitation extraction → ranked open questions for that club."
+      "nextMilestone": "Ingest 1–3 abstracts into Kingdom brain via kingdom-wiki (vertical: generative comics / multimodal consistency).",
+      "notes": "Next: 1) Ingest 1–3 abstracts into Kingdom brain via kingdom-wiki (vertical: generative comics / multimodal consistency). · 2) Pull citation graph via OpenAlex / Semantic Scholar (no full-PDF dump by default). · 3) Prototype claim/limitation extraction → ranked open questions for that club.",
+      "status": "active",
+      "progressSource": "STATUS.md Progress field (agent-updated)",
+      "phasesPassed": null,
+      "phasesTotal": null,
+      "spendUsd": null,
+      "ceilingUsd": null
+    },
+    "beamdojo": {
+      "version": "Stage 1 smoke",
+      "progress": 18,
+      "priority": "P1",
+      "nextMilestone": "Dual-terrain Stage 1 (flat physics + imagined beam height scan) then 1024-env CUDA train on the A10.",
+      "notes": "Next: 1) Dual-terrain Stage 1 (flat physics + imagined beam height scan) then 1024-env CUDA train on the A10. · 2) Log Lambda hours in `tracking/expenses.jsonl` whenever the GPU is running; terminate the instance when idle. · 3) Stage 2 hard beam + Unitree G1 port — only after Stage 1 walks the imagined beam.",
+      "status": "active",
+      "progressSource": "STATUS.md Progress field (agent-updated)",
+      "phasesPassed": null,
+      "phasesTotal": null,
+      "spendUsd": null,
+      "ceilingUsd": null
+    },
+    "job-jugaad": {
+      "version": "Tracker v0.1",
+      "progress": 0,
+      "priority": "P1",
+      "nextMilestone": "Log first applied company + role in Job Jugaad board",
+      "notes": "Next: 1) Log first applied company + role in Job Jugaad board · 2) Share Cloudflare link with friend for accountability · 3) Hit 30 applied (or beyond) toward the current target",
+      "status": "active",
+      "progressSource": "STATUS.md Progress field (agent-updated)",
+      "phasesPassed": null,
+      "phasesTotal": null,
+      "spendUsd": null,
+      "ceilingUsd": null
+    },
+    "mac-optimize-audit": {
+      "version": "v0.1",
+      "progress": 52,
+      "priority": "P1",
+      "nextMilestone": "Memory pressure is urgent",
+      "notes": "Next: 1) Memory pressure is urgent · 2) Cursor is heavy (3.0 GB, 76 processes) · 3) Review always-on helpers: us.zoom.updater.login.check.plist, us.zoom.updater.plist, com.teamviewer.Helper.plist, com.teamviewer.UninstallerHelper.plist",
+      "status": "active",
+      "progressSource": "STATUS.md Progress field (agent-updated)",
+      "phasesPassed": null,
+      "phasesTotal": null,
+      "spendUsd": null,
+      "ceilingUsd": null
+    },
+    "whatsapp-voice": {
+      "version": "Stage C · Phase 8",
+      "progress": 80,
+      "priority": "P0",
+      "status": "active",
+      "nextMilestone": "Phase 8: Pilot client contract (pending)",
+      "notes": "RE vertical · 8/10 phases pass · last gate PASS · spend $0/$40",
+      "progressSource": "phases 8/10 from tracking/phases.json",
+      "phasesPassed": 8,
+      "phasesTotal": 10,
+      "spendUsd": 0,
+      "ceilingUsd": 40
     },
     "procedural-city": {
-      "version": "Stage C · Phase 26",
-      "progress": 28,
+      "version": "Stage E · Phase 52",
+      "progress": 57,
       "priority": "P1",
       "status": "active",
-      "nextMilestone": "Phase 26: Road mesh generation (pending)",
-      "notes": "City tracking: 26/92 phases pass · updated 2026-08-10T10:55:25.125175+00:00"
+      "nextMilestone": "Phase 52: District-coherent batch planning (pending)",
+      "notes": "City · 52/92 pass · source local working tree · updated 2026-09-02T03:44:25.996667+00:00 · ceiling $70",
+      "progressSource": "phases 52/92 from local working tree",
+      "phasesPassed": 52,
+      "phasesTotal": 92,
+      "spendUsd": null,
+      "ceilingUsd": 70
     },
     "comic-engine": {
-      "version": "V1 · Phase 2.2",
-      "progress": 55,
+      "version": "2A · A1 passed · A2 Scene cards + storyboard ingest",
+      "progress": 33,
       "priority": "P2",
       "status": "active",
-      "nextMilestone": "Improve consistency pipeline after City P1 milestones",
-      "notes": "Secondary to City for now. Monetize via B2B later."
+      "nextMilestone": "A2 Scene cards + storyboard ingest (start)",
+      "notes": "ComicMainEngine @ Desktop · 2A 2/6 · V1 22/22 · API spend $5.92 · secondary to City",
+      "progressSource": "v2a_program.json 2/6 phases complete (V1 usage.db 22/22)",
+      "phasesPassed": 2,
+      "phasesTotal": 6,
+      "spendUsd": 5.92,
+      "ceilingUsd": null
     },
     "kingdom-ops": {
       "version": "v1.0",
       "progress": 70,
       "priority": "P1",
       "status": "active",
-      "nextMilestone": "Cancel/review 11 kill-list seats; reclaim low-risk disk (45.8% used)",
-      "notes": "Subscription audit + Mac storage audit live here."
+      "nextMilestone": "Cancel/review 6 kill-list seats; reclaim low-risk disk (51.5% used)",
+      "notes": "Subscription kill list lives here. Mac speed is the mac-optimize-audit province.",
+      "progressSource": "heuristic ops readiness 70% (audits live; kill seats still open)",
+      "phasesPassed": null,
+      "phasesTotal": null,
+      "spendUsd": null,
+      "ceilingUsd": 250
     }
   }
 }

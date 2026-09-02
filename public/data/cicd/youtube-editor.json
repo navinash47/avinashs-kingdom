@@ -1,0 +1,35 @@
+{
+  "venture_id": "youtube-editor",
+  "synced_at": "2026-09-02T03:48:43.535Z",
+  "github": {
+    "owner": "navinash47",
+    "repo": "youtube-editor-lab",
+    "default_branch": "main",
+    "available": true,
+    "runs": [
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-24T08:38:22Z",
+        "databaseId": 32707327172,
+        "displayTitle": "Initial commit",
+        "event": "push",
+        "status": "completed",
+        "url": "https://github.com/navinash47/youtube-editor-lab/actions/runs/32707327172",
+        "workflowName": "CI"
+      }
+    ],
+    "last_conclusion": "failure"
+  },
+  "local_tests": {
+    "commands": [
+      {
+        "id": "unit",
+        "label": "npm test",
+        "cmd": "npm test",
+        "type": "unit",
+        "description": "YouTube editor lab test suite (clip research, provenance lint)"
+      }
+    ],
+    "last_run": null
+  }
+}

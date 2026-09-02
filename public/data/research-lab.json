@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-24T19:01:07.729Z",
+  "updated": "2026-09-02T03:48:46.546Z",
   "projects": [
     {
       "id": "research-frontier",
@@ -17,7 +17,6 @@
       },
       "spendUsd": 0,
       "expenseRows": 0,
-      "training": null,
       "videos": [],
       "experiments": [
         {
@@ -33,7 +32,7 @@
         },
         {
           "date": "2026-08-11",
-          "summary": "Venture registered in Kingdom orchestrator registry.",
+          "summary": "Venture registered in fleet control plane registry.",
           "source": "wiki",
           "video": null
         }
@@ -45,9 +44,15 @@
         "sections": {
           "system design": {
             "title": "System design",
-            "content": "Paper clubbing and frontier ranking for generative comics / multimodal consistency vertical. Brain wiki is the knowledge store.",
+            "content": "Paper clubbing and frontier ranking for generative comics / multimodal consistency vertical. Brain wiki is the knowledge store.\n\n```mermaid\nflowchart LR\n  Abs[\"Abstracts / OpenAlex\"] -->|ingest| Club[\"Paper clubbing\"]\n  Club --> Brain[\"brain/wiki\"]\n  Cites[\"Citation graph\"] --> Brain\n  Brain --> Rank[\"Frontier ranking\"]\n  Rank --> Q[\"Open questions\"]\n```",
             "markdown": "Paper clubbing and frontier ranking for generative comics / multimodal consistency vertical. Brain wiki is the knowledge store.",
-            "diagrams": [],
+            "diagrams": [
+              {
+                "source": "flowchart LR\n  Abs[\"Abstracts / OpenAlex\"] -->|ingest| Club[\"Paper clubbing\"]\n  Club --> Brain[\"brain/wiki\"]\n  Cites[\"Citation graph\"] --> Brain\n  Brain --> Rank[\"Frontier ranking\"]\n  Rank --> Q[\"Open questions\"]",
+                "svg_path": null,
+                "svg_inline": null
+              }
+            ],
             "tables": []
           },
           "input / output flows": {
@@ -94,7 +99,8 @@
           "Future plans"
         ],
         "source_path": "brain/wiki/architecture/research-frontier.md"
-      }
+      },
+      "training": null
     },
     {
       "id": "beamdojo",
@@ -112,24 +118,6 @@
       },
       "spendUsd": 3.87,
       "expenseRows": 1,
-      "training": {
-        "updated": "2026-08-24T19:00:00Z",
-        "status": "idle",
-        "host": "lambda-a10",
-        "robot": "h1",
-        "stage": 1,
-        "num_envs": 1024,
-        "max_iterations": 10000,
-        "iteration": null,
-        "logger": "wandb",
-        "wandb_project": "beamdojo",
-        "wandb_entity": null,
-        "wandb_url": "https://wandb.ai",
-        "log_dir": null,
-        "checkpoint": null,
-        "note": "No long train is running until you start train_beamdojo.py on the A10 with WANDB_API_KEY.",
-        "source": "example"
-      },
       "videos": [
         "stage1-smoke-gpu.mp4"
       ],
@@ -154,6 +142,12 @@
         },
         {
           "date": "2026-08-24",
+          "summary": "Watch GPU trains in the browser via Weights & Biases (project `beamdojo`), not a public Isaac page. Kingdom Research Lab shows last-known `tracking/training-status.json` (idle/unknown unless a live file says running). TensorBoard: `ssh -L 6006:localhost:6006 lambda-beamdojo` then TensorBoard on `/lambda/nfs/beamdojo/logs`.",
+          "source": "wiki",
+          "video": null
+        },
+        {
+          "date": "2026-08-24",
           "summary": "Track Kingdom status, A10 smoke proof, and Lambda spend without weights.",
           "source": "git"
         },
@@ -170,11 +164,11 @@
         "sections": {
           "system design": {
             "title": "System design",
-            "content": "Mac is the orchestrator. Training and RTX video run on a Lambda **A10** (RT cores) inside Isaac Sim 5.1 + Isaac Lab 2.3.2 Docker. BeamDojo source is bind-mounted from NFS so terminate does not wipe code. Checkpoints stay on NFS. Kingdom syncs STATUS, expenses, and proof mp4s into the Research Lab.\n\n```mermaid\nflowchart LR\n  Mac[\"Mac · BeamDojo repo + Kingdom\"] -->|ssh / rsync| GPU[\"Lambda A10 · Isaac Sim Docker\"]\n  Train[\"scripts/rsl_rl/train_beamdojo.py\"] --> Runtime[\"scripts/rsl_rl/beamdojo_runtime.py\"]\n  Runtime --> Cfg[\"h1_cfg/beamdojo_stage1_cfg.py\"]\n  Cfg --> Isaac[\"Isaac Lab + PhysX + RTX\"]\n  Isaac --> NFS[\"NFS logs / model_*.pt\"]\n  Play[\"scripts/rsl_rl/play_beamdojo.py --video\"] --> Proofs[\"proofs/*.mp4\"]\n  STATUS[\"STATUS.md + expenses.jsonl\"] --> Sync[\"Kingdom npm run sync\"]\n  Proofs --> Sync\n  Sync --> Lab[\"Research Lab tab\"]\n```",
-            "markdown": "Mac is the orchestrator. Training and RTX video run on a Lambda **A10** (RT cores) inside Isaac Sim 5.1 + Isaac Lab 2.3.2 Docker. BeamDojo source is bind-mounted from NFS so terminate does not wipe code. Checkpoints stay on NFS. Kingdom syncs STATUS, expenses, and proof mp4s into the Research Lab.",
+            "content": "Mac is the orchestrator. Training and RTX video run on a Lambda **A10** (RT cores) inside Isaac Sim 5.1 + Isaac Lab 2.3.2 Docker. BeamDojo source is bind-mounted from NFS so terminate does not wipe code. Checkpoints stay on NFS. Kingdom syncs STATUS, expenses, proof mp4s, and `tracking/training-status.json` into the Research Lab. Live curves are **Weights & Biases** (not an Isaac webpage).\n\n```mermaid\nflowchart LR\n  Mac[\"Mac · BeamDojo repo + Kingdom\"] -->|ssh / rsync| GPU[\"Lambda A10 · Isaac Sim Docker\"]\n  Train[\"scripts/rsl_rl/train_beamdojo.py\"] --> Runtime[\"scripts/rsl_rl/beamdojo_runtime.py\"]\n  Runtime --> Cfg[\"h1_cfg/beamdojo_stage1_cfg.py\"]\n  Cfg --> Isaac[\"Isaac Lab + PhysX + RTX\"]\n  Isaac --> NFS[\"NFS logs / model_*.pt\"]\n  Train --> WB[\"Weights & Biases · project beamdojo\"]\n  Train --> Status[\"tracking/training-status.json\"]\n  Play[\"scripts/rsl_rl/play_beamdojo.py --video\"] --> Proofs[\"proofs/*.mp4\"]\n  STATUS[\"STATUS.md + expenses.jsonl\"] --> Sync[\"Kingdom npm run sync\"]\n  Status --> Sync\n  Proofs --> Sync\n  Sync --> Lab[\"Research Lab tab\"]\n  Lab --> WB\n```",
+            "markdown": "Mac is the orchestrator. Training and RTX video run on a Lambda **A10** (RT cores) inside Isaac Sim 5.1 + Isaac Lab 2.3.2 Docker. BeamDojo source is bind-mounted from NFS so terminate does not wipe code. Checkpoints stay on NFS. Kingdom syncs STATUS, expenses, proof mp4s, and `tracking/training-status.json` into the Research Lab. Live curves are **Weights & Biases** (not an Isaac webpage).",
             "diagrams": [
               {
-                "source": "flowchart LR\n  Mac[\"Mac · BeamDojo repo + Kingdom\"] -->|ssh / rsync| GPU[\"Lambda A10 · Isaac Sim Docker\"]\n  Train[\"scripts/rsl_rl/train_beamdojo.py\"] --> Runtime[\"scripts/rsl_rl/beamdojo_runtime.py\"]\n  Runtime --> Cfg[\"h1_cfg/beamdojo_stage1_cfg.py\"]\n  Cfg --> Isaac[\"Isaac Lab + PhysX + RTX\"]\n  Isaac --> NFS[\"NFS logs / model_*.pt\"]\n  Play[\"scripts/rsl_rl/play_beamdojo.py --video\"] --> Proofs[\"proofs/*.mp4\"]\n  STATUS[\"STATUS.md + expenses.jsonl\"] --> Sync[\"Kingdom npm run sync\"]\n  Proofs --> Sync\n  Sync --> Lab[\"Research Lab tab\"]",
+                "source": "flowchart LR\n  Mac[\"Mac · BeamDojo repo + Kingdom\"] -->|ssh / rsync| GPU[\"Lambda A10 · Isaac Sim Docker\"]\n  Train[\"scripts/rsl_rl/train_beamdojo.py\"] --> Runtime[\"scripts/rsl_rl/beamdojo_runtime.py\"]\n  Runtime --> Cfg[\"h1_cfg/beamdojo_stage1_cfg.py\"]\n  Cfg --> Isaac[\"Isaac Lab + PhysX + RTX\"]\n  Isaac --> NFS[\"NFS logs / model_*.pt\"]\n  Train --> WB[\"Weights & Biases · project beamdojo\"]\n  Train --> Status[\"tracking/training-status.json\"]\n  Play[\"scripts/rsl_rl/play_beamdojo.py --video\"] --> Proofs[\"proofs/*.mp4\"]\n  STATUS[\"STATUS.md + expenses.jsonl\"] --> Sync[\"Kingdom npm run sync\"]\n  Status --> Sync\n  Proofs --> Sync\n  Sync --> Lab[\"Research Lab tab\"]\n  Lab --> WB",
                 "svg_path": null,
                 "svg_inline": null
               }
@@ -183,15 +177,15 @@
           },
           "input / output flows": {
             "title": "Input / output flows",
-            "content": "- **In:** H1 USD, Stage 1 cfg, PPO hyperparams, A10 CUDA\n- **Out:** `model_*.pt` on NFS, TensorBoard, RTX mp4 proofs, expense JSONL, STATUS.md",
-            "markdown": "- **In:** H1 USD, Stage 1 cfg, PPO hyperparams, A10 CUDA\n- **Out:** `model_*.pt` on NFS, TensorBoard, RTX mp4 proofs, expense JSONL, STATUS.md",
+            "content": "- **In:** H1 USD, Stage 1 cfg, PPO hyperparams, A10 CUDA\n- **Out:** `model_*.pt` on NFS, W&B (browser), TensorBoard via SSH tunnel, RTX mp4 proofs, expense JSONL, STATUS.md, gitignored training-status.json",
+            "markdown": "- **In:** H1 USD, Stage 1 cfg, PPO hyperparams, A10 CUDA\n- **Out:** `model_*.pt` on NFS, W&B (browser), TensorBoard via SSH tunnel, RTX mp4 proofs, expense JSONL, STATUS.md, gitignored training-status.json",
             "diagrams": [],
             "tables": []
           },
           "data stores": {
             "title": "Data stores",
-            "content": "| Store | Type | Path |\n|-------|------|------|\n| Code | git | ~/Projects/BeamDojo |\n| GPU logs | NFS | /lambda/nfs/beamdojo/logs |\n| Proof clips | git (small) | ~/Projects/BeamDojo/proofs |\n| Spend | JSONL | ~/Projects/BeamDojo/tracking/expenses.jsonl |\n| Kingdom mirror | JSON | avinashs-kingdom/public/data/research/ |",
-            "markdown": "| Store | Type | Path |\n|-------|------|------|\n| Code | git | ~/Projects/BeamDojo |\n| GPU logs | NFS | /lambda/nfs/beamdojo/logs |\n| Proof clips | git (small) | ~/Projects/BeamDojo/proofs |\n| Spend | JSONL | ~/Projects/BeamDojo/tracking/expenses.jsonl |\n| Kingdom mirror | JSON | avinashs-kingdom/public/data/research/ |",
+            "content": "| Store | Type | Path |\n|-------|------|------|\n| Code | git | ~/Projects/BeamDojo |\n| GPU logs | NFS | /lambda/nfs/beamdojo/logs |\n| Proof clips | git (small) | ~/Projects/BeamDojo/proofs |\n| Spend | JSONL | ~/Projects/BeamDojo/tracking/expenses.jsonl |\n| Live train status | JSON (gitignored) | ~/Projects/BeamDojo/tracking/training-status.json |\n| Kingdom mirror | JSON | avinashs-kingdom/public/data/research/ |",
+            "markdown": "| Store | Type | Path |\n|-------|------|------|\n| Code | git | ~/Projects/BeamDojo |\n| GPU logs | NFS | /lambda/nfs/beamdojo/logs |\n| Proof clips | git (small) | ~/Projects/BeamDojo/proofs |\n| Spend | JSONL | ~/Projects/BeamDojo/tracking/expenses.jsonl |\n| Live train status | JSON (gitignored) | ~/Projects/BeamDojo/tracking/training-status.json |\n| Kingdom mirror | JSON | avinashs-kingdom/public/data/research/ |",
             "diagrams": [],
             "tables": [
               {
@@ -222,6 +216,11 @@
                     "~/Projects/BeamDojo/tracking/expenses.jsonl"
                   ],
                   [
+                    "Live train status",
+                    "JSON (gitignored)",
+                    "~/Projects/BeamDojo/tracking/training-status.json"
+                  ],
+                  [
                     "Kingdom mirror",
                     "JSON",
                     "avinashs-kingdom/public/data/research/"
@@ -245,7 +244,8 @@
           "Future plans"
         ],
         "source_path": "brain/wiki/architecture/beamdojo.md"
-      }
+      },
+      "training": null
     }
   ]
 }

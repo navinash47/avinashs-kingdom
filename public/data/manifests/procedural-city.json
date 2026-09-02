@@ -1,0 +1,143 @@
+{
+  "venture_id": "procedural-city",
+  "synced_at": "2026-09-02T03:48:40.988Z",
+  "repo": {
+    "path": "/Users/avinashnandyala/ProceduralCity",
+    "head": "4e354ba9f84295a6d0ca70a68e02459660e32c8a",
+    "branch": "phase52",
+    "last_commit_at": "2026-08-24T06:10:54-07:00",
+    "remote_url": "https://github.com/navinash47/ProceduralCity.git",
+    "github": {
+      "owner": "navinash47",
+      "repo": "ProceduralCity",
+      "default_branch": "main"
+    }
+  },
+  "stats": {
+    "files": 336,
+    "lines": 49891,
+    "primary_language": "Python",
+    "languages": [
+      {
+        "language": "Python",
+        "files": 88,
+        "lines": 15539
+      },
+      {
+        "language": "Other",
+        "files": 70,
+        "lines": 14961
+      },
+      {
+        "language": "JavaScript",
+        "files": 2,
+        "lines": 8617
+      },
+      {
+        "language": "JSON",
+        "files": 135,
+        "lines": 6054
+      },
+      {
+        "language": "Markdown",
+        "files": 37,
+        "lines": 3637
+      },
+      {
+        "language": "CSS",
+        "files": 1,
+        "lines": 785
+      },
+      {
+        "language": "HTML",
+        "files": 1,
+        "lines": 238
+      },
+      {
+        "language": "Shell",
+        "files": 2,
+        "lines": 60
+      }
+    ],
+    "truncated": false,
+    "sampled_files": 336,
+    "source": "walker"
+  },
+  "dependencies": {
+    "ecosystem": "python",
+    "runtime": [
+      {
+        "name": "fal-client",
+        "version": "",
+        "ecosystem": "pypi"
+      },
+      {
+        "name": "google-genai",
+        "version": "",
+        "ecosystem": "pypi"
+      },
+      {
+        "name": "jsonschema",
+        "version": "",
+        "ecosystem": "pypi"
+      },
+      {
+        "name": "trimesh",
+        "version": "",
+        "ecosystem": "pypi"
+      },
+      {
+        "name": "python-dotenv",
+        "version": "",
+        "ecosystem": "pypi"
+      },
+      {
+        "name": "matplotlib",
+        "version": "",
+        "ecosystem": "pypi"
+      },
+      {
+        "name": "Pillow",
+        "version": "",
+        "ecosystem": "pypi"
+      }
+    ],
+    "dev": []
+  },
+  "storage": [
+    {
+      "type": "json",
+      "path": "tracking/phases.json",
+      "note": "Registry path"
+    },
+    {
+      "type": "jsonl",
+      "path": "tracking/expenses.jsonl",
+      "note": "Registry path"
+    }
+  ],
+  "models_detected": [],
+  "spend_usd": null,
+  "ceiling_usd": 70,
+  "progress": 57,
+  "version": "Stage E · Phase 52",
+  "test_commands": [
+    {
+      "id": "unit",
+      "label": "pytest",
+      "cmd": "pytest -q",
+      "type": "unit",
+      "description": "ProceduralCity Python unit tests"
+    }
+  ],
+  "suggestions": [],
+  "services": [
+    {
+      "id": "dashboard",
+      "label": "City dashboard",
+      "port": 8765,
+      "url": "http://127.0.0.1:8765",
+      "status": "up"
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "venture_id": "kingdom-ops",
+  "synced_at": "2026-09-02T03:48:41.092Z",
+  "repo": {
+    "path": "/Users/avinashnandyala/Projects/avinashs-kingdom",
+    "head": "69a66ea5600f9d692fcd9a620afc3778a4e123f4",
+    "branch": "cursor/live-training-wandb-73ce",
+    "last_commit_at": "2026-08-24T23:48:24Z",
+    "remote_url": "https://github.com/navinash47/avinashs-kingdom.git",
+    "github": {
+      "owner": "navinash47",
+      "repo": "avinashs-kingdom",
+      "default_branch": "main"
+    }
+  },
+  "stats": {
+    "files": 274,
+    "lines": 31030,
+    "primary_language": "JSON",
+    "languages": [
+      {
+        "language": "JSON",
+        "files": 77,
+        "lines": 10273
+      },
+      {
+        "language": "TypeScript",
+        "files": 47,
+        "lines": 7774
+      },
+      {
+        "language": "Markdown",
+        "files": 84,
+        "lines": 4958
+      },
+      {
+        "language": "JavaScript",
+        "files": 24,
+        "lines": 4262
+      },
+      {
+        "language": "Other",
+        "files": 26,
+        "lines": 1629
+      },
+      {
+        "language": "Shell",
+        "files": 11,
+        "lines": 1142
+      },
+      {
+        "language": "CSS",
+        "files": 3,
+        "lines": 956
+      },
+      {
+        "language": "YAML",
+        "files": 1,
+        "lines": 22
+      },
+      {
+        "language": "HTML",
+        "files": 1,
+        "lines": 14
+      }
+    ],
+    "truncated": false,
+    "sampled_files": 274,
+    "source": "walker"
+  },
+  "dependencies": {
+    "ecosystem": "node",
+    "runtime": [
+      {
+        "name": "react",
+        "version": "^19.2.8",
+        "ecosystem": "npm"
+      },
+      {
+        "name": "react-dom",
+        "version": "^19.2.8",
+        "ecosystem": "npm"
+      }
+    ],
+    "dev": [
+      {
+        "name": "@types/node",
+        "version": "^24.13.3",
+        "ecosystem": "npm"
+      },
+      {
+        "name": "@types/react",
+        "version": "^19.2.17",
+        "ecosystem": "npm"
+      },
+      {
+        "name": "@types/react-dom",
+        "version": "^19.2.3",
+        "ecosystem": "npm"
+      },
+      {
+        "name": "@vitejs/plugin-react",
+        "version": "^6.0.4",
+        "ecosystem": "npm"
+      },
+      {
+        "name": "oxlint",
+        "version": "^1.75.0",
+        "ecosystem": "npm"
+      },
+      {
+        "name": "typescript",
+        "version": "~6.0.2",
+        "ecosystem": "npm"
+      },
+      {
+        "name": "vite",
+        "version": "^8.2.0",
+        "ecosystem": "npm"
+      }
+    ]
+  },
+  "storage": [],
+  "models_detected": [
+    {
+      "name": "Models",
+      "source": "config scan"
+    }
+  ],
+  "spend_usd": null,
+  "ceiling_usd": 250,
+  "progress": 70,
+  "version": "v1.0",
+  "test_commands": [
+    {
+      "id": "lint",
+      "label": "oxlint",
+      "cmd": "npm run lint",
+      "type": "unit",
+      "description": "Static analysis for Kingdom panel and scripts"
+    },
+    {
+      "id": "build",
+      "label": "vite build",
+      "cmd": "npm run build",
+      "type": "regression",
+      "description": "Typecheck + production bundle (orchestrator UI)"
+    }
+  ],
+  "suggestions": [],
+  "services": [
+    {
+      "id": "dashboard",
+      "label": "Kingdom panel",
+      "port": 5173,
+      "url": "http://127.0.0.1:5173",
+      "status": "up"
+    }
+  ]
+}
