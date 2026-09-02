@@ -250,7 +250,7 @@
       "path": "tracks/preview-pdf/Avinash_Nandyala_SDE_Entry.pdf"
     }
   ],
-  "share_site_url": null,
+  "share_site_url": "https://share-site-ruddy.vercel.app",
   "share_site_local": "http://localhost:5299",
   "share_site_readme": "share-site/README.md",
   "dashboard_ui": "v3-role-ratings",
