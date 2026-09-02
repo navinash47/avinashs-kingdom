@@ -337,3 +337,18 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 
 **Principle:** Discover Vercel via `vercel project ls` + missing `.vercel` before assuming a Kingdom production URL exists.
 
+### Observation 23: SPA catch-all rewrite + /api HTML 200 blanks React
+
+**Status:** ACTIONED (2026-09-02) — harden `apiFetch`/`fetchServices`/`useServiceStatus`; exclude `/api` from `vercel.json` rewrites
+**Date:** 2026-09-02
+**Session context:** Urgent blank prod dashboard at avinashs-kingdom.vercel.app
+**Skill:** sync-kingdom / deploy hygiene
+**Type:** personal
+**Phase/Area:** Throne SPA on Vercel
+
+**Issue:** `rewrites: /(.*) → index.html` made `/api/services` return HTML with 200. `fetchServices` set `services` to `undefined`; `serviceForVenture` crashed on `.find` → empty `#root`.
+
+**Suggested improvement:** Never assume missing `/api` 404s under SPA hosts; always coerce services to `[]` and reject non-JSON API bodies. Exclude `/api` from SPA rewrites.
+
+**Principle:** Static SPA deploys must treat orchestrator APIs as optional; HTML fallbacks that look like successful JSON responses are blank-page bombs.
+
