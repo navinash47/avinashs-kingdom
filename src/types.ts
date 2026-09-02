@@ -503,6 +503,8 @@ export type CityStageProof = {
   duration_sec: number | null
   checklist: string | null
   unity_report: string | null
+  svg?: string | null
+  heatmap?: string | null
   walkthrough_skipped?: boolean | null
 }
 

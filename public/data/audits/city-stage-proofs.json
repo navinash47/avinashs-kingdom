@@ -1,8 +1,8 @@
 {
-  "synced_at": "2026-09-02T04:13:47.816Z",
+  "synced_at": "2026-09-02T19:57:09.777Z",
   "source": "/Users/avinashnandyala/ProceduralCity/dashboard/data.js",
-  "generated_at": "2026-09-02T04:13:47.808342+00:00",
-  "count": 6,
+  "generated_at": "2026-09-02T19:57:09.746485+00:00",
+  "count": 14,
   "proofs": [
     {
       "id": "A",
@@ -15,6 +15,8 @@
       "duration_sec": null,
       "checklist": null,
       "unity_report": null,
+      "svg": null,
+      "heatmap": null,
       "walkthrough_skipped": null
     },
     {
@@ -28,6 +30,8 @@
       "duration_sec": null,
       "checklist": null,
       "unity_report": null,
+      "svg": null,
+      "heatmap": null,
       "walkthrough_skipped": null
     },
     {
@@ -41,6 +45,8 @@
       "duration_sec": 721.5,
       "checklist": "reports/phase37_walkthrough_checklist.md",
       "unity_report": "reports/unity_stage_c_walkthrough.json",
+      "svg": null,
+      "heatmap": null,
       "walkthrough_skipped": false
     },
     {
@@ -54,6 +60,8 @@
       "duration_sec": 1925.6,
       "checklist": "reports/phase47_streaming_walk_checklist.md",
       "unity_report": "reports/unity_stage_d_walkthrough.json",
+      "svg": null,
+      "heatmap": null,
       "walkthrough_skipped": false
     },
     {
@@ -67,6 +75,8 @@
       "duration_sec": null,
       "checklist": null,
       "unity_report": null,
+      "svg": null,
+      "heatmap": null,
       "walkthrough_skipped": null
     },
     {
@@ -80,7 +90,129 @@
       "duration_sec": null,
       "checklist": null,
       "unity_report": null,
+      "svg": null,
+      "heatmap": null,
       "walkthrough_skipped": null
+    },
+    {
+      "id": "E50",
+      "title": "Stage E — Phase 50 semantic validation",
+      "status": "pass",
+      "terminal": null,
+      "gate": "reports/unity_phase50_semantic.json",
+      "unity_video": null,
+      "poster": null,
+      "duration_sec": null,
+      "checklist": null,
+      "unity_report": null,
+      "svg": null,
+      "heatmap": null,
+      "walkthrough_skipped": null
+    },
+    {
+      "id": "E51",
+      "title": "Stage E — Phase 51 hybrid merge",
+      "status": "pass",
+      "terminal": null,
+      "gate": "reports/unity_phase51_hybrid.json",
+      "unity_video": null,
+      "poster": null,
+      "duration_sec": null,
+      "checklist": null,
+      "unity_report": null,
+      "svg": null,
+      "heatmap": null,
+      "walkthrough_skipped": null
+    },
+    {
+      "id": "E52",
+      "title": "Stage E — Phase 52 district batch",
+      "status": "pass",
+      "terminal": "reports/stage_e_phase52_verify_terminal.txt",
+      "gate": "reports/phase52_district_verify.json",
+      "unity_video": null,
+      "poster": null,
+      "duration_sec": null,
+      "checklist": null,
+      "unity_report": null,
+      "svg": "reports/phase52_district_style.svg",
+      "heatmap": "reports/phase52_district_heatmap.svg",
+      "walkthrough_skipped": null
+    },
+    {
+      "id": "E53",
+      "title": "Stage E — Phase 53 batch cost tracking",
+      "status": "pass",
+      "terminal": "reports/stage_e_phase53_verify_terminal.txt",
+      "gate": "reports/phase53_batch_verify.json",
+      "unity_video": null,
+      "poster": null,
+      "duration_sec": null,
+      "checklist": null,
+      "unity_report": null,
+      "svg": null,
+      "heatmap": null,
+      "walkthrough_skipped": null
+    },
+    {
+      "id": "E54",
+      "title": "Stage E — Phase 54 landmarks",
+      "status": "pass",
+      "terminal": "reports/stage_e_phase54_verify_terminal.txt",
+      "gate": "reports/phase54_landmarks_verify.json",
+      "unity_video": null,
+      "poster": null,
+      "duration_sec": null,
+      "checklist": null,
+      "unity_report": null,
+      "svg": "reports/phase54_landmarks.svg",
+      "heatmap": null,
+      "walkthrough_skipped": null
+    },
+    {
+      "id": "E55",
+      "title": "Stage E — Phase 55 fallback quality",
+      "status": "pass",
+      "terminal": "reports/stage_e_phase55_verify_terminal.txt",
+      "gate": "reports/phase55_fallback_verify.json",
+      "unity_video": null,
+      "poster": null,
+      "duration_sec": null,
+      "checklist": null,
+      "unity_report": null,
+      "svg": null,
+      "heatmap": null,
+      "walkthrough_skipped": null
+    },
+    {
+      "id": "E56",
+      "title": "Stage E — Phase 56 regen reproducibility",
+      "status": "pass",
+      "terminal": "reports/stage_e_phase56_verify_terminal.txt",
+      "gate": "reports/phase56_regen_verify.json",
+      "unity_video": null,
+      "poster": null,
+      "duration_sec": null,
+      "checklist": null,
+      "unity_report": null,
+      "svg": null,
+      "heatmap": null,
+      "walkthrough_skipped": null
+    },
+    {
+      "id": "E57",
+      "title": "Stage E — GATE (1km walk / coherence)",
+      "status": "incomplete",
+      "terminal": "reports/stage_e_gate_verify_terminal.txt",
+      "gate": "reports/stage_e_gate.json",
+      "unity_video": "reports/phase57_walkthrough.mp4",
+      "poster": "reports/phase57_walkthrough_poster.jpg",
+      "duration_sec": 2225.6,
+      "checklist": "reports/phase57_walkthrough_checklist.md",
+      "unity_report": "reports/unity_stage_e_walkthrough.json",
+      "svg": "reports/phase57_district_coherence.svg",
+      "heatmap": null,
+      "walkthrough_skipped": true
     }
   ]
 }

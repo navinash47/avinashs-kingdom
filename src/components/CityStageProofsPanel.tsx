@@ -99,7 +99,7 @@ export function CityStageProofsPanel({ port, up }: Props) {
         <div>
           <h3>Stage verification proofs</h3>
           <p className="muted tiny">
-            All stage gates + Unity walkthroughs (C/D).{' '}
+            All stage gates + Unity walkthroughs (C/D/E).{' '}
             {live?.length
               ? 'Live from city dashboard'
               : seed?.synced_at
@@ -163,6 +163,8 @@ export function CityStageProofsPanel({ port, up }: Props) {
               push('Checklist', p.checklist)
               push('Unity report', p.unity_report)
               push('MP4', p.unity_video)
+              push('SVG', p.svg)
+              push('Heatmap', p.heatmap)
               return (
                 <article key={p.id} className="city-proof-card">
                   <header>

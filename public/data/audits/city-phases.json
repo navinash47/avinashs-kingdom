@@ -1,15 +1,15 @@
 {
-  "synced_at": "2026-09-02T04:13:47.742Z",
+  "synced_at": "2026-09-02T19:57:09.628Z",
   "source": "local working tree",
-  "current_phase": 52,
+  "current_phase": 57,
   "stage": "E",
   "stage_name": "LLM Scene Director",
-  "passed": 52,
+  "passed": 57,
   "total": 92,
-  "progress": 57,
-  "version": "Stage E · Phase 52",
-  "next_milestone": "Phase 52: District-coherent batch planning (pending)",
-  "updated_at": "2026-09-02T04:08:51.331121+00:00",
+  "progress": 62,
+  "version": "Stage E · Phase 57",
+  "next_milestone": "Phase 57: STAGE E GATE (pending)",
+  "updated_at": "2026-09-02T19:56:30.166205+00:00",
   "ceiling_usd": 70,
   "local_stale": false
 }

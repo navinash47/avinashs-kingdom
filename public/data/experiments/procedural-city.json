@@ -3,6 +3,46 @@
   "updated": "2026-08-24",
   "items": [
     {
+      "date": "2026-09-02",
+      "summary": "Refresh Stage Proofs panel copy for Stage E walkthroughs.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Add Stage E walkthrough proof artifact (gate still awaiting human).",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Prepare Phase 57 Stage E gate (awaiting human perfect-eval).",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Pass Phase 56: geometry-cache regen reproducibility with Stage E tracking.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Pass Phase 55: district-median fallback plans wired into pipeline L3.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Pass Phase 54: landmark tile designation with spacing and hero assets.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Pass Phase 53: batch LLM world generation with cost tracking.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Pass Phase 52: district-coherent batch planning with schema and SVG proofs.",
+      "source": "git"
+    },
+    {
       "date": "2026-08-24",
       "summary": "Pass Phase 51: hybrid character→geometry merge for tile plans.",
       "source": "git"
@@ -39,16 +79,6 @@
       "source": "git"
     },
     {
-      "date": "2026-08-19",
-      "summary": "Add a top-level Spawn 3x3 City Unity menu for Stage C.",
-      "source": "git"
-    },
-    {
-      "date": "2026-08-19",
-      "summary": "Refresh Stage B determinism golden after Phase 28 roof enum change.",
-      "source": "git"
-    },
-    {
       "date": "2026-08-18",
       "summary": "Fix Unity 6.5 Editor compile errors blocking Stage C menus.",
       "source": "git"
@@ -58,36 +88,6 @@
       "summary": "Phase gate sync wired into fleet control plane manifests.",
       "source": "wiki",
       "video": null
-    },
-    {
-      "date": "2026-08-10",
-      "summary": "Pass Phase 48: Gemini structured tile_plan smoke with soft-skip.",
-      "source": "git"
-    },
-    {
-      "date": "2026-08-10",
-      "summary": "Pass Phase 47: Stage D gate with streaming walk soft-skip.",
-      "source": "git"
-    },
-    {
-      "date": "2026-08-10",
-      "summary": "Pass Phase 46: runtime API guard enforcing offline/runtime R2 split.",
-      "source": "git"
-    },
-    {
-      "date": "2026-08-10",
-      "summary": "Pass Phase 45: memory ceiling across 50-tile streaming walk.",
-      "source": "git"
-    },
-    {
-      "date": "2026-08-10",
-      "summary": "Pass Phase 44: runtime determinism via geometry hash reload loop.",
-      "source": "git"
-    },
-    {
-      "date": "2026-08-10",
-      "summary": "Pass Phase 43: Burst Job System road and building mesh generation.",
-      "source": "git"
     }
   ],
   "source_path": "brain/wiki/experiments/procedural-city.md"

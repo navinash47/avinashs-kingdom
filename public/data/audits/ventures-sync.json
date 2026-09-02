@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-09-02T04:13:47.841Z",
+  "synced_at": "2026-09-02T19:57:09.869Z",
   "patches": {
     "youtube-editor": {
       "version": "Phase 4 · Clip research + provenance",
@@ -55,10 +55,10 @@
     },
     "mac-optimize-audit": {
       "version": "v0.1",
-      "progress": 52,
+      "progress": 60,
       "priority": "P1",
-      "nextMilestone": "Memory pressure is urgent",
-      "notes": "Next: 1) Memory pressure is urgent · 2) Cursor is heavy (3.0 GB, 76 processes) · 3) Review always-on helpers: us.zoom.updater.login.check.plist, us.zoom.updater.plist, com.teamviewer.Helper.plist, com.teamviewer.UninstallerHelper.plist",
+      "nextMilestone": "Quit runaway git-remote-https (93% CPU)",
+      "notes": "Next: 1) Quit runaway git-remote-https (93% CPU) · 2) Memory pressure is warning · 3) Cursor is heavy (4.9 GB, 43 processes)",
       "status": "active",
       "progressSource": "STATUS.md Progress field (agent-updated)",
       "phasesPassed": null,
@@ -80,14 +80,14 @@
       "ceilingUsd": 40
     },
     "procedural-city": {
-      "version": "Stage E · Phase 52",
-      "progress": 57,
+      "version": "Stage E · Phase 57",
+      "progress": 62,
       "priority": "P1",
       "status": "active",
-      "nextMilestone": "Phase 52: District-coherent batch planning (pending)",
-      "notes": "City · 52/92 pass · source local working tree · updated 2026-09-02T04:08:51.331121+00:00 · ceiling $70",
-      "progressSource": "phases 52/92 from local working tree",
-      "phasesPassed": 52,
+      "nextMilestone": "Phase 57: STAGE E GATE (pending)",
+      "notes": "City · 57/92 pass · source local working tree · updated 2026-09-02T19:56:30.166205+00:00 · ceiling $70",
+      "progressSource": "phases 57/92 from local working tree",
+      "phasesPassed": 57,
       "phasesTotal": 92,
       "spendUsd": null,
       "ceilingUsd": 70
@@ -110,7 +110,7 @@
       "progress": 70,
       "priority": "P1",
       "status": "active",
-      "nextMilestone": "Cancel/review 6 kill-list seats; reclaim low-risk disk (51.5% used)",
+      "nextMilestone": "Cancel/review 6 kill-list seats; reclaim low-risk disk (51.4% used)",
       "notes": "Subscription kill list lives here. Mac speed is the mac-optimize-audit province.",
       "progressSource": "heuristic ops readiness 70% (audits live; kill seats still open)",
       "phasesPassed": null,
