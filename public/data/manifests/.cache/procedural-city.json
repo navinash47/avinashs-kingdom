@@ -1,6 +1,6 @@
 {
   "venture_id": "procedural-city",
-  "synced_at": "2026-09-02T04:13:48.056Z",
+  "synced_at": "2026-08-24T13:13:41.349Z",
   "repo": {
     "path": "/Users/avinashnandyala/ProceduralCity",
     "head": "4e354ba9f84295a6d0ca70a68e02459660e32c8a",
@@ -130,14 +130,5 @@
       "description": "ProceduralCity Python unit tests"
     }
   ],
-  "suggestions": [],
-  "services": [
-    {
-      "id": "dashboard",
-      "label": "City dashboard",
-      "port": 8765,
-      "url": "http://127.0.0.1:8765",
-      "status": "up"
-    }
-  ]
+  "suggestions": []
 }

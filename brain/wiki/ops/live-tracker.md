@@ -6,7 +6,7 @@ tags: [tracker, sync, citizens]
 
 # Live tracker
 
-Auto-written by `npm run sync` at **2026-09-02T04:08:50.666Z**. Do not hand-edit — re-run sync after venture gates.
+Auto-written by `npm run sync` at **2026-09-02T04:13:47.841Z**. Do not hand-edit — re-run sync after venture gates.
 
 ## How progress is calculated
 

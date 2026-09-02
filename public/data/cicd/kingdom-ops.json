@@ -1,12 +1,32 @@
 {
   "venture_id": "kingdom-ops",
-  "synced_at": "2026-09-02T04:08:56.346Z",
+  "synced_at": "2026-09-02T04:13:53.104Z",
   "github": {
     "owner": "navinash47",
     "repo": "avinashs-kingdom",
     "default_branch": "main",
     "available": true,
     "runs": [
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-09-02T04:11:42Z",
+        "databaseId": 33589862332,
+        "displayTitle": "Show live W&B training status on the Research Lab tab",
+        "event": "pull_request",
+        "status": "completed",
+        "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33589862332",
+        "workflowName": "Kingdom CI"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-09-02T04:09:09Z",
+        "databaseId": 33589697274,
+        "displayTitle": "Show live W&B training status on the Research Lab tab",
+        "event": "pull_request",
+        "status": "completed",
+        "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33589697274",
+        "workflowName": "Kingdom CI"
+      },
       {
         "conclusion": "failure",
         "createdAt": "2026-09-02T04:08:33Z",
@@ -35,26 +55,6 @@
         "event": "pull_request",
         "status": "completed",
         "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33589071791",
-        "workflowName": "Kingdom CI"
-      },
-      {
-        "conclusion": "failure",
-        "createdAt": "2026-09-02T03:57:41Z",
-        "databaseId": 33588987021,
-        "displayTitle": "Show live W&B training status on the Research Lab tab",
-        "event": "pull_request",
-        "status": "completed",
-        "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33588987021",
-        "workflowName": "Kingdom CI"
-      },
-      {
-        "conclusion": "failure",
-        "createdAt": "2026-09-02T03:53:27Z",
-        "databaseId": 33588732408,
-        "displayTitle": "Show live W&B training status on the Research Lab tab",
-        "event": "pull_request",
-        "status": "completed",
-        "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33588732408",
         "workflowName": "Kingdom CI"
       }
     ],

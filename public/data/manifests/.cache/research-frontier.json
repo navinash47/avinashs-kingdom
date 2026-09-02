@@ -1,6 +1,6 @@
 {
   "venture_id": "research-frontier",
-  "synced_at": "2026-09-02T04:13:47.953Z",
+  "synced_at": "2026-08-24T08:38:55.417Z",
   "repo": {
     "path": "/Users/avinashnandyala/Projects/research-frontier-lab",
     "head": "c117a61563f2bf85217ebf42f43f8170d24c34b3",
@@ -45,6 +45,5 @@
   "progress": 12,
   "version": "v0.1",
   "test_commands": [],
-  "suggestions": [],
-  "services": []
+  "suggestions": []
 }

@@ -4,6 +4,16 @@
   "items": [
     {
       "date": "2026-09-01",
+      "summary": "Show resume knowledge updated times in UTC.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-01",
+      "summary": "Refresh venture manifests and live tracker after npm run sync.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-01",
       "summary": "Sync LinkedIn draft with IIT Kharagpur education in about variants.",
       "source": "git"
     },
@@ -71,16 +81,6 @@
     {
       "date": "2026-08-24",
       "summary": "Add a Mac merge script that never checkouts the live-training branch.",
-      "source": "git"
-    },
-    {
-      "date": "2026-08-24",
-      "summary": "Sync Research Lab live status from NFS logs as well as tracking/.",
-      "source": "git"
-    },
-    {
-      "date": "2026-08-24",
-      "summary": "Poll NFS and rsynced log copies of training-status.json in the Research Lab.",
       "source": "git"
     },
     {

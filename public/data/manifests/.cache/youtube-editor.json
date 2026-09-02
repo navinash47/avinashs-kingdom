@@ -1,6 +1,6 @@
 {
   "venture_id": "youtube-editor",
-  "synced_at": "2026-09-02T04:13:47.900Z",
+  "synced_at": "2026-08-24T08:38:55.310Z",
   "repo": {
     "path": "/Users/avinashnandyala/Projects/youtube-editor-lab",
     "head": "56d156b18a881db0f9f8ea1b962dfd1e35a92402",
@@ -105,6 +105,5 @@
       "description": "YouTube editor lab test suite (clip research, provenance lint)"
     }
   ],
-  "suggestions": [],
-  "services": []
+  "suggestions": []
 }

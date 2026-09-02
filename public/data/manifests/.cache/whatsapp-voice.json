@@ -1,6 +1,6 @@
 {
   "venture_id": "whatsapp-voice",
-  "synced_at": "2026-09-02T04:13:47.843Z",
+  "synced_at": "2026-08-24T06:25:15.216Z",
   "repo": {
     "path": "/Users/avinashnandyala/Projects/whatsapp-voice-agents",
     "head": "8d9d95dcba08533d7ed4ff534f0c3a0ab12c1062",
@@ -69,14 +69,5 @@
       "type": "unit"
     }
   ],
-  "suggestions": [],
-  "services": [
-    {
-      "id": "dashboard",
-      "label": "WhatsApp demo",
-      "port": 8787,
-      "url": "http://127.0.0.1:8787",
-      "status": "up"
-    }
-  ]
+  "suggestions": []
 }

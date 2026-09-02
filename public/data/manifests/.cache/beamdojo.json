@@ -1,6 +1,6 @@
 {
   "venture_id": "beamdojo",
-  "synced_at": "2026-09-02T04:13:48.005Z",
+  "synced_at": "2026-08-24T19:00:32.389Z",
   "repo": {
     "path": "/Users/avinashnandyala/Projects/BeamDojo",
     "head": "99d253db170edaadec1db63c1a0268aa07d8a7bf",
@@ -66,6 +66,5 @@
   "progress": 18,
   "version": "Stage 1 smoke",
   "test_commands": [],
-  "suggestions": [],
-  "services": []
+  "suggestions": []
 }

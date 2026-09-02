@@ -147,14 +147,5 @@
       "description": "Typecheck + production bundle (orchestrator UI)"
     }
   ],
-  "suggestions": [],
-  "services": [
-    {
-      "id": "dashboard",
-      "label": "Kingdom panel",
-      "port": 5173,
-      "url": "http://127.0.0.1:5173",
-      "status": "down"
-    }
-  ]
+  "suggestions": []
 }

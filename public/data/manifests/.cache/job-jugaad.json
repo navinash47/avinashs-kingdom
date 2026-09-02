@@ -1,6 +1,6 @@
 {
   "venture_id": "job-jugaad",
-  "synced_at": "2026-09-02T04:13:48.305Z",
+  "synced_at": "2026-08-24T08:38:56.426Z",
   "repo": {
     "path": "/Users/avinashnandyala/Projects/job-jugaad",
     "head": "1cb567cde2536b0072a37a45941a6ba7bf8700f3",
@@ -126,14 +126,5 @@
       "description": "Job Jugaad application tracker tests"
     }
   ],
-  "suggestions": [],
-  "services": [
-    {
-      "id": "dashboard",
-      "label": "Job tracker",
-      "port": 8790,
-      "url": "http://127.0.0.1:8790",
-      "status": "up"
-    }
-  ]
+  "suggestions": []
 }

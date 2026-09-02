@@ -1,6 +1,6 @@
 {
   "venture_id": "mac-optimize-audit",
-  "synced_at": "2026-09-02T04:13:48.248Z",
+  "synced_at": "2026-08-24T08:38:55.619Z",
   "repo": {
     "path": "/Users/avinashnandyala/Projects/mac-optimize-audit",
     "head": "7e407a918ad804c94993c16b7d8da4a64e902f07",
@@ -63,7 +63,7 @@
   "models_detected": [],
   "spend_usd": null,
   "ceiling_usd": null,
-  "progress": 52,
+  "progress": 72,
   "version": "v0.1",
   "test_commands": [
     {
@@ -74,14 +74,5 @@
       "description": "Mac optimize audit pytest suite"
     }
   ],
-  "suggestions": [],
-  "services": [
-    {
-      "id": "dashboard",
-      "label": "Mac audit dashboard",
-      "port": 8742,
-      "url": "http://127.0.0.1:8742",
-      "status": "up"
-    }
-  ]
+  "suggestions": []
 }
