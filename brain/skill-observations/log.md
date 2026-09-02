@@ -322,3 +322,18 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 
 **Principle:** Completion claims should be consistent across tracker and SRS status fields, not only in the progress table.
 
+### Observation 22: Kingdom Vercel is create-on-first-deploy, not pre-linked
+
+**Status:** ACTIONED (2026-09-02) — created `navinash47s-projects/avinashs-kingdom`, `vercel.json`, prod https://avinashs-kingdom.vercel.app
+**Date:** 2026-09-02
+**Session context:** /goal analytics dashboard + homepage features + Vercel discovery
+**Skill:** sync-kingdom / kingdom-wiki (deploy note)
+**Type:** personal
+**Phase/Area:** Throne UI + static host
+
+**Issue:** No prior Kingdom Vercel project (unlike job-jugaad / procedural-city-web). CLI creates project on first `--prod`; GitHub `git connect` can fail while file deploy still succeeds.
+
+**Suggested improvement:** Document SPA-only caveat (synced `public/data` baked in; local orchestrator APIs absent) on [[concepts/kingdom-personal-os]]; optional `npx vercel git connect` for push-to-deploy.
+
+**Principle:** Discover Vercel via `vercel project ls` + missing `.vercel` before assuming a Kingdom production URL exists.
+
