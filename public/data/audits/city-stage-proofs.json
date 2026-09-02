@@ -1,7 +1,7 @@
 {
-  "synced_at": "2026-09-02T19:58:39.323Z",
+  "synced_at": "2026-09-02T20:03:44.110Z",
   "source": "/Users/avinashnandyala/ProceduralCity/dashboard/data.js",
-  "generated_at": "2026-09-02T19:58:39.317611+00:00",
+  "generated_at": "2026-09-02T20:03:44.101067+00:00",
   "count": 14,
   "dashboard_proofs_url": "http://127.0.0.1:8765/#proofs",
   "proofs": [
@@ -68,7 +68,7 @@
     {
       "id": "E48",
       "title": "Stage E — Phase 48 structured smoke",
-      "status": "pass",
+      "status": "fail",
       "terminal": "reports/stage_e_phase48_verify_terminal.txt",
       "gate": "reports/phase48_structured_verify.json",
       "unity_video": null,

@@ -71,3 +71,9 @@ Created vault layout (`raw/`, `wiki/`), overview, venture pages, starter concept
 - Track A/B resumes (LaTeX + Desktop PDFs); Portfolio bio → Applied AI / agents
 - Job Jugaad wishlist: 30 company+role rows; CAREER_MARKETING.md + STUDY.md
 - Wiki concepts: agentic-interview-prep, agentic-resume-gates
+
+## [2026-09-02] ingest | Virtual control surface + brain harness
+
+- Added [[concepts/virtual-control-surface]] and [[concepts/brain-harness-fsm]].
+- Sync now writes `public/data/control-surface.json` and `brain/harness/empty-model/{graph,fsm}.json`.
+- Restored OrchestratorProvider control plane App (Throne = virtual control).

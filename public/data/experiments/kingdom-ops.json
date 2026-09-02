@@ -3,6 +3,46 @@
   "updated": "2026-08-24",
   "items": [
     {
+      "date": "2026-09-02",
+      "summary": "Link City Stage Proofs from Kingdom Run tab.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Surface Procedural City Stage E walkthrough proofs on Kingdom.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-01",
+      "summary": "Sync kingdom resume data after LinkedIn master resume export.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-01",
+      "summary": "Sync resume knowledge after LinkedIn Master track export.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-01",
+      "summary": "Add orchestrator cover letter update endpoint for share site editor.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-01",
+      "summary": "Sync LinkedIn APPROVED status and Job Jugaad primary tracks closure.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-01",
+      "summary": "Sync resume knowledge after share-site overview parity update.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-01",
+      "summary": "Sync venture data and update portfolio-repo metadata.",
+      "source": "git"
+    },
+    {
       "date": "2026-09-01",
       "summary": "Show resume knowledge updated times in UTC.",
       "source": "git"
@@ -42,46 +82,6 @@
       "summary": "Command orchestrator Phase 1 — Cmd-K palette + venture inspector",
       "source": "wiki",
       "video": null
-    },
-    {
-      "date": "2026-08-24",
-      "summary": "Show the live-status note and keep Isaac-boot unknown over a stale W&B run.",
-      "source": "git"
-    },
-    {
-      "date": "2026-08-24",
-      "summary": "Use the A10 status entity when overlaying a live W&B run.",
-      "source": "git"
-    },
-    {
-      "date": "2026-08-24",
-      "summary": "Show foothold penalty on the Research Lab live card.",
-      "source": "git"
-    },
-    {
-      "date": "2026-08-24",
-      "summary": "Keep BeamDojo Fleet graph on BeamDojo and sync the live-page URL.",
-      "source": "git"
-    },
-    {
-      "date": "2026-08-24",
-      "summary": "Show live PPO reward and losses on the Research Lab card.",
-      "source": "git"
-    },
-    {
-      "date": "2026-08-24",
-      "summary": "Overlay a fresh W&B run onto the Research Lab live status.",
-      "source": "git"
-    },
-    {
-      "date": "2026-08-24",
-      "summary": "Pin BeamDojo live training at the top of the Research Lab.",
-      "source": "git"
-    },
-    {
-      "date": "2026-08-24",
-      "summary": "Add a Mac merge script that never checkouts the live-training branch.",
-      "source": "git"
     },
     {
       "date": "2026-08-20",

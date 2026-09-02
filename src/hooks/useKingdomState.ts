@@ -4,6 +4,7 @@ import type {
   Agent,
   ArchitectureBundle,
   CicdSnapshot,
+  ControlSurface,
   ExperimentsBundle,
   Expense,
   KingdomState,
@@ -67,6 +68,10 @@ async function loadOrchestratorBundles(registry: VentureRegistry | null) {
   )
 
   return { manifests, architecture, experiments, cicd, globalSuggestions, skillGraph }
+}
+
+async function loadControlSurface() {
+  return loadJson<ControlSurface>('/data/control-surface.json')
 }
 
 function uid(prefix: string) {
@@ -142,6 +147,7 @@ export function useKingdomState() {
         ])
 
         const bundles = await loadOrchestratorBundles(registry)
+        const controlSurface = await loadControlSurface()
 
         const cached = isShareHost() ? null : localStorage.getItem(STORAGE_KEY)
         if (cached) {
@@ -161,6 +167,7 @@ export function useKingdomState() {
             registry,
             ...bundles,
             skillGraph: bundles.skillGraph,
+            controlSurface,
             ventures: seedVentures
               ? mergeVentures(parsed.ventures, seedVentures)
               : parsed.ventures,
@@ -208,6 +215,7 @@ export function useKingdomState() {
           registry,
           ...bundles,
           skillGraph: bundles.skillGraph,
+          controlSurface,
         }
         if (!cancelled) {
           setState(next)
@@ -259,6 +267,7 @@ export function useKingdomState() {
         ])
         if (cancelled || !seedVentures) return
         const bundles = await loadOrchestratorBundles(registry)
+        const controlSurface = await loadControlSurface()
         setState((prev) => {
           if (!prev) return prev
           if (isShareHost()) {
@@ -274,6 +283,7 @@ export function useKingdomState() {
               ventures: seedVentures,
               ...bundles,
               skillGraph: bundles.skillGraph,
+              controlSurface,
             }
           }
           return {
@@ -288,6 +298,7 @@ export function useKingdomState() {
             ventures: mergeVentures(prev.ventures, seedVentures),
             ...bundles,
             skillGraph: bundles.skillGraph,
+            controlSurface,
           }
         })
         setGlobalSuggestions(bundles.globalSuggestions)
@@ -434,6 +445,7 @@ export function useKingdomState() {
     ])
     if (!seedVentures) throw new Error('Could not load ventures.json from host')
     const bundles = await loadOrchestratorBundles(registry)
+    const controlSurface = await loadControlSurface()
     setState((prev) => {
       let next: KingdomState | null = null
       if (!prev) {
@@ -453,6 +465,7 @@ export function useKingdomState() {
           registry,
           ...bundles,
           skillGraph: bundles.skillGraph,
+          controlSurface,
         }
       } else {
         next = {
@@ -475,6 +488,7 @@ export function useKingdomState() {
             : prev.expenses,
           ...bundles,
           skillGraph: bundles.skillGraph,
+          controlSurface,
         }
       }
       if (next && !isShareHost()) {

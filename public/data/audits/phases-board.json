@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-09-02T19:58:39.342Z",
+  "synced_at": "2026-09-02T20:03:44.136Z",
   "progress_rules": {
     "whatsapp-voice": "phases_pass / phases_total (from tracking/phases.json)",
     "procedural-city": "phases_pass / phases_total — prefer origin/main when local phase branch is stale",
@@ -79,7 +79,7 @@
       "phasesTotal": 92,
       "spendUsd": null,
       "ceilingUsd": 70,
-      "notes": "City · 57/92 pass · source local working tree · updated 2026-09-02T19:58:39.134904+00:00 · ceiling $70",
+      "notes": "City · 57/92 pass · source local working tree · updated 2026-09-02T20:03:43.163801+00:00 · ceiling $70",
       "repoPath": "/Users/avinashnandyala/ProceduralCity"
     },
     {
@@ -121,13 +121,13 @@
       "progress": 60,
       "priority": "P1",
       "status": "active",
-      "nextMilestone": "Quit runaway nsurlsessiond (99% CPU)",
+      "nextMilestone": "Quit runaway Python (100% CPU)",
       "progressSource": "STATUS.md Progress field (agent-updated)",
       "phasesPassed": null,
       "phasesTotal": null,
       "spendUsd": null,
       "ceilingUsd": null,
-      "notes": "Next: 1) Quit runaway nsurlsessiond (99% CPU) · 2) Memory pressure is warning · 3) Restart Zen Browser — 2.1 GB across 15 processes",
+      "notes": "Next: 1) Quit runaway Python (100% CPU) · 2) Memory pressure is warning · 3) Cursor is heavy (5.3 GB, 45 processes)",
       "repoPath": "/Users/avinashnandyala/Projects/mac-optimize-audit"
     },
     {

@@ -22,11 +22,17 @@ cd /Users/avinashnandyala/Projects/avinashs-kingdom && npm run sync
 
 This refreshes:
 - `public/data/ventures.json` (progress/version/priority — **source of truth for the panel**)
+- **`public/data/control-surface.json`** (virtual control plane snapshot + FSM — **must update every sync**)
+- **`brain/harness/empty-model/graph.json` + `fsm.json`** (deterministic KG/FSM seed for the brain harness)
 - Procedural City from local **or `origin/main`** (whichever has more phase passes)
 - ComicMainEngine from `~/Desktop/ComicMainEngine/data/v2a_program.json` first, then `data/usage.db` for V1 spend (not `~/ComicEngine`)
 - `public/data/audits/phases-board.json`, `city-phases.json`, `comic-tasks.json`
 - `brain/wiki/ops/live-tracker.md` (auto census — no need to ask)
 - Mac + subscription audits, expenses sync rows
+- `public/data/research-lab.json` + proof clips under `public/data/research/<id>/` (Research tab)
+- `public/data/skill-graph.json` (agents ↔ skills; Dojo/Steward maps included)
+
+After sync, Research Lab is `/?tab=research`. GPU projects use `"kind": "research"` in `config/venture-registry.json`. Never commit `*.pt` weights.
 
 Report success/failure from the script output. Do not skip sync after phase PASS/FAIL or STATUS edits.
 
@@ -38,7 +44,8 @@ Read these files. **Do not treat Kingdom `STATUS.md` / `ventures.json` as eviden
 |---------|------|-----------------------------|
 | WhatsApp | `~/Projects/whatsapp-voice-agents` | `tracking/phases.json` |
 | YouTube | `~/Projects/youtube-editor-lab` | `STATUS.md` + `tracking/` / Cut Control state |
-| Research | `~/Projects/research-frontier-lab` | `STATUS.md` |
+| Research / Atlas | `~/Projects/research-frontier-lab` | `STATUS.md` |
+| BeamDojo / Dojo | `~/Projects/BeamDojo` | `STATUS.md` + `tracking/expenses.jsonl` + `tracking/training-status.json` + `proofs/` |
 | City | `~/ProceduralCity` | `tracking/phases.json` — prefer `origin/main` if local branch is stale |
 | Comic | `~/Desktop/ComicMainEngine` | `data/v2a_program.json` (2A A0–A5). V1 board is `data/usage.db`. Dashboard `:8770/v2a` |
 | Job Jugaad | `~/Projects/job-jugaad` | `data/applications.json` |

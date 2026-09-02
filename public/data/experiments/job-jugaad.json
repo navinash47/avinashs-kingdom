@@ -3,6 +3,11 @@
   "updated": "2026-08-24",
   "items": [
     {
+      "date": "2026-09-01",
+      "summary": "Register six primary resume tracks for application targeting.",
+      "source": "git"
+    },
+    {
       "date": "2026-08-24",
       "summary": "Initial commit",
       "source": "git"

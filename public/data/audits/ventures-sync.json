@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-09-02T19:58:39.342Z",
+  "synced_at": "2026-09-02T20:03:44.136Z",
   "patches": {
     "youtube-editor": {
       "version": "Phase 4 · Clip research + provenance",
@@ -57,8 +57,8 @@
       "version": "v0.1",
       "progress": 60,
       "priority": "P1",
-      "nextMilestone": "Quit runaway nsurlsessiond (99% CPU)",
-      "notes": "Next: 1) Quit runaway nsurlsessiond (99% CPU) · 2) Memory pressure is warning · 3) Restart Zen Browser — 2.1 GB across 15 processes",
+      "nextMilestone": "Quit runaway Python (100% CPU)",
+      "notes": "Next: 1) Quit runaway Python (100% CPU) · 2) Memory pressure is warning · 3) Cursor is heavy (5.3 GB, 45 processes)",
       "status": "active",
       "progressSource": "STATUS.md Progress field (agent-updated)",
       "phasesPassed": null,
@@ -85,7 +85,7 @@
       "priority": "P1",
       "status": "active",
       "nextMilestone": "Phase 57: STAGE E GATE (pending)",
-      "notes": "City · 57/92 pass · source local working tree · updated 2026-09-02T19:58:39.134904+00:00 · ceiling $70",
+      "notes": "City · 57/92 pass · source local working tree · updated 2026-09-02T20:03:43.163801+00:00 · ceiling $70",
       "progressSource": "phases 57/92 from local working tree",
       "phasesPassed": 57,
       "phasesTotal": 92,

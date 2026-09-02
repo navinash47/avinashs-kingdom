@@ -79,6 +79,10 @@ Periodically check for: orphan pages, broken `[[links]]`, duplicate topics, stal
 
 Use Cursor skills: `kingdom-wiki`, `sync-kingdom`, `log-outreach`, `youtube-provenance`, `phase-gate`, `kingdom-tunnels`, `task-observer`.
 
+## Harness (deterministic KG / FSM)
+
+`brain/harness/` holds an empty-model graph + control FSM. Every `npm run sync` refreshes `empty-model/graph.json`, `empty-model/fsm.json`, and `public/data/control-surface.json`. Query with `node brain/harness/query.mjs`. See [[wiki/concepts/brain-harness-fsm]] and [[wiki/concepts/virtual-control-surface]].
+
 ## Secrets
 
 Never put API keys, `.env` contents, or personal contact phone/email dumps into the wiki. Contact tracking stays in venture outreach tools.

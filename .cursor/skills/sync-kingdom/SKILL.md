@@ -22,12 +22,15 @@ cd /Users/avinashnandyala/Projects/avinashs-kingdom && npm run sync
 
 This refreshes:
 - `public/data/ventures.json` (progress/version/priority — **source of truth for the panel**)
+- **`public/data/control-surface.json`** (virtual control plane snapshot + FSM — **must update every sync**)
+- **`brain/harness/empty-model/graph.json` + `fsm.json`** (deterministic KG/FSM seed for the brain harness)
 - Procedural City from local **or `origin/main`** (whichever has more phase passes)
 - ComicMainEngine from `~/Desktop/ComicMainEngine/data/v2a_program.json` first, then `data/usage.db` for V1 spend (not `~/ComicEngine`)
 - `public/data/audits/phases-board.json`, `city-phases.json`, `comic-tasks.json`
 - `brain/wiki/ops/live-tracker.md` (auto census — no need to ask)
 - Mac + subscription audits, expenses sync rows
 - `public/data/research-lab.json` + proof clips under `public/data/research/<id>/` (Research tab)
+- `public/data/skill-graph.json` (agents ↔ skills; Dojo/Steward maps included)
 
 After sync, Research Lab is `/?tab=research`. GPU projects use `"kind": "research"` in `config/venture-registry.json`. Never commit `*.pt` weights.
 
@@ -55,10 +58,16 @@ Path map page: `brain/wiki/concepts/where-files-live.md`.
 ## After sync (required)
 
 1. Open each source-of-truth file (or the live API/dashboard) and confirm the panel line matches.
-2. If a venture started a **new program** (e.g. Comic 2A beside frozen Version 2), the old completion metric must not stay the only progress source — update `scripts/sync-kingdom.mjs` in the same session.
-3. If the UI still shows parked ghosts: click **Reset seed** or hard-refresh.
+2. Confirm **control surface** refreshed: `public/data/control-surface.json` `synced_at` is fresh, and Throne → Virtual control shows the new stamp (or hard-refresh). Optional: `node brain/harness/query.mjs list`.
+3. If a venture started a **new program** (e.g. Comic 2A beside frozen Version 2), the old completion metric must not stay the only progress source — update `scripts/sync-kingdom.mjs` in the same session.
+4. If the UI still shows parked ghosts: click **Reset seed** or hard-refresh.
+
+## Control surface rule
+
+**Sync Kingdom ⇒ update virtual control app always.** Do not treat sync as “ventures.json only.” The Throne control bar, fleet strip, skill graph, and harness empty-model are part of the same pass (`scripts/lib/control-surface.mjs`). Wiki: `brain/wiki/concepts/virtual-control-surface.md`.
 
 ## Notes
 
 - Panel progress bars are **read-only**; editing the source file + sync updates them.
 - Manual expense/token edits stay in browser localStorage; synced rows refresh on load.
+- Open control plane: `npm run dev` → `http://localhost:5173/?tab=throne` (⌘K for command palette).

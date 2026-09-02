@@ -16,6 +16,7 @@ import {
 import { attachHealthToManifests } from './lib/health.mjs'
 import { syncCicdSnapshots } from './lib/cicd.mjs'
 import { syncSkillGraph, rollupComicModels } from './lib/skill-graph.mjs'
+import { syncControlSurface } from './lib/control-surface.mjs'
 import { syncResearchLab, researchExpenseRows } from './lib/research-lab.mjs'
 
 const DRY_RUN = process.argv.includes('--dry-run')
@@ -169,6 +170,20 @@ function parseStatusMd(text) {
 }
 
 function writeStatusMd(filePath, fields) {
+  let preserved = ''
+  try {
+    if (fs.existsSync(filePath)) {
+      const prev = fs.readFileSync(filePath, 'utf8')
+      // Keep parallel program notes (e.g. Comic 2B) below the first --- separator.
+      const sep = prev.indexOf('\n---\n')
+      if (sep !== -1) {
+        preserved = prev.slice(sep + 1).trimEnd()
+        if (preserved && !preserved.endsWith('\n')) preserved += '\n'
+      }
+    }
+  } catch {
+    /* ignore read errors; still write core STATUS */
+  }
   const lines = [
     '# STATUS',
     '',
@@ -183,8 +198,9 @@ function writeStatusMd(filePath, fields) {
     lines.push(`${i + 1}. ${fields.tasks[i] || 'TBD'}`)
   }
   lines.push('')
+  const body = lines.join('\n') + (preserved ? `\n${preserved}` : '')
   try {
-    fs.writeFileSync(filePath, lines.join('\n'))
+    fs.writeFileSync(filePath, body)
     return true
   } catch (err) {
     console.warn(
@@ -1124,6 +1140,15 @@ if (!DRY_RUN) {
   const agents = readJson(path.join(dataDir, 'agents.json')) ?? []
   syncSkillGraph(registry, root, dataDir, agents)
   syncResearchLab(registry, root, dataDir, ventures)
+  const skillGraph = readJson(path.join(dataDir, 'skill-graph.json'))
+  const phasesBoard = readJson(path.join(auditsDir, 'phases-board.json'))
+  syncControlSurface({
+    dataDir,
+    registry,
+    ventures,
+    skillGraph,
+    phasesBoard,
+  })
 } else {
   console.log('Dry run — skipped orchestrator manifests')
 }

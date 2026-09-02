@@ -1,4 +1,5 @@
 import type { CicdSnapshot, KingdomState, VentureManifest } from '../types'
+import { ControlSurfaceBar } from './ControlSurfaceBar'
 import { FleetStrip } from './FleetStrip'
 
 type Props = {
@@ -10,6 +11,8 @@ type Props = {
   manualUsd: number
   manifests: Record<string, VentureManifest>
   cicd: Record<string, CicdSnapshot>
+  lastSyncAt?: string | null
+  onSynced?: () => Promise<void> | void
 }
 
 export function ThroneOverview({
@@ -21,6 +24,8 @@ export function ThroneOverview({
   manualUsd,
   manifests,
   cicd,
+  lastSyncAt,
+  onSynced,
 }: Props) {
   const { portfolio } = state
   const burn = expenseUsd + tokenBurn
@@ -29,6 +34,13 @@ export function ThroneOverview({
 
   return (
     <>
+      <ControlSurfaceBar
+        controlSurface={state.controlSurface}
+        skillGraph={state.skillGraph}
+        ventures={state.ventures}
+        lastSyncAt={lastSyncAt}
+        onSynced={onSynced}
+      />
       <FleetStrip ventures={state.ventures} manifests={manifests} cicd={cicd} />
       <section className="panel throne">
         <header className="panel-head">

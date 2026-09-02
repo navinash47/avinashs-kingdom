@@ -180,6 +180,49 @@ export type SkillGraph = {
   }[]
 }
 
+export type ControlSurface = {
+  synced_at: string
+  version: number
+  fsm: {
+    state: string
+    last_transition: string
+    allowed: string[]
+  }
+  summary: {
+    ventures_total: number
+    ventures_active: number
+    ventures_p0: number
+    dashboards_configured: number
+    skills: number
+    agents: number
+    agents_with_skills: number
+    agents_without_skills: string[]
+    phases_board_synced_at: string | null
+  }
+  ventures: Array<{
+    id: string
+    name: string
+    progress: number
+    priority: string
+    status: string
+    agentId: string | null
+    repoPath: string | null
+    dashboardPort: number | null
+    dashboardLabel: string | null
+    nextMilestone: string | null
+    phasesPassed: number | null
+    phasesTotal: number | null
+    kind: string | null
+    github: string | null
+  }>
+  skills: string[]
+  graph: {
+    nodes: Array<{ id: string; type: string; label: string; venture_id?: string | null }>
+    edges: Array<{ id: string; from: string; to: string; rel: string }>
+  }
+  open: Record<string, string>
+}
+
 export type PortfolioRepo = {
   updated: string
   repo: string
@@ -272,6 +315,7 @@ export type KingdomState = {
   experiments: Record<string, ExperimentsBundle>
   cicd: Record<string, CicdSnapshot>
   skillGraph: SkillGraph | null
+  controlSurface: ControlSurface | null
 }
 
 export type VentureRegistryEntry = {

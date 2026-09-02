@@ -1,0 +1,67 @@
+{
+  "synced_at": "2026-09-02T20:03:51.003Z",
+  "machine": "kingdom-control",
+  "state": "ready",
+  "last_transition": "sync_complete",
+  "transitions": [
+    {
+      "from": "idle",
+      "event": "sync_start",
+      "to": "syncing"
+    },
+    {
+      "from": "syncing",
+      "event": "sync_complete",
+      "to": "ready"
+    },
+    {
+      "from": "syncing",
+      "event": "sync_fail",
+      "to": "degraded"
+    },
+    {
+      "from": "ready",
+      "event": "sync_start",
+      "to": "syncing"
+    },
+    {
+      "from": "ready",
+      "event": "start_all",
+      "to": "orchestrating"
+    },
+    {
+      "from": "orchestrating",
+      "event": "idle",
+      "to": "ready"
+    },
+    {
+      "from": "degraded",
+      "event": "sync_start",
+      "to": "syncing"
+    }
+  ],
+  "allowed_in_state": {
+    "idle": [
+      "sync"
+    ],
+    "syncing": [],
+    "ready": [
+      "sync",
+      "start_service",
+      "stop_service",
+      "start_all",
+      "stop_all",
+      "open_venture",
+      "open_graph",
+      "open_research",
+      "run_tests"
+    ],
+    "orchestrating": [
+      "stop_all",
+      "open_venture"
+    ],
+    "degraded": [
+      "sync"
+    ]
+  }
+}

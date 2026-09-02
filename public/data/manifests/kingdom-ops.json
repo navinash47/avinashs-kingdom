@@ -1,11 +1,11 @@
 {
   "venture_id": "kingdom-ops",
-  "synced_at": "2026-09-02T04:13:48.157Z",
+  "synced_at": "2026-09-02T20:03:44.548Z",
   "repo": {
     "path": "/Users/avinashnandyala/Projects/avinashs-kingdom",
-    "head": "621abb47ea27bf449c22de111bbbf3a5864bac89",
+    "head": "e4f06f13f81f591c40875ad13c0f2e7443cc2b28",
     "branch": "cursor/live-training-wandb-73ce",
-    "last_commit_at": "2026-09-01T21:11:33-07:00",
+    "last_commit_at": "2026-09-02T12:59:23-07:00",
     "remote_url": "https://github.com/navinash47/avinashs-kingdom.git",
     "github": {
       "owner": "navinash47",
@@ -14,29 +14,34 @@
     }
   },
   "stats": {
-    "files": 284,
-    "lines": 33168,
+    "files": 291,
+    "lines": 35742,
     "primary_language": "JSON",
     "languages": [
       {
         "language": "JSON",
         "files": 80,
-        "lines": 10738
+        "lines": 10896
       },
       {
         "language": "TypeScript",
-        "files": 49,
-        "lines": 8626
+        "files": 50,
+        "lines": 8941
       },
       {
         "language": "Markdown",
-        "files": 87,
-        "lines": 5350
+        "files": 91,
+        "lines": 5541
       },
       {
         "language": "JavaScript",
-        "files": 25,
-        "lines": 4534
+        "files": 27,
+        "lines": 4916
+      },
+      {
+        "language": "CSS",
+        "files": 3,
+        "lines": 2633
       },
       {
         "language": "Other",
@@ -47,11 +52,6 @@
         "language": "Shell",
         "files": 11,
         "lines": 1142
-      },
-      {
-        "language": "CSS",
-        "files": 3,
-        "lines": 1105
       },
       {
         "language": "YAML",
@@ -65,12 +65,17 @@
       }
     ],
     "truncated": false,
-    "sampled_files": 284,
+    "sampled_files": 291,
     "source": "walker"
   },
   "dependencies": {
     "ecosystem": "node",
     "runtime": [
+      {
+        "name": "@xyflow/react",
+        "version": "^12.11.3",
+        "ecosystem": "npm"
+      },
       {
         "name": "react",
         "version": "^19.2.8",

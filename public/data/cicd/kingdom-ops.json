@@ -1,6 +1,6 @@
 {
   "venture_id": "kingdom-ops",
-  "synced_at": "2026-09-02T04:13:53.104Z",
+  "synced_at": "2026-09-02T20:03:50.271Z",
   "github": {
     "owner": "navinash47",
     "repo": "avinashs-kingdom",
@@ -9,52 +9,52 @@
     "runs": [
       {
         "conclusion": "failure",
-        "createdAt": "2026-09-02T04:11:42Z",
-        "databaseId": 33589862332,
+        "createdAt": "2026-09-02T19:59:29Z",
+        "databaseId": 33676591953,
         "displayTitle": "Show live W&B training status on the Research Lab tab",
         "event": "pull_request",
         "status": "completed",
-        "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33589862332",
+        "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33676591953",
         "workflowName": "Kingdom CI"
       },
       {
         "conclusion": "failure",
-        "createdAt": "2026-09-02T04:09:09Z",
-        "databaseId": 33589697274,
+        "createdAt": "2026-09-02T19:57:37Z",
+        "databaseId": 33676411415,
         "displayTitle": "Show live W&B training status on the Research Lab tab",
         "event": "pull_request",
         "status": "completed",
-        "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33589697274",
+        "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33676411415",
         "workflowName": "Kingdom CI"
       },
       {
         "conclusion": "failure",
-        "createdAt": "2026-09-02T04:08:33Z",
-        "databaseId": 33589660735,
+        "createdAt": "2026-09-02T05:16:28Z",
+        "databaseId": 33594030550,
         "displayTitle": "Show live W&B training status on the Research Lab tab",
         "event": "pull_request",
         "status": "completed",
-        "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33589660735",
+        "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33594030550",
         "workflowName": "Kingdom CI"
       },
       {
         "conclusion": "failure",
-        "createdAt": "2026-09-02T04:06:51Z",
-        "databaseId": 33589552947,
+        "createdAt": "2026-09-02T05:15:05Z",
+        "databaseId": 33593937893,
         "displayTitle": "Show live W&B training status on the Research Lab tab",
         "event": "pull_request",
         "status": "completed",
-        "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33589552947",
+        "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33593937893",
         "workflowName": "Kingdom CI"
       },
       {
         "conclusion": "failure",
-        "createdAt": "2026-09-02T03:59:12Z",
-        "databaseId": 33589071791,
+        "createdAt": "2026-09-02T05:10:32Z",
+        "databaseId": 33593634765,
         "displayTitle": "Show live W&B training status on the Research Lab tab",
         "event": "pull_request",
         "status": "completed",
-        "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33589071791",
+        "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33593634765",
         "workflowName": "Kingdom CI"
       }
     ],

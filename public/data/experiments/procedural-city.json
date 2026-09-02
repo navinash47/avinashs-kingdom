@@ -4,6 +4,16 @@
   "items": [
     {
       "date": "2026-09-02",
+      "summary": "Refresh dashboard Stage Proofs after E57 heatmap wiring.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Wire Stage E gate heatmap SVG into Stage Proofs refresh.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
       "summary": "Refresh Stage Proofs panel copy for Stage E walkthroughs.",
       "source": "git"
     },
@@ -72,16 +82,6 @@
       "summary": "Census truncation flag tested — large asset dirs excluded from LOC walk.",
       "source": "wiki",
       "video": null
-    },
-    {
-      "date": "2026-08-19",
-      "summary": "Put Stage C spawn under Window and Tools menus.",
-      "source": "git"
-    },
-    {
-      "date": "2026-08-18",
-      "summary": "Fix Unity 6.5 Editor compile errors blocking Stage C menus.",
-      "source": "git"
     },
     {
       "date": "2026-08-11",

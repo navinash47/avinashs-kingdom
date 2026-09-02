@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-09-02T04:13:53.755Z",
+  "synced_at": "2026-09-02T20:03:51.001Z",
   "skills": [
     {
       "id": "kingdom-tunnels",
@@ -85,7 +85,11 @@
       "name": "Agent Dojo",
       "venture_id": "beamdojo",
       "focus": "Isaac Lab BeamDojo on Lambda GPU. Proof videos in Kingdom Research Lab. Never git-commit weights.",
-      "skills": [],
+      "skills": [
+        "sync-kingdom",
+        "kingdom-wiki",
+        "phase-gate"
+      ],
       "token_budget_usd": 20,
       "token_used_usd": 0,
       "recent_observations": []
@@ -124,7 +128,8 @@
       "skills": [
         "kingdom-wiki",
         "sync-kingdom",
-        "log-outreach"
+        "log-outreach",
+        "task-observer"
       ],
       "token_budget_usd": 10,
       "token_used_usd": 2,
