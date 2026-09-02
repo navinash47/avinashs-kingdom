@@ -8,13 +8,13 @@ tags: [ops, personal-os, phase2, tracker]
 
 Temporary live board for the hard ~10%. SRS: [[concepts/personal-os-phase2-srs]]. Prompt: [[ops/personal-os-phase2-builder-prompt]].
 
-**Overall:** `25%` · **Current step:** `W2 LLM judge in_progress` · **Branch:** `main` · **Last update:** `2026-09-02`
+**Overall:** `50%` · **Current step:** `W2 done — starting W3` · **Branch:** `main` · **Last update:** `2026-09-02`
 
 | Workstream | Status | % | Evidence / SHA | Notes |
 |------------|--------|---|----------------|-------|
 | W0 SRS + builder prompt + this tracker | **done** | 100 | design files on disk | — |
 | W1 Obs 11 merge playbook | **done** | 100 | `c2df411` | sync-kingdom + ops playbook + Obs 11 ACTIONED |
-| W2 LLM contradiction judge | **in_progress** | 10 | — | Building CLI + fixture |
+| W2 LLM contradiction judge | **done** | 100 | `4e95d71` | `brain:judge` + fixture + reports/ |
 | W3 Full auto wiki | pending | 0 | — | After W2 |
 | W4 MCP per app (pilot + template) | pending | 0 | — | After W3 |
 
@@ -35,11 +35,11 @@ Temporary live board for the hard ~10%. SRS: [[concepts/personal-os-phase2-srs]]
 - [x] Verified: written checklist is sufficient without chat memory
 
 ### W2 — LLM contradiction judge
-- [ ] CLI + npm script (dry-run default)
-- [ ] Report artifact path
-- [ ] Docs vs heuristic lint v2
-- [ ] Fixture / golden example
-- [ ] Optional gated `--apply`
+- [x] CLI + npm script (dry-run default) — `npm run brain:judge`
+- [x] Report artifact path — `brain/harness/reports/`
+- [x] Docs vs heuristic lint v2 — harness README + playbook + kingdom-wiki
+- [x] Fixture / golden example — `npm run brain:judge:fixture`
+- [x] Optional gated `--apply` — proposals only
 
 ### W3 — Full auto wiki
 - [ ] Inbox batch/watch command
@@ -64,4 +64,5 @@ _None yet._
 | Date | Step | What happened |
 |------|------|----------------|
 | 2026-09-02 | W0 | Created SRS, builder prompt, tracker, plan. Phase 2 implementation not started. |
-| 2026-09-02 | W1 | Encoded Obs 11 into sync-kingdom + [[ops/cloud-ui-merge-playbook]]; mirrored ~/.cursor; Obs 11 ACTIONED. |
+| 2026-09-02 | W1 | Encoded Obs 11 into sync-kingdom + [[ops/cloud-ui-merge-playbook]]; mirrored ~/.cursor; Obs 11 ACTIONED. SHA `c2df411`. |
+| 2026-09-02 | W2 | Shipped `brain:judge` (dry-run reports, offline/LLM, `--apply` proposals, fixture golden). |
