@@ -220,36 +220,45 @@ function stripMdLite(s) {
 
 /**
  * Cheap lifecycle / status phrase scrape (warnings only — not semantic truth).
+ * Prefer Status:/census-cell contexts so prose like "A0 complete" or
+ * "ratings complete" does not collide with "active" / "in progress".
  * @returns {Set<string>}
  */
 function extractLifecyclePhrases(text) {
-  const body = bodyText(text).toLowerCase()
+  const body = bodyText(text)
   const found = new Set()
-  const patterns = [
-    [/\bstatus\s*:\s*([a-z][a-z _-]{1,40})/g, 1],
-    [/\*\*status:\*\*\s*([a-z][a-z _-]{1,40})/gi, 1],
-    [/\b(do not focus)\b/g, 1],
-    [/\b(parked|paused|archived|retired|killed|deprecated|cancelled|canceled|blocked|dormant|active|complete|completed|shipping|shipped)\b/g, 1],
-    [/\bon hold\b/g, 0],
-    [/\bin progress\b/g, 0],
-  ]
-  for (const [re, group] of patterns) {
+  const statusToken =
+    'parked|paused|archived|retired|killed|deprecated|cancelled|canceled|blocked|dormant|active|complete|completed|shipping|shipped|done'
+  for (const line of body.split(/\r?\n/)) {
+    const low = line.toLowerCase()
     let m
-    const flags = re.flags.includes('g') ? re : new RegExp(re.source, re.flags + 'g')
-    while ((m = flags.exec(body))) {
-      const raw = group === 0 ? m[0] : m[group]
-      if (!raw) continue
-      const phrase = raw.trim().replace(/\s+/g, ' ').replace(/[.,;:]+$/, '')
-      if (phrase.length < 2 || phrase.length > 40) continue
-      // skip "active" inside "proactive", etc. — word-boundary already helps
-      found.add(phrase)
+    const statusField = /\bstatus\s*:\s*\**\s*([a-z][a-z _-]{1,40})/gi
+    while ((m = statusField.exec(line))) {
+      const phrase = m[1].trim().replace(/\s+/g, ' ').replace(/[.,;:]+$/, '')
+      if (phrase.length >= 2 && phrase.length <= 40) found.add(phrase.toLowerCase())
     }
-  }
-  // Priority tokens
-  let pm
-  const pri = /\b(p[0-3])\b/gi
-  while ((pm = pri.exec(body))) {
-    found.add(pm[1].toLowerCase())
+    if (/\bdo not focus\b/i.test(line)) found.add('do not focus')
+    if (/\bon hold\b/i.test(line)) found.add('on hold')
+    // Census / table cells: "P1 · active", "| parked |", "· shipping"
+    const cellRe = new RegExp(
+      `(?:^|[|·•,]\\s*|\\bp[0-3]\\s*·\\s*)(${statusToken})\\b`,
+      'gi',
+    )
+    while ((m = cellRe.exec(line))) {
+      found.add(m[1].toLowerCase())
+    }
+    // "in progress" only on status/priority-ish lines (not random prose)
+    if (
+      /\b(status|priority)\b/i.test(line) &&
+      /\bin progress\b/i.test(line)
+    ) {
+      found.add('in progress')
+    }
+    // Priority tokens on census-like lines
+    if (/[|·]/.test(line) || /\bpriority\b/i.test(line) || /\bp[0-3]\s*·/i.test(line)) {
+      const pri = /\b(p[0-3])\b/gi
+      while ((m = pri.exec(low))) found.add(m[1].toLowerCase())
+    }
   }
   return found
 }
@@ -272,9 +281,14 @@ function extractClaimBullets(text) {
     const m = line.match(/^\s*[-*]\s+(.+)$/)
     if (!m) continue
     const raw = stripMdLite(m[1])
-    if (raw.length < 48) continue
+    // Raise floor + skip path/wiki-stub bullets (link echoes, not claims)
+    if (raw.length < 64) continue
     if (/^_?todo|_?tbd|fill via|one-line summary/i.test(raw)) continue
     if (/^\[.*\]\(.*\)$/.test(raw)) continue
+    if (/^(sources|concepts|ventures|entities|ops|architecture|experiments|wiki)\//i.test(raw)) {
+      continue
+    }
+    if (/^[a-z0-9_./-]+$/i.test(raw) && raw.includes('/')) continue
     claims.push(raw)
   }
   return claims
@@ -442,8 +456,9 @@ const duplicateTopics = [...basenameTitles.entries()]
   })
 
 /**
- * v2: conflicting lifecycle phrases across ventures|architecture|experiments/<id>.md
- * (and live-tracker mentions for that id). Priority P0–P3 conflicts also warned.
+ * v2: conflicting lifecycle phrases across ventures|architecture|experiments/<id>.md.
+ * live-tracker is auto census ("P1 · active" for almost every row) — exclude it
+ * from lifecycle scrape so it does not false-conflict with venture prose.
  */
 const venturePageSets = new Map()
 for (const rel of pages.keys()) {
@@ -453,12 +468,9 @@ for (const rel of pages.keys()) {
   if (!venturePageSets.has(id)) venturePageSets.set(id, [])
   venturePageSets.get(id).push(rel)
 }
-// live-tracker often carries status — include if present
-const liveTracker = 'ops/live-tracker.md'
 const conflictingVentureStatus = []
 for (const [ventureId, rels] of venturePageSets) {
   const pagesInScope = [...rels]
-  if (pages.has(liveTracker)) pagesInScope.push(liveTracker)
 
   /** @type {Map<string, Set<string>>} phrase → pages */
   const phrasePages = new Map()
@@ -468,16 +480,7 @@ for (const [ventureId, rels] of venturePageSets) {
   for (const rel of pagesInScope) {
     const meta = pageMeta.get(rel)
     if (!meta) continue
-    // For live-tracker, only count lines that mention the venture id / title
-    let text = meta.text
-    if (rel === liveTracker) {
-      const lines = text.split(/\r?\n/).filter((ln) => {
-        const low = ln.toLowerCase()
-        return low.includes(ventureId.toLowerCase()) || low.includes(ventureId.replace(/-/g, ' '))
-      })
-      if (!lines.length) continue
-      text = lines.join('\n')
-    }
+    const text = meta.text
     const phrases = extractLifecyclePhrases(text)
     for (const p of phrases) {
       if (/^p[0-3]$/.test(p)) {
@@ -547,6 +550,8 @@ const duplicateClaims = [...claimBuckets.values()]
 
 /**
  * v2: page updated: lags a recent wiki/log mention of that page.
+ * Count only wiki-links that resolve to the page, or explicit path mentions —
+ * not bare substrings (e.g. ThroneOverview ≠ overview; casual product names ≠ page edit).
  */
 const staleVsLogActivity = []
 for (const [rel, meta] of pageMeta) {
@@ -554,22 +559,26 @@ for (const [rel, meta] of pageMeta) {
   const updated = meta.fm.updated
   if (!updated || !/^\d{4}-\d{2}-\d{2}$/.test(updated)) continue
 
-  const base = path.posix.basename(stem(rel))
-  const title = meta.title || ''
-  const needles = [
-    base,
-    base.replace(/-/g, ' '),
-    rel,
-    title,
-  ]
-    .filter(Boolean)
-    .map((s) => s.toLowerCase())
+  const pathNeedles = [rel, `wiki/${rel}`].map((s) => s.toLowerCase())
 
   let latestMention = null
   let mentionTitle = null
   for (const ent of logEntries) {
-    const hay = `${ent.title}\n${ent.body}`.toLowerCase()
-    if (!needles.some((n) => n.length >= 3 && hay.includes(n))) continue
+    const hay = `${ent.title}\n${ent.body}`
+    const low = hay.toLowerCase()
+    let hit = pathNeedles.some((n) => n.length >= 3 && low.includes(n))
+    if (!hit) {
+      const wikiLink = /\[\[([^\]]+)\]\]/g
+      let m
+      while ((m = wikiLink.exec(hay))) {
+        const resolved = resolveWikiLink('log.md', m[1])
+        if (resolved === rel) {
+          hit = true
+          break
+        }
+      }
+    }
+    if (!hit) continue
     if (!latestMention || ent.date > latestMention) {
       latestMention = ent.date
       mentionTitle = ent.title

@@ -5,7 +5,7 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 SRC="$ROOT/.cursor/skills"
 DEST="${HOME}/.cursor/skills"
 mkdir -p "$DEST"
-for s in kingdom-wiki sync-kingdom log-outreach youtube-provenance phase-gate kingdom-tunnels; do
+for s in kingdom-wiki sync-kingdom log-outreach youtube-provenance phase-gate kingdom-tunnels cicstep-weekly career-rebrand; do
   if [[ ! -d "$SRC/$s" ]]; then
     echo "Missing $SRC/$s" >&2
     exit 1

@@ -51,6 +51,8 @@ cd /Users/avinashnandyala/Projects/avinashs-kingdom && npm run brain:lint
 
 Broken links → errors (exit 1). Missing index / orphans / stale `updated:` / duplicate titles / duplicate `venture_id` / conflicting lifecycle phrases / duplicate claims / updated-vs-log lag → warnings (exit 0 unless `--strict`).
 
+**v2 warnings are review prompts, not a contradiction judge.** Report them first; fix broken links / missing `updated:` only when asked. Do **not** mass-edit wiki prose just to silence status-phrase or claim-echo warnings.
+
 Fix only if the user asked to fix; otherwise list proposed fixes. Complementary CLIs: `npm run brain:query -- <terms>`, `npm run brain:ingest -- --list`.
 
 ## Rules

@@ -79,3 +79,11 @@ Requires `cloudflared` (`brew install cloudflare/cloudflare/cloudflared`).
 4. Quick tunnels are temporary; re-run for new links.
 5. If links return Error 1033 → tunnels died (need detached spawn).
 6. If creates fail with **429** → stop hammering; wait 10–30+ minutes, then one `npm run tunnels`. Do not tight-loop probes (extends the ban).
+
+## Diagnose DOWN (pid ≠ identity)
+
+Connection refused / “is it up?” — **never trust a remembered pid** from chat or an old pidfile.
+
+1. Confirm **LISTEN** on the expected port (`lsof -iTCP:<port> -sTCP:LISTEN` or `start-dashboards.sh --status`).
+2. If something listens, check that pid’s **command line** matches the expected serve command for that dashboard — a live recycled pid of an unrelated process is not the dashboard.
+3. Pidfiles under TMPDIR `kingdom-dashboards/` are ephemeral: if that directory is missing after reboot/sleep/tmp cleanup, treat as **unrebound** and restart via `./scripts/start-dashboards.sh` (or the named subset). Do not conclude “up” from a stale pid number alone.

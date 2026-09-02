@@ -16,8 +16,7 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 
 ### Observation 1: Career rebrand deliverables live outside Kingdom-only paths
 
-**Status:** OPEN
-**Last review:** 2026-09-02 — still open; CAREER_MARKETING exists but no dedicated career-rebrand skill yet
+**Status:** ACTIONED (2026-09-02) — created `.cursor/skills/career-rebrand` (+ ~/.cursor mirror); checklist syncs resume KB, CAREER_MARKETING, LinkedIn, wiki, sync
 **Date:** 2026-08-11
 **Session context:** Implement Agentic AI career + resume plan (Track A/B, Job Jugaad wishlist, study/gates wiki)
 **Skill:** New skill candidate: career-rebrand / job-jugaad targeting
@@ -32,8 +31,7 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 
 ### Observation 5: CICStep weekly form is a recurring Kingdom-to-career mapping
 
-**Status:** OPEN
-**Last review:** 2026-09-02 — still open; cicstep-weekly skill not created
+**Status:** ACTIONED (2026-09-02) — created `.cursor/skills/cicstep-weekly` (+ ~/.cursor mirror) with sources, checkbox defaults, non-claims
 **Date:** 2026-08-20
 **Session context:** Draft CICStep weekly check-in from Kingdom logs; user will rewrite; report last week because of San Jose move
 **Skill:** New skill candidate: cicstep-weekly (internal)
@@ -48,8 +46,7 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 
 ### Observation 6: CICStep drafts skipped P1 City because next-gate was pending
 
-**Status:** OPEN
-**Last review:** 2026-09-02 — still open; fold into cicstep-weekly when authored (with obs 5/12)
+**Status:** ACTIONED (2026-09-02) — folded into cicstep-weekly coverage rules (dated PROJECT_LOG / always mention P0–P1)
 **Date:** 2026-08-20
 **Session context:** User asked why Procedural City was missing from CICStep CS writeup
 **Skill:** New skill candidate: cicstep-weekly (internal)
@@ -96,8 +93,7 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 
 ### Observation 9: TMPDIR dashboard pidfiles vanish; recycled PIDs are not identity
 
-**Status:** OPEN
-**Last review:** 2026-09-02 — still open; kingdom-tunnels skill still lacks explicit pid≠identity diagnose steps
+**Status:** ACTIONED (2026-09-02) — kingdom-tunnels Diagnose DOWN: pid ≠ identity (workspace + ~/.cursor)
 **Date:** 2026-08-21
 **Session context:** Browser ERR_CONNECTION_REFUSED on Mac optimize dashboard :8742; last-known pid ~1914 from prior chat
 **Skill:** kingdom-tunnels
@@ -176,8 +172,7 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 
 ### Observation 12: CICStep Comic week can hide 2B if you only read v2a
 
-**Status:** OPEN
-**Last review:** 2026-09-02 — still open; fold into cicstep-weekly (parallel-track scan)
+**Status:** ACTIONED (2026-09-02) — folded into cicstep-weekly (scan Comic git + v2a/v2b program JSON)
 **Date:** 2026-08-28
 **Session context:** CICStep weekly for Aug 21–28 from Kingdom + git
 **Skill:** New skill candidate: cicstep-weekly (internal)
@@ -192,8 +187,7 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 
 ### Observation 13: Resume rating guide accelerates user-blocked phase
 
-**Status:** OPEN
-**Last review:** 2026-09-02 — still open; RATING_GUIDE.md / panel button not found in job-jugaad
+**Status:** ACTIONED (2026-09-02) — RATING_GUIDE.md already at ~/Projects/resume/knowledge/; Kingdom Resume panel Rating guide + wiki resume-master-knowledge link
 **Date:** 2026-09-02
 **Session context:** Master resume goal — infra complete, 10/81 rated on disk, blocked on user ratings + LinkedIn
 **Skill:** sync-kingdom / resume-master-knowledge
@@ -286,7 +280,7 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 
 ### Observation 19: Lint v2 + ingest extract shipped in same goal pass
 
-**Status:** OPEN
+**Status:** ACTIONED (2026-09-02) — lint.mjs: exclude live-tracker lifecycle scrape; tighter status-cell phrases; skip path-stub claims; wiki-link-only log lag; kingdom-wiki reports v2 warnings as non-judge
 **Date:** 2026-09-02
 **Session context:** Formal goal: hygiene + lint v2 + ingest extract + commit/push
 **Skill:** kingdom-wiki

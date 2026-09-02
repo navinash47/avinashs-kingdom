@@ -91,7 +91,7 @@ Run `npm run brain:lint` (or `node brain/harness/lint.mjs --strict`). Heuristic 
 
 ## Skills
 
-Use Cursor skills: `kingdom-wiki`, `sync-kingdom`, `log-outreach`, `youtube-provenance`, `phase-gate`, `kingdom-tunnels`, `task-observer`.
+Use Cursor skills: `kingdom-wiki`, `sync-kingdom`, `log-outreach`, `youtube-provenance`, `phase-gate`, `kingdom-tunnels`, `cicstep-weekly`, `career-rebrand`, `task-observer`.
 
 ## Personal OS (brain + skills + orchestrator + Throne)
 
