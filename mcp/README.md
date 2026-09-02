@@ -1,56 +1,54 @@
-# Kingdom MCP (per-venture)
+# Kingdom MCP (per-venture fleet)
 
-Phase 2 read-only MCP template. One Node stdio server, configured per venture via `KINGDOM_VENTURE_ID` + `config/venture-registry.json`. Registry of enabled servers: `config/mcp-registry.json`.
+Phase 2b: one Node stdio server template, configured per venture via `KINGDOM_VENTURE_ID` + `config/venture-registry.json`. Registry: `config/mcp-registry.json`. Cursor project config: `.cursor/mcp.json`.
 
-## Tools (read-only)
+SRS: `brain/wiki/concepts/personal-os-phase2b-srs.md` · Tracker: `brain/wiki/ops/personal-os-phase2b-tracker.md`
 
-| Tool | Behavior |
-|------|----------|
-| `get_status` | Live STATUS.md fields + excerpt (refuses secret-looking files) |
-| `get_phases` | `paths.phases` JSON or N/A |
-| `list_capabilities` | Dashboard/tests/capabilities + MCP registration |
+## Tools
+
+| Tool | Default | Behavior |
+|------|---------|----------|
+| `get_status` | on | Live STATUS.md fields + excerpt (refuses secret-looking files) |
+| `get_phases` | on | `paths.phases` JSON or honest N/A |
+| `list_capabilities` | on | Dashboard/tests/capabilities + MCP registration |
+| `append_log` | **gated** | Append one line to `tracking/mcp-agent-log.md` |
+| `trigger_sync` | **gated** | Run Kingdom `npm run sync` (no secrets forwarded) |
+
+**Enable writes:** set `KINGDOM_MCP_WRITES=1` on the MCP server env (or shell). Default is read-only.
 
 **Never** exposes `.env`, API keys, contact dumps, or model weights.
 
-## Pilot: kingdom-ops
+## Cursor one-liner
+
+Project MCP is already in `.cursor/mcp.json`. Reload MCP in Cursor (Settings → MCP → refresh, or restart Cursor). Then call `get_status` on any `kingdom-*` server.
+
+```bash
+# Verify without Cursor:
+cd ~/Projects/avinashs-kingdom && npm run mcp:smoke:fleet
+```
+
+## Smoke
 
 ```bash
 cd ~/Projects/avinashs-kingdom
 npm run mcp:smoke -- kingdom-ops
-# or
-KINGDOM_VENTURE_ID=kingdom-ops node mcp/venture-server.mjs --smoke
+npm run mcp:smoke:fleet
+# Gated writes refuse by default; prove enable:
+KINGDOM_MCP_WRITES=1 KINGDOM_VENTURE_ID=kingdom-ops node mcp/venture-server.mjs --smoke
 ```
 
-## Cursor connect
+## Fleet (active repo roots)
 
-Add to Cursor MCP settings (absolute path):
-
-```json
-{
-  "mcpServers": {
-    "kingdom-ops": {
-      "command": "node",
-      "args": [
-        "/Users/avinashnandyala/Projects/avinashs-kingdom/mcp/venture-server.mjs"
-      ],
-      "env": {
-        "KINGDOM_VENTURE_ID": "kingdom-ops"
-      }
-    }
-  }
-}
-```
-
-Then call `get_status` from the MCP inspector / agent tools.
+All ventures in `config/venture-registry.json` with a real `repoPath` are registered except `shorts` (`repoPath: null`).
 
 ## New venture
 
 1. Copy template row in `config/mcp-registry.json` with the new `venture_id`.
-2. Ensure venture is in `config/venture-registry.json` with `paths.status`.
-3. Point Cursor MCP at `mcp/venture-server.mjs` with `KINGDOM_VENTURE_ID=<id>`.
+2. Ensure venture is in `config/venture-registry.json` with `paths.status` + `"mcp": { "enabled": true, "read_only": true }`.
+3. Add a block to `.cursor/mcp.json` (absolute path to `mcp/venture-server.mjs` + `KINGDOM_VENTURE_ID`).
 4. See [[wiki/concepts/onboard-new-project]] MCP section.
-5. `npm run sync` — control-surface includes `mcp` snapshot when hooked.
+5. `npm run mcp:smoke -- <id>` then `npm run sync`.
 
-## Optional later (not Phase 2a)
+## Judge (related Phase 2)
 
-Safe writes: `append_log`, `trigger_sync` — still never raw `.env` read.
+`npm run brain:judge` uses OmniRoute at `http://127.0.0.1:20128/v1` when up; otherwise offline heuristic fallback (exit 0). Live probe: `curl -s -o /dev/null -w '%{http_code}\n' http://127.0.0.1:20128/v1/models` then `npm run brain:judge -- --require-llm` (exit 2 if down). Offline always: `npm run brain:judge -- --offline` / `npm run brain:judge:fixture`.

@@ -1,6 +1,16 @@
 {
-  "synced_at": "2026-09-02T20:42:11.997Z",
+  "synced_at": "2026-09-02T23:03:04.317Z",
   "skills": [
+    {
+      "id": "career-rebrand",
+      "path": "/Users/avinashnandyala/.cursor/skills/career-rebrand",
+      "has_skill_md": true
+    },
+    {
+      "id": "cicstep-weekly",
+      "path": "/Users/avinashnandyala/.cursor/skills/cicstep-weekly",
+      "has_skill_md": true
+    },
     {
       "id": "kingdom-tunnels",
       "path": "/Users/avinashnandyala/.cursor/skills/kingdom-tunnels",

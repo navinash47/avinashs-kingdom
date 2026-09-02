@@ -64,10 +64,10 @@
     "date": "2026-09-02",
     "category": "api",
     "label": "Procedural City API (fal / Gemini)",
-    "amount": 1.19,
+    "amount": 7.27,
     "currency": "USD",
     "ventureId": "procedural-city",
-    "notes": "Synced from tracking/expenses.jsonl · 38 billable rows"
+    "notes": "Synced from tracking/expenses.jsonl · 98 billable rows"
   },
   {
     "id": "sync-wa-api",

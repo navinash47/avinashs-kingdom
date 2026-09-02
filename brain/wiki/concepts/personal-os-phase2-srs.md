@@ -8,10 +8,11 @@ tags: [architecture, personal-os, srs, phase2, mcp, wiki, lint]
 
 **Status:** Phase 2 implementation complete (W1–W4 acceptance green).  
 **Parent OS:** [[kingdom-personal-os]] (Phase 1 done on `main`).  
+**Phase 2b (fleet):** [[personal-os-phase2b-srs]] · tracker [[ops/personal-os-phase2b-tracker]].  
 **Builder prompt:** [[ops/personal-os-phase2-builder-prompt]].  
 **Live tracker:** [[ops/personal-os-phase2-tracker]].  
 **Merge playbook (W1):** [[ops/cloud-ui-merge-playbook]].  
-**MCP:** `mcp/README.md` · `config/mcp-registry.json`  
+**MCP:** `mcp/README.md` · `config/mcp-registry.json` · `.cursor/mcp.json`  
 **Plan mirror:** `.cursor/plans/personal_os_phase2_hard10.plan.md`
 
 ## Problem
@@ -120,9 +121,9 @@ raw/inbox ──► auto-ingest worker ──► wiki stubs + proposed patches
 
 - R4.1 MCP server template + registry row linking `venture_id` → MCP endpoint/command.
 - R4.2 Minimum tools per venture: `get_status`, `get_phases` (or N/A), `list_capabilities`.
-- R4.3 Safe write tools (optional phase 2b): `append_log`, `trigger_sync` — never raw `.env` read.
+- R4.3 Safe write tools (optional phase 2b): `append_log`, `trigger_sync` — never raw `.env` read. → **Phase 2b** [[personal-os-phase2b-srs]].
 - R4.4 Document how Cursor connects; Throne lists MCP health if cheap.
-- R4.5 Pilot 1–2 ventures (Kingdom ops + one cash/research) before fleet-wide.
+- R4.5 Pilot 1–2 ventures (Kingdom ops + one cash/research) before fleet-wide. → Fleet roll-out in Phase 2b.
 
 **Acceptance**
 
@@ -144,4 +145,4 @@ All W1–W4 acceptance checks green; tracker 100%; builder prompt section “Def
 
 ## Related
 
-- [[llm-wiki]] · [[brain-harness-fsm]] · [[virtual-control-surface]] · [[onboard-new-project]] · [[ops/personal-os-playbook]]
+- [[llm-wiki]] · [[brain-harness-fsm]] · [[virtual-control-surface]] · [[onboard-new-project]] · [[ops/personal-os-playbook]] · [[personal-os-phase2b-srs]]

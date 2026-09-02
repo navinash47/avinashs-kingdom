@@ -1,6 +1,6 @@
 {
   "venture_id": "mac-optimize-audit",
-  "synced_at": "2026-09-02T20:42:05.995Z",
+  "synced_at": "2026-09-02T23:02:58.581Z",
   "repo": {
     "path": "/Users/avinashnandyala/Projects/mac-optimize-audit",
     "head": "4a716b23bd4275f0bddb2d0112f141690b71b1bf",
@@ -63,7 +63,7 @@
   "models_detected": [],
   "spend_usd": null,
   "ceiling_usd": null,
-  "progress": 55,
+  "progress": 67,
   "version": "v0.1",
   "test_commands": [
     {

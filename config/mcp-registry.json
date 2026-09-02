@@ -1,7 +1,7 @@
 {
   "version": "1",
   "updated": "2026-09-02",
-  "description": "Kingdom MCP registry — venture_id → stdio server command. Read-only tools first. Never expose .env/secrets/weights.",
+  "description": "Kingdom MCP registry — venture_id → stdio server. Read-only by default. Gated writes via KINGDOM_MCP_WRITES=1. Never expose .env/secrets/weights.",
   "template": {
     "command": "node",
     "args": ["mcp/venture-server.mjs"],
@@ -10,9 +10,76 @@
       "KINGDOM_VENTURE_ID": "<venture-id>"
     },
     "read_only": true,
-    "tools": ["get_status", "get_phases", "list_capabilities"]
+    "tools": ["get_status", "get_phases", "list_capabilities"],
+    "write_tools_gated": ["append_log", "trigger_sync"]
   },
   "servers": [
+    {
+      "id": "mcp-whatsapp-voice",
+      "venture_id": "whatsapp-voice",
+      "transport": "stdio",
+      "command": "node",
+      "args": ["mcp/venture-server.mjs"],
+      "cwd": "~/Projects/avinashs-kingdom",
+      "env": { "KINGDOM_VENTURE_ID": "whatsapp-voice" },
+      "read_only": true,
+      "tools": ["get_status", "get_phases", "list_capabilities"]
+    },
+    {
+      "id": "mcp-youtube-editor",
+      "venture_id": "youtube-editor",
+      "transport": "stdio",
+      "command": "node",
+      "args": ["mcp/venture-server.mjs"],
+      "cwd": "~/Projects/avinashs-kingdom",
+      "env": { "KINGDOM_VENTURE_ID": "youtube-editor" },
+      "read_only": true,
+      "tools": ["get_status", "get_phases", "list_capabilities"]
+    },
+    {
+      "id": "mcp-research-frontier",
+      "venture_id": "research-frontier",
+      "transport": "stdio",
+      "command": "node",
+      "args": ["mcp/venture-server.mjs"],
+      "cwd": "~/Projects/avinashs-kingdom",
+      "env": { "KINGDOM_VENTURE_ID": "research-frontier" },
+      "read_only": true,
+      "tools": ["get_status", "get_phases", "list_capabilities"]
+    },
+    {
+      "id": "mcp-beamdojo",
+      "venture_id": "beamdojo",
+      "transport": "stdio",
+      "command": "node",
+      "args": ["mcp/venture-server.mjs"],
+      "cwd": "~/Projects/avinashs-kingdom",
+      "env": { "KINGDOM_VENTURE_ID": "beamdojo" },
+      "read_only": true,
+      "tools": ["get_status", "get_phases", "list_capabilities"]
+    },
+    {
+      "id": "mcp-procedural-city",
+      "venture_id": "procedural-city",
+      "transport": "stdio",
+      "command": "node",
+      "args": ["mcp/venture-server.mjs"],
+      "cwd": "~/Projects/avinashs-kingdom",
+      "env": { "KINGDOM_VENTURE_ID": "procedural-city" },
+      "read_only": true,
+      "tools": ["get_status", "get_phases", "list_capabilities"]
+    },
+    {
+      "id": "mcp-comic-engine",
+      "venture_id": "comic-engine",
+      "transport": "stdio",
+      "command": "node",
+      "args": ["mcp/venture-server.mjs"],
+      "cwd": "~/Projects/avinashs-kingdom",
+      "env": { "KINGDOM_VENTURE_ID": "comic-engine" },
+      "read_only": true,
+      "tools": ["get_status", "get_phases", "list_capabilities"]
+    },
     {
       "id": "mcp-kingdom-ops",
       "venture_id": "kingdom-ops",
@@ -20,22 +87,38 @@
       "command": "node",
       "args": ["mcp/venture-server.mjs"],
       "cwd": "~/Projects/avinashs-kingdom",
-      "env": {
-        "KINGDOM_VENTURE_ID": "kingdom-ops"
-      },
+      "env": { "KINGDOM_VENTURE_ID": "kingdom-ops" },
       "read_only": true,
       "tools": ["get_status", "get_phases", "list_capabilities"],
-      "cursor_snippet": {
-        "kingdom-ops": {
-          "command": "node",
-          "args": [
-            "/Users/avinashnandyala/Projects/avinashs-kingdom/mcp/venture-server.mjs"
-          ],
-          "env": {
-            "KINGDOM_VENTURE_ID": "kingdom-ops"
-          }
-        }
-      }
+      "write_tools_gated": ["append_log", "trigger_sync"]
+    },
+    {
+      "id": "mcp-mac-optimize-audit",
+      "venture_id": "mac-optimize-audit",
+      "transport": "stdio",
+      "command": "node",
+      "args": ["mcp/venture-server.mjs"],
+      "cwd": "~/Projects/avinashs-kingdom",
+      "env": { "KINGDOM_VENTURE_ID": "mac-optimize-audit" },
+      "read_only": true,
+      "tools": ["get_status", "get_phases", "list_capabilities"]
+    },
+    {
+      "id": "mcp-job-jugaad",
+      "venture_id": "job-jugaad",
+      "transport": "stdio",
+      "command": "node",
+      "args": ["mcp/venture-server.mjs"],
+      "cwd": "~/Projects/avinashs-kingdom",
+      "env": { "KINGDOM_VENTURE_ID": "job-jugaad" },
+      "read_only": true,
+      "tools": ["get_status", "get_phases", "list_capabilities"]
+    }
+  ],
+  "skipped": [
+    {
+      "venture_id": "shorts",
+      "reason": "repoPath is null — no MCP server"
     }
   ]
 }

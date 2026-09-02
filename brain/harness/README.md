@@ -112,6 +112,19 @@ This is structural + light phrase hygiene, **not** a full LLM contradiction / cl
 
 Both are required in the personal OS playbook: lint for structure, judge for claim review prompts. Human still approves material wiki edits.
 
+**Live vs offline**
+
+1. Offline always works: `npm run brain:judge -- --offline` or `npm run brain:judge:fixture` (exit 0).
+2. Default `npm run brain:judge` probes OmniRoute; if unreachable, records `llm_error` and uses offline findings (still exit 0).
+3. Live probe when OmniRoute is up:
+
+```bash
+curl -s -o /dev/null -w '%{http_code}\n' http://127.0.0.1:20128/v1/models
+npm run brain:judge -- --require-llm   # exit 2 if LLM unavailable; mode=llm when up
+```
+
+Text LLM only via OmniRoute; never route image generation through it.
+
 ### `brain:auto-wiki` — full auto wiki (Phase 2)
 
 1. Drop markdown in `brain/raw/inbox/` (raw stays immutable).

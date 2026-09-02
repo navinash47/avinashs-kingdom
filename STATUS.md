@@ -6,6 +6,6 @@
 - **Priority:** P1
 
 ## Next 3 tasks
-1. Cancel/review 6 kill-list seats; reclaim low-risk disk (51.7% used)
+1. Cancel/review 6 kill-list seats; reclaim low-risk disk (52.1% used)
 2. Keep monthly token cap ≤ $250
 3. Export Kingdom state weekly

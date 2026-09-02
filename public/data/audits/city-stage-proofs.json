@@ -1,8 +1,8 @@
 {
-  "synced_at": "2026-09-02T20:42:05.569Z",
+  "synced_at": "2026-09-02T23:02:58.190Z",
   "source": "/Users/avinashnandyala/ProceduralCity/dashboard/data.js",
-  "generated_at": "2026-09-02T20:42:05.562918+00:00",
-  "count": 14,
+  "generated_at": "2026-09-02T23:02:58.183419+00:00",
+  "count": 17,
   "dashboard_proofs_url": "http://127.0.0.1:8765/#proofs",
   "proofs": [
     {
@@ -213,6 +213,51 @@
       "unity_report": "reports/unity_stage_e_walkthrough.json",
       "svg": "reports/phase57_district_coherence.svg",
       "heatmap": "reports/stage_e_gate_heatmap.svg",
+      "walkthrough_skipped": true
+    },
+    {
+      "id": "F",
+      "title": "Stage F — Generative assets GATE",
+      "status": "pass",
+      "terminal": "reports/stage_f_gate_verify_terminal.txt",
+      "gate": "reports/stage_f_gate.json",
+      "unity_video": "reports/phase72_walkthrough.mp4",
+      "poster": "reports/phase72_walkthrough_poster.jpg",
+      "duration_sec": 456.2,
+      "checklist": "reports/phase72_walkthrough_checklist.md",
+      "unity_report": "reports/unity_stage_f_walkthrough.json",
+      "svg": "reports/phase54_landmarks.svg",
+      "heatmap": null,
+      "walkthrough_skipped": null
+    },
+    {
+      "id": "G",
+      "title": "Stage G — Placement & Integration GATE",
+      "status": "pass",
+      "terminal": "reports/stage_g_gate_verify_terminal.txt",
+      "gate": "reports/stage_g_gate.json",
+      "unity_video": "reports/phase82_walkthrough.mp4",
+      "poster": "reports/phase82_walkthrough_poster.jpg",
+      "duration_sec": 497.8,
+      "checklist": "reports/phase82_walkthrough_checklist.md",
+      "unity_report": "reports/unity_stage_g_walkthrough.json",
+      "svg": "reports/phase76_density_compare.svg",
+      "heatmap": null,
+      "walkthrough_skipped": true
+    },
+    {
+      "id": "H",
+      "title": "Stage H — Polish & Ship / v1 RELEASE GATE",
+      "status": "incomplete",
+      "terminal": "reports/stage_h_gate_verify_terminal.txt",
+      "gate": "reports/stage_h_gate.json",
+      "unity_video": "reports/phase91_walkthrough.mp4",
+      "poster": "reports/phase91_walkthrough_poster.jpg",
+      "duration_sec": 497.8,
+      "checklist": "reports/phase91_walkthrough_checklist.md",
+      "unity_report": "reports/unity_stage_h_walkthrough.json",
+      "svg": null,
+      "heatmap": null,
       "walkthrough_skipped": true
     }
   ]

@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-09-02T20:42:05.593Z",
+  "synced_at": "2026-09-02T23:02:58.216Z",
   "patches": {
     "youtube-editor": {
       "version": "Phase 4 · Clip research + provenance",
@@ -42,10 +42,10 @@
     },
     "job-jugaad": {
       "version": "Tracker v0.1",
-      "progress": 88,
+      "progress": 43950088,
       "priority": "P1",
-      "nextMilestone": "Keep logging — 439/500 toward ongoing target",
-      "notes": "Next: 1) Keep logging — 439/500 toward ongoing target · 2) Prep interviews (6 active) · 3) Run 2h search + live Gmail status toward 500 applied+",
+      "nextMilestone": "Keep logging — 439/500 toward milestone",
+      "notes": "Next: 1) Keep logging — 439/500 toward milestone · 2) Prep interviews (2 active) · 3) Run 2h search + live Gmail status toward 500 applied+",
       "status": "active",
       "progressSource": "STATUS.md Progress field (agent-updated)",
       "phasesPassed": null,
@@ -55,10 +55,10 @@
     },
     "mac-optimize-audit": {
       "version": "v0.1",
-      "progress": 55,
+      "progress": 67,
       "priority": "P1",
       "nextMilestone": "Memory pressure is warning",
-      "notes": "Next: 1) Memory pressure is warning · 2) Restart Zen Browser — 4.7 GB across 26 processes · 3) Cursor is heavy (4.8 GB, 53 processes)",
+      "notes": "Next: 1) Memory pressure is warning · 2) Restart Zen Browser — 3.0 GB across 26 processes · 3) Cursor is heavy (6.1 GB, 79 processes)",
       "status": "active",
       "progressSource": "STATUS.md Progress field (agent-updated)",
       "phasesPassed": null,
@@ -80,14 +80,14 @@
       "ceilingUsd": 40
     },
     "procedural-city": {
-      "version": "Stage F · Phase 63",
-      "progress": 65,
+      "version": "Stage H · Phase 91",
+      "progress": 94,
       "priority": "P1",
       "status": "active",
-      "nextMilestone": "Phase 63: Scale and orientation normalization (pending)",
-      "notes": "City · 63/97 pass · source local working tree · updated 2026-09-02T20:42:05.286457+00:00 · ceiling $70",
-      "progressSource": "phases 63/97 from local working tree",
-      "phasesPassed": 63,
+      "nextMilestone": "Phase 91: v1 RELEASE GATE (pending)",
+      "notes": "City · 91/97 pass · source local working tree · updated 2026-09-02T23:02:25.995033+00:00 · ceiling $70",
+      "progressSource": "phases 91/97 from local working tree",
+      "phasesPassed": 91,
       "phasesTotal": 97,
       "spendUsd": null,
       "ceilingUsd": 70
@@ -110,7 +110,7 @@
       "progress": 70,
       "priority": "P1",
       "status": "active",
-      "nextMilestone": "Cancel/review 6 kill-list seats; reclaim low-risk disk (51.7% used)",
+      "nextMilestone": "Cancel/review 6 kill-list seats; reclaim low-risk disk (52.1% used)",
       "notes": "Subscription kill list lives here. Mac speed is the mac-optimize-audit province.",
       "progressSource": "heuristic ops readiness 70% (audits live; kill seats still open)",
       "phasesPassed": null,

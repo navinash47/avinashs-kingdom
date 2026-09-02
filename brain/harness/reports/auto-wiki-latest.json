@@ -1,11 +1,44 @@
 {
+  "at": "2026-09-02T22:51:14.293Z",
+  "op": "batch",
   "ok": true,
-  "op": "promote",
-  "slug": "phase2-auto-wiki-smoke-2026-09-02",
-  "source": "wiki/sources/phase2-auto-wiki-smoke-2026-09-02.md",
-  "index_row": "| [Phase 2 auto-wiki smoke source](sources/phase2-auto-wiki-smoke-2026-09-02.md) | source | _published via auto-wiki promote_ |",
-  "log_line": "## [2026-09-02] ingest | Phase 2 auto-wiki smoke source",
-  "lint_ok": true,
-  "judge_ran": false,
-  "at": "2026-09-02T22:48:04.622Z"
+  "processed": 3,
+  "drafted": 2,
+  "skipped_duplicate": 1,
+  "results": [
+    {
+      "status": "skipped_duplicate",
+      "slug": "phase2-auto-wiki-smoke-2026-09-02",
+      "hash": "c81800ea96d15c6885ebc6903150ca6a176eed76daccdfb2b031c748bffd684d",
+      "raw": "raw/inbox/phase2-auto-wiki-smoke-2026-09-02.md",
+      "note": "Same content hash already processed — idempotent skip"
+    },
+    {
+      "status": "drafted",
+      "slug": "youtube-house-video-style-2026-08-11-2db2af44",
+      "draft": "wiki/drafts/sources/youtube-house-video-style-2026-08-11-2db2af44.md",
+      "published_target": "wiki/sources/youtube-house-video-style-2026-08-11-2db2af44.md",
+      "index_row_proposal": "| [YouTube house video style — durable craft log (2026-08-11)](sources/youtube-house-video-style-2026-08-11-2db2af44.md) | Layman + curious. |",
+      "log_line_proposal": "## [2026-09-02] ingest | YouTube house video style — durable craft log (2026-08-11) (auto-wiki draft → promote to publish)",
+      "promote": "npm run brain:auto-wiki -- --promote youtube-house-video-style-2026-08-11-2db2af44",
+      "hash": "2db2af44384cbe65768d3d6e2a38b316924360dfa40321cae1ea58ea77c51882",
+      "raw": "raw/inbox/youtube-house-video-style-2026-08-11.md",
+      "title": "YouTube house video style — durable craft log (2026-08-11)",
+      "bullets": 8
+    },
+    {
+      "status": "drafted",
+      "slug": "youtube-screenplay-layman-craft-2026-08-11-ac762f24",
+      "draft": "wiki/drafts/sources/youtube-screenplay-layman-craft-2026-08-11-ac762f24.md",
+      "published_target": "wiki/sources/youtube-screenplay-layman-craft-2026-08-11-ac762f24.md",
+      "index_row_proposal": "| [YouTube screenplay — layman craft (show, don’t tell)](sources/youtube-screenplay-layman-craft-2026-08-11-ac762f24.md) | Concept: layman-screenplay-craft |",
+      "log_line_proposal": "## [2026-09-02] ingest | YouTube screenplay — layman craft (show, don’t tell) (auto-wiki draft → promote to publish)",
+      "promote": "npm run brain:auto-wiki -- --promote youtube-screenplay-layman-craft-2026-08-11-ac762f24",
+      "hash": "ac762f243c3edb5906192ff499238621691cc9400e3e67dfbb59523c94f5cdf1",
+      "raw": "raw/inbox/youtube-screenplay-layman-craft-2026-08-11.md",
+      "title": "YouTube screenplay — layman craft (show, don’t tell)",
+      "bullets": 3
+    }
+  ],
+  "note": "Drafts only. Index/log lines are proposals until --promote. Raw files untouched."
 }

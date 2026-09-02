@@ -3,6 +3,87 @@
     "headroom": {
       "command": "/Users/avinashnandyala/.local/bin/headroom",
       "args": ["mcp", "serve"]
+    },
+    "kingdom-ops": {
+      "command": "node",
+      "args": [
+        "/Users/avinashnandyala/Projects/avinashs-kingdom/mcp/venture-server.mjs"
+      ],
+      "env": {
+        "KINGDOM_VENTURE_ID": "kingdom-ops"
+      }
+    },
+    "kingdom-whatsapp-voice": {
+      "command": "node",
+      "args": [
+        "/Users/avinashnandyala/Projects/avinashs-kingdom/mcp/venture-server.mjs"
+      ],
+      "env": {
+        "KINGDOM_VENTURE_ID": "whatsapp-voice"
+      }
+    },
+    "kingdom-youtube-editor": {
+      "command": "node",
+      "args": [
+        "/Users/avinashnandyala/Projects/avinashs-kingdom/mcp/venture-server.mjs"
+      ],
+      "env": {
+        "KINGDOM_VENTURE_ID": "youtube-editor"
+      }
+    },
+    "kingdom-research-frontier": {
+      "command": "node",
+      "args": [
+        "/Users/avinashnandyala/Projects/avinashs-kingdom/mcp/venture-server.mjs"
+      ],
+      "env": {
+        "KINGDOM_VENTURE_ID": "research-frontier"
+      }
+    },
+    "kingdom-beamdojo": {
+      "command": "node",
+      "args": [
+        "/Users/avinashnandyala/Projects/avinashs-kingdom/mcp/venture-server.mjs"
+      ],
+      "env": {
+        "KINGDOM_VENTURE_ID": "beamdojo"
+      }
+    },
+    "kingdom-procedural-city": {
+      "command": "node",
+      "args": [
+        "/Users/avinashnandyala/Projects/avinashs-kingdom/mcp/venture-server.mjs"
+      ],
+      "env": {
+        "KINGDOM_VENTURE_ID": "procedural-city"
+      }
+    },
+    "kingdom-comic-engine": {
+      "command": "node",
+      "args": [
+        "/Users/avinashnandyala/Projects/avinashs-kingdom/mcp/venture-server.mjs"
+      ],
+      "env": {
+        "KINGDOM_VENTURE_ID": "comic-engine"
+      }
+    },
+    "kingdom-mac-optimize-audit": {
+      "command": "node",
+      "args": [
+        "/Users/avinashnandyala/Projects/avinashs-kingdom/mcp/venture-server.mjs"
+      ],
+      "env": {
+        "KINGDOM_VENTURE_ID": "mac-optimize-audit"
+      }
+    },
+    "kingdom-job-jugaad": {
+      "command": "node",
+      "args": [
+        "/Users/avinashnandyala/Projects/avinashs-kingdom/mcp/venture-server.mjs"
+      ],
+      "env": {
+        "KINGDOM_VENTURE_ID": "job-jugaad"
+      }
     }
   }
 }

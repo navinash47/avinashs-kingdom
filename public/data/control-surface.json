@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-09-02T22:50:26.756Z",
+  "synced_at": "2026-09-02T23:03:04.320Z",
   "version": 2,
   "contract": "kingdom-personal-os",
   "fsm": {
@@ -26,9 +26,9 @@
     "agents": 9,
     "agents_with_skills": 9,
     "agents_without_skills": [],
-    "capabilities": 16,
-    "mcp_servers": 1,
-    "phases_board_synced_at": "2026-09-02T22:50:19.824Z"
+    "capabilities": 24,
+    "mcp_servers": 9,
+    "phases_board_synced_at": "2026-09-02T23:02:58.216Z"
   },
   "ventures": [
     {
@@ -47,7 +47,9 @@
       "kind": null,
       "github": "navinash47/whatsapp-voice-agents",
       "mcp": {
-        "enabled": false
+        "enabled": true,
+        "read_only": true,
+        "id": "mcp-whatsapp-voice"
       }
     },
     {
@@ -66,7 +68,9 @@
       "kind": null,
       "github": "navinash47/youtube-editor-lab",
       "mcp": {
-        "enabled": false
+        "enabled": true,
+        "read_only": true,
+        "id": "mcp-youtube-editor"
       }
     },
     {
@@ -85,7 +89,9 @@
       "kind": "research",
       "github": "navinash47/research-frontier-lab",
       "mcp": {
-        "enabled": false
+        "enabled": true,
+        "read_only": true,
+        "id": "mcp-research-frontier"
       }
     },
     {
@@ -104,26 +110,30 @@
       "kind": "research",
       "github": "navinash47/BeamDojo",
       "mcp": {
-        "enabled": false
+        "enabled": true,
+        "read_only": true,
+        "id": "mcp-beamdojo"
       }
     },
     {
       "id": "procedural-city",
       "name": "Procedural City",
-      "progress": 86,
+      "progress": 94,
       "priority": "P1",
       "status": "active",
       "agentId": "agent-metro",
       "repoPath": "~/ProceduralCity",
       "dashboardPort": 8765,
       "dashboardLabel": "City dashboard",
-      "nextMilestone": "Phase 83: Failure-mode hardening (pending)",
-      "phasesPassed": 83,
+      "nextMilestone": "Phase 91: v1 RELEASE GATE (pending)",
+      "phasesPassed": 91,
       "phasesTotal": 97,
       "kind": null,
       "github": "navinash47/ProceduralCity",
       "mcp": {
-        "enabled": false
+        "enabled": true,
+        "read_only": true,
+        "id": "mcp-procedural-city"
       }
     },
     {
@@ -142,7 +152,9 @@
       "kind": null,
       "github": "navinash47/ComicMainEngine",
       "mcp": {
-        "enabled": false
+        "enabled": true,
+        "read_only": true,
+        "id": "mcp-comic-engine"
       }
     },
     {
@@ -155,7 +167,7 @@
       "repoPath": "~/Projects/avinashs-kingdom",
       "dashboardPort": 5173,
       "dashboardLabel": "Kingdom panel",
-      "nextMilestone": "Cancel/review 6 kill-list seats; reclaim low-risk disk (52% used)",
+      "nextMilestone": "Cancel/review 6 kill-list seats; reclaim low-risk disk (52.1% used)",
       "phasesPassed": null,
       "phasesTotal": null,
       "kind": null,
@@ -182,7 +194,9 @@
       "kind": null,
       "github": "navinash47/mac-optimize-audit",
       "mcp": {
-        "enabled": false
+        "enabled": true,
+        "read_only": true,
+        "id": "mcp-mac-optimize-audit"
       }
     },
     {
@@ -201,7 +215,9 @@
       "kind": null,
       "github": "navinash47/job-jugaad",
       "mcp": {
-        "enabled": false
+        "enabled": true,
+        "read_only": true,
+        "id": "mcp-job-jugaad"
       }
     },
     {
@@ -241,6 +257,78 @@
     "docs": "mcp/README.md",
     "servers": [
       {
+        "id": "mcp-whatsapp-voice",
+        "venture_id": "whatsapp-voice",
+        "transport": "stdio",
+        "read_only": true,
+        "tools": [
+          "get_status",
+          "get_phases",
+          "list_capabilities"
+        ],
+        "health": "configured"
+      },
+      {
+        "id": "mcp-youtube-editor",
+        "venture_id": "youtube-editor",
+        "transport": "stdio",
+        "read_only": true,
+        "tools": [
+          "get_status",
+          "get_phases",
+          "list_capabilities"
+        ],
+        "health": "configured"
+      },
+      {
+        "id": "mcp-research-frontier",
+        "venture_id": "research-frontier",
+        "transport": "stdio",
+        "read_only": true,
+        "tools": [
+          "get_status",
+          "get_phases",
+          "list_capabilities"
+        ],
+        "health": "configured"
+      },
+      {
+        "id": "mcp-beamdojo",
+        "venture_id": "beamdojo",
+        "transport": "stdio",
+        "read_only": true,
+        "tools": [
+          "get_status",
+          "get_phases",
+          "list_capabilities"
+        ],
+        "health": "configured"
+      },
+      {
+        "id": "mcp-procedural-city",
+        "venture_id": "procedural-city",
+        "transport": "stdio",
+        "read_only": true,
+        "tools": [
+          "get_status",
+          "get_phases",
+          "list_capabilities"
+        ],
+        "health": "configured"
+      },
+      {
+        "id": "mcp-comic-engine",
+        "venture_id": "comic-engine",
+        "transport": "stdio",
+        "read_only": true,
+        "tools": [
+          "get_status",
+          "get_phases",
+          "list_capabilities"
+        ],
+        "health": "configured"
+      },
+      {
         "id": "mcp-kingdom-ops",
         "venture_id": "kingdom-ops",
         "transport": "stdio",
@@ -251,9 +339,33 @@
           "list_capabilities"
         ],
         "health": "configured"
+      },
+      {
+        "id": "mcp-mac-optimize-audit",
+        "venture_id": "mac-optimize-audit",
+        "transport": "stdio",
+        "read_only": true,
+        "tools": [
+          "get_status",
+          "get_phases",
+          "list_capabilities"
+        ],
+        "health": "configured"
+      },
+      {
+        "id": "mcp-job-jugaad",
+        "venture_id": "job-jugaad",
+        "transport": "stdio",
+        "read_only": true,
+        "tools": [
+          "get_status",
+          "get_phases",
+          "list_capabilities"
+        ],
+        "health": "configured"
       }
     ],
-    "enabled": 1
+    "enabled": 9
   },
   "graph": {
     "nodes": [
@@ -412,6 +524,12 @@
         "label": "task-observer"
       },
       {
+        "id": "capability:mcp:whatsapp-voice",
+        "type": "capability",
+        "label": "mcp:whatsapp-voice",
+        "venture_id": "whatsapp-voice"
+      },
+      {
         "id": "capability:dashboard:8787",
         "type": "capability",
         "label": "dashboard:8787",
@@ -424,10 +542,22 @@
         "venture_id": "whatsapp-voice"
       },
       {
+        "id": "capability:mcp:youtube-editor",
+        "type": "capability",
+        "label": "mcp:youtube-editor",
+        "venture_id": "youtube-editor"
+      },
+      {
         "id": "capability:tests:youtube-editor",
         "type": "capability",
         "label": "tests:youtube-editor",
         "venture_id": "youtube-editor"
+      },
+      {
+        "id": "capability:mcp:research-frontier",
+        "type": "capability",
+        "label": "mcp:research-frontier",
+        "venture_id": "research-frontier"
       },
       {
         "id": "capability:research:research-frontier",
@@ -436,10 +566,22 @@
         "venture_id": "research-frontier"
       },
       {
+        "id": "capability:mcp:beamdojo",
+        "type": "capability",
+        "label": "mcp:beamdojo",
+        "venture_id": "beamdojo"
+      },
+      {
         "id": "capability:research:beamdojo",
         "type": "capability",
         "label": "research:beamdojo",
         "venture_id": "beamdojo"
+      },
+      {
+        "id": "capability:mcp:procedural-city",
+        "type": "capability",
+        "label": "mcp:procedural-city",
+        "venture_id": "procedural-city"
       },
       {
         "id": "capability:dashboard:8765",
@@ -452,6 +594,12 @@
         "type": "capability",
         "label": "tests:procedural-city",
         "venture_id": "procedural-city"
+      },
+      {
+        "id": "capability:mcp:comic-engine",
+        "type": "capability",
+        "label": "mcp:comic-engine",
+        "venture_id": "comic-engine"
       },
       {
         "id": "capability:dashboard:8770",
@@ -484,6 +632,12 @@
         "venture_id": "kingdom-ops"
       },
       {
+        "id": "capability:mcp:mac-optimize-audit",
+        "type": "capability",
+        "label": "mcp:mac-optimize-audit",
+        "venture_id": "mac-optimize-audit"
+      },
+      {
         "id": "capability:dashboard:8742",
         "type": "capability",
         "label": "dashboard:8742",
@@ -494,6 +648,12 @@
         "type": "capability",
         "label": "tests:mac-optimize-audit",
         "venture_id": "mac-optimize-audit"
+      },
+      {
+        "id": "capability:mcp:job-jugaad",
+        "type": "capability",
+        "label": "mcp:job-jugaad",
+        "venture_id": "job-jugaad"
       },
       {
         "id": "capability:dashboard:8790",
@@ -762,6 +922,12 @@
         "rel": "skill"
       },
       {
+        "id": "e-venture:whatsapp-voice-capability:mcp:whatsapp-voice",
+        "from": "venture:whatsapp-voice",
+        "to": "capability:mcp:whatsapp-voice",
+        "rel": "capability"
+      },
+      {
         "id": "e-venture:whatsapp-voice-capability:dashboard:8787",
         "from": "venture:whatsapp-voice",
         "to": "capability:dashboard:8787",
@@ -774,9 +940,21 @@
         "rel": "capability"
       },
       {
+        "id": "e-venture:youtube-editor-capability:mcp:youtube-editor",
+        "from": "venture:youtube-editor",
+        "to": "capability:mcp:youtube-editor",
+        "rel": "capability"
+      },
+      {
         "id": "e-venture:youtube-editor-capability:tests:youtube-editor",
         "from": "venture:youtube-editor",
         "to": "capability:tests:youtube-editor",
+        "rel": "capability"
+      },
+      {
+        "id": "e-venture:research-frontier-capability:mcp:research-frontier",
+        "from": "venture:research-frontier",
+        "to": "capability:mcp:research-frontier",
         "rel": "capability"
       },
       {
@@ -786,9 +964,21 @@
         "rel": "capability"
       },
       {
+        "id": "e-venture:beamdojo-capability:mcp:beamdojo",
+        "from": "venture:beamdojo",
+        "to": "capability:mcp:beamdojo",
+        "rel": "capability"
+      },
+      {
         "id": "e-venture:beamdojo-capability:research:beamdojo",
         "from": "venture:beamdojo",
         "to": "capability:research:beamdojo",
+        "rel": "capability"
+      },
+      {
+        "id": "e-venture:procedural-city-capability:mcp:procedural-city",
+        "from": "venture:procedural-city",
+        "to": "capability:mcp:procedural-city",
         "rel": "capability"
       },
       {
@@ -801,6 +991,12 @@
         "id": "e-venture:procedural-city-capability:tests:procedural-city",
         "from": "venture:procedural-city",
         "to": "capability:tests:procedural-city",
+        "rel": "capability"
+      },
+      {
+        "id": "e-venture:comic-engine-capability:mcp:comic-engine",
+        "from": "venture:comic-engine",
+        "to": "capability:mcp:comic-engine",
         "rel": "capability"
       },
       {
@@ -834,6 +1030,12 @@
         "rel": "capability"
       },
       {
+        "id": "e-venture:mac-optimize-audit-capability:mcp:mac-optimize-audit",
+        "from": "venture:mac-optimize-audit",
+        "to": "capability:mcp:mac-optimize-audit",
+        "rel": "capability"
+      },
+      {
         "id": "e-venture:mac-optimize-audit-capability:dashboard:8742",
         "from": "venture:mac-optimize-audit",
         "to": "capability:dashboard:8742",
@@ -843,6 +1045,12 @@
         "id": "e-venture:mac-optimize-audit-capability:tests:mac-optimize-audit",
         "from": "venture:mac-optimize-audit",
         "to": "capability:tests:mac-optimize-audit",
+        "rel": "capability"
+      },
+      {
+        "id": "e-venture:job-jugaad-capability:mcp:job-jugaad",
+        "from": "venture:job-jugaad",
+        "to": "capability:mcp:job-jugaad",
         "rel": "capability"
       },
       {

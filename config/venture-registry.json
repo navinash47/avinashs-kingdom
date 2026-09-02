@@ -1,12 +1,15 @@
 {
   "version": "1",
-  "updated": "2026-08-24",
+  "updated": "2026-09-02",
   "ventures": [
     {
       "id": "whatsapp-voice",
       "repoPath": "~/Projects/whatsapp-voice-agents",
       "agentId": "agent-cash",
-      "dashboard": { "port": 8787, "label": "WhatsApp demo" },
+      "dashboard": {
+        "port": 8787,
+        "label": "WhatsApp demo"
+      },
       "wiki": {
         "venture": "brain/wiki/ventures/whatsapp-voice.md",
         "architecture": "brain/wiki/architecture/whatsapp-voice.md",
@@ -32,7 +35,15 @@
             "description": "Runs demo server unit tests (qualify FSM, webhook handlers)"
           }
         ]
-      }
+      },
+      "mcp": {
+        "id": "mcp-whatsapp-voice",
+        "enabled": true,
+        "read_only": true
+      },
+      "capabilities": [
+        "mcp:whatsapp-voice"
+      ]
     },
     {
       "id": "youtube-editor",
@@ -44,7 +55,10 @@
         "architecture": "brain/wiki/architecture/youtube-editor.md",
         "experiments": "brain/wiki/experiments/youtube-editor.md"
       },
-      "paths": { "status": "STATUS.md", "srs": "docs/SRS.md" },
+      "paths": {
+        "status": "STATUS.md",
+        "srs": "docs/SRS.md"
+      },
       "github": {
         "owner": "navinash47",
         "repo": "youtube-editor-lab",
@@ -60,7 +74,15 @@
             "description": "YouTube editor lab test suite (clip research, provenance lint)"
           }
         ]
-      }
+      },
+      "mcp": {
+        "id": "mcp-youtube-editor",
+        "enabled": true,
+        "read_only": true
+      },
+      "capabilities": [
+        "mcp:youtube-editor"
+      ]
     },
     {
       "id": "research-frontier",
@@ -74,13 +96,25 @@
         "architecture": "brain/wiki/architecture/research-frontier.md",
         "experiments": "brain/wiki/experiments/research-frontier.md"
       },
-      "paths": { "status": "STATUS.md" },
+      "paths": {
+        "status": "STATUS.md"
+      },
       "github": {
         "owner": "navinash47",
         "repo": "research-frontier-lab",
         "default_branch": "main"
       },
-      "tests": { "commands": [] }
+      "tests": {
+        "commands": []
+      },
+      "mcp": {
+        "id": "mcp-research-frontier",
+        "enabled": true,
+        "read_only": true
+      },
+      "capabilities": [
+        "mcp:research-frontier"
+      ]
     },
     {
       "id": "beamdojo",
@@ -104,13 +138,26 @@
         "repo": "BeamDojo",
         "default_branch": "main"
       },
-      "tests": { "commands": [] }
+      "tests": {
+        "commands": []
+      },
+      "mcp": {
+        "id": "mcp-beamdojo",
+        "enabled": true,
+        "read_only": true
+      },
+      "capabilities": [
+        "mcp:beamdojo"
+      ]
     },
     {
       "id": "procedural-city",
       "repoPath": "~/ProceduralCity",
       "agentId": "agent-metro",
-      "dashboard": { "port": 8765, "label": "City dashboard" },
+      "dashboard": {
+        "port": 8765,
+        "label": "City dashboard"
+      },
       "wiki": {
         "venture": "brain/wiki/ventures/procedural-city.md",
         "architecture": "brain/wiki/architecture/procedural-city.md",
@@ -136,13 +183,24 @@
             "description": "ProceduralCity Python unit tests"
           }
         ]
-      }
+      },
+      "mcp": {
+        "id": "mcp-procedural-city",
+        "enabled": true,
+        "read_only": true
+      },
+      "capabilities": [
+        "mcp:procedural-city"
+      ]
     },
     {
       "id": "comic-engine",
       "repoPath": "~/Desktop/ComicMainEngine",
       "agentId": "agent-ink",
-      "dashboard": { "port": 8770, "label": "Comic v2a dashboard" },
+      "dashboard": {
+        "port": 8770,
+        "label": "Comic v2a dashboard"
+      },
       "wiki": {
         "venture": "brain/wiki/ventures/comic-engine.md",
         "architecture": "brain/wiki/architecture/comic-engine.md",
@@ -168,19 +226,33 @@
             "description": "ComicMainEngine v2a pytest suite"
           }
         ]
-      }
+      },
+      "mcp": {
+        "id": "mcp-comic-engine",
+        "enabled": true,
+        "read_only": true
+      },
+      "capabilities": [
+        "mcp:comic-engine"
+      ]
     },
     {
       "id": "kingdom-ops",
       "repoPath": "~/Projects/avinashs-kingdom",
       "agentId": "agent-steward",
-      "dashboard": { "port": 5173, "label": "Kingdom panel" },
+      "dashboard": {
+        "port": 5173,
+        "label": "Kingdom panel"
+      },
       "wiki": {
         "venture": "brain/wiki/ventures/kingdom-ops.md",
         "architecture": "brain/wiki/architecture/kingdom-ops.md",
         "experiments": "brain/wiki/experiments/kingdom-ops.md"
       },
-      "paths": { "status": "STATUS.md", "sync": "scripts/sync-kingdom.mjs" },
+      "paths": {
+        "status": "STATUS.md",
+        "sync": "scripts/sync-kingdom.mjs"
+      },
       "github": {
         "owner": "navinash47",
         "repo": "avinashs-kingdom",
@@ -209,19 +281,27 @@
         "enabled": true,
         "read_only": true
       },
-      "capabilities": ["mcp:kingdom-ops"]
+      "capabilities": [
+        "mcp:kingdom-ops"
+      ]
     },
     {
       "id": "mac-optimize-audit",
       "repoPath": "~/Projects/mac-optimize-audit",
       "agentId": "agent-janitor",
-      "dashboard": { "port": 8742, "label": "Mac audit dashboard" },
+      "dashboard": {
+        "port": 8742,
+        "label": "Mac audit dashboard"
+      },
       "wiki": {
         "venture": "brain/wiki/ventures/mac-optimize-audit.md",
         "architecture": "brain/wiki/architecture/mac-optimize-audit.md",
         "experiments": "brain/wiki/experiments/mac-optimize-audit.md"
       },
-      "paths": { "status": "STATUS.md", "report": "reports/latest.json" },
+      "paths": {
+        "status": "STATUS.md",
+        "report": "reports/latest.json"
+      },
       "github": {
         "owner": "navinash47",
         "repo": "mac-optimize-audit",
@@ -237,13 +317,24 @@
             "description": "Mac optimize audit pytest suite"
           }
         ]
-      }
+      },
+      "mcp": {
+        "id": "mcp-mac-optimize-audit",
+        "enabled": true,
+        "read_only": true
+      },
+      "capabilities": [
+        "mcp:mac-optimize-audit"
+      ]
     },
     {
       "id": "job-jugaad",
       "repoPath": "~/Projects/job-jugaad",
       "agentId": "agent-jugaad",
-      "dashboard": { "port": 8790, "label": "Job tracker" },
+      "dashboard": {
+        "port": 8790,
+        "label": "Job tracker"
+      },
       "wiki": {
         "venture": "brain/wiki/ventures/job-jugaad.md",
         "architecture": "brain/wiki/architecture/job-jugaad.md",
@@ -268,17 +359,29 @@
             "description": "Job Jugaad application tracker tests"
           }
         ]
-      }
+      },
+      "mcp": {
+        "id": "mcp-job-jugaad",
+        "enabled": true,
+        "read_only": true
+      },
+      "capabilities": [
+        "mcp:job-jugaad"
+      ]
     },
     {
       "id": "shorts",
       "repoPath": null,
       "agentId": null,
       "dashboard": null,
-      "wiki": { "venture": "brain/wiki/ventures/shorts.md" },
+      "wiki": {
+        "venture": "brain/wiki/ventures/shorts.md"
+      },
       "paths": {},
       "github": null,
-      "tests": { "commands": [] }
+      "tests": {
+        "commands": []
+      }
     }
   ]
 }

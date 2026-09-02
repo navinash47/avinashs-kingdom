@@ -291,3 +291,18 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 **Suggested improvement:** In kingdom-wiki lint mode, tell agents to report v2 warnings first and only fix broken links / missing updated unless asked. Optionally add allowlist for live-tracker lifecycle scrape or raise claim bullet min length.
 
 **Principle:** Cheap contradiction heuristics must stay warnings with an explicit "not a judge" framing, or noise trains people to ignore health checks.
+
+### Observation 20: Fleet MCP smoke must summarize large phases
+
+**Status:** OPEN
+**Date:** 2026-09-02
+**Session context:** Phase 2b fleet MCP roll-out; procedural-city smoke failed when embedding full phases.json in stdout
+**Skill:** New skill candidate: kingdom-mcp (or extend onboard-new-project / mcp README)
+**Type:** open-source
+**Phase/Area:** MCP smoke / stdout bounds
+
+**Issue:** `mcp:smoke:fleet` parsed smoke JSON for procedural-city as failure even though exit 0 — spawn stdout exceeded practical parse size because smoke dumped entire `tracking/phases.json`.
+
+**Suggested improvement:** Always summarize large tool payloads in smoke modes; keep full JSON only on live tool calls. Document maxBuffer / summarization in mcp README.
+
+**Principle:** Acceptance smokes must bound output size independently of production tool verbosity, or large-but-valid responses look like failures.

@@ -4,6 +4,61 @@
   "items": [
     {
       "date": "2026-09-02",
+      "summary": "Record Phase 2 W4 SHA; tracker at 100%.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Ship Phase 2 W4: read-only venture MCP template and kingdom-ops pilot.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Record Phase 2 W3 commit SHA on tracker.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Ship Phase 2 W3: full auto wiki with draft→promote gate.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Record Phase 2 W2 commit SHA on tracker.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Ship Phase 2 W2: additive LLM/offline contradiction judge.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Ship Phase 2 W1: Obs 11 cloud→Mac UI merge playbook.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Preserve ProceduralCity STATUS handoff while Stage G awaits human review.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Document quieter lint v2 heuristics in harness README.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Clear skill-observation backlog: new career/CICStep skills, tunnels diagnose, quieter lint v2.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Ship lint heuristic v2, richer ingest stubs, and sync hygiene.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
       "summary": "Add wiki lint heuristic v1 and semi-auto ingest happy path.",
       "source": "git"
     },
@@ -15,61 +70,6 @@
     {
       "date": "2026-09-02",
       "summary": "Refresh Kingdom after Procedural City Stage E re-close.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-02",
-      "summary": "Sync Kingdom after Procedural City Stage E close (Phase 58).",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-02",
-      "summary": "Log sync/control-surface skill observations from control plane session.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-02",
-      "summary": "Restore virtual control plane and sync-owned control surface.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-02",
-      "summary": "Link City Stage Proofs from Kingdom Run tab.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-02",
-      "summary": "Surface Procedural City Stage E walkthrough proofs on Kingdom.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-01",
-      "summary": "Sync kingdom resume data after LinkedIn master resume export.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-01",
-      "summary": "Sync resume knowledge after LinkedIn Master track export.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-01",
-      "summary": "Add orchestrator cover letter update endpoint for share site editor.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-01",
-      "summary": "Sync LinkedIn APPROVED status and Job Jugaad primary tracks closure.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-01",
-      "summary": "Sync resume knowledge after share-site overview parity update.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-01",
-      "summary": "Sync venture data and update portfolio-repo metadata.",
       "source": "git"
     },
     {

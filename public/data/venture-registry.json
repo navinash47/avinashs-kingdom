@@ -1,6 +1,6 @@
 {
   "version": "1",
-  "updated": "2026-08-24",
+  "updated": "2026-09-02",
   "ventures": [
     {
       "id": "whatsapp-voice",
@@ -35,7 +35,15 @@
             "description": "Runs demo server unit tests (qualify FSM, webhook handlers)"
           }
         ]
-      }
+      },
+      "mcp": {
+        "id": "mcp-whatsapp-voice",
+        "enabled": true,
+        "read_only": true
+      },
+      "capabilities": [
+        "mcp:whatsapp-voice"
+      ]
     },
     {
       "id": "youtube-editor",
@@ -66,7 +74,15 @@
             "description": "YouTube editor lab test suite (clip research, provenance lint)"
           }
         ]
-      }
+      },
+      "mcp": {
+        "id": "mcp-youtube-editor",
+        "enabled": true,
+        "read_only": true
+      },
+      "capabilities": [
+        "mcp:youtube-editor"
+      ]
     },
     {
       "id": "research-frontier",
@@ -90,7 +106,15 @@
       },
       "tests": {
         "commands": []
-      }
+      },
+      "mcp": {
+        "id": "mcp-research-frontier",
+        "enabled": true,
+        "read_only": true
+      },
+      "capabilities": [
+        "mcp:research-frontier"
+      ]
     },
     {
       "id": "beamdojo",
@@ -116,7 +140,15 @@
       },
       "tests": {
         "commands": []
-      }
+      },
+      "mcp": {
+        "id": "mcp-beamdojo",
+        "enabled": true,
+        "read_only": true
+      },
+      "capabilities": [
+        "mcp:beamdojo"
+      ]
     },
     {
       "id": "procedural-city",
@@ -151,7 +183,15 @@
             "description": "ProceduralCity Python unit tests"
           }
         ]
-      }
+      },
+      "mcp": {
+        "id": "mcp-procedural-city",
+        "enabled": true,
+        "read_only": true
+      },
+      "capabilities": [
+        "mcp:procedural-city"
+      ]
     },
     {
       "id": "comic-engine",
@@ -186,7 +226,15 @@
             "description": "ComicMainEngine v2a pytest suite"
           }
         ]
-      }
+      },
+      "mcp": {
+        "id": "mcp-comic-engine",
+        "enabled": true,
+        "read_only": true
+      },
+      "capabilities": [
+        "mcp:comic-engine"
+      ]
     },
     {
       "id": "kingdom-ops",
@@ -227,7 +275,15 @@
             "description": "Typecheck + production bundle (orchestrator UI)"
           }
         ]
-      }
+      },
+      "mcp": {
+        "id": "mcp-kingdom-ops",
+        "enabled": true,
+        "read_only": true
+      },
+      "capabilities": [
+        "mcp:kingdom-ops"
+      ]
     },
     {
       "id": "mac-optimize-audit",
@@ -261,7 +317,15 @@
             "description": "Mac optimize audit pytest suite"
           }
         ]
-      }
+      },
+      "mcp": {
+        "id": "mcp-mac-optimize-audit",
+        "enabled": true,
+        "read_only": true
+      },
+      "capabilities": [
+        "mcp:mac-optimize-audit"
+      ]
     },
     {
       "id": "job-jugaad",
@@ -295,7 +359,15 @@
             "description": "Job Jugaad application tracker tests"
           }
         ]
-      }
+      },
+      "mcp": {
+        "id": "mcp-job-jugaad",
+        "enabled": true,
+        "read_only": true
+      },
+      "capabilities": [
+        "mcp:job-jugaad"
+      ]
     },
     {
       "id": "shorts",

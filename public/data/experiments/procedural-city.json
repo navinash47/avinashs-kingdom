@@ -4,6 +4,56 @@
   "items": [
     {
       "date": "2026-09-02",
+      "summary": "Prepare Stage H (83–90 PASS, 91 awaiting human review).",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Pass Phase 82: Stage G gate (human review).",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Sync Stage G gate metadata to fixed walkthrough size.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Fix Stage G walkthrough blank frames from -nographics.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Polish Stage G human-review handoff: publish walkthrough on Vercel.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Keep Stage G STATUS handoff for human review.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Prepare Stage G (73–81 PASS, 82 awaiting human review).",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Refresh dashboard after Stage F gate handoff to Phase 73.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Pass Stage F (63–72): generative assets gate with walkthrough.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Pass Phases 60–62: Trellis bulk5, mesh inspect, decimation.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
       "summary": "Ignore Vercel local project metadata under web/.vercel.",
       "source": "git"
     },
@@ -25,51 +75,6 @@
     {
       "date": "2026-09-02",
       "summary": "Revert \"Pass Phase 57: Stage E gate (human perfect-eval).\"",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-02",
-      "summary": "Sync Stage E Phase 57 status and dashboard census.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-02",
-      "summary": "Refresh dashboard Stage Proofs after E57 heatmap wiring.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-02",
-      "summary": "Wire Stage E gate heatmap SVG into Stage Proofs refresh.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-02",
-      "summary": "Refresh Stage Proofs panel copy for Stage E walkthroughs.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-02",
-      "summary": "Add Stage E walkthrough proof artifact (gate still awaiting human).",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-02",
-      "summary": "Prepare Phase 57 Stage E gate (awaiting human perfect-eval).",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-02",
-      "summary": "Pass Phase 56: geometry-cache regen reproducibility with Stage E tracking.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-02",
-      "summary": "Pass Phase 55: district-median fallback plans wired into pipeline L3.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-02",
-      "summary": "Pass Phase 54: landmark tile designation with spacing and hero assets.",
       "source": "git"
     },
     {

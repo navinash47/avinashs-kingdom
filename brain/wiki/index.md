@@ -13,6 +13,7 @@ Catalog of pages. Agents update this on every ingest. Last full refresh: **2026-
 | [ops/headroom](ops/headroom.md) | Token proxy + Cursor BYOK / MCP runbook |
 | [ops/personal-os-playbook](ops/personal-os-playbook.md) | Daily how-to run the Kingdom personal OS |
 | [ops/personal-os-phase2-tracker](ops/personal-os-phase2-tracker.md) | Phase 2 hard-10% live progress board |
+| [ops/personal-os-phase2b-tracker](ops/personal-os-phase2b-tracker.md) | Phase 2b fleet MCP + gated writes board |
 | [ops/personal-os-phase2-builder-prompt](ops/personal-os-phase2-builder-prompt.md) | Pasteable Agent/`/goal` prompt for Phase 2 |
 | [ops/cloud-ui-merge-playbook](ops/cloud-ui-merge-playbook.md) | Cloud→Mac UI merges: keep orchestrator; fold features |
 | [drafts/README](drafts/README.md) | Auto-wiki unpublished drafts gate |
@@ -85,6 +86,7 @@ Catalog of pages. Agents update this on every ingest. Last full refresh: **2026-
 | [brain-harness-fsm](concepts/brain-harness-fsm.md) | Deterministic KG/FSM empty model under brain/harness |
 | [kingdom-personal-os](concepts/kingdom-personal-os.md) | Primary architecture: brain + skills + registry/orchestrator + Throne |
 | [personal-os-phase2-srs](concepts/personal-os-phase2-srs.md) | Hard ~10% SRS: auto-wiki, MCP, LLM judge, obs 11 merge |
+| [personal-os-phase2b-srs](concepts/personal-os-phase2b-srs.md) | Fleet: all apps → registry/sync/Throne + MCP + skills |
 | [onboard-new-project](concepts/onboard-new-project.md) | Checklist to plug a future venture into brain + sync + Throne |
 
 ## Entities

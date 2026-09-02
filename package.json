@@ -35,6 +35,7 @@
     "brain:ingest": "node brain/harness/ingest.mjs",
     "brain:auto-wiki": "node brain/harness/auto-wiki.mjs",
     "mcp:smoke": "node mcp/venture-server.mjs --smoke",
+    "mcp:smoke:fleet": "node mcp/smoke-fleet.mjs",
     "brain:harness": "node brain/harness/query.mjs",
     "venture:new": "node scripts/new-venture.mjs",
     "headroom:start": "bash scripts/headroom-kingdom.sh start",

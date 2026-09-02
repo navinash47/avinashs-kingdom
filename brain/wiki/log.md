@@ -2,6 +2,10 @@
 
 Append-only. Prefix each entry with `## [YYYY-MM-DD] <op> | <title>` so recent activity is greppable.
 
+## [2026-09-02] ops | Phase 2b — fleet MCP + gated writes + Cursor attach
+
+SRS [[concepts/personal-os-phase2b-srs]] + tracker [[ops/personal-os-phase2b-tracker]]. Extended `mcp/venture-server.mjs` fleet-wide (`config/mcp-registry.json` for every active `repoPath`); `.cursor/mcp.json` kingdom servers; `npm run mcp:smoke:fleet`. Gated `append_log` / `trigger_sync` via `KINGDOM_MCP_WRITES=1`. Judge live OmniRoute probe documented (offline verified; `:20128` may be down). Onboard + playbook + harness README updated. `shorts` skipped (null repo).
+
 ## [2026-09-02] ops | Phase 2 W4 — MCP per app (kingdom-ops pilot)
 
 Shipped `mcp/venture-server.mjs` template + `config/mcp-registry.json`; tools `get_status` / `get_phases` / `list_capabilities` (read-only). Pilot kingdom-ops verified via `npm run mcp:smoke -- kingdom-ops`. Control-surface `mcp` snapshot on sync. Onboard doc + venture-template MCP section. Phase 2 W1–W4 complete.

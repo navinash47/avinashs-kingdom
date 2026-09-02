@@ -1,11 +1,11 @@
 {
   "venture_id": "procedural-city",
-  "synced_at": "2026-09-02T20:36:15.951Z",
+  "synced_at": "2026-09-02T23:00:16.746Z",
   "repo": {
     "path": "/Users/avinashnandyala/ProceduralCity",
-    "head": "96bf079c0efdd94a8a7f21dbda17bb8514931db7",
-    "branch": "phase60",
-    "last_commit_at": "2026-09-02T13:36:05-07:00",
+    "head": "f322b8603cb55ebd699f172555006c6b5e35f370",
+    "branch": "phase91",
+    "last_commit_at": "2026-09-02T15:59:57-07:00",
     "remote_url": "https://github.com/navinash47/ProceduralCity.git",
     "github": {
       "owner": "navinash47",
@@ -14,44 +14,44 @@
     }
   },
   "stats": {
-    "files": 898,
-    "lines": 666740,
+    "files": 1164,
+    "lines": 739130,
     "primary_language": "JSON",
     "languages": [
       {
         "language": "JSON",
-        "files": 662,
-        "lines": 618013
-      },
-      {
-        "language": "Python",
-        "files": 108,
-        "lines": 20188
+        "files": 668,
+        "lines": 656925
       },
       {
         "language": "Other",
-        "files": 73,
-        "lines": 13940
+        "files": 286,
+        "lines": 38916
+      },
+      {
+        "language": "Python",
+        "files": 147,
+        "lines": 25567
       },
       {
         "language": "JavaScript",
         "files": 3,
-        "lines": 8992
+        "lines": 10898
       },
       {
         "language": "Markdown",
-        "files": 40,
-        "lines": 3919
+        "files": 44,
+        "lines": 4439
       },
       {
         "language": "CSS",
         "files": 2,
-        "lines": 1009
+        "lines": 1145
       },
       {
         "language": "TypeScript",
-        "files": 7,
-        "lines": 380
+        "files": 11,
+        "lines": 941
       },
       {
         "language": "HTML",
@@ -65,7 +65,7 @@
       }
     ],
     "truncated": false,
-    "sampled_files": 898,
+    "sampled_files": 1164,
     "source": "walker"
   },
   "dependencies": {
@@ -105,6 +105,11 @@
         "name": "Pillow",
         "version": "",
         "ecosystem": "pypi"
+      },
+      {
+        "name": "fast_simplification",
+        "version": "",
+        "ecosystem": "pypi"
       }
     ],
     "dev": []
@@ -124,8 +129,8 @@
   "models_detected": [],
   "spend_usd": null,
   "ceiling_usd": 70,
-  "progress": 62,
-  "version": "Stage F · Phase 60",
+  "progress": 94,
+  "version": "Stage H · Phase 91",
   "test_commands": [
     {
       "id": "unit",
