@@ -70,7 +70,7 @@ Scripts live under `brain/harness/` (lint, wiki-query, ingest, query) and `scrip
 
 ### Lint
 
-Run `npm run brain:lint` (or `node brain/harness/lint.mjs --strict`). Checks orphans, broken `[[links]]`, missing index entries. Report findings; fix only what the human approves unless they said “lint and fix”.
+Run `npm run brain:lint` (or `node brain/harness/lint.mjs --strict`). Heuristic v1: broken `[[links]]` are errors; orphans / missing index / missing-or-stale `updated:` / duplicate H1 titles / duplicate `venture_id` under `ventures/` / path mismatches are warnings (exit 0 unless `--strict`). **Not** an LLM contradiction engine. Report findings; fix only what the human approves unless they said “lint and fix”.
 
 ## Domain focus
 

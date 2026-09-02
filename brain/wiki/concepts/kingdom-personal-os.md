@@ -35,9 +35,9 @@ Serious builders (2024–2026) converge on: compile durable knowledge ([Karpathy
 
 | npm script | Script | Role |
 |------------|--------|------|
-| `brain:lint` | `brain/harness/lint.mjs` | Broken links, missing index, orphans |
+| `brain:lint` | `brain/harness/lint.mjs` | Heuristic v1: broken links (error); orphans/index/stale `updated:`/dup titles/`venture_id` (warn) — **not** an LLM contradiction engine |
 | `brain:query` | `brain/harness/wiki-query.mjs` | Keyword search over wiki |
-| `brain:ingest` | `brain/harness/ingest.mjs` | Raw list / scaffold + AGENTS checklist |
+| `brain:ingest` | `brain/harness/ingest.mjs` | Semi-auto: `--file` → source stub + exact index/log checklist; LLM compile stays kingdom-wiki |
 | `brain:harness` | `brain/harness/query.mjs` | KG/FSM topology queries |
 | `venture:new` | `scripts/new-venture.mjs` | Mechanical onboard from template |
 

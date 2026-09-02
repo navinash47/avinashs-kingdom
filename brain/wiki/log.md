@@ -2,6 +2,10 @@
 
 Append-only. Prefix each entry with `## [YYYY-MM-DD] <op> | <title>` so recent activity is greppable.
 
+## [2026-09-02] ops | Lint heuristic v1 + semi-auto ingest
+
+Extended `brain/harness/lint.mjs`: broken links remain errors; warnings for missing/stale `updated:`, duplicate H1 titles, duplicate `venture_id`, path mismatches, light duplicate topics (`--stale-days`, `--strict`). Hardened `brain:ingest --file` to scaffold `wiki/sources/<slug>.md` by default and print exact index/log checklist (LLM compile still kingdom-wiki). Documented in harness README, [[ops/personal-os-playbook]], [[concepts/kingdom-personal-os]], [[concepts/llm-wiki]].
+
 ## [2026-09-02] ops | Personal OS wiki toolchain + playbook
 
 Shipped compiled-wiki commands under `brain/harness/`: `lint.mjs`, `wiki-query.mjs`, `ingest.mjs`; npm `brain:lint` / `brain:query` / `brain:ingest` / `brain:harness`; `scripts/new-venture.mjs` (`venture:new`). Throne Virtual control surfaces capability chips + onboard hint from control-surface. Daily loop: [[ops/personal-os-playbook]] · architecture [[concepts/kingdom-personal-os]] · onboard [[concepts/onboard-new-project]].

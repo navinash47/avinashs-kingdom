@@ -261,3 +261,18 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 **Suggested improvement:** Keep `npm run brain:lint|query|ingest` as first-class ops beside kingdom-wiki skill modes; treat post-sync `brain:lint` as optional hygiene in sync-kingdom; catalog architecture/experiments in index on onboard.
 
 **Principle:** A compiled wiki is only as serious as its mechanical lint/query surface — schema prose without runnable health checks decays into an unmaintained markdown pile.
+
+### Observation 18: Lint venture_id must scope to ventures/ only
+
+**Status:** OPEN
+**Date:** 2026-09-02
+**Session context:** Goal: lint heuristic v1 + semi-auto ingest after merging personal OS to main
+**Skill:** kingdom-wiki
+**Type:** open-source
+**Phase/Area:** brain/harness/lint.mjs heuristics
+
+**Issue:** First pass warned on duplicate `venture_id` across ventures/ + architecture/ + experiments/ for the same id. That pattern is intentional (three pages per venture), so the heuristic was noisy false positive and trained people to ignore lint.
+
+**Suggested improvement:** Scope duplicate-`venture_id` warnings to `ventures/` only; keep path/`venture_id` mismatches and architecture|experiments satellites without a matching `ventures/<id>.md` as separate cheap signals. Document heuristic v1 ≠ contradiction engine in README/playbook.
+
+**Principle:** Structural linters must encode the wiki’s real page-type conventions — treating intentional multi-page venture triples as duplicates destroys trust in health checks.

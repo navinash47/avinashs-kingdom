@@ -1,18 +1,25 @@
 #!/usr/bin/env node
 /**
- * Karpathy-style wiki health check for brain/wiki.
+ * Karpathy-style wiki health check for brain/wiki — heuristic v1.
+ *
+ * This is a deterministic CLI, NOT an LLM contradiction engine.
+ * It catches structural issues (broken links, orphans, missing index)
+ * plus light heuristics (stale/missing updated:, duplicate titles,
+ * duplicate venture_id claims). It does not reason about claim conflicts.
  *
  * Checks:
- *   - broken [[wiki-links]] / markdown links into wiki/
- *   - pages missing from wiki/index.md
- *   - orphan pages (no inbound wiki-links; index/overview/log exempt)
+ *   ERRORS:   broken [[wiki-links]] / markdown links into wiki/
+ *   WARNINGS: missing from index, orphans, missing/stale updated:,
+ *             duplicate H1 titles, duplicate venture_id frontmatter
  *
  * Usage:
  *   node brain/harness/lint.mjs
- *   node brain/harness/lint.mjs --strict   # treat warnings as errors
+ *   node brain/harness/lint.mjs --strict          # warnings → exit 1
+ *   node brain/harness/lint.mjs --stale-days 90   # default 90
  *   npm run brain:lint
  *
- * Exit 0 when healthy (or only warnings without --strict).
+ * Exit 0 when healthy or only warnings (without --strict).
+ * Exit 1 on broken links, or any warning under --strict.
  */
 import fs from 'node:fs'
 import path from 'node:path'
@@ -22,11 +29,26 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const brainRoot = path.join(__dirname, '..')
 const wikiRoot = path.join(brainRoot, 'wiki')
 const indexPath = path.join(wikiRoot, 'index.md')
+const logPath = path.join(wikiRoot, 'log.md')
 const strict = process.argv.includes('--strict')
+
+function optInt(name, fallback) {
+  const i = process.argv.indexOf(name)
+  if (i < 0) return fallback
+  const n = Number(process.argv[i + 1])
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : fallback
+}
+
+const staleDays = optInt('--stale-days', 90)
 
 const EXEMPT_ORPHANS = new Set([
   'index.md',
   'overview.md',
+  'log.md',
+])
+
+const EXEMPT_UPDATED = new Set([
+  'index.md',
   'log.md',
 ])
 
@@ -106,13 +128,61 @@ function collectIndexEntries(indexText) {
   return found
 }
 
+/** Parse YAML-ish frontmatter between --- fences (best-effort). */
+function parseFrontmatter(text) {
+  const m = text.match(/^---\r?\n([\s\S]*?)\r?\n---/)
+  if (!m) return { raw: null, fields: /** @type {Record<string, string>} */ ({}) }
+  const fields = {}
+  for (const line of m[1].split(/\r?\n/)) {
+    const kv = line.match(/^([A-Za-z0-9_]+):\s*(.*)$/)
+    if (!kv) continue
+    let v = kv[2].trim()
+    if ((v.startsWith('"') && v.endsWith('"')) || (v.startsWith("'") && v.endsWith("'"))) {
+      v = v.slice(1, -1)
+    }
+    // skip arrays / nested for heuristic v1
+    if (v.startsWith('[') || v.startsWith('{')) continue
+    fields[kv[1]] = v
+  }
+  return { raw: m[1], fields }
+}
+
+function firstH1(text) {
+  // skip frontmatter
+  const body = text.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n?/, '')
+  const m = body.match(/^#\s+(.+)$/m)
+  return m ? m[1].trim().replace(/\s+/g, ' ') : null
+}
+
+function latestLogDate(logText) {
+  let best = null
+  const re = /^##\s+\[(\d{4}-\d{2}-\d{2})\]/gm
+  let m
+  while ((m = re.exec(logText))) {
+    if (!best || m[1] > best) best = m[1]
+  }
+  return best
+}
+
+function daysBetween(isoA, isoB) {
+  const a = Date.parse(`${isoA}T00:00:00Z`)
+  const b = Date.parse(`${isoB}T00:00:00Z`)
+  if (!Number.isFinite(a) || !Number.isFinite(b)) return null
+  return Math.floor((b - a) / 86_400_000)
+}
+
 walk(wikiRoot)
 
 const broken = []
 const inbound = new Map([...pages.keys()].map((k) => [k, 0]))
+/** @type {Map<string, { abs: string, text: string, fm: Record<string, string>, title: string | null }>} */
+const pageMeta = new Map()
 
 for (const [rel, abs] of pages) {
   const text = fs.readFileSync(abs, 'utf8')
+  const { fields } = parseFrontmatter(text)
+  pageMeta.set(rel, { abs, text, fm: fields, title: firstH1(text) })
+
   const wikiLink = /\[\[([^\]]+)\]\]/g
   let m
   while ((m = wikiLink.exec(text))) {
@@ -147,6 +217,10 @@ for (const [rel, abs] of pages) {
 
 const indexText = fs.existsSync(indexPath) ? fs.readFileSync(indexPath, 'utf8') : ''
 const indexed = collectIndexEntries(indexText)
+const logText = fs.existsSync(logPath) ? fs.readFileSync(logPath, 'utf8') : ''
+const logLatest = latestLogDate(logText)
+const today = new Date().toISOString().slice(0, 10)
+const staleAnchor = logLatest ?? today
 
 const missingIndex = []
 for (const rel of pages.keys()) {
@@ -160,23 +234,147 @@ for (const [rel, count] of inbound) {
   if (count === 0) orphans.push(rel)
 }
 
-const report = {
-  wiki_pages: pages.size,
-  broken_links: broken.length,
+/** @type {{ page: string, reason: string, updated?: string | null }[]} */
+const staleUpdated = []
+for (const [rel, meta] of pageMeta) {
+  if (EXEMPT_UPDATED.has(rel)) continue
+  const updated = meta.fm.updated || null
+  if (!updated) {
+    staleUpdated.push({ page: rel, reason: 'missing_updated', updated: null })
+    continue
+  }
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(updated)) {
+    staleUpdated.push({ page: rel, reason: 'invalid_updated', updated })
+    continue
+  }
+  const age = daysBetween(updated, staleAnchor)
+  if (age != null && age > staleDays) {
+    staleUpdated.push({
+      page: rel,
+      reason: `stale_vs_log_or_today (>${staleDays}d)`,
+      updated,
+    })
+  }
+}
+
+/** Duplicate H1 titles (case-insensitive). */
+const titleBuckets = new Map()
+for (const [rel, meta] of pageMeta) {
+  if (!meta.title) continue
+  const key = meta.title.toLowerCase()
+  if (!titleBuckets.has(key)) titleBuckets.set(key, [])
+  titleBuckets.get(key).push(rel)
+}
+const duplicateTitles = [...titleBuckets.entries()]
+  .filter(([, list]) => list.length > 1)
+  .map(([title, pagesList]) => ({ title, pages: pagesList.sort() }))
+  .sort((a, b) => a.title.localeCompare(b.title))
+
+/**
+ * Duplicate / conflicting venture signals (cheap):
+ * - same venture_id on 2+ pages under ventures/ (architecture/experiments sharing
+ *   venture_id with ventures/<id> is intentional — not a warning)
+ * - ventures|architecture|experiments/<id>.md basename disagrees with frontmatter venture_id
+ * - architecture|experiments/<id>.md with no matching ventures/<id>.md
+ */
+const ventureIdBuckets = new Map()
+const venturePathMismatch = []
+const orphanVentureSatellites = []
+for (const [rel, meta] of pageMeta) {
+  const vid = meta.fm.venture_id || null
+  if (vid && rel.startsWith('ventures/')) {
+    if (!ventureIdBuckets.has(vid)) ventureIdBuckets.set(vid, [])
+    ventureIdBuckets.get(vid).push(rel)
+  }
+  const m = rel.match(/^(ventures|architecture|experiments)\/([^/]+)\.md$/i)
+  if (m) {
+    const [, folder, pathId] = m
+    if (vid && vid !== pathId) {
+      venturePathMismatch.push({
+        page: rel,
+        path_id: pathId,
+        venture_id: vid,
+        reason: 'frontmatter_venture_id_ne_path',
+      })
+    }
+    if ((folder === 'architecture' || folder === 'experiments') && !pages.has(`ventures/${pathId}.md`)) {
+      orphanVentureSatellites.push({
+        page: rel,
+        expected_venture_page: `ventures/${pathId}.md`,
+        reason: 'satellite_without_venture_page',
+      })
+    }
+  }
+}
+const duplicateVentureIds = [...ventureIdBuckets.entries()]
+  .filter(([, list]) => list.length > 1)
+  .map(([venture_id, pagesList]) => ({ venture_id, pages: pagesList.sort() }))
+  .sort((a, b) => a.venture_id.localeCompare(b.venture_id))
+
+/** Same basename under ventures/ + concepts/ claiming identical title (cheap dupe-topic). */
+const basenameTitles = new Map()
+for (const [rel, meta] of pageMeta) {
+  const base = path.posix.basename(stem(rel))
+  if (!meta.title) continue
+  const key = `${base}::${meta.title.toLowerCase()}`
+  if (!basenameTitles.has(key)) basenameTitles.set(key, [])
+  basenameTitles.get(key).push(rel)
+}
+const duplicateTopics = [...basenameTitles.entries()]
+  .filter(([, list]) => {
+    if (list.length < 2) return false
+    const dirs = new Set(list.map((p) => path.posix.dirname(p)))
+    return dirs.size > 1
+  })
+  .map(([key, pagesList]) => {
+    const [basename, title] = key.split('::')
+    return { basename, title, pages: pagesList.sort() }
+  })
+
+const warnings = {
   missing_from_index: missingIndex.length,
   orphans: orphans.length,
+  stale_or_missing_updated: staleUpdated.length,
+  duplicate_titles: duplicateTitles.length,
+  duplicate_venture_ids: duplicateVentureIds.length,
+  venture_path_mismatch: venturePathMismatch.length,
+  orphan_venture_satellites: orphanVentureSatellites.length,
+  duplicate_topics_light: duplicateTopics.length,
+}
+
+const warningCount = Object.values(warnings).reduce((a, b) => a + b, 0)
+
+const report = {
+  heuristic: 'v1',
+  note: 'Deterministic structural + light heuristics. Not an LLM contradiction engine.',
+  wiki_pages: pages.size,
+  stale_days_threshold: staleDays,
+  stale_anchor_date: staleAnchor,
+  broken_links: broken.length,
+  warnings,
   broken,
   missing_from_index_list: missingIndex.sort(),
   orphan_list: orphans.sort(),
+  stale_or_missing_updated: staleUpdated.sort((a, b) => a.page.localeCompare(b.page)),
+  duplicate_titles: duplicateTitles,
+  duplicate_venture_ids: duplicateVentureIds,
+  venture_path_mismatch: venturePathMismatch.sort((a, b) => a.page.localeCompare(b.page)),
+  orphan_venture_satellites: orphanVentureSatellites.sort((a, b) =>
+    a.page.localeCompare(b.page),
+  ),
+  duplicate_topics_light: duplicateTopics,
 }
 
 console.log(JSON.stringify(report, null, 2))
 
 const hasErrors = broken.length > 0
-const hasWarnings = missingIndex.length > 0 || orphans.length > 0
+const hasWarnings = warningCount > 0
 if (hasErrors || (strict && hasWarnings)) {
   console.error(
-    `\nlint failed: ${broken.length} broken, ${missingIndex.length} missing index, ${orphans.length} orphans` +
+    `\nlint failed: ${broken.length} broken (errors)` +
+      (hasWarnings
+        ? `; warnings: index=${missingIndex.length} orphans=${orphans.length} stale=${staleUpdated.length} dup_titles=${duplicateTitles.length} dup_venture_id=${duplicateVentureIds.length} path_mismatch=${venturePathMismatch.length} orphan_satellites=${orphanVentureSatellites.length} dup_topics=${duplicateTopics.length}`
+        : '') +
       (strict ? ' (--strict)' : ''),
   )
   process.exit(1)
@@ -184,9 +382,9 @@ if (hasErrors || (strict && hasWarnings)) {
 
 if (hasWarnings) {
   console.error(
-    `\nlint ok with warnings: ${missingIndex.length} missing index, ${orphans.length} orphans (use --strict to fail)`,
+    `\nlint ok with warnings (heuristic v1): index=${missingIndex.length} orphans=${orphans.length} stale=${staleUpdated.length} dup_titles=${duplicateTitles.length} dup_venture_id=${duplicateVentureIds.length} path_mismatch=${venturePathMismatch.length} orphan_satellites=${orphanVentureSatellites.length} dup_topics=${duplicateTopics.length} (use --strict to fail; --stale-days N to tune)`,
   )
 } else {
-  console.error(`\nlint ok: ${pages.size} pages, no broken links`)
+  console.error(`\nlint ok: ${pages.size} pages, no broken links, no heuristic warnings`)
 }
 process.exit(0)
