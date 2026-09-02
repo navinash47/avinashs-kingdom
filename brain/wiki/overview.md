@@ -15,10 +15,13 @@ This brain is the shared memory for everyone building in Avinash’s Kingdom —
 
 | Layer | What it is | Where |
 |-------|------------|--------|
-| Throne / panel | Live progress, spend, audits | Kingdom repo `public/data/` |
+| Throne / panel | One-pane control + live progress | Kingdom `/?tab=throne` + `public/data/` |
 | Laws | Frozen decisions per venture | e.g. WhatsApp `CONTEXT.md` |
-| Brain | Compiled understanding | this wiki |
+| Brain | Compiled understanding (personal OS memory) | this wiki + `AGENTS.md` |
 | Skills | Reusable agent playbooks | `~/.cursor/skills/` + repo backup |
+| Registry / harness | Plug-in ventures + typed control contract | `config/venture-registry.json`, `brain/harness/` |
+
+Architecture: [[concepts/kingdom-personal-os]]. Daily loop: [[ops/personal-os-playbook]]. New province: [[concepts/onboard-new-project]].
 
 ## Provinces (ventures) — live 2026-08-16
 

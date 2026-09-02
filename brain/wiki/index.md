@@ -1,6 +1,6 @@
 # Wiki index
 
-Catalog of pages. Agents update this on every ingest. Last full refresh: **2026-08-16** (Comic 2A progress source).
+Catalog of pages. Agents update this on every ingest. Last full refresh: **2026-09-02** (personal OS toolchain + full architecture/experiments catalog).
 
 ## Meta / citizens
 
@@ -11,6 +11,10 @@ Catalog of pages. Agents update this on every ingest. Last full refresh: **2026-
 | [ops/steward-dashboard](ops/steward-dashboard.md) | Mac disk + subscription kill list (live audits) |
 | [ops/live-tracker](ops/live-tracker.md) | Auto census on every `npm run sync` |
 | [ops/headroom](ops/headroom.md) | Token proxy + Cursor BYOK / MCP runbook |
+| [ops/personal-os-playbook](ops/personal-os-playbook.md) | Daily how-to run the Kingdom personal OS |
+| [ops/ci-template](ops/ci-template.md) | Reusable CI / phase-board patterns |
+| [ops/cloudflare-links](ops/cloudflare-links.md) | Dashboard tunnel / Cloudflare link ops |
+| [ops/git-repos](ops/git-repos.md) | GitHub + local repo census |
 
 ## Ventures
 
@@ -27,6 +31,34 @@ Catalog of pages. Agents update this on every ingest. Last full refresh: **2026-
 | [job-jugaad](ventures/job-jugaad.md) | Applications tracker · company+role pipeline · :8790 |
 | [portfolio](ventures/portfolio.md) | GitHub Pages site + legacy LaTeX resume tracks · linked to resume KB |
 | [shorts](ventures/shorts.md) | Parked |
+
+## Architecture
+
+| Page | Summary |
+|------|---------|
+| [whatsapp-voice](architecture/whatsapp-voice.md) | WhatsApp / Cash IO + agent graph |
+| [youtube-editor](architecture/youtube-editor.md) | Cut lab architecture |
+| [research-frontier](architecture/research-frontier.md) | Atlas paper-club layout |
+| [beamdojo](architecture/beamdojo.md) | Dojo GPU / Isaac Lab paths |
+| [procedural-city](architecture/procedural-city.md) | Metro city pipeline |
+| [comic-engine](architecture/comic-engine.md) | ComicMainEngine 2A graph |
+| [kingdom-ops](architecture/kingdom-ops.md) | Steward / panel architecture |
+| [mac-optimize-audit](architecture/mac-optimize-audit.md) | Janitor dashboard IO |
+| [job-jugaad](architecture/job-jugaad.md) | Applications tracker IO |
+
+## Experiments
+
+| Page | Summary |
+|------|---------|
+| [whatsapp-voice](experiments/whatsapp-voice.md) | Cash try log |
+| [youtube-editor](experiments/youtube-editor.md) | Cut try log |
+| [research-frontier](experiments/research-frontier.md) | Atlas try log |
+| [beamdojo](experiments/beamdojo.md) | Dojo GPU try log |
+| [procedural-city](experiments/procedural-city.md) | City try log |
+| [comic-engine](experiments/comic-engine.md) | Comic try log |
+| [kingdom-ops](experiments/kingdom-ops.md) | Steward try log |
+| [mac-optimize-audit](experiments/mac-optimize-audit.md) | Janitor try log |
+| [job-jugaad](experiments/job-jugaad.md) | Jugaad try log |
 
 ## Concepts
 

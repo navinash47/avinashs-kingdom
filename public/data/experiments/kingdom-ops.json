@@ -4,6 +4,11 @@
   "items": [
     {
       "date": "2026-09-02",
+      "summary": "Sync Kingdom after Procedural City Stage E close (Phase 58).",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
       "summary": "Log sync/control-surface skill observations from control plane session.",
       "source": "git"
     },
@@ -70,11 +75,6 @@
     {
       "date": "2026-09-01",
       "summary": "Link Kingdom Resume panel to share-site All Resumes overview.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-01",
-      "summary": "Set share_site_url after Vercel production deploy.",
       "source": "git"
     },
     {

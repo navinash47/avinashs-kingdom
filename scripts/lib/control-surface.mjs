@@ -1,9 +1,11 @@
 /**
  * Virtual control surface snapshot — written on every Kingdom sync.
  * Consumed by Throne / ControlSurfaceBar and brain/harness empty-model.
+ * Includes portable OS onboarding pointer (venture-template.json).
  */
 import fs from 'node:fs'
 import path from 'node:path'
+import { loadVentureTemplate } from './registry.mjs'
 
 function writeJson(p, value) {
   fs.mkdirSync(path.dirname(p), { recursive: true })
@@ -113,6 +115,40 @@ export function syncControlSurface({
     }
   }
 
+  // Capability nodes: explicit registry.capabilities[] or inferred dashboard/tests.
+  for (const entry of entries) {
+    const caps = Array.isArray(entry.capabilities) ? [...entry.capabilities] : []
+    if (entry.dashboard?.port != null) {
+      caps.push(`dashboard:${entry.dashboard.port}`)
+    }
+    if ((entry.tests?.commands ?? []).length > 0) {
+      caps.push(`tests:${entry.id}`)
+    }
+    if (entry.kind === 'research') {
+      caps.push(`research:${entry.id}`)
+    }
+    const seenCap = new Set()
+    for (const cap of caps) {
+      if (!cap || seenCap.has(cap)) continue
+      seenCap.add(cap)
+      const capNode = `capability:${cap}`
+      if (!nodes.some((n) => n.id === capNode)) {
+        nodes.push({
+          id: capNode,
+          type: 'capability',
+          label: cap,
+          venture_id: entry.id,
+        })
+      }
+      edges.push({
+        id: `e-venture:${entry.id}-${capNode}`,
+        from: `venture:${entry.id}`,
+        to: capNode,
+        rel: 'capability',
+      })
+    }
+  }
+
   const agentsWithSkills = (skillGraph?.agents ?? []).filter(
     (a) => (a.skills ?? []).length > 0,
   ).length
@@ -124,9 +160,14 @@ export function syncControlSurface({
   const p0 = active.filter((v) => v.priority === 'P0')
   const withDash = surfaceVentures.filter((v) => v.dashboardPort != null)
 
+  const kingdomRoot = path.join(dataDir, '..', '..')
+  const ventureTemplate = loadVentureTemplate(kingdomRoot)
+  const capabilityCount = nodes.filter((n) => n.type === 'capability').length
+
   const surface = {
     synced_at: syncedAt,
-    version: 1,
+    version: 2,
+    contract: 'kingdom-personal-os',
     fsm: {
       state: 'ready',
       last_transition: 'sync_complete',
@@ -151,11 +192,19 @@ export function syncControlSurface({
       agents: skillGraph?.agents?.length ?? 0,
       agents_with_skills: agentsWithSkills,
       agents_without_skills: agentsWithoutSkills,
+      capabilities: capabilityCount,
       phases_board_synced_at: phasesBoard?.synced_at ?? null,
     },
     ventures: surfaceVentures,
     skills: skillIds,
     graph: { nodes, edges },
+    onboarding: {
+      template: 'config/venture-template.json',
+      wiki: 'brain/wiki/concepts/onboard-new-project.md',
+      architecture: 'brain/wiki/concepts/kingdom-personal-os.md',
+      has_template: Boolean(ventureTemplate),
+      after_register: ventureTemplate?.orchestrator_contract?.after_register ?? [],
+    },
     open: {
       throne: '/?tab=throne',
       graph: '/?tab=graph',

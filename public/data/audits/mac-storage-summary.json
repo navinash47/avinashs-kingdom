@@ -1,57 +1,57 @@
 {
-  "generated_at": "2026-09-02T20:08:53.835159+00:00",
+  "generated_at": "2026-09-02T20:16:41.881427+00:00",
   "source": "/Users/avinashnandyala/Projects/mac-optimize-audit/reports/latest.json",
   "dashboard": "http://127.0.0.1:8742",
   "disk": {
-    "note": "Data volume: 223.3 GB used / 434.5 GB (51.4%), 211.2 GB free",
+    "note": "Data volume: 223.5 GB used / 434.5 GB (51.4%), 211.0 GB free",
     "percent_used": 51.4,
     "total_bytes": 466511601664,
-    "used_bytes": 239764017152,
-    "free_bytes": 226747584512
+    "used_bytes": 239998525440,
+    "free_bytes": 226513076224
   },
   "memory": {
     "total_bytes": 17179869184,
     "total_human": "16.0 GB",
-    "used_bytes": 12852019200,
-    "used_human": "12.0 GB",
-    "percent_used": 74.8,
-    "free_bytes": 301580288,
-    "wired_bytes": 3227713536,
-    "active_bytes": 6083903488,
-    "inactive_bytes": 5871419392,
-    "compressor_bytes": 801701888,
-    "compressed_stored_bytes": 8675901440,
-    "file_cache_bytes": 3346743296,
-    "file_cache_human": "3.1 GB",
-    "swapins": 15238203,
+    "used_bytes": 12669485056,
+    "used_human": "11.8 GB",
+    "percent_used": 73.7,
+    "free_bytes": 68714496,
+    "wired_bytes": 3160719360,
+    "active_bytes": 5420826624,
+    "inactive_bytes": 5347688448,
+    "compressor_bytes": 2440429568,
+    "compressed_stored_bytes": 11824414720,
+    "file_cache_bytes": 3766059008,
+    "file_cache_human": "3.5 GB",
+    "swapins": 15244040,
     "swapouts": 17820463,
     "pressure_level": 1,
     "pressure": "warning",
     "swap": {
-      "raw": "total = 4096.00M  used = 2858.44M  free = 1237.56M  (encrypted)",
+      "raw": "total = 4096.00M  used = 2770.44M  free = 1325.56M  (encrypted)",
       "total_bytes": 4294967296,
-      "used_bytes": 2997291581,
-      "free_bytes": 1297675714,
-      "used_mb": 2858.4,
+      "used_bytes": 2905016893,
+      "free_bytes": 1389950402,
+      "used_mb": 2770.4,
       "total_mb": 4096
     }
   },
   "cpu": {
     "ncpu": 10,
     "loadavg": [
-      3.85,
-      4.13,
-      4.01
+      3.26,
+      3.47,
+      3.73
     ],
-    "load_human": "3.85 / 4.13 / 4.01"
+    "load_human": "3.26 / 3.47 / 3.73"
   },
   "health": {
     "score": 55,
     "grade": "C",
-    "summary": "memory pressure warning; swap 2.8 GB; uptime 12 days",
+    "summary": "memory pressure warning; swap 2.7 GB; uptime 12 days",
     "reasons": [
       "memory pressure warning",
-      "swap 2.8 GB",
+      "swap 2.7 GB",
       "uptime 12 days"
     ]
   },
@@ -63,7 +63,7 @@
       "ProductVersion": "\t26.6.2",
       "BuildVersion": "\t25G83"
     },
-    "uptime": "13:08  up 12 days, 30 mins, 1 user, load averages: 3.85 4.13 4.01",
+    "uptime": "13:16  up 12 days, 37 mins, 1 user, load averages: 3.26 3.47 3.73",
     "uptime_days": 12,
     "ncpu": 10
   },
@@ -71,140 +71,140 @@
     {
       "name": "Cursor",
       "count": 48,
-      "rss_bytes": 6111346688,
-      "rss_human": "5.7 GB",
-      "cpu": 28.7
+      "rss_bytes": 5332729856,
+      "rss_human": "5.0 GB",
+      "cpu": 38.2
     },
     {
       "name": "Zen Browser",
-      "count": 15,
-      "rss_bytes": 2050162688,
-      "rss_human": "1.9 GB",
-      "cpu": 0
+      "count": 21,
+      "rss_bytes": 4424007680,
+      "rss_human": "4.1 GB",
+      "cpu": 4.1
     },
     {
       "name": "tsserver[6.0.3]:",
       "count": 4,
-      "rss_bytes": 846266368,
-      "rss_human": "807.1 MB",
+      "rss_bytes": 490930176,
+      "rss_human": "468.2 MB",
+      "cpu": 0.1
+    },
+    {
+      "name": "WhatsApp",
+      "count": 1,
+      "rss_bytes": 349339648,
+      "rss_human": "333.2 MB",
       "cpu": 0
     },
     {
       "name": "Spotlight",
       "count": 8,
-      "rss_bytes": 360955904,
-      "rss_human": "344.2 MB",
-      "cpu": 1.3
+      "rss_bytes": 252264448,
+      "rss_human": "240.6 MB",
+      "cpu": 4.5
     },
     {
       "name": "mdworker_shared",
-      "count": 16,
-      "rss_bytes": 317931520,
-      "rss_human": "303.2 MB",
+      "count": 13,
+      "rss_bytes": 225542144,
+      "rss_human": "215.1 MB",
+      "cpu": 1.8
+    },
+    {
+      "name": "mediaanalysisd",
+      "count": 1,
+      "rss_bytes": 203653120,
+      "rss_human": "194.2 MB",
       "cpu": 0
-    },
-    {
-      "name": "python",
-      "count": 7,
-      "rss_bytes": 288964608,
-      "rss_human": "275.6 MB",
-      "cpu": 1.6
-    },
-    {
-      "name": "Surfshark",
-      "count": 2,
-      "rss_bytes": 241631232,
-      "rss_human": "230.4 MB",
-      "cpu": 24.1
     },
     {
       "name": "cloudflared",
       "count": 7,
-      "rss_bytes": 232964096,
-      "rss_human": "222.2 MB",
+      "rss_bytes": 193740800,
+      "rss_human": "184.8 MB",
       "cpu": 0
     }
   ],
   "top_cpu": [
     {
-      "pid": 38930,
-      "name": "com.surfshark.vpnclient.macos.direct.PacketTunnel-WireGuard",
-      "path": "/Library/SystemExtensions/DC0E2852-F86C-4B46-BB74-4290C5DAFABB/com.surfshark.vpnclient.macos.direct.PacketTunnel-WireGuard.systemextension/Contents/MacOS/com.surfshark.vpnclient.macos.direct.PacketTunnel-WireGuard",
-      "group": "Surfshark",
-      "rss_bytes": 81526784,
-      "rss_human": "77.8 MB",
-      "pmem": 0.5,
-      "pcpu": 24
-    },
-    {
-      "pid": 13733,
-      "name": "Cursor Helper (Renderer)",
-      "path": "/Applications/Cursor.app/Contents/Frameworks/Cursor Helper (Renderer).app/Contents/MacOS/Cursor Helper (Renderer)",
-      "group": "Cursor",
-      "rss_bytes": 1409105920,
-      "rss_human": "1.3 GB",
-      "pmem": 8.2,
-      "pcpu": 10.9
-    },
-    {
       "pid": 404,
       "name": "WindowServer",
       "path": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
       "group": "WindowServer",
-      "rss_bytes": 98320384,
-      "rss_human": "93.8 MB",
-      "pmem": 0.6,
-      "pcpu": 10.3
-    },
-    {
-      "pid": 503,
-      "name": "syspolicyd",
-      "path": "/usr/libexec/syspolicyd",
-      "group": "syspolicyd",
-      "rss_bytes": 21741568,
-      "rss_human": "20.7 MB",
-      "pmem": 0.1,
-      "pcpu": 7.7
-    },
-    {
-      "pid": 405,
-      "name": "tccd",
-      "path": "/System/Library/PrivateFrameworks/TCC.framework/Support/tccd",
-      "group": "tccd",
-      "rss_bytes": 14073856,
-      "rss_human": "13.4 MB",
-      "pmem": 0.1,
-      "pcpu": 7.1
-    },
-    {
-      "pid": 54796,
-      "name": "AppleCentauriAlpha",
-      "path": "/System/Library/DriverExtensions/AppleCentauriAlpha.dext/AppleCentauriAlpha",
-      "group": "AppleCentauriAlpha",
-      "rss_bytes": 51740672,
-      "rss_human": "49.3 MB",
-      "pmem": 0.3,
-      "pcpu": 7.1
-    },
-    {
-      "pid": 43081,
-      "name": "nsurlsessiond",
-      "path": "/usr/libexec/nsurlsessiond",
-      "group": "nsurlsessiond",
-      "rss_bytes": 64552960,
-      "rss_human": "61.6 MB",
+      "rss_bytes": 63717376,
+      "rss_human": "60.8 MB",
       "pmem": 0.4,
-      "pcpu": 6
+      "pcpu": 23.4
     },
     {
       "pid": 13721,
       "name": "Cursor Helper",
       "path": "/Applications/Cursor.app/Contents/Frameworks/Cursor Helper.app/Contents/MacOS/Cursor Helper",
       "group": "Cursor",
-      "rss_bytes": 157483008,
-      "rss_human": "150.2 MB",
+      "rss_bytes": 147750912,
+      "rss_human": "140.9 MB",
       "pmem": 0.9,
-      "pcpu": 5.8
+      "pcpu": 16.8
+    },
+    {
+      "pid": 38930,
+      "name": "com.surfshark.vpnclient.macos.direct.PacketTunnel-WireGuard",
+      "path": "/Library/SystemExtensions/DC0E2852-F86C-4B46-BB74-4290C5DAFABB/com.surfshark.vpnclient.macos.direct.PacketTunnel-WireGuard.systemextension/Contents/MacOS/com.surfshark.vpnclient.macos.direct.PacketTunnel-WireGuard",
+      "group": "Surfshark",
+      "rss_bytes": 47235072,
+      "rss_human": "45.0 MB",
+      "pmem": 0.3,
+      "pcpu": 16.5
+    },
+    {
+      "pid": 13733,
+      "name": "Cursor Helper (Renderer)",
+      "path": "/Applications/Cursor.app/Contents/Frameworks/Cursor Helper (Renderer).app/Contents/MacOS/Cursor Helper (Renderer)",
+      "group": "Cursor",
+      "rss_bytes": 1165901824,
+      "rss_human": "1.1 GB",
+      "pmem": 6.8,
+      "pcpu": 15.6
+    },
+    {
+      "pid": 54796,
+      "name": "AppleCentauriAlpha",
+      "path": "/System/Library/DriverExtensions/AppleCentauriAlpha.dext/AppleCentauriAlpha",
+      "group": "AppleCentauriAlpha",
+      "rss_bytes": 46022656,
+      "rss_human": "43.9 MB",
+      "pmem": 0.3,
+      "pcpu": 6.8
+    },
+    {
+      "pid": 407,
+      "name": "loginwindow",
+      "path": "/System/Library/CoreServices/loginwindow.app/Contents/MacOS/loginwindow",
+      "group": "loginwindow",
+      "rss_bytes": 40255488,
+      "rss_human": "38.4 MB",
+      "pmem": 0.2,
+      "pcpu": 5.9
+    },
+    {
+      "pid": 43081,
+      "name": "nsurlsessiond",
+      "path": "/usr/libexec/nsurlsessiond",
+      "group": "nsurlsessiond",
+      "rss_bytes": 50987008,
+      "rss_human": "48.6 MB",
+      "pmem": 0.3,
+      "pcpu": 5.6
+    },
+    {
+      "pid": 56246,
+      "name": "cloudd",
+      "path": "/System/Library/PrivateFrameworks/CloudKitDaemon.framework/Support/cloudd",
+      "group": "cloudd",
+      "rss_bytes": 34521088,
+      "rss_human": "32.9 MB",
+      "pmem": 0.2,
+      "pcpu": 5
     }
   ],
   "top_home": [],
@@ -215,12 +215,20 @@
       "bytes": 0,
       "risk": "low",
       "action": "quit_runaways + close Zen tabs, then reboot if still swapping",
-      "rationale": "15,238,203 swap-ins — the SSD is paging. That hitch is the freeze you feel."
+      "rationale": "15,244,040 swap-ins — the SSD is paging. That hitch is the freeze you feel."
+    },
+    {
+      "priority": 2,
+      "title": "Restart Zen Browser — 4.1 GB across 21 processes",
+      "bytes": 4424007680,
+      "risk": "medium",
+      "action": "Close extra Zen tabs, then Fully Quit Zen (Cmd-Q), reopen.",
+      "rationale": "Firefox-style plugin-container processes hold RAM even after tabs feel closed."
     },
     {
       "priority": 3,
-      "title": "Cursor is heavy (5.7 GB, 48 processes)",
-      "bytes": 6111346688,
+      "title": "Cursor is heavy (5.0 GB, 48 processes)",
+      "bytes": 5332729856,
       "risk": "high",
       "action": "Close unused agent chats / windows. Do not force-quit from this tool.",
       "rationale": "This session is using Cursor; we will not kill it from the cleaner."

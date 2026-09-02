@@ -2371,9 +2371,29 @@ kbd {
 }
 .control-surface-metrics {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 12px;
   margin: 12px 0;
+}
+.control-surface-caps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 8px;
+  margin: 0 0 10px;
+}
+.control-cap-chip {
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  color: var(--muted, #8a8680);
+  border-bottom: 1px solid color-mix(in srgb, currentColor 35%, transparent);
+  padding: 0 0 1px;
+}
+.control-surface-onboard {
+  margin: 0 0 10px;
+  line-height: 1.45;
+}
+.control-surface-onboard code {
+  font-size: 0.78em;
 }
 .control-surface-p0 {
   list-style: none;

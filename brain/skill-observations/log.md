@@ -231,3 +231,33 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 
 **Principle:** Graph edges that are optional in code become silent disconnects in the UI — treat missing map rows as sync defects, not empty truth.
 
+
+### Observation 16: Personal OS needs registry template + capability edges, not FSM-only framing
+
+**Status:** OPEN
+**Date:** 2026-09-02
+**Session context:** Kingdom brain personal-OS architecture research + lean harness upgrade
+**Skill:** sync-kingdom / kingdom-wiki
+**Type:** internal
+**Phase/Area:** harness schema / venture onboarding
+
+**Issue:** Framing brain/harness as an FSM/KG toy undersells the real stack (wiki + skills + registry + Throne). Future projects had no empty-but-real onboarding schema, so each new venture reinvented wiring. Capability surfaces (dashboard/tests/research) existed in registry fields but not as typed graph nodes.
+
+**Suggested improvement:** Keep `config/venture-template.json` + control-surface `onboarding` pointer; document [[kingdom-personal-os]] / [[onboard-new-project]]; emit capability edges on sync. Optionally fail/warn when AGENT_SKILL_MAP misses a registry agent (ties to obs 15).
+
+**Principle:** A personal multi-app OS needs a portable plug-in contract (venture + skills + capabilities + sync/control actions) alongside compiled knowledge — state machines alone are insufficient, and vector RAG alone cannot own fleet topology.
+
+### Observation 17: Compiled-wiki CLI makes personal OS operable day-to-day
+
+**Status:** OPEN
+**Date:** 2026-09-02
+**Session context:** Upgrade Kingdom brain into serious Karpathy personal OS (lint/query/ingest + venture:new + Throne chips)
+**Skill:** kingdom-wiki / sync-kingdom
+**Type:** open-source
+**Phase/Area:** brain/harness toolchain + AGENTS operations
+
+**Issue:** AGENTS.md described ingest/query/lint as agent-only prose workflows. Without deterministic CLIs, health checks and index-first search depended on chat discipline and drifted (architecture/experiments pages missing from index for months).
+
+**Suggested improvement:** Keep `npm run brain:lint|query|ingest` as first-class ops beside kingdom-wiki skill modes; treat post-sync `brain:lint` as optional hygiene in sync-kingdom; catalog architecture/experiments in index on onboard.
+
+**Principle:** A compiled wiki is only as serious as its mechanical lint/query surface — schema prose without runnable health checks decays into an unmaintained markdown pile.

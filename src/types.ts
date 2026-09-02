@@ -183,6 +183,7 @@ export type SkillGraph = {
 export type ControlSurface = {
   synced_at: string
   version: number
+  contract?: string
   fsm: {
     state: string
     last_transition: string
@@ -197,6 +198,7 @@ export type ControlSurface = {
     agents: number
     agents_with_skills: number
     agents_without_skills: string[]
+    capabilities?: number
     phases_board_synced_at: string | null
   }
   ventures: Array<{
@@ -219,6 +221,13 @@ export type ControlSurface = {
   graph: {
     nodes: Array<{ id: string; type: string; label: string; venture_id?: string | null }>
     edges: Array<{ id: string; from: string; to: string; rel: string }>
+  }
+  onboarding?: {
+    template: string
+    wiki: string
+    architecture: string
+    has_template: boolean
+    after_register: string[]
   }
   open: Record<string, string>
 }

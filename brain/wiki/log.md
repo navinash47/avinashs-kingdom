@@ -2,6 +2,10 @@
 
 Append-only. Prefix each entry with `## [YYYY-MM-DD] <op> | <title>` so recent activity is greppable.
 
+## [2026-09-02] ops | Personal OS wiki toolchain + playbook
+
+Shipped compiled-wiki commands under `brain/harness/`: `lint.mjs`, `wiki-query.mjs`, `ingest.mjs`; npm `brain:lint` / `brain:query` / `brain:ingest` / `brain:harness`; `scripts/new-venture.mjs` (`venture:new`). Throne Virtual control surfaces capability chips + onboard hint from control-surface. Daily loop: [[ops/personal-os-playbook]] · architecture [[concepts/kingdom-personal-os]] · onboard [[concepts/onboard-new-project]].
+
 ## [2026-09-02] ops | Kingdom personal OS architecture
 
 Brain reframed as reusable personal OS (not FSM/KG toy): [[concepts/kingdom-personal-os]] + [[concepts/onboard-new-project]]. Harness schema now documents venture/skill/capability/sync/control contract; `config/venture-template.json` + control-surface `onboarding` pointer. Sync emits capability edges. [[concepts/brain-harness-fsm]] · [[concepts/virtual-control-surface]].

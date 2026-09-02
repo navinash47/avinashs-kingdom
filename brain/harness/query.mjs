@@ -1,12 +1,15 @@
 #!/usr/bin/env node
 /**
- * Deterministic query surface over brain/harness/empty-model.
+ * Deterministic query surface over brain/harness/empty-model (KG + FSM).
+ * For compiled-wiki search use: node brain/harness/wiki-query.mjs <terms>
  * Usage:
  *   node brain/harness/query.mjs list
  *   node brain/harness/query.mjs neighbors <nodeId>
  *   node brain/harness/query.mjs path <fromId> <toId>
  *   node brain/harness/query.mjs fsm
  *   node brain/harness/query.mjs allow <action>
+ *   node brain/harness/query.mjs capabilities
+ *   node brain/harness/query.mjs type <nodeType>
  */
 import fs from 'node:fs'
 import path from 'node:path'
@@ -76,6 +79,15 @@ function allow(fsm, action) {
   if (!ok) process.exitCode = 1
 }
 
+function byType(graph, type) {
+  const nodes = graph.nodes.filter((n) => n.type === type)
+  console.log(JSON.stringify({ type, count: nodes.length, nodes }, null, 2))
+}
+
+function capabilities(graph) {
+  byType(graph, 'capability')
+}
+
 const [cmd, a, b] = process.argv.slice(2)
 const graph = () => load('graph.json')
 const fsm = () => load('fsm.json')
@@ -108,8 +120,19 @@ switch (cmd) {
     }
     allow(fsm(), a)
     break
+  case 'capabilities':
+    capabilities(graph())
+    break
+  case 'type':
+    if (!a) {
+      console.error('type <nodeType>')
+      process.exit(1)
+    }
+    byType(graph(), a)
+    break
   default:
     console.error(`Unknown command: ${cmd ?? '(none)'}
-Commands: list | neighbors | path | fsm | allow`)
+Commands: list | neighbors | path | fsm | allow | capabilities | type
+Wiki search: node brain/harness/wiki-query.mjs <terms>`)
     process.exit(1)
 }

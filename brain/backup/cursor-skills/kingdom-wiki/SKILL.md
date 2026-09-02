@@ -21,9 +21,10 @@ Detect mode from the user request: **ingest** | **query** | **lint**.
 1. Save source under `raw/inbox/` or `raw/research/` (papers). Prefer Markdown. Do not alter filed raw files later.
 2. Write `wiki/sources/<slug>.md` with summary, claims, limitations, outbound `[[links]]`.
 3. Update related `wiki/ventures/`, `wiki/concepts/`, `wiki/entities/` pages (create if needed).
-4. Update `wiki/index.md` catalog rows.
-5. Append `wiki/log.md`: `## [YYYY-MM-DD] ingest | <Title>`.
-6. Tell the human which pages changed.
+4. For system design / IO flows, update `wiki/architecture/<venture-id>.md`; for try logs, `wiki/experiments/<venture-id>.md`. Then remind to run `npm run sync`.
+5. Update `wiki/index.md` catalog rows.
+6. Append `wiki/log.md`: `## [YYYY-MM-DD] ingest | <Title>`.
+7. Tell the human which pages changed.
 
 ### Query
 
@@ -33,7 +34,13 @@ Detect mode from the user request: **ingest** | **query** | **lint**.
 
 ### Lint
 
-Check and report: orphans, broken wiki-links, duplicate topics, stale claims, mentioned concepts without pages. Fix only if the user asked to fix; otherwise list proposed fixes.
+Check and report: orphans, broken wiki-links, duplicate topics, stale claims, mentioned concepts without pages. Prefer the deterministic CLI first:
+
+```bash
+cd /Users/avinashnandyala/Projects/avinashs-kingdom && npm run brain:lint
+```
+
+Fix only if the user asked to fix; otherwise list proposed fixes. Complementary CLIs: `npm run brain:query -- <terms>`, `npm run brain:ingest -- --list`.
 
 ## Rules
 

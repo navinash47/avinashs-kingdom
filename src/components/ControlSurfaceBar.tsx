@@ -41,6 +41,17 @@ export function ControlSurfaceBar({
     ? summary.agents_without_skills.join(', ')
     : null
 
+  const capabilityLabels = useMemo(() => {
+    const nodes = controlSurface?.graph?.nodes ?? []
+    const labels = nodes
+      .filter((n) => n.type === 'capability')
+      .map((n) => n.label)
+      .filter(Boolean)
+    return [...new Set(labels)].slice(0, 16)
+  }, [controlSurface])
+
+  const onboarding = controlSurface?.onboarding
+
   async function runSync() {
     if (shareMode || busy) return
     setBusy(true)
@@ -110,7 +121,32 @@ export function ControlSurfaceBar({
           <span className="stat-k">Dashboards</span>
           <span className="stat-v">{summary?.dashboards_configured ?? '—'}</span>
         </div>
+        <div className="stat-block">
+          <span className="stat-k">Capabilities</span>
+          <span className="stat-v">{summary?.capabilities ?? capabilityLabels.length}</span>
+        </div>
       </div>
+
+      {capabilityLabels.length ? (
+        <div className="control-surface-caps" aria-label="Fleet capabilities">
+          {capabilityLabels.map((cap) => (
+            <span key={cap} className="control-cap-chip">
+              {cap}
+            </span>
+          ))}
+        </div>
+      ) : null}
+
+      {onboarding?.has_template ? (
+        <p className="control-surface-onboard muted tiny">
+          Onboard next venture:{' '}
+          <code>{onboarding.template}</code>
+          {' · '}
+          <code>npm run venture:new -- --id … --repo … --agent …</code>
+          {' · '}
+          wiki <code>{onboarding.wiki}</code>
+        </p>
+      ) : null}
 
       {p0.length ? (
         <ul className="control-surface-p0">

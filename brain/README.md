@@ -1,7 +1,19 @@
 # Kingdom Brain
 
-Obsidian-compatible Markdown wiki for Avinash’s Kingdom (Karpathy LLM Wiki pattern).  
+Obsidian-compatible Markdown wiki for Avinash’s Kingdom (Karpathy LLM Wiki pattern) — the **durable memory layer** of the Kingdom personal OS (brain + skills + registry/orchestrator + Throne).  
 **This is the understanding place for citizens of the Kingdom** — start at the map below.
+
+Architecture: [`wiki/concepts/kingdom-personal-os.md`](./wiki/concepts/kingdom-personal-os.md) · Daily: [`wiki/ops/personal-os-playbook.md`](./wiki/ops/personal-os-playbook.md) · New project: [`wiki/concepts/onboard-new-project.md`](./wiki/concepts/onboard-new-project.md)
+
+## Toolchain
+
+```bash
+cd ~/Projects/avinashs-kingdom
+npm run brain:lint
+npm run brain:query -- <terms>
+npm run brain:ingest -- --list
+npm run sync
+```
 
 ## First stop for citizens
 
@@ -38,10 +50,12 @@ Restore after account/machine change: `./scripts/restore-cursor-skills.sh` from 
 ```
 brain/
   AGENTS.md          # schema for agents
+  harness/           # lint · wiki-query · ingest · KG/FSM empty-model
   raw/inbox/         # drop new sources here
   raw/research/      # papers / abstracts
   wiki/              # overview, ventures, ops, concepts
   backup/            # Cursor skills backup
+  skill-observations/# task-observer log
 ```
 
 ## First Research use

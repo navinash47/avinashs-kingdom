@@ -43,6 +43,7 @@ const PATHS = {
   comicV2a: path.join(home, 'Desktop/ComicMainEngine/data/v2a_program.json'),
   comicLegacy: path.join(home, 'ComicEngine'),
   jugaadRoot: path.join(home, 'Projects/job-jugaad'),
+  jugaadExpenses: path.join(home, 'Projects/job-jugaad/tracking/expenses.jsonl'),
   jugaadApps: path.join(home, 'Projects/job-jugaad/data/applications.json'),
   ventures: path.join(dataDir, 'ventures.json'),
   expenses: path.join(dataDir, 'expenses.json'),
@@ -1101,6 +1102,27 @@ function syncExpenses(sub, registry) {
       currency: 'USD',
       ventureId: 'whatsapp-voice',
       notes: `Synced from WA expenses.jsonl · ${rows.length} billable · ceiling $${ceiling}`,
+    })
+  }
+
+  
+  if (fs.existsSync(PATHS.jugaadExpenses)) {
+    const rows = fs
+      .readFileSync(PATHS.jugaadExpenses, 'utf8')
+      .split('\n')
+      .filter((line) => line.trim() && !line.trim().startsWith('#'))
+      .map((line) => JSON.parse(line))
+      .filter((r) => Number(r.actual_usd) > 0)
+    const total = rows.reduce((s, r) => s + Number(r.actual_usd), 0)
+    synced.push({
+      id: 'sync-jugaad-api',
+      date: today,
+      category: 'api',
+      label: 'Job Jugaad API / infra spend',
+      amount: Math.round(total * 100) / 100,
+      currency: 'USD',
+      ventureId: 'job-jugaad',
+      notes: `Synced from tracking/expenses.jsonl · ${rows.length} billable rows`,
     })
   }
 

@@ -34,7 +34,13 @@ Detect mode from the user request: **ingest** | **query** | **lint**.
 
 ### Lint
 
-Check and report: orphans, broken wiki-links, duplicate topics, stale claims, mentioned concepts without pages. Fix only if the user asked to fix; otherwise list proposed fixes.
+Check and report: orphans, broken wiki-links, duplicate topics, stale claims, mentioned concepts without pages. Prefer the deterministic CLI first:
+
+```bash
+cd /Users/avinashnandyala/Projects/avinashs-kingdom && npm run brain:lint
+```
+
+Fix only if the user asked to fix; otherwise list proposed fixes. Complementary CLIs: `npm run brain:query -- <terms>`, `npm run brain:ingest -- --list`.
 
 ## Rules
 
