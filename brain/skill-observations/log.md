@@ -198,3 +198,36 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 **Suggested improvement:** RATING_GUIDE.md + Kingdom panel "Rating guide" button; keep GOAL_CHECKLIST linked. Goal remains blocked until user Syncs real ratings — never auto-fill ratings.json.
 
 **Principle:** When a pipeline blocks on human approval, ship decision-support artifacts (ranked picks, role-lens stars) that reduce cognitive load without faking the approval step.
+
+## 2026-09-02
+
+### Observation 14: Sync must refresh control surface + preserve STATUS tails
+
+**Status:** OPEN
+**Date:** 2026-09-02
+**Session context:** Kingdom fleet sync, restore virtual control plane, brain harness empty-model
+**Skill:** sync-kingdom
+**Type:** internal
+**Phase/Area:** After sync (required) / writeStatusMd
+
+**Issue:** Branch App.tsx had regressed off OrchestratorProvider while FleetStrip still required it, so Throne fleet controls were unwired. Separately, `writeStatusMd` rewrote Comic STATUS.md and deleted the parallel 2B section below the `---` separator. Sync also lacked a first-class control-surface artifact, so agents could treat ventures.json as "done" without refreshing the virtual control UI / harness.
+
+**Suggested improvement:** Keep the new After-sync control-surface checklist in sync-kingdom; keep STATUS tail preservation in writeStatusMd; when App and orchestrator components diverge across branches, treat missing Provider wiring as a sync/UI regression check.
+
+**Principle:** A sync that updates data files but leaves the control surface or durable STATUS annotations behind is incomplete — pair data writers with UI/harness refresh and non-destructive STATUS merges.
+
+### Observation 15: AGENT_SKILL_MAP must include every agent
+
+**Status:** OPEN
+**Date:** 2026-09-02
+**Session context:** skill-graph audit after sync
+**Skill:** sync-kingdom
+**Type:** open-source
+**Phase/Area:** skill-graph.mjs AGENT_SKILL_MAP
+
+**Issue:** agent-dojo had an empty skills array because it was missing from AGENT_SKILL_MAP, so the fleet/skill graph showed "No skill map" for BeamDojo while other agents were wired.
+
+**Suggested improvement:** When adding a registry agent, require a corresponding AGENT_SKILL_MAP entry (or fail sync with a warning listing agents without skills).
+
+**Principle:** Graph edges that are optional in code become silent disconnects in the UI — treat missing map rows as sync defects, not empty truth.
+
