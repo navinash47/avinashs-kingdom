@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-09-02T20:08:54.725Z",
+  "synced_at": "2026-09-02T20:16:49.442Z",
   "patches": {
     "youtube-editor": {
       "version": "Phase 4 · Clip research + provenance",
@@ -42,10 +42,10 @@
     },
     "job-jugaad": {
       "version": "Tracker v0.1",
-      "progress": 100,
+      "progress": 83,
       "priority": "P1",
-      "nextMilestone": "Keep logging — 413/413 toward target",
-      "notes": "Next: 1) Keep logging — 413/413 toward target · 2) Share Cloudflare link with friend for accountability · 3) Raise target or focus offers / follow-ups",
+      "nextMilestone": "Keep logging — 414/500 toward ongoing target",
+      "notes": "Next: 1) Keep logging — 414/500 toward ongoing target · 2) Deploy dad-share Vercel link (static board + analysis) · 3) Run 2h search + live Gmail status toward 500 applied+",
       "status": "active",
       "progressSource": "STATUS.md Progress field (agent-updated)",
       "phasesPassed": null,
@@ -58,7 +58,7 @@
       "progress": 67,
       "priority": "P1",
       "nextMilestone": "Memory pressure is warning",
-      "notes": "Next: 1) Memory pressure is warning · 2) Cursor is heavy (5.7 GB, 48 processes) · 3) Review always-on helpers: us.zoom.updater.login.check.plist, us.zoom.updater.plist, com.teamviewer.Helper.plist, com.teamviewer.UninstallerHelper.plist",
+      "notes": "Next: 1) Memory pressure is warning · 2) Restart Zen Browser — 4.1 GB across 21 processes · 3) Cursor is heavy (5.0 GB, 48 processes)",
       "status": "active",
       "progressSource": "STATUS.md Progress field (agent-updated)",
       "phasesPassed": null,
@@ -85,7 +85,7 @@
       "priority": "P1",
       "status": "active",
       "nextMilestone": "Phase 58: Asset manifest system (pending)",
-      "notes": "City · 58/92 pass · source local working tree · updated 2026-09-02T20:08:32.012107+00:00 · ceiling $70",
+      "notes": "City · 58/92 pass · source local working tree · updated 2026-09-02T20:16:38.995444+00:00 · ceiling $70",
       "progressSource": "phases 58/92 from local working tree",
       "phasesPassed": 58,
       "phasesTotal": 92,

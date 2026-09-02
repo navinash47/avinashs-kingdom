@@ -4,7 +4,17 @@
   "items": [
     {
       "date": "2026-09-02",
+      "summary": "Re-close Stage E after mistaken perfect-eval revert.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
       "summary": "Pass Phase 57: Stage E gate (human perfect-eval).",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Revert \"Pass Phase 57: Stage E gate (human perfect-eval).\"",
       "source": "git"
     },
     {
@@ -60,21 +70,6 @@
     {
       "date": "2026-09-02",
       "summary": "Pass Phase 52: district-coherent batch planning with schema and SVG proofs.",
-      "source": "git"
-    },
-    {
-      "date": "2026-08-24",
-      "summary": "Pass Phase 51: hybrid character→geometry merge for tile plans.",
-      "source": "git"
-    },
-    {
-      "date": "2026-08-24",
-      "summary": "Fix STATUS.md for Phase 50 handoff to Phase 51.",
-      "source": "git"
-    },
-    {
-      "date": "2026-08-24",
-      "summary": "Pass Phase 50: semantic tile_plan validation and pipeline L1.5.",
       "source": "git"
     },
     {

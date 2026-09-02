@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-09-02T20:09:00.820Z",
+  "synced_at": "2026-09-02T20:16:56.892Z",
   "version": 2,
   "contract": "kingdom-personal-os",
   "fsm": {
@@ -27,7 +27,7 @@
     "agents_with_skills": 9,
     "agents_without_skills": [],
     "capabilities": 15,
-    "phases_board_synced_at": "2026-09-02T20:08:54.725Z"
+    "phases_board_synced_at": "2026-09-02T20:16:49.442Z"
   },
   "ventures": [
     {
@@ -161,14 +161,14 @@
     {
       "id": "job-jugaad",
       "name": "Job Jugaad",
-      "progress": 100,
+      "progress": 83,
       "priority": "P1",
       "status": "active",
       "agentId": "agent-jugaad",
       "repoPath": "~/Projects/job-jugaad",
       "dashboardPort": 8790,
       "dashboardLabel": "Job tracker",
-      "nextMilestone": "Keep logging — 413/413 toward target",
+      "nextMilestone": "Keep logging — 414/500 toward ongoing target",
       "phasesPassed": null,
       "phasesTotal": null,
       "kind": null,
@@ -799,10 +799,11 @@
     "has_template": true,
     "after_register": [
       "Add AGENT_SKILL_MAP entry in scripts/lib/skill-graph.mjs",
-      "Create wiki venture/architecture/experiments pages",
+      "Create wiki venture/architecture/experiments pages (or use npm run venture:new -- --write)",
       "Update brain/wiki/concepts/where-files-live.md",
       "Update sync-kingdom skill path map if needed",
       "npm run sync",
+      "npm run brain:lint",
       "Verify Throne + graph show the new node"
     ]
   },

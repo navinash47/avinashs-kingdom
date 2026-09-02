@@ -6,7 +6,7 @@ tags: [tracker, sync, citizens]
 
 # Live tracker
 
-Auto-written by `npm run sync` at **2026-09-02T20:08:54.725Z**. Do not hand-edit — re-run sync after venture gates.
+Auto-written by `npm run sync` at **2026-09-02T20:16:49.442Z**. Do not hand-edit — re-run sync after venture gates.
 
 ## How progress is calculated
 
@@ -40,7 +40,7 @@ Auto-written by `npm run sync` at **2026-09-02T20:08:54.725Z**. Do not hand-edit
 | ComicMainEngine | 2A · A1 passed · A2 Scene cards + storyboard ingest | 33% | 2/6 | P2 · active | A2 Scene cards + storyboard ingest (start) |
 | Kingdom ops (subs + expenses) | v1.0 | 70% | — | P1 · active | Cancel/review 6 kill-list seats; reclaim low-risk disk (51.4% used) |
 | Mac optimize audit | v0.1 | 67% | — | P1 · active | Memory pressure is warning |
-| Job Jugaad | Tracker v0.1 | 100% | — | P1 · active | Keep logging — 413/413 toward target |
+| Job Jugaad | Tracker v0.1 | 83% | — | P1 · active | Keep logging — 414/500 toward ongoing target |
 | Shorts tooling | — | 0% | — | parked · parked | Do not focus |
 | BeamDojo (Isaac Lab locomotion) | Stage 1 smoke | 18% | — | P1 · active | Dual-terrain Stage 1 (flat physics + imagined beam height scan) then 1024-env CUDA train on the A10. |
 

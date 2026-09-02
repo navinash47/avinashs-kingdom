@@ -1,11 +1,11 @@
 {
   "venture_id": "procedural-city",
-  "synced_at": "2026-09-02T20:08:54.922Z",
+  "synced_at": "2026-09-02T20:16:49.646Z",
   "repo": {
     "path": "/Users/avinashnandyala/ProceduralCity",
-    "head": "d9d5dfc03b4ad154f24b89243c4c4b4ce4b14679",
-    "branch": "phase58",
-    "last_commit_at": "2026-09-02T13:08:12-07:00",
+    "head": "126b48f1328284dd8e4bed412d625367c7dd5555",
+    "branch": "main",
+    "last_commit_at": "2026-09-02T13:16:18-07:00",
     "remote_url": "https://github.com/navinash47/ProceduralCity.git",
     "github": {
       "owner": "navinash47",
@@ -14,8 +14,8 @@
     }
   },
   "stats": {
-    "files": 869,
-    "lines": 663256,
+    "files": 867,
+    "lines": 663199,
     "primary_language": "JSON",
     "languages": [
       {
@@ -30,8 +30,8 @@
       },
       {
         "language": "Other",
-        "files": 70,
-        "lines": 13964
+        "files": 68,
+        "lines": 13902
       },
       {
         "language": "JavaScript",
@@ -41,7 +41,7 @@
       {
         "language": "Markdown",
         "files": 38,
-        "lines": 3740
+        "lines": 3745
       },
       {
         "language": "CSS",
@@ -60,7 +60,7 @@
       }
     ],
     "truncated": false,
-    "sampled_files": 869,
+    "sampled_files": 867,
     "source": "walker"
   },
   "dependencies": {
