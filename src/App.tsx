@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef } from 'react'
 import { AgentRoster } from './components/AgentRoster'
+import { AnalyticsPanel } from './components/AnalyticsPanel'
 import { CommandPalette } from './components/CommandPalette'
 import { ExpensesLedger } from './components/ExpensesLedger'
 import { MacStorageAuditPanel } from './components/MacStorageAuditPanel'
@@ -22,6 +23,7 @@ import './App.css'
 
 const NAV = [
   { id: 'throne', label: 'Throne' },
+  { id: 'analytics', label: 'Analytics' },
   { id: 'graph', label: 'Graph' },
   { id: 'research', label: 'Research' },
   { id: 'ventures', label: 'Ventures' },
@@ -222,6 +224,13 @@ function KingdomApp() {
                 cicd={state.cicd}
                 lastSyncAt={lastSyncAt}
                 onSynced={refreshFromHost}
+              />
+            )}
+            {mainTab === 'analytics' && (
+              <AnalyticsPanel
+                ventures={state.ventures}
+                expenses={state.expenses}
+                cicd={state.cicd}
               />
             )}
             {mainTab === 'graph' && (

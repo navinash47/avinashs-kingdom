@@ -1,6 +1,7 @@
 import type { CicdSnapshot, KingdomState, VentureManifest } from '../types'
 import { ControlSurfaceBar } from './ControlSurfaceBar'
 import { FleetStrip } from './FleetStrip'
+import { WhatYouGet } from './WhatYouGet'
 
 type Props = {
   state: KingdomState
@@ -42,6 +43,7 @@ export function ThroneOverview({
         onSynced={onSynced}
       />
       <FleetStrip ventures={state.ventures} manifests={manifests} cicd={cicd} />
+      <WhatYouGet />
       <section className="panel throne">
         <header className="panel-head">
           <h2>Throne overview</h2>

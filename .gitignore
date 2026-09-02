@@ -30,3 +30,4 @@ brain/harness/reports/proposals/
 *.njsproj
 *.sln
 *.sw?
+.vercel

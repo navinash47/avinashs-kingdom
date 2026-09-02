@@ -93,8 +93,15 @@ export function CommandPalette({ ventures, agents, registry }: Props) {
       id: 'tab-throne',
       label: 'Go to Throne',
       group: 'Navigate',
-      keywords: 'home overview',
+      keywords: 'home overview features what you get',
       action: () => setMainTab('throne'),
+    })
+    list.push({
+      id: 'tab-analytics',
+      label: 'Go to Analytics',
+      group: 'Navigate',
+      keywords: 'charts progress phases spend time fleet graphs',
+      action: () => setMainTab('analytics'),
     })
     list.push({
       id: 'tab-graph',

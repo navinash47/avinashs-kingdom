@@ -1,5 +1,6 @@
 export const KINGDOM_TABS = [
   'throne',
+  'analytics',
   'ventures',
   'research',
   'resume',

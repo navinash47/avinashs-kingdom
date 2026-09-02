@@ -306,3 +306,19 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 **Suggested improvement:** Always summarize large tool payloads in smoke modes; keep full JSON only on live tool calls. Document maxBuffer / summarization in mcp README.
 
 **Principle:** Acceptance smokes must bound output size independently of production tool verbosity, or large-but-valid responses look like failures.
+
+### Observation 21: Phase tracker 100% vs SRS status lag
+
+**Status:** OPEN
+**Date:** 2026-09-02
+**Session context:** Phase 2b completion audit (no code changes)
+**Skill:** phase-gate / kingdom-wiki
+**Type:** personal
+**Phase/Area:** personal-os trackers
+
+**Issue:** Tracker claimed 100% / Phase 2b complete while concept SRS front Status still said "In progress". Audit still PASSED on existence + tracker coherence; status strings can drift across linked pages.
+
+**Suggested improvement:** When marking a phase tracker 100%, also flip the linked SRS Status line (or add a checklist item "SRS status matches tracker").
+
+**Principle:** Completion claims should be consistent across tracker and SRS status fields, not only in the progress table.
+

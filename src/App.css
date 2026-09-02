@@ -4055,3 +4055,230 @@ kbd {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+/* What you get (Throne home) */
+.what-you-get {
+  margin-bottom: 16px;
+}
+
+.what-you-get-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid var(--stroke);
+}
+
+.what-you-get-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--stroke);
+}
+
+.what-you-get-copy {
+  min-width: 0;
+}
+
+.what-you-get-copy strong {
+  display: block;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.what-you-get-copy p {
+  margin: 0;
+  color: var(--fog);
+  font-size: 0.92rem;
+  line-height: 1.45;
+  max-width: 52rem;
+}
+
+.what-you-get-row .btn.tiny {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Fleet analytics */
+.analytics-panel {
+  margin-bottom: 16px;
+}
+
+.analytics-summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+  margin-bottom: 20px;
+}
+
+.analytics-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.analytics-charts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.analytics-chart .subhead {
+  margin: 0 0 10px;
+}
+
+.analytics-bars {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.analytics-bar-btn {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 6px 8px;
+  color: inherit;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.analytics-bar-btn:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--panel-2) 80%, var(--brass) 6%);
+  border-color: var(--stroke);
+}
+
+.analytics-bar-btn.is-selected {
+  border-color: color-mix(in srgb, var(--brass) 45%, var(--stroke));
+  background: color-mix(in srgb, var(--panel-2) 70%, var(--brass) 10%);
+}
+
+.analytics-bar-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.analytics-bar-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 0.82rem;
+  margin-bottom: 5px;
+}
+
+.analytics-bar-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--fog);
+}
+
+.analytics-bar-meta strong {
+  font-variant-numeric: tabular-nums;
+  color: #fff;
+  font-weight: 600;
+}
+
+.analytics-bar-track {
+  display: block;
+  height: 6px;
+  border-radius: 999px;
+  background: #2c2c2e;
+  overflow: hidden;
+}
+
+.analytics-bar-fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #f5f5f7;
+  transition: width 0.25s ease;
+}
+
+.analytics-bar-fill.phases {
+  background: color-mix(in srgb, #f5f5f7 70%, #86868b);
+}
+
+.analytics-bar-fill.spend {
+  background: color-mix(in srgb, #f5f5f7 55%, #ffd60a 35%);
+}
+
+.analytics-detail {
+  padding: 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--stroke);
+}
+
+.analytics-detail-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.analytics-detail-head h3 {
+  margin: 4px 0 6px;
+  font-size: 1.25rem;
+  letter-spacing: -0.025em;
+}
+
+.analytics-dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 18px;
+  margin: 0 0 16px;
+}
+
+.analytics-dl dt {
+  margin: 0;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--fog);
+}
+
+.analytics-dl dd {
+  margin: 4px 0 0;
+  color: #f5f5f7;
+  line-height: 1.4;
+}
+
+.analytics-detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.analytics-hint {
+  margin: 0;
+}
+
+.ok {
+  color: var(--ok);
+}
+
+@media (max-width: 960px) {
+  .analytics-charts {
+    grid-template-columns: 1fr;
+  }
+
+  .analytics-dl {
+    grid-template-columns: 1fr;
+  }
+}

@@ -39,9 +39,9 @@ function parseDeepLink() {
     }
   }
 
-  if (main === 'research') {
+  if (main === 'research' || main === 'analytics' || main === 'throne') {
     return {
-      mainTab: 'research' as const,
+      mainTab: main,
       venture: null as string | null,
       inspectorTab: 'run' as InspectorTab,
       graphNodeId: null,
@@ -75,8 +75,18 @@ function pushUrl(opts: {
   if (opts.mainTab === 'graph') {
     params.set('tab', 'graph')
     if (opts.graphNodeId) params.set('node', opts.graphNodeId)
-  } else if (opts.mainTab === 'research') {
-    params.set('tab', 'research')
+  } else if (
+    opts.mainTab === 'research' ||
+    opts.mainTab === 'analytics' ||
+    opts.mainTab === 'throne' ||
+    opts.mainTab === 'tokens' ||
+    opts.mainTab === 'expenses' ||
+    opts.mainTab === 'subs' ||
+    opts.mainTab === 'storage' ||
+    opts.mainTab === 'agents' ||
+    opts.mainTab === 'resume'
+  ) {
+    params.set('tab', opts.mainTab)
   } else if (opts.ventureId) {
     params.set('venture', opts.ventureId)
     if (opts.inspectorTab && opts.inspectorTab !== 'run') {
@@ -122,10 +132,12 @@ export function OrchestratorProvider({ children }: { children: ReactNode }) {
     setMainTabState(tab)
     if (tab === 'graph') {
       pushUrl({ mainTab: 'graph', graphNodeId })
-    } else if (tab === 'research') {
-      pushUrl({ mainTab: 'research' })
+    } else if (tab === 'ventures') {
+      pushUrl({ mainTab: 'ventures', ventureId: selectedVentureId })
+    } else {
+      pushUrl({ mainTab: tab })
     }
-  }, [graphNodeId])
+  }, [graphNodeId, selectedVentureId])
 
   const setGraphNodeId = useCallback((id: string | null) => {
     setGraphNodeIdState(id)

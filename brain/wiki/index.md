@@ -84,7 +84,7 @@ Catalog of pages. Agents update this on every ingest. Last full refresh: **2026-
 | [resume-master-knowledge](concepts/resume-master-knowledge.md) | Phase 1 resume KB + dashboard at ~/Projects/resume |
 | [virtual-control-surface](concepts/virtual-control-surface.md) | Sync-owned Throne control plane + control-surface.json |
 | [brain-harness-fsm](concepts/brain-harness-fsm.md) | Deterministic KG/FSM empty model under brain/harness |
-| [kingdom-personal-os](concepts/kingdom-personal-os.md) | Primary architecture: brain + skills + registry/orchestrator + Throne |
+| [kingdom-personal-os](concepts/kingdom-personal-os.md) | Primary architecture: brain + skills + registry/orchestrator + Throne (+ Analytics / Vercel SPA note) |
 | [personal-os-phase2-srs](concepts/personal-os-phase2-srs.md) | Hard ~10% SRS: auto-wiki, MCP, LLM judge, obs 11 merge |
 | [personal-os-phase2b-srs](concepts/personal-os-phase2b-srs.md) | Fleet: all apps → registry/sync/Throne + MCP + skills |
 | [onboard-new-project](concepts/onboard-new-project.md) | Checklist to plug a future venture into brain + sync + Throne |

@@ -2,6 +2,10 @@
 
 Append-only. Prefix each entry with `## [YYYY-MM-DD] <op> | <title>` so recent activity is greppable.
 
+## [2026-09-02] ops | Throne What-you-get + Analytics + Vercel SPA
+
+Throne home lists personal-OS features in layman copy (`WhatYouGet`). New **Analytics** tab: clickable progress / phase-effort / spend charts from `public/data`. Added `vercel.json` for Vite static deploy. **Live:** https://avinashs-kingdom.vercel.app (project created under `navinash47s-projects/avinashs-kingdom`; GitHub git-connect failed — optional `npx vercel git connect`). Docs: [[concepts/kingdom-personal-os]].
+
 ## [2026-09-02] ops | Phase 2b — fleet MCP + gated writes + Cursor attach
 
 SRS [[concepts/personal-os-phase2b-srs]] + tracker [[ops/personal-os-phase2b-tracker]]. Extended `mcp/venture-server.mjs` fleet-wide (`config/mcp-registry.json` for every active `repoPath`); `.cursor/mcp.json` kingdom servers; `npm run mcp:smoke:fleet`. Gated `append_log` / `trigger_sync` via `KINGDOM_MCP_WRITES=1`. Judge live OmniRoute probe documented (offline verified; `:20128` may be down). Onboard + playbook + harness README updated. `shorts` skipped (null repo).

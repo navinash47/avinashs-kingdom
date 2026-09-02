@@ -31,7 +31,20 @@ Serious builders (2024–2026) converge on: compile durable knowledge ([Karpathy
 | (b) Skills | Cursor `SKILL.md` + `AGENT_SKILL_MAP` |
 | (c) Orchestrator across apps | `npm run sync` → control-surface + harness FSM/KG |
 | (d) Future projects | `config/venture-template.json` → `npm run venture:new` → registry |
-| (e) One-pane control | Throne `/?tab=throne` |
+| (e) One-pane control | Throne `/?tab=throne` · Analytics `/?tab=analytics` · layman feature map on Throne |
+
+## Static deploy (Vercel)
+
+Vite SPA — `vercel.json` ships `dist/` after `npm run build`. Synced snapshots under `public/data/` are baked into the deploy (read-only guest view; local orchestrator APIs are not available on Vercel). Create/link project once:
+
+```bash
+npx vercel link    # or first `npx vercel`
+npx vercel --prod
+```
+
+Local: `npm run dev` → http://localhost:5173 · Analytics tab or `/?tab=analytics`.
+
+**Production:** https://avinashs-kingdom.vercel.app (CLI deploy; GitHub auto-connect failed once — run `npx vercel git connect` if you want push-to-deploy).
 
 ## Compiled-wiki toolchain (real commands)
 
