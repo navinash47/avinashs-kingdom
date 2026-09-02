@@ -8,14 +8,14 @@ tags: [ops, personal-os, phase2, tracker]
 
 Temporary live board for the hard ~10%. SRS: [[concepts/personal-os-phase2-srs]]. Prompt: [[ops/personal-os-phase2-builder-prompt]].
 
-**Overall:** `50%` · **Current step:** `W2 done — starting W3` · **Branch:** `main` · **Last update:** `2026-09-02`
+**Overall:** `75%` · **Current step:** `W3 done — starting W4` · **Branch:** `main` · **Last update:** `2026-09-02`
 
 | Workstream | Status | % | Evidence / SHA | Notes |
 |------------|--------|---|----------------|-------|
 | W0 SRS + builder prompt + this tracker | **done** | 100 | design files on disk | — |
 | W1 Obs 11 merge playbook | **done** | 100 | `c2df411` | sync-kingdom + ops playbook + Obs 11 ACTIONED |
 | W2 LLM contradiction judge | **done** | 100 | `4e95d71` | `brain:judge` + fixture + reports/ |
-| W3 Full auto wiki | pending | 0 | — | After W2 |
+| W3 Full auto wiki | **done** | 100 |  | `brain:auto-wiki` draft→promote |
 | W4 MCP per app (pilot + template) | pending | 0 | — | After W3 |
 
 ## Checklist detail
@@ -42,11 +42,11 @@ Temporary live board for the hard ~10%. SRS: [[concepts/personal-os-phase2-srs]]
 - [x] Optional gated `--apply` — proposals only
 
 ### W3 — Full auto wiki
-- [ ] Inbox batch/watch command
-- [ ] Draft vs published gate
-- [ ] Idempotent re-run
-- [ ] Lint (+ optional judge) before promote
-- [ ] Playbook updated
+- [x] Inbox batch/watch command — `npm run brain:auto-wiki` (+ `--watch`)
+- [x] Draft vs published gate — `wiki/drafts/` → `--promote`
+- [x] Idempotent re-run — content-hash state
+- [x] Lint (+ optional judge) before promote
+- [x] Playbook updated
 
 ### W4 — MCP per app
 - [ ] Server template
@@ -65,4 +65,5 @@ _None yet._
 |------|------|----------------|
 | 2026-09-02 | W0 | Created SRS, builder prompt, tracker, plan. Phase 2 implementation not started. |
 | 2026-09-02 | W1 | Encoded Obs 11 into sync-kingdom + [[ops/cloud-ui-merge-playbook]]; mirrored ~/.cursor; Obs 11 ACTIONED. SHA `c2df411`. |
-| 2026-09-02 | W2 | Shipped `brain:judge` (dry-run reports, offline/LLM, `--apply` proposals, fixture golden). |
+| 2026-09-02 | W2 | Shipped `brain:judge` (dry-run reports, offline/LLM, `--apply` proposals, fixture golden). SHA `4e95d71`. |
+| 2026-09-02 | W3 | Shipped `brain:auto-wiki` (drafts, promote gate, idempotent, lint-before-publish). |
