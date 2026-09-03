@@ -9,6 +9,7 @@ import {
 } from '../context/OperationLogContext'
 import { useServiceStatus } from '../hooks/useServiceStatus'
 import { useShareMode } from '../hooks/useShareMode'
+import { formatProgress } from '../lib/progress'
 import { OperationTerminal } from './OperationTerminal'
 import {
   serviceForVenture,
@@ -190,7 +191,7 @@ export function FleetStrip({ ventures, cicd }: Props) {
                     <span className="badge">{v.priority}</span> <strong>{v.name}</strong>
                     {hasLog ? <span className="badge ghost tiny">log</span> : null}
                   </td>
-                  <td>{v.progress}%</td>
+                  <td>{formatProgress(v.progress)}</td>
                   <td>
                     {svc ? (
                       <span className={`badge ${up ? 'ok' : 'warn'}`}>{up ? 'UP' : 'DOWN'}</span>

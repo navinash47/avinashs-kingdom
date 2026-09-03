@@ -1,11 +1,11 @@
 {
   "venture_id": "research-frontier",
-  "synced_at": "2026-09-02T23:02:58.325Z",
+  "synced_at": "2026-09-03T04:09:01.685Z",
   "repo": {
     "path": "/Users/avinashnandyala/Projects/research-frontier-lab",
-    "head": "c117a61563f2bf85217ebf42f43f8170d24c34b3",
-    "branch": "main",
-    "last_commit_at": "2026-08-24T01:34:42-07:00",
+    "head": "9cec27c0ef0ea1b8cbc0f8ac2ff986ab65e4799f",
+    "branch": "chore/p0-quality-gates",
+    "last_commit_at": "2026-09-02T21:04:01-07:00",
     "remote_url": "https://github.com/navinash47/research-frontier-lab.git",
     "github": {
       "owner": "navinash47",
@@ -14,23 +14,48 @@
     }
   },
   "stats": {
-    "files": 3,
-    "lines": 43,
-    "primary_language": "Markdown",
+    "files": 119,
+    "lines": 31529,
+    "primary_language": "JSON",
     "languages": [
       {
+        "language": "JSON",
+        "files": 25,
+        "lines": 22120
+      },
+      {
+        "language": "TypeScript",
+        "files": 60,
+        "lines": 6666
+      },
+      {
         "language": "Markdown",
-        "files": 2,
-        "lines": 36
+        "files": 11,
+        "lines": 1523
+      },
+      {
+        "language": "YAML",
+        "files": 5,
+        "lines": 477
+      },
+      {
+        "language": "JavaScript",
+        "files": 5,
+        "lines": 458
+      },
+      {
+        "language": "CSS",
+        "files": 1,
+        "lines": 167
       },
       {
         "language": "Other",
-        "files": 1,
-        "lines": 7
+        "files": 12,
+        "lines": 118
       }
     ],
     "truncated": false,
-    "sampled_files": 3,
+    "sampled_files": 119,
     "source": "walker"
   },
   "dependencies": {
@@ -42,8 +67,8 @@
   "models_detected": [],
   "spend_usd": null,
   "ceiling_usd": null,
-  "progress": 12,
-  "version": "v0.1",
+  "progress": 22,
+  "version": "v0.2",
   "test_commands": [],
   "suggestions": [],
   "services": []

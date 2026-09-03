@@ -1,13 +1,64 @@
 {
   "venture_id": "research-frontier",
-  "synced_at": "2026-09-02T23:03:01.393Z",
+  "synced_at": "2026-09-03T04:09:06.426Z",
   "github": {
     "owner": "navinash47",
     "repo": "research-frontier-lab",
     "default_branch": "main",
     "available": true,
-    "runs": [],
-    "last_conclusion": null
+    "runs": [
+      {
+        "conclusion": "success",
+        "createdAt": "2026-09-03T04:06:34Z",
+        "databaseId": 33713828280,
+        "displayTitle": "fix: unblock StoryGate stale-POST test under Next typecheck",
+        "event": "push",
+        "status": "completed",
+        "url": "https://github.com/navinash47/research-frontier-lab/actions/runs/33713828280",
+        "workflowName": "CI"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-09-03T04:04:04Z",
+        "databaseId": 33713669630,
+        "displayTitle": "test: raise frontier-roadmap Vitest coverage to 100%",
+        "event": "push",
+        "status": "completed",
+        "url": "https://github.com/navinash47/research-frontier-lab/actions/runs/33713669630",
+        "workflowName": "CI"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-09-03T04:04:04Z",
+        "databaseId": 33713669625,
+        "displayTitle": "test: raise frontier-roadmap Vitest coverage to 100%",
+        "event": "push",
+        "status": "completed",
+        "url": "https://github.com/navinash47/research-frontier-lab/actions/runs/33713669625",
+        "workflowName": "Playwright"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-09-03T04:03:26Z",
+        "databaseId": 33713630071,
+        "displayTitle": "Revert accidental S08/S09 greens; keep awaiting_signal.",
+        "event": "push",
+        "status": "completed",
+        "url": "https://github.com/navinash47/research-frontier-lab/actions/runs/33713630071",
+        "workflowName": "CI"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-09-03T04:03:07Z",
+        "databaseId": 33713609132,
+        "displayTitle": "Revert accidental S08/S09 greens; keep awaiting_signal.",
+        "event": "push",
+        "status": "completed",
+        "url": "https://github.com/navinash47/research-frontier-lab/actions/runs/33713609132",
+        "workflowName": "CI"
+      }
+    ],
+    "last_conclusion": "success"
   },
   "local_tests": {
     "commands": [],

@@ -1,6 +1,6 @@
 {
   "venture_id": "kingdom-ops",
-  "synced_at": "2026-09-02T23:03:03.661Z",
+  "synced_at": "2026-09-03T04:09:09.383Z",
   "github": {
     "owner": "navinash47",
     "repo": "avinashs-kingdom",
@@ -9,52 +9,52 @@
     "runs": [
       {
         "conclusion": "success",
-        "createdAt": "2026-09-02T22:50:47Z",
-        "databaseId": 33692328182,
-        "displayTitle": "Record Phase 2 W4 SHA; tracker at 100%.",
+        "createdAt": "2026-09-02T23:29:36Z",
+        "databaseId": 33695318486,
+        "displayTitle": "Log SPA blank-page observation for Vercel /api HTML fallback.",
         "event": "push",
         "status": "completed",
-        "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33692328182",
+        "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33695318486",
         "workflowName": "Kingdom CI"
       },
       {
         "conclusion": "success",
-        "createdAt": "2026-09-02T22:49:16Z",
-        "databaseId": 33692210545,
-        "displayTitle": "Record Phase 2 W3 commit SHA on tracker.",
+        "createdAt": "2026-09-02T23:29:07Z",
+        "databaseId": 33695279487,
+        "displayTitle": "Fix blank Kingdom SPA when /api returns HTML.",
         "event": "push",
         "status": "completed",
-        "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33692210545",
+        "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33695279487",
         "workflowName": "Kingdom CI"
       },
       {
         "conclusion": "success",
-        "createdAt": "2026-09-02T22:47:13Z",
-        "databaseId": 33692053404,
-        "displayTitle": "Record Phase 2 W2 commit SHA on tracker.",
+        "createdAt": "2026-09-02T23:25:40Z",
+        "databaseId": 33695024128,
+        "displayTitle": "Note Vercel create-on-first-deploy observation for Kingdom.",
         "event": "push",
         "status": "completed",
-        "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33692053404",
+        "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33695024128",
         "workflowName": "Kingdom CI"
       },
       {
         "conclusion": "success",
-        "createdAt": "2026-09-02T22:45:43Z",
-        "databaseId": 33691935902,
-        "displayTitle": "Ship Phase 2 W1: Obs 11 cloud→Mac UI merge playbook.",
+        "createdAt": "2026-09-02T23:25:32Z",
+        "databaseId": 33695014967,
+        "displayTitle": "Ship Throne feature map, Analytics charts, and Vercel SPA deploy.",
         "event": "push",
         "status": "completed",
-        "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33691935902",
+        "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33695014967",
         "workflowName": "Kingdom CI"
       },
       {
         "conclusion": "success",
-        "createdAt": "2026-09-02T22:18:29Z",
-        "databaseId": 33689720073,
-        "displayTitle": "Preserve ProceduralCity STATUS handoff while Stage G awaits human rev…",
+        "createdAt": "2026-09-02T23:03:42Z",
+        "databaseId": 33693316138,
+        "displayTitle": "Record Phase 2b commit SHA on tracker.",
         "event": "push",
         "status": "completed",
-        "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33689720073",
+        "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33693316138",
         "workflowName": "Kingdom CI"
       }
     ],

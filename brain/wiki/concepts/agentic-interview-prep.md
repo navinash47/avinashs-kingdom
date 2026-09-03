@@ -1,6 +1,6 @@
 ---
 type: concept
-updated: 2026-08-11
+updated: 2026-09-02
 tags: [jobs, interview, leetcode, system-design, agents]
 ---
 
@@ -58,7 +58,7 @@ One drill per week. Outline: requirements → API → data → queues/workers �
 | Multi-agent handoff | Work items, ownership, race control | YouTube multi-agent desk |
 | Evals | Golden sets, LLM-as-judge failure modes | BioNLP R@10; Comic VLM rubric |
 | Observability | Traces, failure taxonomies, cost | Provenance JSONL; usage metering |
-| Framework literacy | LangGraph / OpenAI Agents SDK / MCP — tradeoffs | Custom orchestration is fine if explained |
+| Framework literacy | LangGraph / OpenAI Agents SDK / MCP — tradeoffs | Custom orchestration is fine if explained — see [[agentic-stack-guidance]] |
 
 **Ship one public artifact:** short eval report from Comic or YouTube (metrics + failure cases) > another DeepLearning.AI cert.
 
@@ -78,5 +78,6 @@ Keep Mastercard stories ready: latency, PCI tokenization, Java 8→17, Jenkins, 
 
 - [[ventures/job-jugaad]]
 - [[concepts/agentic-resume-gates]]
+- [[concepts/agentic-stack-guidance]]
 - Job Jugaad `CAREER_MARKETING.md` (LinkedIn copy)
 - Resumes: `~/Portfolio/resume/Avinash Resume -Agentic.tex` (Track A), `…AI-Backend.tex` (Track B)

@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-09-02T23:02:58.216Z",
+  "synced_at": "2026-09-03T04:09:01.538Z",
   "patches": {
     "youtube-editor": {
       "version": "Phase 4 · Clip research + provenance",
@@ -15,11 +15,11 @@
       "ceilingUsd": null
     },
     "research-frontier": {
-      "version": "v0.1",
-      "progress": 12,
+      "version": "v0.2",
+      "progress": 22,
       "priority": "P1",
-      "nextMilestone": "Ingest 1–3 abstracts into Kingdom brain via kingdom-wiki (vertical: generative comics / multimodal consistency).",
-      "notes": "Next: 1) Ingest 1–3 abstracts into Kingdom brain via kingdom-wiki (vertical: generative comics / multimodal consistency). · 2) Pull citation graph via OpenAlex / Semantic Scholar (no full-PDF dump by default). · 3) Prototype claim/limitation extraction → ranked open questions for that club.",
+      "nextMilestone": "Phase 0 foundation: stand up `frontier-brain` registry + `paper-identity` resolve for one comics/multimodal club.",
+      "notes": "Next: 1) Phase 0 foundation: stand up `frontier-brain` registry + `paper-identity` resolve for one comics/multimodal club. · 2) Ingest 1–3 abstracts into Kingdom brain via kingdom-wiki (vertical: generative comics / multimodal consistency). · 3) Prototype citation expand + distance/importance overlays on the map playground path (Phase 1).",
       "status": "active",
       "progressSource": "STATUS.md Progress field (agent-updated)",
       "phasesPassed": null,
@@ -40,25 +40,12 @@
       "spendUsd": null,
       "ceilingUsd": null
     },
-    "job-jugaad": {
-      "version": "Tracker v0.1",
-      "progress": 43950088,
-      "priority": "P1",
-      "nextMilestone": "Keep logging — 439/500 toward milestone",
-      "notes": "Next: 1) Keep logging — 439/500 toward milestone · 2) Prep interviews (2 active) · 3) Run 2h search + live Gmail status toward 500 applied+",
-      "status": "active",
-      "progressSource": "STATUS.md Progress field (agent-updated)",
-      "phasesPassed": null,
-      "phasesTotal": null,
-      "spendUsd": null,
-      "ceilingUsd": null
-    },
     "mac-optimize-audit": {
       "version": "v0.1",
       "progress": 67,
       "priority": "P1",
       "nextMilestone": "Memory pressure is warning",
-      "notes": "Next: 1) Memory pressure is warning · 2) Restart Zen Browser — 3.0 GB across 26 processes · 3) Cursor is heavy (6.1 GB, 79 processes)",
+      "notes": "Next: 1) Memory pressure is warning · 2) Restart Zen Browser — 2.3 GB across 28 processes · 3) Cursor is heavy (7.2 GB, 140 processes)",
       "status": "active",
       "progressSource": "STATUS.md Progress field (agent-updated)",
       "phasesPassed": null,
@@ -85,7 +72,7 @@
       "priority": "P1",
       "status": "active",
       "nextMilestone": "Phase 91: v1 RELEASE GATE (pending)",
-      "notes": "City · 91/97 pass · source local working tree · updated 2026-09-02T23:02:25.995033+00:00 · ceiling $70",
+      "notes": "City · 91/97 pass · source local working tree · updated 2026-09-03T03:58:50.618163+00:00 · ceiling $70",
       "progressSource": "phases 91/97 from local working tree",
       "phasesPassed": 91,
       "phasesTotal": 97,
@@ -105,12 +92,127 @@
       "spendUsd": 5.92,
       "ceilingUsd": null
     },
+    "job-jugaad": {
+      "version": "Tracker v0.1",
+      "progress": 88,
+      "priority": "P1",
+      "status": "active",
+      "nextMilestone": "Keep logging — 439/500 toward milestone",
+      "notes": "Next: 1) Keep logging — 439/500 toward milestone · 2) Prep interviews (2 active) · 3) Run 2h search + live Gmail status toward milestone",
+      "progressSource": "applications 439/500 from data/applications.json",
+      "phasesPassed": 439,
+      "phasesTotal": 500,
+      "spendUsd": null,
+      "ceilingUsd": null,
+      "audit": {
+        "synced_at": "2026-09-03T04:09:01.537Z",
+        "target": 500,
+        "total": 469,
+        "applied_or_beyond": 439,
+        "progress": 88,
+        "counts": {
+          "wishlist": 30,
+          "waiting": 6,
+          "applied": 27,
+          "interviewing": 2,
+          "offer": 0,
+          "rejected": 151,
+          "ghosted": 253
+        },
+        "recent": [
+          {
+            "id": "app_wish_01",
+            "company": "Cursor",
+            "role": "AI Software Engineer / Agent Engineer",
+            "status": "wishlist",
+            "appliedAt": null
+          },
+          {
+            "id": "app_wish_02",
+            "company": "Anthropic",
+            "role": "Applied AI Engineer / Forward Deployed Engineer",
+            "status": "wishlist",
+            "appliedAt": null
+          },
+          {
+            "id": "app_wish_03",
+            "company": "OpenAI",
+            "role": "Software Engineer, Applied AI / Agents",
+            "status": "wishlist",
+            "appliedAt": null
+          },
+          {
+            "id": "app_wish_04",
+            "company": "Cognition (Devin)",
+            "role": "Software Engineer — Agentic Systems",
+            "status": "wishlist",
+            "appliedAt": null
+          },
+          {
+            "id": "app_wish_05",
+            "company": "Perplexity",
+            "role": "AI Engineer / Full-Stack AI Engineer",
+            "status": "wishlist",
+            "appliedAt": null
+          },
+          {
+            "id": "app_wish_06",
+            "company": "LangChain",
+            "role": "Software Engineer — Agents / LangGraph",
+            "status": "wishlist",
+            "appliedAt": null
+          },
+          {
+            "id": "app_wish_07",
+            "company": "Vercel",
+            "role": "AI SDK / AI Engineer",
+            "status": "wishlist",
+            "appliedAt": null
+          },
+          {
+            "id": "app_wish_08",
+            "company": "Glean",
+            "role": "AI Engineer / Applied AI",
+            "status": "wishlist",
+            "appliedAt": null
+          },
+          {
+            "id": "app_wish_09",
+            "company": "Adept",
+            "role": "AI Agent Engineer",
+            "status": "wishlist",
+            "appliedAt": null
+          },
+          {
+            "id": "app_wish_10",
+            "company": "MultiOn",
+            "role": "Agent Engineer / Full-Stack AI",
+            "status": "wishlist",
+            "appliedAt": null
+          },
+          {
+            "id": "app_wish_11",
+            "company": "Sierra",
+            "role": "AI Engineer — Customer Agents",
+            "status": "wishlist",
+            "appliedAt": null
+          },
+          {
+            "id": "app_wish_12",
+            "company": "Harvey",
+            "role": "Applied AI Engineer",
+            "status": "wishlist",
+            "appliedAt": null
+          }
+        ]
+      }
+    },
     "kingdom-ops": {
       "version": "v1.0",
       "progress": 70,
       "priority": "P1",
       "status": "active",
-      "nextMilestone": "Cancel/review 6 kill-list seats; reclaim low-risk disk (52.1% used)",
+      "nextMilestone": "Cancel/review 6 kill-list seats; reclaim low-risk disk (53.7% used)",
       "notes": "Subscription kill list lives here. Mac speed is the mac-optimize-audit province.",
       "progressSource": "heuristic ops readiness 70% (audits live; kill seats still open)",
       "phasesPassed": null,

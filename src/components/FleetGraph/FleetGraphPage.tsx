@@ -280,18 +280,18 @@ function FleetGraphInner({
             maxZoom={1.8}
             proOptions={{ hideAttribution: true }}
           >
-            <Background gap={24} size={1} color="rgba(255,255,255,0.06)" />
+            <Background gap={48} size={1} color="rgba(61, 255, 194, 0.08)" />
             <Controls showInteractive={!shareMode} />
             <MiniMap
               pannable
               zoomable
               nodeColor={(n) => {
                 const k = (n.data as FleetNodeData | undefined)?.kind
-                if (k === 'hub') return '#ffffff'
-                if (k === 'venture') return '#a1a1a6'
-                if (k === 'agent') return '#636366'
-                if (k === 'service') return '#8e8e93'
-                return '#48484a'
+                if (k === 'hub') return '#3dffc2'
+                if (k === 'venture') return '#1aa884'
+                if (k === 'agent') return '#e8a54b'
+                if (k === 'service') return '#9bb4b8'
+                return '#143241'
               }}
             />
           </ReactFlow>

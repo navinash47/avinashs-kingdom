@@ -1,6 +1,6 @@
 ---
 type: concept
-updated: 2026-08-11
+updated: 2026-09-02
 tags: [jobs, resume, kingdom, gates]
 ---
 
@@ -27,7 +27,7 @@ Maps Kingdom milestones → honest resume / LinkedIn language. Use with Track A 
 | Prototyping diffusion models… | Shipped generative pipeline with **eval gate** and **provenance** |
 | Chatbot for leads | **FSM agent** qualify → booking with handoff + audit |
 | AI video editor | **Multi-agent desk** with formula lint + **mandatory clip provenance** |
-| Built with LangChain | Built **custom orchestration**; can discuss LangGraph/MCP tradeoffs |
+| Built with LangChain | Built **custom orchestration**; can discuss LangGraph/MCP tradeoffs — decision note [[agentic-stack-guidance]] |
 | Scaled AI product | Lab system with **spend ceilings** and **usage accounting** (until pilot metrics exist) |
 
 ## Apply sequence vs gates
@@ -41,4 +41,5 @@ Maps Kingdom milestones → honest resume / LinkedIn language. Use with Track A 
 
 - [[ventures/job-jugaad]]
 - [[concepts/agentic-interview-prep]]
+- [[concepts/agentic-stack-guidance]]
 - Desktop PDFs: `Avinash_Nandyala_Agentic_Applied_AI.pdf`, `Avinash_Nandyala_AI_Backend.pdf`

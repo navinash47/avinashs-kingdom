@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import type { CicdSnapshot, Expense, Venture } from '../types'
 import { useOrchestrator } from '../context/OrchestratorContext'
+import { clampProgress, formatProgress } from '../lib/progress'
 import { ProgressDial } from './ProgressDial'
 
 type Props = {
@@ -143,12 +144,12 @@ export function AnalyticsPanel({ ventures, expenses, cicd }: Props) {
                 >
                   <span className="analytics-bar-meta">
                     <span className="analytics-bar-name">{v.name}</span>
-                    <strong>{v.progress}%</strong>
+                    <strong>{formatProgress(v.progress)}</strong>
                   </span>
                   <span className="analytics-bar-track" aria-hidden>
                     <span
                       className="analytics-bar-fill progress"
-                      style={{ width: `${Math.max(0, Math.min(100, v.progress))}%` }}
+                      style={{ width: `${clampProgress(v.progress)}%` }}
                     />
                   </span>
                 </button>

@@ -38,7 +38,7 @@ Applications tracker: **company + specific role** through a pipeline (wishlist �
 - **Seven export tracks:** `tracks/track-{role}.tex` → `tracks/preview-pdf/Avinash_Nandyala_*.pdf`
 - **LinkedIn / bio copy:** `CAREER_MARKETING.md` in this repo
 - **Wishlist:** 30 company+role rows seeded in `data/applications.json` (status `wishlist` — progress stays 0% until applied+)
-- **Study:** [[concepts/agentic-interview-prep]] · claim gates: [[concepts/agentic-resume-gates]]
+- **Study:** [[concepts/agentic-interview-prep]] · claim gates: [[concepts/agentic-resume-gates]] · stack: [[concepts/agentic-stack-guidance]]
 
 ### Posting type → resume PDF
 
@@ -95,4 +95,5 @@ Playwright headed apply, resume pick-only, Gmail IMAP OTP — see older Job Juga
 - [[ops/cloudflare-links]]
 - [[concepts/agentic-interview-prep]]
 - [[concepts/agentic-resume-gates]]
+- [[concepts/agentic-stack-guidance]]
 - [[concepts/resume-master-knowledge]]

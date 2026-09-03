@@ -133,6 +133,52 @@ function writeJson(p, value) {
   fs.writeFileSync(p, JSON.stringify(value, null, 2) + '\n')
 }
 
+/**
+ * Parse a STATUS **Progress** field into a percent number.
+ * Handles: "55%", "439/500 · 88%", "439/500", "9/13 phases", bare "88".
+ * Never digit-strips the whole string (that turned "439/500 · 88%" into 43950088).
+ */
+function parseProgressPercent(raw, { allowOvershoot = false } = {}) {
+  if (raw == null) return null
+  const s = String(raw).trim()
+  if (!s) return null
+
+  const pctMatches = [...s.matchAll(/(\d+(?:\.\d+)?)\s*%/g)]
+  if (pctMatches.length) {
+    return sanitizeProgress(Number(pctMatches[pctMatches.length - 1][1]), {
+      allowOvershoot,
+    })
+  }
+
+  const ratio = s.match(/(\d+(?:\.\d+)?)\s*\/\s*(\d+(?:\.\d+)?)/)
+  if (ratio) {
+    const num = Number(ratio[1])
+    const den = Number(ratio[2])
+    if (Number.isFinite(num) && Number.isFinite(den) && den > 0) {
+      return sanitizeProgress((100 * num) / den, { allowOvershoot })
+    }
+  }
+
+  const bare = s.match(/^(\d+(?:\.\d+)?)\s*$/)
+  if (bare) {
+    return sanitizeProgress(Number(bare[1]), { allowOvershoot })
+  }
+
+  return null
+}
+
+/** Clamp progress to a sane panel range. Overshoot (past milestone) allowed up to 999. */
+function sanitizeProgress(n, { allowOvershoot = false } = {}) {
+  if (!Number.isFinite(n)) return null
+  const rounded = Math.round(n)
+  if (allowOvershoot) {
+    if (rounded < 0) return 0
+    if (rounded > 999) return 999
+    return rounded
+  }
+  return Math.max(0, Math.min(100, rounded))
+}
+
 function parseStatusMd(text) {
   const get = (label) => {
     const re = new RegExp(`\\*\\*${label}:\\*\\*\\s*(.+)`, 'i')
@@ -142,9 +188,7 @@ function parseStatusMd(text) {
   const version = get('Version')
   const progressRaw = get('Progress')
   const priorityRaw = get('Priority')
-  const progress = progressRaw
-    ? Number(String(progressRaw).replace(/[^0-9.]/g, ''))
-    : null
+  const progress = parseProgressPercent(progressRaw)
   let priority = null
   if (priorityRaw) {
     const p = priorityRaw.match(/P[012]|parked/i)
@@ -161,7 +205,7 @@ function parseStatusMd(text) {
   }
   return {
     version,
-    progress: Number.isFinite(progress) ? progress : null,
+    progress,
     priority,
     nextMilestone: nextTasks[0] || null,
     notes: nextTasks.length
@@ -371,9 +415,9 @@ function slug(s) {
     .slice(0, 40)
 }
 
-function progressFromPhases(passed, total) {
+function progressFromPhases(passed, total, { allowOvershoot = false } = {}) {
   const t = total || 1
-  return Math.round((100 * passed) / t)
+  return sanitizeProgress((100 * passed) / t, { allowOvershoot })
 }
 
 function syncWhatsAppStatus() {
@@ -812,7 +856,7 @@ function syncKingdomOpsStatus(sub, mac) {
   }
 }
 
-function syncJobJugaadApplications() {
+function syncJobJugaadStatus() {
   const doc = readJson(PATHS.jugaadApps)
   if (!doc) {
     console.warn('No Job Jugaad applications at', PATHS.jugaadApps)
@@ -822,6 +866,7 @@ function syncJobJugaadApplications() {
   const target = Math.max(Number(doc.target) || 30, 1)
   const counts = {
     wishlist: 0,
+    waiting: 0,
     applied: 0,
     interviewing: 0,
     offer: 0,
@@ -831,16 +876,31 @@ function syncJobJugaadApplications() {
   for (const a of apps) {
     if (counts[a.status] != null) counts[a.status] += 1
   }
+  // Match job-jugaad dashboard: applied+ = submitted pipeline (not wishlist).
   const appliedOrBeyond = apps.filter((a) =>
-    ['applied', 'interviewing', 'offer', 'rejected', 'ghosted'].includes(
+    ['applied', 'waiting', 'interviewing', 'offer', 'rejected', 'ghosted'].includes(
       a.status,
     ),
   ).length
+  // Intentional overshoot when past milestone (panel dial still clamps at 100).
+  const progress = progressFromPhases(appliedOrBeyond, target, {
+    allowOvershoot: true,
+  })
+  const version = 'Tracker v0.1'
+  const interviewing = counts.interviewing || 0
+  const next = [
+    `Keep logging — ${appliedOrBeyond}/${target} toward milestone`,
+    interviewing > 0
+      ? `Prep interviews (${interviewing} active)`
+      : 'Advance waiting/applied toward interviews',
+    'Run 2h search + live Gmail status toward milestone',
+  ]
   const audit = {
     synced_at: new Date().toISOString(),
     target,
     total: apps.length,
     applied_or_beyond: appliedOrBeyond,
+    progress,
     counts,
     recent: apps.slice(0, 12).map((a) => ({
       id: a.id,
@@ -851,14 +911,51 @@ function syncJobJugaadApplications() {
     })),
   }
   writeJson(path.join(auditsDir, 'job-jugaad-applications.json'), audit)
+
+  writeStatusMd(path.join(PATHS.jugaadRoot, 'STATUS.md'), {
+    version,
+    agent: 'Agent Jugaad',
+    progress,
+    priority: 'P1',
+    tasks: next,
+  })
+  // Preserve the auto comment that agents append (writeStatusMd drops non---- tails).
+  try {
+    const statusPath = path.join(PATHS.jugaadRoot, 'STATUS.md')
+    const body = fs.readFileSync(statusPath, 'utf8')
+    if (!body.includes('<!-- auto:')) {
+      fs.appendFileSync(
+        statusPath,
+        `\n<!-- auto: ${appliedOrBeyond} applied+ · ${interviewing} interviewing · ${counts.offer || 0} offer · milestone ${target} -->\n`,
+      )
+    }
+  } catch {
+    /* ignore */
+  }
+
   console.log(
-    'Job Jugaad audit ·',
+    'Job Jugaad ·',
     appliedOrBeyond + '/' + target,
-    'applied+ ·',
+    '→',
+    progress + '%',
+    '·',
     apps.length,
     'rows',
   )
-  return audit
+  return {
+    version,
+    progress,
+    priority: 'P1',
+    status: 'active',
+    nextMilestone: next[0],
+    notes: `Next: ${next.map((t, i) => `${i + 1}) ${t}`).join(' · ')}`,
+    progressSource: `applications ${appliedOrBeyond}/${target} from data/applications.json`,
+    phasesPassed: appliedOrBeyond,
+    phasesTotal: target,
+    spendUsd: null,
+    ceilingUsd: null,
+    audit,
+  }
 }
 
 function syncVentures({ sub, mac }) {
@@ -866,14 +963,17 @@ function syncVentures({ sub, mac }) {
   const patches = {}
 
   for (const src of STATUS_SOURCES) {
-    if (src.id === 'whatsapp-voice') continue
+    // Derived from source-of-truth files below — skip STATUS-only parse.
+    if (src.id === 'whatsapp-voice' || src.id === 'job-jugaad') continue
     if (!fs.existsSync(src.statusPath)) {
       console.warn('Missing STATUS.md', src.statusPath)
       continue
     }
     const parsed = parseStatusMd(fs.readFileSync(src.statusPath, 'utf8'))
+    const progress = sanitizeProgress(parsed.progress)
     patches[src.id] = {
       ...parsed,
+      progress,
       status: parsed.priority === 'parked' ? 'parked' : 'active',
       progressSource: 'STATUS.md Progress field (agent-updated)',
       phasesPassed: null,
@@ -881,7 +981,13 @@ function syncVentures({ sub, mac }) {
       spendUsd: null,
       ceilingUsd: null,
     }
-    console.log('Status', src.id, '→', parsed.version, parsed.progress + '%')
+    console.log(
+      'Status',
+      src.id,
+      '→',
+      parsed.version,
+      (progress ?? '?') + '%',
+    )
   }
 
   const wa = syncWhatsAppStatus()
@@ -893,7 +999,8 @@ function syncVentures({ sub, mac }) {
   const comic = syncComicStatus()
   if (comic) patches['comic-engine'] = comic
 
-  syncJobJugaadApplications()
+  const jugaad = syncJobJugaadStatus()
+  if (jugaad) patches['job-jugaad'] = jugaad
 
   patches['kingdom-ops'] = syncKingdomOpsStatus(sub, mac)
 
@@ -919,11 +1026,15 @@ function syncVentures({ sub, mac }) {
             repoPath: PATHS.comic,
           }
         : {}
+    const allowOvershoot = v.id === 'job-jugaad'
+    const progress = sanitizeProgress(p.progress ?? v.progress, {
+      allowOvershoot,
+    })
     return {
       ...v,
       ...renamed,
       version: p.version ?? v.version,
-      progress: p.progress ?? v.progress,
+      progress: progress ?? 0,
       priority,
       status: priority === 'parked' ? 'parked' : 'active',
       nextMilestone: p.nextMilestone ?? v.nextMilestone,
@@ -976,7 +1087,7 @@ function syncVentures({ sub, mac }) {
       'research-frontier': 'STATUS.md **Progress** field',
       beamdojo: 'STATUS.md **Progress** field (Isaac Lab GPU smokes / trains)',
       'job-jugaad':
-        'STATUS.md Progress = applied-or-beyond / target from data/applications.json',
+        'applied-or-beyond / target from data/applications.json (waiting counts; overshoot allowed past milestone)',
       'kingdom-ops': 'heuristic ops readiness (70%) until kill-list closure tracked',
       'mac-optimize-audit':
         'STATUS.md Progress from health score after python3 -m mac_optimize audit',

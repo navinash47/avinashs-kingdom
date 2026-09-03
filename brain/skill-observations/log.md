@@ -352,3 +352,63 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 
 **Principle:** Static SPA deploys must treat orchestrator APIs as optional; HTML fallbacks that look like successful JSON responses are blank-page bombs.
 
+
+### Observation 24: Architecture chat advice should land as a wiki concept
+
+**Status:** OPEN
+**Date:** 2026-09-02
+**Session context:** User asked whether to adopt LangChain/LangGraph; then "add them into brain"
+**Skill:** kingdom-wiki
+**Type:** open-source
+**Phase/Area:** Ingest after advisory sessions
+
+**Issue:** Substantive stack/role guidance lived only in chat until the user explicitly asked to file it. Related pages (interview prep, resume gates) already hinted at custom orchestration but lacked a single decision note.
+
+**Suggested improvement:** After advisory sessions that produce durable stack decisions, offer (or auto-propose) a `wiki/concepts/` page + index/log row before the session ends — especially when cross-links to existing claim/study pages are obvious.
+
+**Principle:** Architecture advice that changes what you adopt or claim belongs in the compiled wiki in the same session, not as a follow-up the human must remember to request.
+
+### Observation 25: Kingdom shell should inherit Research Frontier Lab tokens
+
+**Status:** OPEN
+**Date:** 2026-09-02
+**Session context:** Sync kingdom + restyle Venture Fleet Control Plane to match Research Frontier Lab UI the user called slick
+**Skill:** sync-kingdom; New skill candidate: kingdom-ui-theme (or note in sync-kingdom / design rules)
+**Type:** internal
+**Phase/Area:** Kingdom global CSS tokens vs venture design reference
+
+**Issue:** Kingdom `src/App.css` used an Apple monochrome SF stack while the preferred look already lived in `~/Projects/research-frontier-lab/apps/frontier-roadmap` (Fraunces / DM Sans / IBM Plex Mono, teal ink, phosphor accent, grid atmosphere). Restyling required mapping ResearchLab tokens onto Kingdom's existing `--brass`/`--stroke` contract plus remapping hardcoded Apple hexes — easy to miss FleetGraph MiniMap colors and ResearchLab.css local `#000` canvases.
+
+**Suggested improvement:** Document a single "Kingdom visual language" pointer (path to frontier-roadmap `globals.css` + token alias table) in sync-kingdom notes or a short wiki concept so future UI work starts from ResearchLab tokens instead of inventing another dark theme. Optionally extract shared CSS variables into a tiny shared package or copied token file.
+
+**Principle:** When a user names a sibling product's UI as the preferred look, treat that repo's design tokens as source of truth and adapt the control-plane theme via token aliasing — do not redesign from scratch.
+
+### Observation 26: STATUS Progress digit-strip inflated venture %
+
+**Status:** OPEN
+**Date:** 2026-09-02
+**Session context:** Fix bogus venture progress (job-jugaad ~43950088%) in sync pipeline; also harden Vercel-served Kingdom control surface displays
+**Skill:** sync-kingdom
+**Type:** internal
+**Phase/Area:** STATUS.md Progress parsing → ventures.json / control-surface / manifests / production Vercel static data
+
+**Issue:** `parseStatusMd` turned compound Progress strings like `439/500 · 88%` into `43950088` by stripping all non-digits. Sync then wrote that into `ventures.json`, `control-surface.json`, manifests, and the live Vercel deployment of Kingdom kept serving the absurd percentage. Job Jugaad's own dashboard math was fine; Kingdom sync was the bug. Comic STATUS also has a secondary `9/13 phases` Progress line that would become `913` if ever parsed first.
+
+**Suggested improvement:** Keep `parseProgressPercent` (prefer trailing `%`, else `a/b` ratio, else bare number + sanitize). Derive job-jugaad from `data/applications.json`. Document in sync-kingdom: never digit-strip Progress wholesale; after deploy, verify production `/data/ventures.json` not just local. UI `formatProgress`/`clampProgress` as display backstop.
+
+**Principle:** When parsing human-readable metrics that mix counts and percents, prefer the explicit unit marker (e.g. `%`) or a ratio formula — never concatenate all digits in the string into one number.
+
+### Observation 27: Production stays stale until commit+push of UI/sync
+
+**Status:** OPEN
+**Date:** 2026-09-02
+**Session context:** User frustrated that Vercel Kingdom still showed old Apple UI and inflated job-jugaad progress; ordered commit/push/deploy now
+**Skill:** sync-kingdom
+**Type:** internal
+**Phase/Area:** Local ResearchLab restyle + progress parse fix → GitHub → Vercel production
+
+**Issue:** UI/CSS and `parseProgressPercent` fixes existed only in the working tree. Production `/data/ventures.json` kept serving the previous sync snapshot (including digit-stripped progress) and old hashed CSS until `main` was committed and redeployed. Sync alone never updates Vercel.
+
+**Suggested improvement:** After any Kingdom panel/UI fix that must be live, treat `git push origin main` (or `vercel --prod`) as a required verification step alongside local `ventures.json` checks — document in sync-kingdom "Cloud UI merge / deploy" notes.
+
+**Principle:** Static-hosted control planes only change when the commit that contains both UI assets and regenerated `public/data` is deployed; local sync is necessary but not sufficient.

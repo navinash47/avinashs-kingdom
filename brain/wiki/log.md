@@ -2,6 +2,10 @@
 
 Append-only. Prefix each entry with `## [YYYY-MM-DD] <op> | <title>` so recent activity is greppable.
 
+## [2026-09-02] ingest | Agentic stack guidance (LangChain / roles)
+
+Filed [[concepts/agentic-stack-guidance]]: no default LangChain/LangGraph adoption; borrow FSM/checkpoint/eval/cost/provenance patterns; AI eng vs agentic vs FDE role map; venture progress loop. Cross-linked from interview prep, resume gates, personal OS, Job Jugaad.
+
 ## [2026-09-02] ops | Throne What-you-get + Analytics + Vercel SPA
 
 Throne home lists personal-OS features in layman copy (`WhatYouGet`). New **Analytics** tab: clickable progress / phase-effort / spend charts from `public/data`. Added `vercel.json` for Vite static deploy. **Live:** https://avinashs-kingdom.vercel.app (project created under `navinash47s-projects/avinashs-kingdom`; GitHub git-connect failed — optional `npx vercel git connect`). Docs: [[concepts/kingdom-personal-os]].

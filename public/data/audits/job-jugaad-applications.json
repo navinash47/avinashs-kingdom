@@ -1,10 +1,12 @@
 {
-  "synced_at": "2026-09-02T23:02:58.216Z",
+  "synced_at": "2026-09-03T04:09:01.537Z",
   "target": 500,
   "total": 469,
-  "applied_or_beyond": 433,
+  "applied_or_beyond": 439,
+  "progress": 88,
   "counts": {
     "wishlist": 30,
+    "waiting": 6,
     "applied": 27,
     "interviewing": 2,
     "offer": 0,

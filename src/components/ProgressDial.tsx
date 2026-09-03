@@ -1,3 +1,5 @@
+import { clampProgress } from '../lib/progress'
+
 type Props = {
   value: number
   size?: number
@@ -5,7 +7,7 @@ type Props = {
 }
 
 export function ProgressDial({ value, size = 88, label }: Props) {
-  const clamped = Math.max(0, Math.min(100, value))
+  const clamped = clampProgress(value)
   const r = 36
   const c = 2 * Math.PI * r
   const offset = c - (clamped / 100) * c

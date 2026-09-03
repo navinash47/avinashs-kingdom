@@ -1,6 +1,7 @@
 import { Handle, Position, type NodeProps } from '@xyflow/react'
 import type { ReactNode } from 'react'
 import type { FleetNodeData } from '../../lib/fleetGraph'
+import { clampProgress, formatProgress } from '../../lib/progress'
 
 function statusClass(status: FleetNodeData['status']) {
   if (status === 'up' || status === 'active' || status === 'done') return 'ok'
@@ -41,8 +42,11 @@ function NodeShell({
         {data.subtitle ? <span className="fleet-node-sub">{data.subtitle}</span> : null}
         {data.progress != null ? (
           <div className="fleet-node-progress">
-            <div className="fleet-node-progress-bar" style={{ width: `${data.progress}%` }} />
-            <span>{data.progress}%</span>
+            <div
+              className="fleet-node-progress-bar"
+              style={{ width: `${clampProgress(data.progress)}%` }}
+            />
+            <span>{formatProgress(data.progress)}</span>
           </div>
         ) : null}
       </div>

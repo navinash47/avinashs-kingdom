@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import type { ControlSurface, SkillGraph, Venture } from '../types'
 import { useOrchestrator } from '../context/OrchestratorContext'
 import { useShareMode } from '../hooks/useShareMode'
+import { formatProgress } from '../lib/progress'
 import { triggerSync } from '../lib/orchestratorApi'
 
 type Props = {
@@ -167,7 +168,7 @@ export function ControlSurfaceBar({
                 Focus graph
               </button>
               <span className="muted tiny">
-                {v.progress}% · {v.nextMilestone}
+                {formatProgress(v.progress)} · {v.nextMilestone}
               </span>
             </li>
           ))}

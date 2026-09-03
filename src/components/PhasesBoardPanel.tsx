@@ -1,4 +1,5 @@
 import type { PhasesBoard } from '../types'
+import { formatProgress } from '../lib/progress'
 
 type Props = {
   data: PhasesBoard | null
@@ -43,7 +44,7 @@ export function PhasesBoardPanel({ data }: Props) {
                 <td>{v.name}</td>
                 <td className="mono">{v.version}</td>
                 <td>
-                  <strong>{v.progress}%</strong>
+                  <strong>{formatProgress(v.progress)}</strong>
                   {v.progressSource ? (
                     <div className="muted tiny">{v.progressSource}</div>
                   ) : null}

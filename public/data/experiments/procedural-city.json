@@ -4,6 +4,21 @@
   "items": [
     {
       "date": "2026-09-02",
+      "summary": "Fix Generate blank play and map studio UX.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Ship map→Unity play on the public site and hide lab spend.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Publish Harbor Block props gallery on the Vercel site from main.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
       "summary": "Prepare Stage H (83–90 PASS, 91 awaiting human review).",
       "source": "git"
     },
@@ -60,21 +75,6 @@
     {
       "date": "2026-09-02",
       "summary": "Pass Phases 58–59: R3 asset manifest, PROP_LIST, web MVP scaffold.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-02",
-      "summary": "Re-close Stage E after mistaken perfect-eval revert.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-02",
-      "summary": "Pass Phase 57: Stage E gate (human perfect-eval).",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-02",
-      "summary": "Revert \"Pass Phase 57: Stage E gate (human perfect-eval).\"",
       "source": "git"
     },
     {

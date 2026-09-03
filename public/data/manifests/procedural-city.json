@@ -1,11 +1,11 @@
 {
   "venture_id": "procedural-city",
-  "synced_at": "2026-09-02T23:02:58.434Z",
+  "synced_at": "2026-09-03T04:09:01.863Z",
   "repo": {
     "path": "/Users/avinashnandyala/ProceduralCity",
-    "head": "f322b8603cb55ebd699f172555006c6b5e35f370",
-    "branch": "phase91",
-    "last_commit_at": "2026-09-02T15:59:57-07:00",
+    "head": "d05ad494c83294e98c875edf02eb4faae631d32e",
+    "branch": "main",
+    "last_commit_at": "2026-09-02T16:48:29-07:00",
     "remote_url": "https://github.com/navinash47/ProceduralCity.git",
     "github": {
       "owner": "navinash47",
@@ -14,44 +14,44 @@
     }
   },
   "stats": {
-    "files": 1164,
-    "lines": 739130,
+    "files": 1186,
+    "lines": 740669,
     "primary_language": "JSON",
     "languages": [
       {
         "language": "JSON",
         "files": 668,
-        "lines": 656925
+        "lines": 656985
       },
       {
         "language": "Other",
-        "files": 286,
-        "lines": 38916
+        "files": 301,
+        "lines": 38744
       },
       {
         "language": "Python",
         "files": 147,
-        "lines": 25567
+        "lines": 25610
       },
       {
         "language": "JavaScript",
         "files": 3,
-        "lines": 10898
+        "lines": 10910
       },
       {
         "language": "Markdown",
         "files": 44,
-        "lines": 4439
-      },
-      {
-        "language": "CSS",
-        "files": 2,
-        "lines": 1145
+        "lines": 4454
       },
       {
         "language": "TypeScript",
-        "files": 11,
-        "lines": 941
+        "files": 16,
+        "lines": 2077
+      },
+      {
+        "language": "CSS",
+        "files": 3,
+        "lines": 1579
       },
       {
         "language": "HTML",
@@ -62,10 +62,15 @@
         "language": "Shell",
         "files": 2,
         "lines": 60
+      },
+      {
+        "language": "C++",
+        "files": 1,
+        "lines": 11
       }
     ],
     "truncated": false,
-    "sampled_files": 1164,
+    "sampled_files": 1186,
     "source": "walker"
   },
   "dependencies": {

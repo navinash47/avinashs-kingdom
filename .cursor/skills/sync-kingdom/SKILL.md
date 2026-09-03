@@ -95,5 +95,7 @@ If incoming adds `FleetGraph.tsx` while `FleetGraph/` exists — **drop** the fi
 ## Notes
 
 - Panel progress bars are **read-only**; editing the source file + sync updates them.
+- **Progress parsing:** STATUS `**Progress:**` may be `55%`, `439/500 · 88%`, or `439/500`. Sync prefers an explicit `%`, else computes from `a/b`, then clamps. Never digit-strip the whole field (that produced job-jugaad `43950088%`). Job Jugaad progress is derived from `data/applications.json` (applied+ including waiting), not a free-form STATUS string.
+- After fixing progress math, confirm **local** `public/data/ventures.json` **and** the **Vercel** production URL (`/data/ventures.json`) once deployed — static hosting keeps the last bad snapshot until redeploy.
 - Manual expense/token edits stay in browser localStorage; synced rows refresh on load.
 - Open control plane: `npm run dev` → `http://localhost:5173/?tab=throne` (⌘K for command palette).

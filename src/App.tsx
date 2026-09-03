@@ -118,7 +118,9 @@ function KingdomApp() {
       <header className="hero-bar">
         <div>
           <p className="eyebrow">{shareMode ? 'Live guest view' : 'Virtual control plane'}</p>
-          <h1>AVINASH&apos;S KINGDOM</h1>
+          <h1>
+            AVINASH&apos;S <span className="phosphor-text">KINGDOM</span>
+          </h1>
           <p className="tagline">
             {shareMode
               ? 'Read-only mirror — use Refresh mirror to sync with the host'

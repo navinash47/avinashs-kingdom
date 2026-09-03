@@ -81,6 +81,7 @@ Catalog of pages. Agents update this on every ingest. Last full refresh: **2026-
 | [task-observer-headroom](concepts/task-observer-headroom.md) | Meta-skill observer vs token compressor — roles split |
 | [agentic-interview-prep](concepts/agentic-interview-prep.md) | LC + AI system design + agent evals study stack for Job Jugaad |
 | [agentic-resume-gates](concepts/agentic-resume-gates.md) | Kingdom milestones → honest resume claim language |
+| [agentic-stack-guidance](concepts/agentic-stack-guidance.md) | LangChain/LangGraph: skip by default; borrow patterns; AI/agentic/FDE roles + venture progress loop |
 | [resume-master-knowledge](concepts/resume-master-knowledge.md) | Phase 1 resume KB + dashboard at ~/Projects/resume |
 | [virtual-control-surface](concepts/virtual-control-surface.md) | Sync-owned Throne control plane + control-surface.json |
 | [brain-harness-fsm](concepts/brain-harness-fsm.md) | Deterministic KG/FSM empty model under brain/harness |

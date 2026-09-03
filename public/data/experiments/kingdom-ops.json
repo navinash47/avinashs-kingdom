@@ -4,6 +4,36 @@
   "items": [
     {
       "date": "2026-09-02",
+      "summary": "Log SPA blank-page observation for Vercel /api HTML fallback.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Fix blank Kingdom SPA when /api returns HTML.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Note Vercel create-on-first-deploy observation for Kingdom.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Ship Throne feature map, Analytics charts, and Vercel SPA deploy.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Record Phase 2b commit SHA on tracker.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Ship Phase 2b: fleet MCP, Cursor attach, gated writes.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
       "summary": "Record Phase 2 W4 SHA; tracker at 100%.",
       "source": "git"
     },
@@ -45,31 +75,6 @@
     {
       "date": "2026-09-02",
       "summary": "Document quieter lint v2 heuristics in harness README.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-02",
-      "summary": "Clear skill-observation backlog: new career/CICStep skills, tunnels diagnose, quieter lint v2.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-02",
-      "summary": "Ship lint heuristic v2, richer ingest stubs, and sync hygiene.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-02",
-      "summary": "Add wiki lint heuristic v1 and semi-auto ingest happy path.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-02",
-      "summary": "Land Karpathy-style personal OS: brain harness, wiki playbooks, Throne control surface, and venture onboard/sync.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-02",
-      "summary": "Refresh Kingdom after Procedural City Stage E re-close.",
       "source": "git"
     },
     {

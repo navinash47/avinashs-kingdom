@@ -1,4 +1,5 @@
 import type { FleetNodeData } from '../../lib/fleetGraph'
+import { formatProgress } from '../../lib/progress'
 import type { ServiceStatus } from '../../lib/orchestratorApi'
 
 type Props = {
@@ -50,7 +51,7 @@ export function NodeInspector({
         {data.priority ? <span className="badge ghost">{data.priority}</span> : null}
         {data.port != null ? <span className="badge ghost">:{data.port}</span> : null}
         {data.progress != null ? (
-          <span className="badge ghost">{data.progress}%</span>
+          <span className="badge ghost">{formatProgress(data.progress)}</span>
         ) : null}
       </div>
 

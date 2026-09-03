@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-09-02T23:02:58.121Z",
+  "synced_at": "2026-09-03T04:09:01.389Z",
   "source": "local working tree",
   "current_phase": 91,
   "stage": "H",
@@ -9,7 +9,7 @@
   "progress": 94,
   "version": "Stage H · Phase 91",
   "next_milestone": "Phase 91: v1 RELEASE GATE (pending)",
-  "updated_at": "2026-09-02T23:02:25.995033+00:00",
+  "updated_at": "2026-09-03T03:58:50.618163+00:00",
   "ceiling_usd": 70,
   "local_stale": false
 }

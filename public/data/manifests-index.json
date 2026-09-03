@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-09-02T23:02:58.679Z",
+  "synced_at": "2026-09-03T04:09:02.279Z",
   "ventures": [
     {
       "id": "whatsapp-voice",
@@ -8,7 +8,7 @@
       "lines": 2116,
       "files": 40,
       "truncated": false,
-      "synced_at": "2026-09-02T23:02:58.218Z"
+      "synced_at": "2026-09-03T04:09:01.540Z"
     },
     {
       "id": "youtube-editor",
@@ -17,16 +17,16 @@
       "lines": 22156,
       "files": 145,
       "truncated": false,
-      "synced_at": "2026-09-02T23:02:58.273Z"
+      "synced_at": "2026-09-03T04:09:01.614Z"
     },
     {
       "id": "research-frontier",
       "name": "Research Frontier Lab",
-      "primary_language": "Markdown",
-      "lines": 43,
-      "files": 3,
+      "primary_language": "JSON",
+      "lines": 31529,
+      "files": 119,
       "truncated": false,
-      "synced_at": "2026-09-02T23:02:58.325Z"
+      "synced_at": "2026-09-03T04:09:01.685Z"
     },
     {
       "id": "beamdojo",
@@ -35,16 +35,16 @@
       "lines": 6014,
       "files": 38,
       "truncated": false,
-      "synced_at": "2026-09-02T23:02:58.376Z"
+      "synced_at": "2026-09-03T04:09:01.781Z"
     },
     {
       "id": "procedural-city",
       "name": "Procedural City",
       "primary_language": "JSON",
-      "lines": 739130,
-      "files": 1164,
+      "lines": 740669,
+      "files": 1186,
       "truncated": false,
-      "synced_at": "2026-09-02T23:02:58.434Z"
+      "synced_at": "2026-09-03T04:09:01.863Z"
     },
     {
       "id": "comic-engine",
@@ -53,16 +53,16 @@
       "lines": 752759,
       "files": 1630,
       "truncated": false,
-      "synced_at": "2026-09-02T23:02:58.483Z"
+      "synced_at": "2026-09-03T04:09:01.935Z"
     },
     {
       "id": "kingdom-ops",
       "name": "Kingdom ops (subs + expenses)",
       "primary_language": "JSON",
-      "lines": 45381,
-      "files": 334,
+      "lines": 48140,
+      "files": 346,
       "truncated": false,
-      "synced_at": "2026-09-02T23:02:58.533Z"
+      "synced_at": "2026-09-03T04:09:02.018Z"
     },
     {
       "id": "mac-optimize-audit",
@@ -71,7 +71,7 @@
       "lines": 5677717,
       "files": 8000,
       "truncated": true,
-      "synced_at": "2026-09-02T23:02:58.581Z"
+      "synced_at": "2026-09-03T04:09:02.089Z"
     },
     {
       "id": "job-jugaad",
@@ -80,7 +80,7 @@
       "lines": 8580,
       "files": 41,
       "truncated": false,
-      "synced_at": "2026-09-02T23:02:58.630Z"
+      "synced_at": "2026-09-03T04:09:02.170Z"
     },
     {
       "id": "shorts",
@@ -89,7 +89,7 @@
       "lines": 0,
       "files": 0,
       "truncated": false,
-      "synced_at": "2026-09-02T23:02:58.678Z"
+      "synced_at": "2026-09-03T04:09:02.279Z"
     }
   ],
   "global_suggestions": [

@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-09-02T23:02:58.216Z",
+  "synced_at": "2026-09-03T04:09:01.538Z",
   "progress_rules": {
     "whatsapp-voice": "phases_pass / phases_total (from tracking/phases.json)",
     "procedural-city": "phases_pass / phases_total — prefer origin/main when local phase branch is stale",
@@ -7,7 +7,7 @@
     "youtube-editor": "STATUS.md **Progress** field",
     "research-frontier": "STATUS.md **Progress** field",
     "beamdojo": "STATUS.md **Progress** field (Isaac Lab GPU smokes / trains)",
-    "job-jugaad": "STATUS.md Progress = applied-or-beyond / target from data/applications.json",
+    "job-jugaad": "applied-or-beyond / target from data/applications.json (waiting counts; overshoot allowed past milestone)",
     "kingdom-ops": "heuristic ops readiness (70%) until kill-list closure tracked",
     "mac-optimize-audit": "STATUS.md Progress from health score after python3 -m mac_optimize audit",
     "shorts": "always 0 · parked"
@@ -53,17 +53,17 @@
     {
       "id": "research-frontier",
       "name": "Research Frontier Lab",
-      "version": "v0.1",
-      "progress": 12,
+      "version": "v0.2",
+      "progress": 22,
       "priority": "P1",
       "status": "active",
-      "nextMilestone": "Ingest 1–3 abstracts into Kingdom brain via kingdom-wiki (vertical: generative comics / multimodal consistency).",
+      "nextMilestone": "Phase 0 foundation: stand up `frontier-brain` registry + `paper-identity` resolve for one comics/multimodal club.",
       "progressSource": "STATUS.md Progress field (agent-updated)",
       "phasesPassed": null,
       "phasesTotal": null,
       "spendUsd": null,
       "ceilingUsd": null,
-      "notes": "Next: 1) Ingest 1–3 abstracts into Kingdom brain via kingdom-wiki (vertical: generative comics / multimodal consistency). · 2) Pull citation graph via OpenAlex / Semantic Scholar (no full-PDF dump by default). · 3) Prototype claim/limitation extraction → ranked open questions for that club.",
+      "notes": "Next: 1) Phase 0 foundation: stand up `frontier-brain` registry + `paper-identity` resolve for one comics/multimodal club. · 2) Ingest 1–3 abstracts into Kingdom brain via kingdom-wiki (vertical: generative comics / multimodal consistency). · 3) Prototype citation expand + distance/importance overlays on the map playground path (Phase 1).",
       "repoPath": "/Users/avinashnandyala/Projects/research-frontier-lab"
     },
     {
@@ -79,7 +79,7 @@
       "phasesTotal": 97,
       "spendUsd": null,
       "ceilingUsd": 70,
-      "notes": "City · 91/97 pass · source local working tree · updated 2026-09-02T23:02:25.995033+00:00 · ceiling $70",
+      "notes": "City · 91/97 pass · source local working tree · updated 2026-09-03T03:58:50.618163+00:00 · ceiling $70",
       "repoPath": "/Users/avinashnandyala/ProceduralCity"
     },
     {
@@ -105,7 +105,7 @@
       "progress": 70,
       "priority": "P1",
       "status": "active",
-      "nextMilestone": "Cancel/review 6 kill-list seats; reclaim low-risk disk (52.1% used)",
+      "nextMilestone": "Cancel/review 6 kill-list seats; reclaim low-risk disk (53.7% used)",
       "progressSource": "heuristic ops readiness 70% (audits live; kill seats still open)",
       "phasesPassed": null,
       "phasesTotal": null,
@@ -127,23 +127,23 @@
       "phasesTotal": null,
       "spendUsd": null,
       "ceilingUsd": null,
-      "notes": "Next: 1) Memory pressure is warning · 2) Restart Zen Browser — 3.0 GB across 26 processes · 3) Cursor is heavy (6.1 GB, 79 processes)",
+      "notes": "Next: 1) Memory pressure is warning · 2) Restart Zen Browser — 2.3 GB across 28 processes · 3) Cursor is heavy (7.2 GB, 140 processes)",
       "repoPath": "/Users/avinashnandyala/Projects/mac-optimize-audit"
     },
     {
       "id": "job-jugaad",
       "name": "Job Jugaad",
       "version": "Tracker v0.1",
-      "progress": 43950088,
+      "progress": 88,
       "priority": "P1",
       "status": "active",
       "nextMilestone": "Keep logging — 439/500 toward milestone",
-      "progressSource": "STATUS.md Progress field (agent-updated)",
-      "phasesPassed": null,
-      "phasesTotal": null,
+      "progressSource": "applications 439/500 from data/applications.json",
+      "phasesPassed": 439,
+      "phasesTotal": 500,
       "spendUsd": null,
       "ceilingUsd": null,
-      "notes": "Next: 1) Keep logging — 439/500 toward milestone · 2) Prep interviews (2 active) · 3) Run 2h search + live Gmail status toward 500 applied+",
+      "notes": "Next: 1) Keep logging — 439/500 toward milestone · 2) Prep interviews (2 active) · 3) Run 2h search + live Gmail status toward milestone",
       "repoPath": "/Users/avinashnandyala/Projects/job-jugaad"
     },
     {

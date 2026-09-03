@@ -3,8 +3,43 @@
   "updated": "2026-08-24",
   "items": [
     {
-      "date": "2026-08-24",
-      "summary": "Initial commit",
+      "date": "2026-09-02",
+      "summary": "test: raise frontier-roadmap Vitest coverage to 100%",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "fix: stop Story Gate races from wiping green signals",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "chore: add Phase 0 quality gates without paid SaaS",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Restore Phase 0 S00–S07 green signals after stack merges.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Update S07 proofs with green CI on PR #8.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Clarify S06 notes: S00 green, S01–S05 awaiting.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Record S05 awaiting_signal with PR #6 proofs.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Record S04 awaiting_signal with PR #5 proofs.",
       "source": "git"
     },
     {

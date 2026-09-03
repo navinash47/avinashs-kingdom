@@ -10,6 +10,8 @@ tags: [architecture, personal-os, brain, orchestrator, throne]
 
 Optional overlays later: MCP tool servers per venture, decision-trace “context graph” logging, vector RAG only for large raw corpora.
 
+**Agent frameworks:** do not default to LangChain/LangGraph — borrow their patterns into custom orchestration; see [[agentic-stack-guidance]].
+
 **Phase 2 (hard ~10%):** **done** on `main` — [[personal-os-phase2-srs]] · tracker [[ops/personal-os-phase2-tracker]] · MCP [[ops/personal-os-playbook]] / `mcp/README.md`.
 
 ## Why this (vs pure FSM-only or pure vector RAG-only)
@@ -75,5 +77,6 @@ Daily loop: [[ops/personal-os-playbook]].
 - [[virtual-control-surface]]
 - [[where-files-live]]
 - [[research-lab]]
+- [[agentic-stack-guidance]]
 - [[ops/personal-os-playbook]]
 - Venture: [[ventures/kingdom-ops]]

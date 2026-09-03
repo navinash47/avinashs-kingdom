@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import { formatProgress } from '../lib/progress'
 import './ResearchLab.css'
 
 type ResearchLabProps = {
@@ -499,7 +500,7 @@ export function ResearchLab({ onOpenVenture, onOpenGraph, onOpenExpenses }: Rese
                   <p className="eyebrow">{p.field}</p>
                   <h3>{p.name}</h3>
                 </div>
-                <span className="stat-v">{p.progress}%</span>
+                <span className="stat-v">{formatProgress(p.progress)}</span>
               </header>
               <p className="muted tiny">
                 {p.version ?? '—'} · spend ${Number(p.spendUsd ?? 0).toFixed(2)}

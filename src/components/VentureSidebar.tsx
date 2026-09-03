@@ -1,4 +1,5 @@
 import type { Venture } from '../types'
+import { formatProgress } from '../lib/progress'
 import { ProgressDial } from './ProgressDial'
 import { useOrchestrator } from '../context/OrchestratorContext'
 
@@ -32,7 +33,7 @@ export function VentureSidebar({ ventures, selectedId }: Props) {
               <div>
                 <span className="badge tiny">{v.priority}</span>
                 <strong>{v.name}</strong>
-                <span className="muted tiny">{v.progress}%</span>
+                <span className="muted tiny">{formatProgress(v.progress)}</span>
               </div>
             </button>
           </li>
