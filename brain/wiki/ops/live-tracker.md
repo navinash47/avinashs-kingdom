@@ -25,7 +25,7 @@ Auto-written by at **2026-09-03T04:09:01.538Z**. Do not hand-edit - re-run sync 
 
 ## How budget / burn is calculated
 
-- **Monthly budget:** `$portfolio.monthlyBudgetUsd` (see).
+- **Monthly budget:**  (see).
 - **Tracked burn:** sum(USD expenses including synced kill-list monthly estimates + venture API jsonl) + sum(tokens.entries.usd).
 - **Note:** agent.tokenUsedUsd dials are display caps/used hints, not double-counted in throne burn.
 
