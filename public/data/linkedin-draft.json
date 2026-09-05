@@ -1,61 +1,61 @@
 {
- "updated": "2026-09-02",
- "status": "APPROVED",
- "kingdom_approve_note": "Approved in Kingdom Resume tab - safe to post headline and about to LinkedIn.",
- "linkedin_url": "https://www.linkedin.com/in/avinash-nandyala-06a88b199",
- "ingest_note": "LinkedIn profile fetch blocked (HTTP 500) 2026-09-02 - sourced from existing linkedin-draft.json, Portfolio site, legacy tracks, portfolio brain wikis",
- "headline_options": [
- "Applied Artificial Intelligence and Agent Engineer · Master of Science in Computer Science, UMass · Ex-Mastercard · ComicMainEngine · Procedural City · BeamDojo",
- "Agentic Systems Engineer · Evaluation Gates and Multi-Agent Orchestration · ComicMainEngine · Procedural City · BeamDojo · Ex-Mastercard",
- "Artificial Intelligence Backend and Agent Engineer · FastAPI · Structured Language Model Outputs · Venture Fleet Control Plane · Master of Science in Computer Science · Ex-Mastercard",
- "Robotics and Reinforcement Learning Engineer · Isaac Lab Locomotion (BeamDojo, Robotics Science and Systems 2025) · Simulation-to-Real · Master of Science in Computer Science, UMass · Ex-Mastercard Backend",
- "Generative Media and Agents · ComicMainEngine · Procedural City (Language Model Scene Director) · BeamDojo Research · Master of Science in Computer Science · Ex-Mastercard"
- ],
- "about_variants": [
- "I build agentic artificial intelligence systems where verification matters, not prompt demos. My work spans generative media pipelines (ComicMainEngine), budget-gated language model scene direction (Procedural City), and research reproduction (BeamDojo with Isaac Lab locomotion), all connected through a multi-repo operations dashboard (Venture Fleet Control Plane) with phase gates, spend tracking, and schema-backed evaluations.\n\nEducation: Bachelor of Technology in Computer Science, Indian Institute of Technology Kharagpur; Master of Science in Computer Science, University of Massachusetts Amherst. Before grad school I spent three years at Mastercard shipping payment-card-industry-compliant microservices, web services for Enhanced Currency Conversion (around 20% latency reduction), tokenization key-block compliance, and Java gateway modernization. At UMass Biomedical Natural Language Processing lab I worked on language model diagnosis ranking on clinical text.\n\nI'm looking for applied artificial intelligence and agent engineer roles where production discipline (evaluations, provenance, cost ceilings) meets fast iteration. Open to backend-heavy generative artificial intelligence platform teams too.",
- "Agent engineer with a backend foundation: Bachelor of Technology in Computer Science at Indian Institute of Technology Kharagpur, Master of Science in Computer Science at University of Massachusetts Amherst, and three years at Mastercard building high-volume payment interfaces. I ship FastAPI services with structured outputs, per-call usage accounting, and hard spend ceilings, then prove quality with automated evaluation gates instead of manual review loops.\n\nRecent builds: ComicMainEngine (end-to-end generative comic pipeline with vision-language model rubric gates), Procedural City (92-phase 3D pipeline with language model scene director and schema validation), and BeamDojo (Isaac Lab locomotion reproduction on Lambda graphics processing unit). Venture Fleet Control Plane is my steward dashboard syncing status, phases, and expenses across ventures.\n\nInterested in roles building tool-using agents, multi-step workflows, and evaluation-first language model products, not robotics-first positioning unless the team wants simulation-to-real research.",
- "I design language-model-powered products like backend systems: schemas, job queues, provenance logs, and cost controls from day one. Portfolio focus is agentic generative media and operations tooling - ComicMainEngine, Procedural City, BeamDojo - backed by a live command center that syncs venture state across repos.\n\nBachelor of Technology in Computer Science (Indian Institute of Technology Kharagpur) and Master of Science in Computer Science (University of Massachusetts Amherst). Mastercard taught me how to ship under compliance pressure (payment card industry standards, tokenization, Enhanced Currency Conversion latency). UMass Biomedical Natural Language Processing lab taught me how to benchmark clinical language models with recall metrics. I combine both when building agents that must be auditable and affordable at scale.\n\nSeeking applied artificial intelligence and agentic engineering roles (and selective artificial intelligence backend and platform roles) in 2026."
- ],
- "featured_links": [
- {
- "label": "ComicMainEngine",
- "url": "https://github.com/navinash47/ComicMainEngine",
- "description": "Generative comic pipeline with FastAPI, multi-provider language models and images, vision-language model evaluation gate"
- },
- {
- "label": "Procedural City",
- "url": "https://github.com/navinash47/ProceduralCity",
- "description": "92-phase 3D pipeline with language model scene director, schema validation, and spend ceiling"
- },
- {
- "label": "BeamDojo",
- "url": "https://github.com/navinash47/BeamDojo",
- "description": "Isaac Lab locomotion reproduction, Robotics Science and Systems 2025 BeamDojo, Stage 1 graphics processing unit smoke test"
- },
- {
- "label": "Venture Fleet Control Plane",
- "url": "https://github.com/navinash47/avinashs-kingdom",
- "description": "Multi-venture agent portfolio command center with sync, phase gates, and fleet graph"
- },
- {
- "label": "Resume Knowledge Repository",
- "url": "https://github.com/navinash47/resume",
- "description": "Master bullet knowledge base with approval dashboard (89 options, 7 role tracks, evaluation pipeline)"
- }
- ],
- "experience_independent": {
- "title": "Venture Fleet Control Plane | Agentic Product Lab",
- "company": "Independent Builder",
- "dates": "Jun 2026-Present",
- "location": "Amherst, Massachusetts, United States",
- "bullet_draft": "Built a verification-first agent portfolio command center (React and Vite) syncing status, phase gates, expenses, and architecture across 10+ repositories; featured shipped and lab systems include ComicMainEngine (generative comic pipeline), Procedural City (language model scene director under spend ceiling), and BeamDojo (Isaac Lab locomotion research), with schema-backed evaluations and provenance logging, not prompt-only demos."
- },
- "notes": [
- "Do not feature WhatsApp Voice or YouTube Editor on LinkedIn until gates pass.",
- "Align posted experience bullet with approved Venture Fleet Control Plane project bullets option from dashboard.",
- "Verify Biomedical Natural Language Processing diagnosis metric with principal investigator before citing 27 weighted F1 publicly.",
- "APPROVED 2026-09-02 via Kingdom Resume tab - post headline and about when ready."
- ],
- "approved_at": "2026-09-02T04:25:11.145Z",
- "approved_via": "kingdom-resume-tab"
+  "updated": "2026-09-05",
+  "status": "APPROVED",
+  "kingdom_approve_note": "Approved in Kingdom Resume tab - safe to post headline and about to LinkedIn.",
+  "linkedin_url": "https://www.linkedin.com/in/avinash-nandyala-06a88b199",
+  "ingest_note": "LinkedIn profile fetch blocked (HTTP 500) 2026-09-02 - sourced from existing linkedin-draft.json, Portfolio site, legacy tracks, portfolio brain wikis",
+  "headline_options": [
+    "Applied Artificial Intelligence and Agent Engineer \u00b7 Master of Science in Computer Science, UMass \u00b7 Ex-Mastercard \u00b7 ComicMainEngine \u00b7 Procedural City \u00b7 BeamDojo",
+    "Agentic Systems Engineer \u00b7 Evaluation Gates and Multi-Agent Orchestration \u00b7 ComicMainEngine \u00b7 Procedural City \u00b7 BeamDojo \u00b7 Ex-Mastercard",
+    "Artificial Intelligence Backend and Agent Engineer \u00b7 FastAPI \u00b7 Structured Language Model Outputs \u00b7 Venture Fleet Control Plane \u00b7 Master of Science in Computer Science \u00b7 Ex-Mastercard",
+    "Robotics and Reinforcement Learning Engineer \u00b7 Isaac Lab Locomotion (BeamDojo, Robotics Science and Systems 2025) \u00b7 Simulation-to-Real \u00b7 Master of Science in Computer Science, UMass \u00b7 Ex-Mastercard Backend",
+    "Generative Media and Agents \u00b7 ComicMainEngine \u00b7 Procedural City (Language Model Scene Director) \u00b7 BeamDojo Research \u00b7 Master of Science in Computer Science \u00b7 Ex-Mastercard"
+  ],
+  "about_variants": [
+    "I build agentic artificial intelligence systems where verification matters, not prompt demos. My work spans generative media pipelines (ComicMainEngine), budget-gated language model scene direction (Procedural City), and research reproduction (BeamDojo with Isaac Lab locomotion), all connected through a multi-repo operations dashboard (Venture Fleet Control Plane) with phase gates, spend tracking, and schema-backed evaluations.\n\nEducation: Bachelor of Technology in Computer Science, Indian Institute of Technology Kharagpur; Master of Science in Computer Science, University of Massachusetts Amherst. Before grad school I spent three years at Mastercard shipping payment-card-industry-compliant microservices, web services for Enhanced Currency Conversion (around 20% latency reduction), tokenization key-block compliance, and Java gateway modernization. At UMass Biomedical Natural Language Processing lab I worked on language model diagnosis ranking on clinical text.\n\nI'm looking for applied artificial intelligence and agent engineer roles where production discipline (evaluations, provenance, cost ceilings) meets fast iteration. Open to backend-heavy generative artificial intelligence platform teams too.",
+    "Agent engineer with a backend foundation: Bachelor of Technology in Computer Science at Indian Institute of Technology Kharagpur, Master of Science in Computer Science at University of Massachusetts Amherst, and three years at Mastercard building high-volume payment interfaces. I ship FastAPI services with structured outputs, per-call usage accounting, and hard spend ceilings, then prove quality with automated evaluation gates instead of manual review loops.\n\nRecent builds: ComicMainEngine (end-to-end generative comic pipeline with vision-language model rubric gates), Procedural City (92-phase 3D pipeline with language model scene director and schema validation), and BeamDojo (Isaac Lab locomotion reproduction on Lambda graphics processing unit). Venture Fleet Control Plane is my steward dashboard syncing status, phases, and expenses across ventures.\n\nInterested in roles building tool-using agents, multi-step workflows, and evaluation-first language model products, not robotics-first positioning unless the team wants simulation-to-real research.",
+    "I design language-model-powered products like backend systems: schemas, job queues, provenance logs, and cost controls from day one. Portfolio focus is agentic generative media and operations tooling - ComicMainEngine, Procedural City, BeamDojo - backed by a live command center that syncs venture state across repos.\n\nBachelor of Technology in Computer Science (Indian Institute of Technology Kharagpur) and Master of Science in Computer Science (University of Massachusetts Amherst). Mastercard taught me how to ship under compliance pressure (payment card industry standards, tokenization, Enhanced Currency Conversion latency). UMass Biomedical Natural Language Processing lab taught me how to benchmark clinical language models with recall metrics. I combine both when building agents that must be auditable and affordable at scale.\n\nSeeking applied artificial intelligence and agentic engineering roles (and selective artificial intelligence backend and platform roles) in 2026."
+  ],
+  "featured_links": [
+    {
+      "label": "ComicMainEngine",
+      "url": "https://github.com/navinash47/ComicMainEngine",
+      "description": "Generative comic pipeline with FastAPI, multi-provider language models and images, vision-language model evaluation gate"
+    },
+    {
+      "label": "Procedural City",
+      "url": "https://github.com/navinash47/ProceduralCity",
+      "description": "92-phase 3D pipeline with language model scene director, schema validation, and spend ceiling"
+    },
+    {
+      "label": "BeamDojo",
+      "url": "https://github.com/navinash47/BeamDojo",
+      "description": "Isaac Lab locomotion reproduction, Robotics Science and Systems 2025 BeamDojo, Stage 1 graphics processing unit smoke test"
+    },
+    {
+      "label": "Venture Fleet Control Plane",
+      "url": "https://github.com/navinash47/avinashs-kingdom",
+      "description": "Multi-venture agent portfolio command center with sync, phase gates, and fleet graph"
+    },
+    {
+      "label": "Resume Knowledge Repository",
+      "url": "https://github.com/navinash47/resume",
+      "description": "Master bullet knowledge base with approval dashboard (89 options, 7 role tracks, evaluation pipeline)"
+    }
+  ],
+  "experience_independent": {
+    "title": "Venture Fleet Control Plane | Agentic Product Lab",
+    "company": "Independent Builder",
+    "dates": "Jun 2026-Present",
+    "location": "Amherst, Massachusetts, United States",
+    "bullet_draft": "Built a verification-first agent portfolio command center (React and Vite) syncing status, phase gates, expenses, and architecture across 10+ repositories; featured shipped and lab systems include ComicMainEngine (generative comic pipeline), Procedural City (language model scene director under spend ceiling), and BeamDojo (Isaac Lab locomotion research), with schema-backed evaluations and provenance logging, not prompt-only demos."
+  },
+  "notes": [
+    "Do not feature WhatsApp Voice or YouTube Editor on LinkedIn until gates pass.",
+    "Align posted experience bullet with approved Venture Fleet Control Plane project bullets option from dashboard.",
+    "Verify Biomedical Natural Language Processing diagnosis metric with principal investigator before citing 27 weighted F1 publicly.",
+    "APPROVED 2026-09-02 via Kingdom Resume tab - post headline and about when ready."
+  ],
+  "approved_at": "2026-09-02T04:25:11.145Z",
+  "approved_via": "kingdom-resume-tab"
 }

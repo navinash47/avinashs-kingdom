@@ -1,6 +1,6 @@
 ---
 type: concept
-updated: 2026-09-02
+updated: 2026-09-05
 tags: [resume, jobs, kingdom, eval, role-tracks, robotics]
 ---
 

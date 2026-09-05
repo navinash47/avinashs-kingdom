@@ -1,6 +1,6 @@
 ---
 type: concept
-updated: 2026-09-02
+updated: 2026-09-05
 tags: [jobs, resume, kingdom, gates]
 ---
 
