@@ -5,36 +5,36 @@
   "linkedin_url": "https://www.linkedin.com/in/avinash-nandyala-06a88b199",
   "headline_options": [
     "AI and Agent Engineer - MS Computer Science, UMass - Ex-Mastercard - ComicMainEngine - Procedural City - BeamDojo",
-    "Agentic Systems Engineer - Evaluation-First AI Pipelines - ComicMainEngine - Procedural City - BeamDojo - Ex-Mastercard",
+    "Agentic Systems Engineer - Evaluation-First AI Pipelines - Ex-Mastercard",
     "AI Backend Engineer - FastAPI - Structured LLM Outputs - MS Computer Science - Ex-Mastercard",
-    "Robotics and RL Engineer - Isaac Lab Locomotion - BeamDojo - Simulation-to-Real - MS Computer Science, UMass",
-    "Generative Media and Agents - ComicMainEngine - Procedural City - BeamDojo Research - MS Computer Science - Ex-Mastercard"
+    "Robotics and RL Engineer - Isaac Lab Locomotion - Simulation-to-Real - MS Computer Science, UMass",
+    "Generative Media and Agents - ComicMainEngine - Procedural City - BeamDojo - MS Computer Science"
   ],
   "about_variants": [
-    "I build AI systems where evaluation and verification matter. My projects focus on structured pipelines with measurable quality gates.\n\nComicMainEngine: End-to-end generative comic pipeline. Vision: automate comic creation from script to panels. Approach: FastAPI backend with multi-provider LLM and image generation. Evaluation: VLM rubric gates scoring each panel. Result: 22/22 board tasks completed.\n\nProcedural City: 3D city generation with LLM scene direction. Vision: generate coherent urban environments under budget constraints. Approach: 92-phase pipeline with schema validation. Evaluation: structured output validation at each phase. Currently achieving 52/92 phases with spend tracking.\n\nBeamDojo: Reproducing Isaac Lab locomotion research. Vision: train humanoid robots to walk on beams. Approach: PPO training on Lambda GPU with Isaac Sim. Evaluation: Weights and Biases metrics tracking. Currently running Stage 1 smoke tests at 18% progress.\n\nEducation: BTech CS from IIT Kharagpur, MS CS from UMass Amherst. Three years at Mastercard building payment APIs with around 20% latency improvement on Enhanced Currency Conversion.\n\nLooking for AI and agent engineer roles focused on evaluation-first development.",
-    "Agent engineer building verification-first AI systems. I design pipelines with quality gates and measurable outcomes.\n\nRecent work:\n- ComicMainEngine: Generative comic pipeline with VLM evaluation gates. Completed 22/22 board tasks.\n- Procedural City: LLM-directed 3D generation. Achieving 52/92 phases with budget tracking.\n- BeamDojo: Isaac Lab locomotion reproduction. Running Stage 1 training at 18% progress.\n\nBackground: BTech CS (IIT Kharagpur), MS CS (UMass Amherst), three years at Mastercard on payment APIs.\n\nInterested in roles building tool-using agents and evaluation-first LLM products.",
-    "I build AI products with evaluation at the core - not just demos.\n\nPortfolio:\n- ComicMainEngine: Comic generation pipeline. VLM rubric evaluation. 22/22 tasks done.\n- Procedural City: 3D city generator with LLM scene direction. Achieving 52/92 phases.\n- BeamDojo: Robotics locomotion research. Training in progress at 18%.\n\nEducation: BTech CS (IIT Kharagpur), MS CS (UMass Amherst). Mastercard: payment APIs, 20% latency reduction.\n\nSeeking AI and agentic engineering roles in 2026."
+    "I build AI systems where evaluation and verification matter.\n\nComicMainEngine: End-to-end generative comic pipeline. Automating comic creation from script to panels using multi-provider LLM and image generation. VLM rubric gates ensure each panel meets quality standards. Successfully completed all initial board tasks.\n\nProcedural City: 3D city generation with LLM scene direction. Generating coherent urban environments under budget constraints using schema validation at each phase. Currently progressing through the pipeline with spend tracking.\n\nBeamDojo: Reproducing Isaac Lab locomotion research. Training humanoid robots to walk on beams using PPO on Lambda GPU. Currently running initial smoke tests with Weights and Biases tracking.\n\nEducation: BTech CS from IIT Kharagpur, MS CS from UMass Amherst. Three years at Mastercard improving payment API latency on Enhanced Currency Conversion.\n\nLooking for AI and agent engineer roles focused on evaluation-first development.",
+    "Agent engineer building verification-first AI systems with quality gates and measurable outcomes.\n\nRecent work:\n- ComicMainEngine: Generative comic pipeline with VLM evaluation gates. Completed initial development phase.\n- Procedural City: LLM-directed 3D generation with budget tracking. Progressing through structured phases.\n- BeamDojo: Isaac Lab locomotion reproduction. Running initial training experiments.\n\nBackground: BTech CS (IIT Kharagpur), MS CS (UMass Amherst), three years at Mastercard on payment APIs.\n\nInterested in roles building tool-using agents and evaluation-first LLM products.",
+    "I build AI products with evaluation at the core.\n\nPortfolio:\n- ComicMainEngine: Comic generation with VLM rubric evaluation. Initial phase completed.\n- Procedural City: 3D city generator with LLM scene direction. Progressing through development.\n- BeamDojo: Robotics locomotion research. Training in progress.\n\nEducation: BTech CS (IIT Kharagpur), MS CS (UMass Amherst). Mastercard: payment APIs with improved latency.\n\nSeeking AI and agentic engineering roles in 2026."
   ],
   "featured_links": [
     {
       "label": "ComicMainEngine",
       "url": "https://github.com/navinash47/ComicMainEngine",
-      "description": "Generative comic pipeline with VLM evaluation gates. Result: 22/22 board tasks completed."
+      "description": "Generative comic pipeline with VLM evaluation gates. Initial development completed."
     },
     {
       "label": "Procedural City",
       "url": "https://github.com/navinash47/ProceduralCity",
-      "description": "LLM-directed 3D city generation with schema validation. Achieving 52/92 phases."
+      "description": "LLM-directed 3D city generation with schema validation. Progressing through structured phases."
     },
     {
       "label": "BeamDojo",
       "url": "https://github.com/navinash47/BeamDojo",
-      "description": "Isaac Lab locomotion research reproduction. Running Stage 1 training at 18% progress."
+      "description": "Isaac Lab locomotion research reproduction. Running initial training experiments."
     },
     {
       "label": "Venture Fleet Control Plane",
       "url": "https://github.com/navinash47/avinashs-kingdom",
-      "description": "Portfolio command center tracking project phases, expenses, and evaluations across ventures."
+      "description": "Portfolio command center tracking project phases and evaluations across ventures."
     }
   ],
   "experience_independent": {
@@ -42,13 +42,13 @@
     "company": "Independent Builder",
     "dates": "Jun 2026-Present",
     "location": "Amherst, Massachusetts, United States",
-    "bullet_draft": "Building evaluation-first AI projects: ComicMainEngine (comic generation with VLM quality gates, 22/22 tasks completed), Procedural City (LLM scene direction achieving 52/92 phases), and BeamDojo (robotics locomotion research in progress). Managing all projects through a unified dashboard tracking phases, evaluations, and results."
+    "bullet_draft": "Building evaluation-first AI projects: ComicMainEngine (comic generation with VLM quality gates, initial phase completed), Procedural City (LLM scene direction progressing through development), and BeamDojo (robotics locomotion research in progress). Managing all projects through a unified dashboard tracking phases and evaluations."
   },
   "notes": [
     "Do not feature WhatsApp Voice or YouTube Editor until gates pass.",
-    "Use present continuous for in-progress results.",
+    "Use present continuous for in-progress work. No specific numbers.",
     "APPROVED 2026-09-05 - post headline and about when ready."
   ],
-  "approved_at": "2026-09-05T04:15:00.000Z",
+  "approved_at": "2026-09-05T04:17:00.000Z",
   "approved_via": "kingdom-resume-tab"
 }
