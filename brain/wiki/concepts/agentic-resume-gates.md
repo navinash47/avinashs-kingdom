@@ -6,40 +6,47 @@ tags: [jobs, resume, kingdom, gates]
 
 # Agentic Resume Claim Gates
 
-Maps Kingdom milestones to honest resume / LinkedIn language. Use with Track A resume and concepts/agentic-interview-prep.
+Maps Kingdom milestones to honest resume and LinkedIn language. Use with Track A resume and concepts/agentic-interview-prep.
 
-**Rule:** Until a gate passes, prefer "shipped lab systems with evaluation and operations discipline," not "production at N users" or "paid customers."
+**Rule:** Until a gate passes, use present continuous tense for in-progress work. Focus on vision, approach, evaluation, and results.
 
 ## Gate Table
 
-| Venture | Milestone | Stronger claim you can unlock | Until then, say |
-|---------|-----------|-------------------------------|-----------------|
-| **WhatsApp** ventures/whatsapp-voice | **Phase 8+** - real pilot, paid touch, or signed intent | "Deployed WhatsApp agent into broker workflow; qualify to booking with live outreach" (Forward Deployed Engineer gold) | "Built finite state machine lead-qualify agent with outreach customer relationship management; dogfood demos; phase-gated delivery" |
-| **YouTube** ventures/youtube-editor | Timeline/preview **or** one dogfood video with provenance trail | "Shipped anti-slop editor that produced [video] with mandatory clip provenance" | "Multi-agent Cut Control lab with formula lint and provenance schemas (in progress toward publish)" |
-| **ComicMainEngine** ventures/comic-engine | Public demo + **evaluation metrics** on GitHub README (Version 1 board already 22/22) | "Production-minded multimodal pipeline with vision-language model evaluation gate pass rate and usage metering" | "Shipped end-to-end pipeline with vision-language model rubric gates and usage database" (already usable) |
-| **Procedural City** ventures/procedural-city | One crisp **language model Scene Director + budget gate** case study (not all 92 phases) | "Long-horizon language model scene direction under hard spend ceiling with structured-output validation" | Same, scoped to Stage E / budget - don't wait for Phase 92 |
-| **Kingdom Operations** ventures/kingdom-ops | Stable sync + public architecture note | "Multi-agent command center syncing gates, spend, audits" | Already fair as Independent Builder bullets |
+| Venture | Milestone | After gate (with result) | Before gate (in progress) |
+|---------|-----------|--------------------------|---------------------------|
+| **WhatsApp** | Phase 8+ pilot with real users | "Deployed WhatsApp agent into broker workflow. Result: qualifying leads and booking site visits with live outreach." | "Building lead-qualify agent for real estate brokers. Achieving Phase 8 with dogfood demos." |
+| **YouTube** | Dogfood video with provenance trail | "Shipped anti-slop video editor. Result: produced video with mandatory clip provenance." | "Building multi-agent video editor with formula validation. Working toward first dogfood video." |
+| **ComicMainEngine** | Public demo with eval metrics | "Built generative comic pipeline with VLM evaluation gates. Result: 22/22 board tasks completed with quality metrics on GitHub." | "Building comic generation pipeline with VLM rubric evaluation. Achieving board task completion." |
+| **Procedural City** | Scene Director case study | "Built LLM scene director for 3D city generation. Result: 52/92 phases completed under budget ceiling." | "Building 3D city generator with LLM scene direction. Achieving 52/92 phases with spend tracking." |
+| **Kingdom Operations** | Stable sync with public architecture | "Built multi-agent command center. Result: syncing gates, spend, and audits across 10+ ventures." | "Building portfolio command center. Tracking phases and evaluations across ventures." |
 
-## Claim Language Cheat Sheet
+## Claim Language Guide
 
-| Weak | Strong (after gate) |
-|------|---------------------|
-| Prototyping diffusion models… | Shipped generative pipeline with **evaluation gate** and **provenance** |
-| Chatbot for leads | **Finite state machine agent** qualify to booking with handoff and audit |
-| Artificial intelligence video editor | **Multi-agent desk** with formula lint and **mandatory clip provenance** |
-| Built with LangChain | Built **custom orchestration**; can discuss LangGraph and Model Context Protocol tradeoffs - decision note at concepts/agentic-stack-guidance |
-| Scaled artificial intelligence product | Lab system with **spend ceilings** and **usage accounting** (until pilot metrics exist) |
+| Weak | Strong |
+|------|--------|
+| Prototyping diffusion models | Built generative pipeline with evaluation gate and provenance tracking |
+| Chatbot for leads | Built lead-qualify agent with handoff and audit trail |
+| AI video editor | Built multi-agent video desk with clip provenance validation |
+| Built with LangChain | Built custom orchestration with evaluation gates |
+| Scaled AI product | Built lab system with spend ceiling and usage tracking |
 
-## Apply Sequence versus Gates
+## Writing Pattern
 
-1. **Now (pre-pilot):** Apply with Track A using ComicMainEngine Version 1 + YouTube lab + WhatsApp dogfood language; seed Job Jugaad wishlist (30).
-2. **After WhatsApp Phase 8:** Rewrite LinkedIn Featured + top WhatsApp bullets; prioritize Forward Deployed Engineer and customer-agent roles.
-3. **After YouTube dogfood publish:** Add link + provenance appendix; targeting agent platforms and media artificial intelligence.
-4. **ComicMainEngine README metrics:** Attach evaluation report; Braintrust, Weights and Biases, and evaluation-heavy roles.
+For each project, follow this structure:
+1. **Vision:** What problem are you solving?
+2. **Approach:** How are you building it? (brief)
+3. **Evaluation:** How do you measure quality?
+4. **Result:** What did you achieve? (or "achieving X" if in progress)
+
+## Apply Sequence
+
+1. **Now:** Apply with ComicMainEngine (22/22 result) + Procedural City (achieving 52/92) + BeamDojo (running Stage 1)
+2. **After WhatsApp Phase 8:** Add WhatsApp with pilot results
+3. **After YouTube dogfood:** Add YouTube with video link
+4. **After BeamDojo Stage 1:** Update with training metrics
 
 ## Related
 
 - ventures/job-jugaad
 - concepts/agentic-interview-prep
 - concepts/agentic-stack-guidance
-- Desktop documents: Avinash_Nandyala_Agentic_Applied_AI.pdf, Avinash_Nandyala_AI_Backend.pdf

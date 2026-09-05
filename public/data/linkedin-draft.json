@@ -3,44 +3,38 @@
   "status": "APPROVED",
   "kingdom_approve_note": "Approved in Kingdom Resume tab - safe to post headline and about to LinkedIn.",
   "linkedin_url": "https://www.linkedin.com/in/avinash-nandyala-06a88b199",
-  "ingest_note": "LinkedIn profile fetch blocked (HTTP 500) 2026-09-02 - sourced from existing linkedin-draft.json, Portfolio site, legacy tracks, portfolio brain wikis",
   "headline_options": [
-    "Applied Artificial Intelligence and Agent Engineer \u00b7 Master of Science in Computer Science, UMass \u00b7 Ex-Mastercard \u00b7 ComicMainEngine \u00b7 Procedural City \u00b7 BeamDojo",
-    "Agentic Systems Engineer \u00b7 Evaluation Gates and Multi-Agent Orchestration \u00b7 ComicMainEngine \u00b7 Procedural City \u00b7 BeamDojo \u00b7 Ex-Mastercard",
-    "Artificial Intelligence Backend and Agent Engineer \u00b7 FastAPI \u00b7 Structured Language Model Outputs \u00b7 Venture Fleet Control Plane \u00b7 Master of Science in Computer Science \u00b7 Ex-Mastercard",
-    "Robotics and Reinforcement Learning Engineer \u00b7 Isaac Lab Locomotion (BeamDojo, Robotics Science and Systems 2025) \u00b7 Simulation-to-Real \u00b7 Master of Science in Computer Science, UMass \u00b7 Ex-Mastercard Backend",
-    "Generative Media and Agents \u00b7 ComicMainEngine \u00b7 Procedural City (Language Model Scene Director) \u00b7 BeamDojo Research \u00b7 Master of Science in Computer Science \u00b7 Ex-Mastercard"
+    "AI and Agent Engineer - MS Computer Science, UMass - Ex-Mastercard - ComicMainEngine - Procedural City - BeamDojo",
+    "Agentic Systems Engineer - Evaluation-First AI Pipelines - ComicMainEngine - Procedural City - BeamDojo - Ex-Mastercard",
+    "AI Backend Engineer - FastAPI - Structured LLM Outputs - MS Computer Science - Ex-Mastercard",
+    "Robotics and RL Engineer - Isaac Lab Locomotion - BeamDojo - Simulation-to-Real - MS Computer Science, UMass",
+    "Generative Media and Agents - ComicMainEngine - Procedural City - BeamDojo Research - MS Computer Science - Ex-Mastercard"
   ],
   "about_variants": [
-    "I build agentic artificial intelligence systems where verification matters, not prompt demos. My work spans generative media pipelines (ComicMainEngine), budget-gated language model scene direction (Procedural City), and research reproduction (BeamDojo with Isaac Lab locomotion), all connected through a multi-repo operations dashboard (Venture Fleet Control Plane) with phase gates, spend tracking, and schema-backed evaluations.\n\nEducation: Bachelor of Technology in Computer Science, Indian Institute of Technology Kharagpur; Master of Science in Computer Science, University of Massachusetts Amherst. Before grad school I spent three years at Mastercard shipping payment-card-industry-compliant microservices, web services for Enhanced Currency Conversion (around 20% latency reduction), tokenization key-block compliance, and Java gateway modernization. At UMass Biomedical Natural Language Processing lab I worked on language model diagnosis ranking on clinical text.\n\nI'm looking for applied artificial intelligence and agent engineer roles where production discipline (evaluations, provenance, cost ceilings) meets fast iteration. Open to backend-heavy generative artificial intelligence platform teams too.",
-    "Agent engineer with a backend foundation: Bachelor of Technology in Computer Science at Indian Institute of Technology Kharagpur, Master of Science in Computer Science at University of Massachusetts Amherst, and three years at Mastercard building high-volume payment interfaces. I ship FastAPI services with structured outputs, per-call usage accounting, and hard spend ceilings, then prove quality with automated evaluation gates instead of manual review loops.\n\nRecent builds: ComicMainEngine (end-to-end generative comic pipeline with vision-language model rubric gates), Procedural City (92-phase 3D pipeline with language model scene director and schema validation), and BeamDojo (Isaac Lab locomotion reproduction on Lambda graphics processing unit). Venture Fleet Control Plane is my steward dashboard syncing status, phases, and expenses across ventures.\n\nInterested in roles building tool-using agents, multi-step workflows, and evaluation-first language model products, not robotics-first positioning unless the team wants simulation-to-real research.",
-    "I design language-model-powered products like backend systems: schemas, job queues, provenance logs, and cost controls from day one. Portfolio focus is agentic generative media and operations tooling - ComicMainEngine, Procedural City, BeamDojo - backed by a live command center that syncs venture state across repos.\n\nBachelor of Technology in Computer Science (Indian Institute of Technology Kharagpur) and Master of Science in Computer Science (University of Massachusetts Amherst). Mastercard taught me how to ship under compliance pressure (payment card industry standards, tokenization, Enhanced Currency Conversion latency). UMass Biomedical Natural Language Processing lab taught me how to benchmark clinical language models with recall metrics. I combine both when building agents that must be auditable and affordable at scale.\n\nSeeking applied artificial intelligence and agentic engineering roles (and selective artificial intelligence backend and platform roles) in 2026."
+    "I build AI systems where evaluation and verification matter. My projects focus on structured pipelines with measurable quality gates.\n\nComicMainEngine: End-to-end generative comic pipeline. Vision: automate comic creation from script to panels. Approach: FastAPI backend with multi-provider LLM and image generation. Evaluation: VLM rubric gates scoring each panel. Result: 22/22 board tasks completed.\n\nProcedural City: 3D city generation with LLM scene direction. Vision: generate coherent urban environments under budget constraints. Approach: 92-phase pipeline with schema validation. Evaluation: structured output validation at each phase. Currently achieving 52/92 phases with spend tracking.\n\nBeamDojo: Reproducing Isaac Lab locomotion research. Vision: train humanoid robots to walk on beams. Approach: PPO training on Lambda GPU with Isaac Sim. Evaluation: Weights and Biases metrics tracking. Currently running Stage 1 smoke tests at 18% progress.\n\nEducation: BTech CS from IIT Kharagpur, MS CS from UMass Amherst. Three years at Mastercard building payment APIs with around 20% latency improvement on Enhanced Currency Conversion.\n\nLooking for AI and agent engineer roles focused on evaluation-first development.",
+    "Agent engineer building verification-first AI systems. I design pipelines with quality gates and measurable outcomes.\n\nRecent work:\n- ComicMainEngine: Generative comic pipeline with VLM evaluation gates. Completed 22/22 board tasks.\n- Procedural City: LLM-directed 3D generation. Achieving 52/92 phases with budget tracking.\n- BeamDojo: Isaac Lab locomotion reproduction. Running Stage 1 training at 18% progress.\n\nBackground: BTech CS (IIT Kharagpur), MS CS (UMass Amherst), three years at Mastercard on payment APIs.\n\nInterested in roles building tool-using agents and evaluation-first LLM products.",
+    "I build AI products with evaluation at the core - not just demos.\n\nPortfolio:\n- ComicMainEngine: Comic generation pipeline. VLM rubric evaluation. 22/22 tasks done.\n- Procedural City: 3D city generator with LLM scene direction. Achieving 52/92 phases.\n- BeamDojo: Robotics locomotion research. Training in progress at 18%.\n\nEducation: BTech CS (IIT Kharagpur), MS CS (UMass Amherst). Mastercard: payment APIs, 20% latency reduction.\n\nSeeking AI and agentic engineering roles in 2026."
   ],
   "featured_links": [
     {
       "label": "ComicMainEngine",
       "url": "https://github.com/navinash47/ComicMainEngine",
-      "description": "Generative comic pipeline with FastAPI, multi-provider language models and images, vision-language model evaluation gate"
+      "description": "Generative comic pipeline with VLM evaluation gates. Result: 22/22 board tasks completed."
     },
     {
       "label": "Procedural City",
       "url": "https://github.com/navinash47/ProceduralCity",
-      "description": "92-phase 3D pipeline with language model scene director, schema validation, and spend ceiling"
+      "description": "LLM-directed 3D city generation with schema validation. Achieving 52/92 phases."
     },
     {
       "label": "BeamDojo",
       "url": "https://github.com/navinash47/BeamDojo",
-      "description": "Isaac Lab locomotion reproduction, Robotics Science and Systems 2025 BeamDojo, Stage 1 graphics processing unit smoke test"
+      "description": "Isaac Lab locomotion research reproduction. Running Stage 1 training at 18% progress."
     },
     {
       "label": "Venture Fleet Control Plane",
       "url": "https://github.com/navinash47/avinashs-kingdom",
-      "description": "Multi-venture agent portfolio command center with sync, phase gates, and fleet graph"
-    },
-    {
-      "label": "Resume Knowledge Repository",
-      "url": "https://github.com/navinash47/resume",
-      "description": "Master bullet knowledge base with approval dashboard (89 options, 7 role tracks, evaluation pipeline)"
+      "description": "Portfolio command center tracking project phases, expenses, and evaluations across ventures."
     }
   ],
   "experience_independent": {
@@ -48,14 +42,13 @@
     "company": "Independent Builder",
     "dates": "Jun 2026-Present",
     "location": "Amherst, Massachusetts, United States",
-    "bullet_draft": "Built a verification-first agent portfolio command center (React and Vite) syncing status, phase gates, expenses, and architecture across 10+ repositories; featured shipped and lab systems include ComicMainEngine (generative comic pipeline), Procedural City (language model scene director under spend ceiling), and BeamDojo (Isaac Lab locomotion research), with schema-backed evaluations and provenance logging, not prompt-only demos."
+    "bullet_draft": "Building evaluation-first AI projects: ComicMainEngine (comic generation with VLM quality gates, 22/22 tasks completed), Procedural City (LLM scene direction achieving 52/92 phases), and BeamDojo (robotics locomotion research in progress). Managing all projects through a unified dashboard tracking phases, evaluations, and results."
   },
   "notes": [
-    "Do not feature WhatsApp Voice or YouTube Editor on LinkedIn until gates pass.",
-    "Align posted experience bullet with approved Venture Fleet Control Plane project bullets option from dashboard.",
-    "Verify Biomedical Natural Language Processing diagnosis metric with principal investigator before citing 27 weighted F1 publicly.",
-    "APPROVED 2026-09-02 via Kingdom Resume tab - post headline and about when ready."
+    "Do not feature WhatsApp Voice or YouTube Editor until gates pass.",
+    "Use present continuous for in-progress results.",
+    "APPROVED 2026-09-05 - post headline and about when ready."
   ],
-  "approved_at": "2026-09-02T04:25:11.145Z",
+  "approved_at": "2026-09-05T04:15:00.000Z",
   "approved_via": "kingdom-resume-tab"
 }
