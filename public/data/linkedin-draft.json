@@ -1,40 +1,39 @@
 {
   "updated": "2026-09-05",
   "status": "APPROVED",
-  "kingdom_approve_note": "Approved in Kingdom Resume tab - safe to post headline and about to LinkedIn.",
   "linkedin_url": "https://www.linkedin.com/in/avinash-nandyala-06a88b199",
   "headline_options": [
-    "AI and Agent Engineer - MS Computer Science, UMass - Ex-Mastercard - ComicMainEngine - Procedural City - BeamDojo",
+    "AI and Agent Engineer - MS Computer Science, UMass - Ex-Mastercard",
     "Agentic Systems Engineer - Evaluation-First AI Pipelines - Ex-Mastercard",
-    "AI Backend Engineer - FastAPI - Structured LLM Outputs - MS Computer Science - Ex-Mastercard",
-    "Robotics and RL Engineer - Isaac Lab Locomotion - Simulation-to-Real - MS Computer Science, UMass",
-    "Generative Media and Agents - ComicMainEngine - Procedural City - BeamDojo - MS Computer Science"
+    "AI Backend Engineer - FastAPI - Structured LLM Outputs - MS Computer Science",
+    "Robotics and RL Engineer - Isaac Lab - Simulation-to-Real - MS Computer Science",
+    "Generative Media and Agents - LLM Pipelines - VLM Evaluation - MS Computer Science"
   ],
   "about_variants": [
-    "I build AI systems where evaluation and verification matter.\n\nComicMainEngine: End-to-end generative comic pipeline. Automating comic creation from script to panels using multi-provider LLM and image generation. VLM rubric gates ensure each panel meets quality standards. Successfully completed all initial board tasks.\n\nProcedural City: 3D city generation with LLM scene direction. Generating coherent urban environments under budget constraints using schema validation at each phase. Currently progressing through the pipeline with spend tracking.\n\nBeamDojo: Reproducing Isaac Lab locomotion research. Training humanoid robots to walk on beams using PPO on Lambda GPU. Currently running initial smoke tests with Weights and Biases tracking.\n\nEducation: BTech CS from IIT Kharagpur, MS CS from UMass Amherst. Three years at Mastercard improving payment API latency on Enhanced Currency Conversion.\n\nLooking for AI and agent engineer roles focused on evaluation-first development.",
-    "Agent engineer building verification-first AI systems with quality gates and measurable outcomes.\n\nRecent work:\n- ComicMainEngine: Generative comic pipeline with VLM evaluation gates. Completed initial development phase.\n- Procedural City: LLM-directed 3D generation with budget tracking. Progressing through structured phases.\n- BeamDojo: Isaac Lab locomotion reproduction. Running initial training experiments.\n\nBackground: BTech CS (IIT Kharagpur), MS CS (UMass Amherst), three years at Mastercard on payment APIs.\n\nInterested in roles building tool-using agents and evaluation-first LLM products.",
-    "I build AI products with evaluation at the core.\n\nPortfolio:\n- ComicMainEngine: Comic generation with VLM rubric evaluation. Initial phase completed.\n- Procedural City: 3D city generator with LLM scene direction. Progressing through development.\n- BeamDojo: Robotics locomotion research. Training in progress.\n\nEducation: BTech CS (IIT Kharagpur), MS CS (UMass Amherst). Mastercard: payment APIs with improved latency.\n\nSeeking AI and agentic engineering roles in 2026."
+    "I build AI systems with structured evaluation and verification.\n\nComicMainEngine: Generative comic pipeline using FastAPI backend with multi-provider LLM orchestration for script generation and image synthesis. Architecture uses VLM rubric gates to evaluate panel quality before output.\n\nProcedural City: 3D city generation using LLM scene director with structured output validation. Architecture enforces schema constraints at each generation phase with budget ceiling enforcement.\n\nBeamDojo: Humanoid locomotion using Isaac Lab with PPO training. Architecture integrates Isaac Sim physics with Weights and Biases experiment tracking for sim-to-real transfer.\n\nEducation: BTech CS from IIT Kharagpur, MS CS from UMass Amherst. Three years at Mastercard building payment APIs with latency optimization.\n\nLooking for AI and agent engineer roles focused on evaluation-first development.",
+    "Agent engineer building AI systems with structured methodology and clear architecture.\n\nRecent work:\n- ComicMainEngine: Multi-provider LLM orchestration with VLM evaluation gates\n- Procedural City: LLM scene director with schema validation and budget enforcement\n- BeamDojo: Isaac Lab PPO training with sim-to-real architecture\n\nBackground: BTech CS (IIT Kharagpur), MS CS (UMass Amherst), three years at Mastercard.\n\nInterested in roles building tool-using agents and evaluation-first LLM products.",
+    "I build AI products with clear methodology and evaluation architecture.\n\nPortfolio:\n- ComicMainEngine: FastAPI backend with LLM orchestration and VLM quality evaluation\n- Procedural City: LLM scene direction with schema validation under budget constraints\n- BeamDojo: Isaac Lab locomotion with PPO and experiment tracking\n\nEducation: BTech CS (IIT Kharagpur), MS CS (UMass Amherst). Mastercard: payment API optimization.\n\nSeeking AI and agentic engineering roles."
   ],
   "featured_links": [
     {
       "label": "ComicMainEngine",
       "url": "https://github.com/navinash47/ComicMainEngine",
-      "description": "Generative comic pipeline with VLM evaluation gates. Initial development completed."
+      "description": "FastAPI backend with multi-provider LLM orchestration and VLM rubric evaluation"
     },
     {
       "label": "Procedural City",
       "url": "https://github.com/navinash47/ProceduralCity",
-      "description": "LLM-directed 3D city generation with schema validation. Progressing through structured phases."
+      "description": "LLM scene director with structured output validation and budget enforcement"
     },
     {
       "label": "BeamDojo",
       "url": "https://github.com/navinash47/BeamDojo",
-      "description": "Isaac Lab locomotion research reproduction. Running initial training experiments."
+      "description": "Isaac Lab locomotion with PPO training and sim-to-real architecture"
     },
     {
       "label": "Venture Fleet Control Plane",
       "url": "https://github.com/navinash47/avinashs-kingdom",
-      "description": "Portfolio command center tracking project phases and evaluations across ventures."
+      "description": "React dashboard for tracking project phases and evaluations"
     }
   ],
   "experience_independent": {
@@ -42,13 +41,12 @@
     "company": "Independent Builder",
     "dates": "Jun 2026-Present",
     "location": "Amherst, Massachusetts, United States",
-    "bullet_draft": "Building evaluation-first AI projects: ComicMainEngine (comic generation with VLM quality gates, initial phase completed), Procedural City (LLM scene direction progressing through development), and BeamDojo (robotics locomotion research in progress). Managing all projects through a unified dashboard tracking phases and evaluations."
+    "bullet_draft": "Building AI projects with evaluation-first architecture: ComicMainEngine (FastAPI with LLM orchestration and VLM evaluation), Procedural City (LLM scene director with schema validation), BeamDojo (Isaac Lab PPO with sim-to-real). Managing through unified React dashboard."
   },
   "notes": [
-    "Do not feature WhatsApp Voice or YouTube Editor until gates pass.",
-    "Use present continuous for in-progress work. No specific numbers.",
-    "APPROVED 2026-09-05 - post headline and about when ready."
+    "Focus on methodology and architecture, not process.",
+    "APPROVED 2026-09-05"
   ],
-  "approved_at": "2026-09-05T04:17:00.000Z",
+  "approved_at": "2026-09-05T04:18:00.000Z",
   "approved_via": "kingdom-resume-tab"
 }
