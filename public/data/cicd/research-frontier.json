@@ -1,6 +1,6 @@
 {
   "venture_id": "research-frontier",
-  "synced_at": "2026-09-03T04:09:06.426Z",
+  "synced_at": "2026-09-05T20:16:07.958Z",
   "github": {
     "owner": "navinash47",
     "repo": "research-frontier-lab",
@@ -8,57 +8,57 @@
     "available": true,
     "runs": [
       {
-        "conclusion": "success",
-        "createdAt": "2026-09-03T04:06:34Z",
-        "databaseId": 33713828280,
-        "displayTitle": "fix: unblock StoryGate stale-POST test under Next typecheck",
-        "event": "push",
+        "conclusion": "failure",
+        "createdAt": "2026-09-05T19:58:12Z",
+        "databaseId": 33988687161,
+        "displayTitle": "feat: Atlas Lab experiment bench (/atlas-lab)",
+        "event": "pull_request",
         "status": "completed",
-        "url": "https://github.com/navinash47/research-frontier-lab/actions/runs/33713828280",
-        "workflowName": "CI"
+        "url": "https://github.com/navinash47/research-frontier-lab/actions/runs/33988687161",
+        "workflowName": "CodeQL"
       },
       {
         "conclusion": "failure",
-        "createdAt": "2026-09-03T04:04:04Z",
-        "databaseId": 33713669630,
-        "displayTitle": "test: raise frontier-roadmap Vitest coverage to 100%",
-        "event": "push",
+        "createdAt": "2026-09-05T19:58:12Z",
+        "databaseId": 33988687154,
+        "displayTitle": "feat: Atlas Lab experiment bench (/atlas-lab)",
+        "event": "pull_request",
         "status": "completed",
-        "url": "https://github.com/navinash47/research-frontier-lab/actions/runs/33713669630",
-        "workflowName": "CI"
-      },
-      {
-        "conclusion": "failure",
-        "createdAt": "2026-09-03T04:04:04Z",
-        "databaseId": 33713669625,
-        "displayTitle": "test: raise frontier-roadmap Vitest coverage to 100%",
-        "event": "push",
-        "status": "completed",
-        "url": "https://github.com/navinash47/research-frontier-lab/actions/runs/33713669625",
+        "url": "https://github.com/navinash47/research-frontier-lab/actions/runs/33988687154",
         "workflowName": "Playwright"
       },
       {
         "conclusion": "failure",
-        "createdAt": "2026-09-03T04:03:26Z",
-        "databaseId": 33713630071,
-        "displayTitle": "Revert accidental S08/S09 greens; keep awaiting_signal.",
+        "createdAt": "2026-09-05T19:56:19Z",
+        "databaseId": 33988601122,
+        "displayTitle": "refine(atlas-lab): RoboLab-style bench UX, map affordances, link fixes",
         "event": "push",
         "status": "completed",
-        "url": "https://github.com/navinash47/research-frontier-lab/actions/runs/33713630071",
-        "workflowName": "CI"
+        "url": "https://github.com/navinash47/research-frontier-lab/actions/runs/33988601122",
+        "workflowName": "Playwright"
       },
       {
         "conclusion": "failure",
-        "createdAt": "2026-09-03T04:03:07Z",
-        "databaseId": 33713609132,
-        "displayTitle": "Revert accidental S08/S09 greens; keep awaiting_signal.",
+        "createdAt": "2026-09-05T19:56:18Z",
+        "databaseId": 33988600612,
+        "displayTitle": "refine(atlas-lab): RoboLab-style bench UX, map affordances, link fixes",
         "event": "push",
         "status": "completed",
-        "url": "https://github.com/navinash47/research-frontier-lab/actions/runs/33713609132",
-        "workflowName": "CI"
+        "url": "https://github.com/navinash47/research-frontier-lab/actions/runs/33988600612",
+        "workflowName": ".github/workflows/ci.yml"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-09-05T19:53:38Z",
+        "databaseId": 33988470964,
+        "displayTitle": "feat(atlas-lab): add human-readable paper map experiments page",
+        "event": "push",
+        "status": "completed",
+        "url": "https://github.com/navinash47/research-frontier-lab/actions/runs/33988470964",
+        "workflowName": "Playwright"
       }
     ],
-    "last_conclusion": "success"
+    "last_conclusion": "failure"
   },
   "local_tests": {
     "commands": [],

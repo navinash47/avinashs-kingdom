@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-09-03T04:09:10.355Z",
+  "synced_at": "2026-09-05T20:16:11.200Z",
   "version": 2,
   "contract": "kingdom-personal-os",
   "fsm": {
@@ -18,17 +18,17 @@
     ]
   },
   "summary": {
-    "ventures_total": 10,
-    "ventures_active": 9,
+    "ventures_total": 11,
+    "ventures_active": 10,
     "ventures_p0": 2,
     "dashboards_configured": 6,
     "skills": 9,
-    "agents": 9,
-    "agents_with_skills": 9,
+    "agents": 10,
+    "agents_with_skills": 10,
     "agents_without_skills": [],
-    "capabilities": 24,
+    "capabilities": 25,
     "mcp_servers": 9,
-    "phases_board_synced_at": "2026-09-03T04:09:01.538Z"
+    "phases_board_synced_at": "2026-09-05T20:16:04.738Z"
   },
   "ventures": [
     {
@@ -62,7 +62,7 @@
       "repoPath": "~/Projects/youtube-editor-lab",
       "dashboardPort": null,
       "dashboardLabel": null,
-      "nextMilestone": "Add Google creds (GOOGLE_APPLICATION_CREDENTIALS + GCS_BUCKET or Drive folder) to set `CLIP_CLOUD=gcs` and re-run to sync cloud.",
+      "nextMilestone": "Add Google creds (`GOOGLE_APPLICATION_CREDENTIALS` + `GCS_BUCKET` or Drive folder) → set `CLIP_CLOUD=gcs` and re-run `npm run clips:fetch` to sync cloud.",
       "phasesPassed": null,
       "phasesTotal": null,
       "kind": null,
@@ -76,14 +76,14 @@
     {
       "id": "research-frontier",
       "name": "Research Frontier Lab",
-      "progress": 22,
+      "progress": 67,
       "priority": "P1",
       "status": "active",
       "agentId": "agent-atlas",
       "repoPath": "~/Projects/research-frontier-lab",
       "dashboardPort": null,
       "dashboardLabel": null,
-      "nextMilestone": "Phase 0 foundation: stand up frontier-brain registry + paper-identity resolve for one comics/multimodal club.",
+      "nextMilestone": "**Phase 5 kickoff** — multi-club scale & polish (catalog phase 5); scaffold stories + signals board.",
       "phasesPassed": null,
       "phasesTotal": null,
       "kind": "research",
@@ -167,7 +167,7 @@
       "repoPath": "~/Projects/avinashs-kingdom",
       "dashboardPort": 5173,
       "dashboardLabel": "Kingdom panel",
-      "nextMilestone": "Cancel/review 6 kill-list seats; reclaim low-risk disk (53.7% used)",
+      "nextMilestone": "Cancel/review 6 kill-list seats; reclaim low-risk disk (59% used)",
       "phasesPassed": null,
       "phasesTotal": null,
       "kind": null,
@@ -181,7 +181,7 @@
     {
       "id": "mac-optimize-audit",
       "name": "Mac optimize audit",
-      "progress": 67,
+      "progress": 70,
       "priority": "P1",
       "status": "active",
       "agentId": "agent-janitor",
@@ -209,7 +209,7 @@
       "repoPath": "~/Projects/job-jugaad",
       "dashboardPort": 8790,
       "dashboardLabel": "Job tracker",
-      "nextMilestone": "Keep logging - 439/500 toward milestone",
+      "nextMilestone": "Keep logging — 439/500 toward milestone",
       "phasesPassed": 439,
       "phasesTotal": 500,
       "kind": null,
@@ -235,6 +235,25 @@
       "phasesTotal": null,
       "kind": null,
       "github": null,
+      "mcp": {
+        "enabled": false
+      }
+    },
+    {
+      "id": "robolab",
+      "name": "RoboLab",
+      "progress": 48,
+      "priority": "P1",
+      "status": "active",
+      "agentId": "agent-robo",
+      "repoPath": "/Users/avinashnandyala/Projects/robolab",
+      "dashboardPort": null,
+      "dashboardLabel": null,
+      "nextMilestone": "Human UI confirm gates for Phases 1–4 (dashboard + RunPod checklist).",
+      "phasesPassed": null,
+      "phasesTotal": null,
+      "kind": "research",
+      "github": "navinash47/robolab",
       "mcp": {
         "enabled": false
       }
@@ -435,6 +454,12 @@
         "venture_id": "shorts"
       },
       {
+        "id": "venture:robolab",
+        "type": "venture",
+        "label": "RoboLab",
+        "venture_id": "robolab"
+      },
+      {
         "id": "agent:agent-cash",
         "type": "agent",
         "label": "agent-cash",
@@ -489,6 +514,12 @@
         "venture_id": "job-jugaad"
       },
       {
+        "id": "agent:agent-robo",
+        "type": "agent",
+        "label": "agent-robo",
+        "venture_id": "robolab"
+      },
+      {
         "id": "skill:log-outreach",
         "type": "skill",
         "label": "log-outreach"
@@ -522,6 +553,11 @@
         "id": "skill:task-observer",
         "type": "skill",
         "label": "task-observer"
+      },
+      {
+        "id": "skill:runpod",
+        "type": "skill",
+        "label": "runpod"
       },
       {
         "id": "capability:mcp:whatsapp-voice",
@@ -666,6 +702,12 @@
         "type": "capability",
         "label": "tests:job-jugaad",
         "venture_id": "job-jugaad"
+      },
+      {
+        "id": "capability:research:robolab",
+        "type": "capability",
+        "label": "research:robolab",
+        "venture_id": "robolab"
       }
     ],
     "edges": [
@@ -782,6 +824,18 @@
         "from": "hub:kingdom",
         "to": "venture:shorts",
         "rel": "sync"
+      },
+      {
+        "id": "e-hub-venture:robolab",
+        "from": "hub:kingdom",
+        "to": "venture:robolab",
+        "rel": "sync"
+      },
+      {
+        "id": "e-venture:robolab-agent:agent-robo",
+        "from": "venture:robolab",
+        "to": "agent:agent-robo",
+        "rel": "agent"
       },
       {
         "id": "e-agent:agent-cash-skill:log-outreach",
@@ -919,6 +973,30 @@
         "id": "e-agent:agent-jugaad-skill:log-outreach",
         "from": "agent:agent-jugaad",
         "to": "skill:log-outreach",
+        "rel": "skill"
+      },
+      {
+        "id": "e-agent:agent-robo-skill:sync-kingdom",
+        "from": "agent:agent-robo",
+        "to": "skill:sync-kingdom",
+        "rel": "skill"
+      },
+      {
+        "id": "e-agent:agent-robo-skill:kingdom-wiki",
+        "from": "agent:agent-robo",
+        "to": "skill:kingdom-wiki",
+        "rel": "skill"
+      },
+      {
+        "id": "e-agent:agent-robo-skill:phase-gate",
+        "from": "agent:agent-robo",
+        "to": "skill:phase-gate",
+        "rel": "skill"
+      },
+      {
+        "id": "e-agent:agent-robo-skill:runpod",
+        "from": "agent:agent-robo",
+        "to": "skill:runpod",
         "rel": "skill"
       },
       {
@@ -1063,6 +1141,12 @@
         "id": "e-venture:job-jugaad-capability:tests:job-jugaad",
         "from": "venture:job-jugaad",
         "to": "capability:tests:job-jugaad",
+        "rel": "capability"
+      },
+      {
+        "id": "e-venture:robolab-capability:research:robolab",
+        "from": "venture:robolab",
+        "to": "capability:research:robolab",
         "rel": "capability"
       }
     ]

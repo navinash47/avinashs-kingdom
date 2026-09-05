@@ -1,0 +1,18 @@
+{
+  "venture_id": "robolab",
+  "updated": "2026-09-05",
+  "type": "concept",
+  "sections": {
+    "related": {
+      "title": "Related",
+      "content": "- [[ventures/robolab]]\n- [[experiments/robolab]]",
+      "markdown": "- [[ventures/robolab]]\n- [[experiments/robolab]]",
+      "diagrams": [],
+      "tables": []
+    }
+  },
+  "section_titles": [
+    "Related"
+  ],
+  "source_path": "brain/wiki/architecture/robolab.md"
+}

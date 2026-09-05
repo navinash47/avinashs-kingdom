@@ -32,7 +32,6 @@ import {
 import { copyText } from '../../lib/ventureUtils'
 import { useOrchestrator } from '../../context/OrchestratorContext'
 import { useServiceStatus } from '../../hooks/useServiceStatus'
-import { useShareMode } from '../../hooks/useShareMode'
 import { fleetNodeTypes } from './nodes'
 import { NodeInspector } from './NodeInspector'
 
@@ -54,7 +53,6 @@ function FleetGraphInner({
   focusNodeId,
 }: Props) {
   const { openVenture, setMainTab, setGraphNodeId } = useOrchestrator()
-  const shareMode = useShareMode()
   const { services, refresh } = useServiceStatus()
   const { fitView, setCenter, getNode } = useReactFlow()
 
@@ -281,7 +279,7 @@ function FleetGraphInner({
             proOptions={{ hideAttribution: true }}
           >
             <Background gap={48} size={1} color="rgba(61, 255, 194, 0.08)" />
-            <Controls showInteractive={!shareMode} />
+            <Controls showInteractive={true} />
             <MiniMap
               pannable
               zoomable
@@ -301,7 +299,7 @@ function FleetGraphInner({
           <NodeInspector
             data={selectedData}
             service={selectedService}
-            readOnly={shareMode}
+            readOnly={false}
             busy={busy}
             onClose={() => {
               setSelectedId(null)

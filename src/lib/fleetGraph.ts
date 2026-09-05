@@ -131,7 +131,7 @@ export function buildFleetGraph(input: FleetGraphInput): {
       label: "Venture Fleet Control Plane",
       subtitle: 'Orchestrator',
       blurb:
-        'React + Vite command center. Syncs venture STATUS/phases into public/data, embeds dashboards, and runs Start/Stop/Test/Sync. Friend share uses Cloudflare tunnels; guests stay read-only.',
+        'React + Vite command center. Syncs venture STATUS/phases into public/data. Vercel UI talks to the Mac via mac-bridge (Start/Stop/Test/Sync).',
       ventureId: 'kingdom-ops',
       status: 'up',
       highlighted: match('kingdom', 'orchestrator', 'hub'),

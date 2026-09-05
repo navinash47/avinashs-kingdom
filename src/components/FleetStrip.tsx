@@ -8,7 +8,6 @@ import {
   useOperationLogContext,
 } from '../context/OperationLogContext'
 import { useServiceStatus } from '../hooks/useServiceStatus'
-import { useShareMode } from '../hooks/useShareMode'
 import { formatProgress } from '../lib/progress'
 import { OperationTerminal } from './OperationTerminal'
 import {
@@ -39,7 +38,6 @@ function tabLabel(key: string, services: { name: string; label: string }[] | nul
 
 export function FleetStrip({ ventures, cicd }: Props) {
   const { openVenture, setMainTab } = useOrchestrator()
-  const shareMode = useShareMode()
   const { services, apiOk, refresh } = useServiceStatus()
   const { patchLog, appendLog, logs } = useOperationLogContext()
   const fleetLog = useOperationLog(operationLogKey('fleet', 'global'), 'Fleet · all dashboards')
@@ -120,13 +118,8 @@ export function FleetStrip({ ventures, cicd }: Props) {
       <header className="panel-head row-between">
         <div>
           <h2>Fleet control</h2>
-          <p className="muted">
-            {shareMode
-              ? 'Live status mirror — Start/Stop runs on host Mac'
-              : 'Live dashboard status · each app keeps its own log'}
-          </p>
+          <p className="muted">Start / stop Mac apps · live status from the Mac bridge</p>
         </div>
-        {!shareMode ? (
         <div className="fleet-actions">
           <button
             type="button"
@@ -145,11 +138,10 @@ export function FleetStrip({ ventures, cicd }: Props) {
             Stop all
           </button>
         </div>
-        ) : null}
       </header>
       {!apiOk ? (
         <p className="muted tiny fleet-api-hint">
-          Restart <code>npm run dev</code> if fleet controls show offline
+          Mac bridge offline — run <code>npm run mac-bridge</code> on the Mac, then Connect Mac
         </p>
       ) : null}
       <div className="fleet-table-wrap">
@@ -158,9 +150,9 @@ export function FleetStrip({ ventures, cicd }: Props) {
             <tr>
               <th>Venture</th>
               <th>Progress</th>
-              <th>Dash</th>
-              <th>CI</th>
-              <th>Tests</th>
+              <th title="Local dashboard port on the Mac — UP / DOWN / — if none">App</th>
+              <th title="Last GitHub Actions run — green success, red failure, gray none">GitHub</th>
+              <th title="Last Run tests from Kingdom — PASS / FAIL / — if never run">Local tests</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -200,7 +192,10 @@ export function FleetStrip({ ventures, cicd }: Props) {
                     )}
                   </td>
                   <td>
-                    <span className={`ci-dot ${ciDot(conclusion)}`} title={conclusion ?? 'no runs'} />
+                    <span
+                      className={`ci-dot ${ciDot(conclusion)}`}
+                      title={conclusion ?? 'no GitHub runs yet'}
+                    />
                   </td>
                   <td>
                     {lastTest ? (
@@ -212,7 +207,7 @@ export function FleetStrip({ ventures, cicd }: Props) {
                     )}
                   </td>
                   <td className="fleet-row-actions" onClick={(e) => e.stopPropagation()}>
-                    {svc && v.id !== 'kingdom-ops' && !shareMode ? (
+                    {svc && v.id !== 'kingdom-ops' ? (
                       <>
                         <button
                           type="button"

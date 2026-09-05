@@ -1,3 +1,5 @@
+import { apiRoot, authHeaders } from './macBridge'
+
 export type ServiceStatus = {
   name: string
   ventureId: string | null
@@ -61,13 +63,12 @@ export type ApproveLinkedInResult = {
   linkedin?: { status: string; approved_at: string }
 }
 
-const API = '/api'
-
 async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> {
-  const res = await fetch(`${API}${path}`, init)
+  const res = await fetch(`${apiRoot()}${path}`, {
+    ...init,
+    headers: authHeaders(init?.headers),
+  })
   const ct = res.headers.get('content-type') ?? ''
-  // Vite/Vercel SPA fallbacks often return index.html with 200 for missing /api —
-  // reject that so callers treat the orchestrator as offline instead of crashing.
   if (!ct.includes('application/json')) {
     throw new Error(res.ok ? 'API unavailable (non-JSON response)' : res.statusText)
   }
@@ -139,7 +140,10 @@ export async function runSingleTest(ventureId: string, testId: string): Promise<
 }
 
 export async function runFinishResume(): Promise<FinishResumeResult> {
-  const res = await fetch(`${API}/services/resume/finish-resume`, { method: 'POST' })
+  const res = await fetch(`${apiRoot()}/services/resume/finish-resume`, {
+    method: 'POST',
+    headers: authHeaders(),
+  })
   const body = (await res.json().catch(() => ({ error: res.statusText }))) as FinishResumeResult
   if (!res.ok && !body.output) {
     throw new Error(body.error ?? res.statusText)
@@ -148,7 +152,10 @@ export async function runFinishResume(): Promise<FinishResumeResult> {
 }
 
 export async function approveLinkedIn(): Promise<ApproveLinkedInResult> {
-  const res = await fetch(`${API}/services/resume/approve-linkedin`, { method: 'POST' })
+  const res = await fetch(`${apiRoot()}/services/resume/approve-linkedin`, {
+    method: 'POST',
+    headers: authHeaders(),
+  })
   const body = (await res.json().catch(() => ({ error: res.statusText }))) as ApproveLinkedInResult
   if (!res.ok && !body.output) {
     throw new Error(body.error ?? res.statusText)
@@ -157,10 +164,13 @@ export async function approveLinkedIn(): Promise<ApproveLinkedInResult> {
 }
 
 export async function triggerSync(): Promise<SyncResult> {
-  const res = await fetch(`${API}/sync`, { method: 'POST' })
+  const res = await fetch(`${apiRoot()}/sync`, {
+    method: 'POST',
+    headers: authHeaders(),
+  })
   const text = await res.text()
   if (!text.trim()) {
-    throw new Error('Sync returned empty response — restart npm run dev and try again')
+    throw new Error('Sync returned empty response — is the Mac bridge running?')
   }
   let body: SyncResult
   try {
@@ -181,4 +191,9 @@ export function formatTestOutput(result: TestRunResult): string {
       return body ? `${head}\n${body}` : head
     })
     .join('\n\n')
+}
+
+/** Open dashboard on the Mac (works when you browse Vercel from this Mac). */
+export function dashboardOpenUrl(port: number) {
+  return `http://127.0.0.1:${port}/`
 }

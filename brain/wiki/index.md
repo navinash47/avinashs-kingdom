@@ -27,7 +27,8 @@ Catalog of pages. Agents update this on every ingest. Last full refresh: **2026-
 |------|---------|
 | [whatsapp-voice](ventures/whatsapp-voice.md) | Cash engine · Phase 8 · 80% · / · files at ~/Projects/whatsapp-voice-agents |
 | [youtube-editor](ventures/youtube-editor.md) | Screenplay + Veritasium formula · Phase 2 · Cut Control · show-first craft |
-| [research-frontier](ventures/research-frontier.md) | Paper club · v0.1 · 12% · brain as store |
+| [research-frontier](ventures/research-frontier.md) | Paper club · v0.4.1 · 67% · Phases 0–4 PASS |
+| [robolab](ventures/robolab.md) | Robotics RL lab · v0.5 Phase 5B · 48% · MuJoCo/PyBullet + RunPod |
 | [beamdojo](ventures/beamdojo.md) | Isaac Lab locomotion · Stage 1 GPU smoke · live train via W&B |
 | [procedural-city](ventures/procedural-city.md) | City · Stage E · Phase 57 · 62% · 57/92 local · |
 | [comic-engine](ventures/comic-engine.md) | ComicMainEngine · 2A A1 passed · A2 next · 33% |
@@ -44,6 +45,7 @@ Catalog of pages. Agents update this on every ingest. Last full refresh: **2026-
 | [whatsapp-voice](architecture/whatsapp-voice.md) | WhatsApp / Cash IO + agent graph |
 | [youtube-editor](architecture/youtube-editor.md) | Cut lab architecture |
 | [research-frontier](architecture/research-frontier.md) | Atlas paper-club layout |
+| [robolab](architecture/robolab.md) | MuJoCo/PyBullet adapters · RunPod worker · dashboard |
 | [beamdojo](architecture/beamdojo.md) | Dojo GPU / Isaac Lab paths |
 | [procedural-city](architecture/procedural-city.md) | Metro city pipeline |
 | [comic-engine](architecture/comic-engine.md) | ComicMainEngine 2A graph |
@@ -58,6 +60,7 @@ Catalog of pages. Agents update this on every ingest. Last full refresh: **2026-
 | [whatsapp-voice](experiments/whatsapp-voice.md) | Cash try log |
 | [youtube-editor](experiments/youtube-editor.md) | Cut try log |
 | [research-frontier](experiments/research-frontier.md) | Atlas try log |
+| [robolab](experiments/robolab.md) | RoboLab run / gate log |
 | [beamdojo](experiments/beamdojo.md) | Dojo GPU try log |
 | [procedural-city](experiments/procedural-city.md) | City try log |
 | [comic-engine](experiments/comic-engine.md) | Comic try log |

@@ -1,11 +1,11 @@
 {
   "venture_id": "research-frontier",
-  "synced_at": "2026-09-03T04:09:01.685Z",
+  "synced_at": "2026-09-05T20:16:04.842Z",
   "repo": {
     "path": "/Users/avinashnandyala/Projects/research-frontier-lab",
-    "head": "9cec27c0ef0ea1b8cbc0f8ac2ff986ab65e4799f",
-    "branch": "chore/p0-quality-gates",
-    "last_commit_at": "2026-09-02T21:04:01-07:00",
+    "head": "f6f33e9a7db978237de1d4a63eb3d482d083ccf9",
+    "branch": "cursor/cloud-agent-1788562496823-z8be7",
+    "last_commit_at": "2026-09-04T15:54:57-07:00",
     "remote_url": "https://github.com/navinash47/research-frontier-lab.git",
     "github": {
       "owner": "navinash47",
@@ -14,48 +14,53 @@
     }
   },
   "stats": {
-    "files": 119,
-    "lines": 31529,
+    "files": 629,
+    "lines": 127401,
     "primary_language": "JSON",
     "languages": [
       {
         "language": "JSON",
-        "files": 25,
-        "lines": 22120
+        "files": 125,
+        "lines": 65671
       },
       {
         "language": "TypeScript",
-        "files": 60,
-        "lines": 6666
+        "files": 331,
+        "lines": 50890
       },
       {
         "language": "Markdown",
-        "files": 11,
-        "lines": 1523
+        "files": 53,
+        "lines": 4266
+      },
+      {
+        "language": "JavaScript",
+        "files": 38,
+        "lines": 2932
+      },
+      {
+        "language": "Other",
+        "files": 69,
+        "lines": 2112
       },
       {
         "language": "YAML",
         "files": 5,
-        "lines": 477
-      },
-      {
-        "language": "JavaScript",
-        "files": 5,
-        "lines": 458
+        "lines": 1282
       },
       {
         "language": "CSS",
-        "files": 1,
-        "lines": 167
+        "files": 2,
+        "lines": 192
       },
       {
-        "language": "Other",
-        "files": 12,
-        "lines": 118
+        "language": "HTML",
+        "files": 6,
+        "lines": 56
       }
     ],
     "truncated": false,
-    "sampled_files": 119,
+    "sampled_files": 629,
     "source": "walker"
   },
   "dependencies": {
@@ -63,12 +68,23 @@
     "runtime": [],
     "dev": []
   },
-  "storage": [],
+  "storage": [
+    {
+      "type": "sqlite",
+      "path": "apps/frontier-roadmap/data/lab-cache.db",
+      "note": "Auto-detected database file"
+    },
+    {
+      "type": "sqlite",
+      "path": "services/eval-harness/data/lab-cache.db",
+      "note": "Auto-detected database file"
+    }
+  ],
   "models_detected": [],
   "spend_usd": null,
   "ceiling_usd": null,
-  "progress": 22,
-  "version": "v0.2",
+  "progress": 67,
+  "version": "v0.4.1",
   "test_commands": [],
   "suggestions": [],
   "services": []

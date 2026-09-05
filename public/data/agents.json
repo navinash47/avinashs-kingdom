@@ -43,7 +43,7 @@
     "id": "agent-ink",
     "name": "Agent Ink",
     "ventureId": "comic-engine",
-    "focus": "ComicMainEngine (onceuponatime) - V1 board done; V2/phase12+ after City. Batch jobs; usage.db.",
+    "focus": "ComicMainEngine (onceuponatime) \u2014 V1 board done; V2/phase12+ after City. Batch jobs; usage.db.",
     "tokenBudgetUsd": 45,
     "tokenUsedUsd": 18
   },
@@ -69,6 +69,14 @@
     "ventureId": "job-jugaad",
     "focus": "Track applied companies + roles; pipeline board; later resume-pick + headed apply.",
     "tokenBudgetUsd": 15,
+    "tokenUsedUsd": 0
+  },
+  {
+    "id": "agent-robo",
+    "name": "Agent Robo",
+    "ventureId": "robolab",
+    "focus": "RoboLab: MuJoCo/PyBullet RL, RunPod workers, sim-to-sim transfer. Human gates before claiming PASS.",
+    "tokenBudgetUsd": 40,
     "tokenUsedUsd": 0
   }
 ]

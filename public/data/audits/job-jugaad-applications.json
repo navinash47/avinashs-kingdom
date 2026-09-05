@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-09-03T04:09:01.537Z",
+  "synced_at": "2026-09-05T20:16:04.737Z",
   "target": 500,
   "total": 469,
   "applied_or_beyond": 439,
@@ -17,84 +17,84 @@
     {
       "id": "app_wish_01",
       "company": "Cursor",
-      "role": "Artificial Intelligence Software Engineer / Agent Engineer",
+      "role": "AI Software Engineer / Agent Engineer",
       "status": "wishlist",
       "appliedAt": null
     },
     {
       "id": "app_wish_02",
       "company": "Anthropic",
-      "role": "Applied Artificial Intelligence Engineer / Forward Deployed Engineer",
+      "role": "Applied AI Engineer / Forward Deployed Engineer",
       "status": "wishlist",
       "appliedAt": null
     },
     {
       "id": "app_wish_03",
       "company": "OpenAI",
-      "role": "Software Engineer, Applied Artificial Intelligence / Agents",
+      "role": "Software Engineer, Applied AI / Agents",
       "status": "wishlist",
       "appliedAt": null
     },
     {
       "id": "app_wish_04",
       "company": "Cognition (Devin)",
-      "role": "Software Engineer - Agentic Systems",
+      "role": "Software Engineer — Agentic Systems",
       "status": "wishlist",
       "appliedAt": null
     },
     {
       "id": "app_wish_05",
       "company": "Perplexity",
-      "role": "Artificial Intelligence Engineer / Full-Stack Artificial Intelligence Engineer",
+      "role": "AI Engineer / Full-Stack AI Engineer",
       "status": "wishlist",
       "appliedAt": null
     },
     {
       "id": "app_wish_06",
       "company": "LangChain",
-      "role": "Software Engineer - Agents / LangGraph",
+      "role": "Software Engineer — Agents / LangGraph",
       "status": "wishlist",
       "appliedAt": null
     },
     {
       "id": "app_wish_07",
       "company": "Vercel",
-      "role": "Artificial Intelligence SDK / Artificial Intelligence Engineer",
+      "role": "AI SDK / AI Engineer",
       "status": "wishlist",
       "appliedAt": null
     },
     {
       "id": "app_wish_08",
       "company": "Glean",
-      "role": "Artificial Intelligence Engineer / Applied Artificial Intelligence",
+      "role": "AI Engineer / Applied AI",
       "status": "wishlist",
       "appliedAt": null
     },
     {
       "id": "app_wish_09",
       "company": "Adept",
-      "role": "Artificial Intelligence Agent Engineer",
+      "role": "AI Agent Engineer",
       "status": "wishlist",
       "appliedAt": null
     },
     {
       "id": "app_wish_10",
       "company": "MultiOn",
-      "role": "Agent Engineer / Full-Stack Artificial Intelligence",
+      "role": "Agent Engineer / Full-Stack AI",
       "status": "wishlist",
       "appliedAt": null
     },
     {
       "id": "app_wish_11",
       "company": "Sierra",
-      "role": "Artificial Intelligence Engineer - Customer Agents",
+      "role": "AI Engineer — Customer Agents",
       "status": "wishlist",
       "appliedAt": null
     },
     {
       "id": "app_wish_12",
       "company": "Harvey",
-      "role": "Applied Artificial Intelligence Engineer",
+      "role": "Applied AI Engineer",
       "status": "wishlist",
       "appliedAt": null
     }

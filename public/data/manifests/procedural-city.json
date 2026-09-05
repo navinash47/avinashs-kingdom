@@ -1,6 +1,6 @@
 {
   "venture_id": "procedural-city",
-  "synced_at": "2026-09-03T04:09:01.863Z",
+  "synced_at": "2026-09-05T20:16:04.941Z",
   "repo": {
     "path": "/Users/avinashnandyala/ProceduralCity",
     "head": "d05ad494c83294e98c875edf02eb4faae631d32e",
@@ -152,7 +152,7 @@
       "label": "City dashboard",
       "port": 8765,
       "url": "http://127.0.0.1:8765",
-      "status": "up"
+      "status": "down"
     }
   ]
 }

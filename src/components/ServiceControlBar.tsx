@@ -1,5 +1,5 @@
 import type { ServiceStatus } from '../lib/orchestratorApi'
-import { dashboardOpenUrl } from '../lib/shareMode'
+import { dashboardOpenUrl } from '../lib/orchestratorApi'
 
 type Props = {
   service: ServiceStatus | null
@@ -35,22 +35,23 @@ export function ServiceControlBar({
   return (
     <div className="service-control-bar">
       {readOnly ? (
-        <p className="muted tiny bar-hint">Read-only guest view — controls run on Avinash&apos;s Mac</p>
+        <p className="muted tiny bar-hint">Read-only</p>
       ) : !apiOk ? (
         <p className="muted tiny bar-hint">
-          Control API runs inside Vite dev server — restart with <code>npm run dev</code> if buttons fail
+          Mac bridge offline — run <code>npm run mac-bridge</code> (or local <code>npm run dev</code>)
+          and Connect Mac
         </p>
       ) : null}
       <div className="control-row">
         {service && !selfHosted && !readOnly ? (
           <>
-            <button type="button" className="btn primary" disabled={busy || up} onClick={onStart}>
+            <button type="button" className="btn primary" disabled={busy || !apiOk || up} onClick={onStart}>
               Start
             </button>
-            <button type="button" className="btn" disabled={busy || !up} onClick={onStop}>
+            <button type="button" className="btn" disabled={busy || !apiOk || !up} onClick={onStop}>
               Stop
             </button>
-            <button type="button" className="btn" disabled={busy} onClick={onRestart}>
+            <button type="button" className="btn" disabled={busy || !apiOk} onClick={onRestart}>
               Restart
             </button>
             {service.port ? (
@@ -59,8 +60,9 @@ export function ServiceControlBar({
                 href={dashboardOpenUrl(service.port)}
                 target="_blank"
                 rel="noreferrer"
+                title="Opens on this Mac at 127.0.0.1 — browse Vercel from the Mac for Open to work"
               >
-                Open demo
+                Open
               </a>
             ) : null}
             <span className={`badge ${up ? 'ok' : 'warn'}`}>
@@ -79,11 +81,16 @@ export function ServiceControlBar({
         <span className="control-spacer" />
         {!readOnly ? (
           <>
-            <button type="button" className="btn" disabled={testRunning} onClick={onRunTests}>
+            <button
+              type="button"
+              className="btn"
+              disabled={testRunning || !apiOk}
+              onClick={onRunTests}
+            >
               {testRunning ? 'Running tests…' : 'Run tests'}
             </button>
-            <button type="button" className="btn" disabled={syncRunning} onClick={onSync}>
-              {syncRunning ? 'Syncing…' : 'Sync Kingdom'}
+            <button type="button" className="btn" disabled={syncRunning || !apiOk} onClick={onSync}>
+              {syncRunning ? 'Syncing…' : 'Sync'}
             </button>
           </>
         ) : null}

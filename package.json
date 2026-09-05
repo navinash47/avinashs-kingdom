@@ -8,6 +8,7 @@
     "dev:share": "KINGDOM_SHARE=1 vite --host 0.0.0.0",
     "dev:full": "concurrently -k \"npm run dev:api\" \"vite\"",
     "dev:api": "node scripts/orchestrator-api.mjs",
+    "mac-bridge": "bash scripts/mac-bridge.sh",
     "dev:vite": "vite --host 127.0.0.1",
     "build": "tsc -b && vite build",
     "lint": "oxlint",

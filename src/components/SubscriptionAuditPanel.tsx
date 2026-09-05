@@ -3,8 +3,6 @@ import type { SubscriptionAudit } from '../types'
 import { startService, stopService } from '../lib/orchestratorApi'
 import { useServiceStatus } from '../hooks/useServiceStatus'
 import { operationLogKey, useOperationLog } from '../context/OperationLogContext'
-import { useShareMode } from '../hooks/useShareMode'
-import { useShareUrls } from '../hooks/useShareUrls'
 import { subsDashboardSrc } from './DashboardEmbed'
 import { OperationTerminal } from './OperationTerminal'
 
@@ -15,9 +13,7 @@ type Props = {
 export function SubscriptionAuditPanel({ data }: Props) {
   const { services, apiOk, refresh } = useServiceStatus()
   const subs = services.find((s) => s.name === 'subs')
-  const shareMode = useShareMode()
-  const { publicDashboardUrl } = useShareUrls()
-  const subsSrc = subsDashboardSrc(shareMode, publicDashboardUrl(8741))
+  const subsSrc = subsDashboardSrc()
   const [busy, setBusy] = useState(false)
   const terminal = useOperationLog(operationLogKey('subs', 'dashboard'), 'Subs dashboard')
 

@@ -1,102 +1,102 @@
 [
   {
     "id": "sync-sub-rocket-money",
-    "date": "2026-09-03",
+    "date": "2026-09-05",
     "category": "tools",
     "label": "Rocket Money (est. monthly)",
     "amount": 3.19,
     "currency": "USD",
     "ventureId": "kingdom-ops",
-    "notes": "Synced from kill list \u00b7 monthly \u00b7 ~/yr"
+    "notes": "Synced from kill list · $3.19 monthly · ~$38/yr"
   },
   {
     "id": "sync-sub-doordash-dashpass",
-    "date": "2026-09-03",
+    "date": "2026-09-05",
     "category": "other",
     "label": "DoorDash DashPass (est. monthly)",
     "amount": 9.99,
     "currency": "USD",
     "ventureId": "kingdom-ops",
-    "notes": "Synced from kill list \u00b7 monthly \u00b7 ~/yr"
+    "notes": "Synced from kill list · $9.99 monthly · ~$120/yr"
   },
   {
     "id": "sync-sub-openai-chatgpt-plus",
-    "date": "2026-09-03",
+    "date": "2026-09-05",
     "category": "api",
     "label": "OpenAI / ChatGPT Plus (est. monthly)",
     "amount": 21.25,
     "currency": "USD",
     "ventureId": "kingdom-ops",
-    "notes": "Synced from kill list \u00b7 monthly \u00b7 ~/yr"
+    "notes": "Synced from kill list · $21.25 monthly · ~$255/yr"
   },
   {
     "id": "sync-sub-cursor",
-    "date": "2026-09-03",
+    "date": "2026-09-05",
     "category": "tools",
     "label": "Cursor (est. monthly)",
     "amount": 92.08,
     "currency": "USD",
     "ventureId": "kingdom-ops",
-    "notes": "Synced from kill list \u00b7 weekly \u00b7 ~/yr"
+    "notes": "Synced from kill list · $21.25 weekly · ~$1105/yr"
   },
   {
     "id": "sync-sub-claude-ai-anthropic",
-    "date": "2026-09-03",
+    "date": "2026-09-05",
     "category": "api",
     "label": "Claude.ai / Anthropic (est. monthly)",
     "amount": 10.67,
     "currency": "USD",
     "ventureId": "kingdom-ops",
-    "notes": "Synced from kill list \u00b7 irregular \u00b7 ~/yr"
+    "notes": "Synced from kill list · $21.25 irregular · ~$128/yr"
   },
   {
     "id": "sync-sub-apple-app-store-icloud",
-    "date": "2026-09-03",
+    "date": "2026-09-05",
     "category": "infra",
     "label": "Apple / App Store / iCloud (est. monthly)",
     "amount": 1.5,
     "currency": "USD",
     "ventureId": "kingdom-ops",
-    "notes": "Synced from kill list \u00b7 irregular \u00b7 ~/yr"
+    "notes": "Synced from kill list · $2.99 irregular · ~$18/yr"
   },
   {
     "id": "sync-city-api",
-    "date": "2026-09-03",
+    "date": "2026-09-05",
     "category": "api",
     "label": "Procedural City API (fal / Gemini)",
     "amount": 7.27,
     "currency": "USD",
     "ventureId": "procedural-city",
-    "notes": "Synced from tracking/expenses.jsonl \u00b7 98 billable rows"
+    "notes": "Synced from tracking/expenses.jsonl · 98 billable rows"
   },
   {
     "id": "sync-wa-api",
-    "date": "2026-09-03",
+    "date": "2026-09-05",
     "category": "api",
     "label": "WhatsApp Agent Cash API spend",
     "amount": 0,
     "currency": "USD",
     "ventureId": "whatsapp-voice",
-    "notes": "Synced from WA expenses.jsonl \u00b7 0 billable \u00b7 ceiling "
+    "notes": "Synced from WA expenses.jsonl · 0 billable · ceiling $40"
   },
   {
     "id": "sync-jugaad-api",
-    "date": "2026-09-03",
+    "date": "2026-09-05",
     "category": "api",
     "label": "Job Jugaad API / infra spend",
     "amount": 0,
     "currency": "USD",
     "ventureId": "job-jugaad",
-    "notes": "Synced from tracking/expenses.jsonl \u00b7 0 billable rows"
+    "notes": "Synced from tracking/expenses.jsonl · 0 billable rows"
   },
   {
     "id": "sync-beamdojo-gpu",
-    "date": "2026-09-03",
+    "date": "2026-09-05",
     "category": "infra",
     "label": "beamdojo GPU / compute",
     "amount": 3.87,
     "currency": "USD",
     "ventureId": "beamdojo",
-    "notes": "Synced from tracking/expenses.jsonl \u00b7 1 billable rows"
+    "notes": "Synced from tracking/expenses.jsonl · 1 billable rows"
   }
 ]

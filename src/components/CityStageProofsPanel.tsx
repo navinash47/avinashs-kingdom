@@ -1,7 +1,4 @@
 import { useEffect, useMemo, useState } from 'react'
-import { useShareMode } from '../hooks/useShareMode'
-import { useShareUrls } from '../hooks/useShareUrls'
-import { MIRROR_REFRESH_EVENT } from '../lib/mirrorRefresh'
 import type { CityStageProof, CityStageProofs } from '../types'
 
 type Props = {
@@ -26,17 +23,14 @@ function statusClass(status: string) {
 }
 
 export function CityStageProofsPanel({ port, up }: Props) {
-  const shareMode = useShareMode()
-  const { publicDashboardUrl } = useShareUrls()
   const [seed, setSeed] = useState<CityStageProofs | null>(null)
   const [live, setLive] = useState<CityStageProof[] | null>(null)
   const [error, setError] = useState<string | null>(null)
 
   const base = useMemo(() => {
-    if (shareMode) return publicDashboardUrl(port)
     if (!port) return null
     return `http://127.0.0.1:${port}`
-  }, [shareMode, publicDashboardUrl, port])
+  }, [port])
 
   useEffect(() => {
     let cancelled = false
@@ -49,11 +43,8 @@ export function CityStageProofsPanel({ port, up }: Props) {
         .catch(() => {})
     }
     loadSeed()
-    const onRefresh = () => loadSeed()
-    window.addEventListener(MIRROR_REFRESH_EVENT, onRefresh)
     return () => {
       cancelled = true
-      window.removeEventListener(MIRROR_REFRESH_EVENT, onRefresh)
     }
   }, [])
 
@@ -81,12 +72,9 @@ export function CityStageProofsPanel({ port, up }: Props) {
     }
     loadLive()
     const id = window.setInterval(loadLive, 15_000)
-    const onRefresh = () => loadLive()
-    window.addEventListener(MIRROR_REFRESH_EVENT, onRefresh)
     return () => {
       cancelled = true
       window.clearInterval(id)
-      window.removeEventListener(MIRROR_REFRESH_EVENT, onRefresh)
     }
   }, [base, up])
 

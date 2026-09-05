@@ -1,11 +1,11 @@
 {
   "venture_id": "kingdom-ops",
-  "synced_at": "2026-09-03T04:09:02.018Z",
+  "synced_at": "2026-09-05T20:16:05.042Z",
   "repo": {
     "path": "/Users/avinashnandyala/Projects/avinashs-kingdom",
-    "head": "50827eb7ff1f45f0bbe5a22dae8da1b4a24942ba",
+    "head": "b3618f696bc4d8c0764ad5649b57375b7945f78d",
     "branch": "main",
-    "last_commit_at": "2026-09-02T16:29:32-07:00",
+    "last_commit_at": "2026-09-05T04:19:01Z",
     "remote_url": "https://github.com/navinash47/avinashs-kingdom.git",
     "github": {
       "owner": "navinash47",
@@ -14,44 +14,44 @@
     }
   },
   "stats": {
-    "files": 346,
-    "lines": 48140,
+    "files": 351,
+    "lines": 48260,
     "primary_language": "JSON",
     "languages": [
       {
         "language": "JSON",
-        "files": 102,
-        "lines": 15470
+        "files": 107,
+        "lines": 16492
       },
       {
         "language": "TypeScript",
-        "files": 51,
-        "lines": 9352
+        "files": 53,
+        "lines": 9255
       },
       {
         "language": "JavaScript",
         "files": 35,
-        "lines": 7932
+        "lines": 8174
       },
       {
         "language": "Markdown",
         "files": 110,
-        "lines": 6644
+        "lines": 6725
       },
       {
         "language": "CSS",
         "files": 3,
-        "lines": 4550
+        "lines": 4709
       },
       {
         "language": "Other",
-        "files": 32,
-        "lines": 3014
+        "files": 29,
+        "lines": 1602
       },
       {
         "language": "Shell",
-        "files": 11,
-        "lines": 1142
+        "files": 12,
+        "lines": 1261
       },
       {
         "language": "YAML",
@@ -61,11 +61,11 @@
       {
         "language": "HTML",
         "files": 1,
-        "lines": 14
+        "lines": 20
       }
     ],
     "truncated": false,
-    "sampled_files": 346,
+    "sampled_files": 351,
     "source": "walker"
   },
   "dependencies": {
@@ -169,7 +169,7 @@
       "label": "Kingdom panel",
       "port": 5173,
       "url": "http://127.0.0.1:5173",
-      "status": "up"
+      "status": "down"
     }
   ]
 }

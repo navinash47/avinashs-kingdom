@@ -2,6 +2,14 @@
 
 Append-only. Prefix each entry with `## [YYYY-MM-DD] <op> | <title>` so recent activity is greppable.
 
+## [2026-09-05] ops | Vercel→Mac bridge + drop friend-share
+
+Throne controls Mac via `npm run mac-bridge` (orchestrator :5174 + Cloudflare tunnel + Bearer token). Removed Share with friend banner / guest shareMode. Fleet columns: App / GitHub / Local tests. RoboLab onboarded. Playbook: [[ops/personal-os-playbook]].
+
+## [2026-09-05] ops | Sync RoboLab + Frontier (rules kept separate)
+
+Onboarded `robolab` (registry + wiki + Agent Robo). Wrote RoboLab `STATUS.md` (v0.5 · 48%). Refreshed [[ventures/research-frontier]] from Sep 4 Phase 4 PASS (67%). **Rules stay per-repo:** RoboLab `.cursor/rules/robolab-ops.mdc` vs Frontier `.cursor/rules/cost-aware-agent-ops.mdc` — not merged. Path maps + `AGENT_SKILL_MAP` updated; then `npm run sync`.
+
 ## [2026-09-02] ingest | Agentic stack guidance (LangChain / roles)
 
 Filed [[concepts/agentic-stack-guidance]]: no default LangChain/LangGraph adoption; borrow Finite State Machine/checkpoint/eval/cost/provenance patterns; Artificial Intelligence eng vs agentic vs Forward Deployed Engineer role map; venture progress loop. Cross-linked from interview prep, resume gates, personal OS, Job Jugaad.

@@ -1,14 +1,14 @@
 {
-  "updated": "2026-09-03T04:09:10.354Z",
+  "updated": "2026-09-05T20:16:11.200Z",
   "projects": [
     {
       "id": "research-frontier",
       "name": "Research Frontier Lab",
       "field": "generative comics / multimodal consistency",
-      "progress": 22,
-      "version": "v0.2",
+      "progress": 67,
+      "version": "v0.4.1",
       "priority": "P1",
-      "nextMilestone": "Phase 0 foundation: stand up frontier-brain registry + paper-identity resolve for one comics/multimodal club.",
+      "nextMilestone": "**Phase 5 kickoff** — multi-club scale & polish (catalog phase 5); scaffold stories + signals board.",
       "repoPath": "/Users/avinashnandyala/Projects/research-frontier-lab",
       "github": {
         "owner": "navinash47",
@@ -20,56 +20,64 @@
       "videos": [],
       "experiments": [
         {
-          "date": "2026-09-02",
-          "summary": "test: raise frontier-roadmap Vitest coverage to 100%",
+          "date": "2026-09-04",
+          "summary": "Cursor: Apply local changes for cloud agent",
           "source": "git"
         },
         {
-          "date": "2026-09-02",
-          "summary": "fix: stop Story Gate races from wiping green signals",
+          "date": "2026-09-04",
+          "summary": "Refresh human-verification-report after mapping-check fixes.",
           "source": "git"
         },
         {
-          "date": "2026-09-02",
-          "summary": "chore: add Phase 0 quality gates without paid SaaS",
+          "date": "2026-09-04",
+          "summary": "Fix mapping-check BYO titles, multi-seed expand, and verification gaps.",
           "source": "git"
         },
         {
-          "date": "2026-09-02",
-          "summary": "Restore Phase 0 S00\u2013S07 green signals after stack merges.",
+          "date": "2026-09-04",
+          "summary": "Record production human verification for Story Gate, mapping-check, and phase gates.",
           "source": "git"
         },
         {
-          "date": "2026-09-02",
-          "summary": "Update S07 proofs with green CI on PR #8.",
+          "date": "2026-09-04",
+          "summary": "Wire email progress notifier for lab phase updates.",
           "source": "git"
         },
         {
-          "date": "2026-09-02",
-          "summary": "Clarify S06 notes: S00 green, S01\u2013S05 awaiting.",
+          "date": "2026-09-04",
+          "summary": "docs(phase-4): mark Vercel prod smoke cleared (14/14 green)",
           "source": "git"
         },
         {
-          "date": "2026-09-02",
-          "summary": "Record S05 awaiting_signal with PR #6 proofs.",
+          "date": "2026-09-04",
+          "summary": "fix(frontier-roadmap): wire evidence-verify for Vercel git deploy",
           "source": "git"
         },
         {
-          "date": "2026-09-02",
-          "summary": "Record S04 awaiting_signal with PR #5 proofs.",
+          "date": "2026-09-04",
+          "summary": "docs(phase-4): close-out STATUS — gate PASS, progress 67%.",
           "source": "git"
         },
         {
-          "date": "2026-08-20",
-          "summary": "Architecture wiki + sync bundle for inspector Architecture tab.",
-          "source": "wiki",
-          "video": null
+          "date": "2026-09-04",
+          "summary": "Phase 4 S13: gate verification harness (4/4 PASS).",
+          "source": "git"
         },
         {
-          "date": "2026-08-11",
-          "summary": "Venture registered in fleet control plane registry.",
-          "source": "wiki",
-          "video": null
+          "date": "2026-09-04",
+          "summary": "Phase 4 S12: adaptive recommendations (F18).",
+          "source": "git"
+        },
+        {
+          "date": "2026-09-04",
+          "summary": "Phase 4 S11: stale-node refresh + co-author neighborhood (F10, F17).",
+          "source": "git"
+        },
+        {
+          "date": "2026-09-04",
+          "summary": "Phase 4 S10: export JSON / BibTeX / CSV (F100).",
+          "source": "git"
         }
       ],
       "architecture": {
@@ -199,11 +207,11 @@
         "sections": {
           "system design": {
             "title": "System design",
-            "content": "Mac is the orchestrator. Training and RTX video run on a Lambda **A10** (RT cores) inside Isaac Sim 5.1 + Isaac Lab 2.3.2 Docker. BeamDojo source is bind-mounted from NFS so terminate does not wipe code. Checkpoints stay on NFS. Kingdom syncs STATUS, expenses, proof mp4s, and into the Research Lab. Live curves are **Weights & Biases** (not an Isaac webpage).\n\n```mermaid\nflowchart LR\n Mac[\"Mac \u00b7 BeamDojo repo + Kingdom\"] -->|ssh / rsync| GPU[\"Lambda A10 \u00b7 Isaac Sim Docker\"]\n Train[\"scripts/rsl_rl/train_beamdojo.py\"] --> Runtime[\"scripts/rsl_rl/beamdojo_runtime.py\"]\n Runtime --> Cfg[\"h1_cfg/beamdojo_stage1_cfg.py\"]\n Cfg --> Isaac[\"Isaac Lab + PhysX + RTX\"]\n Isaac --> NFS[\"NFS logs / model_*.pt\"]\n Train --> WB[\"Weights & Biases \u00b7 project beamdojo\"]\n Train --> Status[\"tracking/training-status.json\"]\n Play[\"scripts/rsl_rl/play_beamdojo.py --video\"] --> Proofs[\"proofs/*.mp4\"]\n STATUS[\"STATUS.md + expenses.jsonl\"] --> Sync[\"Kingdom npm run sync\"]\n Status --> Sync\n Proofs --> Sync\n Sync --> Lab[\"Research Lab tab\"]\n Lab --> WB\n```",
+            "content": "Mac is the orchestrator. Training and RTX video run on a Lambda **A10** (RT cores) inside Isaac Sim 5.1 + Isaac Lab 2.3.2 Docker. BeamDojo source is bind-mounted from NFS so terminate does not wipe code. Checkpoints stay on NFS. Kingdom syncs STATUS, expenses, proof mp4s, and into the Research Lab. Live curves are **Weights & Biases** (not an Isaac webpage).\n\n```mermaid\nflowchart LR\n Mac[\"Mac · BeamDojo repo + Kingdom\"] -->|ssh / rsync| GPU[\"Lambda A10 · Isaac Sim Docker\"]\n Train[\"scripts/rsl_rl/train_beamdojo.py\"] --> Runtime[\"scripts/rsl_rl/beamdojo_runtime.py\"]\n Runtime --> Cfg[\"h1_cfg/beamdojo_stage1_cfg.py\"]\n Cfg --> Isaac[\"Isaac Lab + PhysX + RTX\"]\n Isaac --> NFS[\"NFS logs / model_*.pt\"]\n Train --> WB[\"Weights & Biases · project beamdojo\"]\n Train --> Status[\"tracking/training-status.json\"]\n Play[\"scripts/rsl_rl/play_beamdojo.py --video\"] --> Proofs[\"proofs/*.mp4\"]\n STATUS[\"STATUS.md + expenses.jsonl\"] --> Sync[\"Kingdom npm run sync\"]\n Status --> Sync\n Proofs --> Sync\n Sync --> Lab[\"Research Lab tab\"]\n Lab --> WB\n```",
             "markdown": "Mac is the orchestrator. Training and RTX video run on a Lambda **A10** (RT cores) inside Isaac Sim 5.1 + Isaac Lab 2.3.2 Docker. BeamDojo source is bind-mounted from NFS so terminate does not wipe code. Checkpoints stay on NFS. Kingdom syncs STATUS, expenses, proof mp4s, and into the Research Lab. Live curves are **Weights & Biases** (not an Isaac webpage).",
             "diagrams": [
               {
-                "source": "flowchart LR\n Mac[\"Mac \u00b7 BeamDojo repo + Kingdom\"] -->|ssh / rsync| GPU[\"Lambda A10 \u00b7 Isaac Sim Docker\"]\n Train[\"scripts/rsl_rl/train_beamdojo.py\"] --> Runtime[\"scripts/rsl_rl/beamdojo_runtime.py\"]\n Runtime --> Cfg[\"h1_cfg/beamdojo_stage1_cfg.py\"]\n Cfg --> Isaac[\"Isaac Lab + PhysX + RTX\"]\n Isaac --> NFS[\"NFS logs / model_*.pt\"]\n Train --> WB[\"Weights & Biases \u00b7 project beamdojo\"]\n Train --> Status[\"tracking/training-status.json\"]\n Play[\"scripts/rsl_rl/play_beamdojo.py --video\"] --> Proofs[\"proofs/*.mp4\"]\n STATUS[\"STATUS.md + expenses.jsonl\"] --> Sync[\"Kingdom npm run sync\"]\n Status --> Sync\n Proofs --> Sync\n Sync --> Lab[\"Research Lab tab\"]\n Lab --> WB",
+                "source": "flowchart LR\n Mac[\"Mac · BeamDojo repo + Kingdom\"] -->|ssh / rsync| GPU[\"Lambda A10 · Isaac Sim Docker\"]\n Train[\"scripts/rsl_rl/train_beamdojo.py\"] --> Runtime[\"scripts/rsl_rl/beamdojo_runtime.py\"]\n Runtime --> Cfg[\"h1_cfg/beamdojo_stage1_cfg.py\"]\n Cfg --> Isaac[\"Isaac Lab + PhysX + RTX\"]\n Isaac --> NFS[\"NFS logs / model_*.pt\"]\n Train --> WB[\"Weights & Biases · project beamdojo\"]\n Train --> Status[\"tracking/training-status.json\"]\n Play[\"scripts/rsl_rl/play_beamdojo.py --video\"] --> Proofs[\"proofs/*.mp4\"]\n STATUS[\"STATUS.md + expenses.jsonl\"] --> Sync[\"Kingdom npm run sync\"]\n Status --> Sync\n Proofs --> Sync\n Sync --> Lab[\"Research Lab tab\"]\n Lab --> WB",
                 "svg_path": null,
                 "svg_inline": null
               }
@@ -279,6 +287,105 @@
           "Future plans"
         ],
         "source_path": "brain/wiki/architecture/beamdojo.md"
+      },
+      "training": null
+    },
+    {
+      "id": "robolab",
+      "name": "RoboLab",
+      "field": "robot learning / sim-to-sim RL",
+      "progress": 48,
+      "version": "v0.5 · Phase 5B",
+      "priority": "P1",
+      "nextMilestone": "Human UI confirm gates for Phases 1–4 (dashboard + RunPod checklist).",
+      "repoPath": "/Users/avinashnandyala/Projects/robolab",
+      "github": {
+        "owner": "navinash47",
+        "repo": "robolab",
+        "default_branch": "main"
+      },
+      "spendUsd": 0,
+      "expenseRows": 0,
+      "videos": [],
+      "experiments": [
+        {
+          "date": "2026-09-05",
+          "summary": "Ignore local .cursor and STATUS.md so RunPod git gate stays clean.",
+          "source": "git"
+        },
+        {
+          "date": "2026-09-05",
+          "summary": "Document Isaac Mac hard-no and wire RunPod Genesis install path.",
+          "source": "git"
+        },
+        {
+          "date": "2026-09-05",
+          "summary": "Wire custom timesteps, Genesis adapter, and Isaac stubs into New Run.",
+          "source": "git"
+        },
+        {
+          "date": "2026-09-05",
+          "summary": "Extend MuJoCo adapter for multi-task worlds and task-shaped observations.",
+          "source": "git"
+        },
+        {
+          "date": "2026-09-05",
+          "summary": "Add navigation task suite (go-to-goal, maze, docking, figure-8) with scene worlds and Phase 5B docs.",
+          "source": "git"
+        },
+        {
+          "date": "2026-09-05",
+          "summary": "Add Failure Resolution page for logistics vs experiment failures.",
+          "source": "git"
+        },
+        {
+          "date": "2026-09-05",
+          "summary": "Add PyBullet adapter so wall_follow runs on the same URDF as MuJoCo.",
+          "source": "git"
+        },
+        {
+          "date": "2026-09-05",
+          "summary": "Add fuzzy search, filters, and sort to the experiments dashboard.",
+          "source": "git"
+        },
+        {
+          "date": "2026-09-05",
+          "summary": "Add dedicated spend page and costs API for RunPod charge breakdown.",
+          "source": "git"
+        },
+        {
+          "date": "2026-09-05",
+          "summary": "fix: make Watch open an inline-playable run video",
+          "source": "git"
+        },
+        {
+          "date": "2026-09-04",
+          "summary": "docs: record successful Secure RunPod 2k smoke in PHASE_3_TEST",
+          "source": "git"
+        },
+        {
+          "date": "2026-09-04",
+          "summary": "fix: run MuJoCo trainer under xvfb with GLFW on RunPod",
+          "source": "git"
+        }
+      ],
+      "architecture": {
+        "venture_id": "robolab",
+        "updated": "2026-09-05",
+        "type": "concept",
+        "sections": {
+          "related": {
+            "title": "Related",
+            "content": "- [[ventures/robolab]]\n- [[experiments/robolab]]",
+            "markdown": "- [[ventures/robolab]]\n- [[experiments/robolab]]",
+            "diagrams": [],
+            "tables": []
+          }
+        },
+        "section_titles": [
+          "Related"
+        ],
+        "source_path": "brain/wiki/architecture/robolab.md"
       },
       "training": null
     }

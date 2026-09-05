@@ -3,43 +3,78 @@
   "updated": "2026-08-24",
   "items": [
     {
-      "date": "2026-09-02",
-      "summary": "test: raise frontier-roadmap Vitest coverage to 100%",
+      "date": "2026-09-04",
+      "summary": "Cursor: Apply local changes for cloud agent",
       "source": "git"
     },
     {
-      "date": "2026-09-02",
-      "summary": "fix: stop Story Gate races from wiping green signals",
+      "date": "2026-09-04",
+      "summary": "Refresh human-verification-report after mapping-check fixes.",
       "source": "git"
     },
     {
-      "date": "2026-09-02",
-      "summary": "chore: add Phase 0 quality gates without paid SaaS",
+      "date": "2026-09-04",
+      "summary": "Fix mapping-check BYO titles, multi-seed expand, and verification gaps.",
       "source": "git"
     },
     {
-      "date": "2026-09-02",
-      "summary": "Restore Phase 0 S00–S07 green signals after stack merges.",
+      "date": "2026-09-04",
+      "summary": "Record production human verification for Story Gate, mapping-check, and phase gates.",
       "source": "git"
     },
     {
-      "date": "2026-09-02",
-      "summary": "Update S07 proofs with green CI on PR #8.",
+      "date": "2026-09-04",
+      "summary": "Wire email progress notifier for lab phase updates.",
       "source": "git"
     },
     {
-      "date": "2026-09-02",
-      "summary": "Clarify S06 notes: S00 green, S01–S05 awaiting.",
+      "date": "2026-09-04",
+      "summary": "docs(phase-4): mark Vercel prod smoke cleared (14/14 green)",
       "source": "git"
     },
     {
-      "date": "2026-09-02",
-      "summary": "Record S05 awaiting_signal with PR #6 proofs.",
+      "date": "2026-09-04",
+      "summary": "fix(frontier-roadmap): wire evidence-verify for Vercel git deploy",
       "source": "git"
     },
     {
-      "date": "2026-09-02",
-      "summary": "Record S04 awaiting_signal with PR #5 proofs.",
+      "date": "2026-09-04",
+      "summary": "docs(phase-4): close-out STATUS — gate PASS, progress 67%.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-04",
+      "summary": "Phase 4 S13: gate verification harness (4/4 PASS).",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-04",
+      "summary": "Phase 4 S12: adaptive recommendations (F18).",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-04",
+      "summary": "Phase 4 S11: stale-node refresh + co-author neighborhood (F10, F17).",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-04",
+      "summary": "Phase 4 S10: export JSON / BibTeX / CSV (F100).",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-04",
+      "summary": "Phase 4 S09: rank sensitivity tests + reviewer agreement (F96, F97).",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-04",
+      "summary": "Phase 4 S08: rank sensitivity plot (F30).",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-04",
+      "summary": "Phase 4 S07: post-evidence suggested experiments (F69).",
       "source": "git"
     },
     {

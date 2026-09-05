@@ -115,6 +115,10 @@ const STATUS_SOURCES = [
     statusPath: path.join(home, 'Projects/BeamDojo/STATUS.md'),
   },
   {
+    id: 'robolab',
+    statusPath: path.join(home, 'Projects/robolab/STATUS.md'),
+  },
+  {
     id: 'job-jugaad',
     statusPath: path.join(home, 'Projects/job-jugaad/STATUS.md'),
   },
@@ -1086,6 +1090,7 @@ function syncVentures({ sub, mac }) {
       'youtube-editor': 'STATUS.md **Progress** field',
       'research-frontier': 'STATUS.md **Progress** field',
       beamdojo: 'STATUS.md **Progress** field (Isaac Lab GPU smokes / trains)',
+      robolab: 'STATUS.md **Progress** field (phases + human UI gates)',
       'job-jugaad':
         'applied-or-beyond / target from data/applications.json (waiting counts; overshoot allowed past milestone)',
       'kingdom-ops': 'heuristic ops readiness (70%) until kill-list closure tracked',

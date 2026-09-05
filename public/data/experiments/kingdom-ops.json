@@ -3,6 +3,51 @@
   "updated": "2026-08-24",
   "items": [
     {
+      "date": "2026-09-05",
+      "summary": "Focus on methodology and architecture, not process",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-05",
+      "summary": "Remove specific numbers from resume content - use brief qualitative results",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-05",
+      "summary": "Rewrite resume content: focus on vision, approach, evaluation, results",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-05",
+      "summary": "Update timestamps to 2026-09-05",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-05",
+      "summary": "Remove remaining backtick dollar reference",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-05",
+      "summary": "Remove backtick-wrapped code and dollar amounts from resume content",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-05",
+      "summary": "Clean all files: expand abbreviations, remove em dashes and arrows",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-05",
+      "summary": "Make resumes human-readable: expand abbreviations, remove em dashes",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-02",
+      "summary": "Ship ResearchLab-styled Kingdom UI and fix inflated venture progress for production.",
+      "source": "git"
+    },
+    {
       "date": "2026-09-02",
       "summary": "Log SPA blank-page observation for Vercel /api HTML fallback.",
       "source": "git"
@@ -30,51 +75,6 @@
     {
       "date": "2026-09-02",
       "summary": "Ship Phase 2b: fleet MCP, Cursor attach, gated writes.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-02",
-      "summary": "Record Phase 2 W4 SHA; tracker at 100%.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-02",
-      "summary": "Ship Phase 2 W4: read-only venture MCP template and kingdom-ops pilot.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-02",
-      "summary": "Record Phase 2 W3 commit SHA on tracker.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-02",
-      "summary": "Ship Phase 2 W3: full auto wiki with draft to promote gate.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-02",
-      "summary": "Record Phase 2 W2 commit SHA on tracker.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-02",
-      "summary": "Ship Phase 2 W2: additive Large Language Model/offline contradiction judge.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-02",
-      "summary": "Ship Phase 2 W1: Obs 11 cloud to Mac UI merge playbook.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-02",
-      "summary": "Preserve ProceduralCity STATUS handoff while Stage G awaits human review.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-02",
-      "summary": "Document quieter lint v2 heuristics in harness README.",
       "source": "git"
     },
     {

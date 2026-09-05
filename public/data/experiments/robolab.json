@@ -1,0 +1,82 @@
+{
+  "venture_id": "robolab",
+  "updated": "2026-09-05",
+  "items": [
+    {
+      "date": "2026-09-05",
+      "summary": "Ignore local .cursor and STATUS.md so RunPod git gate stays clean.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-05",
+      "summary": "Document Isaac Mac hard-no and wire RunPod Genesis install path.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-05",
+      "summary": "Wire custom timesteps, Genesis adapter, and Isaac stubs into New Run.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-05",
+      "summary": "Extend MuJoCo adapter for multi-task worlds and task-shaped observations.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-05",
+      "summary": "Add navigation task suite (go-to-goal, maze, docking, figure-8) with scene worlds and Phase 5B docs.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-05",
+      "summary": "Add Failure Resolution page for logistics vs experiment failures.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-05",
+      "summary": "Add PyBullet adapter so wall_follow runs on the same URDF as MuJoCo.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-05",
+      "summary": "Add fuzzy search, filters, and sort to the experiments dashboard.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-05",
+      "summary": "Add dedicated spend page and costs API for RunPod charge breakdown.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-05",
+      "summary": "fix: make Watch open an inline-playable run video",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-04",
+      "summary": "docs: record successful Secure RunPod 2k smoke in PHASE_3_TEST",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-04",
+      "summary": "fix: run MuJoCo trainer under xvfb with GLFW on RunPod",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-04",
+      "summary": "fix: correct CUDA probe quoting in worker entrypoint",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-04",
+      "summary": "fix: probe CUDA in subprocess to survive driver segfaults",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-04",
+      "summary": "fix: fall back to CPU when CUDA probe fails; default MUJOCO_GL=osmesa",
+      "source": "git"
+    }
+  ],
+  "source_path": "brain/wiki/experiments/robolab.md"
+}
