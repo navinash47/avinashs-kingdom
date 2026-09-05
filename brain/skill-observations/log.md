@@ -412,3 +412,34 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 **Suggested improvement:** After any Kingdom panel/UI fix that must be live, treat `git push origin main` (or `vercel --prod`) as a required verification step alongside local `ventures.json` checks — document in sync-kingdom "Cloud UI merge / deploy" notes.
 
 **Principle:** Static-hosted control planes only change when the commit that contains both UI assets and regenerated `public/data` is deployed; local sync is necessary but not sufficient.
+
+## 2026-09-05 — resume share-site Vercel not Git-linked
+
+- **Friction:** `share-site/public/data/manifest.json` on `main` already had 2026-09-05, but live `share-site-ruddy.vercel.app` kept serving 2026-09-02 (`x-vercel-cache: HIT`, last-modified Sep 3). Push alone does not redeploy — CLI tip: `vercel git connect`. Local `dist/` is gitignored and can stay stale for `vite preview`.
+- **Fix:** `npm run prepare:share` (+ bump timestamps if needed) → `cd share-site && npm run build` → `npx vercel deploy --prod`. Dev preview: `npm run dev` → http://localhost:5299 (serves `public/`, not stale `dist/`).
+- **Skill:** career-rebrand / resume finish checklist — add explicit “CLI prod deploy” after prepare:share when Vercel Git is not connected.
+
+## 2026-09-04 — resume metric scrub vs process counts
+- **Trigger:** User correction after over-aggressive number removal.
+- **Insight:** Strip process/status counts (22/22, phases PASS, stage %) without deleting outcome metrics (latency %, F1, accuracy). Also ban →, ~, backticks in exported resume text ("about 20%" not "~20%").
+- **Skill impact:** career-rebrand / resume cleanup — distinguish outcome vs process numbers; post-scrub grep for → ~ `.
+
+## 2026-09-04 — resume raised-tilde PDF bug
+- **Trigger:** User saw raised ˜ on share-site PDFs after metric scrub.
+- **Cause:** Bare `~` escaped to `\textasciitilde{}` (U+02DC); finish pipeline skipped after JSON fix.
+- **Fix:** Scrub approx tildes in prose-normalize; drop `\textasciitilde{}`; always recompile PDFs after bullet metric edits.
+
+### Observation 28: venture:new must also seed STATUS_SOURCES + ventures.json
+
+**Status:** OPEN
+**Date:** 2026-09-05
+**Session context:** Sync RoboLab + Frontier; keep per-project rules separate
+**Skill:** sync-kingdom; New skill candidate: onboard wiring in new-venture.mjs
+**Type:** internal
+**Phase/Area:** after_write checklist / STATUS_SOURCES
+
+**Issue:** `npm run venture:new -- --write` added registry + wiki stubs, but sync still skipped RoboLab progress until `STATUS_SOURCES` in `scripts/sync-kingdom.mjs` and a seed row in `public/data/ventures.json` were added manually. Research Lab showed the project at 0% until that second pass.
+
+**Suggested improvement:** Extend `new-venture.mjs --write` (or sync-kingdom after_write) to append STATUS_SOURCES + a minimal ventures.json seed, or derive STATUS paths from the registry so the hardcoded list cannot drift.
+
+**Principle:** Onboarding is incomplete if the control plane can list a venture while progress sync still ignores its STATUS.md.

@@ -1,6 +1,6 @@
 ---
 type: concept
-updated: 2026-08-24
+updated: 2026-09-05
 tags: [research, orchestrator, lab]
 ---
 
@@ -38,7 +38,8 @@ Lambda has **no public Isaac webpage**. The browser UI for live metrics is **Wei
 
 | Id | Field | Repo |
 |----|-------|------|
-| `research-frontier` | generative comics / multimodal consistency | ~/Projects/research-frontier-lab |
+| `research-frontier` | generative comics / multimodal consistency | ~/Projects/research-frontier-lab (rules: `.cursor/rules/cost-aware-agent-ops.mdc`) |
+| `robolab` | robot learning / sim-to-sim RL | ~/Projects/robolab (rules: `.cursor/rules/robolab-ops.mdc`) |
 | `beamdojo` | robot learning / humanoid locomotion | ~/Projects/BeamDojo |
 
 Panel: http://127.0.0.1:5173/?tab=research

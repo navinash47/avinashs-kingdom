@@ -31,3 +31,11 @@ brain/harness/reports/proposals/
 *.sln
 *.sw?
 .vercel
+
+# Secrets + ephemeral Mac bridge URL (token lives in .env; never commit)
+.env
+.env.*
+!.env.example
+public/data/mac-bridge.json
+public/data/share-url.json
+

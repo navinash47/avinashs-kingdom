@@ -10,14 +10,12 @@ import { SubscriptionAuditPanel } from './components/SubscriptionAuditPanel'
 import { ThroneOverview } from './components/ThroneOverview'
 import { TokenMaxxing } from './components/TokenMaxxing'
 import { VentureSidebar } from './components/VentureSidebar'
-import { ShareBanner } from './components/ShareBanner'
-import { bumpMirrorRefresh } from './lib/mirrorRefresh'
+import { MacBridgeBar } from './components/MacBridgeBar'
 import { VenturePage } from './components/VenturePage'
 import { FleetGraphPage } from './components/FleetGraph/FleetGraphPage'
 import { ResearchLab } from './components/ResearchLab'
 import { OrchestratorProvider, useOrchestrator } from './context/OrchestratorContext'
 import { useKingdomState } from './hooks/useKingdomState'
-import { useShareMode } from './hooks/useShareMode'
 import type { InspectorTab } from './types'
 import './App.css'
 
@@ -61,7 +59,6 @@ function KingdomApp() {
     graphNodeId,
     focusGraphNode,
   } = useOrchestrator()
-  const shareMode = useShareMode()
   const fileRef = useRef<HTMLInputElement>(null)
   const autoSelectedRef = useRef(false)
 
@@ -114,33 +111,16 @@ function KingdomApp() {
 
   return (
     <div className="kingdom">
-      <ShareBanner lastSyncAt={lastSyncAt} onRefreshMirror={refreshFromHost} />
+      <MacBridgeBar />
       <header className="hero-bar">
         <div>
-          <p className="eyebrow">{shareMode ? 'Live guest view' : 'Virtual control plane'}</p>
+          <p className="eyebrow">Virtual control plane</p>
           <h1>
             AVINASH&apos;S <span className="phosphor-text">KINGDOM</span>
           </h1>
-          <p className="tagline">
-            {shareMode
-              ? 'Read-only mirror — use Refresh mirror to sync with the host'
-              : 'Orchestrate every venture · sync refreshes this surface'}
-          </p>
+          <p className="tagline">Orchestrate every venture · Vercel UI · Mac runs the apps</p>
         </div>
-        {shareMode ? (
-          <div className="hero-actions">
-            <button
-              type="button"
-              className="btn primary"
-              onClick={() =>
-                void refreshFromHost().then(() => bumpMirrorRefresh())
-              }
-            >
-              Refresh mirror
-            </button>
-          </div>
-        ) : (
-          <div className="hero-actions">
+        <div className="hero-actions">
             <button type="button" className="btn primary" onClick={() => setPaletteOpen(true)}>
               ⌘K Command
             </button>
@@ -164,7 +144,6 @@ function KingdomApp() {
               }}
             />
           </div>
-        )}
       </header>
 
       <nav className="top-nav">

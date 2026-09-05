@@ -1,0 +1,91 @@
+{
+  "venture_id": "robolab",
+  "synced_at": "2026-09-05T20:15:27.026Z",
+  "repo": {
+    "path": "/Users/avinashnandyala/Projects/robolab",
+    "head": "8f207631b2312a8a5a1f3878f9964d6e81b125d5",
+    "branch": "main",
+    "last_commit_at": "2026-09-05T13:05:23-07:00",
+    "remote_url": "https://github.com/navinash47/robolab.git",
+    "github": {
+      "owner": "navinash47",
+      "repo": "robolab",
+      "default_branch": "main"
+    }
+  },
+  "stats": {
+    "files": 173,
+    "lines": 20468,
+    "primary_language": "Python",
+    "languages": [
+      {
+        "language": "Other",
+        "files": 51,
+        "lines": 9549
+      },
+      {
+        "language": "Python",
+        "files": 54,
+        "lines": 6579
+      },
+      {
+        "language": "Markdown",
+        "files": 22,
+        "lines": 2625
+      },
+      {
+        "language": "YAML",
+        "files": 33,
+        "lines": 1249
+      },
+      {
+        "language": "Shell",
+        "files": 2,
+        "lines": 307
+      },
+      {
+        "language": "TOML",
+        "files": 4,
+        "lines": 100
+      },
+      {
+        "language": "JSON",
+        "files": 7,
+        "lines": 59
+      }
+    ],
+    "truncated": false,
+    "sampled_files": 173,
+    "source": "walker"
+  },
+  "dependencies": {
+    "ecosystem": "python",
+    "runtime": [],
+    "dev": []
+  },
+  "storage": [
+    {
+      "type": "sqlite",
+      "path": "robolab.db",
+      "note": "Auto-detected database file"
+    },
+    {
+      "type": "json",
+      "path": "tracking/phases.json",
+      "note": "Registry path"
+    },
+    {
+      "type": "jsonl",
+      "path": "tracking/expenses.jsonl",
+      "note": "Registry path"
+    }
+  ],
+  "models_detected": [],
+  "spend_usd": null,
+  "ceiling_usd": null,
+  "progress": 48,
+  "version": "v0.5 · Phase 5B",
+  "test_commands": [],
+  "suggestions": [],
+  "services": []
+}

@@ -4393,3 +4393,39 @@ kbd {
     grid-template-columns: 1fr;
   }
 }
+
+/* Mac bridge connect bar (Vercel → Mac) */
+.mac-bridge-bar {
+  padding: 0.55rem 1.25rem;
+  border-bottom: 1px solid var(--stroke, #2a3a3a);
+  background: color-mix(in srgb, var(--ink, #0c1212) 92%, #1a3030);
+}
+.mac-bridge-bar.warn {
+  border-bottom-color: color-mix(in srgb, var(--danger, #e07a5f) 40%, transparent);
+}
+.mac-bridge-bar.ok {
+  border-bottom-color: color-mix(in srgb, var(--ok, #3dcf8e) 35%, transparent);
+}
+.mac-bridge-bar .btn.tiny-btn {
+  margin-left: 0.6rem;
+}
+.mac-bridge-form {
+  display: grid;
+  gap: 0.55rem;
+  max-width: 40rem;
+  margin-top: 0.5rem;
+}
+.mac-bridge-form label {
+  display: grid;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--fog, #8aa);
+}
+.mac-bridge-form input {
+  padding: 0.45rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid var(--stroke, #2a3a3a);
+  background: var(--ink, #0c1212);
+  color: inherit;
+  font: inherit;
+}

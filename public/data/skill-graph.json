@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-09-03T04:09:10.352Z",
+  "synced_at": "2026-09-05T20:15:33.062Z",
   "skills": [
     {
       "id": "career-rebrand",
@@ -167,6 +167,21 @@
         "log-outreach"
       ],
       "token_budget_usd": 15,
+      "token_used_usd": 0,
+      "recent_observations": []
+    },
+    {
+      "id": "agent-robo",
+      "name": "Agent Robo",
+      "venture_id": "robolab",
+      "focus": "RoboLab: MuJoCo/PyBullet RL, RunPod workers, sim-to-sim transfer. Human gates before claiming PASS.",
+      "skills": [
+        "sync-kingdom",
+        "kingdom-wiki",
+        "phase-gate",
+        "runpod"
+      ],
+      "token_budget_usd": 40,
       "token_used_usd": 0,
       "recent_observations": []
     }

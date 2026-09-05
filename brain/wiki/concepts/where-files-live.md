@@ -62,7 +62,8 @@ Dashboard: `python scripts/run_dashboard.py` → http://127.0.0.1:8770/v2a
 | Venture | Path |
 |---------|------|
 | YouTube editor | `~/Projects/youtube-editor-lab` (SRS: `docs/SRS.md`) |
-| Research Frontier | `~/Projects/research-frontier-lab` |
+| Research Frontier | `~/Projects/research-frontier-lab` (`STATUS.md`; agent rules: `.cursor/rules/cost-aware-agent-ops.mdc` — Frontier only) |
+| RoboLab | `~/Projects/robolab` (`STATUS.md`, `docs/PHASES.md`; agent rules: `.cursor/rules/robolab-ops.mdc` — RoboLab only). Dashboard `:5173` / API `:8000` |
 | BeamDojo | `~/Projects/BeamDojo` (`STATUS.md`, `tracking/expenses.jsonl`, gitignored `tracking/training-status.json`, `proofs/*.mp4`). Live metrics: W&B project `beamdojo`. |
 | Job Jugaad | `~/Projects/job-jugaad` (tracker UI + API `:8790`, `data/applications.json`) |
 | Mac optimize audit | `~/Projects/mac-optimize-audit` (live dashboard `:8742`, `reports/latest.json`) |

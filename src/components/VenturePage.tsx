@@ -22,7 +22,6 @@ import { OperationTerminal } from './OperationTerminal'
 import { useOrchestrator } from '../context/OrchestratorContext'
 import { operationLogKey, useOperationLog } from '../context/OperationLogContext'
 import { useServiceStatus } from '../hooks/useServiceStatus'
-import { useShareMode } from '../hooks/useShareMode'
 import {
   restartService,
   serviceForVenture,
@@ -75,7 +74,6 @@ export function VenturePage({
   onRefresh,
 }: Props) {
   const { ventureTab, setVentureTab } = useOrchestrator()
-  const shareMode = useShareMode()
   const { services, apiOk, refresh: refreshServices } = useServiceStatus()
   const [busy, setBusy] = useState(false)
   const [testRunning, setTestRunning] = useState(false)
@@ -247,7 +245,7 @@ export function VenturePage({
             selfHosted={selfHosted}
             testRunning={testRunning}
             syncRunning={syncRunning}
-            readOnly={shareMode}
+            readOnly={false}
             onStart={() => void doServiceAction('start')}
             onStop={() => void doServiceAction('stop')}
             onRestart={() => void doServiceAction('restart')}
@@ -419,7 +417,7 @@ export function VenturePage({
               registryEntry={registryEntry}
               cicd={cicd}
               apiOk={apiOk}
-              readOnly={shareMode}
+              readOnly={false}
               logKey={testLogKey}
             />
           )}

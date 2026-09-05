@@ -1,11 +1,11 @@
 /**
- * True when viewing via Cloudflare quick tunnel (friend / public read-only view).
+ * Legacy share-host helpers (guest Cloudflare UI removed).
+ * dashboardOpenUrl lives in orchestratorApi — kept here for any leftover imports.
  */
-export function isShareHost(hostname = window.location.hostname) {
-  return hostname.endsWith('.trycloudflare.com') || hostname.endsWith('.cloudflare.com')
+export function isShareHost(_hostname = typeof window !== 'undefined' ? window.location.hostname : '') {
+  return false
 }
 
-/** Direct local dashboard URL (not /embed — that breaks dashboard /api calls). */
 export function dashboardOpenUrl(port: number) {
   return `http://127.0.0.1:${port}/`
 }

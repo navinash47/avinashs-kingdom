@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-09-03T04:09:01.538Z",
+  "synced_at": "2026-09-05T20:15:26.558Z",
   "patches": {
     "youtube-editor": {
       "version": "Phase 4 · Clip research + provenance",
@@ -15,11 +15,11 @@
       "ceilingUsd": null
     },
     "research-frontier": {
-      "version": "v0.2",
-      "progress": 22,
+      "version": "v0.4.1",
+      "progress": 67,
       "priority": "P1",
-      "nextMilestone": "Phase 0 foundation: stand up `frontier-brain` registry + `paper-identity` resolve for one comics/multimodal club.",
-      "notes": "Next: 1) Phase 0 foundation: stand up `frontier-brain` registry + `paper-identity` resolve for one comics/multimodal club. · 2) Ingest 1–3 abstracts into Kingdom brain via kingdom-wiki (vertical: generative comics / multimodal consistency). · 3) Prototype citation expand + distance/importance overlays on the map playground path (Phase 1).",
+      "nextMilestone": "**Phase 5 kickoff** — multi-club scale & polish (catalog phase 5); scaffold stories + signals board.",
+      "notes": "Next: 1) **Phase 5 kickoff** — multi-club scale & polish (catalog phase 5); scaffold stories + signals board. · 2) **Vercel prod redeploy** — frontier-roadmap build must resolve `@research-frontier-lab/evidence-verify`; then smoke `/?phase=4#story-gate` (S00–S13 green) + `/api/story-signals?phase=4`. · 3) Keep mapping-check + Story Gate healthy on prod (`OPENALEX_API_KEY` / `S2_API_KEY` for live BYO).",
       "status": "active",
       "progressSource": "STATUS.md Progress field (agent-updated)",
       "phasesPassed": null,
@@ -40,12 +40,25 @@
       "spendUsd": null,
       "ceilingUsd": null
     },
+    "robolab": {
+      "version": "v0.5 · Phase 5B",
+      "progress": 48,
+      "priority": "P1",
+      "nextMilestone": "Human UI confirm gates for Phases 1–4 (dashboard + RunPod checklist).",
+      "notes": "Next: 1) Human UI confirm gates for Phases 1–4 (dashboard + RunPod checklist). · 2) Finish Phase 5 / 5B local smokes (mujoco+pybullet gate tasks; Genesis best-effort on RunPod). · 3) Do **not** bake Isaac into default worker without explicit approval.",
+      "status": "active",
+      "progressSource": "STATUS.md Progress field (agent-updated)",
+      "phasesPassed": null,
+      "phasesTotal": null,
+      "spendUsd": null,
+      "ceilingUsd": null
+    },
     "mac-optimize-audit": {
       "version": "v0.1",
-      "progress": 67,
+      "progress": 70,
       "priority": "P1",
       "nextMilestone": "Memory pressure is warning",
-      "notes": "Next: 1) Memory pressure is warning · 2) Restart Zen Browser — 2.3 GB across 28 processes · 3) Cursor is heavy (7.2 GB, 140 processes)",
+      "notes": "Next: 1) Memory pressure is warning · 2) Restart Zen Browser — 3.1 GB across 15 processes · 3) Close extra Cursor windows (keep robotlab): Agents Window",
       "status": "active",
       "progressSource": "STATUS.md Progress field (agent-updated)",
       "phasesPassed": null,
@@ -72,7 +85,7 @@
       "priority": "P1",
       "status": "active",
       "nextMilestone": "Phase 91: v1 RELEASE GATE (pending)",
-      "notes": "City · 91/97 pass · source local working tree · updated 2026-09-03T03:58:50.618163+00:00 · ceiling $70",
+      "notes": "City · 91/97 pass · source local working tree · updated 2026-09-05T20:00:15.175708+00:00 · ceiling $70",
       "progressSource": "phases 91/97 from local working tree",
       "phasesPassed": 91,
       "phasesTotal": 97,
@@ -105,7 +118,7 @@
       "spendUsd": null,
       "ceilingUsd": null,
       "audit": {
-        "synced_at": "2026-09-03T04:09:01.537Z",
+        "synced_at": "2026-09-05T20:15:26.558Z",
         "target": 500,
         "total": 469,
         "applied_or_beyond": 439,
@@ -212,7 +225,7 @@
       "progress": 70,
       "priority": "P1",
       "status": "active",
-      "nextMilestone": "Cancel/review 6 kill-list seats; reclaim low-risk disk (53.7% used)",
+      "nextMilestone": "Cancel/review 6 kill-list seats; reclaim low-risk disk (59% used)",
       "notes": "Subscription kill list lives here. Mac speed is the mac-optimize-audit province.",
       "progressSource": "heuristic ops readiness 70% (audits live; kill seats still open)",
       "phasesPassed": null,

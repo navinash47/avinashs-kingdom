@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-09-03T04:09:01.538Z",
+  "synced_at": "2026-09-05T20:15:26.558Z",
   "progress_rules": {
     "whatsapp-voice": "phases_pass / phases_total (from tracking/phases.json)",
     "procedural-city": "phases_pass / phases_total — prefer origin/main when local phase branch is stale",
@@ -7,6 +7,7 @@
     "youtube-editor": "STATUS.md **Progress** field",
     "research-frontier": "STATUS.md **Progress** field",
     "beamdojo": "STATUS.md **Progress** field (Isaac Lab GPU smokes / trains)",
+    "robolab": "STATUS.md **Progress** field (phases + human UI gates)",
     "job-jugaad": "applied-or-beyond / target from data/applications.json (waiting counts; overshoot allowed past milestone)",
     "kingdom-ops": "heuristic ops readiness (70%) until kill-list closure tracked",
     "mac-optimize-audit": "STATUS.md Progress from health score after python3 -m mac_optimize audit",
@@ -53,17 +54,17 @@
     {
       "id": "research-frontier",
       "name": "Research Frontier Lab",
-      "version": "v0.2",
-      "progress": 22,
+      "version": "v0.4.1",
+      "progress": 67,
       "priority": "P1",
       "status": "active",
-      "nextMilestone": "Phase 0 foundation: stand up `frontier-brain` registry + `paper-identity` resolve for one comics/multimodal club.",
+      "nextMilestone": "**Phase 5 kickoff** — multi-club scale & polish (catalog phase 5); scaffold stories + signals board.",
       "progressSource": "STATUS.md Progress field (agent-updated)",
       "phasesPassed": null,
       "phasesTotal": null,
       "spendUsd": null,
       "ceilingUsd": null,
-      "notes": "Next: 1) Phase 0 foundation: stand up `frontier-brain` registry + `paper-identity` resolve for one comics/multimodal club. · 2) Ingest 1–3 abstracts into Kingdom brain via kingdom-wiki (vertical: generative comics / multimodal consistency). · 3) Prototype citation expand + distance/importance overlays on the map playground path (Phase 1).",
+      "notes": "Next: 1) **Phase 5 kickoff** — multi-club scale & polish (catalog phase 5); scaffold stories + signals board. · 2) **Vercel prod redeploy** — frontier-roadmap build must resolve `@research-frontier-lab/evidence-verify`; then smoke `/?phase=4#story-gate` (S00–S13 green) + `/api/story-signals?phase=4`. · 3) Keep mapping-check + Story Gate healthy on prod (`OPENALEX_API_KEY` / `S2_API_KEY` for live BYO).",
       "repoPath": "/Users/avinashnandyala/Projects/research-frontier-lab"
     },
     {
@@ -79,7 +80,7 @@
       "phasesTotal": 97,
       "spendUsd": null,
       "ceilingUsd": 70,
-      "notes": "City · 91/97 pass · source local working tree · updated 2026-09-03T03:58:50.618163+00:00 · ceiling $70",
+      "notes": "City · 91/97 pass · source local working tree · updated 2026-09-05T20:00:15.175708+00:00 · ceiling $70",
       "repoPath": "/Users/avinashnandyala/ProceduralCity"
     },
     {
@@ -105,7 +106,7 @@
       "progress": 70,
       "priority": "P1",
       "status": "active",
-      "nextMilestone": "Cancel/review 6 kill-list seats; reclaim low-risk disk (53.7% used)",
+      "nextMilestone": "Cancel/review 6 kill-list seats; reclaim low-risk disk (59% used)",
       "progressSource": "heuristic ops readiness 70% (audits live; kill seats still open)",
       "phasesPassed": null,
       "phasesTotal": null,
@@ -118,7 +119,7 @@
       "id": "mac-optimize-audit",
       "name": "Mac optimize audit",
       "version": "v0.1",
-      "progress": 67,
+      "progress": 70,
       "priority": "P1",
       "status": "active",
       "nextMilestone": "Memory pressure is warning",
@@ -127,7 +128,7 @@
       "phasesTotal": null,
       "spendUsd": null,
       "ceilingUsd": null,
-      "notes": "Next: 1) Memory pressure is warning · 2) Restart Zen Browser — 2.3 GB across 28 processes · 3) Cursor is heavy (7.2 GB, 140 processes)",
+      "notes": "Next: 1) Memory pressure is warning · 2) Restart Zen Browser — 3.1 GB across 15 processes · 3) Close extra Cursor windows (keep robotlab): Agents Window",
       "repoPath": "/Users/avinashnandyala/Projects/mac-optimize-audit"
     },
     {
@@ -177,6 +178,22 @@
       "ceilingUsd": null,
       "notes": "Next: 1) Dual-terrain Stage 1 (flat physics + imagined beam height scan) then 1024-env CUDA train on the A10. · 2) Log Lambda hours in `tracking/expenses.jsonl` whenever the GPU is running; terminate the instance when idle. · 3) Stage 2 hard beam + Unitree G1 port — only after Stage 1 walks the imagined beam.",
       "repoPath": "/Users/avinashnandyala/Projects/BeamDojo"
+    },
+    {
+      "id": "robolab",
+      "name": "RoboLab",
+      "version": "v0.5 · Phase 5B",
+      "progress": 48,
+      "priority": "P1",
+      "status": "active",
+      "nextMilestone": "Human UI confirm gates for Phases 1–4 (dashboard + RunPod checklist).",
+      "progressSource": "STATUS.md Progress field (agent-updated)",
+      "phasesPassed": null,
+      "phasesTotal": null,
+      "spendUsd": null,
+      "ceilingUsd": null,
+      "notes": "Next: 1) Human UI confirm gates for Phases 1–4 (dashboard + RunPod checklist). · 2) Finish Phase 5 / 5B local smokes (mujoco+pybullet gate tasks; Genesis best-effort on RunPod). · 3) Do **not** bake Isaac into default worker without explicit approval.",
+      "repoPath": "/Users/avinashnandyala/Projects/robolab"
     }
   ]
 }

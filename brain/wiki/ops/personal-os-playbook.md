@@ -1,6 +1,6 @@
 ---
 type: overview
-updated: 2026-09-02
+updated: 2026-09-05
 tags: [ops, personal-os, playbook]
 ---
 
@@ -8,11 +8,26 @@ tags: [ops, personal-os, playbook]
 
 How Avinash runs the Kingdom **personal OS** day to day. Architecture: [[concepts/kingdom-personal-os]]. Schema: `brain/AGENTS.md`.
 
+## Vercel UI + Mac bridge
+
+Production: https://avinashs-kingdom.vercel.app  
+
+Snapshot JSON ships with each deploy. **Start / Stop / Open / Run tests / Sync** run on the Mac:
+
+1. Mac: `npm run mac-bridge` (keep terminal open; prints API URL)
+2. Vercel Throne → **Connect Mac** → paste API base + `KINGDOM_CONTROL_TOKEN` (from `.env`)
+3. Or Vercel env: `VITE_KINGDOM_API_BASE` + `VITE_KINGDOM_CONTROL_TOKEN` (rebuild)
+4. **Open** = `http://127.0.0.1:<port>/` (browse Vercel from the Mac). Start still works from phone.
+
+Local coding: `npm run dev` (Vite `/api`, no tunnel).
+
+Fleet columns: **App** = Mac port UP/DOWN/— · **GitHub** = Actions green/red/gray · **Local tests** = PASS/FAIL/—.
+
 ## Morning / context load (2–5 min)
 
-1. Open Throne: `cd ~/Projects/avinashs-kingdom && npm run dev` → `/?tab=throne`
+1. Prefer production Throne + `npm run mac-bridge`, **or** local `npm run dev` → `/?tab=throne`
 2. Glance **Virtual control**: sync stamp, FSM state, P0 strip, capability chips, onboard hint
-3. If STATUS/phases changed overnight elsewhere: `npm run sync` (full filesystem access)
+3. If STATUS/phases changed overnight elsewhere: Sync from Throne (needs bridge) or `npm run sync`
 4. Optional hygiene: `npm run brain:lint`
 
 ## During work (any venture)
@@ -56,6 +71,7 @@ Then finish checklist in [[concepts/onboard-new-project]].
 
 ```bash
 cd ~/Projects/avinashs-kingdom
+npm run mac-bridge               # Vercel → Mac Start/Stop/Test/Sync
 npm run sync
 npm run brain:lint
 npm run brain:judge              # advisory contradictions → brain/harness/reports/ (dry-run)

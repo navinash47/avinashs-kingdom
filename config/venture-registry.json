@@ -1,6 +1,6 @@
 {
   "version": "1",
-  "updated": "2026-09-02",
+  "updated": "2026-09-05",
   "ventures": [
     {
       "id": "whatsapp-voice",
@@ -381,6 +381,41 @@
       "github": null,
       "tests": {
         "commands": []
+      }
+    },
+    {
+      "id": "robolab",
+      "repoPath": "/Users/avinashnandyala/Projects/robolab",
+      "agentId": "agent-robo",
+      "kind": "research",
+      "field": "robot learning / sim-to-sim RL",
+      "dashboard": null,
+      "wiki": {
+        "venture": "brain/wiki/ventures/robolab.md",
+        "architecture": "brain/wiki/architecture/robolab.md",
+        "experiments": "brain/wiki/experiments/robolab.md"
+      },
+      "paths": {
+        "status": "STATUS.md",
+        "phases": "tracking/phases.json",
+        "expenses": "tracking/expenses.jsonl"
+      },
+      "github": {
+        "owner": "navinash47",
+        "repo": "robolab",
+        "default_branch": "main"
+      },
+      "tests": {
+        "commands": []
+      },
+      "capabilities": [],
+      "skills": [
+        "sync-kingdom"
+      ],
+      "mcp": {
+        "enabled": false,
+        "read_only": true,
+        "note": "Optional Phase 2: copy config/mcp-registry.json template; run mcp/venture-server.mjs with KINGDOM_VENTURE_ID"
       }
     }
   ]

@@ -16,14 +16,67 @@ const DASH_SCRIPT = path.join(KINGDOM_ROOT, 'scripts/start-dashboards.sh')
 
 let services = loadDashboardServices(KINGDOM_ROOT).services
 
-function cors(res) {
-  res.setHeader('Access-Control-Allow-Origin', '*')
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
+function allowedOrigins() {
+  const extra = (process.env.KINGDOM_CORS_ORIGINS ?? '')
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean)
+  return [
+    'https://avinashs-kingdom.vercel.app',
+    'http://127.0.0.1:5173',
+    'http://localhost:5173',
+    ...extra,
+  ]
 }
 
-function json(res, status, body) {
-  cors(res)
+function cors(req, res) {
+  const origin = req.headers.origin
+  const allow = allowedOrigins()
+  if (origin && allow.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin)
+    res.setHeader('Vary', 'Origin')
+  } else if (!origin) {
+    res.setHeader('Access-Control-Allow-Origin', '*')
+  } else {
+    // Still echo for personal Vercel preview URLs when token is present
+    res.setHeader('Access-Control-Allow-Origin', origin)
+    res.setHeader('Vary', 'Origin')
+  }
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+}
+
+function controlToken() {
+  return (process.env.KINGDOM_CONTROL_TOKEN ?? '').trim()
+}
+
+function requireControlAuth(req, res) {
+  const expected = controlToken()
+  if (!expected) return true
+  const origin = req.headers.origin ?? ''
+  // Local Vite / same-machine: no Bearer required (token is for Vercel → tunnel)
+  if (
+    !origin ||
+    origin.startsWith('http://127.0.0.1:') ||
+    origin.startsWith('http://localhost:')
+  ) {
+    return true
+  }
+  const header = req.headers.authorization ?? ''
+  const match = header.match(/^Bearer\s+(.+)$/i)
+  const got = match?.[1]?.trim() ?? ''
+  if (got && got === expected) return true
+  json(res, 401, { error: 'Unauthorized — set KINGDOM_CONTROL_TOKEN / Bearer token' }, req)
+  return false
+}
+
+function json(res, status, body, req) {
+  if (req) cors(req, res)
+  else {
+    res.setHeader('Access-Control-Allow-Origin', '*')
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+  }
   if (!res.headersSent) {
     res.writeHead(status, { 'Content-Type': 'application/json' })
   }
@@ -243,7 +296,7 @@ function runApproveLinkedIn() {
 /** @returns {Promise<boolean>} true if request was handled */
 export async function handleOrchestratorRequest(req, res) {
   if (req.method === 'OPTIONS') {
-    cors(res)
+    cors(req, res)
     res.writeHead(204)
     res.end()
     return true
@@ -255,16 +308,30 @@ export async function handleOrchestratorRequest(req, res) {
   const parts = url.pathname.split('/').filter(Boolean)
 
   try {
+    // Public health — used by Vercel to detect Mac bridge
+    if (req.method === 'GET' && parts[0] === 'api' && parts[1] === 'health') {
+      json(res, 200, {
+        ok: true,
+        bridge: true,
+        auth_required: Boolean(controlToken()),
+        at: new Date().toISOString(),
+      }, req)
+      return true
+    }
+
+    // Everything else under /api requires the control token when configured
+    if (!requireControlAuth(req, res)) return true
+
     services = loadDashboardServices(KINGDOM_ROOT).services
     if (req.method === 'GET' && parts[0] === 'api' && parts[1] === 'services' && !parts[2]) {
-      json(res, 200, { services: allServiceStatus() })
+      json(res, 200, { services: allServiceStatus() }, req)
       return true
     }
 
     if (req.method === 'GET' && parts[0] === 'api' && parts[1] === 'services' && parts[2] && parts[3] === 'logs') {
       const name = parts[2]
       if (!serviceByName(services, name)) {
-        json(res, 404, { error: 'Unknown service' })
+        json(res, 404, { error: 'Unknown service' }, req)
         return true
       }
       const lines = Number(url.searchParams.get('lines') ?? 80)
@@ -272,27 +339,27 @@ export async function handleOrchestratorRequest(req, res) {
         name,
         log: logTail(name, lines) ?? readServiceLog(name, lines),
         service: serviceStatus(name),
-      })
+      }, req)
       return true
     }
 
     if (req.method === 'GET' && parts[0] === 'api' && parts[1] === 'services' && parts[2] && !parts[3]) {
       const st = serviceStatus(parts[2])
       if (!st) {
-        json(res, 404, { error: 'Unknown service' })
+        json(res, 404, { error: 'Unknown service' }, req)
         return true
       }
-      json(res, 200, st)
+      json(res, 200, st, req)
       return true
     }
 
     if (req.method === 'GET' && parts[0] === 'api' && parts[1] === 'ventures' && parts[3] === 'service') {
       const svc = serviceByVentureId(services, parts[2])
       if (!svc) {
-        json(res, 404, { error: 'No service for venture' })
+        json(res, 404, { error: 'No service for venture' }, req)
         return true
       }
-      json(res, 200, serviceStatus(svc.name))
+      json(res, 200, serviceStatus(svc.name), req)
       return true
     }
 
@@ -300,7 +367,7 @@ export async function handleOrchestratorRequest(req, res) {
       const name = parts[2]
       const action = parts[3]
       if (!serviceByName(services, name)) {
-        json(res, 404, { error: 'Unknown service' })
+        json(res, 404, { error: 'Unknown service' }, req)
         return true
       }
 
@@ -311,12 +378,12 @@ export async function handleOrchestratorRequest(req, res) {
           ok: out.ok,
           service: serviceStatus(name),
           output: [out.output, log].filter(Boolean).join('\n\n--- service log ---\n'),
-        })
+        }, req)
         return true
       }
       if (action === 'stop') {
         const out = runDashScript(['--stop', name])
-        json(res, 200, { ok: out.ok, service: serviceStatus(name), output: out.output })
+        json(res, 200, { ok: out.ok, service: serviceStatus(name), output: out.output }, req)
         return true
       }
       if (action === 'restart') {
@@ -327,12 +394,12 @@ export async function handleOrchestratorRequest(req, res) {
           ok: out.ok,
           service: serviceStatus(name),
           output: [out.output, log].filter(Boolean).join('\n\n--- service log ---\n'),
-        })
+        }, req)
         return true
       }
       if (action === 'finish-resume') {
         if (name !== 'resume') {
-          json(res, 400, { error: 'finish-resume only available for resume service' })
+          json(res, 400, { error: 'finish-resume only available for resume service' }, req)
           return true
         }
         const out = runFinishResume()
@@ -343,12 +410,12 @@ export async function handleOrchestratorRequest(req, res) {
           service: serviceStatus(name),
           output: out.output,
           error: out.error,
-        })
+        }, req)
         return true
       }
       if (action === 'update-cover-letter') {
         if (name !== 'resume') {
-          json(res, 400, { error: 'update-cover-letter only available for resume service' })
+          json(res, 400, { error: 'update-cover-letter only available for resume service' }, req)
           return true
         }
         const body = await readBody(req)
@@ -361,12 +428,12 @@ export async function handleOrchestratorRequest(req, res) {
           output: out.output,
           error: out.error,
           roleId: out.roleId,
-        })
+        }, req)
         return true
       }
       if (action === 'approve-linkedin') {
         if (name !== 'resume') {
-          json(res, 400, { error: 'approve-linkedin only available for resume service' })
+          json(res, 400, { error: 'approve-linkedin only available for resume service' }, req)
           return true
         }
         const out = runApproveLinkedIn()
@@ -378,10 +445,10 @@ export async function handleOrchestratorRequest(req, res) {
           output: out.output,
           error: out.error,
           linkedin: out.linkedin,
-        })
+        }, req)
         return true
       }
-      json(res, 400, { error: 'Unknown action' })
+      json(res, 400, { error: 'Unknown action' }, req)
       return true
     }
 
@@ -394,13 +461,13 @@ export async function handleOrchestratorRequest(req, res) {
         chunks.push(`[${name}]\n${out.output}`)
         results.push({ name, ok: out.ok, service: serviceStatus(name), output: out.output })
       }
-      json(res, 200, { ok: true, results, output: chunks.join('\n\n') })
+      json(res, 200, { ok: true, results, output: chunks.join('\n\n') }, req)
       return true
     }
 
     if (req.method === 'POST' && parts[0] === 'api' && parts[1] === 'services' && parts[2] === 'stop-all') {
       const out = runDashScript(['--stop'])
-      json(res, 200, { ok: out.ok, services: allServiceStatus(), output: out.output })
+      json(res, 200, { ok: out.ok, services: allServiceStatus(), output: out.output }, req)
       return true
     }
 
@@ -412,7 +479,7 @@ export async function handleOrchestratorRequest(req, res) {
         const entry = getRegistryEntry(registry, ventureId)
         const tc = entry?.tests?.commands?.find((c) => c.id === body.testId)
         if (!tc) {
-          json(res, 404, { error: 'Unknown test id' })
+          json(res, 404, { error: 'Unknown test id' }, req)
           return true
         }
         const repoRoot = expandHome(entry.repoPath)
@@ -439,28 +506,28 @@ export async function handleOrchestratorRequest(req, res) {
             output: combined.slice(-4000) || null,
             error: ok ? undefined : (result.stderr || result.stdout || 'failed').slice(0, 800),
           }],
-        })
+        }, req)
         return true
       }
-      json(res, 200, runVentureTest(ventureId))
+      json(res, 200, runVentureTest(ventureId), req)
       return true
     }
 
     if (req.method === 'POST' && parts[0] === 'api' && parts[1] === 'sync') {
       const out = runSync()
-      json(res, out.ok ? 200 : 500, out)
+      json(res, out.ok ? 200 : 500, out, req)
       return true
     }
 
     if (req.method === 'GET' && parts[0] === 'api' && parts[1] === 'health') {
-      json(res, 200, { ok: true, embedded: true })
+      json(res, 200, { ok: true, embedded: true }, req)
       return true
     }
 
-    json(res, 404, { error: 'Not found' })
+    json(res, 404, { error: 'Not found' }, req)
     return true
   } catch (e) {
-    json(res, 500, { error: e.message ?? 'Internal error' })
+    json(res, 500, { error: e.message ?? 'Internal error' }, req)
     return true
   }
 }

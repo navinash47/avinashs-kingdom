@@ -1,7 +1,6 @@
 import { useMemo, useState } from 'react'
 import type { ControlSurface, SkillGraph, Venture } from '../types'
 import { useOrchestrator } from '../context/OrchestratorContext'
-import { useShareMode } from '../hooks/useShareMode'
 import { formatProgress } from '../lib/progress'
 import { triggerSync } from '../lib/orchestratorApi'
 
@@ -21,7 +20,6 @@ export function ControlSurfaceBar({
   onSynced,
 }: Props) {
   const { setMainTab, openVenture, focusGraphNode, setPaletteOpen } = useOrchestrator()
-  const shareMode = useShareMode()
   const [busy, setBusy] = useState(false)
   const [msg, setMsg] = useState<string | null>(null)
 
@@ -54,7 +52,7 @@ export function ControlSurfaceBar({
   const onboarding = controlSurface?.onboarding
 
   async function runSync() {
-    if (shareMode || busy) return
+    if (busy) return
     setBusy(true)
     setMsg('Syncing…')
     try {
@@ -79,16 +77,14 @@ export function ControlSurfaceBar({
           </p>
         </div>
         <div className="fleet-actions">
-          {!shareMode ? (
-            <button
-              type="button"
-              className="btn primary"
-              disabled={busy}
-              onClick={() => void runSync()}
-            >
-              {busy ? 'Syncing…' : 'Sync Kingdom'}
-            </button>
-          ) : null}
+          <button
+            type="button"
+            className="btn primary"
+            disabled={busy}
+            onClick={() => void runSync()}
+          >
+            {busy ? 'Syncing…' : 'Sync Kingdom'}
+          </button>
           <button type="button" className="btn" onClick={() => setPaletteOpen(true)}>
             ⌘K
           </button>

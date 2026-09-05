@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-02T05:34:40.687Z",
+  "updated": "2026-09-05T04:54:14.769Z",
   "phase": 1,
   "repo": "https://github.com/navinash47/resume",
   "local_path": "~/Projects/resume",
@@ -27,6 +27,18 @@
       "name": "BeamDojo",
       "git": "https://github.com/navinash47/BeamDojo",
       "honesty_gate": "research"
+    },
+    {
+      "id": "research-frontier",
+      "name": "Research Frontier Lab",
+      "git": "https://github.com/navinash47/research-frontier-lab",
+      "honesty_gate": "lab"
+    },
+    {
+      "id": "robolab",
+      "name": "RoboLab",
+      "git": "https://github.com/navinash47/robolab",
+      "honesty_gate": "research"
     }
   ],
   "deferred_projects": [
@@ -35,7 +47,7 @@
       "name": "WhatsApp Voice Agents",
       "git": "https://github.com/navinash47/whatsapp-voice-agents",
       "honesty_gate": "lab",
-      "defer_reason": "Phase 8+ pilot not closed - see knowledge/featured-verdict.md"
+      "defer_reason": "Phase 8+ pilot not closed — see knowledge/featured-verdict.md"
     },
     {
       "id": "youtube-editor",
@@ -53,12 +65,12 @@
   "roles": [
     {
       "id": "ai-engineer",
-      "label": "Artificial Intelligence Engineer",
+      "label": "AI Engineer",
       "level": "mid"
     },
     {
       "id": "fde",
-      "label": "Forward Deployed Engineer",
+      "label": "FDE",
       "level": "mid"
     },
     {
@@ -68,22 +80,22 @@
     },
     {
       "id": "mle",
-      "label": "Machine Learning Engineer",
+      "label": "MLE",
       "level": "mid"
     },
     {
       "id": "robotics",
-      "label": "Robotics and Reinforcement Learning Engineer",
+      "label": "Robotics / RL Engineer",
       "level": "mid"
     },
     {
       "id": "sde-mid",
-      "label": "Software Development Engineer",
+      "label": "SDE",
       "level": "mid"
     },
     {
       "id": "sde-entry",
-      "label": "Software Development Engineer",
+      "label": "SDE",
       "level": "entry"
     },
     {
@@ -96,71 +108,73 @@
     "summary": 11,
     "skills": 7,
     "mastercard": 13,
-    "bionlp": 7,
-    "independent": 7,
-    "robotics-lab": 4,
-    "kingdom": 7,
-    "comic": 10,
-    "city": 8,
-    "beamdojo": 9,
+    "bionlp": 2,
+    "independent": 2,
+    "robotics-lab": 2,
+    "kingdom": 2,
+    "comic": 2,
+    "city": 2,
+    "beamdojo": 2,
+    "frontier": 2,
+    "robolab": 2,
     "cs685": 6,
     "fcm": 5,
-    "whatsapp": 3,
-    "youtube": 3,
-    "total": 93
+    "whatsapp": 2,
+    "youtube": 2,
+    "total": 62
   },
   "ratings_stats": {
-    "rated_overall": 91,
-    "unrated_overall": 2,
-    "total_bullets": 93,
+    "rated_overall": 62,
+    "unrated_overall": 0,
+    "total_bullets": 62,
     "per_role": {
       "ai-engineer": {
-        "label": "Artificial Intelligence Engineer",
+        "label": "AI Engineer",
         "level": "mid",
-        "rated": 69,
-        "total": 93
+        "rated": 50,
+        "total": 62
       },
       "fde": {
-        "label": "Forward Deployed Engineer",
+        "label": "FDE",
         "level": "mid",
-        "rated": 61,
-        "total": 93
+        "rated": 40,
+        "total": 62
       },
       "agentic-engineer": {
         "label": "Agentic Engineer",
         "level": "mid",
-        "rated": 63,
-        "total": 93
+        "rated": 42,
+        "total": 62
       },
       "mle": {
-        "label": "Machine Learning Engineer",
+        "label": "MLE",
         "level": "mid",
-        "rated": 40,
-        "total": 93
+        "rated": 31,
+        "total": 62
       },
       "robotics": {
-        "label": "Robotics and Reinforcement Learning Engineer",
+        "label": "Robotics / RL Engineer",
         "level": "mid",
-        "rated": 23,
-        "total": 93
+        "rated": 17,
+        "total": 62
       },
       "sde-mid": {
-        "label": "Software Development Engineer",
+        "label": "SDE",
         "level": "mid",
-        "rated": 40,
-        "total": 93
+        "rated": 39,
+        "total": 62
       },
       "sde-entry": {
-        "label": "Software Development Engineer",
+        "label": "SDE",
         "level": "entry",
-        "rated": 38,
-        "total": 93
+        "rated": 36,
+        "total": 62
       },
       "linkedin-master": {
         "label": "LinkedIn Master",
         "level": "master",
-        "rated": 24,
-        "total": 93
+        "rated": 19,
+        "total": 62
       }
     },
     "legacy_approvals": {
@@ -169,10 +183,10 @@
     },
     "unrated_policy": "treated_as_zero"
   },
-  "suggestions_updated": "2026-09-02T02:37:26.403Z",
+  "suggestions_updated": "2026-09-05T03:48:54.584Z",
   "eval_stats": {
-    "updated": "2026-09-02T02:53:40.074Z",
-    "sections": 12,
+    "updated": "2026-09-05T03:48:54.437Z",
+    "sections": 15,
     "top_consensus": [
       {
         "id": "mc-ecc-latency-xyz-v1",
@@ -181,6 +195,10 @@
       {
         "id": "mc-fraud-disputes-xyz-v1",
         "consensus": 95
+      },
+      {
+        "id": "frontier-microservices-xyz-v1",
+        "consensus": 92
       },
       {
         "id": "bionlp-diagnosis-xyz-v1",
@@ -201,15 +219,11 @@
       {
         "id": "cs685-perplexity-xyz-v1",
         "consensus": 89
-      },
-      {
-        "id": "youtube-cut-control-lab-v1",
-        "consensus": 88
       }
     ]
   },
   "confirmed_metrics": {
-    "mastercard_ecc_latency": "~20%",
+    "mastercard_ecc_latency": "about 20%",
     "bionlp_diagnosis": "27 w-F1 @ Recall@10 (verify)",
     "comic_v1_board": "22/22",
     "city_phases": "52/92",
@@ -227,12 +241,12 @@
   "preview_pdfs": [
     {
       "role": "ai-engineer",
-      "label": "Artificial Intelligence Engineer",
+      "label": "AI Engineer",
       "path": "tracks/preview-pdf/Avinash_Nandyala_AI_Engineer.pdf"
     },
     {
       "role": "fde",
-      "label": "Forward Deployed Engineer",
+      "label": "FDE",
       "path": "tracks/preview-pdf/Avinash_Nandyala_FDE.pdf"
     },
     {
@@ -242,22 +256,22 @@
     },
     {
       "role": "mle",
-      "label": "Machine Learning Engineer",
+      "label": "MLE",
       "path": "tracks/preview-pdf/Avinash_Nandyala_MLE.pdf"
     },
     {
       "role": "robotics",
-      "label": "Robotics and Reinforcement Learning Engineer",
+      "label": "Robotics / RL Engineer",
       "path": "tracks/preview-pdf/Avinash_Nandyala_Robotics.pdf"
     },
     {
       "role": "sde-mid",
-      "label": "Software Development Engineer",
+      "label": "SDE",
       "path": "tracks/preview-pdf/Avinash_Nandyala_SDE_Mid.pdf"
     },
     {
       "role": "sde-entry",
-      "label": "Software Development Engineer",
+      "label": "SDE",
       "path": "tracks/preview-pdf/Avinash_Nandyala_SDE_Entry.pdf"
     },
     {

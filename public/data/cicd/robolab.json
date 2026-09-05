@@ -1,9 +1,9 @@
 {
-  "venture_id": "beamdojo",
-  "synced_at": "2026-09-05T20:15:30.300Z",
+  "venture_id": "robolab",
+  "synced_at": "2026-09-05T20:15:33.061Z",
   "github": {
     "owner": "navinash47",
-    "repo": "BeamDojo",
+    "repo": "robolab",
     "default_branch": "main",
     "available": true,
     "runs": [],
