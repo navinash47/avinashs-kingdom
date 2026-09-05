@@ -35,7 +35,7 @@
       "name": "WhatsApp Voice Agents",
       "git": "https://github.com/navinash47/whatsapp-voice-agents",
       "honesty_gate": "lab",
-      "defer_reason": "Phase 8+ pilot not closed — see knowledge/featured-verdict.md"
+      "defer_reason": "Phase 8+ pilot not closed - see knowledge/featured-verdict.md"
     },
     {
       "id": "youtube-editor",
@@ -53,12 +53,12 @@
   "roles": [
     {
       "id": "ai-engineer",
-      "label": "AI Engineer",
+      "label": "Artificial Intelligence Engineer",
       "level": "mid"
     },
     {
       "id": "fde",
-      "label": "FDE",
+      "label": "Forward Deployed Engineer",
       "level": "mid"
     },
     {
@@ -68,22 +68,22 @@
     },
     {
       "id": "mle",
-      "label": "MLE",
+      "label": "Machine Learning Engineer",
       "level": "mid"
     },
     {
       "id": "robotics",
-      "label": "Robotics / RL Engineer",
+      "label": "Robotics and Reinforcement Learning Engineer",
       "level": "mid"
     },
     {
       "id": "sde-mid",
-      "label": "SDE",
+      "label": "Software Development Engineer",
       "level": "mid"
     },
     {
       "id": "sde-entry",
-      "label": "SDE",
+      "label": "Software Development Engineer",
       "level": "entry"
     },
     {
@@ -115,13 +115,13 @@
     "total_bullets": 93,
     "per_role": {
       "ai-engineer": {
-        "label": "AI Engineer",
+        "label": "Artificial Intelligence Engineer",
         "level": "mid",
         "rated": 69,
         "total": 93
       },
       "fde": {
-        "label": "FDE",
+        "label": "Forward Deployed Engineer",
         "level": "mid",
         "rated": 61,
         "total": 93
@@ -133,25 +133,25 @@
         "total": 93
       },
       "mle": {
-        "label": "MLE",
+        "label": "Machine Learning Engineer",
         "level": "mid",
         "rated": 40,
         "total": 93
       },
       "robotics": {
-        "label": "Robotics / RL Engineer",
+        "label": "Robotics and Reinforcement Learning Engineer",
         "level": "mid",
         "rated": 23,
         "total": 93
       },
       "sde-mid": {
-        "label": "SDE",
+        "label": "Software Development Engineer",
         "level": "mid",
         "rated": 40,
         "total": 93
       },
       "sde-entry": {
-        "label": "SDE",
+        "label": "Software Development Engineer",
         "level": "entry",
         "rated": 38,
         "total": 93
@@ -227,12 +227,12 @@
   "preview_pdfs": [
     {
       "role": "ai-engineer",
-      "label": "AI Engineer",
+      "label": "Artificial Intelligence Engineer",
       "path": "tracks/preview-pdf/Avinash_Nandyala_AI_Engineer.pdf"
     },
     {
       "role": "fde",
-      "label": "FDE",
+      "label": "Forward Deployed Engineer",
       "path": "tracks/preview-pdf/Avinash_Nandyala_FDE.pdf"
     },
     {
@@ -242,22 +242,22 @@
     },
     {
       "role": "mle",
-      "label": "MLE",
+      "label": "Machine Learning Engineer",
       "path": "tracks/preview-pdf/Avinash_Nandyala_MLE.pdf"
     },
     {
       "role": "robotics",
-      "label": "Robotics / RL Engineer",
+      "label": "Robotics and Reinforcement Learning Engineer",
       "path": "tracks/preview-pdf/Avinash_Nandyala_Robotics.pdf"
     },
     {
       "role": "sde-mid",
-      "label": "SDE",
+      "label": "Software Development Engineer",
       "path": "tracks/preview-pdf/Avinash_Nandyala_SDE_Mid.pdf"
     },
     {
       "role": "sde-entry",
-      "label": "SDE",
+      "label": "Software Development Engineer",
       "path": "tracks/preview-pdf/Avinash_Nandyala_SDE_Entry.pdf"
     },
     {
