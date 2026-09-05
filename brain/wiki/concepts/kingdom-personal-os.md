@@ -12,7 +12,7 @@ Optional overlays later: MCP tool servers per venture, decision-trace “context
 
 **Agent frameworks:** do not default to LangChain/LangGraph - borrow their patterns into custom orchestration; see [[agentic-stack-guidance]].
 
-**Phase 2 (hard ~10%):** **done** on `main` - [[personal-os-phase2-srs]] · tracker [[ops/personal-os-phase2-tracker]] · MCP [[ops/personal-os-playbook]] / `mcp/README.md`.
+**Phase 2 (hard ~10%):** **done** on main - [[personal-os-phase2-srs]] · tracker [[ops/personal-os-phase2-tracker]] · MCP [[ops/personal-os-playbook]] /.
 
 ## Why this (vs pure Finite State Machine-only or pure vector RAG-only)
 
@@ -29,22 +29,22 @@ Serious builders (2024–2026) converge on: compile durable knowledge ([Karpathy
 
 | Need | Kingdom home |
 |------|----------------|
-| (a) Durable brain instructions | `brain/AGENTS.md` + wiki ingest/query/lint |
-| (b) Skills | Cursor `SKILL.md` + `AGENT_SKILL_MAP` |
-| (c) Orchestrator across apps | `npm run sync` to control-surface + harness Finite State Machine/KG |
-| (d) Future projects | `config/venture-template.json` to `npm run venture:new` to registry |
+| (a) Durable brain instructions | + wiki ingest/query/lint |
+| (b) Skills | Cursor SKILL.md + AGENT_SKILL_MAP |
+| (c) Orchestrator across apps | to control-surface + harness Finite State Machine/KG |
+| (d) Future projects | to to registry |
 | (e) One-pane control | Throne `/?tab=throne` · Analytics `/?tab=analytics` · layman feature map on Throne |
 
 ## Static deploy (Vercel)
 
-Vite SPA - `vercel.json` ships `dist/` after `npm run build`. Synced snapshots under `public/data/` are baked into the deploy (read-only guest view; local orchestrator APIs are not available on Vercel). Create/link project once:
+Vite SPA - vercel.json ships `dist/` after. Synced snapshots under are baked into the deploy (read-only guest view; local orchestrator APIs are not available on Vercel). Create/link project once:
 
 ```bash
 npx vercel link # or first `npx vercel`
 npx vercel --prod
 ```
 
-Local: `npm run dev` to http://localhost:5173 · Analytics tab or `/?tab=analytics`.
+Local: to http://localhost:5173 · Analytics tab or `/?tab=analytics`.
 
 **Production:** https://avinashs-kingdom.vercel.app (CLI deploy; GitHub auto-connect failed once - run `npx vercel git connect` if you want push-to-deploy).
 
@@ -52,22 +52,22 @@ Local: `npm run dev` to http://localhost:5173 · Analytics tab or `/?tab=analyti
 
 | npm script | Script | Role |
 |------------|--------|------|
-| `brain:lint` | `brain/harness/lint.mjs` | Heuristic v2: broken links (error); orphans/index/stale `updated:`/dup titles/`venture_id`/status-phrase conflicts/claim dupes/log-lag (warn) - structure, not Large Language Model claim judge |
-| `brain:judge` | `brain/harness/judge.mjs` | Phase 2 additive contradiction judge (dry-run to `harness/reports/`; OmniRoute Large Language Model with offline fallback; `--apply` to proposals only) |
-| `brain:auto-wiki` | `brain/harness/auto-wiki.mjs` | Phase 2 full auto wiki: inbox to `wiki/drafts/` to gated `--promote` (lint first) |
-| `brain:query` | `brain/harness/wiki-query.mjs` | Keyword search over wiki |
-| `brain:ingest` | `brain/harness/ingest.mjs` | Semi-auto: `--file` to stub with best-effort title/summary + checklist; review/complete with kingdom-wiki |
-| `brain:harness` | `brain/harness/query.mjs` | KG/Finite State Machine topology queries |
-| `venture:new` | `scripts/new-venture.mjs` | Mechanical onboard from template |
+| `brain:lint` | | Heuristic v2: broken links (error); orphans/index/stale `updated:`/dup titles/venture_id/status-phrase conflicts/claim dupes/log-lag (warn) - structure, not Large Language Model claim judge |
+| `brain:judge` | | Phase 2 additive contradiction judge (dry-run to ; OmniRoute Large Language Model with offline fallback; --apply to proposals only) |
+| `brain:auto-wiki` | | Phase 2 full auto wiki: inbox to to gated --promote (lint first) |
+| `brain:query` | | Keyword search over wiki |
+| `brain:ingest` | | Semi-auto: --file to stub with best-effort title/summary + checklist; review/complete with kingdom-wiki |
+| `brain:harness` | | KG/Finite State Machine topology queries |
+| `venture:new` | | Mechanical onboard from template |
 
 Daily loop: [[ops/personal-os-playbook]].
 
 ## Contract surfaces
 
-- Schema: `brain/harness/empty-model/schema.md` + `brain/AGENTS.md`
-- Template: `config/venture-template.json`
-- Live registry: `config/venture-registry.json`
-- Snapshot: `public/data/control-surface.json` (`contract: kingdom-personal-os`, `onboarding`, capability nodes)
+- Schema: + 
+- Template: 
+- Live registry: 
+- Snapshot: (`contract: kingdom-personal-os`, onboarding, capability nodes)
 - How to plug a project: [[onboard-new-project]]
 
 ## Related

@@ -37,7 +37,7 @@ Kingdom already maps closer to **LangGraph concepts** than LangChain: WhatsApp q
 5. **Cost / policy gate** - spend ceilings + structured-output smoke tests (City pattern).
 6. **Provenance / audit trail** - mandatory for trust-sensitive flows (YouTube pattern).
 7. **Compiled memory over vector-only** - wiki + skills + registry ([[llm-wiki]], [[kingdom-personal-os]]).
-8. **One control plane** - `npm run sync` to Throne; onboard via [[onboard-new-project]].
+8. **One control plane** - to Throne; onboard via [[onboard-new-project]].
 
 ## Selective tooling matrix
 

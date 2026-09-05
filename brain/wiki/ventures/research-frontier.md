@@ -6,11 +6,11 @@ tags: [research, atlas, p1]
 
 # Research Frontier Lab
 
-- **Id:** `research-frontier`
+- **Id:** research-frontier
 - **Agent:** Agent Atlas
 - **Weight:** 15% · **Priority:** P1
-- **Repo:** `~/Projects/research-frontier-lab`
-- **Knowledge store:** this brain (`raw/research/` + `wiki/`)
+- **Repo:** 
+- **Knowledge store:** this brain (+ `wiki/`)
 - **Live status:** v0.1 · **12%**
 
 ## Job

@@ -7,13 +7,13 @@ tags: [architecture, personal-os, srs, phase2, mcp, wiki, lint]
 # Personal OS Phase 2 - hard 10% (SRS / system design)
 
 **Status:** Phase 2 implementation complete (W1–W4 acceptance green). 
-**Parent OS:** [[kingdom-personal-os]] (Phase 1 done on `main`). 
+**Parent OS:** [[kingdom-personal-os]] (Phase 1 done on main). 
 **Phase 2b (fleet):** [[personal-os-phase2b-srs]] · tracker [[ops/personal-os-phase2b-tracker]]. 
 **Builder prompt:** [[ops/personal-os-phase2-builder-prompt]]. 
 **Live tracker:** [[ops/personal-os-phase2-tracker]]. 
 **Merge playbook (W1):** [[ops/cloud-ui-merge-playbook]]. 
-**MCP:** `mcp/README.md` · `config/mcp-registry.json` · `.cursor/mcp.json` 
-**Plan mirror:** `.cursor/plans/personal_os_phase2_hard10.plan.md`
+**MCP:** · · 
+**Plan mirror:** 
 
 ## Problem
 
@@ -29,7 +29,7 @@ Phase 1 gives a usable personal OS (sync, Throne, wiki lint/query/ingest, ventur
 ## Non-goals (Phase 2)
 
 - Replacing `brain/` with vector-RAG-only memory.
-- Force-pushing or rewriting `main` history.
+- Force-pushing or rewriting main history.
 - Committing secrets, weights, or contact dumps.
 - One mega-MCP that bypasses per-venture STATUS/phases sources of truth.
 
@@ -64,7 +64,7 @@ raw/inbox ──► auto-ingest worker ──► wiki stubs + proposed patches
 | Raw | Immutable after file | Never edit filed sources |
 | Wiki | Compiled truth | Human or approved agent only |
 | Heuristic lint | Deterministic | Errors = broken links; warnings = review prompts |
-| Large Language Model judge | Advisory | Never auto-merge claim fixes without flag/`--apply` + log |
+| Large Language Model judge | Advisory | Never auto-merge claim fixes without flag/--apply + log |
 | Sync / Throne | Fleet snapshot | Still from STATUS/phases/registry |
 | MCP | Tool I/O | Read STATUS/tracking; mutate only via documented safe tools |
 
@@ -74,9 +74,9 @@ raw/inbox ──► auto-ingest worker ──► wiki stubs + proposed patches
 
 **Requirements**
 
-- R1.1 Document keep-ours list: `App.tsx`, OrchestratorProvider shell, `VentureSidebar`/`VenturePage`, `FleetGraph/` directory vs single-file.
-- R1.2 Document fold-in pattern: Research Lab / Vite middleware `/live/...`; drop colliding leaf files.
-- R1.3 Encode checklist into `.cursor/skills/sync-kingdom/SKILL.md` (+ `~/.cursor` mirror).
+- R1.1 Document keep-ours list: App.tsx, OrchestratorProvider shell, VentureSidebar/VenturePage, `FleetGraph/` directory vs single-file.
+- R1.2 Document fold-in pattern: Research Lab / Vite middleware ; drop colliding leaf files.
+- R1.3 Encode checklist into (+ `~/.cursor` mirror).
 - R1.4 Short ops page + mark observation 11 ACTIONED when encoded.
 
 **Acceptance**
@@ -88,15 +88,15 @@ raw/inbox ──► auto-ingest worker ──► wiki stubs + proposed patches
 
 **Requirements**
 
-- R2.1 CLI e.g. `npm run brain:judge` (or `brain:lint --judge`) reading wiki + optional lint JSON.
+- R2.1 CLI e.g. (or `brain:lint --judge`) reading wiki + optional lint JSON.
 - R2.2 Outputs structured report: claim A vs claim B, pages, severity, suggested resolution (not silent rewrite).
-- R2.3 Default dry-run; `--apply` only writes to a proposals path or gated patches.
+- R2.3 Default dry-run; --apply only writes to a proposals path or gated patches.
 - R2.4 Uses OmniRoute/text Large Language Model policy if project already routes coding Large Language Models that way; no image routing.
 - R2.5 Docs: judge ≠ heuristic v2; both required in playbook.
 
 **Acceptance**
 
-- Dry-run on current wiki exits 0 and writes a report artifact under `brain/harness/reports/` (or similar).
+- Dry-run on current wiki exits 0 and writes a report artifact under (or similar).
 - At least one synthetic conflict fixture test or documented golden example.
 
 ### W3 - Full auto wiki
@@ -105,7 +105,7 @@ raw/inbox ──► auto-ingest worker ──► wiki stubs + proposed patches
 
 - R3.1 Watch or batch command: process `raw/inbox/*` to file raw to scaffold to Large Language Model compile draft.
 - R3.2 Always update index + log (or proposal thereof).
-- R3.3 Review gate: `draft` vs `published` (frontmatter or `wiki/drafts/`).
+- R3.3 Review gate: draft vs published (frontmatter or).
 - R3.4 Run heuristic lint (+ optional judge) before promoting draft to published.
 - R3.5 Idempotent: re-running same raw does not duplicate sources.
 - R3.6 Throne or ops note shows last auto-ingest status (optional but preferred).
@@ -119,15 +119,15 @@ raw/inbox ──► auto-ingest worker ──► wiki stubs + proposed patches
 
 **Requirements**
 
-- R4.1 MCP server template + registry row linking `venture_id` to MCP endpoint/command.
-- R4.2 Minimum tools per venture: `get_status`, `get_phases` (or N/A), `list_capabilities`.
-- R4.3 Safe write tools (optional phase 2b): `append_log`, `trigger_sync` - never raw `.env` read. to **Phase 2b** [[personal-os-phase2b-srs]].
+- R4.1 MCP server template + registry row linking venture_id to MCP endpoint/command.
+- R4.2 Minimum tools per venture: get_status, get_phases (or N/A), list_capabilities.
+- R4.3 Safe write tools (optional phase 2b): append_log, trigger_sync - never raw.env read. to **Phase 2b** [[personal-os-phase2b-srs]].
 - R4.4 Document how Cursor connects; Throne lists MCP health if cheap.
 - R4.5 Pilot 1–2 ventures (Kingdom ops + one cash/research) before fleet-wide. to Fleet roll-out in Phase 2b.
 
 **Acceptance**
 
-- Cursor (or MCP inspector) can call `get_status` for the pilot venture and get live STATUS-derived JSON.
+- Cursor (or MCP inspector) can call get_status for the pilot venture and get live STATUS-derived JSON.
 - Onboarding doc updated: new venture to optional MCP stub from template.
 
 ## Dependencies & risks

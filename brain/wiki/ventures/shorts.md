@@ -6,7 +6,7 @@ tags: [shorts, parked]
 
 # Shorts tooling
 
-- **Id:** `shorts`
+- **Id:** shorts
 - **Status:** Parked · weight 0%
 
 ## Note

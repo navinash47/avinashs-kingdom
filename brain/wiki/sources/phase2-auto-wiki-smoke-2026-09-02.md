@@ -8,7 +8,7 @@ tags: [auto-wiki]
 
 # Phase 2 auto-wiki smoke source
 
-**Raw:** `raw/inbox/phase2-auto-wiki-smoke-2026-09-02.md` 
+**Raw:** 
 **Status:** published (auto-wiki promote)
 
 > Promoted from auto-wiki draft after lint.

@@ -9,7 +9,7 @@ Catalog of pages. Agents update this on every ingest. Last full refresh: **2026-
 | [overview](overview.md) | Citizens’ map - portfolio, sync health, constitution |
 | [log](log.md) | Append-only wiki timeline |
 | [ops/steward-dashboard](ops/steward-dashboard.md) | Mac disk + subscription kill list (live audits) |
-| [ops/live-tracker](ops/live-tracker.md) | Auto census on every `npm run sync` |
+| [ops/live-tracker](ops/live-tracker.md) | Auto census on every |
 | [ops/headroom](ops/headroom.md) | Token proxy + Cursor BYOK / MCP runbook |
 | [ops/personal-os-playbook](ops/personal-os-playbook.md) | Daily how-to run the Kingdom personal OS |
 | [ops/personal-os-phase2-tracker](ops/personal-os-phase2-tracker.md) | Phase 2 hard-10% live progress board |
@@ -25,11 +25,11 @@ Catalog of pages. Agents update this on every ingest. Last full refresh: **2026-
 
 | Page | Summary |
 |------|---------|
-| [whatsapp-voice](ventures/whatsapp-voice.md) | Cash engine · Phase 8 · 80% · $0/$40 · files at ~/Projects/whatsapp-voice-agents |
+| [whatsapp-voice](ventures/whatsapp-voice.md) | Cash engine · Phase 8 · 80% · / · files at ~/Projects/whatsapp-voice-agents |
 | [youtube-editor](ventures/youtube-editor.md) | Screenplay + Veritasium formula · Phase 2 · Cut Control · show-first craft |
 | [research-frontier](ventures/research-frontier.md) | Paper club · v0.1 · 12% · brain as store |
 | [beamdojo](ventures/beamdojo.md) | Isaac Lab locomotion · Stage 1 GPU smoke · live train via W&B |
-| [procedural-city](ventures/procedural-city.md) | City · Stage E · Phase 57 · 62% · 57/92 local · $70 |
+| [procedural-city](ventures/procedural-city.md) | City · Stage E · Phase 57 · 62% · 57/92 local · |
 | [comic-engine](ventures/comic-engine.md) | ComicMainEngine · 2A A1 passed · A2 next · 33% |
 | [kingdom-ops](ventures/kingdom-ops.md) | Steward · 70% · kill list |
 | [mac-optimize-audit](ventures/mac-optimize-audit.md) | Janitor · RAM/CPU/swap dashboard `:8742` |

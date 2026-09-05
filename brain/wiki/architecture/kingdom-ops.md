@@ -8,7 +8,7 @@ updated: 2026-08-24
 
 ## System design
 
-React + Vite command orchestrator with local control API (:5174). `npm run dev` starts UI + API. Venture **Run** tabs embed live dashboards and expose Start/Stop/Test/Sync buttons. `npm run sync` pulls venture data into `public/data/`.
+React + Vite command orchestrator with local control API (:5174). starts UI + API. Venture **Run** tabs embed live dashboards and expose Start/Stop/Test/Sync buttons. pulls venture data into.
 
 ## Input / output flows
 

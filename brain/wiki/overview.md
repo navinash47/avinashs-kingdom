@@ -8,18 +8,18 @@ tags: [citizens, map, portfolio]
 
 This brain is the shared memory for everyone building in Avinash’s Kingdom - agents and humans. Read here first; chat is temporary.
 
-**Panel (live UI):** `~/Projects/avinashs-kingdom` to `npm run sync` to `npm run dev` to http://localhost:5173 
-**This vault:** `brain/wiki/` (you are here)
+**Panel (live UI):** to to to http://localhost:5173 
+**This vault:** (you are here)
 
 ## How the country works
 
 | Layer | What it is | Where |
 |-------|------------|--------|
-| Throne / panel | One-pane control + live progress | Kingdom `/?tab=throne` + `public/data/` |
-| Laws | Frozen decisions per venture | e.g. WhatsApp `CONTEXT.md` |
-| Brain | Compiled understanding (personal OS memory) | this wiki + `AGENTS.md` |
-| Skills | Reusable agent playbooks | `~/.cursor/skills/` + repo backup |
-| Registry / harness | Plug-in ventures + typed control contract | `config/venture-registry.json`, `brain/harness/` |
+| Throne / panel | One-pane control + live progress | Kingdom `/?tab=throne` + |
+| Laws | Frozen decisions per venture | e.g. WhatsApp CONTEXT.md |
+| Brain | Compiled understanding (personal OS memory) | this wiki + AGENTS.md |
+| Skills | Reusable agent playbooks | + repo backup |
+| Registry / harness | Plug-in ventures + typed control contract |, |
 
 Architecture: [[concepts/kingdom-personal-os]]. Daily loop: [[ops/personal-os-playbook]]. New province: [[concepts/onboard-new-project]].
 
@@ -27,12 +27,12 @@ Architecture: [[concepts/kingdom-personal-os]]. Daily loop: [[ops/personal-os-pl
 
 | Province | Weight | Status | Agent | Page |
 |----------|--------|--------|-------|------|
-| WhatsApp / Voice cash | 35% P0 | Stage C · Phase 8 · **80%** · $0/$40 | Cash | [[ventures/whatsapp-voice]] |
+| WhatsApp / Voice cash | 35% P0 | Stage C · Phase 8 · **80%** · / | Cash | [[ventures/whatsapp-voice]] |
 | YouTube editor | 20% P0 | Phase 0 · SRS · **12%** | Cut | [[ventures/youtube-editor]] |
 | Research Frontier | 8% P1 | v0.1 · **12%** | Atlas | [[ventures/research-frontier]] |
 | BeamDojo | 6% P1 | Stage 1 smoke · **18%** · A10 GPU | Dojo | [[ventures/beamdojo]] |
-| Procedural City | 15% P1 | Stage E · Phase **49** · **~53%** (49/92 via `origin/main`) · $70 | Metro | [[ventures/procedural-city]] |
-| ComicMainEngine | 8% P2 | **2A** · A0 passed · A1 next · **17%** · V1 22/22 kept as spend (~$5.88) | Ink | [[ventures/comic-engine]] |
+| Procedural City | 15% P1 | Stage E · Phase **49** · **~53%** (49/92 via) · | Metro | [[ventures/procedural-city]] |
+| ComicMainEngine | 8% P2 | **2A** · A0 passed · A1 next · **17%** · V1 22/22 kept as spend (~) | Ink | [[ventures/comic-engine]] |
 | Job Jugaad | 8% P1 | Tracker v0.1 | Jugaad | [[ventures/job-jugaad]] |
 | Kingdom ops | 2% | v1.0 · **70%** · kill list | Steward | [[ventures/kingdom-ops]] |
 | Mac optimize | 3% P1 | v0.1 · live `:8742` · RAM/CPU/swap | Janitor | [[ventures/mac-optimize-audit]] |
@@ -50,9 +50,9 @@ Architecture: [[concepts/kingdom-personal-os]]. Daily loop: [[ops/personal-os-pl
 | WhatsApp STATUS + phases | Yes | Yes (enriched) |
 | YouTube STATUS | Yes | Yes |
 | Research STATUS | Yes | Yes |
-| Procedural City (`origin/main` if local stale) | Yes | Yes |
-| ComicMainEngine (`v2a_program.json` @ Desktop) | Yes | Yes |
-| Mac optimize audit | Yes (`audits/mac-storage-summary.json` + `:8742`) | Yes to [[ventures/mac-optimize-audit]] |
+| Procedural City (if local stale) | Yes | Yes |
+| ComicMainEngine (v2a_program.json @ Desktop) | Yes | Yes |
+| Mac optimize audit | Yes (+ `:8742`) | Yes to [[ventures/mac-optimize-audit]] |
 | Subscription kill list | Yes | Yes to ops dashboard |
 
 Refresh panel anytime: `cd ~/Projects/avinashs-kingdom && npm run sync`.

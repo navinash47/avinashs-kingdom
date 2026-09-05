@@ -16,14 +16,14 @@ Public portfolio site and **legacy LaTeX resume tracks** - connected to Kingdom 
 | **GitHub** | https://github.com/navinash47/Portfolio |
 | **Local** | `~/Portfolio` |
 | **Resume tracks** | `~/Portfolio/resume/*.tex` (read-only ingest) |
-| **Resume knowledge** | `~/Projects/resume` - dashboard :5199 |
-| **Kingdom mirror** | `public/data/portfolio-repo.json` |
+| **Resume knowledge** | - dashboard :5199 |
+| **Kingdom mirror** | |
 
 ## Relationship to resume repo
 
 - **Portfolio** = historical multi-track LaTeX (Agentic, Artificial Intelligence-Backend, Machine Learning Engineer, Software Development Engineer, Robotics, Java, Mix, Main, General) + GitHub Pages marketing site
-- **resume** (`~/Projects/resume`) = Phase 1 master knowledge, role-fit ratings, eval scores, export to new tracks
-- Archive copies live at `resume/archive/portfolio-*` (from Portfolio `resume`, `resumeGmail`, `resumeUmassMailId`, `resumeforanothermail`)
+- **resume** () = Phase 1 master knowledge, role-fit ratings, eval scores, export to new tracks
+- Archive copies live at `resume/archive/portfolio-*` (from Portfolio resume, resumeGmail, resumeUmassMailId, resumeforanothermail)
 
 Ingest (read-only):
 
@@ -32,19 +32,19 @@ cd ~/Projects/resume
 npm run ingest-legacy
 ```
 
-Dashboard **Legacy / Archive** tab compares extracted bullets vs current `knowledge/bullets/*`.
+Dashboard **Legacy / Archive** tab compares extracted bullets vs current.
 
 ## Sync workflow
 
-1. Kingdom `npm run sync` - venture STATUS to manifests
-2. Resume `npm run sync-projects` - manifests to `knowledge/master.json` featured_projects
-3. Resume `npm run sync:kingdom` - ratings/approvals to `public/data/resume-knowledge.json`
+1. Kingdom - venture STATUS to manifests
+2. Resume - manifests to featured_projects
+3. Resume - ratings/approvals to 
 
-See [[concepts/resume-master-knowledge]] and `~/Projects/resume/knowledge/SYNC.md`.
+See [[concepts/resume-master-knowledge]] and.
 
 ## Site
 
-Static GitHub Pages - `index.html` + assets. No local dev server required; Kingdom links open the live site.
+Static GitHub Pages - index.html + assets. No local dev server required; Kingdom links open the live site.
 
 ## Related
 

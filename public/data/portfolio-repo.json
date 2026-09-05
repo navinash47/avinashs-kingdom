@@ -11,7 +11,7 @@
   "kingdom_wiki": "brain/wiki/ventures/portfolio.md",
   "resume_tracks_path": "resume/",
   "sync_notes": [
-    "Portfolio .tex tracks are read-only ingested via resume: npm run ingest-legacy",
+    "Portfolio.tex tracks are read-only ingested via resume: npm run ingest-legacy",
     "Kingdom npm run sync + resume npm run sync-projects keeps featured project links aligned",
     "Do not feature WhatsApp or YouTube on resume - per agentic-resume-gates",
     "Featured portfolio projects: ComicMainEngine, Procedural City, Venture Fleet Control Plane, BeamDojo, Research Frontier, Job Jugaad"

@@ -6,7 +6,7 @@ tags: [youtube, veritasium, formula]
 
 # Veritasium formula
 
-Doctrine for Agent Cut / YouTube Editor Lab. Full write-up: `~/Projects/youtube-editor-lab/docs/veritasium-formula.md`.
+Doctrine for Agent Cut / YouTube Editor Lab. Full write-up:.
 
 ## Pillars
 
@@ -22,4 +22,4 @@ Doctrine for Agent Cut / YouTube Editor Lab. Full write-up: `~/Projects/youtube-
 
 - [[concepts/anti-slop-youtube]]
 - [[ventures/youtube-editor]]
-- Multi-agent build: `youtube-editor-lab/docs/multi-agent.md`
+- Multi-agent build: 

@@ -6,12 +6,12 @@ tags: [whatsapp, cash, p0]
 
 # WhatsApp / Voice cash engine
 
-- **Id:** `whatsapp-voice`
+- **Id:** whatsapp-voice
 - **Agent:** Agent Cash
 - **Weight:** 35% · **Priority:** P0
-- **Repo:** `~/Projects/whatsapp-voice-agents` (see [[concepts/where-files-live]])
+- **Repo:** (see [[concepts/where-files-live]])
 - **Live status:** Stage C · Phase 8 · **80%**
-- **Budget:** **$0 spent / $40** ceiling
+- **Budget:** ** spent / ** ceiling
 - **Phases:** **8 pass / 2 pending** (0–7 PASS · 8–9 open) · updated 2026-08-11
 
 ## Job
@@ -30,7 +30,7 @@ Real estate brokers / small agencies - qualify leads and book **site visits**. L
 
 ## Key artifacts in repo
 
-`CONTEXT.md`, `DO-THIS-NEXT.md`, `demo/`, `outreach/` (tracker + templates), `offers/`, `ops/waba-verification.md`.
+CONTEXT.md, DO-THIS-NEXT.md, `demo/`, `outreach/` (tracker + templates), `offers/`,.
 
 ## Related
 

@@ -8,7 +8,7 @@ updated: 2026-08-24
 
 ## System design
 
-Mac is the orchestrator. Training and RTX video run on a Lambda **A10** (RT cores) inside Isaac Sim 5.1 + Isaac Lab 2.3.2 Docker. BeamDojo source is bind-mounted from NFS so terminate does not wipe code. Checkpoints stay on NFS. Kingdom syncs STATUS, expenses, proof mp4s, and `tracking/training-status.json` into the Research Lab. Live curves are **Weights & Biases** (not an Isaac webpage).
+Mac is the orchestrator. Training and RTX video run on a Lambda **A10** (RT cores) inside Isaac Sim 5.1 + Isaac Lab 2.3.2 Docker. BeamDojo source is bind-mounted from NFS so terminate does not wipe code. Checkpoints stay on NFS. Kingdom syncs STATUS, expenses, proof mp4s, and into the Research Lab. Live curves are **Weights & Biases** (not an Isaac webpage).
 
 ```mermaid
 flowchart LR

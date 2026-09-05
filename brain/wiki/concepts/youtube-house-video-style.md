@@ -24,7 +24,7 @@ Agents must re-read this before writing beat sheets or Voice Over.
 
 ## Term flash
 
-First on-screen term to fonts montage to definition to blur. Spec in lab repo `docs/graphics-term-flash.md`. Tag: `PLACEHOLDER_term_flash_<slug>`.
+First on-screen term to fonts montage to definition to blur. Spec in lab repo. Tag: `PLACEHOLDER_term_flash_<slug>`.
 
 ## Example picker (E1–E5)
 

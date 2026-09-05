@@ -6,7 +6,7 @@ tags: [youtube, screenplay, house-style]
 
 # Source - YouTube house video style (2026-08-11)
 
-**Raw:** `raw/inbox/youtube-house-video-style-2026-08-11.md` 
+**Raw:** 
 **From:** Human craft session - show-first, friend Voice Over, sink-in pauses, analogies, quality over runtime; log for **all future videos**.
 
 ## Summary

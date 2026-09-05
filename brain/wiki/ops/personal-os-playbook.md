@@ -6,32 +6,32 @@ tags: [ops, personal-os, playbook]
 
 # Personal OS - daily ops playbook
 
-How Avinash runs the Kingdom **personal OS** day to day. Architecture: [[concepts/kingdom-personal-os]]. Schema: `brain/AGENTS.md`.
+How Avinash runs the Kingdom **personal OS** day to day. Architecture: [[concepts/kingdom-personal-os]]. Schema:.
 
 ## Morning / context load (2–5 min)
 
 1. Open Throne: `cd ~/Projects/avinashs-kingdom && npm run dev` to `/?tab=throne`
 2. Glance **Virtual control**: sync stamp, Finite State Machine state, P0 strip, capability chips, onboard hint
-3. If STATUS/phases changed overnight elsewhere: `npm run sync` (full filesystem access)
-4. Optional hygiene: `npm run brain:lint`
+3. If STATUS/phases changed overnight elsewhere: (full filesystem access)
+4. Optional hygiene: 
 
 ## During work (any venture)
 
 | Need | Do this |
 |------|---------|
-| Progress changed in a venture repo | Edit STATUS/phases/expenses there to `npm run sync` |
-| Research / decision to keep | `npm run brain:ingest -- --file …` (stub + checklist) **or** `npm run brain:auto-wiki` (inbox to drafts) to review to `--promote <slug>` |
-| Question against memory | `npm run brain:query -- <terms>` or skill query mode; cite `brain/wiki/…` |
-| Topology / “what can I start?” | `npm run brain:harness -- list` · `capabilities` · `allow sync` |
+| Progress changed in a venture repo | Edit STATUS/phases/expenses there to |
+| Research / decision to keep | (stub + checklist) **or** (inbox to drafts) to review to `--promote <slug>` |
+| Question against memory | or skill query mode; cite `brain/wiki/…` |
+| Topology / “what can I start?” | · capabilities · `allow sync` |
 | Phase close | **phase-gate** skill |
 | Outreach / YouTube provenance | **log-outreach** / **youtube-provenance** |
-| Multi-step session | **task-observer** to log to `brain/skill-observations/log.md` |
+| Multi-step session | **task-observer** to log to |
 
 ## End of day
 
 1. Sync if anything panel-facing moved
-2. `npm run brain:lint` if you ingested or touched many wiki links (heuristic v2: broken links = errors; stale/dupes/status-phrase/claim dupes = warnings)
-3. Append wiki `log.md` only when an ingest/ops event happened (agents do this on ingest; `brain:ingest` prints the exact line)
+2. if you ingested or touched many wiki links (heuristic v2: broken links = errors; stale/dupes/status-phrase/claim dupes = warnings)
+3. Append wiki log.md only when an ingest/ops event happened (agents do this on ingest; `brain:ingest` prints the exact line)
 4. Ask “any observations?” if the session was substantive
 
 ## Phase 2 (hard ~10% - when building next)
@@ -43,13 +43,13 @@ How Avinash runs the Kingdom **personal OS** day to day. Architecture: [[concept
 
 ## Weekly
 
-- Skim `wiki/log.md` last 7 entries: `grep "^## \[" brain/wiki/log.md | tail -10`
-- Review OPEN skill observations when backlog is stale (`brain/skill-observations/`)
-- Confirm Research Lab / GPU claims match `tracking/training-status.json` (never invent “running”)
+- Skim last 7 entries: `grep "^## \[" brain/wiki/log.md | tail -10`
+- Review OPEN skill observations when backlog is stale ()
+- Confirm Research Lab / GPU claims match (never invent “running”)
 
 ## New project (mechanical)
 
-`npm run venture:new -- --id <slug> --repo ~/Projects/<slug> --agent agent-<short> [--write]` 
+ 
 Then finish checklist in [[concepts/onboard-new-project]].
 
 ## Commands cheat sheet
@@ -71,12 +71,12 @@ npm run brain:harness -- list
 npm run venture:new -- --id demo --repo ~/Projects/demo --agent agent-demo
 ```
 
-`brain:lint` is **heuristic v2**. `brain:judge` is the **additive** contradiction judge (OmniRoute `:20128` when up; offline fallback otherwise - see harness README). `brain:auto-wiki` is the **full auto** path (drafts under `wiki/drafts/`; explicit `--promote`). `mcp:smoke` / `mcp:smoke:fleet` verify venture MCP tools (`mcp/README.md`, `.cursor/mcp.json`). Gated writes need `KINGDOM_MCP_WRITES=1`. `brain:ingest --file` remains the semi-auto single-file checklist path. Fleet SRS: [[concepts/personal-os-phase2b-srs]].
+`brain:lint` is **heuristic v2**. `brain:judge` is the **additive** contradiction judge (OmniRoute `:20128` when up; offline fallback otherwise - see harness README). `brain:auto-wiki` is the **full auto** path (drafts under ; explicit --promote). `mcp:smoke` / `mcp:smoke:fleet` verify venture MCP tools (,). Gated writes need `KINGDOM_MCP_WRITES=1`. `brain:ingest --file` remains the semi-auto single-file checklist path. Fleet SRS: [[concepts/personal-os-phase2b-srs]].
 
 
 ## Do not
 
-- Hand-edit `brain/harness/empty-model/graph.json` / `fsm.json`
+- Hand-edit / fsm.json
 - Put secrets or contact dumps in `brain/`
 - Commit model weights
 - Treat chat as the durable store - file into wiki when it matters

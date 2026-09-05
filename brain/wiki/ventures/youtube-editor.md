@@ -6,10 +6,10 @@ tags: [youtube, screenplay, p0]
 
 # YouTube editor + screenplay
 
-- **Id:** `youtube-editor`
+- **Id:** youtube-editor
 - **Agent:** Agent Cut
 - **Weight:** 20% · **Priority:** P0
-- **Repo:** `~/Projects/youtube-editor-lab`
+- **Repo:** 
 - **Live status:** Phase 2 · Cut Control shell · **32%** (check STATUS.md)
 
 ## Job
@@ -20,13 +20,13 @@ Veritasium-shaped long-form tooling: Formula Desk + Clip Researcher + Script + d
 
 **Must follow:** [[concepts/youtube-house-video-style]] 
 Detail / Video 1 specimen: [[concepts/layman-screenplay-craft]] 
-Raw log: `raw/inbox/youtube-house-video-style-2026-08-11.md`
+Raw log: 
 
 Show-first · friend Voice Over · clear wording · sink-in pauses · broad analogies · montages · quality over runtime · term-flash placeholders.
 
 ## Dogfood Video 1
 
-- Slug: `confirmation-bias-myside`
+- Slug: confirmation-bias-myside
 - Title: **Are people seeing only what they want?**
 - Open: **E2** group-chat forward
 - Payoff: habit not flaw; the pause is the skill

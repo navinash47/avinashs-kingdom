@@ -15,7 +15,7 @@ uv tool install --python 3.13 "headroom-ai[all]"
 # CLI: ~/.local/bin/headroom
 ```
 
-Upstream clone: `~/Projects/headroom`
+Upstream clone: 
 
 ## Daily commands
 
@@ -33,15 +33,15 @@ npm run headroom:setup # print Cursor click-path
 
 Use Headroom via **MCP only**:
 
-- Tools: `headroom_compress`, `headroom_retrieve`, `headroom_stats`
-- Registered in `~/.cursor/mcp.json` (+ project `.cursor/mcp.json`)
+- Tools: headroom_compress, headroom_retrieve, headroom_stats
+- Registered in (+ project)
 - Reload MCP / restart Cursor if tools don’t appear
 
 Optional later (advanced): chain OmniRoute to Headroom as an upstream hop - only if you explicitly want transparent compression without giving up OmniRoute. Not configured by default.
 
 ## MCP
 
-Primary integration for Cursor. Proxy (`npm run headroom:start`) is optional - useful for stats/dashboard and non-Cursor agents; not required for MCP compress/retrieve.
+Primary integration for Cursor. Proxy () is optional - useful for stats/dashboard and non-Cursor agents; not required for MCP compress/retrieve.
 
 ## Savings check
 

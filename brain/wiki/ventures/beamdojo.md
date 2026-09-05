@@ -9,12 +9,12 @@ tags: [research, locomotion, isaac-lab, gpu]
 
 Isaac Lab recreation of [BeamDojo](https://why618188.github.io/beamdojo/) (RSS 2025). Official training code was never released. First robot is **Unitree H1**, Stage 1 (walk on flat physics while imagining a 20 cm beam).
 
-- **Id:** `beamdojo`
+- **Id:** beamdojo
 - **Kind:** research (Kingdom Research Lab)
 - **Agent:** Agent Dojo
-- **Repo:** `~/Projects/BeamDojo`
+- **Repo:** 
 - **Remote:** https://github.com/navinash47/BeamDojo
-- **GPU:** Lambda A10 (`159.54.170.194` while live) - CUDA only, no Mac/CPU/fal as sim
+- **GPU:** Lambda A10 (159.54.170.194 while live) - CUDA only, no Mac/CPU/fal as sim
 - **Live status:** Stage 1 smoke · **18%**
 
 ## Job
@@ -23,7 +23,7 @@ Get a humanoid to walk a balance beam in sim, then (later) the paper robot G1. P
 
 ## Checkpoints are insurance, not git
 
-Weights stay on `/lambda/nfs/beamdojo/logs/`. Never commit `.pt`. Tell Avinash after any train so he can copy them off-box.
+Weights stay on. Never commit.pt. Tell Avinash after any train so he can copy them off-box.
 
 ## How to watch a train
 
@@ -31,8 +31,8 @@ Lambda does not serve a public Isaac webpage.
 
 1. Open Kingdom **Research** (`/?tab=research`) to BeamDojo **Live training**.
 2. Click **Open Weights & Biases**. If there is no entity yet, that link is `https://wandb.ai` - after `wandb login` on the GPU box, open project **beamdojo**.
-3. TensorBoard (SSH only): `ssh -L 6006:localhost:6006 lambda-beamdojo`, then TensorBoard on `/lambda/nfs/beamdojo/logs`, browser `http://localhost:6006`.
-4. Status badge is idle/unknown unless `tracking/training-status.json` says `running`. Do not assume a 10k-iter job from proof videos.
+3. TensorBoard (SSH only): `ssh -L 6006:localhost:6006 lambda-beamdojo`, then TensorBoard on, browser `http://localhost:6006`.
+4. Status badge is idle/unknown unless says running. Do not assume a 10k-iter job from proof videos.
 
 ## Related
 

@@ -1,47 +1,47 @@
 {
   "generated_from": "Kill list 2026-08-11T05:28:59",
-  "annual_estimate": "Annual ~$1664",
+  "annual_estimate": "Annual ~",
   "source_path": "/Users/avinashnandyala/Projects/subscription-audit/reports/latest-kill-list.txt",
   "items": [
     {
       "name": "Rocket Money",
-      "cadence": "$3.19 monthly",
-      "annual": "~$38/yr",
+      "cadence": " monthly",
+      "annual": "~/yr",
       "source": "bank",
       "cancel_url": "https://app.rocketmoney.com/"
     },
     {
       "name": "DoorDash DashPass",
-      "cadence": "$9.99 monthly",
-      "annual": "~$120/yr",
+      "cadence": " monthly",
+      "annual": "~/yr",
       "source": "bank",
       "cancel_url": "https://www.doordash.com/consumer/edit_profile/"
     },
     {
       "name": "OpenAI / ChatGPT Plus",
-      "cadence": "$21.25 monthly",
-      "annual": "~$255/yr",
+      "cadence": " monthly",
+      "annual": "~/yr",
       "source": "credit",
       "cancel_url": "https://chatgpt.com/#settings/Account"
     },
     {
       "name": "Cursor",
-      "cadence": "$21.25 weekly",
-      "annual": "~$1105/yr",
+      "cadence": " weekly",
+      "annual": "~/yr",
       "source": "bank,credit",
       "cancel_url": "https://cursor.com/settings"
     },
     {
       "name": "Claude.ai / Anthropic",
-      "cadence": "$21.25 irregular",
-      "annual": "~$128/yr",
+      "cadence": " irregular",
+      "annual": "~/yr",
       "source": "bank,credit",
       "cancel_url": "https://claude.ai/settings/billing"
     },
     {
       "name": "Apple / App Store / iCloud",
-      "cadence": "$2.99 irregular",
-      "annual": "~$18/yr",
+      "cadence": " irregular",
+      "annual": "~/yr",
       "source": "credit",
       "cancel_url": "https://support.apple.com/HT202039"
     }

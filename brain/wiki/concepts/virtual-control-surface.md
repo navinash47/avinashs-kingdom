@@ -10,13 +10,13 @@ The Kingdom panel **Throne** tab is the personal virtual control plane: fleet st
 
 ## Rule (durable)
 
-**Every `npm run sync` must refresh the control surface.**
+**Every must refresh the control surface.**
 
 Sync writes:
 
-1. `public/data/ventures.json`, audits, manifests, skill-graph, research-lab (existing)
-2. **`public/data/control-surface.json`** - Finite State Machine + venture/skill/capability summary + graph + **onboarding** (template pointer)
-3. **`brain/harness/empty-model/graph.json` + `fsm.json`** - deterministic KG/Finite State Machine seed
+1., audits, manifests, skill-graph, research-lab (existing)
+2. **** - Finite State Machine + venture/skill/capability summary + graph + **onboarding** (template pointer)
+3. ** + fsm.json** - deterministic KG/Finite State Machine seed
 
 Skill: **sync-kingdom** (After sync to control surface).
 
@@ -27,7 +27,7 @@ cd ~/Projects/avinashs-kingdom && npm run sync && npm run brain:lint && npm run 
 # to http://localhost:5173/?tab=throne
 ```
 
-Throne **Virtual control** shows capability chips + onboard hint from `control-surface.json` (`onboarding`, capability graph nodes). ⌘K opens the command palette. Graph tab uses the React Flow fleet map. New project checklist: [[onboard-new-project]]. Daily: [[ops/personal-os-playbook]].
+Throne **Virtual control** shows capability chips + onboard hint from control-surface.json (onboarding, capability graph nodes). ⌘K opens the command palette. Graph tab uses the React Flow fleet map. New project checklist: [[onboard-new-project]]. Daily: [[ops/personal-os-playbook]].
 
 ## Related
 

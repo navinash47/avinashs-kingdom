@@ -6,12 +6,12 @@ tags: [ops, janitor, mac]
 
 # Mac optimize audit
 
-- **Id:** `mac-optimize-audit`
+- **Id:** mac-optimize-audit
 - **Agent:** Agent Janitor
 - **Weight:** 3% · **Priority:** P1
-- **Repo:** `~/Projects/mac-optimize-audit`
+- **Repo:** 
 - **Dashboard:** http://127.0.0.1:8742
-- **Old sibling:** `~/Projects/mac-storage-audit` (disk-only, kept for history)
+- **Old sibling:** (disk-only, kept for history)
 
 ## Job
 
@@ -37,7 +37,7 @@ python3 -m mac_optimize serve # :8742
 python3 -m mac_optimize clean --action quit_runaways --yes
 ```
 
-Kingdom: **Mac** tab + `npm run sync`. Dashboards script name: `mac`.
+Kingdom: **Mac** tab +. Dashboards script name: mac.
 
 ## Related
 

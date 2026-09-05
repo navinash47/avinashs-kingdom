@@ -79,5 +79,5 @@ Keep Mastercard stories ready: latency, PCI tokenization, Java 8 to 17, Jenkins,
 - [[ventures/job-jugaad]]
 - [[concepts/agentic-resume-gates]]
 - [[concepts/agentic-stack-guidance]]
-- Job Jugaad `CAREER_MARKETING.md` (LinkedIn copy)
+- Job Jugaad CAREER_MARKETING.md (LinkedIn copy)
 - Resumes: `~/Portfolio/resume/Avinash Resume -Agentic.tex` (Track A), `…Artificial Intelligence-Backend.tex` (Track B)

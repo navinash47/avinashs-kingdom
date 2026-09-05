@@ -19,7 +19,7 @@ tags: [youtube, screenplay, show-dont-tell]
 6. **Quality over runtime** - do not pad words to hit a minute count.
 7. **Layman + curious** - selective seeing as habit; never open/close on stupidity.
 8. **Arc:** show to recognition to curiosity to term flash to science to learning payoff.
-9. **Term flash:** `PLACEHOLDER_term_flash_<slug>` - lab `docs/graphics-term-flash.md`.
+9. **Term flash:** `PLACEHOLDER_term_flash_<slug>` - lab.
 
 ## Example menu
 
@@ -31,7 +31,7 @@ tags: [youtube, screenplay, show-dont-tell]
 | E4 | Health tip from relative | |
 | E5 | Confirmatory Google | |
 
-## Video 1 locks (`confirmation-bias-myside`)
+## Video 1 locks (confirmation-bias-myside)
 
 - Title: **Are people seeing only what they want?**
 - Open: **E2**

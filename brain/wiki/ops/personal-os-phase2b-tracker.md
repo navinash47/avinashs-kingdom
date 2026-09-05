@@ -8,36 +8,36 @@ tags: [ops, personal-os, phase2b, tracker, mcp]
 
 Fleet connectivity after Phase 2. SRS: [[concepts/personal-os-phase2b-srs]]. Parent Phase 2: [[ops/personal-os-phase2-tracker]] (100%).
 
-**Overall:** `100%` · **Current step:** `Phase 2b complete` · **Branch:** `main` · **Last update:** `2026-09-02`
+**Overall:** `100%` · **Current step:** `Phase 2b complete` · **Branch:** main · **Last update:** 2026-09-02
 
 | Workstream | Status | % | Evidence / SHA | Notes |
 |------------|--------|---|----------------|-------|
-| B0 SRS + this tracker | **done** | 100 | `4295ec9` | Linked from phase2 SRS |
-| B1 Cursor mcpServers | **done** | 100 | `4295ec9` | `.cursor/mcp.json` |
-| B2 Fleet MCP roll-out | **done** | 100 | `4295ec9` | `mcp:smoke:fleet` 9/9 |
-| B3 Gated write tools | **done** | 100 | `4295ec9` | `KINGDOM_MCP_WRITES=1` |
-| B4 Judge live path docs | **done** | 100 | `4295ec9` | Offline green; OmniRoute down |
+| B0 SRS + this tracker | **done** | 100 | 4295ec9 | Linked from phase2 SRS |
+| B1 Cursor mcpServers | **done** | 100 | 4295ec9 | |
+| B2 Fleet MCP roll-out | **done** | 100 | 4295ec9 | `mcp:smoke:fleet` 9/9 |
+| B3 Gated write tools | **done** | 100 | 4295ec9 | `KINGDOM_MCP_WRITES=1` |
+| B4 Judge live path docs | **done** | 100 | 4295ec9 | Offline green; OmniRoute down |
 
 ## Checklist detail
 
 ### B0 - Design
-- [x] Phase 2b SRS (`concepts/personal-os-phase2b-srs.md`)
+- [x] Phase 2b SRS ()
 - [x] Tracker (this page)
 - [x] Link from Phase 2 SRS + index + log
 - [x] Plan mirror optional (Phase 2 plan still authoritative for W1–W4)
 
 ### B1 - Cursor attach
-- [x] Project `.cursor/mcp.json` includes kingdom venture servers (keep existing headroom)
-- [x] One-liner documented in `mcp/README.md`
+- [x] Project includes kingdom venture servers (keep existing headroom)
+- [x] One-liner documented in 
 
 ### B2 - Fleet MCP
-- [x] `config/mcp-registry.json` row per active venture with `repoPath`
-- [x] Venture registry `mcp.enabled` flags
-- [x] Smoke CLI green for each (`npm run mcp:smoke:fleet`)
+- [x] row per active venture with repoPath
+- [x] Venture registry mcp.enabled flags
+- [x] Smoke CLI green for each ()
 
 ### B3 - Write tools
-- [x] `append_log` gated by `KINGDOM_MCP_WRITES=1`
-- [x] `trigger_sync` gated; runs Kingdom `npm run sync` only
+- [x] append_log gated by `KINGDOM_MCP_WRITES=1`
+- [x] trigger_sync gated; runs Kingdom only
 - [x] Default / smoke remains read-only
 
 ### B4 - Judge

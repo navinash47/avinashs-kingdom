@@ -10,8 +10,8 @@ Two separate tools people often mention together. They solve **different** probl
 
 | Tool | Repo (local clone) | Job | Fits Kingdom? |
 |------|-------------------|-----|---------------|
-| **Task Observer** | `~/Projects/task-observer` ([rebelytics/one-skill-to-rule-them-all](https://github.com/rebelytics/one-skill-to-rule-them-all)) | Watch sessions to log skill gaps/corrections to staged skill updates | **Yes** - improves skills + can feed [[llm-wiki]] |
-| **Headroom** | `~/Projects/headroom` ([headroomlabs-ai/headroom](https://github.com/headroomlabs-ai/headroom)) | Compress tool/RAG/context before it hits the Large Language Model | **Maybe** - token savings; not brain learning |
+| **Task Observer** | ([rebelytics/one-skill-to-rule-them-all](https://github.com/rebelytics/one-skill-to-rule-them-all)) | Watch sessions to log skill gaps/corrections to staged skill updates | **Yes** - improves skills + can feed [[llm-wiki]] |
+| **Headroom** | ([headroomlabs-ai/headroom](https://github.com/headroomlabs-ai/headroom)) | Compress tool/RAG/context before it hits the Large Language Model | **Maybe** - token savings; not brain learning |
 
 ## Verdict for our use case
 
@@ -20,17 +20,17 @@ Two separate tools people often mention together. They solve **different** probl
 
 ## Kingdom wiring (Task Observer)
 
-- Skill bundle: `~/.cursor/skills/task-observer/` (personal) + `.cursor/skills/task-observer/` (project mirror)
-- Observation store: `brain/skill-observations/`
-- Staged skill diffs: `brain/skill-updates/`
-- Always-apply rule lists `task-observer`; load on multi-step work or “any observations?” - not casual Q&A
+- Skill bundle: (personal) + (project mirror)
+- Observation store: 
+- Staged skill diffs: 
+- Always-apply rule lists task-observer; load on multi-step work or “any observations?” - not casual Q&A
 
 ## Headroom wiring (tokens)
 
-- CLI: `~/.local/bin/headroom` (`uv tool install … headroom-ai[all]`)
-- Scripts: `npm run headroom:start|stop|status|setup`
+- CLI: (`uv tool install … headroom-ai[all]`)
+- Scripts: 
 - Runbook: [[ops/headroom]]
-- MCP: `headroom` in `~/.cursor/mcp.json` (**primary** - do not steal OmniRoute Override Base URL)
+- MCP: headroom in (**primary** - do not steal OmniRoute Override Base URL)
 - Cursor Override Base URL stays **OmniRoute** (`localhost:20128`)
 - Optional proxy on `:8787` for stats / non-Cursor agents only
 

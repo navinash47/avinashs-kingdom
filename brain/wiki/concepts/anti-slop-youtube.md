@@ -20,5 +20,5 @@ Every clip needs provenance: source URL, title, fair-use note, start/end times, 
 ## Also required
 
 - Full editable script before narration lock 
-- Narration mode: `record_self` **or** `generate_humanlike` 
+- Narration mode: record_self **or** generate_humanlike 
 - Veritasium pillars: [[concepts/veritasium-formula]]

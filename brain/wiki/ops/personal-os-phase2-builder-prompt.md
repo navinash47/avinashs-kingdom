@@ -34,14 +34,14 @@ W1 Obs 11 merge playbook to W2 Large Language Model contradiction judge to W3 fu
 - Raw files under brain/raw/ are immutable after filing.
 - Heuristic brain:lint stays; Large Language Model judge is additive and default dry-run.
 - Auto-wiki produces drafts; human/explicit approve promotes to published.
-- MCP: read-only tools first; never expose .env/secrets/weights.
+- MCP: read-only tools first; never expose.env/secrets/weights.
 - Merging cloud UI branches: KEEP Mac OrchestratorProvider shell
  (App.tsx, VentureSidebar/VenturePage, FleetGraph/ dir). Land features as
  plugins / ResearchLab / Vite /live middleware - never replace the App router
  with an older useState tab shell.
 - No secrets in brain/. Follow Comic OmniRoute rule only if touching that repo
  (text via OmniRoute; images direct) - Kingdom Phase 2 is mostly local Node.
-- Prefer extending brain/harness/, .cursor/skills/, config/, Throne - do not
+- Prefer extending brain/harness/,.cursor/skills/, config/, Throne - do not
  invent a parallel OS.
 
 ## Per-workstream definition of done (must match SRS)
@@ -67,7 +67,7 @@ and report before starting W2 unless the human said “do all Phase 2”.
 ## How to use
 
 1. Open a new Agent chat (or `/goal` with: “Execute Phase 2 builder prompt”).
-2. Paste the fenced prompt (or say “follow `brain/wiki/ops/personal-os-phase2-builder-prompt.md`”).
+2. Paste the fenced prompt (or say “follow ”).
 3. Watch [[ops/personal-os-phase2-tracker]] for step / %.
 
 ## Related

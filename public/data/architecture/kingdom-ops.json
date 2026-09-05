@@ -5,8 +5,8 @@
   "sections": {
     "system design": {
       "title": "System design",
-      "content": "React + Vite command orchestrator with local control API (:5174). `npm run dev` starts UI + API. Venture **Run** tabs embed live dashboards and expose Start/Stop/Test/Sync buttons. `npm run sync` pulls venture data into `public/data/`.",
-      "markdown": "React + Vite command orchestrator with local control API (:5174). `npm run dev` starts UI + API. Venture **Run** tabs embed live dashboards and expose Start/Stop/Test/Sync buttons. `npm run sync` pulls venture data into `public/data/`.",
+      "content": "React + Vite command orchestrator with local control API (:5174). starts UI + API. Venture **Run** tabs embed live dashboards and expose Start/Stop/Test/Sync buttons. pulls venture data into.",
+      "markdown": "React + Vite command orchestrator with local control API (:5174). starts UI + API. Venture **Run** tabs embed live dashboards and expose Start/Stop/Test/Sync buttons. pulls venture data into.",
       "diagrams": [],
       "tables": []
     },

@@ -31,7 +31,7 @@
       "phasesTotal": 10,
       "spendUsd": 0,
       "ceilingUsd": 40,
-      "notes": "RE vertical \u00b7 8/10 phases pass \u00b7 last gate PASS \u00b7 spend $0/$40",
+      "notes": "RE vertical \u00b7 8/10 phases pass \u00b7 last gate PASS \u00b7 spend /",
       "repoPath": "/Users/avinashnandyala/Projects/whatsapp-voice-agents"
     },
     {
@@ -41,13 +41,13 @@
       "progress": 55,
       "priority": "P0",
       "status": "active",
-      "nextMilestone": "Add Google creds (`GOOGLE_APPLICATION_CREDENTIALS` + `GCS_BUCKET` or Drive folder) to set `CLIP_CLOUD=gcs` and re-run `npm run clips:fetch` to sync cloud.",
+      "nextMilestone": "Add Google creds (GOOGLE_APPLICATION_CREDENTIALS + GCS_BUCKET or Drive folder) to set `CLIP_CLOUD=gcs` and re-run to sync cloud.",
       "progressSource": "STATUS.md Progress field (agent-updated)",
       "phasesPassed": null,
       "phasesTotal": null,
       "spendUsd": null,
       "ceilingUsd": null,
-      "notes": "Next: 1) Add Google creds (`GOOGLE_APPLICATION_CREDENTIALS` + `GCS_BUCKET` or Drive folder) to set `CLIP_CLOUD=gcs` and re-run `npm run clips:fetch` to sync cloud. \u00b7 2) Cut Control to Clips: Accept/Reject candidates; upload manual for KYM gaps. \u00b7 3) Phase 5: Timeline compiler + preview render from selected clips + Voice Over.",
+      "notes": "Next: 1) Add Google creds (GOOGLE_APPLICATION_CREDENTIALS + GCS_BUCKET or Drive folder) to set `CLIP_CLOUD=gcs` and re-run to sync cloud. \u00b7 2) Cut Control to Clips: Accept/Reject candidates; upload manual for KYM gaps. \u00b7 3) Phase 5: Timeline compiler + preview render from selected clips + Voice Over.",
       "repoPath": "/Users/avinashnandyala/Projects/youtube-editor-lab"
     },
     {
@@ -57,13 +57,13 @@
       "progress": 22,
       "priority": "P1",
       "status": "active",
-      "nextMilestone": "Phase 0 foundation: stand up `frontier-brain` registry + `paper-identity` resolve for one comics/multimodal club.",
+      "nextMilestone": "Phase 0 foundation: stand up frontier-brain registry + paper-identity resolve for one comics/multimodal club.",
       "progressSource": "STATUS.md Progress field (agent-updated)",
       "phasesPassed": null,
       "phasesTotal": null,
       "spendUsd": null,
       "ceilingUsd": null,
-      "notes": "Next: 1) Phase 0 foundation: stand up `frontier-brain` registry + `paper-identity` resolve for one comics/multimodal club. \u00b7 2) Ingest 1\u20133 abstracts into Kingdom brain via kingdom-wiki (vertical: generative comics / multimodal consistency). \u00b7 3) Prototype citation expand + distance/importance overlays on the map playground path (Phase 1).",
+      "notes": "Next: 1) Phase 0 foundation: stand up frontier-brain registry + paper-identity resolve for one comics/multimodal club. \u00b7 2) Ingest 1\u20133 abstracts into Kingdom brain via kingdom-wiki (vertical: generative comics / multimodal consistency). \u00b7 3) Prototype citation expand + distance/importance overlays on the map playground path (Phase 1).",
       "repoPath": "/Users/avinashnandyala/Projects/research-frontier-lab"
     },
     {
@@ -79,7 +79,7 @@
       "phasesTotal": 97,
       "spendUsd": null,
       "ceilingUsd": 70,
-      "notes": "City \u00b7 91/97 pass \u00b7 source local working tree \u00b7 updated 2026-09-03T03:58:50.618163+00:00 \u00b7 ceiling $70",
+      "notes": "City \u00b7 91/97 pass \u00b7 source local working tree \u00b7 updated 2026-09-03T03:58:50.618163+00:00 \u00b7 ceiling ",
       "repoPath": "/Users/avinashnandyala/ProceduralCity"
     },
     {
@@ -95,7 +95,7 @@
       "phasesTotal": 6,
       "spendUsd": 5.92,
       "ceilingUsd": null,
-      "notes": "ComicMainEngine @ Desktop \u00b7 2A 2/6 \u00b7 V1 22/22 \u00b7 API spend $5.92 \u00b7 secondary to City",
+      "notes": "ComicMainEngine @ Desktop \u00b7 2A 2/6 \u00b7 V1 22/22 \u00b7 API spend \u00b7 secondary to City",
       "repoPath": "/Users/avinashnandyala/Desktop/ComicMainEngine"
     },
     {
@@ -175,7 +175,7 @@
       "phasesTotal": null,
       "spendUsd": null,
       "ceilingUsd": null,
-      "notes": "Next: 1) Dual-terrain Stage 1 (flat physics + imagined beam height scan) then 1024-env CUDA train on the A10. \u00b7 2) Log Lambda hours in `tracking/expenses.jsonl` whenever the GPU is running; terminate the instance when idle. \u00b7 3) Stage 2 hard beam + Unitree G1 port - only after Stage 1 walks the imagined beam.",
+      "notes": "Next: 1) Dual-terrain Stage 1 (flat physics + imagined beam height scan) then 1024-env CUDA train on the A10. \u00b7 2) Log Lambda hours in whenever the GPU is running; terminate the instance when idle. \u00b7 3) Stage 2 hard beam + Unitree G1 port - only after Stage 1 walks the imagined beam.",
       "repoPath": "/Users/avinashnandyala/Projects/BeamDojo"
     }
   ]
