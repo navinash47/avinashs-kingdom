@@ -8,21 +8,21 @@ updated: 2026-08-24
 
 ## System design
 
-Anti-slop long-form pipeline: Formula Desk → Clip Researcher → Script → Narration → Cut Control → timeline. Real clip provenance required. Phase 4: clip research + cloud sync.
+Anti-slop long-form pipeline: Formula Desk to Clip Researcher to Script to Narration to Cut Control to timeline. Real clip provenance required. Phase 4: clip research + cloud sync.
 
 ## Input / output flows
 
 ```mermaid
 flowchart LR
-  Script[Screenplay MD] --> Formula[Formula Desk]
-  Formula --> Clips[Clip Researcher]
-  Clips --> Cut[Cut Control]
-  Cut --> Timeline[Timeline preview]
-  Clips --> Prov[Provenance log]
+ Script[Screenplay MD] --> Formula[Formula Desk]
+ Formula --> Clips[Clip Researcher]
+ Clips --> Cut[Cut Control]
+ Cut --> Timeline[Timeline preview]
+ Clips --> Prov[Provenance log]
 ```
 
 - **In:** screenplay markdown, clip candidates (local + GCS/Drive), formula lint rules
-- **Out:** selected clips with provenance, timeline preview, VO-ready cut
+- **Out:** selected clips with provenance, timeline preview, Voice Over-ready cut
 
 ## Data stores
 

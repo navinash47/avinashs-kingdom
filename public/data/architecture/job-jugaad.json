@@ -5,8 +5,8 @@
   "sections": {
     "system design": {
       "title": "System design",
-      "content": "Application tracker for FDE / AI Engineer roles. Tracker UI + API on :8790.",
-      "markdown": "Application tracker for FDE / AI Engineer roles. Tracker UI + API on :8790.",
+      "content": "Application tracker for Forward Deployed Engineer / Artificial Intelligence Engineer roles. Tracker UI + API on :8790.",
+      "markdown": "Application tracker for Forward Deployed Engineer / Artificial Intelligence Engineer roles. Tracker UI + API on :8790.",
       "diagrams": [],
       "tables": []
     },
@@ -41,8 +41,8 @@
     },
     "future plans": {
       "title": "Future plans",
-      "content": "- Move first 5 wishlist → applied\n- Resume-pick + headed apply automation",
-      "markdown": "- Move first 5 wishlist → applied\n- Resume-pick + headed apply automation",
+      "content": "- Move first 5 wishlist to applied\n- Resume-pick + headed apply automation",
+      "markdown": "- Move first 5 wishlist to applied\n- Resume-pick + headed apply automation",
       "diagrams": [],
       "tables": []
     }

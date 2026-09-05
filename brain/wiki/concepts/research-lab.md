@@ -6,12 +6,12 @@ tags: [research, orchestrator, lab]
 
 # Research Lab
 
-Kingdom has a **Research** tab (not only cash ventures). Future papers, GPU runs, and lab notes land here as their own research project — do not jam them into Research Frontier if they are a different field.
+Kingdom has a **Research** tab (not only cash ventures). Future papers, GPU runs, and lab notes land here as their own research project - do not jam them into Research Frontier if they are a different field.
 
 ## How to add a research project
 
 1. Create (or clone) a repo with `STATUS.md` and optional `tracking/expenses.jsonl` + `proofs/*.mp4`.
-2. Register it in `config/venture-registry.json` with `"kind": "research"` and a `field` (e.g. `robot learning`, `NLP`, `graphics`).
+2. Register it in `config/venture-registry.json` with `"kind": "research"` and a `field` (e.g. `robot learning`, `Natural Language Processing`, `graphics`).
 3. Add wiki pages: `brain/wiki/ventures/<id>.md`, `architecture/<id>.md` (include a mermaid file graph), `experiments/<id>.md`.
 4. Seed a row in `public/data/ventures.json` + `public/data/agents.json` if it has an agent.
 5. Run `npm run sync`. The Research tab reads `public/data/research-lab.json`.
@@ -22,11 +22,11 @@ Lambda has **no public Isaac webpage**. The browser UI for live metrics is **Wei
 
 1. GPU box writes `tracking/training-status.json` (gitignored). Schema: `tracking/training-status.example.json`.
 2. Kingdom `npm run sync` copies that object onto the research project as `training` in `public/data/research-lab.json`.
-3. Research tab → **Live training** card: status badge (idle / running / unknown) + **Open Weights & Biases**.
+3. Research tab to **Live training** card: status badge (idle / running / unknown) + **Open Weights & Biases**.
 4. If `wandb_entity` is missing, the link is `https://wandb.ai`. After `wandb login` on the GPU box, open project **beamdojo**. Do not invent a run URL.
 5. TensorBoard is SSH-only: `ssh -L 6006:localhost:6006 lambda-beamdojo`, then TensorBoard on `/lambda/nfs/beamdojo/logs`.
 6. Research tab polls `/live/training-status.json` every 5s in `npm run dev` (reads the gitignored BeamDojo file) and `/data/research/beamdojo/training-status.json` after sync.
-7. Missing live JSON → unknown/idle. Never claim a 10k-iter train is running.
+7. Missing live JSON to unknown/idle. Never claim a 10k-iter train is running.
 
 ## Rules for GPU / trained models
 

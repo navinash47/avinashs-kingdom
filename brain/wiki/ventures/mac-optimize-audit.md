@@ -24,7 +24,7 @@ M5 MacBook Air, **16 GB RAM**, uptime **34 days**. Disk is fine (~44% on Data). 
 - Memory pressure **warning**, ~**1.5 GB swap**, millions of swap-ins
 - **Structured.app** looping at ~100–220% CPU
 - **Zen Browser** ~3.8 GB across ~28 processes
-- **Cursor** ~3.6 GB (this session — do not force-quit from the tool)
+- **Cursor** ~3.6 GB (this session - do not force-quit from the tool)
 
 Reboot is the real RAM reset after a month of compressor/swap. `sudo purge` is not a substitute.
 
@@ -33,7 +33,7 @@ Reboot is the real RAM reset after a month of compressor/swap. `sudo purge` is n
 ```bash
 cd ~/Projects/mac-optimize-audit
 python3 -m mac_optimize audit --deep
-python3 -m mac_optimize serve          # :8742
+python3 -m mac_optimize serve # :8742
 python3 -m mac_optimize clean --action quit_runaways --yes
 ```
 

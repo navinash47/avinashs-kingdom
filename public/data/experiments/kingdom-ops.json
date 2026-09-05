@@ -49,7 +49,7 @@
     },
     {
       "date": "2026-09-02",
-      "summary": "Ship Phase 2 W3: full auto wiki with draft→promote gate.",
+      "summary": "Ship Phase 2 W3: full auto wiki with draft to promote gate.",
       "source": "git"
     },
     {
@@ -59,12 +59,12 @@
     },
     {
       "date": "2026-09-02",
-      "summary": "Ship Phase 2 W2: additive LLM/offline contradiction judge.",
+      "summary": "Ship Phase 2 W2: additive Large Language Model/offline contradiction judge.",
       "source": "git"
     },
     {
       "date": "2026-09-02",
-      "summary": "Ship Phase 2 W1: Obs 11 cloud→Mac UI merge playbook.",
+      "summary": "Ship Phase 2 W1: Obs 11 cloud to Mac UI merge playbook.",
       "source": "git"
     },
     {
@@ -79,7 +79,7 @@
     },
     {
       "date": "2026-08-24",
-      "summary": "Command orchestrator Phase 1 — Cmd-K palette + venture inspector",
+      "summary": "Command orchestrator Phase 1 - Cmd-K palette + venture inspector",
       "source": "wiki",
       "video": null
     },

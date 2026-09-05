@@ -8,20 +8,20 @@ updated: 2026-08-24
 
 ## System design
 
-India SMB WhatsApp lead qualification. RE vertical first. Phase-gated delivery: offer → demo → first rupees. Node demo server on :8787.
+India SMB WhatsApp lead qualification. RE vertical first. Phase-gated delivery: offer to demo to first rupees. Node demo server on :8787.
 
 ## Input / output flows
 
 ```mermaid
 flowchart LR
-  WA[WhatsApp webhook] --> Demo[Node demo :8787]
-  Demo --> FSM[Qualify FSM]
-  FSM --> Lead[Qualified lead]
-  FSM --> Book[Site visit signal]
-  Lead --> Handoff[Nurture / handoff]
+ WA[WhatsApp webhook] --> Demo[Node demo :8787]
+ Demo --> Finite State Machine[Qualify Finite State Machine]
+ Finite State Machine --> Lead[Qualified lead]
+ Finite State Machine --> Book[Site visit signal]
+ Lead --> Handoff[Nurture / handoff]
 ```
 
-- **In:** inbound WA webhook (stub → live), broker lead messages
+- **In:** inbound WA webhook (stub to live), broker lead messages
 - **Out:** qualified lead record, site-visit booking signal, nurture/handoff paths
 
 ## Data stores
@@ -35,16 +35,16 @@ flowchart LR
 ## Key libraries
 
 - Node.js demo server
-- FSM JSON for qualify paths
+- Finite State Machine JSON for qualify paths
 
 ## Version history
 
-- Stage C · Phase 8 — pilot contract pending
+- Stage C · Phase 8 - pilot contract pending
 
 ## Future plans
 
 - Phase 8 pilot contract
-- Hindi/English qualify → site visit loop
+- Hindi/English qualify to site visit loop
 - Voice layer (Exotel) after chat MVP
 
 ## Experiments log

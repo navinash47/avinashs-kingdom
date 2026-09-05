@@ -5,18 +5,18 @@
   "sections": {
     "system design": {
       "title": "System design",
-      "content": "India SMB WhatsApp lead qualification. RE vertical first. Phase-gated delivery: offer → demo → first rupees. Node demo server on :8787.",
-      "markdown": "India SMB WhatsApp lead qualification. RE vertical first. Phase-gated delivery: offer → demo → first rupees. Node demo server on :8787.",
+      "content": "India SMB WhatsApp lead qualification. RE vertical first. Phase-gated delivery: offer to demo to first rupees. Node demo server on :8787.",
+      "markdown": "India SMB WhatsApp lead qualification. RE vertical first. Phase-gated delivery: offer to demo to first rupees. Node demo server on :8787.",
       "diagrams": [],
       "tables": []
     },
     "input / output flows": {
       "title": "Input / output flows",
-      "content": "```mermaid\nflowchart LR\n  WA[WhatsApp webhook] --> Demo[Node demo :8787]\n  Demo --> FSM[Qualify FSM]\n  FSM --> Lead[Qualified lead]\n  FSM --> Book[Site visit signal]\n  Lead --> Handoff[Nurture / handoff]\n```\n\n- **In:** inbound WA webhook (stub → live), broker lead messages\n- **Out:** qualified lead record, site-visit booking signal, nurture/handoff paths",
-      "markdown": "- **In:** inbound WA webhook (stub → live), broker lead messages\n- **Out:** qualified lead record, site-visit booking signal, nurture/handoff paths",
+      "content": "```mermaid\nflowchart LR\n WA[WhatsApp webhook] --> Demo[Node demo :8787]\n Demo --> Finite State Machine[Qualify Finite State Machine]\n Finite State Machine --> Lead[Qualified lead]\n Finite State Machine --> Book[Site visit signal]\n Lead --> Handoff[Nurture / handoff]\n```\n\n- **In:** inbound WA webhook (stub to live), broker lead messages\n- **Out:** qualified lead record, site-visit booking signal, nurture/handoff paths",
+      "markdown": "- **In:** inbound WA webhook (stub to live), broker lead messages\n- **Out:** qualified lead record, site-visit booking signal, nurture/handoff paths",
       "diagrams": [
         {
-          "source": "flowchart LR\n  WA[WhatsApp webhook] --> Demo[Node demo :8787]\n  Demo --> FSM[Qualify FSM]\n  FSM --> Lead[Qualified lead]\n  FSM --> Book[Site visit signal]\n  Lead --> Handoff[Nurture / handoff]",
+          "source": "flowchart LR\n WA[WhatsApp webhook] --> Demo[Node demo :8787]\n Demo --> Finite State Machine[Qualify Finite State Machine]\n Finite State Machine --> Lead[Qualified lead]\n Finite State Machine --> Book[Site visit signal]\n Lead --> Handoff[Nurture / handoff]",
           "svg_path": null,
           "svg_inline": null
         }
@@ -57,22 +57,22 @@
     },
     "key libraries": {
       "title": "Key libraries",
-      "content": "- Node.js demo server\n- FSM JSON for qualify paths",
-      "markdown": "- Node.js demo server\n- FSM JSON for qualify paths",
+      "content": "- Node.js demo server\n- Finite State Machine JSON for qualify paths",
+      "markdown": "- Node.js demo server\n- Finite State Machine JSON for qualify paths",
       "diagrams": [],
       "tables": []
     },
     "version history": {
       "title": "Version history",
-      "content": "- Stage C · Phase 8 — pilot contract pending",
-      "markdown": "- Stage C · Phase 8 — pilot contract pending",
+      "content": "- Stage C \u00b7 Phase 8 - pilot contract pending",
+      "markdown": "- Stage C \u00b7 Phase 8 - pilot contract pending",
       "diagrams": [],
       "tables": []
     },
     "future plans": {
       "title": "Future plans",
-      "content": "- Phase 8 pilot contract\n- Hindi/English qualify → site visit loop\n- Voice layer (Exotel) after chat MVP",
-      "markdown": "- Phase 8 pilot contract\n- Hindi/English qualify → site visit loop\n- Voice layer (Exotel) after chat MVP",
+      "content": "- Phase 8 pilot contract\n- Hindi/English qualify to site visit loop\n- Voice layer (Exotel) after chat MVP",
+      "markdown": "- Phase 8 pilot contract\n- Hindi/English qualify to site visit loop\n- Voice layer (Exotel) after chat MVP",
       "diagrams": [],
       "tables": []
     },

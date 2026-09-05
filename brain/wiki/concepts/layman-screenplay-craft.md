@@ -6,20 +6,20 @@ tags: [youtube, screenplay, show-dont-tell]
 
 # Layman screenplay craft
 
-**For:** Agent Cut / YouTube Editor Lab.  
-**Parent house style:** [[concepts/youtube-house-video-style]] — use that for every new video; this page holds detail + Video 1 specimen.
+**For:** Agent Cut / YouTube Editor Lab. 
+**Parent house style:** [[concepts/youtube-house-video-style]] - use that for every new video; this page holds detail + Video 1 specimen.
 
 ## Rules
 
-1. **Show, don’t tell** — Rajamouli-style: cold open is a *scene*, not a definition.
-2. **Friend conversation, not lecture** — “remember those family groups…” energy; short clear sentences.
-3. **Stoppages / sink-in** — after key lines, hold picture (`[…]` in script, `[pause]` in teleprompter, `HOLD_sink_*` in broll). Let the viewer land.
-4. **Analogies for broad audience** — sunglasses / playlist / wall / referee / tasting the dish you swore you’d hate. One, then pause.
-5. **Montages** — `MONTAGE_*` fills gaps while VO rests.
-6. **Quality over runtime** — do not pad words to hit a minute count.
-7. **Layman + curious** — selective seeing as habit; never open/close on stupidity.
-8. **Arc:** show → recognition → curiosity → term flash → science → learning payoff.
-9. **Term flash:** `PLACEHOLDER_term_flash_<slug>` — lab `docs/graphics-term-flash.md`.
+1. **Show, don’t tell** - Rajamouli-style: cold open is a *scene*, not a definition.
+2. **Friend conversation, not lecture** - “remember those family groups…” energy; short clear sentences.
+3. **Stoppages / sink-in** - after key lines, hold picture (`[…]` in script, `[pause]` in teleprompter, `HOLD_sink_*` in broll). Let the viewer land.
+4. **Analogies for broad audience** - sunglasses / playlist / wall / referee / tasting the dish you swore you’d hate. One, then pause.
+5. **Montages** - `MONTAGE_*` fills gaps while Voice Over rests.
+6. **Quality over runtime** - do not pad words to hit a minute count.
+7. **Layman + curious** - selective seeing as habit; never open/close on stupidity.
+8. **Arc:** show to recognition to curiosity to term flash to science to learning payoff.
+9. **Term flash:** `PLACEHOLDER_term_flash_<slug>` - lab `docs/graphics-term-flash.md`.
 
 ## Example menu
 

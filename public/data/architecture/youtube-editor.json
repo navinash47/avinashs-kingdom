@@ -5,18 +5,18 @@
   "sections": {
     "system design": {
       "title": "System design",
-      "content": "Anti-slop long-form pipeline: Formula Desk → Clip Researcher → Script → Narration → Cut Control → timeline. Real clip provenance required. Phase 4: clip research + cloud sync.",
-      "markdown": "Anti-slop long-form pipeline: Formula Desk → Clip Researcher → Script → Narration → Cut Control → timeline. Real clip provenance required. Phase 4: clip research + cloud sync.",
+      "content": "Anti-slop long-form pipeline: Formula Desk to Clip Researcher to Script to Narration to Cut Control to timeline. Real clip provenance required. Phase 4: clip research + cloud sync.",
+      "markdown": "Anti-slop long-form pipeline: Formula Desk to Clip Researcher to Script to Narration to Cut Control to timeline. Real clip provenance required. Phase 4: clip research + cloud sync.",
       "diagrams": [],
       "tables": []
     },
     "input / output flows": {
       "title": "Input / output flows",
-      "content": "```mermaid\nflowchart LR\n  Script[Screenplay MD] --> Formula[Formula Desk]\n  Formula --> Clips[Clip Researcher]\n  Clips --> Cut[Cut Control]\n  Cut --> Timeline[Timeline preview]\n  Clips --> Prov[Provenance log]\n```\n\n- **In:** screenplay markdown, clip candidates (local + GCS/Drive), formula lint rules\n- **Out:** selected clips with provenance, timeline preview, VO-ready cut",
-      "markdown": "- **In:** screenplay markdown, clip candidates (local + GCS/Drive), formula lint rules\n- **Out:** selected clips with provenance, timeline preview, VO-ready cut",
+      "content": "```mermaid\nflowchart LR\n Script[Screenplay MD] --> Formula[Formula Desk]\n Formula --> Clips[Clip Researcher]\n Clips --> Cut[Cut Control]\n Cut --> Timeline[Timeline preview]\n Clips --> Prov[Provenance log]\n```\n\n- **In:** screenplay markdown, clip candidates (local + GCS/Drive), formula lint rules\n- **Out:** selected clips with provenance, timeline preview, Voice Over-ready cut",
+      "markdown": "- **In:** screenplay markdown, clip candidates (local + GCS/Drive), formula lint rules\n- **Out:** selected clips with provenance, timeline preview, Voice Over-ready cut",
       "diagrams": [
         {
-          "source": "flowchart LR\n  Script[Screenplay MD] --> Formula[Formula Desk]\n  Formula --> Clips[Clip Researcher]\n  Clips --> Cut[Cut Control]\n  Cut --> Timeline[Timeline preview]\n  Clips --> Prov[Provenance log]",
+          "source": "flowchart LR\n Script[Screenplay MD] --> Formula[Formula Desk]\n Formula --> Clips[Clip Researcher]\n Clips --> Cut[Cut Control]\n Cut --> Timeline[Timeline preview]\n Clips --> Prov[Provenance log]",
           "svg_path": null,
           "svg_inline": null
         }
@@ -64,8 +64,8 @@
     },
     "version history": {
       "title": "Version history",
-      "content": "- Phase 4 · Clip research + provenance · 55%",
-      "markdown": "- Phase 4 · Clip research + provenance · 55%",
+      "content": "- Phase 4 \u00b7 Clip research + provenance \u00b7 55%",
+      "markdown": "- Phase 4 \u00b7 Clip research + provenance \u00b7 55%",
       "diagrams": [],
       "tables": []
     },

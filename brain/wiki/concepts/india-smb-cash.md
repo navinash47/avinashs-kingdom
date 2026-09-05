@@ -6,11 +6,11 @@ tags: [cash, india, whatsapp]
 
 # India SMB cash
 
-Thesis: make money in India by selling WhatsApp (+ voice later) **lead qualification** to small businesses — setup fee + monthly retainer in INR.
+Thesis: make money in India by selling WhatsApp (+ voice later) **lead qualification** to small businesses - setup fee + monthly retainer in INR.
 
 ## Locked first vertical
 
-Real estate brokers — qualify buyers/renters and book site visits. See [[ventures/whatsapp-voice]].
+Real estate brokers - qualify buyers/renters and book site visits. See [[ventures/whatsapp-voice]].
 
 ## Not v1
 

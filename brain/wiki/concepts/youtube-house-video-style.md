@@ -6,8 +6,8 @@ tags: [youtube, screenplay, house-style, voice]
 
 # YouTube house video style
 
-**Canonical craft for every Agent Cut video going forward.**  
-Agents must re-read this before writing beat sheets or VO.
+**Canonical craft for every Agent Cut video going forward.** 
+Agents must re-read this before writing beat sheets or Voice Over.
 
 ## Must follow
 
@@ -19,12 +19,12 @@ Agents must re-read this before writing beat sheets or VO.
 | Sink-in | `[…]` / `[pause]` / `HOLD_sink_*` after key lines |
 | Analogies | Broad-audience, one at a time, then pause |
 | Picture | `MONTAGE_*` fills gaps; term flash on first jargon |
-| Clock | **Quality over runtime** — never pad VO |
+| Clock | **Quality over runtime** - never pad Voice Over |
 | Stance | Mechanism > moral dunk; no stupidity payoff |
 
 ## Term flash
 
-First on-screen term → fonts montage → definition → blur. Spec in lab repo `docs/graphics-term-flash.md`. Tag: `PLACEHOLDER_term_flash_<slug>`.
+First on-screen term to fonts montage to definition to blur. Spec in lab repo `docs/graphics-term-flash.md`. Tag: `PLACEHOLDER_term_flash_<slug>`.
 
 ## Example picker (E1–E5)
 

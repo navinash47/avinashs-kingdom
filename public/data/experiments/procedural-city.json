@@ -9,7 +9,7 @@
     },
     {
       "date": "2026-09-02",
-      "summary": "Ship map→Unity play on the public site and hide lab spend.",
+      "summary": "Ship map to Unity play on the public site and hide lab spend.",
       "source": "git"
     },
     {
@@ -19,7 +19,7 @@
     },
     {
       "date": "2026-09-02",
-      "summary": "Prepare Stage H (83–90 PASS, 91 awaiting human review).",
+      "summary": "Prepare Stage H (83\u201390 PASS, 91 awaiting human review).",
       "source": "git"
     },
     {
@@ -49,7 +49,7 @@
     },
     {
       "date": "2026-09-02",
-      "summary": "Prepare Stage G (73–81 PASS, 82 awaiting human review).",
+      "summary": "Prepare Stage G (73\u201381 PASS, 82 awaiting human review).",
       "source": "git"
     },
     {
@@ -59,12 +59,12 @@
     },
     {
       "date": "2026-09-02",
-      "summary": "Pass Stage F (63–72): generative assets gate with walkthrough.",
+      "summary": "Pass Stage F (63\u201372): generative assets gate with walkthrough.",
       "source": "git"
     },
     {
       "date": "2026-09-02",
-      "summary": "Pass Phases 60–62: Trellis bulk5, mesh inspect, decimation.",
+      "summary": "Pass Phases 60\u201362: Trellis bulk5, mesh inspect, decimation.",
       "source": "git"
     },
     {
@@ -74,12 +74,12 @@
     },
     {
       "date": "2026-09-02",
-      "summary": "Pass Phases 58–59: R3 asset manifest, PROP_LIST, web MVP scaffold.",
+      "summary": "Pass Phases 58\u201359: R3 asset manifest, PROP_LIST, web MVP scaffold.",
       "source": "git"
     },
     {
       "date": "2026-08-20",
-      "summary": "Census truncation flag tested — large asset dirs excluded from LOC walk.",
+      "summary": "Census truncation flag tested - large asset dirs excluded from LOC walk.",
       "source": "wiki",
       "video": null
     },

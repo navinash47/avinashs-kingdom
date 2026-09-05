@@ -4,7 +4,7 @@
   "items": [
     {
       "date": "2026-08-24",
-      "summary": "Stage 1 CUDA smoke on Lambda A10 — 64 envs, 5 PPO iters, ~2k steps/s, checkpoints `model_0.pt` / `model_4.pt` on NFS.",
+      "summary": "Stage 1 CUDA smoke on Lambda A10 - 64 envs, 5 Proximal Policy Optimization iters, ~2k steps/s, checkpoints `model_0.pt` / `model_4.pt` on NFS.",
       "source": "wiki",
       "video": "/data/research/beamdojo/stage1-smoke-gpu.mp4"
     },

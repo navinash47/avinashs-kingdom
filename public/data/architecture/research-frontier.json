@@ -5,11 +5,11 @@
   "sections": {
     "system design": {
       "title": "System design",
-      "content": "Paper clubbing and frontier ranking for generative comics / multimodal consistency vertical. Brain wiki is the knowledge store.\n\n```mermaid\nflowchart LR\n  Abs[\"Abstracts / OpenAlex\"] -->|ingest| Club[\"Paper clubbing\"]\n  Club --> Brain[\"brain/wiki\"]\n  Cites[\"Citation graph\"] --> Brain\n  Brain --> Rank[\"Frontier ranking\"]\n  Rank --> Q[\"Open questions\"]\n```",
+      "content": "Paper clubbing and frontier ranking for generative comics / multimodal consistency vertical. Brain wiki is the knowledge store.\n\n```mermaid\nflowchart LR\n Abs[\"Abstracts / OpenAlex\"] -->|ingest| Club[\"Paper clubbing\"]\n Club --> Brain[\"brain/wiki\"]\n Cites[\"Citation graph\"] --> Brain\n Brain --> Rank[\"Frontier ranking\"]\n Rank --> Q[\"Open questions\"]\n```",
       "markdown": "Paper clubbing and frontier ranking for generative comics / multimodal consistency vertical. Brain wiki is the knowledge store.",
       "diagrams": [
         {
-          "source": "flowchart LR\n  Abs[\"Abstracts / OpenAlex\"] -->|ingest| Club[\"Paper clubbing\"]\n  Club --> Brain[\"brain/wiki\"]\n  Cites[\"Citation graph\"] --> Brain\n  Brain --> Rank[\"Frontier ranking\"]\n  Rank --> Q[\"Open questions\"]",
+          "source": "flowchart LR\n Abs[\"Abstracts / OpenAlex\"] -->|ingest| Club[\"Paper clubbing\"]\n Club --> Brain[\"brain/wiki\"]\n Cites[\"Citation graph\"] --> Brain\n Brain --> Rank[\"Frontier ranking\"]\n Rank --> Q[\"Open questions\"]",
           "svg_path": null,
           "svg_inline": null
         }

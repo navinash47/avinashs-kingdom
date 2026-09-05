@@ -15,17 +15,17 @@ tags: [city, metro, p1]
 
 - Local / work branch: `tracking/phases.json` on `phase57` (Stage E gate prepared)
 - Kingdom sync prefers **`origin/main`** when it has more phase passes than local
-- Dashboard: `python3 scripts/serve_dashboard.py` → [http://127.0.0.1:8765/#proofs](http://127.0.0.1:8765/#proofs)
+- Dashboard: `python3 scripts/serve_dashboard.py` to [http://127.0.0.1:8765/#proofs](http://127.0.0.1:8765/#proofs)
 
 ## Stage proofs / walkthroughs
 
-Kingdom **Run** tab embeds the City dashboard at `/#proofs` and shows `CityStageProofsPanel` (synced from `dashboard/data.js` → `public/data/audits/city-stage-proofs.json`).
+Kingdom **Run** tab embeds the City dashboard at `/#proofs` and shows `CityStageProofsPanel` (synced from `dashboard/data.js` to `public/data/audits/city-stage-proofs.json`).
 
 | Stage | Walkthrough | Notes |
 |-------|-------------|-------|
 | C | `reports/phase37_walkthrough.mp4` | 3×3 Unity geometry |
 | D | `reports/phase47_walkthrough.mp4` | Streaming ≥25 tiles |
-| E / E57 | `reports/phase57_walkthrough.mp4` | 1 km diagonal — **gate_closed=false** until human perfect-eval |
+| E / E57 | `reports/phase57_walkthrough.mp4` | 1 km diagonal - **gate_closed=false** until human perfect-eval |
 
 Phases E48–E56 also appear as stage-proof rows (terminals / verify JSON / SVGs).
 

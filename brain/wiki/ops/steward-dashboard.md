@@ -10,7 +10,7 @@ Live numbers pulled into Kingdom via `npm run sync` (2026-08-11). Source JSON: `
 
 ## Mac speed (optimize audit)
 
-Live tool: `~/Projects/mac-optimize-audit` → http://127.0.0.1:8742  
+Live tool: `~/Projects/mac-optimize-audit` to http://127.0.0.1:8742 
 Sync copy: `public/data/audits/mac-storage-summary.json`
 
 | Metric | 2026-08-20 snapshot |
@@ -47,12 +47,12 @@ Canceled 2026-08-11 (verify by 2026-09-12): Comcast/Xfinity, Coursera, Jobright.
 | Rocket Money | ~$3 / mo | ~$38 |
 | Apple / iCloud | irregular | ~$18 |
 
-Token / API portfolio cap (Kingdom ops): **≤ $250 / month** — separate from consumer subscriptions above.
+Token / API portfolio cap (Kingdom ops): **≤ $250 / month** - separate from consumer subscriptions above.
 
 ## Next for Steward
 
-1. Cancel or consciously keep each remaining kill-list seat.  
-2. Mac stalls → [[ventures/mac-optimize-audit]] dashboard, not disk panic.  
+1. Cancel or consciously keep each remaining kill-list seat. 
+2. Mac stalls to [[ventures/mac-optimize-audit]] dashboard, not disk panic. 
 3. Weekly Kingdom export.
 
 Related: [[ventures/kingdom-ops]] · [[overview]]

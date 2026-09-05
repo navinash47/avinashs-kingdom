@@ -6,9 +6,9 @@ tags: [citizens, map, portfolio]
 
 # Citizens’ map of the Kingdom
 
-This brain is the shared memory for everyone building in Avinash’s Kingdom — agents and humans. Read here first; chat is temporary.
+This brain is the shared memory for everyone building in Avinash’s Kingdom - agents and humans. Read here first; chat is temporary.
 
-**Panel (live UI):** `~/Projects/avinashs-kingdom` → `npm run sync` → `npm run dev` → http://localhost:5173  
+**Panel (live UI):** `~/Projects/avinashs-kingdom` to `npm run sync` to `npm run dev` to http://localhost:5173 
 **This vault:** `brain/wiki/` (you are here)
 
 ## How the country works
@@ -23,7 +23,7 @@ This brain is the shared memory for everyone building in Avinash’s Kingdom —
 
 Architecture: [[concepts/kingdom-personal-os]]. Daily loop: [[ops/personal-os-playbook]]. New province: [[concepts/onboard-new-project]].
 
-## Provinces (ventures) — live 2026-08-16
+## Provinces (ventures) - live 2026-08-16
 
 | Province | Weight | Status | Agent | Page |
 |----------|--------|--------|-------|------|
@@ -36,12 +36,12 @@ Architecture: [[concepts/kingdom-personal-os]]. Daily loop: [[ops/personal-os-pl
 | Job Jugaad | 8% P1 | Tracker v0.1 | Jugaad | [[ventures/job-jugaad]] |
 | Kingdom ops | 2% | v1.0 · **70%** · kill list | Steward | [[ventures/kingdom-ops]] |
 | Mac optimize | 3% P1 | v0.1 · live `:8742` · RAM/CPU/swap | Janitor | [[ventures/mac-optimize-audit]] |
-| Shorts | 0% | **Parked** | — | [[ventures/shorts]] |
+| Shorts | 0% | **Parked** | - | [[ventures/shorts]] |
 
 ## Steward’s dashboard
 
 - Disk + kill list: [[ops/steward-dashboard]]
-- **Live tracker (auto on every sync):** [[ops/live-tracker]] — progress formulas, phases, versions
+- **Live tracker (auto on every sync):** [[ops/live-tracker]] - progress formulas, phases, versions
 
 ## Sync health (this refresh)
 
@@ -52,18 +52,18 @@ Architecture: [[concepts/kingdom-personal-os]]. Daily loop: [[ops/personal-os-pl
 | Research STATUS | Yes | Yes |
 | Procedural City (`origin/main` if local stale) | Yes | Yes |
 | ComicMainEngine (`v2a_program.json` @ Desktop) | Yes | Yes |
-| Mac optimize audit | Yes (`audits/mac-storage-summary.json` + `:8742`) | Yes → [[ventures/mac-optimize-audit]] |
-| Subscription kill list | Yes | Yes → ops dashboard |
+| Mac optimize audit | Yes (`audits/mac-storage-summary.json` + `:8742`) | Yes to [[ventures/mac-optimize-audit]] |
+| Subscription kill list | Yes | Yes to ops dashboard |
 
 Refresh panel anytime: `cd ~/Projects/avinashs-kingdom && npm run sync`.
 
 ## Constitution (do not forget)
 
-1. **Cash first** — India WhatsApp/voice for brokers (site visits), not feature theater.  
-2. **City before Comic** — Metro gates before Ink expands.  
-3. **Anti-slop YouTube** — real clips + provenance; Shorts stay parked.  
-4. **Compile knowledge here** — use **kingdom-wiki**; do not trust chat alone.  
-5. **After every gate** — update STATUS → **sync-kingdom**.
+1. **Cash first** - India WhatsApp/voice for brokers (site visits), not feature theater. 
+2. **City before Comic** - Metro gates before Ink expands. 
+3. **Anti-slop YouTube** - real clips + provenance; Shorts stay parked. 
+4. **Compile knowledge here** - use **kingdom-wiki**; do not trust chat alone. 
+5. **After every gate** - update STATUS to **sync-kingdom**.
 
 ## Concepts
 

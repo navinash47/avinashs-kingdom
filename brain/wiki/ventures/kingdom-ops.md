@@ -28,8 +28,8 @@ Full tables: [[ops/steward-dashboard]].
 
 ## Next milestones
 
-1. Cancel/review 6 kill-list seats.  
-2. Keep monthly token cap ≤ $250.  
+1. Cancel/review 6 kill-list seats. 
+2. Keep monthly token cap ≤ $250. 
 3. Export Kingdom state weekly.
 
 ## Related

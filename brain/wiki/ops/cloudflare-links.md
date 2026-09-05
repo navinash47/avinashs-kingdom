@@ -14,7 +14,7 @@ Readiness uses Cloudflare DoH (not system DNS) so early NXDOMAIN probes do not p
 
 Quick tunnels die on reboot or if you kill the cloudflared pid. Re-run for fresh URLs.
 
-If a link shows NXDOMAIN in the browser, wait a minute or flush DNS (`dscacheutil -flushcache`) — do not hammer-refresh.
+If a link shows NXDOMAIN in the browser, wait a minute or flush DNS (`dscacheutil -flushcache`) - do not hammer-refresh.
 
 | Dashboard | Local | Status | Public URL |
 |-----------|-------|--------|------------|
@@ -24,7 +24,7 @@ If a link shows NXDOMAIN in the browser, wait a minute or flush DNS (`dscacheuti
 
 ```bash
 cd ~/Projects/avinashs-kingdom
-./scripts/cloudflare-dashboards.sh          # start all + tunnel all
+./scripts/cloudflare-dashboards.sh # start all + tunnel all
 ./scripts/cloudflare-dashboards.sh kingdom city comic
 npm run tunnels
 ```

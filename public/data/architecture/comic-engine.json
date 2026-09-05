@@ -5,11 +5,11 @@
   "sections": {
     "system design": {
       "title": "System design",
-      "content": "Storyboard-first Version 2A parallel to frozen Version 2. Text LLM via OmniRoute; images direct (GOOGLE_API_KEY, fal). Dashboard /v2a on :8770.\n\n```mermaid\nflowchart LR\n  A1[A1 Story Architect] --> A2[A2 Shot cards]\n  A2 --> A3[A3 Enhance]\n  A3 --> A4[A4 Gate memory]\n  A4 --> A5[A5 Distill]\n```",
-      "markdown": "Storyboard-first Version 2A parallel to frozen Version 2. Text LLM via OmniRoute; images direct (GOOGLE_API_KEY, fal). Dashboard /v2a on :8770.",
+      "content": "Storyboard-first Version 2A parallel to frozen Version 2. Text Large Language Model via OmniRoute; images direct (GOOGLE_API_KEY, fal). Dashboard /v2a on :8770.\n\n```mermaid\nflowchart LR\n A1[A1 Story Architect] --> A2[A2 Shot cards]\n A2 --> A3[A3 Enhance]\n A3 --> A4[A4 Gate memory]\n A4 --> A5[A5 Distill]\n```",
+      "markdown": "Storyboard-first Version 2A parallel to frozen Version 2. Text Large Language Model via OmniRoute; images direct (GOOGLE_API_KEY, fal). Dashboard /v2a on :8770.",
       "diagrams": [
         {
-          "source": "flowchart LR\n  A1[A1 Story Architect] --> A2[A2 Shot cards]\n  A2 --> A3[A3 Enhance]\n  A3 --> A4[A4 Gate memory]\n  A4 --> A5[A5 Distill]",
+          "source": "flowchart LR\n A1[A1 Story Architect] --> A2[A2 Shot cards]\n A2 --> A3[A3 Enhance]\n A3 --> A4[A4 Gate memory]\n A4 --> A5[A5 Distill]",
           "svg_path": null,
           "svg_inline": null
         }
@@ -64,8 +64,8 @@
     },
     "version history": {
       "title": "Version history",
-      "content": "- 2A A0-A1 complete · A2 in progress · V1 22/22 done",
-      "markdown": "- 2A A0-A1 complete · A2 in progress · V1 22/22 done",
+      "content": "- 2A A0-A1 complete \u00b7 A2 in progress \u00b7 V1 22/22 done",
+      "markdown": "- 2A A0-A1 complete \u00b7 A2 in progress \u00b7 V1 22/22 done",
       "diagrams": [],
       "tables": []
     },

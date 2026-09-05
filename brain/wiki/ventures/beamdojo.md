@@ -14,7 +14,7 @@ Isaac Lab recreation of [BeamDojo](https://why618188.github.io/beamdojo/) (RSS 2
 - **Agent:** Agent Dojo
 - **Repo:** `~/Projects/BeamDojo`
 - **Remote:** https://github.com/navinash47/BeamDojo
-- **GPU:** Lambda A10 (`159.54.170.194` while live) — CUDA only, no Mac/CPU/fal as sim
+- **GPU:** Lambda A10 (`159.54.170.194` while live) - CUDA only, no Mac/CPU/fal as sim
 - **Live status:** Stage 1 smoke · **18%**
 
 ## Job
@@ -29,8 +29,8 @@ Weights stay on `/lambda/nfs/beamdojo/logs/`. Never commit `.pt`. Tell Avinash a
 
 Lambda does not serve a public Isaac webpage.
 
-1. Open Kingdom **Research** (`/?tab=research`) → BeamDojo **Live training**.
-2. Click **Open Weights & Biases**. If there is no entity yet, that link is `https://wandb.ai` — after `wandb login` on the GPU box, open project **beamdojo**.
+1. Open Kingdom **Research** (`/?tab=research`) to BeamDojo **Live training**.
+2. Click **Open Weights & Biases**. If there is no entity yet, that link is `https://wandb.ai` - after `wandb login` on the GPU box, open project **beamdojo**.
 3. TensorBoard (SSH only): `ssh -L 6006:localhost:6006 lambda-beamdojo`, then TensorBoard on `/lambda/nfs/beamdojo/logs`, browser `http://localhost:6006`.
 4. Status badge is idle/unknown unless `tracking/training-status.json` says `running`. Do not assume a 10k-iter job from proof videos.
 

@@ -4,9 +4,9 @@ updated: 2026-08-11
 tags: [youtube, screenplay, craft]
 ---
 
-# Source — YouTube layman screenplay craft (2026-08-11)
+# Source - YouTube layman screenplay craft (2026-08-11)
 
-**Raw:** `raw/inbox/youtube-screenplay-layman-craft-2026-08-11.md`  
+**Raw:** `raw/inbox/youtube-screenplay-layman-craft-2026-08-11.md` 
 **From:** Human craft locks in Cut lab session (show-first / Rajamouli).
 
 ## Summary
@@ -22,7 +22,7 @@ Video 1 (`confirmation-bias-myside`) must open with a **relatable layman scene**
 ## Limitations
 
 - Example choice may change when human overrides E1.
-- Term-flash renderer not built yet — placeholders only.
+- Term-flash renderer not built yet - placeholders only.
 
 ## Links
 

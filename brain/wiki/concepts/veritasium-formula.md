@@ -10,13 +10,13 @@ Doctrine for Agent Cut / YouTube Editor Lab. Full write-up: `~/Projects/youtube-
 
 ## Pillars
 
-1. Misconception / primitive conflict  
-2. Question → then explanation  
-3. A-plot / B-plot braid  
-4. Packaging (curiosity + intro confirm)  
-5. Unclosed loop  
-6. VPM + VO↔picture alignment  
-7. Payoff / moral  
+1. Misconception / primitive conflict 
+2. Question to then explanation 
+3. A-plot / B-plot braid 
+4. Packaging (curiosity + intro confirm) 
+5. Unclosed loop 
+6. VPM + Voice Over↔picture alignment 
+7. Payoff / moral 
 
 ## Related
 

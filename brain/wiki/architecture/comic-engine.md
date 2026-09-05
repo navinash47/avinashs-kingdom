@@ -8,14 +8,14 @@ updated: 2026-08-24
 
 ## System design
 
-Storyboard-first Version 2A parallel to frozen Version 2. Text LLM via OmniRoute; images direct (GOOGLE_API_KEY, fal). Dashboard /v2a on :8770.
+Storyboard-first Version 2A parallel to frozen Version 2. Text Large Language Model via OmniRoute; images direct (GOOGLE_API_KEY, fal). Dashboard /v2a on :8770.
 
 ```mermaid
 flowchart LR
-  A1[A1 Story Architect] --> A2[A2 Shot cards]
-  A2 --> A3[A3 Enhance]
-  A3 --> A4[A4 Gate memory]
-  A4 --> A5[A5 Distill]
+ A1[A1 Story Architect] --> A2[A2 Shot cards]
+ A2 --> A3[A3 Enhance]
+ A3 --> A4[A4 Gate memory]
+ A4 --> A5[A5 Distill]
 ```
 
 ## Input / output flows

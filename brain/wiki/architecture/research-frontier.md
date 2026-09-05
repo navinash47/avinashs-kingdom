@@ -12,11 +12,11 @@ Paper clubbing and frontier ranking for generative comics / multimodal consisten
 
 ```mermaid
 flowchart LR
-  Abs["Abstracts / OpenAlex"] -->|ingest| Club["Paper clubbing"]
-  Club --> Brain["brain/wiki"]
-  Cites["Citation graph"] --> Brain
-  Brain --> Rank["Frontier ranking"]
-  Rank --> Q["Open questions"]
+ Abs["Abstracts / OpenAlex"] -->|ingest| Club["Paper clubbing"]
+ Club --> Brain["brain/wiki"]
+ Cites["Citation graph"] --> Brain
+ Brain --> Rank["Frontier ranking"]
+ Rank --> Q["Open questions"]
 ```
 
 ## Input / output flows

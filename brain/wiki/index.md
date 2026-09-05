@@ -6,7 +6,7 @@ Catalog of pages. Agents update this on every ingest. Last full refresh: **2026-
 
 | Page | Summary |
 |------|---------|
-| [overview](overview.md) | Citizens’ map — portfolio, sync health, constitution |
+| [overview](overview.md) | Citizens’ map - portfolio, sync health, constitution |
 | [log](log.md) | Append-only wiki timeline |
 | [ops/steward-dashboard](ops/steward-dashboard.md) | Mac disk + subscription kill list (live audits) |
 | [ops/live-tracker](ops/live-tracker.md) | Auto census on every `npm run sync` |
@@ -15,7 +15,7 @@ Catalog of pages. Agents update this on every ingest. Last full refresh: **2026-
 | [ops/personal-os-phase2-tracker](ops/personal-os-phase2-tracker.md) | Phase 2 hard-10% live progress board |
 | [ops/personal-os-phase2b-tracker](ops/personal-os-phase2b-tracker.md) | Phase 2b fleet MCP + gated writes board |
 | [ops/personal-os-phase2-builder-prompt](ops/personal-os-phase2-builder-prompt.md) | Pasteable Agent/`/goal` prompt for Phase 2 |
-| [ops/cloud-ui-merge-playbook](ops/cloud-ui-merge-playbook.md) | Cloud→Mac UI merges: keep orchestrator; fold features |
+| [ops/cloud-ui-merge-playbook](ops/cloud-ui-merge-playbook.md) | Cloud to Mac UI merges: keep orchestrator; fold features |
 | [drafts/README](drafts/README.md) | Auto-wiki unpublished drafts gate |
 | [ops/ci-template](ops/ci-template.md) | Reusable CI / phase-board patterns |
 | [ops/cloudflare-links](ops/cloudflare-links.md) | Dashboard tunnel / Cloudflare link ops |
@@ -71,23 +71,23 @@ Catalog of pages. Agents update this on every ingest. Last full refresh: **2026-
 |------|---------|
 | [india-smb-cash](concepts/india-smb-cash.md) | India SMB cash via WhatsApp/voice |
 | [anti-slop-youtube](concepts/anti-slop-youtube.md) | Real footage + provenance |
-| [veritasium-formula](concepts/veritasium-formula.md) | Misconception → Q→E → A/B → packaging → payoff |
+| [veritasium-formula](concepts/veritasium-formula.md) | Misconception to Q to E to A/B to packaging to payoff |
 | [multi-agent-youtube](concepts/multi-agent-youtube.md) | Junior SWE trackers + race control for Cut lab |
 | [llm-wiki](concepts/llm-wiki.md) | Karpathy compile-once pattern |
 | [research-lab](concepts/research-lab.md) | Research tab + live W&B training card (idle/unknown unless JSON says running) |
 | [where-files-live](concepts/where-files-live.md) | Path map for all provinces |
 | [layman-screenplay-craft](concepts/layman-screenplay-craft.md) | Show-first detail + Video 1 locks (E2, title, pauses) |
 | [youtube-house-video-style](concepts/youtube-house-video-style.md) | **Canonical house style for ALL future Cut videos** |
-| [task-observer-headroom](concepts/task-observer-headroom.md) | Meta-skill observer vs token compressor — roles split |
-| [agentic-interview-prep](concepts/agentic-interview-prep.md) | LC + AI system design + agent evals study stack for Job Jugaad |
-| [agentic-resume-gates](concepts/agentic-resume-gates.md) | Kingdom milestones → honest resume claim language |
-| [agentic-stack-guidance](concepts/agentic-stack-guidance.md) | LangChain/LangGraph: skip by default; borrow patterns; AI/agentic/FDE roles + venture progress loop |
+| [task-observer-headroom](concepts/task-observer-headroom.md) | Meta-skill observer vs token compressor - roles split |
+| [agentic-interview-prep](concepts/agentic-interview-prep.md) | LC + Artificial Intelligence system design + agent evals study stack for Job Jugaad |
+| [agentic-resume-gates](concepts/agentic-resume-gates.md) | Kingdom milestones to honest resume claim language |
+| [agentic-stack-guidance](concepts/agentic-stack-guidance.md) | LangChain/LangGraph: skip by default; borrow patterns; Artificial Intelligence/agentic/Forward Deployed Engineer roles + venture progress loop |
 | [resume-master-knowledge](concepts/resume-master-knowledge.md) | Phase 1 resume KB + dashboard at ~/Projects/resume |
 | [virtual-control-surface](concepts/virtual-control-surface.md) | Sync-owned Throne control plane + control-surface.json |
-| [brain-harness-fsm](concepts/brain-harness-fsm.md) | Deterministic KG/FSM empty model under brain/harness |
+| [brain-harness-fsm](concepts/brain-harness-fsm.md) | Deterministic KG/Finite State Machine empty model under brain/harness |
 | [kingdom-personal-os](concepts/kingdom-personal-os.md) | Primary architecture: brain + skills + registry/orchestrator + Throne (+ Analytics / Vercel SPA note) |
-| [personal-os-phase2-srs](concepts/personal-os-phase2-srs.md) | Hard ~10% SRS: auto-wiki, MCP, LLM judge, obs 11 merge |
-| [personal-os-phase2b-srs](concepts/personal-os-phase2b-srs.md) | Fleet: all apps → registry/sync/Throne + MCP + skills |
+| [personal-os-phase2-srs](concepts/personal-os-phase2-srs.md) | Hard ~10% SRS: auto-wiki, MCP, Large Language Model judge, obs 11 merge |
+| [personal-os-phase2b-srs](concepts/personal-os-phase2b-srs.md) | Fleet: all apps to registry/sync/Throne + MCP + skills |
 | [onboard-new-project](concepts/onboard-new-project.md) | Checklist to plug a future venture into brain + sync + Throne |
 
 ## Entities
@@ -98,6 +98,6 @@ _None yet._
 
 | Page | Summary |
 |------|---------|
-| [Phase 2 auto-wiki smoke source](sources/phase2-auto-wiki-smoke-2026-09-02.md) | Auto-wiki W3 smoke — draft→promote path |
+| [Phase 2 auto-wiki smoke source](sources/phase2-auto-wiki-smoke-2026-09-02.md) | Auto-wiki W3 smoke - draft to promote path |
 | [youtube-screenplay-layman-craft-2026-08-11](sources/youtube-screenplay-layman-craft-2026-08-11.md) | Early show-first craft locks |
 | [youtube-house-video-style-2026-08-11](sources/youtube-house-video-style-2026-08-11.md) | Full house style log for future videos |

@@ -21,15 +21,15 @@ Upstream clone: `~/Projects/headroom`
 
 ```bash
 cd ~/Projects/avinashs-kingdom
-npm run headroom:start    # proxy on :8787
+npm run headroom:start # proxy on :8787
 npm run headroom:status
 npm run headroom:stop
-npm run headroom:setup    # print Cursor click-path
+npm run headroom:setup # print Cursor click-path
 ```
 
 ## Cursor wiring (Kingdom policy)
 
-**Do not** set Override OpenAI Base URL to Headroom. That slot is **OmniRoute** (`localhost:20128`) for coding/text LLM calls.
+**Do not** set Override OpenAI Base URL to Headroom. That slot is **OmniRoute** (`localhost:20128`) for coding/text Large Language Model calls.
 
 Use Headroom via **MCP only**:
 
@@ -37,17 +37,17 @@ Use Headroom via **MCP only**:
 - Registered in `~/.cursor/mcp.json` (+ project `.cursor/mcp.json`)
 - Reload MCP / restart Cursor if tools don’t appear
 
-Optional later (advanced): chain OmniRoute → Headroom as an upstream hop — only if you explicitly want transparent compression without giving up OmniRoute. Not configured by default.
+Optional later (advanced): chain OmniRoute to Headroom as an upstream hop - only if you explicitly want transparent compression without giving up OmniRoute. Not configured by default.
 
 ## MCP
 
-Primary integration for Cursor. Proxy (`npm run headroom:start`) is optional — useful for stats/dashboard and non-Cursor agents; not required for MCP compress/retrieve.
+Primary integration for Cursor. Proxy (`npm run headroom:start`) is optional - useful for stats/dashboard and non-Cursor agents; not required for MCP compress/retrieve.
 
 ## Savings check
 
 ```bash
 curl -s http://127.0.0.1:8787/stats
-# or: headroom dashboard   # if proxy running
+# or: headroom dashboard # if proxy running
 ```
 
 Coding-agent savings are typically ~15–20%, not the JSON 60–95% headline.

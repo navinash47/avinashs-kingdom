@@ -4,7 +4,7 @@ updated: 2026-09-02
 tags: [ops, personal-os, phase2, prompt]
 ---
 
-# Personal OS Phase 2 — builder prompt (paste into Agent / `/goal`)
+# Personal OS Phase 2 - builder prompt (paste into Agent / `/goal`)
 
 Copy everything inside the fenced block when starting implementation. Keep this file as the canonical prompt; update the [[ops/personal-os-phase2-tracker]] after each workstream.
 
@@ -15,7 +15,7 @@ branch that merges cleanly to main).
 
 ## Authority (read first)
 - SRS: brain/wiki/concepts/personal-os-phase2-srs.md
-- Tracker: brain/wiki/ops/personal-os-phase2-tracker.md  ← update every step
+- Tracker: brain/wiki/ops/personal-os-phase2-tracker.md ← update every step
 - Phase 1 architecture: brain/wiki/concepts/kingdom-personal-os.md
 - Schema: brain/AGENTS.md
 - Skills: sync-kingdom, kingdom-wiki, task-observer, kingdom-tunnels
@@ -28,31 +28,30 @@ update the tracker (status, %, evidence, SHA), append wiki/log.md, commit,
 and push (no force). Do not mark Phase 2 complete until all W1–W4 pass.
 
 ## Workstream order
-W1 Obs 11 merge playbook → W2 LLM contradiction judge → W3 full auto wiki →
-W4 MCP per app (pilot then template).
+W1 Obs 11 merge playbook to W2 Large Language Model contradiction judge to W3 full auto wiki to W4 MCP per app (pilot then template).
 
 ## Hard constraints
 - Raw files under brain/raw/ are immutable after filing.
-- Heuristic brain:lint stays; LLM judge is additive and default dry-run.
+- Heuristic brain:lint stays; Large Language Model judge is additive and default dry-run.
 - Auto-wiki produces drafts; human/explicit approve promotes to published.
 - MCP: read-only tools first; never expose .env/secrets/weights.
 - Merging cloud UI branches: KEEP Mac OrchestratorProvider shell
-  (App.tsx, VentureSidebar/VenturePage, FleetGraph/ dir). Land features as
-  plugins / ResearchLab / Vite /live middleware — never replace the App router
-  with an older useState tab shell.
+ (App.tsx, VentureSidebar/VenturePage, FleetGraph/ dir). Land features as
+ plugins / ResearchLab / Vite /live middleware - never replace the App router
+ with an older useState tab shell.
 - No secrets in brain/. Follow Comic OmniRoute rule only if touching that repo
-  (text via OmniRoute; images direct) — Kingdom Phase 2 is mostly local Node.
-- Prefer extending brain/harness/, .cursor/skills/, config/, Throne — do not
-  invent a parallel OS.
+ (text via OmniRoute; images direct) - Kingdom Phase 2 is mostly local Node.
+- Prefer extending brain/harness/, .cursor/skills/, config/, Throne - do not
+ invent a parallel OS.
 
 ## Per-workstream definition of done (must match SRS)
 W1: sync-kingdom skill + ops playbook encode merge rules; obs 11 ACTIONED.
 W2: npm script dry-run report under brain/harness/reports/; docs distinguish
-    judge vs lint v2; optional --apply gated.
-W3: inbox → one command → draft source + index/log proposal; promote gated;
-    idempotent; lint (+ optional judge) before publish.
+ judge vs lint v2; optional --apply gated.
+W3: inbox to one command to draft source + index/log proposal; promote gated;
+ idempotent; lint (+ optional judge) before publish.
 W4: MCP template + registry hook; get_status/get_phases/list_capabilities for
-    ≥1 pilot venture; onboard doc updated.
+ ≥1 pilot venture; onboard doc updated.
 
 ## Progress protocol
 1. Set tracker current_step to the workstream you start.

@@ -12,11 +12,11 @@
     },
     "input / output flows": {
       "title": "Input / output flows",
-      "content": "```mermaid\nflowchart LR\n  subgraph in [Inputs]\n    STATUS[STATUS.md]\n    Phases[phases.json]\n    Wiki[brain/wiki]\n    Repos[sibling repos]\n  end\n  subgraph sync [sync-kingdom.mjs]\n    Census[census.mjs]\n    Arch[architecture.mjs]\n    Cicd[cicd.mjs]\n  end\n  subgraph out [Outputs]\n    Panel[public/data JSON]\n    UI[Kingdom panel UI]\n  end\n  Repos --> Census\n  Wiki --> Arch\n  STATUS --> sync\n  Phases --> sync\n  sync --> Panel --> UI\n```\n\n- **In:** sibling repo STATUS.md, phases.json, expenses.jsonl, registry paths, brain/wiki/architecture/*.md\n- **Out:** ventures.json, manifests, architecture JSON, live-tracker.md, panel UI via fetch('/data/…')",
-      "markdown": "- **In:** sibling repo STATUS.md, phases.json, expenses.jsonl, registry paths, brain/wiki/architecture/*.md\n- **Out:** ventures.json, manifests, architecture JSON, live-tracker.md, panel UI via fetch('/data/…')",
+      "content": "```mermaid\nflowchart LR\n subgraph in [Inputs]\n STATUS[STATUS.md]\n Phases[phases.json]\n Wiki[brain/wiki]\n Repos[sibling repos]\n end\n subgraph sync [sync-kingdom.mjs]\n Census[census.mjs]\n Arch[architecture.mjs]\n Cicd[cicd.mjs]\n end\n subgraph out [Outputs]\n Panel[public/data JSON]\n UI[Kingdom panel UI]\n end\n Repos --> Census\n Wiki --> Arch\n STATUS --> sync\n Phases --> sync\n sync --> Panel --> UI\n```\n\n- **In:** sibling repo STATUS.md, phases.json, expenses.jsonl, registry paths, brain/wiki/architecture/*.md\n- **Out:** ventures.json, manifests, architecture JSON, live-tracker.md, panel UI via fetch('/data/\u2026')",
+      "markdown": "- **In:** sibling repo STATUS.md, phases.json, expenses.jsonl, registry paths, brain/wiki/architecture/*.md\n- **Out:** ventures.json, manifests, architecture JSON, live-tracker.md, panel UI via fetch('/data/\u2026')",
       "diagrams": [
         {
-          "source": "flowchart LR\n  subgraph in [Inputs]\n    STATUS[STATUS.md]\n    Phases[phases.json]\n    Wiki[brain/wiki]\n    Repos[sibling repos]\n  end\n  subgraph sync [sync-kingdom.mjs]\n    Census[census.mjs]\n    Arch[architecture.mjs]\n    Cicd[cicd.mjs]\n  end\n  subgraph out [Outputs]\n    Panel[public/data JSON]\n    UI[Kingdom panel UI]\n  end\n  Repos --> Census\n  Wiki --> Arch\n  STATUS --> sync\n  Phases --> sync\n  sync --> Panel --> UI",
+          "source": "flowchart LR\n subgraph in [Inputs]\n STATUS[STATUS.md]\n Phases[phases.json]\n Wiki[brain/wiki]\n Repos[sibling repos]\n end\n subgraph sync [sync-kingdom.mjs]\n Census[census.mjs]\n Arch[architecture.mjs]\n Cicd[cicd.mjs]\n end\n subgraph out [Outputs]\n Panel[public/data JSON]\n UI[Kingdom panel UI]\n end\n Repos --> Census\n Wiki --> Arch\n STATUS --> sync\n Phases --> sync\n sync --> Panel --> UI",
           "svg_path": null,
           "svg_inline": null
         }
@@ -69,8 +69,8 @@
     },
     "version history": {
       "title": "Version history",
-      "content": "- v1.0 — venture board + sync\n- v2.1 — operational control plane (API, embedded dashboards, test runner)",
-      "markdown": "- v1.0 — venture board + sync\n- v2.1 — operational control plane (API, embedded dashboards, test runner)",
+      "content": "- v1.0 - venture board + sync\n- v2.1 - operational control plane (API, embedded dashboards, test runner)",
+      "markdown": "- v1.0 - venture board + sync\n- v2.1 - operational control plane (API, embedded dashboards, test runner)",
       "diagrams": [],
       "tables": []
     },

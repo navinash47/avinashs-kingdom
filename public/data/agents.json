@@ -43,7 +43,7 @@
     "id": "agent-ink",
     "name": "Agent Ink",
     "ventureId": "comic-engine",
-    "focus": "ComicMainEngine (onceuponatime) — V1 board done; V2/phase12+ after City. Batch jobs; usage.db.",
+    "focus": "ComicMainEngine (onceuponatime) - V1 board done; V2/phase12+ after City. Batch jobs; usage.db.",
     "tokenBudgetUsd": 45,
     "tokenUsedUsd": 18
   },

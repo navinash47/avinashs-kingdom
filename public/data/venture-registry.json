@@ -32,7 +32,7 @@
             "label": "Node tests",
             "cmd": "npm test",
             "type": "unit",
-            "description": "Runs demo server unit tests (qualify FSM, webhook handlers)"
+            "description": "Runs demo server unit tests (qualify Finite State Machine, webhook handlers)"
           }
         ]
       },

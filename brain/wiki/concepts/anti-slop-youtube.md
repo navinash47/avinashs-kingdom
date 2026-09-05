@@ -6,12 +6,12 @@ tags: [youtube, provenance]
 
 # Anti-slop YouTube
 
-Long-form tooling that favors **real footage** and a human-sounding voice over AI-face Shorts spam.
+Long-form tooling that favors **real footage** and a human-sounding voice over Artificial Intelligence-face Shorts spam.
 
 ## Product surfaces
 
-1. **Clip Researcher** — find and cut real source clips.
-2. **Screenplay Desk** — beat sheets tied to those clips.
+1. **Clip Researcher** - find and cut real source clips.
+2. **Screenplay Desk** - beat sheets tied to those clips.
 
 ## Non-negotiable
 
@@ -19,6 +19,6 @@ Every clip needs provenance: source URL, title, fair-use note, start/end times, 
 
 ## Also required
 
-- Full editable script before narration lock  
-- Narration mode: `record_self` **or** `generate_humanlike`  
+- Full editable script before narration lock 
+- Narration mode: `record_self` **or** `generate_humanlike` 
 - Veritasium pillars: [[concepts/veritasium-formula]]

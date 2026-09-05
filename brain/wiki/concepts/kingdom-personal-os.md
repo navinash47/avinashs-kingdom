@@ -6,58 +6,58 @@ tags: [architecture, personal-os, brain, orchestrator, throne]
 
 # Kingdom personal OS (architecture recommendation)
 
-**Primary architecture:** *Compiled brain wiki + progressive skills + typed project registry/orchestrator contract + one-pane Throne*, with a lean control FSM and deterministic KG as the sync-owned world model — not as the whole product.
+**Primary architecture:** *Compiled brain wiki + progressive skills + typed project registry/orchestrator contract + one-pane Throne*, with a lean control Finite State Machine and deterministic KG as the sync-owned world model - not as the whole product.
 
 Optional overlays later: MCP tool servers per venture, decision-trace “context graph” logging, vector RAG only for large raw corpora.
 
-**Agent frameworks:** do not default to LangChain/LangGraph — borrow their patterns into custom orchestration; see [[agentic-stack-guidance]].
+**Agent frameworks:** do not default to LangChain/LangGraph - borrow their patterns into custom orchestration; see [[agentic-stack-guidance]].
 
-**Phase 2 (hard ~10%):** **done** on `main` — [[personal-os-phase2-srs]] · tracker [[ops/personal-os-phase2-tracker]] · MCP [[ops/personal-os-playbook]] / `mcp/README.md`.
+**Phase 2 (hard ~10%):** **done** on `main` - [[personal-os-phase2-srs]] · tracker [[ops/personal-os-phase2-tracker]] · MCP [[ops/personal-os-playbook]] / `mcp/README.md`.
 
-## Why this (vs pure FSM-only or pure vector RAG-only)
+## Why this (vs pure Finite State Machine-only or pure vector RAG-only)
 
 | Approach | Fits Kingdom? | Gap |
 |----------|---------------|-----|
-| **Pure FSM** | Good for legal actions *now* | No durable instructions, no skills, no compiled research memory |
+| **Pure Finite State Machine** | Good for legal actions *now* | No durable instructions, no skills, no compiled research memory |
 | **Pure vector RAG** | OK for huge messy corpora | Re-derives answers every time; weak for fleet topology, ports, phase gates, “what can I start?” |
-| **Karpathy LLM wiki alone** | Strong for *why* | Doesn’t drive Throne sync or fleet control |
+| **Karpathy Large Language Model wiki alone** | Strong for *why* | Doesn’t drive Throne sync or fleet control |
 | **Chosen stack** | Matches Cursor skills + multi-repo fleet + panel you already own | Add MCP/context-graph only when a venture needs them |
 
-Serious builders (2024–2026) converge on: compile durable knowledge ([Karpathy llm-wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f)), load procedures via progressive **Agent Skills** ([Anthropic](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills)), keep a typed world / authority graph for control ([Agentic OS / graph-native kernels](https://gist.github.com/AnthonyAlcaraz/16b64213b1e6ca4b93dfed3f5a74dcb8)), and treat decision traces as a future “context graph” layer ([Foundation Capital](https://foundationcapital.com/ideas/context-graphs-ais-trillion-dollar-opportunity)) — without replacing the registry/orchestration write path.
+Serious builders (2024–2026) converge on: compile durable knowledge ([Karpathy llm-wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f)), load procedures via progressive **Agent Skills** ([Anthropic](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills)), keep a typed world / authority graph for control ([Agentic OS / graph-native kernels](https://gist.github.com/AnthonyAlcaraz/16b64213b1e6ca4b93dfed3f5a74dcb8)), and treat decision traces as a future “context graph” layer ([Foundation Capital](https://foundationcapital.com/ideas/context-graphs-ais-trillion-dollar-opportunity)) - without replacing the registry/orchestration write path.
 
-## Five requirements → one stack
+## Five requirements to one stack
 
 | Need | Kingdom home |
 |------|----------------|
 | (a) Durable brain instructions | `brain/AGENTS.md` + wiki ingest/query/lint |
 | (b) Skills | Cursor `SKILL.md` + `AGENT_SKILL_MAP` |
-| (c) Orchestrator across apps | `npm run sync` → control-surface + harness FSM/KG |
-| (d) Future projects | `config/venture-template.json` → `npm run venture:new` → registry |
+| (c) Orchestrator across apps | `npm run sync` to control-surface + harness Finite State Machine/KG |
+| (d) Future projects | `config/venture-template.json` to `npm run venture:new` to registry |
 | (e) One-pane control | Throne `/?tab=throne` · Analytics `/?tab=analytics` · layman feature map on Throne |
 
 ## Static deploy (Vercel)
 
-Vite SPA — `vercel.json` ships `dist/` after `npm run build`. Synced snapshots under `public/data/` are baked into the deploy (read-only guest view; local orchestrator APIs are not available on Vercel). Create/link project once:
+Vite SPA - `vercel.json` ships `dist/` after `npm run build`. Synced snapshots under `public/data/` are baked into the deploy (read-only guest view; local orchestrator APIs are not available on Vercel). Create/link project once:
 
 ```bash
-npx vercel link    # or first `npx vercel`
+npx vercel link # or first `npx vercel`
 npx vercel --prod
 ```
 
-Local: `npm run dev` → http://localhost:5173 · Analytics tab or `/?tab=analytics`.
+Local: `npm run dev` to http://localhost:5173 · Analytics tab or `/?tab=analytics`.
 
-**Production:** https://avinashs-kingdom.vercel.app (CLI deploy; GitHub auto-connect failed once — run `npx vercel git connect` if you want push-to-deploy).
+**Production:** https://avinashs-kingdom.vercel.app (CLI deploy; GitHub auto-connect failed once - run `npx vercel git connect` if you want push-to-deploy).
 
 ## Compiled-wiki toolchain (real commands)
 
 | npm script | Script | Role |
 |------------|--------|------|
-| `brain:lint` | `brain/harness/lint.mjs` | Heuristic v2: broken links (error); orphans/index/stale `updated:`/dup titles/`venture_id`/status-phrase conflicts/claim dupes/log-lag (warn) — structure, not LLM claim judge |
-| `brain:judge` | `brain/harness/judge.mjs` | Phase 2 additive contradiction judge (dry-run → `harness/reports/`; OmniRoute LLM with offline fallback; `--apply` → proposals only) |
-| `brain:auto-wiki` | `brain/harness/auto-wiki.mjs` | Phase 2 full auto wiki: inbox → `wiki/drafts/` → gated `--promote` (lint first) |
+| `brain:lint` | `brain/harness/lint.mjs` | Heuristic v2: broken links (error); orphans/index/stale `updated:`/dup titles/`venture_id`/status-phrase conflicts/claim dupes/log-lag (warn) - structure, not Large Language Model claim judge |
+| `brain:judge` | `brain/harness/judge.mjs` | Phase 2 additive contradiction judge (dry-run to `harness/reports/`; OmniRoute Large Language Model with offline fallback; `--apply` to proposals only) |
+| `brain:auto-wiki` | `brain/harness/auto-wiki.mjs` | Phase 2 full auto wiki: inbox to `wiki/drafts/` to gated `--promote` (lint first) |
 | `brain:query` | `brain/harness/wiki-query.mjs` | Keyword search over wiki |
-| `brain:ingest` | `brain/harness/ingest.mjs` | Semi-auto: `--file` → stub with best-effort title/summary + checklist; review/complete with kingdom-wiki |
-| `brain:harness` | `brain/harness/query.mjs` | KG/FSM topology queries |
+| `brain:ingest` | `brain/harness/ingest.mjs` | Semi-auto: `--file` to stub with best-effort title/summary + checklist; review/complete with kingdom-wiki |
+| `brain:harness` | `brain/harness/query.mjs` | KG/Finite State Machine topology queries |
 | `venture:new` | `scripts/new-venture.mjs` | Mechanical onboard from template |
 
 Daily loop: [[ops/personal-os-playbook]].

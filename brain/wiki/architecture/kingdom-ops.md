@@ -14,26 +14,26 @@ React + Vite command orchestrator with local control API (:5174). `npm run dev` 
 
 ```mermaid
 flowchart LR
-  subgraph in [Inputs]
-    STATUS[STATUS.md]
-    Phases[phases.json]
-    Wiki[brain/wiki]
-    Repos[sibling repos]
-  end
-  subgraph sync [sync-kingdom.mjs]
-    Census[census.mjs]
-    Arch[architecture.mjs]
-    Cicd[cicd.mjs]
-  end
-  subgraph out [Outputs]
-    Panel[public/data JSON]
-    UI[Kingdom panel UI]
-  end
-  Repos --> Census
-  Wiki --> Arch
-  STATUS --> sync
-  Phases --> sync
-  sync --> Panel --> UI
+ subgraph in [Inputs]
+ STATUS[STATUS.md]
+ Phases[phases.json]
+ Wiki[brain/wiki]
+ Repos[sibling repos]
+ end
+ subgraph sync [sync-kingdom.mjs]
+ Census[census.mjs]
+ Arch[architecture.mjs]
+ Cicd[cicd.mjs]
+ end
+ subgraph out [Outputs]
+ Panel[public/data JSON]
+ UI[Kingdom panel UI]
+ end
+ Repos --> Census
+ Wiki --> Arch
+ STATUS --> sync
+ Phases --> sync
+ sync --> Panel --> UI
 ```
 
 - **In:** sibling repo STATUS.md, phases.json, expenses.jsonl, registry paths, brain/wiki/architecture/*.md
@@ -55,8 +55,8 @@ flowchart LR
 
 ## Version history
 
-- v1.0 — venture board + sync
-- v2.1 — operational control plane (API, embedded dashboards, test runner)
+- v1.0 - venture board + sync
+- v2.1 - operational control plane (API, embedded dashboards, test runner)
 
 ## Future plans
 

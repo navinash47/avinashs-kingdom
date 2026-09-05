@@ -8,7 +8,7 @@ updated: 2026-08-24
 
 ## System design
 
-Application tracker for FDE / AI Engineer roles. Tracker UI + API on :8790.
+Application tracker for Forward Deployed Engineer / Artificial Intelligence Engineer roles. Tracker UI + API on :8790.
 
 ## Input / output flows
 
@@ -23,5 +23,5 @@ Application tracker for FDE / AI Engineer roles. Tracker UI + API on :8790.
 
 ## Future plans
 
-- Move first 5 wishlist → applied
+- Move first 5 wishlist to applied
 - Resume-pick + headed apply automation

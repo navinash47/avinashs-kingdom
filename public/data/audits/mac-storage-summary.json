@@ -28,7 +28,7 @@
     "pressure_level": 1,
     "pressure": "warning",
     "swap": {
-      "raw": "total = 7168.00M  used = 6018.56M  free = 1149.44M  (encrypted)",
+      "raw": "total = 7168.00M used = 6018.56M free = 1149.44M (encrypted)",
       "total_bytes": 7516192768,
       "used_bytes": 6310917570,
       "free_bytes": 1205275197,
@@ -63,7 +63,7 @@
       "ProductVersion": "\t26.6.2",
       "BuildVersion": "\t25G83"
     },
-    "uptime": "21:08  up 12 days,  8:30, 1 user, load averages: 4.20 7.21 6.75",
+    "uptime": "21:08 up 12 days, 8:30, 1 user, load averages: 4.20 7.21 6.75",
     "uptime_days": 12,
     "ncpu": 10
   },
@@ -215,11 +215,11 @@
       "bytes": 0,
       "risk": "low",
       "action": "quit_runaways + close Zen tabs, then reboot if still swapping",
-      "rationale": "16,429,611 swap-ins — the SSD is paging. That hitch is the freeze you feel."
+      "rationale": "16,429,611 swap-ins - the SSD is paging. That hitch is the freeze you feel."
     },
     {
       "priority": 2,
-      "title": "Restart Zen Browser — 2.3 GB across 28 processes",
+      "title": "Restart Zen Browser - 2.3 GB across 28 processes",
       "bytes": 2474196992,
       "risk": "medium",
       "action": "Close extra Zen tabs, then Fully Quit Zen (Cmd-Q), reopen.",
@@ -238,7 +238,7 @@
       "title": "Review always-on helpers: us.zoom.updater.login.check.plist, us.zoom.updater.plist, com.teamviewer.Helper.plist, com.teamviewer.UninstallerHelper.plist",
       "bytes": 0,
       "risk": "high",
-      "action": "System Settings → General → Login Items. Unload TeamViewer if you do not use it.",
+      "action": "System Settings to General to Login Items. Unload TeamViewer if you do not use it.",
       "rationale": "Launch daemons wake on every boot and add background CPU."
     }
   ],

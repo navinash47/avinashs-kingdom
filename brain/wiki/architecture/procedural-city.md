@@ -8,11 +8,11 @@ updated: 2026-08-24
 
 ## System design
 
-Deterministic procedural city with Unity geometry, streaming, LLM scene director, generative assets. 92 phase gates. Python dashboard :8765.
+Deterministic procedural city with Unity geometry, streaming, Large Language Model scene director, generative assets. 92 phase gates. Python dashboard :8765.
 
 ## Input / output flows
 
-- **In:** phase specs, layout constraints, LLM scene briefs
+- **In:** phase specs, layout constraints, Large Language Model scene briefs
 - **Out:** validated city layouts, Unity geometry, streaming chunks
 
 ## Data stores

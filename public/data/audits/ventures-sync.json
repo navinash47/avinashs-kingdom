@@ -2,11 +2,11 @@
   "synced_at": "2026-09-03T04:09:01.538Z",
   "patches": {
     "youtube-editor": {
-      "version": "Phase 4 · Clip research + provenance",
+      "version": "Phase 4 \u00b7 Clip research + provenance",
       "progress": 55,
       "priority": "P0",
-      "nextMilestone": "Add Google creds (`GOOGLE_APPLICATION_CREDENTIALS` + `GCS_BUCKET` or Drive folder) → set `CLIP_CLOUD=gcs` and re-run `npm run clips:fetch` to sync cloud.",
-      "notes": "Next: 1) Add Google creds (`GOOGLE_APPLICATION_CREDENTIALS` + `GCS_BUCKET` or Drive folder) → set `CLIP_CLOUD=gcs` and re-run `npm run clips:fetch` to sync cloud. · 2) Cut Control → Clips: Accept/Reject candidates; upload manual for KYM gaps. · 3) Phase 5: Timeline compiler + preview render from selected clips + VO.",
+      "nextMilestone": "Add Google creds (`GOOGLE_APPLICATION_CREDENTIALS` + `GCS_BUCKET` or Drive folder) to set `CLIP_CLOUD=gcs` and re-run `npm run clips:fetch` to sync cloud.",
+      "notes": "Next: 1) Add Google creds (`GOOGLE_APPLICATION_CREDENTIALS` + `GCS_BUCKET` or Drive folder) to set `CLIP_CLOUD=gcs` and re-run `npm run clips:fetch` to sync cloud. \u00b7 2) Cut Control to Clips: Accept/Reject candidates; upload manual for KYM gaps. \u00b7 3) Phase 5: Timeline compiler + preview render from selected clips + Voice Over.",
       "status": "active",
       "progressSource": "STATUS.md Progress field (agent-updated)",
       "phasesPassed": null,
@@ -19,7 +19,7 @@
       "progress": 22,
       "priority": "P1",
       "nextMilestone": "Phase 0 foundation: stand up `frontier-brain` registry + `paper-identity` resolve for one comics/multimodal club.",
-      "notes": "Next: 1) Phase 0 foundation: stand up `frontier-brain` registry + `paper-identity` resolve for one comics/multimodal club. · 2) Ingest 1–3 abstracts into Kingdom brain via kingdom-wiki (vertical: generative comics / multimodal consistency). · 3) Prototype citation expand + distance/importance overlays on the map playground path (Phase 1).",
+      "notes": "Next: 1) Phase 0 foundation: stand up `frontier-brain` registry + `paper-identity` resolve for one comics/multimodal club. \u00b7 2) Ingest 1\u20133 abstracts into Kingdom brain via kingdom-wiki (vertical: generative comics / multimodal consistency). \u00b7 3) Prototype citation expand + distance/importance overlays on the map playground path (Phase 1).",
       "status": "active",
       "progressSource": "STATUS.md Progress field (agent-updated)",
       "phasesPassed": null,
@@ -32,7 +32,7 @@
       "progress": 18,
       "priority": "P1",
       "nextMilestone": "Dual-terrain Stage 1 (flat physics + imagined beam height scan) then 1024-env CUDA train on the A10.",
-      "notes": "Next: 1) Dual-terrain Stage 1 (flat physics + imagined beam height scan) then 1024-env CUDA train on the A10. · 2) Log Lambda hours in `tracking/expenses.jsonl` whenever the GPU is running; terminate the instance when idle. · 3) Stage 2 hard beam + Unitree G1 port — only after Stage 1 walks the imagined beam.",
+      "notes": "Next: 1) Dual-terrain Stage 1 (flat physics + imagined beam height scan) then 1024-env CUDA train on the A10. \u00b7 2) Log Lambda hours in `tracking/expenses.jsonl` whenever the GPU is running; terminate the instance when idle. \u00b7 3) Stage 2 hard beam + Unitree G1 port - only after Stage 1 walks the imagined beam.",
       "status": "active",
       "progressSource": "STATUS.md Progress field (agent-updated)",
       "phasesPassed": null,
@@ -45,7 +45,7 @@
       "progress": 67,
       "priority": "P1",
       "nextMilestone": "Memory pressure is warning",
-      "notes": "Next: 1) Memory pressure is warning · 2) Restart Zen Browser — 2.3 GB across 28 processes · 3) Cursor is heavy (7.2 GB, 140 processes)",
+      "notes": "Next: 1) Memory pressure is warning \u00b7 2) Restart Zen Browser - 2.3 GB across 28 processes \u00b7 3) Cursor is heavy (7.2 GB, 140 processes)",
       "status": "active",
       "progressSource": "STATUS.md Progress field (agent-updated)",
       "phasesPassed": null,
@@ -54,12 +54,12 @@
       "ceilingUsd": null
     },
     "whatsapp-voice": {
-      "version": "Stage C · Phase 8",
+      "version": "Stage C \u00b7 Phase 8",
       "progress": 80,
       "priority": "P0",
       "status": "active",
       "nextMilestone": "Phase 8: Pilot client contract (pending)",
-      "notes": "RE vertical · 8/10 phases pass · last gate PASS · spend $0/$40",
+      "notes": "RE vertical \u00b7 8/10 phases pass \u00b7 last gate PASS \u00b7 spend $0/$40",
       "progressSource": "phases 8/10 from tracking/phases.json",
       "phasesPassed": 8,
       "phasesTotal": 10,
@@ -67,12 +67,12 @@
       "ceilingUsd": 40
     },
     "procedural-city": {
-      "version": "Stage H · Phase 91",
+      "version": "Stage H \u00b7 Phase 91",
       "progress": 94,
       "priority": "P1",
       "status": "active",
       "nextMilestone": "Phase 91: v1 RELEASE GATE (pending)",
-      "notes": "City · 91/97 pass · source local working tree · updated 2026-09-03T03:58:50.618163+00:00 · ceiling $70",
+      "notes": "City \u00b7 91/97 pass \u00b7 source local working tree \u00b7 updated 2026-09-03T03:58:50.618163+00:00 \u00b7 ceiling $70",
       "progressSource": "phases 91/97 from local working tree",
       "phasesPassed": 91,
       "phasesTotal": 97,
@@ -80,12 +80,12 @@
       "ceilingUsd": 70
     },
     "comic-engine": {
-      "version": "2A · A1 passed · A2 Scene cards + storyboard ingest",
+      "version": "2A \u00b7 A1 passed \u00b7 A2 Scene cards + storyboard ingest",
       "progress": 33,
       "priority": "P2",
       "status": "active",
       "nextMilestone": "A2 Scene cards + storyboard ingest (start)",
-      "notes": "ComicMainEngine @ Desktop · 2A 2/6 · V1 22/22 · API spend $5.92 · secondary to City",
+      "notes": "ComicMainEngine @ Desktop \u00b7 2A 2/6 \u00b7 V1 22/22 \u00b7 API spend $5.92 \u00b7 secondary to City",
       "progressSource": "v2a_program.json 2/6 phases complete (V1 usage.db 22/22)",
       "phasesPassed": 2,
       "phasesTotal": 6,
@@ -97,8 +97,8 @@
       "progress": 88,
       "priority": "P1",
       "status": "active",
-      "nextMilestone": "Keep logging — 439/500 toward milestone",
-      "notes": "Next: 1) Keep logging — 439/500 toward milestone · 2) Prep interviews (2 active) · 3) Run 2h search + live Gmail status toward milestone",
+      "nextMilestone": "Keep logging - 439/500 toward milestone",
+      "notes": "Next: 1) Keep logging - 439/500 toward milestone \u00b7 2) Prep interviews (2 active) \u00b7 3) Run 2h search + live Gmail status toward milestone",
       "progressSource": "applications 439/500 from data/applications.json",
       "phasesPassed": 439,
       "phasesTotal": 500,
@@ -123,84 +123,84 @@
           {
             "id": "app_wish_01",
             "company": "Cursor",
-            "role": "AI Software Engineer / Agent Engineer",
+            "role": "Artificial Intelligence Software Engineer / Agent Engineer",
             "status": "wishlist",
             "appliedAt": null
           },
           {
             "id": "app_wish_02",
             "company": "Anthropic",
-            "role": "Applied AI Engineer / Forward Deployed Engineer",
+            "role": "Applied Artificial Intelligence Engineer / Forward Deployed Engineer",
             "status": "wishlist",
             "appliedAt": null
           },
           {
             "id": "app_wish_03",
             "company": "OpenAI",
-            "role": "Software Engineer, Applied AI / Agents",
+            "role": "Software Engineer, Applied Artificial Intelligence / Agents",
             "status": "wishlist",
             "appliedAt": null
           },
           {
             "id": "app_wish_04",
             "company": "Cognition (Devin)",
-            "role": "Software Engineer — Agentic Systems",
+            "role": "Software Engineer - Agentic Systems",
             "status": "wishlist",
             "appliedAt": null
           },
           {
             "id": "app_wish_05",
             "company": "Perplexity",
-            "role": "AI Engineer / Full-Stack AI Engineer",
+            "role": "Artificial Intelligence Engineer / Full-Stack Artificial Intelligence Engineer",
             "status": "wishlist",
             "appliedAt": null
           },
           {
             "id": "app_wish_06",
             "company": "LangChain",
-            "role": "Software Engineer — Agents / LangGraph",
+            "role": "Software Engineer - Agents / LangGraph",
             "status": "wishlist",
             "appliedAt": null
           },
           {
             "id": "app_wish_07",
             "company": "Vercel",
-            "role": "AI SDK / AI Engineer",
+            "role": "Artificial Intelligence SDK / Artificial Intelligence Engineer",
             "status": "wishlist",
             "appliedAt": null
           },
           {
             "id": "app_wish_08",
             "company": "Glean",
-            "role": "AI Engineer / Applied AI",
+            "role": "Artificial Intelligence Engineer / Applied Artificial Intelligence",
             "status": "wishlist",
             "appliedAt": null
           },
           {
             "id": "app_wish_09",
             "company": "Adept",
-            "role": "AI Agent Engineer",
+            "role": "Artificial Intelligence Agent Engineer",
             "status": "wishlist",
             "appliedAt": null
           },
           {
             "id": "app_wish_10",
             "company": "MultiOn",
-            "role": "Agent Engineer / Full-Stack AI",
+            "role": "Agent Engineer / Full-Stack Artificial Intelligence",
             "status": "wishlist",
             "appliedAt": null
           },
           {
             "id": "app_wish_11",
             "company": "Sierra",
-            "role": "AI Engineer — Customer Agents",
+            "role": "Artificial Intelligence Engineer - Customer Agents",
             "status": "wishlist",
             "appliedAt": null
           },
           {
             "id": "app_wish_12",
             "company": "Harvey",
-            "role": "Applied AI Engineer",
+            "role": "Applied Artificial Intelligence Engineer",
             "status": "wishlist",
             "appliedAt": null
           }

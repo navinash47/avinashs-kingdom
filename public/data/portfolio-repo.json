@@ -13,7 +13,7 @@
   "sync_notes": [
     "Portfolio .tex tracks are read-only ingested via resume: npm run ingest-legacy",
     "Kingdom npm run sync + resume npm run sync-projects keeps featured project links aligned",
-    "Do not feature WhatsApp or YouTube on resume — per agentic-resume-gates",
+    "Do not feature WhatsApp or YouTube on resume - per agentic-resume-gates",
     "Featured portfolio projects: ComicMainEngine, Procedural City, Venture Fleet Control Plane, BeamDojo, Research Frontier, Job Jugaad"
   ],
   "legacy_catalog": {

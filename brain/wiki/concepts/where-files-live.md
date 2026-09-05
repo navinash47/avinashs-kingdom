@@ -31,18 +31,18 @@ Plain map for citizens of the Kingdom. All paths are on this Mac unless noted.
 
 ## Procedural City (Agent Metro)
 
-**Root:** `~/ProceduralCity`  
+**Root:** `~/ProceduralCity` 
 **Remote:** `https://github.com/navinash47/ProceduralCity.git`
 
 | Fact | Detail |
 |------|--------|
 | Truth for Kingdom | Prefer **`origin/main`** `tracking/phases.json` when local branch is behind |
-| Local trap | Checkout stuck on `phase26` looked like “26% done” — cloud is ~Phase 48–49 |
+| Local trap | Checkout stuck on `phase26` looked like “26% done” - cloud is ~Phase 48–49 |
 | Refresh | `git fetch origin && git checkout main && git pull` |
 
 ## ComicMainEngine (Agent Ink)
 
-**Root:** `~/Desktop/ComicMainEngine`  
+**Root:** `~/Desktop/ComicMainEngine` 
 
 | Do use | Do **not** confuse with |
 |--------|-------------------------|
@@ -52,10 +52,10 @@ Plain map for citizens of the Kingdom. All paths are on this Mac unless noted.
 |------|---------|
 | `data/v2a_program.json` | **Kingdom progress for 2A** (A0–A5). Live UI `/v2a` on `:8770` |
 | `docs/V2A_ARCHITECTURE.md` | Storyboard-first architecture |
-| `data/v2_program.json` | Version 2 (phases 12–20) — **frozen** while 2A runs |
+| `data/v2_program.json` | Version 2 (phases 12–20) - **frozen** while 2A runs |
 | `data/usage.db` | V1 task board + `api_call` spend (historical) |
 
-Dashboard: `python scripts/run_dashboard.py` → http://127.0.0.1:8770/v2a
+Dashboard: `python scripts/run_dashboard.py` to http://127.0.0.1:8770/v2a
 
 ## Other provinces
 
@@ -88,18 +88,18 @@ Restore: `./scripts/restore-cursor-skills.sh` from Kingdom.
 | Task Observer skill (project) | `~/Projects/avinashs-kingdom/.cursor/skills/task-observer/` |
 | Headroom CLI | `~/.local/bin/headroom` |
 | Headroom runbook | `brain/wiki/ops/headroom.md` |
-| Headroom MCP | `~/.cursor/mcp.json` → server `headroom` |
+| Headroom MCP | `~/.cursor/mcp.json` to server `headroom` |
 
 ## Cloudflare public links
 
 ```bash
 cd ~/Projects/avinashs-kingdom
-npm run dashboards           # start all locals
+npm run dashboards # start all locals
 npm run dashboards:status
 npm run dashboards:stop
-npm run tunnels:list         # ports + start hints
-npm run tunnels              # public URLs for every dashboard that is UP
+npm run tunnels:list # ports + start hints
+npm run tunnels # public URLs for every dashboard that is UP
 ```
 
-Chat: **start dashboards** · **cloudflare links**  
+Chat: **start dashboards** · **cloudflare links** 
 URLs file: `brain/wiki/ops/cloudflare-links.md`.

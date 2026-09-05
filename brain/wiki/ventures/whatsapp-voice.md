@@ -16,16 +16,16 @@ tags: [whatsapp, cash, p0]
 
 ## Job
 
-India cash — WhatsApp (+ later voice) lead qualification for SMBs. Sell setup + INR retainer.
+India cash - WhatsApp (+ later voice) lead qualification for SMBs. Sell setup + INR retainer.
 
 ## Locked vertical
 
-Real estate brokers / small agencies — qualify leads and book **site visits**. Languages: Hindi + English first.
+Real estate brokers / small agencies - qualify leads and book **site visits**. Languages: Hindi + English first.
 
 ## Next milestones
 
-1. Phase 8: Pilot client contract (pending outreach / friend talk).  
-2. Hindi/English qualify → site visit loop for brokers.  
+1. Phase 8: Pilot client contract (pending outreach / friend talk). 
+2. Hindi/English qualify to site visit loop for brokers. 
 3. Sync Kingdom after each gate.
 
 ## Key artifacts in repo

@@ -5,15 +5,15 @@
   "sections": {
     "system design": {
       "title": "System design",
-      "content": "Deterministic procedural city with Unity geometry, streaming, LLM scene director, generative assets. 92 phase gates. Python dashboard :8765.",
-      "markdown": "Deterministic procedural city with Unity geometry, streaming, LLM scene director, generative assets. 92 phase gates. Python dashboard :8765.",
+      "content": "Deterministic procedural city with Unity geometry, streaming, Large Language Model scene director, generative assets. 92 phase gates. Python dashboard :8765.",
+      "markdown": "Deterministic procedural city with Unity geometry, streaming, Large Language Model scene director, generative assets. 92 phase gates. Python dashboard :8765.",
       "diagrams": [],
       "tables": []
     },
     "input / output flows": {
       "title": "Input / output flows",
-      "content": "- **In:** phase specs, layout constraints, LLM scene briefs\n- **Out:** validated city layouts, Unity geometry, streaming chunks",
-      "markdown": "- **In:** phase specs, layout constraints, LLM scene briefs\n- **Out:** validated city layouts, Unity geometry, streaming chunks",
+      "content": "- **In:** phase specs, layout constraints, Large Language Model scene briefs\n- **Out:** validated city layouts, Unity geometry, streaming chunks",
+      "markdown": "- **In:** phase specs, layout constraints, Large Language Model scene briefs\n- **Out:** validated city layouts, Unity geometry, streaming chunks",
       "diagrams": [],
       "tables": []
     },
@@ -53,8 +53,8 @@
     },
     "version history": {
       "title": "Version history",
-      "content": "- Stage E · Phase 49 · 49/92 pass",
-      "markdown": "- Stage E · Phase 49 · 49/92 pass",
+      "content": "- Stage E \u00b7 Phase 49 \u00b7 49/92 pass",
+      "markdown": "- Stage E \u00b7 Phase 49 \u00b7 49/92 pass",
       "diagrams": [],
       "tables": []
     },

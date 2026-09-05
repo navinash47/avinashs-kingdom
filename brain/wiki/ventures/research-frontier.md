@@ -15,7 +15,7 @@ tags: [research, atlas, p1]
 
 ## Job
 
-Club papers → cheap knowledge store → frontier ranking, gaps, and cross-paper analogies.
+Club papers to cheap knowledge store to frontier ranking, gaps, and cross-paper analogies.
 
 ## First vertical
 
@@ -23,9 +23,9 @@ Generative comics / multimodal consistency (supports ComicMainEngine later).
 
 ## Next milestones
 
-1. Ingest 1–3 abstracts into this brain via **kingdom-wiki**.  
-2. Citation graph via OpenAlex / Semantic Scholar (no full-PDF dump by default).  
-3. Claim / limitation extraction → ranked open questions.
+1. Ingest 1–3 abstracts into this brain via **kingdom-wiki**. 
+2. Citation graph via OpenAlex / Semantic Scholar (no full-PDF dump by default). 
+3. Claim / limitation extraction to ranked open questions.
 
 ## Related
 

@@ -18,11 +18,11 @@ Veritasium-shaped long-form tooling: Formula Desk + Clip Researcher + Script + d
 
 ## House style (all videos)
 
-**Must follow:** [[concepts/youtube-house-video-style]]  
-Detail / Video 1 specimen: [[concepts/layman-screenplay-craft]]  
+**Must follow:** [[concepts/youtube-house-video-style]] 
+Detail / Video 1 specimen: [[concepts/layman-screenplay-craft]] 
 Raw log: `raw/inbox/youtube-house-video-style-2026-08-11.md`
 
-Show-first · friend VO · clear wording · sink-in pauses · broad analogies · montages · quality over runtime · term-flash placeholders.
+Show-first · friend Voice Over · clear wording · sink-in pauses · broad analogies · montages · quality over runtime · term-flash placeholders.
 
 ## Dogfood Video 1
 
@@ -38,8 +38,8 @@ Show-first · friend VO · clear wording · sink-in pauses · broad analogies ·
 
 ## Next
 
-1. Narration Desk dual mode  
-2. Provenance → timeline → Graphics Desk (3B1B / term flash)
+1. Narration Desk dual mode 
+2. Provenance to timeline to Graphics Desk (3B1B / term flash)
 
 ## Related
 

@@ -64,14 +64,14 @@
   "spend_usd": 0,
   "ceiling_usd": 40,
   "progress": 80,
-  "version": "Stage C · Phase 8",
+  "version": "Stage C \u00b7 Phase 8",
   "test_commands": [
     {
       "id": "unit",
       "label": "Node tests",
       "cmd": "npm test",
       "type": "unit",
-      "description": "Runs demo server unit tests (qualify FSM, webhook handlers)"
+      "description": "Runs demo server unit tests (qualify Finite State Machine, webhook handlers)"
     }
   ],
   "suggestions": [],
