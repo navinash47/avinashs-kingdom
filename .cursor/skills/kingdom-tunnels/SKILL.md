@@ -64,6 +64,8 @@ Requires `cloudflared` (`brew install cloudflare/cloudflare/cloudflared`).
 | jugaad | 8790 | Job Jugaad applications tracker |
 | subs | 8741 | subscription-audit |
 | mac | 8742 | mac-optimize-audit live dashboard |
+| robolab | 5183 | RoboLab web UI (API :8000); not :5173 — Kingdom clash |
+| frontier | 3000 | Research Frontier `apps/frontier-roadmap` Next.js |
 
 ## Agent steps
 
@@ -87,3 +89,15 @@ Connection refused / “is it up?” — **never trust a remembered pid** from c
 1. Confirm **LISTEN** on the expected port (`lsof -iTCP:<port> -sTCP:LISTEN` or `start-dashboards.sh --status`).
 2. If something listens, check that pid’s **command line** matches the expected serve command for that dashboard — a live recycled pid of an unrelated process is not the dashboard.
 3. Pidfiles under TMPDIR `kingdom-dashboards/` are ephemeral: if that directory is missing after reboot/sleep/tmp cleanup, treat as **unrebound** and restart via `./scripts/start-dashboards.sh` (or the named subset). Do not conclude “up” from a stale pid number alone.
+
+## Mac bridge (orchestrator API :5174)
+
+Vercel Throne controls need a public URL to the local orchestrator API. Prefer a **named** tunnel (quick tunnels often hit 429 / 1015).
+
+```bash
+cloudflared tunnel login
+./scripts/mac-bridge-named-setup.sh yourdomain.com   # or: npm run mac-bridge:named-setup -- yourdomain.com
+npm run mac-bridge
+```
+
+Writes `~/.cloudflared/kingdom-api-config.yml` (`api.<domain>` → `http://127.0.0.1:5174`) and sets `KINGDOM_API_BASE` in `.env`. Separate from dashboard named tunnel (`kingdom-config.yml` / `share:named-setup`).
