@@ -7,6 +7,7 @@ import { expandHome } from './registry.mjs'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 const AGENT_SKILL_MAP = {
+  'agent-foundry': ['sync-kingdom', 'kingdom-wiki', 'task-observer'],
   'agent-cash': ['log-outreach', 'phase-gate', 'sync-kingdom', 'kingdom-tunnels'],
   'agent-cut': ['youtube-provenance', 'sync-kingdom', 'phase-gate'],
   'agent-atlas': ['kingdom-wiki', 'sync-kingdom'],
@@ -14,7 +15,13 @@ const AGENT_SKILL_MAP = {
   'agent-robo': ['sync-kingdom', 'kingdom-wiki', 'phase-gate', 'runpod'],
   'agent-metro': ['phase-gate', 'sync-kingdom'],
   'agent-ink': ['phase-gate', 'sync-kingdom'],
-  'agent-steward': ['kingdom-wiki', 'sync-kingdom', 'log-outreach', 'task-observer'],
+  'agent-steward': [
+    'kingdom-wiki',
+    'sync-kingdom',
+    'publish-kingdom',
+    'log-outreach',
+    'task-observer',
+  ],
   'agent-janitor': ['sync-kingdom'],
   'agent-jugaad': ['sync-kingdom', 'log-outreach'],
 }

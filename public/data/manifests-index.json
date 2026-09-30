@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-09-05T20:16:05.266Z",
+  "synced_at": "2026-09-30T20:19:55.771Z",
   "ventures": [
     {
       "id": "whatsapp-voice",
@@ -8,7 +8,7 @@
       "lines": 2116,
       "files": 40,
       "truncated": false,
-      "synced_at": "2026-09-05T20:16:04.740Z"
+      "synced_at": "2026-09-30T20:19:55.167Z"
     },
     {
       "id": "youtube-editor",
@@ -17,7 +17,7 @@
       "lines": 22156,
       "files": 145,
       "truncated": false,
-      "synced_at": "2026-09-05T20:16:04.792Z"
+      "synced_at": "2026-09-30T20:19:55.235Z"
     },
     {
       "id": "research-frontier",
@@ -26,7 +26,7 @@
       "lines": 127401,
       "files": 629,
       "truncated": false,
-      "synced_at": "2026-09-05T20:16:04.842Z"
+      "synced_at": "2026-09-30T20:19:55.282Z"
     },
     {
       "id": "beamdojo",
@@ -35,7 +35,7 @@
       "lines": 6014,
       "files": 38,
       "truncated": false,
-      "synced_at": "2026-09-05T20:16:04.891Z"
+      "synced_at": "2026-09-30T20:19:55.330Z"
     },
     {
       "id": "procedural-city",
@@ -44,7 +44,7 @@
       "lines": 740669,
       "files": 1186,
       "truncated": false,
-      "synced_at": "2026-09-05T20:16:04.941Z"
+      "synced_at": "2026-09-30T20:19:55.381Z"
     },
     {
       "id": "comic-engine",
@@ -53,16 +53,16 @@
       "lines": 752759,
       "files": 1630,
       "truncated": false,
-      "synced_at": "2026-09-05T20:16:04.991Z"
+      "synced_at": "2026-09-30T20:19:55.434Z"
     },
     {
       "id": "kingdom-ops",
       "name": "Kingdom ops (subs + expenses)",
       "primary_language": "JSON",
-      "lines": 48260,
-      "files": 351,
+      "lines": 48665,
+      "files": 355,
       "truncated": false,
-      "synced_at": "2026-09-05T20:16:05.042Z"
+      "synced_at": "2026-09-30T20:19:55.532Z"
     },
     {
       "id": "mac-optimize-audit",
@@ -71,7 +71,7 @@
       "lines": 5677717,
       "files": 8000,
       "truncated": true,
-      "synced_at": "2026-09-05T20:16:05.111Z"
+      "synced_at": "2026-09-30T20:19:55.582Z"
     },
     {
       "id": "job-jugaad",
@@ -80,7 +80,7 @@
       "lines": 8580,
       "files": 41,
       "truncated": false,
-      "synced_at": "2026-09-05T20:16:05.163Z"
+      "synced_at": "2026-09-30T20:19:55.644Z"
     },
     {
       "id": "shorts",
@@ -89,16 +89,25 @@
       "lines": 0,
       "files": 0,
       "truncated": false,
-      "synced_at": "2026-09-05T20:16:05.215Z"
+      "synced_at": "2026-09-30T20:19:55.696Z"
     },
     {
       "id": "robolab",
       "name": "RoboLab",
       "primary_language": "Python",
-      "lines": 20468,
-      "files": 173,
+      "lines": 53374,
+      "files": 471,
       "truncated": false,
-      "synced_at": "2026-09-05T20:16:05.215Z"
+      "synced_at": "2026-09-30T20:19:55.696Z"
+    },
+    {
+      "id": "voice-agent-foundry",
+      "name": "Voice Agent Foundry",
+      "primary_language": "JSON",
+      "lines": 18938,
+      "files": 133,
+      "truncated": false,
+      "synced_at": "2026-09-30T20:19:55.742Z"
     }
   ],
   "global_suggestions": [

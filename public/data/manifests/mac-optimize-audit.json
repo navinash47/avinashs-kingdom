@@ -1,6 +1,6 @@
 {
   "venture_id": "mac-optimize-audit",
-  "synced_at": "2026-09-05T20:16:05.111Z",
+  "synced_at": "2026-09-30T20:19:55.582Z",
   "repo": {
     "path": "/Users/avinashnandyala/Projects/mac-optimize-audit",
     "head": "4a716b23bd4275f0bddb2d0112f141690b71b1bf",
@@ -63,7 +63,7 @@
   "models_detected": [],
   "spend_usd": null,
   "ceiling_usd": null,
-  "progress": 70,
+  "progress": 57,
   "version": "v0.1",
   "test_commands": [
     {
@@ -81,7 +81,7 @@
       "label": "Mac audit dashboard",
       "port": 8742,
       "url": "http://127.0.0.1:8742",
-      "status": "up"
+      "status": "down"
     }
   ]
 }

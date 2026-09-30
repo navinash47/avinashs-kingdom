@@ -1,0 +1,14 @@
+{
+  "venture_id": "voice-agent-foundry",
+  "synced_at": "2026-09-30T20:20:04.176Z",
+  "github": null,
+  "local_tests": {
+    "commands": [
+      "npm run typecheck",
+      "npm test",
+      "npm run build",
+      "npm run test:e2e"
+    ],
+    "last_run": null
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-09-05T20:16:11.200Z",
+  "synced_at": "2026-09-30T20:20:04.181Z",
   "note": "Auto-refreshed by npm run sync — edit schema in brain/harness, not this file by hand.",
   "nodes": [
     {
@@ -74,6 +74,12 @@
       "venture_id": "robolab"
     },
     {
+      "id": "venture:voice-agent-foundry",
+      "type": "venture",
+      "label": "Voice Agent Foundry",
+      "venture_id": "voice-agent-foundry"
+    },
+    {
       "id": "agent:agent-cash",
       "type": "agent",
       "label": "agent-cash",
@@ -134,6 +140,12 @@
       "venture_id": "robolab"
     },
     {
+      "id": "agent:agent-foundry",
+      "type": "agent",
+      "label": "agent-foundry",
+      "venture_id": "voice-agent-foundry"
+    },
+    {
       "id": "skill:log-outreach",
       "type": "skill",
       "label": "log-outreach"
@@ -162,6 +174,11 @@
       "id": "skill:kingdom-wiki",
       "type": "skill",
       "label": "kingdom-wiki"
+    },
+    {
+      "id": "skill:publish-kingdom",
+      "type": "skill",
+      "label": "publish-kingdom"
     },
     {
       "id": "skill:task-observer",
@@ -322,6 +339,36 @@
       "type": "capability",
       "label": "research:robolab",
       "venture_id": "robolab"
+    },
+    {
+      "id": "capability:onboarding",
+      "type": "capability",
+      "label": "onboarding",
+      "venture_id": "voice-agent-foundry"
+    },
+    {
+      "id": "capability:voice-agents",
+      "type": "capability",
+      "label": "voice-agents",
+      "venture_id": "voice-agent-foundry"
+    },
+    {
+      "id": "capability:distributed-systems",
+      "type": "capability",
+      "label": "distributed-systems",
+      "venture_id": "voice-agent-foundry"
+    },
+    {
+      "id": "capability:benchmarking",
+      "type": "capability",
+      "label": "benchmarking",
+      "venture_id": "voice-agent-foundry"
+    },
+    {
+      "id": "capability:tests:voice-agent-foundry",
+      "type": "capability",
+      "label": "tests:voice-agent-foundry",
+      "venture_id": "voice-agent-foundry"
     }
   ],
   "edges": [
@@ -452,6 +499,18 @@
       "rel": "agent"
     },
     {
+      "id": "e-hub-venture:voice-agent-foundry",
+      "from": "hub:kingdom",
+      "to": "venture:voice-agent-foundry",
+      "rel": "sync"
+    },
+    {
+      "id": "e-venture:voice-agent-foundry-agent:agent-foundry",
+      "from": "venture:voice-agent-foundry",
+      "to": "agent:agent-foundry",
+      "rel": "agent"
+    },
+    {
       "id": "e-agent:agent-cash-skill:log-outreach",
       "from": "agent:agent-cash",
       "to": "skill:log-outreach",
@@ -560,6 +619,12 @@
       "rel": "skill"
     },
     {
+      "id": "e-agent:agent-steward-skill:publish-kingdom",
+      "from": "agent:agent-steward",
+      "to": "skill:publish-kingdom",
+      "rel": "skill"
+    },
+    {
       "id": "e-agent:agent-steward-skill:log-outreach",
       "from": "agent:agent-steward",
       "to": "skill:log-outreach",
@@ -611,6 +676,24 @@
       "id": "e-agent:agent-robo-skill:runpod",
       "from": "agent:agent-robo",
       "to": "skill:runpod",
+      "rel": "skill"
+    },
+    {
+      "id": "e-agent:agent-foundry-skill:sync-kingdom",
+      "from": "agent:agent-foundry",
+      "to": "skill:sync-kingdom",
+      "rel": "skill"
+    },
+    {
+      "id": "e-agent:agent-foundry-skill:kingdom-wiki",
+      "from": "agent:agent-foundry",
+      "to": "skill:kingdom-wiki",
+      "rel": "skill"
+    },
+    {
+      "id": "e-agent:agent-foundry-skill:task-observer",
+      "from": "agent:agent-foundry",
+      "to": "skill:task-observer",
       "rel": "skill"
     },
     {
@@ -761,6 +844,36 @@
       "id": "e-venture:robolab-capability:research:robolab",
       "from": "venture:robolab",
       "to": "capability:research:robolab",
+      "rel": "capability"
+    },
+    {
+      "id": "e-venture:voice-agent-foundry-capability:onboarding",
+      "from": "venture:voice-agent-foundry",
+      "to": "capability:onboarding",
+      "rel": "capability"
+    },
+    {
+      "id": "e-venture:voice-agent-foundry-capability:voice-agents",
+      "from": "venture:voice-agent-foundry",
+      "to": "capability:voice-agents",
+      "rel": "capability"
+    },
+    {
+      "id": "e-venture:voice-agent-foundry-capability:distributed-systems",
+      "from": "venture:voice-agent-foundry",
+      "to": "capability:distributed-systems",
+      "rel": "capability"
+    },
+    {
+      "id": "e-venture:voice-agent-foundry-capability:benchmarking",
+      "from": "venture:voice-agent-foundry",
+      "to": "capability:benchmarking",
+      "rel": "capability"
+    },
+    {
+      "id": "e-venture:voice-agent-foundry-capability:tests:voice-agent-foundry",
+      "from": "venture:voice-agent-foundry",
+      "to": "capability:tests:voice-agent-foundry",
       "rel": "capability"
     }
   ]

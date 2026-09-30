@@ -59,7 +59,7 @@ Persistent Obsidian-compatible knowledge store:
 - How to open / use: [`brain/README.md`](./brain/README.md)
 - Drop sources in `brain/raw/inbox/` or `brain/raw/research/`; agents compile into `brain/wiki/`
 
-**Personal Cursor skills** (`~/.cursor/skills/`): `kingdom-wiki`, `sync-kingdom`, `log-outreach`, `youtube-provenance`, `phase-gate`.
+**Personal agent skills** (`~/.cursor/skills/`): `kingdom-wiki`, `sync-kingdom`, `publish-kingdom`, `log-outreach`, `youtube-provenance`, `phase-gate`, `kingdom-tunnels`, `task-observer`, `career-rebrand`, `cicstep-weekly`.
 
 **Backup (survives college Cursor account expiry):** versioned under [`.cursor/skills/`](./.cursor/skills/) and [`brain/backup/cursor-skills/`](./brain/backup/cursor-skills/). Restore on a new machine: `./scripts/restore-cursor-skills.sh`.
 

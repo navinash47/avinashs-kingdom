@@ -400,7 +400,7 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 
 ### Observation 27: Production stays stale until commit+push of UI/sync
 
-**Status:** OPEN
+**Status:** ACTIONED (2026-09-28) — created `publish-kingdom`; added explicit deploy authority, sync/lint/build gates, and live timestamp verification
 **Date:** 2026-09-02
 **Session context:** User frustrated that Vercel Kingdom still showed old Apple UI and inflated job-jugaad progress; ordered commit/push/deploy now
 **Skill:** sync-kingdom
@@ -443,3 +443,83 @@ Upstream methodology: rebelytics task-observer (CC BY 4.0).
 **Suggested improvement:** Extend `new-venture.mjs --write` (or sync-kingdom after_write) to append STATUS_SOURCES + a minimal ventures.json seed, or derive STATUS paths from the registry so the hardcoded list cannot drift.
 
 **Principle:** Onboarding is incomplete if the control plane can list a venture while progress sync still ignores its STATUS.md.
+
+### Observation 29: Dashboard registry ports and Next 16 webpack flag
+
+**Status:** OPEN
+**Date:** 2026-09-05
+**Session context:** Adding RoboLab + Research Frontier entries to config/dashboard-services.json for Throne RUN Start/Stop/Open
+**Skill:** kingdom-tunnels
+**Type:** internal
+**Phase/Area:** Port map / start cmds
+
+**Issue:** RoboLab `make dev` defaults Vite to :5173, same as Kingdom panel — simultaneous start via start-dashboards.sh would clash. Research Frontier `next dev` on Next 16 exits immediately when next.config has webpack and neither `--webpack` nor `--turbopack` is passed (false-UP during the brief listen window).
+
+**Suggested improvement:** In kingdom-tunnels Port map / Agent steps: document that venture dashboards must not reuse Kingdom :5173; when registering Next 16 apps, prefer explicit `--webpack` (or `--turbopack`) in the registry cmd; smoke-check that the port stays UP for a few seconds after start, not only the first listen.
+
+**Principle:** Registry start commands should pin ports away from the orchestrator UI and survive framework default-flag migrations — a momentary listen is not a healthy service.
+
+### Observation 30: Shared checkout ownership needs an integration pause
+
+**Status:** OPEN
+**Date:** 2026-09-28
+**Skill:** task-observer
+**Type:** internal
+**Issue:** Parallel service authors can finish independently while dependencies and shared tests still change.
+**Suggested improvement:** Assign exclusive file paths, freeze shared contracts during a wave, and stop writers before root formatting and integrated verification.
+**Principle:** Disjoint edits allow parallel implementation; a serialized integration window makes results reproducible.
+
+### Observation 31: External adapter tasks need a transport-level acceptance check
+
+**Status:** OPEN
+**Date:** 2026-09-28
+**Skill:** task-observer
+**Type:** internal
+**Phase/Area:** Parallel coding handoff and review
+
+**Issue:** A worker reported a Shopify adapter complete with passing tests, but the implementation returned local fixture orders and never issued a Shopify HTTP request. Its tests mocked the adapter behavior, so the acceptance result overstated the implemented boundary.
+
+**Suggested improvement:** For an external integration task, require tests that intercept the actual HTTP transport and assert the official endpoint, authentication header, request variables, response parsing, and failure behavior. Review code paths as well as test totals before marking the task done.
+
+**Principle:** A passing unit test verifies the chosen implementation; an adapter is complete only when the intended external boundary is exercised under controlled mocks.
+
+### Observation 32: Compare provider adapters against current primary schemas
+
+**Status:** OPEN
+**Date:** 2026-09-28
+**Skill:** task-observer
+**Type:** internal
+**Phase/Area:** External adapter integration review
+
+**Issue:** A worker's HTTP-mocked Shopify adapter passed its tests while querying tracking data on the wrong GraphQL object, pinning an unsupported API version, and equating fulfillment with delivery. One error test returned HTTP 200 despite claiming to test non-200 handling.
+
+**Suggested improvement:** Before accepting provider code, compare query fields and status semantics against the provider's current primary schema; check the selected version's support window; inspect each test double to confirm it triggers the named failure path. Include one realistic response fixture that mirrors the documented object nesting.
+
+**Principle:** Transport mocks establish that a request is sent; schema and semantic review establish that the provider can answer it correctly.
+
+### Observation 33: Durable claim before process-kill evidence
+
+**Status:** OPEN
+**Date:** 2026-09-28
+**Skill:** task-observer
+**Type:** internal
+**Phase/Area:** Distributed-system reliability verification
+
+**Issue:** Manipulating lease timestamps or reconnecting storage does not demonstrate what happens when an independent worker dies with claimed work. A deduplicated database record also does not prove exactly-once external side effects.
+
+**Suggested improvement:** Observe the committed lease before killing a child process, restart another process, retain real lease/backoff timing, and record both callback counts and persisted deliveries. Check interruption cleanup against a dedicated disposable database.
+
+**Principle:** Failure-recovery evidence should identify the exact failed process, durable state transition, recovery bound and remaining side-effect semantics.
+
+### Observation 34: Replay lookup must precede capacity checks
+
+**Status:** OPEN
+**Date:** 2026-09-30
+**Skill:** task-observer
+**Type:** internal
+
+**Issue:** A valid retry can be incorrectly rejected at a concurrency limit or select a newly approved configuration if creation prerequisites execute before idempotency lookup.
+
+**Suggested improvement:** Authenticate each retry, then resolve a scoped stored response inside the same transaction before checking new-creation capacity or choosing configuration. Test matching retries at capacity, conflicting normalized input and rollback of the last insert.
+
+**Principle:** A replay repeats a recorded result; only new work consumes admission capacity.

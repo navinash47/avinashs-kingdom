@@ -1,6 +1,6 @@
 ---
 type: overview
-updated: 2026-09-05
+updated: 2026-09-28
 tags: [ops, personal-os, playbook]
 ---
 
@@ -21,6 +21,12 @@ Snapshot JSON ships with each deploy. **Start / Stop / Open / Run tests / Sync**
 
 Local coding: `npm run dev` (Vite `/api`, no tunnel).
 
+The Vercel site contains static snapshots from the most recent deployment. Use
+**publish-kingdom** when the live Graph, Throne, or Analytics page must receive
+fresh sync data. The skill runs sync, wiki lint, and build before an explicitly
+authorized production deployment, then compares the live JSON timestamps with
+the local snapshots.
+
 Fleet columns: **App** = Mac port UP/DOWN/— · **GitHub** = Actions green/red/gray · **Local tests** = PASS/FAIL/—.
 
 ## Morning / context load (2–5 min)
@@ -35,6 +41,7 @@ Fleet columns: **App** = Mac port UP/DOWN/— · **GitHub** = Actions green/red/
 | Need | Do this |
 |------|---------|
 | Progress changed in a venture repo | Edit STATUS/phases/expenses there → `npm run sync` |
+| Synced data must appear on Vercel | **publish-kingdom** skill → sync + validate + deploy + timestamp verification |
 | Research / decision to keep | `npm run brain:ingest -- --file …` (stub + checklist) **or** `npm run brain:auto-wiki` (inbox → drafts) → review → `--promote <slug>` |
 | Question against memory | `npm run brain:query -- <terms>` or skill query mode; cite `brain/wiki/…` |
 | Topology / “what can I start?” | `npm run brain:harness -- list` · `capabilities` · `allow sync` |

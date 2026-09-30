@@ -1,0 +1,222 @@
+{
+  "venture_id": "voice-agent-foundry",
+  "synced_at": "2026-09-30T20:19:55.742Z",
+  "repo": {
+    "path": "/Users/avinashnandyala/Projects/voice-agent-foundry",
+    "head": null,
+    "branch": null,
+    "last_commit_at": null,
+    "remote_url": null,
+    "github": null
+  },
+  "stats": {
+    "files": 133,
+    "lines": 18938,
+    "primary_language": "JSON",
+    "languages": [
+      {
+        "language": "JSON",
+        "files": 18,
+        "lines": 7797
+      },
+      {
+        "language": "TypeScript",
+        "files": 44,
+        "lines": 7062
+      },
+      {
+        "language": "Markdown",
+        "files": 45,
+        "lines": 1464
+      },
+      {
+        "language": "JavaScript",
+        "files": 8,
+        "lines": 1358
+      },
+      {
+        "language": "CSS",
+        "files": 1,
+        "lines": 851
+      },
+      {
+        "language": "YAML",
+        "files": 7,
+        "lines": 269
+      },
+      {
+        "language": "Other",
+        "files": 6,
+        "lines": 73
+      },
+      {
+        "language": "SQL",
+        "files": 3,
+        "lines": 50
+      },
+      {
+        "language": "HTML",
+        "files": 1,
+        "lines": 14
+      }
+    ],
+    "truncated": false,
+    "sampled_files": 133,
+    "source": "walker"
+  },
+  "dependencies": {
+    "ecosystem": "node",
+    "runtime": [
+      {
+        "name": "@fastify/cors",
+        "version": "^11.1.0",
+        "ecosystem": "npm"
+      },
+      {
+        "name": "@livekit/agents",
+        "version": "^1.9.1",
+        "ecosystem": "npm"
+      },
+      {
+        "name": "@livekit/agents-plugin-silero",
+        "version": "^1.9.1",
+        "ecosystem": "npm"
+      },
+      {
+        "name": "fastify",
+        "version": "^5.6.1",
+        "ecosystem": "npm"
+      },
+      {
+        "name": "jose",
+        "version": "^6.1.0",
+        "ecosystem": "npm"
+      },
+      {
+        "name": "livekit-client",
+        "version": "^2.15.6",
+        "ecosystem": "npm"
+      },
+      {
+        "name": "livekit-server-sdk",
+        "version": "^2.13.0",
+        "ecosystem": "npm"
+      },
+      {
+        "name": "pg",
+        "version": "^8.16.3",
+        "ecosystem": "npm"
+      },
+      {
+        "name": "react",
+        "version": "^19.1.1",
+        "ecosystem": "npm"
+      },
+      {
+        "name": "react-dom",
+        "version": "^19.1.1",
+        "ecosystem": "npm"
+      },
+      {
+        "name": "vite",
+        "version": "^7.1.7",
+        "ecosystem": "npm"
+      },
+      {
+        "name": "zod",
+        "version": "^4.1.11",
+        "ecosystem": "npm"
+      }
+    ],
+    "dev": [
+      {
+        "name": "@playwright/test",
+        "version": "^1.55.1",
+        "ecosystem": "npm"
+      },
+      {
+        "name": "@types/node",
+        "version": "^22.18.0",
+        "ecosystem": "npm"
+      },
+      {
+        "name": "@types/pg",
+        "version": "^8.15.5",
+        "ecosystem": "npm"
+      },
+      {
+        "name": "@types/react",
+        "version": "^19.1.13",
+        "ecosystem": "npm"
+      },
+      {
+        "name": "@types/react-dom",
+        "version": "^19.1.9",
+        "ecosystem": "npm"
+      },
+      {
+        "name": "concurrently",
+        "version": "^9.2.1",
+        "ecosystem": "npm"
+      },
+      {
+        "name": "opencode-ai",
+        "version": "^1.18.33",
+        "ecosystem": "npm"
+      },
+      {
+        "name": "prettier",
+        "version": "^3.6.2",
+        "ecosystem": "npm"
+      },
+      {
+        "name": "tsx",
+        "version": "^4.20.6",
+        "ecosystem": "npm"
+      },
+      {
+        "name": "typescript",
+        "version": "^5.9.3",
+        "ecosystem": "npm"
+      },
+      {
+        "name": "vitest",
+        "version": "^4.1.11",
+        "ecosystem": "npm"
+      }
+    ]
+  },
+  "storage": [
+    {
+      "type": "json",
+      "path": "tracking/phases.json",
+      "note": "Registry path"
+    },
+    {
+      "type": "jsonl",
+      "path": "tracking/expenses.jsonl",
+      "note": "Registry path"
+    }
+  ],
+  "models_detected": [
+    {
+      "name": "MODEL",
+      "source": "config scan"
+    },
+    {
+      "name": "model",
+      "source": "config scan"
+    }
+  ],
+  "spend_usd": null,
+  "ceiling_usd": null,
+  "progress": 30,
+  "version": "Local foundation · 0.1.0",
+  "test_commands": [
+    "npm run typecheck",
+    "npm test",
+    "npm run build",
+    "npm run test:e2e"
+  ],
+  "suggestions": []
+}

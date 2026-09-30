@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-05T20:16:11.200Z",
+  "updated": "2026-09-30T20:20:04.180Z",
   "projects": [
     {
       "id": "research-frontier",
@@ -309,63 +309,63 @@
       "videos": [],
       "experiments": [
         {
-          "date": "2026-09-05",
-          "summary": "Ignore local .cursor and STATUS.md so RunPod git gate stays clean.",
+          "date": "2026-09-08",
+          "summary": "Ship Phase 6 transfer, RoboMaster wall layout, and token tracker.",
           "source": "git"
         },
         {
-          "date": "2026-09-05",
-          "summary": "Document Isaac Mac hard-no and wire RunPod Genesis install path.",
+          "date": "2026-09-07",
+          "summary": "Add run abort API and Experiments Abort control.",
           "source": "git"
         },
         {
-          "date": "2026-09-05",
-          "summary": "Wire custom timesteps, Genesis adapter, and Isaac stubs into New Run.",
+          "date": "2026-09-07",
+          "summary": "Scale Q-learning ε to total_timesteps instead of fixed episodes.",
           "source": "git"
         },
         {
-          "date": "2026-09-05",
-          "summary": "Extend MuJoCo adapter for multi-task worlds and task-shaped observations.",
+          "date": "2026-09-07",
+          "summary": "Scale wall_follow to P2_D3 largemaze topology (2.5×).",
           "source": "git"
         },
         {
-          "date": "2026-09-05",
-          "summary": "Add navigation task suite (go-to-goal, maze, docking, figure-8) with scene worlds and Phase 5B docs.",
+          "date": "2026-09-07",
+          "summary": "Add Q-learning Algo for neural arches and fix avinash_wall visibility.",
           "source": "git"
         },
         {
-          "date": "2026-09-05",
-          "summary": "Add Failure Resolution page for logistics vs experiment failures.",
+          "date": "2026-09-07",
+          "summary": "Add avinash_wall tabular Q-learning wall follower from course P2_D3.",
           "source": "git"
         },
         {
-          "date": "2026-09-05",
-          "summary": "Add PyBullet adapter so wall_follow runs on the same URDF as MuJoCo.",
+          "date": "2026-09-07",
+          "summary": "Keep dashboard from hanging forever when :8000 drops.",
           "source": "git"
         },
         {
-          "date": "2026-09-05",
-          "summary": "Add fuzzy search, filters, and sort to the experiments dashboard.",
+          "date": "2026-09-07",
+          "summary": "Show friendly arch names with hover overview in Experiments.",
           "source": "git"
         },
         {
-          "date": "2026-09-05",
-          "summary": "Add dedicated spend page and costs API for RunPod charge breakdown.",
+          "date": "2026-09-07",
+          "summary": "Paginate Experiments and surface Architectures list first.",
           "source": "git"
         },
         {
-          "date": "2026-09-05",
-          "summary": "fix: make Watch open an inline-playable run video",
+          "date": "2026-09-07",
+          "summary": "Add Architectures list hover, detail view, and pagination.",
           "source": "git"
         },
         {
-          "date": "2026-09-04",
-          "summary": "docs: record successful Secure RunPod 2k smoke in PHASE_3_TEST",
+          "date": "2026-09-07",
+          "summary": "Add wall_follow stuck escape kick and stall/scrape penalty.",
           "source": "git"
         },
         {
-          "date": "2026-09-04",
-          "summary": "fix: run MuJoCo trainer under xvfb with GLFW on RunPod",
+          "date": "2026-09-07",
+          "summary": "Stop wall_follow Render from teleporting back to spawn.",
           "source": "git"
         }
       ],

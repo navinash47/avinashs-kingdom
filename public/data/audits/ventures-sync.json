@@ -1,6 +1,19 @@
 {
-  "synced_at": "2026-09-05T20:16:04.738Z",
+  "synced_at": "2026-09-30T20:19:55.160Z",
   "patches": {
+    "voice-agent-foundry": {
+      "version": "Local foundation · 0.1.0",
+      "progress": 30,
+      "priority": "P1",
+      "nextMilestone": null,
+      "notes": null,
+      "status": "active",
+      "progressSource": "STATUS.md Progress field (agent-updated)",
+      "phasesPassed": null,
+      "phasesTotal": null,
+      "spendUsd": null,
+      "ceilingUsd": null
+    },
     "youtube-editor": {
       "version": "Phase 4 · Clip research + provenance",
       "progress": 55,
@@ -55,10 +68,10 @@
     },
     "mac-optimize-audit": {
       "version": "v0.1",
-      "progress": 70,
+      "progress": 57,
       "priority": "P1",
       "nextMilestone": "Memory pressure is warning",
-      "notes": "Next: 1) Memory pressure is warning · 2) Restart Zen Browser — 3.1 GB across 15 processes · 3) Close extra Cursor windows (keep robotlab): Agents Window",
+      "notes": "Next: 1) Memory pressure is warning · 2) Restart Zen Browser — 3.5 GB across 16 processes · 3) Re-run python3 -m mac_optimize audit --deep",
       "status": "active",
       "progressSource": "STATUS.md Progress field (agent-updated)",
       "phasesPassed": null,
@@ -85,7 +98,7 @@
       "priority": "P1",
       "status": "active",
       "nextMilestone": "Phase 91: v1 RELEASE GATE (pending)",
-      "notes": "City · 91/97 pass · source local working tree · updated 2026-09-05T20:15:26.382646+00:00 · ceiling $70",
+      "notes": "City · 91/97 pass · source local working tree · updated 2026-09-29T04:54:01.186240+00:00 · ceiling $70",
       "progressSource": "phases 91/97 from local working tree",
       "phasesPassed": 91,
       "phasesTotal": 97,
@@ -118,19 +131,19 @@
       "spendUsd": null,
       "ceilingUsd": null,
       "audit": {
-        "synced_at": "2026-09-05T20:16:04.737Z",
+        "synced_at": "2026-09-30T20:19:55.158Z",
         "target": 500,
         "total": 469,
         "applied_or_beyond": 439,
         "progress": 88,
         "counts": {
           "wishlist": 30,
-          "waiting": 6,
-          "applied": 27,
+          "waiting": 0,
+          "applied": 8,
           "interviewing": 2,
           "offer": 0,
           "rejected": 151,
-          "ghosted": 253
+          "ghosted": 278
         },
         "recent": [
           {
@@ -225,7 +238,7 @@
       "progress": 70,
       "priority": "P1",
       "status": "active",
-      "nextMilestone": "Cancel/review 6 kill-list seats; reclaim low-risk disk (59% used)",
+      "nextMilestone": "Cancel/review 6 kill-list seats; reclaim low-risk disk (60% used)",
       "notes": "Subscription kill list lives here. Mac speed is the mac-optimize-audit province.",
       "progressSource": "heuristic ops readiness 70% (audits live; kill seats still open)",
       "phasesPassed": null,

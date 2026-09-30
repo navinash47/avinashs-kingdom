@@ -137,3 +137,7 @@ Created vault layout (`raw/`, `wiki/`), overview, venture pages, starter concept
 - Added [[concepts/virtual-control-surface]] and [[concepts/brain-harness-fsm]].
 - Sync now writes and `brain/harness/empty-model/{graph,fsm}.json`.
 - Restored OrchestratorProvider control plane App (Throne = virtual control).
+
+## [2026-09-28] project | Voice Agent Foundry
+
+Registered local application and linked design, verification and three-worker coordination. Live providers and production launch remain pending. [[ventures/voice-agent-foundry]]

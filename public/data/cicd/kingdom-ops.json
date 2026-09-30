@@ -1,12 +1,22 @@
 {
   "venture_id": "kingdom-ops",
-  "synced_at": "2026-09-05T20:16:10.239Z",
+  "synced_at": "2026-09-30T20:20:02.889Z",
   "github": {
     "owner": "navinash47",
     "repo": "avinashs-kingdom",
     "default_branch": "main",
     "available": true,
     "runs": [
+      {
+        "conclusion": "success",
+        "createdAt": "2026-09-05T20:16:14Z",
+        "databaseId": 33989599042,
+        "displayTitle": "Merge Mac bridge, RoboLab panel, and Throne cleanup into main.",
+        "event": "push",
+        "status": "completed",
+        "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33989599042",
+        "workflowName": "Kingdom CI"
+      },
       {
         "conclusion": "success",
         "createdAt": "2026-09-05T04:19:04Z",
@@ -45,16 +55,6 @@
         "event": "push",
         "status": "completed",
         "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33943943104",
-        "workflowName": "Kingdom CI"
-      },
-      {
-        "conclusion": "success",
-        "createdAt": "2026-09-05T04:12:07Z",
-        "databaseId": 33943916947,
-        "displayTitle": "Remove remaining backtick dollar reference",
-        "event": "push",
-        "status": "completed",
-        "url": "https://github.com/navinash47/avinashs-kingdom/actions/runs/33943916947",
         "workflowName": "Kingdom CI"
       }
     ],

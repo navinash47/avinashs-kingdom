@@ -4,6 +4,16 @@
   "items": [
     {
       "date": "2026-09-05",
+      "summary": "Register RoboLab and Frontier roadmap dashboard services for Throne RUN.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-05",
+      "summary": "Add Vercel→Mac control bridge and clean Throne fleet UI.",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-05",
       "summary": "Focus on methodology and architecture, not process",
       "source": "git"
     },
@@ -60,21 +70,6 @@
     {
       "date": "2026-09-02",
       "summary": "Note Vercel create-on-first-deploy observation for Kingdom.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-02",
-      "summary": "Ship Throne feature map, Analytics charts, and Vercel SPA deploy.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-02",
-      "summary": "Record Phase 2b commit SHA on tracker.",
-      "source": "git"
-    },
-    {
-      "date": "2026-09-02",
-      "summary": "Ship Phase 2b: fleet MCP, Cursor attach, gated writes.",
       "source": "git"
     },
     {

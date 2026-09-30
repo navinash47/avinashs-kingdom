@@ -1,6 +1,6 @@
 ---
 type: venture
-updated: 2026-09-02
+updated: 2026-09-28
 tags: [ops, steward]
 ---
 
@@ -38,4 +38,4 @@ Full tables: [[ops/steward-dashboard]].
 - [[concepts/virtual-control-surface]]
 - [[concepts/brain-harness-fsm]]
 - [[overview]]
-- Skills: **sync-kingdom**, **kingdom-wiki** (lint)
+- Skills: **sync-kingdom**, **publish-kingdom**, **kingdom-wiki** (lint)

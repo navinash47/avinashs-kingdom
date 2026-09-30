@@ -1,12 +1,12 @@
 ---
 type: overview
-updated: 2026-09-05
+updated: 2026-09-30
 tags: [tracker, sync, citizens]
 ---
 
 # Live tracker
 
-Auto-written by `npm run sync` at **2026-09-05T20:16:04.738Z**. Do not hand-edit — re-run sync after venture gates.
+Auto-written by `npm run sync` at **2026-09-30T20:19:55.160Z**. Do not hand-edit — re-run sync after venture gates.
 
 ## How progress is calculated
 
@@ -39,12 +39,13 @@ Auto-written by `npm run sync` at **2026-09-05T20:16:04.738Z**. Do not hand-edit
 | Research Frontier Lab | v0.4.1 | 67% | — | P1 · active | **Phase 5 kickoff** — multi-club scale & polish (catalog phase 5); scaffold stories + signals board. |
 | Procedural City | Stage H · Phase 91 | 94% | 91/97 | P1 · active | Phase 91: v1 RELEASE GATE (pending) |
 | ComicMainEngine | 2A · A1 passed · A2 Scene cards + storyboard ingest | 33% | 2/6 | P2 · active | A2 Scene cards + storyboard ingest (start) |
-| Kingdom ops (subs + expenses) | v1.0 | 70% | — | P1 · active | Cancel/review 6 kill-list seats; reclaim low-risk disk (59% used) |
-| Mac optimize audit | v0.1 | 70% | — | P1 · active | Memory pressure is warning |
+| Kingdom ops (subs + expenses) | v1.0 | 70% | — | P1 · active | Cancel/review 6 kill-list seats; reclaim low-risk disk (60% used) |
+| Mac optimize audit | v0.1 | 57% | — | P1 · active | Memory pressure is warning |
 | Job Jugaad | Tracker v0.1 | 88% | 439/500 | P1 · active | Keep logging — 439/500 toward milestone |
 | Shorts tooling | — | 0% | — | parked · parked | Do not focus |
 | BeamDojo (Isaac Lab locomotion) | Stage 1 smoke | 18% | — | P1 · active | Dual-terrain Stage 1 (flat physics + imagined beam height scan) then 1024-env CUDA train on the A10. |
 | RoboLab | v0.5 · Phase 5B | 48% | — | P1 · active | Human UI confirm gates for Phases 1–4 (dashboard + RunPod checklist). |
+| Voice Agent Foundry | Local foundation · 0.1.0 | 30% | — | P1 · active | Validate live voice and provider comparison with approved budget |
 
 ## Sources
 

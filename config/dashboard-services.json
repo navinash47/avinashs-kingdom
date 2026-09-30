@@ -9,7 +9,7 @@
       "workdir": "~/Projects/avinashs-kingdom",
       "cmd": "npm run sync && npm run dev -- --host 127.0.0.1 --port 5173",
       "embed": false,
-      "note": "Orchestrator UI — do not iframe self; use control bar only"
+      "note": "Orchestrator UI \u2014 do not iframe self; use control bar only"
     },
     "city": {
       "ventureId": "procedural-city",
@@ -36,7 +36,7 @@
       "embed": true,
       "kind": "api",
       "healthPath": "/health",
-      "note": "API demo — GET / is the chat UI, POST /webhook, GET /health"
+      "note": "API demo \u2014 GET / is the chat UI, POST /webhook, GET /health"
     },
     "jugaad": {
       "ventureId": "job-jugaad",
@@ -53,7 +53,7 @@
       "workdir": "~/Projects/resume",
       "cmd": "npm run dashboard",
       "embed": false,
-      "note": "Role-fit ratings + Legacy/Archive — approve bullets before export-tex"
+      "note": "Role-fit ratings + Legacy/Archive \u2014 approve bullets before export-tex"
     },
     "portfolio": {
       "ventureId": "portfolio",
@@ -64,7 +64,7 @@
       "embed": false,
       "kind": "static",
       "site_url": "https://navinash47.github.io/Portfolio/",
-      "note": "GitHub Pages — no local dev server; open site_url"
+      "note": "GitHub Pages \u2014 no local dev server; open site_url"
     },
     "subs": {
       "ventureId": null,
@@ -89,7 +89,7 @@
       "workdir": "~/Projects/robolab",
       "cmd": "trap 'kill 0' EXIT INT TERM; uv run --env-file .env --package robolab-api uvicorn robolab_api.main:app --host 127.0.0.1 --port 8000 --reload & cd web && npm run dev -- --host 127.0.0.1 --port 5183 --strictPort",
       "embed": true,
-      "note": "Web UI on :5183 (Kingdom panel owns :5173). API stays on :8000; Vite proxies /api. Native make dev uses :5173 — clash with Kingdom."
+      "note": "Web UI on :5183 (Kingdom panel owns :5173). API stays on :8000; Vite proxies /api. Native make dev uses :5173 \u2014 clash with Kingdom."
     },
     "frontier": {
       "ventureId": "research-frontier",
@@ -99,6 +99,15 @@
       "cmd": "npm run dev -- --webpack -H 127.0.0.1 -p 3000",
       "embed": true,
       "note": "Next.js frontier-roadmap local UI (prod: frontier-roadmap.vercel.app). --webpack required on Next 16 when next.config has webpack."
+    },
+    "foundry": {
+      "ventureId": "voice-agent-foundry",
+      "label": "Voice Agent Foundry",
+      "port": 5180,
+      "workdir": "~/Projects/voice-agent-foundry",
+      "cmd": "npm run dev:demo",
+      "embed": true,
+      "note": "Explicit ephemeral synthetic demo; live provider calls disabled"
     }
   }
 }

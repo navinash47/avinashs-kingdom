@@ -1,6 +1,6 @@
 {
   "venture_id": "research-frontier",
-  "synced_at": "2026-09-05T20:16:07.958Z",
+  "synced_at": "2026-09-30T20:19:59.409Z",
   "github": {
     "owner": "navinash47",
     "repo": "research-frontier-lab",
@@ -9,53 +9,53 @@
     "runs": [
       {
         "conclusion": "failure",
-        "createdAt": "2026-09-05T19:58:12Z",
-        "databaseId": 33988687161,
-        "displayTitle": "feat: Atlas Lab experiment bench (/atlas-lab)",
-        "event": "pull_request",
+        "createdAt": "2026-09-28T17:38:53Z",
+        "databaseId": 36459608679,
+        "displayTitle": "CodeQL",
+        "event": "schedule",
         "status": "completed",
-        "url": "https://github.com/navinash47/research-frontier-lab/actions/runs/33988687161",
+        "url": "https://github.com/navinash47/research-frontier-lab/actions/runs/36459608679",
         "workflowName": "CodeQL"
       },
       {
         "conclusion": "failure",
-        "createdAt": "2026-09-05T19:58:12Z",
-        "databaseId": 33988687154,
-        "displayTitle": "feat: Atlas Lab experiment bench (/atlas-lab)",
+        "createdAt": "2026-09-24T23:15:17Z",
+        "databaseId": 36071788842,
+        "displayTitle": "chore(deps-dev): bump @vitest/coverage-v8 from 3.2.7 to 5.0.1 in /services/obs-cost",
         "event": "pull_request",
         "status": "completed",
-        "url": "https://github.com/navinash47/research-frontier-lab/actions/runs/33988687154",
+        "url": "https://github.com/navinash47/research-frontier-lab/actions/runs/36071788842",
         "workflowName": "Playwright"
       },
       {
         "conclusion": "failure",
-        "createdAt": "2026-09-05T19:56:19Z",
-        "databaseId": 33988601122,
-        "displayTitle": "refine(atlas-lab): RoboLab-style bench UX, map affordances, link fixes",
+        "createdAt": "2026-09-24T23:15:17Z",
+        "databaseId": 36071788753,
+        "displayTitle": "chore(deps-dev): bump @vitest/coverage-v8 from 3.2.7 to 5.0.1 in /services/obs-cost",
+        "event": "pull_request",
+        "status": "completed",
+        "url": "https://github.com/navinash47/research-frontier-lab/actions/runs/36071788753",
+        "workflowName": "CodeQL"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-09-24T23:15:17Z",
+        "databaseId": 36071787945,
+        "displayTitle": "chore(deps-dev): bump @vitest/coverage-v8 in /services/obs-cost",
         "event": "push",
         "status": "completed",
-        "url": "https://github.com/navinash47/research-frontier-lab/actions/runs/33988601122",
+        "url": "https://github.com/navinash47/research-frontier-lab/actions/runs/36071787945",
         "workflowName": "Playwright"
       },
       {
         "conclusion": "failure",
-        "createdAt": "2026-09-05T19:56:18Z",
-        "databaseId": 33988600612,
-        "displayTitle": "refine(atlas-lab): RoboLab-style bench UX, map affordances, link fixes",
+        "createdAt": "2026-09-24T23:15:14Z",
+        "databaseId": 36071783675,
+        "displayTitle": "chore(deps-dev): bump @vitest/coverage-v8 in /services/obs-cost",
         "event": "push",
         "status": "completed",
-        "url": "https://github.com/navinash47/research-frontier-lab/actions/runs/33988600612",
+        "url": "https://github.com/navinash47/research-frontier-lab/actions/runs/36071783675",
         "workflowName": ".github/workflows/ci.yml"
-      },
-      {
-        "conclusion": "failure",
-        "createdAt": "2026-09-05T19:53:38Z",
-        "databaseId": 33988470964,
-        "displayTitle": "feat(atlas-lab): add human-readable paper map experiments page",
-        "event": "push",
-        "status": "completed",
-        "url": "https://github.com/navinash47/research-frontier-lab/actions/runs/33988470964",
-        "workflowName": "Playwright"
       }
     ],
     "last_conclusion": "failure"

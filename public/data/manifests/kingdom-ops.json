@@ -1,11 +1,11 @@
 {
   "venture_id": "kingdom-ops",
-  "synced_at": "2026-09-05T20:16:05.042Z",
+  "synced_at": "2026-09-30T20:19:55.532Z",
   "repo": {
     "path": "/Users/avinashnandyala/Projects/avinashs-kingdom",
-    "head": "b3618f696bc4d8c0764ad5649b57375b7945f78d",
-    "branch": "main",
-    "last_commit_at": "2026-09-05T04:19:01Z",
+    "head": "abc29144844e49c6ccc3ef72f3518c4d18e975fa",
+    "branch": "cursor/human-readable-resumes-23c3",
+    "last_commit_at": "2026-09-05T18:15:34-07:00",
     "remote_url": "https://github.com/navinash47/avinashs-kingdom.git",
     "github": {
       "owner": "navinash47",
@@ -14,14 +14,14 @@
     }
   },
   "stats": {
-    "files": 351,
-    "lines": 48260,
+    "files": 355,
+    "lines": 48665,
     "primary_language": "JSON",
     "languages": [
       {
         "language": "JSON",
-        "files": 107,
-        "lines": 16492
+        "files": 108,
+        "lines": 16498
       },
       {
         "language": "TypeScript",
@@ -35,8 +35,8 @@
       },
       {
         "language": "Markdown",
-        "files": 110,
-        "lines": 6725
+        "files": 111,
+        "lines": 6766
       },
       {
         "language": "CSS",
@@ -46,12 +46,17 @@
       {
         "language": "Other",
         "files": 29,
-        "lines": 1602
+        "lines": 1605
       },
       {
         "language": "Shell",
-        "files": 12,
-        "lines": 1261
+        "files": 13,
+        "lines": 1535
+      },
+      {
+        "language": "TOML",
+        "files": 1,
+        "lines": 81
       },
       {
         "language": "YAML",
@@ -65,7 +70,7 @@
       }
     ],
     "truncated": false,
-    "sampled_files": 351,
+    "sampled_files": 355,
     "source": "walker"
   },
   "dependencies": {
@@ -169,7 +174,7 @@
       "label": "Kingdom panel",
       "port": 5173,
       "url": "http://127.0.0.1:5173",
-      "status": "down"
+      "status": "up"
     }
   ]
 }

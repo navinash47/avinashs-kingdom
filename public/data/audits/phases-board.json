@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-09-05T20:16:04.738Z",
+  "synced_at": "2026-09-30T20:19:55.160Z",
   "progress_rules": {
     "whatsapp-voice": "phases_pass / phases_total (from tracking/phases.json)",
     "procedural-city": "phases_pass / phases_total — prefer origin/main when local phase branch is stale",
@@ -80,7 +80,7 @@
       "phasesTotal": 97,
       "spendUsd": null,
       "ceilingUsd": 70,
-      "notes": "City · 91/97 pass · source local working tree · updated 2026-09-05T20:15:26.382646+00:00 · ceiling $70",
+      "notes": "City · 91/97 pass · source local working tree · updated 2026-09-29T04:54:01.186240+00:00 · ceiling $70",
       "repoPath": "/Users/avinashnandyala/ProceduralCity"
     },
     {
@@ -106,7 +106,7 @@
       "progress": 70,
       "priority": "P1",
       "status": "active",
-      "nextMilestone": "Cancel/review 6 kill-list seats; reclaim low-risk disk (59% used)",
+      "nextMilestone": "Cancel/review 6 kill-list seats; reclaim low-risk disk (60% used)",
       "progressSource": "heuristic ops readiness 70% (audits live; kill seats still open)",
       "phasesPassed": null,
       "phasesTotal": null,
@@ -119,7 +119,7 @@
       "id": "mac-optimize-audit",
       "name": "Mac optimize audit",
       "version": "v0.1",
-      "progress": 70,
+      "progress": 57,
       "priority": "P1",
       "status": "active",
       "nextMilestone": "Memory pressure is warning",
@@ -128,7 +128,7 @@
       "phasesTotal": null,
       "spendUsd": null,
       "ceilingUsd": null,
-      "notes": "Next: 1) Memory pressure is warning · 2) Restart Zen Browser — 3.1 GB across 15 processes · 3) Close extra Cursor windows (keep robotlab): Agents Window",
+      "notes": "Next: 1) Memory pressure is warning · 2) Restart Zen Browser — 3.5 GB across 16 processes · 3) Re-run python3 -m mac_optimize audit --deep",
       "repoPath": "/Users/avinashnandyala/Projects/mac-optimize-audit"
     },
     {
@@ -194,6 +194,22 @@
       "ceilingUsd": null,
       "notes": "Next: 1) Human UI confirm gates for Phases 1–4 (dashboard + RunPod checklist). · 2) Finish Phase 5 / 5B local smokes (mujoco+pybullet gate tasks; Genesis best-effort on RunPod). · 3) Do **not** bake Isaac into default worker without explicit approval.",
       "repoPath": "/Users/avinashnandyala/Projects/robolab"
+    },
+    {
+      "id": "voice-agent-foundry",
+      "name": "Voice Agent Foundry",
+      "version": "Local foundation · 0.1.0",
+      "progress": 30,
+      "priority": "P1",
+      "status": "active",
+      "nextMilestone": "Validate live voice and provider comparison with approved budget",
+      "progressSource": "STATUS.md Progress field (agent-updated)",
+      "phasesPassed": null,
+      "phasesTotal": null,
+      "spendUsd": null,
+      "ceilingUsd": null,
+      "notes": "Local onboarding, tenant-scoped tools, Postgres outbox, budget ledger; live calls pending.",
+      "repoPath": "/Users/avinashnandyala/Projects/voice-agent-foundry"
     }
   ]
 }

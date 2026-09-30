@@ -91,7 +91,7 @@ Run `npm run brain:lint` (or `node brain/harness/lint.mjs --strict`). Heuristic 
 
 ## Skills
 
-Use Cursor skills: `kingdom-wiki`, `sync-kingdom`, `log-outreach`, `youtube-provenance`, `phase-gate`, `kingdom-tunnels`, `cicstep-weekly`, `career-rebrand`, `task-observer`.
+Use agent skills: `kingdom-wiki`, `sync-kingdom`, `publish-kingdom`, `log-outreach`, `youtube-provenance`, `phase-gate`, `kingdom-tunnels`, `cicstep-weekly`, `career-rebrand`, `task-observer`.
 
 ## Personal OS (brain + skills + orchestrator + Throne)
 
@@ -100,7 +100,7 @@ Kingdom brain is a **reusable personal OS** for current and future projects — 
 | Layer | Where |
 |-------|--------|
 | Durable instructions | this file + `wiki/` |
-| Skills | Cursor skills (`kingdom-wiki`, `sync-kingdom`, …) |
+| Skills | agent skills (`kingdom-wiki`, `sync-kingdom`, …) |
 | Project plug-in | `config/venture-registry.json` + `config/venture-template.json` + `npm run venture:new` |
 | Typed world model / control contract | `brain/harness/` (KG + FSM slice) |
 | Compiled-wiki toolchain | `brain:lint` / `brain:query` / `brain:ingest` |

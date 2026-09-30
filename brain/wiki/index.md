@@ -104,3 +104,6 @@ _None yet._
 | [Phase 2 auto-wiki smoke source](sources/phase2-auto-wiki-smoke-2026-09-02.md) | Auto-wiki W3 smoke - draft to promote path |
 | [youtube-screenplay-layman-craft-2026-08-11](sources/youtube-screenplay-layman-craft-2026-08-11.md) | Early show-first craft locks |
 | [youtube-house-video-style-2026-08-11](sources/youtube-house-video-style-2026-08-11.md) | Full house style log for future videos |
+- [[ventures/voice-agent-foundry]] — generic onboarding, voice runtime and reliability evidence.
+- [[architecture/voice-agent-foundry]] — service boundaries and parallel worker ownership.
+- [[experiments/voice-agent-foundry]] — local verification and pending live comparisons.

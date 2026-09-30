@@ -1,6 +1,6 @@
 {
   "version": "1",
-  "updated": "2026-09-05",
+  "updated": "2026-09-28",
   "ventures": [
     {
       "id": "whatsapp-voice",
@@ -409,6 +409,47 @@
         "commands": []
       },
       "capabilities": [],
+      "skills": [
+        "sync-kingdom"
+      ],
+      "mcp": {
+        "enabled": false,
+        "read_only": true,
+        "note": "Optional Phase 2: copy config/mcp-registry.json template; run mcp/venture-server.mjs with KINGDOM_VENTURE_ID"
+      }
+    },
+    {
+      "id": "voice-agent-foundry",
+      "repoPath": "/Users/avinashnandyala/Projects/voice-agent-foundry",
+      "agentId": "agent-foundry",
+      "kind": null,
+      "field": null,
+      "dashboard": null,
+      "wiki": {
+        "venture": "brain/wiki/ventures/voice-agent-foundry.md",
+        "architecture": "brain/wiki/architecture/voice-agent-foundry.md",
+        "experiments": "brain/wiki/experiments/voice-agent-foundry.md"
+      },
+      "paths": {
+        "status": "STATUS.md",
+        "phases": "tracking/phases.json",
+        "expenses": "tracking/expenses.jsonl"
+      },
+      "github": null,
+      "tests": {
+        "commands": [
+          "npm run typecheck",
+          "npm test",
+          "npm run build",
+          "npm run test:e2e"
+        ]
+      },
+      "capabilities": [
+        "onboarding",
+        "voice-agents",
+        "distributed-systems",
+        "benchmarking"
+      ],
       "skills": [
         "sync-kingdom"
       ],

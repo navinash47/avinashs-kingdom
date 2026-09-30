@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-09-05T20:16:11.197Z",
+  "synced_at": "2026-09-30T20:20:04.177Z",
   "skills": [
     {
       "id": "career-rebrand",
@@ -44,6 +44,11 @@
     {
       "id": "youtube-provenance",
       "path": "/Users/avinashnandyala/.cursor/skills/youtube-provenance",
+      "has_skill_md": true
+    },
+    {
+      "id": "publish-kingdom",
+      "path": "/Users/avinashnandyala/Projects/avinashs-kingdom/.cursor/skills/publish-kingdom",
       "has_skill_md": true
     }
   ],
@@ -138,6 +143,7 @@
       "skills": [
         "kingdom-wiki",
         "sync-kingdom",
+        "publish-kingdom",
         "log-outreach",
         "task-observer"
       ],
@@ -182,6 +188,20 @@
         "runpod"
       ],
       "token_budget_usd": 40,
+      "token_used_usd": 0,
+      "recent_observations": []
+    },
+    {
+      "id": "agent-foundry",
+      "name": "Foundry Coordinator",
+      "venture_id": "voice-agent-foundry",
+      "focus": "Coordinate Cursor, Codex and OpenRouter service ownership; prove reliability and cost.",
+      "skills": [
+        "sync-kingdom",
+        "kingdom-wiki",
+        "task-observer"
+      ],
+      "token_budget_usd": 30,
       "token_used_usd": 0,
       "recent_observations": []
     }

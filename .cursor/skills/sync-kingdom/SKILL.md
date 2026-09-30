@@ -46,6 +46,7 @@ Read these files. **Do not treat Kingdom `STATUS.md` / `ventures.json` as eviden
 
 | Venture | Root | Source of truth (read this) |
 |---------|------|-----------------------------|
+| Voice Agent Foundry | `~/Projects/voice-agent-foundry` | `STATUS.md` + `tracking/phases.json` |
 | WhatsApp | `~/Projects/whatsapp-voice-agents` | `tracking/phases.json` |
 | YouTube | `~/Projects/youtube-editor-lab` | `STATUS.md` + `tracking/` / Cut Control state |
 | Research / Atlas | `~/Projects/research-frontier-lab` | `STATUS.md` |

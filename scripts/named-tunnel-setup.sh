@@ -8,6 +8,9 @@
 #   npm run share:named                  # or: ./scripts/named-tunnel-run.sh
 #
 # Friend always uses:  https://ops.yourdomain.com
+#
+# Mac-bridge API (:5174) is separate:
+#   ./scripts/mac-bridge-named-setup.sh yourdomain.com
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"

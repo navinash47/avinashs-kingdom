@@ -98,6 +98,7 @@ function loadBestCityPhases() {
 }
 
 const STATUS_SOURCES = [
+  { id: 'voice-agent-foundry', statusPath: path.join(home, 'Projects/voice-agent-foundry/STATUS.md') },
   {
     id: 'whatsapp-voice',
     statusPath: path.join(home, 'Projects/whatsapp-voice-agents/STATUS.md'),

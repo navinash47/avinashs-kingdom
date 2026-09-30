@@ -104,3 +104,7 @@ npm run tunnels              # public URLs for every dashboard that is UP
 
 Chat: **start dashboards** · **cloudflare links**  
 URLs file: `brain/wiki/ops/cloudflare-links.md`.
+
+## Voice Agent Foundry
+
+`~/Projects/voice-agent-foundry` — application and source STATUS; Kingdom only tracks it. Console :5180; API :4100; commerce :4101; voice :4102; evaluation :4103. [[ventures/voice-agent-foundry]]

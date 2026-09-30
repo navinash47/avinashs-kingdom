@@ -78,5 +78,13 @@
     "focus": "RoboLab: MuJoCo/PyBullet RL, RunPod workers, sim-to-sim transfer. Human gates before claiming PASS.",
     "tokenBudgetUsd": 40,
     "tokenUsedUsd": 0
+  },
+  {
+    "id": "agent-foundry",
+    "name": "Foundry Coordinator",
+    "ventureId": "voice-agent-foundry",
+    "focus": "Coordinate Cursor, Codex and OpenRouter service ownership; prove reliability and cost.",
+    "tokenBudgetUsd": 30,
+    "tokenUsedUsd": 0
   }
 ]
